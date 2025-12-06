@@ -11,5 +11,6 @@ import dto.actividades.InscripcionDTO;
  * @author janethcristinagalvanquinonez
  */
 public interface IInscripcionBO {
-   // InscripcionDTO inscribirActividad(InscripcionDTO inscripcionDTO);
+    public boolean buscarEstudiantePorMatricula(InscripcionDTO inscripcionDTO);
+    public InscripcionDTO inscribirActividad(InscripcionDTO inscripcionDTO);
 }

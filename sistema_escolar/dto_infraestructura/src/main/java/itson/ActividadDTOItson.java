@@ -8,8 +8,17 @@ package itson;
  * @author janethcristinagalvanquinonez
  */
 public class ActividadDTOItson {
+    private String id;
     String nombre;
     double costo;
+
+    public ActividadDTOItson(String id, String nombre, double costo) {
+        this.id = id;
+        this.nombre = nombre;
+        this.costo = costo;
+    }
+    
+    
 
     public ActividadDTOItson(String nombre, double costo) {
         this.nombre = nombre;
@@ -38,6 +47,16 @@ public class ActividadDTOItson {
     public void setCosto(double costo) {
         this.costo = costo;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+    
+    
     
     
 }

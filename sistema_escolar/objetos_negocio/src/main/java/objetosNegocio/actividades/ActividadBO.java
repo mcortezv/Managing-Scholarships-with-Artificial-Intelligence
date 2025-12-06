@@ -27,6 +27,7 @@ public class ActividadBO implements IActividadBO {
     @Override
     public ActividadesDTO obtenerActividades(){
         ActividadesDTOItson actividadesDTOItson= fachadaITSON.obtenerActividades();
+        
         return ActividadesAdaptador.toDTO(actividadesDTOItson);
     }
     

@@ -20,7 +20,7 @@ public class ActividadAdaptador {
     
     public static ActividadDTOItson toResponseDTOAct(Actividad actividad){
         ActividadDTOItson actividadDTOItson= new ActividadDTOItson();
-       
+            actividadDTOItson.setId(actividad.getId().toString());
             actividadDTOItson.setNombre(actividad.getNombre());
             actividadDTOItson.setCosto(actividad.getCosto());
             return actividadDTOItson;

@@ -1,6 +1,5 @@
 package fachadas;
 
-
 import itson.pagarAdeudo.ClaseDTOI;
 import itson.pagarAdeudo.PrestamoDTOI;
 import itson.pagarAdeudo.SolicitudPagoDTOI;
@@ -21,6 +20,7 @@ import java.util.List;
  * @author janethcristinagalvanquinonez
  */
 public class FachadaItson implements IFachadaITSON {
+
     private final ControlItson controlItson;
 
     public FachadaItson(ControlItson controlItson) {
@@ -43,9 +43,9 @@ public class FachadaItson implements IFachadaITSON {
     }
 
     /**
-     *  TODO ESTO ES DEL CASO PAGAR ADEUDO
-     * @param matricula
-     * // SEBASTIAN ESCALANTE RAMIREZ
+     * TODO ESTO ES DEL CASO PAGAR ADEUDO
+     *
+     * @param matricula // SEBASTIAN ESCALANTE RAMIREZ
      * @return
      */
     @Override
@@ -53,6 +53,7 @@ public class FachadaItson implements IFachadaITSON {
         return controlItson.obtenerListaPrestamos(matricula);
 
     }
+
     @Override
     public List<ClaseDTOI> solicitarListaClases(Long matricula) {
         return controlItson.obtenerListaClases(matricula);
@@ -66,12 +67,10 @@ public class FachadaItson implements IFachadaITSON {
     /**
      * AQUI TERMINA CASO DE USO PAGAR ADEUDO
      */
-    
     /**
-     * ESTO ES DEL CASO ACTIVIDADES 
+     * ESTO ES DEL CASO ACTIVIDADES
      */
-    
-    public ActividadesDTOItson obtenerActividades(){
+    public ActividadesDTOItson obtenerActividades() {
         return controlItson.obtenerActividades();
     }
 
@@ -79,8 +78,13 @@ public class FachadaItson implements IFachadaITSON {
     public GruposResponseDTOItson otenerGrupos(ActividadDTOItson actividadDTO) {
         return controlItson.obtenerGrupos(actividadDTO);
     }
-    
-//    public InscripcionDTOItson inscribirActividad(InscripcionDTOItson inscripcionDTOItson){
-//        return controlItson.inscribirActividad(inscripcionDTOItson);
-//    }
+
+    public InscripcionDTOItson inscribirActividad(InscripcionDTOItson inscripcionDTOItson) {
+        return controlItson.inscribirActividad(inscripcionDTOItson);
+    }
+
+    @Override
+    public boolean buscarEstudiantePorMatricula(InscripcionDTOItson inscripcionDTOItson) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

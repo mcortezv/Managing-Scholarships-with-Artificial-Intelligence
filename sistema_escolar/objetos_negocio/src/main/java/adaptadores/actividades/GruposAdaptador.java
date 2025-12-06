@@ -32,6 +32,7 @@ public class GruposAdaptador {
     
     public static GrupoDTO DTOItsonToDTOActividades(GrupoResponseDTOItson grupoResponseDTOItson){
         GrupoDTO grupoDTO= new GrupoDTO();
+        grupoDTO.setId(grupoResponseDTOItson.getId());
         grupoDTO.setCupoTotal(grupoResponseDTOItson.getCupoTotal());
         grupoDTO.setCupoDisponible(grupoResponseDTOItson.getCupoDisponible());
         grupoDTO.setFechaInicio(grupoResponseDTOItson.getFechaInicio());
@@ -42,6 +43,7 @@ public class GruposAdaptador {
         grupoDTO.setHoraFin(grupoResponseDTOItson.getHoraFin());
         grupoDTO.setDias(grupoResponseDTOItson.getDias());
         //actividad 
+        grupoDTO.setIdActividad(grupoResponseDTOItson.getIdActividad());
         grupoDTO.setNombreActividad(grupoResponseDTOItson.getNombreActividad());
         grupoDTO.setCosto(grupoResponseDTOItson.getCosto());
         //ubicacion

@@ -12,7 +12,7 @@ import java.util.List;
  * @author janethcristinagalvanquinonez
  */
 public class GrupoDTO {
-    
+    private String id;
     private int cupoTotal;
     private int cupoDisponible;
     private LocalDate fechaInicio;
@@ -23,6 +23,7 @@ public class GrupoDTO {
     private String horaFin;
     private List<String> dias;
     //actividad
+    private String idActividad;
     String nombreActividad;
     double costo;    
     //ubicacion
@@ -48,6 +49,29 @@ public class GrupoDTO {
         this.nombreResponsable = nombreResponsable;
         this.correoResponsable = correoResponsable;
     }
+
+    public GrupoDTO(String id, int cupoTotal, int cupoDisponible, LocalDate fechaInicio, LocalDate fechaFin, LocalDate fechaLimiteInscripcion, String horaInicio, String horaFin, List<String> dias, String idActividad, String nombreActividad, double costo, String nombreUbicacion, String unidad, String nombreResponsable, String correoResponsable) {
+        this.id = id;
+        this.cupoTotal = cupoTotal;
+        this.cupoDisponible = cupoDisponible;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.fechaLimiteInscripcion = fechaLimiteInscripcion;
+        this.horaInicio = horaInicio;
+        this.horaFin = horaFin;
+        this.dias = dias;
+        this.idActividad = idActividad;
+        this.nombreActividad = nombreActividad;
+        this.costo = costo;
+        this.nombreUbicacion = nombreUbicacion;
+        this.unidad = unidad;
+        this.nombreResponsable = nombreResponsable;
+        this.correoResponsable = correoResponsable;
+    }
+
+    
+    
+    
 
     public GrupoDTO() {
     }
@@ -164,6 +188,22 @@ public class GrupoDTO {
 
     public void setCorreoResponsable(String correoResponsable) {
         this.correoResponsable = correoResponsable;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getIdActividad() {
+        return idActividad;
+    }
+
+    public void setIdActividad(String idActividad) {
+        this.idActividad = idActividad;
     }
     
     

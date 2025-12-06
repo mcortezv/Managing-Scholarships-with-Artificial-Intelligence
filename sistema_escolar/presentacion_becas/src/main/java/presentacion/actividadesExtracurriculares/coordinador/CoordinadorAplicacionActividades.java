@@ -81,6 +81,7 @@ public class CoordinadorAplicacionActividades implements ICoordinadorAplicacionA
     
 
     public GruposResponseDTO obtenerGrupos(ActividadDTO actividadDTO){
+       
         return coordinadorNegocioActividades.obtenerGrupos(actividadDTO);
        
     }
@@ -119,17 +120,19 @@ public class CoordinadorAplicacionActividades implements ICoordinadorAplicacionA
     }
     
     
-//    public InscripcionDTO inscribirActividadAlumno(){
-//        InscripcionDTO inscripcionDTO= new InscripcionDTO();
-//        inscripcionDTO.setMatriculaEstudiante(String.valueOf(loginDTO.getUsuario()));
-//        inscripcionDTO.setNombreGrupo(grupoSeleccionado.getNombreActividad());
-//        inscripcionDTO.setCosto(grupoSeleccionado.getCosto());
-//        inscripcionDTO.setDias(grupoSeleccionado.getDias());
-//        inscripcionDTO.setHoraInicio(grupoSeleccionado.getHoraInicio());
-//        inscripcionDTO.setHoraFin(grupoSeleccionado.getHoraFin());
-//        return coordinadorNegocioActividades.inscribirActividad(inscripcionDTO);
-//        
-//    }
+    public InscripcionDTO inscribirActividadAlumno(){
+        InscripcionDTO inscripcionDTO= new InscripcionDTO();
+        inscripcionDTO.setIdGrupo(grupoSeleccionado.getId());
+        inscripcionDTO.setMatriculaEstudiante(String.valueOf(loginDTO.getUsuario()));
+        inscripcionDTO.setNombreGrupo(grupoSeleccionado.getNombreActividad());
+        inscripcionDTO.setCosto(grupoSeleccionado.getCosto());
+        inscripcionDTO.setDias(grupoSeleccionado.getDias());
+        inscripcionDTO.setHoraInicio(grupoSeleccionado.getHoraInicio());
+        inscripcionDTO.setHoraFin(grupoSeleccionado.getHoraFin());
+        
+        return coordinadorNegocioActividades.inscribirActividad(inscripcionDTO);
+        
+    }
     
     public ActividadesExtracurriculares getActividades() {
         return actividades;

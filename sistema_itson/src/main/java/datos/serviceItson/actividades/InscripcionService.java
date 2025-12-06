@@ -4,7 +4,10 @@
  */
 package datos.serviceItson.actividades;
 
+import datos.adaptadoresItson.actividades.InscripcionAdaptador;
+import datos.dominioItson.actividades.Inscripcion;
 import datos.repositoryItson.daoItson.actividades.IInscripcionDAO;
+import datos.repositoryItson.daoItson.actividades.impl.InscripcionDAO;
 import itson.actividades.InscripcionDTOItson;
 
 /**
@@ -15,13 +18,15 @@ public class InscripcionService {
     
     private final IInscripcionDAO inscripcionDAO;
 
-    public InscripcionService(IInscripcionDAO inscripcionDAO) {
-        this.inscripcionDAO = inscripcionDAO;
+    public InscripcionService() {
+        this.inscripcionDAO = new InscripcionDAO();
     }
     
-//    public InscripcionDTOItson inscribirActividad(InscripcionDTOItson inscripcion){
-//        
-//    }
+    public InscripcionDTOItson inscribirActividad(InscripcionDTOItson inscripcionDTO){
+        Inscripcion inscripcion= InscripcionAdaptador.toEntity(inscripcionDTO);
+        return InscripcionAdaptador.toDTOITSON(inscripcionDAO.InscribirGrupo(inscripcion));
+        
+    }
     
     
 }

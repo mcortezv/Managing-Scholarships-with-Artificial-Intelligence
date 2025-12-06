@@ -32,10 +32,10 @@ public class FachadaActividad implements IFachadaActividad{
     public GruposResponseDTO obtenerGrupos(ActividadDTO actividadDTO){
         return controlActividad.obtenerGrupos(actividadDTO);
     }
-//    
-//     public InscripcionDTO inscribirActividad(InscripcionDTO inscripcionDTO){
-//         return controlActividad.inscribirActividad(inscripcionDTO);
-//     }
+    
+     public InscripcionDTO inscribirActividad(InscripcionDTO inscripcionDTO){
+         return controlActividad.inscribirActividad(inscripcionDTO);
+     }
 
 
 }

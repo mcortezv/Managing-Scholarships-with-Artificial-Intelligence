@@ -20,6 +20,7 @@
         <module>persistencia_becas</module>
         <module>dto_infraestructura</module>
         <module>persistencia_tutorias</module>
+        <module>persistencia_actividades</module>
     </modules>
 
     <properties>

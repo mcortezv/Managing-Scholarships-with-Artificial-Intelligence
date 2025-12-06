@@ -4,11 +4,14 @@
  */
 package datos.dominioItson.actividades;
 
+import org.bson.types.ObjectId;
+
 /**
  *
  * @author janethcristinagalvanquinonez
  */
 public class Actividad {
+    private ObjectId id;
     private String nombre;
     private double costo;
 
@@ -19,6 +22,14 @@ public class Actividad {
         this.nombre = nombre;
         this.costo = costo;
     }
+
+    public Actividad(ObjectId id, String nombre, double costo) {
+        this.id = id;
+        this.nombre = nombre;
+        this.costo = costo;
+    }
+    
+    
 
     public String getNombre() {
         return nombre;
@@ -37,6 +48,16 @@ public class Actividad {
     public void setCosto(double costo) {
         this.costo = costo;
     }
+
+    public ObjectId getId() {
+        return id;
+    }
+
+    public void setId(ObjectId id) {
+        this.id = id;
+    }
+    
+    
 
     @Override
     public String toString() {
