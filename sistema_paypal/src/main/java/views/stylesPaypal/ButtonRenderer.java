@@ -1,6 +1,6 @@
 package views.stylesPaypal;
 
-import views.stylesBanco.Style;
+import views.stylesPaypal.Style;
 
 import javax.swing.*;
 import javax.swing.table.TableCellRenderer;
