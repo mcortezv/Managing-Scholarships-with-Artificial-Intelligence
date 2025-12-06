@@ -5,6 +5,7 @@
 package datos.repositoryItson.daoItson.actividades.impl;
 
 import com.mongodb.client.MongoCollection;
+import datos.configMongoItson.MongoClienteProvider;
 import datos.dominioItson.actividades.Inscripcion;
 import datos.repositoryItson.daoItson.actividades.IInscripcionDAO;
 
@@ -16,8 +17,17 @@ public class InscripcionDAO implements IInscripcionDAO{
     
     private final MongoCollection<Inscripcion> col;
 
-    public InscripcionDAO(MongoCollection<Inscripcion> col) {
-        this.col = col;
+    public InscripcionDAO() {
+        this.col = MongoClienteProvider.INSTANCE.getCollection("inscripcion", Inscripcion.class);
+    }
+    
+    public Inscripcion InscribirGrupo(Inscripcion inscripcion){
+        try{
+            col.insertOne(inscripcion);
+            return inscripcion;
+        } catch(Exception e){
+            return null;
+        }
     }
     
     

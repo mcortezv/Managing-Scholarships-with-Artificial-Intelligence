@@ -110,6 +110,16 @@ public class Grupo {
         this.responsable = responsable;
     }
 
+    public ObjectId getId() {
+        return id;
+    }
+
+    public void setId(ObjectId id) {
+        this.id = id;
+    }
+    
+    
+
     @Override
     public String toString() {
         return "Grupo{" + "cupoTotal=" + cupoTotal + ", cupoDisponible=" + cupoDisponible + ", fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin + ", fechaLimiteInscripcion=" + fechaLimiteInscripcion + ", horario=" + horario + ", actividad=" + actividad + ", ubicacion=" + ubicacion + ", responsable=" + responsable + '}';

@@ -3,10 +3,12 @@ import adaptadores.solicitarBeca.EstudianteAdaptador;
 import itson.LoginDTOItson;
 import bo.sesion.SesionUsuario;
 import bo.solicitarBeca.excepciones.EstudianteInvalidoException;
+import dto.actividades.EstudianteDTO;
 import solicitarBeca.repository.dao.interfaces.IEstudianteDAO;
 import itson.EstudianteDTOItson;
 import interfaces.solicitarBeca.IEstudianteBO;
 import interfaces.IFachadaITSON;
+import interfaces.actividades.IEstudianteBOAct;
 import solicitarBeca.repository.documents.EstudianteDocument;
 
 /**
@@ -22,7 +24,7 @@ public class EstudianteBO implements IEstudianteBO {
         this.estudianteDAO = estudianteDAO;
     }
 
-    @Override
+
     public boolean iniciarSesion(LoginDTOItson solicitudLoginDTO) {
         try {
             boolean credencialesCorrectas = fachadaITSON.verificarLogin(solicitudLoginDTO);
@@ -43,7 +45,7 @@ public class EstudianteBO implements IEstudianteBO {
     }
 
 
-    @Override
+
     public void cerrarSesion() {
         System.out.println("matricula del estudiante logeado: " + SesionUsuario.getInstance().getEstudianteLogeado().getMatricula());
         System.out.println("Llamando a cerrar sesión en EstudianteBO");
@@ -51,18 +53,23 @@ public class EstudianteBO implements IEstudianteBO {
         System.out.println("Sesión cerrada correctamente");
     }
 
-    @Override
+   
     public EstudianteDTOItson crearEstudiante(Long matricula){
         return fachadaITSON.verificarEstudiante(matricula);
     }
 
-    @Override
+
     public void guardarEstudiante(EstudianteDocument estudiante) throws EstudianteInvalidoException {
         try {
             estudianteDAO.create(estudiante);
         } catch (Exception ex) {
             throw new EstudianteInvalidoException(ex.getMessage());
         }
+    }
+
+    @Override
+    public EstudianteDTO obtenerEstudiante(EstudianteDTO estudianteDTO) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }

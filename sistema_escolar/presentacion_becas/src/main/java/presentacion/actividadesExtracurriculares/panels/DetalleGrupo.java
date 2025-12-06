@@ -54,14 +54,15 @@ public class DetalleGrupo extends PanelActividades{
        panelContenido.setBorder(new EmptyBorder(30, 40, 30, 40));
        centralPanel.add(panelContenido);
        
-//       botonSiguiente.addActionListener(e->{
-//           coordinadorAplicacionActividades.inscribirActividadAlumno();
-//       });
+       botonSiguiente.addActionListener(e->{
+           coordinadorAplicacionActividades.inscribirActividadAlumno();
+       });
        
     }
     
     public void cargarGrupo(GrupoDTO grupoDTO){
         panelContenido.removeAll();
+        System.out.println(grupoDTO.getId());
         panelContenido.add(crearCampo("Nombre del Responsable", grupoDTO.getNombreResponsable()));
         panelContenido.add(crearCampo("Lugar", grupoDTO.getNombreUbicacion()));
         panelContenido.add(crearCampo("Precio", "$" + grupoDTO.getCosto()));

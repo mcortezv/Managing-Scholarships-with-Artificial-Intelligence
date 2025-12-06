@@ -1,4 +1,6 @@
 package presentacion;
+import actividades.dao.interfaces.IEstudianteDAOAct;
+import actividades.daos.EstudianteDAOAct;
 import bo.solicitarBeca.*;
 import controles.ControlGobierno;
 import controles.*;
@@ -12,9 +14,13 @@ import presentacion.actividadesExtracurriculares.coordinador.CoordinadorAplicaci
 import presentacion.pagarAdeudo.coordinadorAplicacionPagarAdeudo.CoordinadorAplicacionPagarAdeudo;
 import fachadas.FachadaGobierno;
 import interfaces.*;
+import interfaces.actividades.IEstudianteBOAct;
 import interfaces.actividades.IGrupoBO;
+import interfaces.actividades.IInscripcionBO;
+import objetosNegocio.actividades.EstudianteBOAct;
 //import interfaces.actividades.IInscripcionBO;
 import objetosNegocio.actividades.GrupoBO;
+import objetosNegocio.actividades.InscripcionBO;
 //import objetosNegocio.actividades.InscripcionBO;
 import solicitarBeca.repository.dao.interfaces.IDocumentoDAO;
 import solicitarBeca.repository.dao.interfaces.IEstudianteDAO;
@@ -50,8 +56,10 @@ public class Main {
         // caso act extra
         IActividadBO actividadBO = new ActividadBO(fachadaITSON);
         IGrupoBO grupoBO= new GrupoBO(fachadaITSON);
-       // IInscripcionBO inscripcionBO= new InscripcionBO(fachadaITSON);
-        ControlActividad controlActividad= new ControlActividad(actividadBO, grupoBO);
+        IEstudianteDAOAct estudianteDAOAct= new EstudianteDAOAct();
+        IEstudianteBOAct estudianteBOAct= new EstudianteBOAct(fachadaITSON, estudianteDAOAct);
+        IInscripcionBO inscripcionBO= new InscripcionBO(fachadaITSON);
+        ControlActividad controlActividad= new ControlActividad(actividadBO, grupoBO, inscripcionBO, estudianteBOAct);
         IFachadaActividad fachadaAct = new FachadaActividad(controlActividad);
 
         // creacion de daos

@@ -16,5 +16,5 @@ public interface IFachadaActividad {
 
      ActividadesDTO obtenerActividades();
      GruposResponseDTO obtenerGrupos(ActividadDTO actividadDTO);
-  //   InscripcionDTO inscribirActividad(InscripcionDTO inscripcionDTO);
+     InscripcionDTO inscribirActividad(InscripcionDTO inscripcionDTO);
 }
