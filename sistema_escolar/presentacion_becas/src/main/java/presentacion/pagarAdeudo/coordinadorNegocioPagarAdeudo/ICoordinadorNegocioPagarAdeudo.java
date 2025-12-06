@@ -18,5 +18,9 @@ public interface ICoordinadorNegocioPagarAdeudo {
     void mostrarVentanaPago(ActionListener listener);
     SolicitudPagoDTO realizarPago(SolicitudPagoDTO solicitud) throws Exception;
     void cerrarVentanaBanco();
+
+    void mostrarVentanaPaypal(ActionListener listenerBotonPagarPaypal);
+    void cerrarVentanaPaypal();
+    SolicitudPagoDTO realizarPagoPaypal(SolicitudPagoDTO solicitudPagoDTO);
     boolean notificarLiquidacion(SolicitudPagoDTO solicitudPagoDTO);
 }

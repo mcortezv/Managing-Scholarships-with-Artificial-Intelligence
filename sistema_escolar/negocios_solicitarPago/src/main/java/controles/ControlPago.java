@@ -51,6 +51,19 @@ public class ControlPago {
         iFachadaBanco.cerrarVentana();
     }
 
+    public void solicitarVistaPayPal(ActionListener listener){
+        iFachadaPayPal.mostrarPantallaPago(listener);
+    }
+
+    public void cerrarVentanaPaypal(){
+        iFachadaPayPal.cerrarVentanaPaypal();
+    }
+
+    public SolicitudPagoDTO realizarPagoPaypal(SolicitudPagoDTO solicitudPagoDTO){
+        return iFachadaPayPal.ejecutarPago(solicitudPagoDTO);
+    }
+
+
 
     public boolean notificarLiquidacion(SolicitudPagoDTO solicitudPagoDTO){
         SolicitudPagoDTOI solicitudPagoDTOI = SolicitudPagoAdaptador.toDTOI(solicitudPagoDTO);

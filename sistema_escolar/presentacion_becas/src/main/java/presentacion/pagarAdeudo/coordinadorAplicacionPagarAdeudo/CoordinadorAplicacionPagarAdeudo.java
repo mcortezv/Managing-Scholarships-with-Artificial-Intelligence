@@ -105,7 +105,7 @@ public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionP
             abrirPasarelaBanco();
         }
         if ("PAYPAL".equals(metodoPago)){
-            System.out.println("Próximamente PayPal");
+           abrirPasarelaPaypal();
         }
     }
 
@@ -133,7 +133,7 @@ public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionP
         try {
             solicitudPagoDTO.setEstatusPago("Pendiente");
             solicitudPagoDTO.setIdEstudiante(SesionUsuario.getInstance().getEstudianteLogeado().getMatricula());
-
+            solicitudPagoDTO.setMetodoPago("BANCO");
             if ("Biblioteca".equals(tipoAdeudo)) {
                 solicitudPagoDTO.setMontoPagado(adeudoBibliotecaCache);
                 solicitudPagoDTO.setTipoAdeudo("Biblioteca");
@@ -154,6 +154,54 @@ public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionP
             System.out.println("Error procesando pago: " + ex.getMessage());
         }
     }
+
+    private void abrirPasarelaPaypal() {
+        int respuesta = JOptionPane.showConfirmDialog(
+                null,
+                "Será redirigido al inicio de sesión de PayPal, ¿desea continuar?",
+                "Pago con PayPal",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.INFORMATION_MESSAGE
+        );
+
+        if (respuesta == JOptionPane.YES_OPTION) {
+            ActionListener listenerBotonPagarPaypal = new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    procesarPagoPaypal();
+                }
+            };
+            coordinadorNegocioPagarAdeudo.mostrarVentanaPaypal(listenerBotonPagarPaypal);
+        }
+    }
+
+    private void procesarPagoPaypal() {
+        try {
+            solicitudPagoDTO.setEstatusPago("Pendiente");
+            solicitudPagoDTO.setIdEstudiante(SesionUsuario.getInstance().getEstudianteLogeado().getMatricula());
+            solicitudPagoDTO.setMetodoPago("PAYPAL");
+            if ("Biblioteca".equals(tipoAdeudo)) {
+                solicitudPagoDTO.setMontoPagado(adeudoBibliotecaCache);
+                solicitudPagoDTO.setTipoAdeudo("Biblioteca");
+            } else if ("Colegiatura".equals(tipoAdeudo)) {
+                solicitudPagoDTO.setMontoPagado(adeudoColegiaturaCache);
+                solicitudPagoDTO.setTipoAdeudo("Colegiatura");
+            }
+
+            SolicitudPagoDTO resultado = coordinadorNegocioPagarAdeudo.realizarPagoPaypal(solicitudPagoDTO);
+            if (resultado != null && "Pagado".equalsIgnoreCase(resultado.getEstatusPago())) {
+                coordinadorNegocioPagarAdeudo.notificarLiquidacion(resultado);
+                coordinadorNegocioPagarAdeudo.cerrarVentanaPaypal();
+                JOptionPane.showMessageDialog(null, "¡Pago con PayPal realizado con éxito!");
+                limpiarCache();
+                regresarAlMenuPrincipal();
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Error en PayPal: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            System.out.println("Error procesando pago PayPal: " + ex.getMessage());
+        }
+    }
+
 
     private void limpiarCache() {
         this.prestamos = null;

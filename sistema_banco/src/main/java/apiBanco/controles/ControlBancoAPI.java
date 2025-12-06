@@ -1,13 +1,12 @@
 package apiBanco.controles;
 
 import datos.dominioBanco.Cuenta;
-import datos.dtos.DatosTarjetaDTO;
+import datos.dtosBanco.DatosTarjetaDTO;
 import datos.excepcionesBanco.BancoException;
 import datos.serviceBanco.CuentaService;
 import datos.serviceBanco.TransaccionService;
 import views.panels.MainFrameBanco;
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class ControlBancoAPI {

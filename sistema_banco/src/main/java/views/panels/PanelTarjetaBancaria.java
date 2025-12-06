@@ -4,13 +4,13 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import datos.dtos.DatosTarjetaDTO;
+import datos.dtosBanco.DatosTarjetaDTO;
 import views.exceptions.BancoViewsException;
-import views.styles.*;
-import views.styles.Button;
-import views.styles.Label;
-import views.styles.TextField;
-import views.validadores.Validador;
+import views.stylesBanco.*;
+import views.stylesBanco.Button;
+import views.stylesBanco.Label;
+import views.stylesBanco.TextField;
+import views.validadoresBanco.Validador;
 
 public class PanelTarjetaBancaria extends JPanel {
     private TextField campoNumero;
