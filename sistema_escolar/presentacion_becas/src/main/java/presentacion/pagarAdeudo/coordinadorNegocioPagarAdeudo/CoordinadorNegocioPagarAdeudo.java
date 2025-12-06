@@ -48,6 +48,7 @@ public class CoordinadorNegocioPagarAdeudo implements ICoordinadorNegocioPagarAd
         return fachadaPago.solicitarListaClases(estudianteDTO);
     }
 
+    // --- MÉTODOS BANCO ---
 
     @Override
     public void mostrarVentanaPago(ActionListener listenerBotonPagarDelBanco) {
@@ -55,13 +56,29 @@ public class CoordinadorNegocioPagarAdeudo implements ICoordinadorNegocioPagarAd
     }
 
     @Override
-    public SolicitudPagoDTO realizarPago(SolicitudPagoDTO solicitudPagoDTO) throws Exception {
+    public SolicitudPagoDTO realizarPago(SolicitudPagoDTO solicitudPagoDTO){
         return fachadaPago.realizarPago(solicitudPagoDTO);
     }
 
     @Override
     public void cerrarVentanaBanco() {
         fachadaPago.cerrarVentana();
+    }
+
+
+    @Override
+    public void mostrarVentanaPaypal(ActionListener listenerBotonPagarPaypal) {
+        fachadaPago.solicitarVistaPaypal(listenerBotonPagarPaypal);
+    }
+
+    @Override
+    public void cerrarVentanaPaypal() {
+        fachadaPago.cerrarVentanaPaypal();
+    }
+
+    @Override
+    public SolicitudPagoDTO realizarPagoPaypal(SolicitudPagoDTO solicitudPagoDTO){
+        return fachadaPago.realizarPagoPaypal(solicitudPagoDTO);
     }
 
     @Override

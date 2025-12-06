@@ -43,6 +43,21 @@ public class FachadaPago implements IFachadaPago {
     }
 
     @Override
+    public void solicitarVistaPaypal(ActionListener listener) {
+        controlPago.solicitarVistaPayPal(listener);
+    }
+
+    @Override
+    public void cerrarVentanaPaypal() {
+        controlPago.cerrarVentanaPaypal();
+    }
+
+    @Override
+    public SolicitudPagoDTO realizarPagoPaypal(SolicitudPagoDTO dto) {
+        return controlPago.realizarPagoPaypal(dto);
+    }
+
+    @Override
     public boolean notificarLiquidacion(SolicitudPagoDTO solicitudPagoDTO) {
         return controlPago.notificarLiquidacion(solicitudPagoDTO);
     }

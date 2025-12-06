@@ -11,10 +11,18 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 public interface IFachadaPago {
+
+    //itson
     List<PrestamoDTO> solicitarListaPrestamos(EstudianteDTO estudianteDTO);
     List<ClaseDTO> solicitarListaClases(EstudianteDTO estudianteDTO);
+    boolean notificarLiquidacion(SolicitudPagoDTO solicitudPagoDTO);
+
+    //banco
     void solicitarVistaDePago(ActionListener listener);
     SolicitudPagoDTO realizarPago(SolicitudPagoDTO solicitudPagoDTO);
     void cerrarVentana();
-    boolean notificarLiquidacion(SolicitudPagoDTO solicitudPagoDTO);
+    //paypal
+    void solicitarVistaPaypal(ActionListener listener);
+    void cerrarVentanaPaypal();
+    SolicitudPagoDTO realizarPagoPaypal(SolicitudPagoDTO dto);
 }

@@ -19,13 +19,7 @@ public class CuentaDAO implements ICuentaDAO {
     @Override
     public Cuenta buscarPorNumeroTarjeta(String numeroTarjeta) {
         try {
-            System.out.println("Buscando en Mongo tarjeta: '" + numeroTarjeta + "' (Longitud: " + numeroTarjeta.length() + ")");
-
-            Cuenta c = col.find(Filters.eq("numeroTarjeta", numeroTarjeta)).first();
-
-            System.out.println("Resultado encontrado: " + (c != null ? c.getNombreTitular() : "NULL"));
-
-            return c;
+            return col.find(Filters.eq("numeroTarjeta", numeroTarjeta)).first();
         } catch (Exception e) {
             e.printStackTrace();
             throw new BancoException("Error al recuperar la cuenta");

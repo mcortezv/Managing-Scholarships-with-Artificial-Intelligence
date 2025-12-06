@@ -1,6 +1,6 @@
 package views.panels;
 
-import datos.dtos.DatosTarjetaDTO;
+import datos.dtosBanco.DatosTarjetaDTO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
