@@ -16,13 +16,11 @@ public class SolicitudPagoAdaptador {
         dto.setMontoPagado(dtoI.getMontoPagado());
         dto.setMetodoPago(dtoI.getMetodoPago());
         dto.setEstatusPago(dtoI.getEstatusPago());
-
+        dto.setTipoAdeudo(dtoI.getTipoAdeudo());
         return dto;
     }
 
-    /**
-     * Convierte de DTO interno (DTO) al DTO de Infraestructura (DTOI).
-     */
+
     public static SolicitudPagoDTOI toDTOI(SolicitudPagoDTO dto) {
         if (dto == null) return null;
 
@@ -34,6 +32,7 @@ public class SolicitudPagoAdaptador {
         dtoI.setMontoPagado(dto.getMontoPagado());
         dtoI.setMetodoPago(dto.getMetodoPago());
         dtoI.setEstatusPago(dto.getEstatusPago());
+        dtoI.setTipoAdeudo(dto.getTipoAdeudo());
 
         return dtoI;
     }

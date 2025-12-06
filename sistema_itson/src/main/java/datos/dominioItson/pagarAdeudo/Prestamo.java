@@ -5,8 +5,8 @@ import java.util.Date;
 public class Prestamo {
     private Long idEstudiante;
     private double costo;
-    private Date fechaPrestamo;
-    private Date fechaDevolucionProgramada;
+    private String fechaPrestamo;
+    private String fechaDevolucionProgramada;
     private String isbn;
     private String titulo;
     private String campus;
@@ -40,19 +40,19 @@ public class Prestamo {
         this.idEstudiante = idEstudiante;
     }
 
-    public Date getFechaPrestamo() {
+    public String getFechaPrestamo() {
         return fechaPrestamo;
     }
 
-    public void setFechaPrestamo(Date fechaPrestamo) {
+    public void setFechaPrestamo(String fechaPrestamo) {
         this.fechaPrestamo = fechaPrestamo;
     }
 
-    public Date getFechaDevolucionProgramada() {
+    public String getFechaDevolucionProgramada() {
         return fechaDevolucionProgramada;
     }
 
-    public void setFechaDevolucionProgramada(Date fechaDevolucionProgramada) {
+    public void setFechaDevolucionProgramada(String fechaDevolucionProgramada) {
         this.fechaDevolucionProgramada = fechaDevolucionProgramada;
     }
 

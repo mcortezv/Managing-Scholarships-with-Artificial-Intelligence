@@ -17,6 +17,7 @@ public class SolicitudPagoAdaptador {
         document.setMontoPagado(dto.getMontoPagado());
         document.setMetodoPago(dto.getMetodoPago());
         document.setEstatusPago(dto.getEstatusPago());
+        document.setTipoAdeudo(dto.getTipoAdeudo());
         return document;
     }
 
@@ -29,6 +30,7 @@ public class SolicitudPagoAdaptador {
         dto.setMontoPagado(solicitud.getMontoPagado());
         dto.setMetodoPago(solicitud.getMetodoPago());
         dto.setEstatusPago(solicitud.getEstatusPago());
+        dto.setTipoAdeudo(solicitud.getTipoAdeudo());
         return dto;
     }
 

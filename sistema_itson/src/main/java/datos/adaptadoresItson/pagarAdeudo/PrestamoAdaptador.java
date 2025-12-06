@@ -17,7 +17,7 @@ public class PrestamoAdaptador {
         prestamo.setIsbn(document.getIsbn());
         prestamo.setTitulo(document.getTitulo());
         prestamo.setFechaPrestamo(document.getFechaPrestamo());
-        prestamo.setFechaDevolucionProgramada(document.getFechaDevolucionProgramada());
+        prestamo.setFechaDevolucionProgramada(document.getFechaDevolucion());
         prestamo.setCampus(document.getCampus());
         prestamo.setDetalles(document.getDetalles());
 
@@ -28,8 +28,8 @@ public class PrestamoAdaptador {
         dto.setEstatus(prestamo.getEstatus());
         dto.setCosto(prestamo.getCosto());
         dto.setIdEstudiante(prestamo.getIdEstudiante());
-        dto.setFechaPrestamo(prestamo.getFechaPrestamo().toString());
-        dto.setFechaDevolucion(prestamo.getFechaDevolucionProgramada().toString());
+        dto.setFechaPrestamo(prestamo.getFechaPrestamo());
+        dto.setFechaDevolucion(prestamo.getFechaDevolucionProgramada());
         dto.setIsbn(prestamo.getIsbn());
         dto.setTitulo(prestamo.getTitulo());
         dto.setCampus(prestamo.getCampus());

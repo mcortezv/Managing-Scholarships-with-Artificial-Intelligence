@@ -136,8 +136,10 @@ public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionP
 
             if ("Biblioteca".equals(tipoAdeudo)) {
                 solicitudPagoDTO.setMontoPagado(adeudoBibliotecaCache);
+                solicitudPagoDTO.setTipoAdeudo("Biblioteca");
             } else if ("Colegiatura".equals(tipoAdeudo)) {
                 solicitudPagoDTO.setMontoPagado(adeudoColegiaturaCache);
+                solicitudPagoDTO.setTipoAdeudo("Colegiatura");
             }
             SolicitudPagoDTO resultado = coordinadorNegocioPagarAdeudo.realizarPago(solicitudPagoDTO);
             if (resultado != null && "Pagado".equalsIgnoreCase(resultado.getEstatusPago())) {
