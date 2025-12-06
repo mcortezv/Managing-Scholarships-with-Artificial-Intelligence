@@ -12,6 +12,7 @@ import java.util.List;
  * @author janethcristinagalvanquinonez
  */
 public class InscripcionDTO {
+    private String id;
     private LocalDate fechaInscripcion;
   //  private Estado estado;
     //estudiante
@@ -22,8 +23,22 @@ public class InscripcionDTO {
     private List<String> dias;
     private String horaInicio;
     private String horaFin;
+    private String idEstudiante;
+    private String idGrupo;
 
     public InscripcionDTO() {
+    }
+
+    public InscripcionDTO(LocalDate fechaInscripcion, String matriculaEstudiante, String nombreGrupo, double costo, List<String> dias, String horaInicio, String horaFin, String idEstudiante, String idGrupo) {
+        this.fechaInscripcion = fechaInscripcion;
+        this.matriculaEstudiante = matriculaEstudiante;
+        this.nombreGrupo = nombreGrupo;
+        this.costo = costo;
+        this.dias = dias;
+        this.horaInicio = horaInicio;
+        this.horaFin = horaFin;
+        this.idEstudiante = idEstudiante;
+        this.idGrupo = idGrupo;
     }
 
     public InscripcionDTO(LocalDate fechaInscripcion, String matriculaEstudiante, String nombreGrupo, double costo, List<String> dias, String horaInicio, String horaFin) {
@@ -35,6 +50,21 @@ public class InscripcionDTO {
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
     }
+
+    public InscripcionDTO(String id, LocalDate fechaInscripcion, String matriculaEstudiante, String nombreGrupo, double costo, List<String> dias, String horaInicio, String horaFin, String idEstudiante, String idGrupo) {
+        this.id = id;
+        this.fechaInscripcion = fechaInscripcion;
+        this.matriculaEstudiante = matriculaEstudiante;
+        this.nombreGrupo = nombreGrupo;
+        this.costo = costo;
+        this.dias = dias;
+        this.horaInicio = horaInicio;
+        this.horaFin = horaFin;
+        this.idEstudiante = idEstudiante;
+        this.idGrupo = idGrupo;
+    }
+    
+    
 
     public LocalDate getFechaInscripcion() {
         return fechaInscripcion;
@@ -92,6 +122,32 @@ public class InscripcionDTO {
     public void setHoraFin(String horaFin) {
         this.horaFin = horaFin;
     }
+
+    public String getIdEstudiante() {
+        return idEstudiante;
+    }
+
+    public void setIdEstudiante(String idEstudiante) {
+        this.idEstudiante = idEstudiante;
+    }
+
+    public String getIdGrupo() {
+        return idGrupo;
+    }
+
+    public void setIdGrupo(String idGrupo) {
+        this.idGrupo = idGrupo;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+    
+    
     
     
     

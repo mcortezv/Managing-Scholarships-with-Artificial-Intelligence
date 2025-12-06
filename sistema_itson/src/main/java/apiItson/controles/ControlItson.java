@@ -15,6 +15,7 @@ import datos.dominioItson.Estudiante;
 
 import datos.serviceItson.EstudianteService;
 import datos.serviceItson.GrupoService;
+import datos.serviceItson.actividades.InscripcionService;
 import itson.ActividadDTOItson;
 import itson.ActividadesDTOItson;
 import itson.actividades.GruposResponseDTOItson;
@@ -33,6 +34,7 @@ public class ControlItson {
     //actividades
     private final ActividadService actividadService;
     private final GrupoService grupoService;
+    private final InscripcionService inscripcionService;
 
     public ControlItson() {
         this.historialService = new HistorialService();
@@ -41,6 +43,7 @@ public class ControlItson {
         //actividades
         this.actividadService = new ActividadService();
         this.grupoService= new GrupoService();
+        this.inscripcionService= new InscripcionService();
         //pagar adeudo
         this.prestamoService = new PrestamoService();
         this.claseService = new ClaseService();
@@ -85,7 +88,8 @@ public class ControlItson {
       return grupoService.obtenerGrupos(actividad);
     }
 
-//    public InscripcionDTOItson inscribirActividad(InscripcionDTOItson inscripcionDTOItson){
-//        return
-//    }
+    public InscripcionDTOItson inscribirActividad(InscripcionDTOItson inscripcionDTOItson){
+        return inscripcionService.inscribirActividad(inscripcionDTOItson);
+     
+    }
 }

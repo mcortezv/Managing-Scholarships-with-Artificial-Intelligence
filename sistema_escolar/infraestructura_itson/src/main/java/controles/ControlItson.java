@@ -16,13 +16,15 @@ import itson.EstudianteDTOItson;
 import itson.HistorialAcademicoDTOItson;
 import itson.LoginDTOItson;
 import itson.actividades.GruposResponseDTOItson;
+import itson.actividades.InscripcionDTOItson;
 
 import java.util.List;
 
 public class ControlItson {
+
     IItsonAPI api;
 
-    public ControlItson(){
+    public ControlItson() {
         this.api = new ItsonAPI();
     }
 
@@ -33,45 +35,39 @@ public class ControlItson {
         return api.verificarLogin(dtoInfra);
     }
 
-    public EstudianteDTOItson verificarEstudiante(Long matricula){
+    public EstudianteDTOItson verificarEstudiante(Long matricula) {
         Estudiante estudiante = api.obtenerDatosEstudiante(matricula);
         return EstudianteAdaptador.toResponseDTO(estudiante);
     }
 
-    public HistorialAcademicoDTOItson verificarHistorialAcademico(Long matricula){
+    public HistorialAcademicoDTOItson verificarHistorialAcademico(Long matricula) {
         return HistorialAcademicoAdaptador.toDTOItson(api.obtenerHistorialAcademico(matricula));
     }
 
-
     //Caso de uso Pagar adeudo
-    public List<PrestamoDTOI> obtenerListaPrestamos(Long matricula){
+    public List<PrestamoDTOI> obtenerListaPrestamos(Long matricula) {
         return PrestamoAdaptador.toDtoItson(api.obtenerListaPrestamosBiblioteca(matricula));
     }
 
-    public List<ClaseDTOI> obtenerListaClases(Long matricula){
+    public List<ClaseDTOI> obtenerListaClases(Long matricula) {
         return ClaseAdaptador.toDtoItson(api.obtenerListaClaseColegiatura(matricula));
     }
 
-    public boolean solicitarLiquidacion(SolicitudPagoDTOI solicitudPagoDTOI){
+    public boolean solicitarLiquidacion(SolicitudPagoDTOI solicitudPagoDTOI) {
         return api.notificarLiquidacion(solicitudPagoDTOI);
     }
 
-
     // caso de uso actividades
-    
-
-      public ActividadesDTOItson obtenerActividades(){
+    public ActividadesDTOItson obtenerActividades() {
         return api.soloicitarActividades();
     }
-    
-    public GruposResponseDTOItson obtenerGrupos(ActividadDTOItson actividadDTOItson){
-    //    Actividad actividad= ActividadAdaptador.
-      //  List<Grupo> grupos= api.solicitarGrupos(actvd)
-      return api.solicitarGrupos(actividadDTOItson);
+
+    public GruposResponseDTOItson obtenerGrupos(ActividadDTOItson actividadDTOItson) {
+        return api.solicitarGrupos(actividadDTOItson);
     }
 
-//     public InscripcionDTOItson inscribirActividad(InscripcionDTOItson inscripcionDTOItson){
-//         return
-//     }
+    public InscripcionDTOItson inscribirActividad(InscripcionDTOItson inscripcionDTOItson) {
+        return api.inscribirActividad(inscripcionDTOItson);
+    }
 
 }

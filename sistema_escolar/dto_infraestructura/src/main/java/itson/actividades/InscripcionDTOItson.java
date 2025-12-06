@@ -12,11 +12,14 @@ import java.util.List;
  * @author janethcristinagalvanquinonez
  */
 public class InscripcionDTOItson {
-    
+    private String idInscipcion;
     private LocalDate fechaInscripcion;
     //private Estado estado;
     //estudiante
+    private String idEstudiante;
     private String matriculaEstudiante;
+    //grupo
+    private String idGrupo;
     private String nombreGrupo;
     private double costo;
     //horario
@@ -36,6 +39,22 @@ public class InscripcionDTOItson {
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
     }
+
+    public InscripcionDTOItson(String idInscipcion, LocalDate fechaInscripcion, String idEstudiante, String matriculaEstudiante, String idGrupo, String nombreGrupo, double costo, List<String> dias, String horaInicio, String horaFin) {
+        this.idInscipcion = idInscipcion;
+        this.fechaInscripcion = fechaInscripcion;
+        this.idEstudiante = idEstudiante;
+        this.matriculaEstudiante = matriculaEstudiante;
+        this.idGrupo = idGrupo;
+        this.nombreGrupo = nombreGrupo;
+        this.costo = costo;
+        this.dias = dias;
+        this.horaInicio = horaInicio;
+        this.horaFin = horaFin;
+    }
+
+    
+    
 
     public LocalDate getFechaInscripcion() {
         return fechaInscripcion;
@@ -92,6 +111,32 @@ public class InscripcionDTOItson {
     public void setHoraFin(String horaFin) {
         this.horaFin = horaFin;
     }
+
+    public String getIdEstudiante() {
+        return idEstudiante;
+    }
+
+    public void setIdEstudiante(String idEstudiante) {
+        this.idEstudiante = idEstudiante;
+    }
+
+    public String getIdGrupo() {
+        return idGrupo;
+    }
+
+    public void setIdGrupo(String idGrupo) {
+        this.idGrupo = idGrupo;
+    }
+
+    public String getIdInscipcion() {
+        return idInscipcion;
+    }
+
+    public void setIdInscipcion(String idInscipcion) {
+        this.idInscipcion = idInscipcion;
+    }
+    
+    
     
     
     

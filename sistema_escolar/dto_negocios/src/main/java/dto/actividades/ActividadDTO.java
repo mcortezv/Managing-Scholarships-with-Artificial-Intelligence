@@ -9,7 +9,7 @@ package dto.actividades;
  * @author janethcristinagalvanquinonez
  */
 public class ActividadDTO {
-    
+    private String id;
     String nombre;
     double costo;
 
@@ -17,6 +17,13 @@ public class ActividadDTO {
         this.nombre = nombre;
         this.costo = costo;
     }
+
+    public ActividadDTO(String id, String nombre, double costo) {
+        this.id = id;
+        this.nombre = nombre;
+        this.costo = costo;
+    }
+    
 
     public ActividadDTO() {
         
@@ -38,6 +45,16 @@ public class ActividadDTO {
     public void setCosto(double costo) {
         this.costo = costo;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+    
+    
     
     
 }

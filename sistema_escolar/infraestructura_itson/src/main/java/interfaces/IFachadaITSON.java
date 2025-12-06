@@ -30,5 +30,6 @@ public interface IFachadaITSON {
     //actividades
     public ActividadesDTOItson obtenerActividades();
     public GruposResponseDTOItson otenerGrupos(ActividadDTOItson actividadDTO);
-   // public InscripcionDTOItson inscribirActividad(InscripcionDTOItson inscripcionDTOItson);
+     public boolean buscarEstudiantePorMatricula(InscripcionDTOItson inscripcionDTOItson);
+     public InscripcionDTOItson inscribirActividad(InscripcionDTOItson inscripcionDTOItson);
 }

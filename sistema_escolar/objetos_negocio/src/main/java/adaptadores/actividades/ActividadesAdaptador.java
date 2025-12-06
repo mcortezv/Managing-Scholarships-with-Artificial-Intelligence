@@ -23,6 +23,7 @@ public class ActividadesAdaptador {
 
         for(ActividadDTOItson actividadDTOItson: actividadesDTOItson.getActividades()){
             ActividadDTO actividad= new ActividadDTO();
+            actividad.setId(actividadDTOItson.getId());
             actividad.setNombre(actividadDTOItson.getNombre());
             actividad.setCosto(actividadDTOItson.getCosto());
             actividades.add(actividad);

@@ -36,9 +36,9 @@ public class CoordinadorNegocioActividades implements ICoordNegocioActividades {
        return fachadaActividad.obtenerGrupos(actividadDTO);
    
 }
-//   
-//   public InscripcionDTO inscribirActividad(InscripcionDTO inscripcionDTO){
-//       return fachadaActividad.inscribirActividad(inscripcionDTO);
-//       
-//   }
+   
+   public InscripcionDTO inscribirActividad(InscripcionDTO inscripcionDTO){
+       return fachadaActividad.inscribirActividad(inscripcionDTO);
+       
+   }
 }

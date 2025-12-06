@@ -4,10 +4,12 @@
  */
 package datos.repositoryItson.daoItson.actividades;
 
+import datos.dominioItson.actividades.Inscripcion;
+
 /**
  *
  * @author janethcristinagalvanquinonez
  */
 public interface IInscripcionDAO {
-    
+    public Inscripcion InscribirGrupo(Inscripcion inscripcion);
 }
