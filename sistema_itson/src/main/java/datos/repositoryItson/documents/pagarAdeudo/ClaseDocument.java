@@ -9,13 +9,22 @@ public class ClaseDocument {
     private String horario;
     private String profesor;
     private String aula;
-    private Campus campus;
+    private String campus;
     private String detalles;
+    private String estatus;
 
     public ClaseDocument(){}
 
     public double getCosto() {
         return costo;
+    }
+
+    public String getEstatus() {
+        return estatus;
+    }
+
+    public void setEstatus(String estatus) {
+        this.estatus = estatus;
     }
 
     public void setCosto(double costo) {
@@ -62,11 +71,11 @@ public class ClaseDocument {
         this.aula = aula;
     }
 
-    public Campus getCampus() {
+    public String getCampus() {
         return campus;
     }
 
-    public void setCampus(Campus campus) {
+    public void setCampus(String campus) {
         this.campus = campus;
     }
 

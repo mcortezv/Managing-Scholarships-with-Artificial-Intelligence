@@ -10,23 +10,27 @@ public class SolicitudPagoAdaptador {
 
     public static SolicitudPagoDocument toDocument(SolicitudPagoDTOI dto){
         SolicitudPagoDocument document = new SolicitudPagoDocument();
+        document.setTipoAdeudo(dto.getTipoAdeudo());
         document.setIdEstudiante(dto.getIdEstudiante());
         document.setReferenciaPago(dto.getReferenciaPago());
         document.setFechaPago(dto.getFechaPago());
         document.setMontoPagado(dto.getMontoPagado());
         document.setMetodoPago(dto.getMetodoPago());
         document.setEstatusPago(dto.getEstatusPago());
+        document.setTipoAdeudo(dto.getTipoAdeudo());
         return document;
     }
 
     public static SolicitudPagoDTOI toDtoItson(SolicitudPago solicitud){
         SolicitudPagoDTOI dto = new SolicitudPagoDTOI();
+        dto.setTipoAdeudo(solicitud.getTipoAdeudo());
         dto.setIdEstudiante(solicitud.getIdEstudiante());
         dto.setReferenciaPago(solicitud.getReferenciaPago());
         dto.setFechaPago(solicitud.getFechaPago());
         dto.setMontoPagado(solicitud.getMontoPagado());
         dto.setMetodoPago(solicitud.getMetodoPago());
         dto.setEstatusPago(solicitud.getEstatusPago());
+        dto.setTipoAdeudo(solicitud.getTipoAdeudo());
         return dto;
     }
 

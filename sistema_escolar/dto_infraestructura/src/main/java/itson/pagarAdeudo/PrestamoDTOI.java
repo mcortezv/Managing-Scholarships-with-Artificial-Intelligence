@@ -12,8 +12,18 @@ public class PrestamoDTOI {
     private String titulo;
     private String campus;
     private String detalles;
+    private String estatus;
+
 
     public PrestamoDTOI() {
+    }
+
+    public String getEstatus() {
+        return estatus;
+    }
+
+    public void setEstatus(String estatus) {
+        this.estatus = estatus;
     }
 
     public Long getIdEstudiante() {

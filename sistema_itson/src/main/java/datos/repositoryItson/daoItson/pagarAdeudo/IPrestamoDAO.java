@@ -4,5 +4,5 @@ import datos.repositoryItson.documents.pagarAdeudo.PrestamoDocument;
 import java.util.List;
 
 public interface IPrestamoDAO {
-    List<PrestamoDocument> obtenerListaPrestamosByMatricula(Long matricula);
+    List<PrestamoDocument> obtenerListaPrestamosPendientesByMatricula(Long matricula);
 }

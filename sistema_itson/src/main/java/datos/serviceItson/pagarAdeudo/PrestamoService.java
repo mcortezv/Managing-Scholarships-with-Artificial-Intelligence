@@ -15,7 +15,7 @@ public class PrestamoService {
     }
 
     public List<Prestamo> obtenerListaPrestamos(Long matricula){
-        List<PrestamoDocument> prestamoDocuments = prestamoDAO.obtenerListaPrestamosByMatricula(matricula);
+        List<PrestamoDocument> prestamoDocuments = prestamoDAO.obtenerListaPrestamosPendientesByMatricula(matricula);
         List<Prestamo> prestamos = new ArrayList<>();
         for(PrestamoDocument prestamoDocument : prestamoDocuments){
             prestamos.add(PrestamoAdaptador.toEntity(prestamoDocument));

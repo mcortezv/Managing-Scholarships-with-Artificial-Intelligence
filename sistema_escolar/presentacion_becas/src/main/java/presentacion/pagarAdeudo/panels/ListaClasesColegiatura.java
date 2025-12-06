@@ -18,6 +18,7 @@ public class ListaClasesColegiatura extends PanelPagarAdeudo {
     private JLabel lblMontoTotal;
     private DefaultTableModel tableModel;
     private CustomTable table;
+    private List<ClaseDTO> clasesCache;
 
     public ListaClasesColegiatura(PagarAdeudo frame, CoordinadorAplicacionPagarAdeudo coordinadorAplicacion) {
         super(frame, coordinadorAplicacion);
@@ -66,6 +67,7 @@ public class ListaClasesColegiatura extends PanelPagarAdeudo {
         btnRealizarPago.setForeground(Color.BLACK);
         btnRealizarPago.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnRealizarPago.setMaximumSize(new Dimension(200, 40));
+        btnRealizarPago.addActionListener(e -> coordinadorAplicacion.seleccionarRealizarPago());
 
         leftPanel.add(headerColegiatura);
         leftPanel.add(Box.createVerticalStrut(30));
@@ -105,7 +107,39 @@ public class ListaClasesColegiatura extends PanelPagarAdeudo {
         };
 
         table = new CustomTable(tableModel, mainFrame, PanelCategory.LISTA_CLASES, this, coordinadorAplicacion);
-        table.addColumnButton();
+        table.setRowHeight(30);
+
+        table.getColumnModel().getColumn(4).setCellEditor(new DefaultCellEditor(new JCheckBox()) {
+            private final Button button = new Button("...");
+            private int currentRow;
+
+            {
+                button.setOpaque(true);
+                button.setFont(new Font("SansSerif", Font.BOLD, 14));
+                button.setBackground(Color.WHITE);
+                button.addActionListener(e -> {
+                    fireEditingStopped();
+                    if (clasesCache != null && currentRow >= 0 && currentRow < clasesCache.size()) {
+                        ClaseDTO seleccionado = clasesCache.get(currentRow);
+                        coordinadorAplicacion.irADetalleClase(seleccionado);
+                    }
+                });
+            }
+
+            @Override
+            public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
+                this.currentRow = row;
+                return button;
+            }
+        });
+
+        table.getColumnModel().getColumn(4).setCellRenderer((table1, value, isSelected, hasFocus, row, column) -> {
+            Button btn = new Button("...");
+            btn.setFont(new Font("SansSerif", Font.BOLD, 14));
+            btn.setBackground(Color.WHITE);
+            return btn;
+        });
+
 
         JScrollPane scrollPane = new JScrollPane(table);
         scrollPane.setBorder(BorderFactory.createEmptyBorder());
@@ -122,22 +156,25 @@ public class ListaClasesColegiatura extends PanelPagarAdeudo {
         gbc.anchor = GridBagConstraints.NORTH;
         gbc.insets = new Insets(20, 20, 20, 20);
         centralPanel.add(leftPanel, gbc);
+
+        gbc.gridx = 1;
+        JLabel arrow = new JLabel("");
+
         gbc.gridx = 2;
         gbc.weightx = 1.0;
         gbc.fill = GridBagConstraints.BOTH;
         centralPanel.add(rightPanel, gbc);
+
         btnBack.addActionListener(e-> mainFrame.showPanel("consultaAdeudoMenu"));
-        btnRealizarPago.addActionListener(e -> {
-            coordinadorAplicacion.seleccionarRealizarPago();
-        });
 
         centralPanel.revalidate();
         centralPanel.repaint();
     }
 
     public void setClases(List<ClaseDTO> clases) {
-        if (tableModel == null) return;
+        this.clasesCache = clases;
 
+        if (tableModel == null) return;
         tableModel.setRowCount(0);
 
         for (ClaseDTO c : clases) {
@@ -160,7 +197,7 @@ public class ListaClasesColegiatura extends PanelPagarAdeudo {
 
     static class RoundedPanel extends JPanel {
         private int cornerRadius = 15;
-        private Color backgroundColor;
+        private final Color backgroundColor;
 
         public RoundedPanel(int radius, Color bgColor) {
             super();

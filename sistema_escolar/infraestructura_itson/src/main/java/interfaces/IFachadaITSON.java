@@ -27,6 +27,7 @@ public interface IFachadaITSON {
     List<PrestamoDTOI> solicitarListaPrestamso(Long matricula);
     List<ClaseDTOI> solicitarListaClases(Long matricula);
     boolean notificarLiquidacion(SolicitudPagoDTOI solicitudPagoDTOI);
+
     //actividades
     public ActividadesDTOItson obtenerActividades();
     public GruposResponseDTOItson otenerGrupos(ActividadDTOItson actividadDTO);

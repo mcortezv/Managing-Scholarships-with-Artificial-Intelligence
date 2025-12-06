@@ -10,6 +10,7 @@ import presentacion.CoordinadorAplicacion;
 import presentacion.pagarAdeudo.PagarAdeudo;
 import presentacion.pagarAdeudo.coordinadorNegocioPagarAdeudo.CoordinadorNegocioPagarAdeudo;
 import presentacion.pagarAdeudo.mainFraimePagarAdeudo.MainFramePagarAdeudo;
+import presentacion.pagarAdeudo.panels.DetalleClase;
 import presentacion.pagarAdeudo.panels.DetallePrestamo;
 import presentacion.pagarAdeudo.panels.ListaClasesColegiatura;
 import presentacion.pagarAdeudo.panels.ListaPrestamosBiblioteca;
@@ -87,6 +88,12 @@ public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionP
         pagarAdeudo.showPanel("detallePrestamo");
     }
 
+    public void irADetalleClase(ClaseDTO claseSeleccionada) {
+        DetalleClase panel = (DetalleClase) pagarAdeudo.getPanel("detalleClase");
+        panel.setClase(claseSeleccionada);
+        pagarAdeudo.showPanel("detalleClase");
+    }
+
     @Override
     public void seleccionarRealizarPago() {
         pagarAdeudo.showPanel("metodosDePago");
@@ -129,8 +136,10 @@ public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionP
 
             if ("Biblioteca".equals(tipoAdeudo)) {
                 solicitudPagoDTO.setMontoPagado(adeudoBibliotecaCache);
+                solicitudPagoDTO.setTipoAdeudo("Biblioteca");
             } else if ("Colegiatura".equals(tipoAdeudo)) {
                 solicitudPagoDTO.setMontoPagado(adeudoColegiaturaCache);
+                solicitudPagoDTO.setTipoAdeudo("Colegiatura");
             }
             SolicitudPagoDTO resultado = coordinadorNegocioPagarAdeudo.realizarPago(solicitudPagoDTO);
             if (resultado != null && "Pagado".equalsIgnoreCase(resultado.getEstatusPago())) {

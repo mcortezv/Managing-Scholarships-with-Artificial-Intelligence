@@ -7,8 +7,18 @@ public class SolicitudPago {
     private double montoPagado;
     private String metodoPago;
     private String estatusPago;
+    private String tipoAdeudo;
+
 
     public SolicitudPago() {
+    }
+
+    public String getTipoAdeudo() {
+        return tipoAdeudo;
+    }
+
+    public void setTipoAdeudo(String tipoAdeudo) {
+        this.tipoAdeudo = tipoAdeudo;
     }
 
     public Long getIdEstudiante() {

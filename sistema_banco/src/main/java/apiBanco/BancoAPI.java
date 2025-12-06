@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.event.ActionListener;
 
 public class BancoAPI implements IBancoAPI {
-    private ControlBancoAPI controlBancoAPI;
+    private final ControlBancoAPI controlBancoAPI;
 
     public BancoAPI(){
         this.controlBancoAPI = new ControlBancoAPI();

@@ -5,12 +5,13 @@ import java.util.Date;
 public class PrestamoDocument {
     private Long idEstudiante;
     private double costo;
-    private Date fechaPrestamo;
-    private Date fechaDevolucionProgramada;
+    private String fechaPrestamo;
+    private String fechaDevolucion;
     private String isbn;
     private String titulo;
     private String campus;
     private String detalles;
+    private String estatus;
 
 
     public PrestamoDocument(){}
@@ -23,6 +24,14 @@ public class PrestamoDocument {
         this.costo = costo;
     }
 
+    public String getEstatus() {
+        return estatus;
+    }
+
+    public void setEstatus(String estatus) {
+        this.estatus = estatus;
+    }
+
     public Long getIdEstudiante(){
         return this.idEstudiante;
     }
@@ -31,20 +40,20 @@ public class PrestamoDocument {
         this.idEstudiante = idEstudiante;
     }
 
-    public Date getFechaPrestamo() {
+    public String getFechaPrestamo() {
         return fechaPrestamo;
     }
 
-    public void setFechaPrestamo(Date fechaPrestamo) {
+    public void setFechaPrestamo(String fechaPrestamo) {
         this.fechaPrestamo = fechaPrestamo;
     }
 
-    public Date getFechaDevolucionProgramada() {
-        return fechaDevolucionProgramada;
+    public String getFechaDevolucion() {
+        return fechaDevolucion;
     }
 
-    public void setFechaDevolucionProgramada(Date fechaDevolucionProgramada) {
-        this.fechaDevolucionProgramada = fechaDevolucionProgramada;
+    public void setFechaDevolucion(String fechaDevolucion) {
+        this.fechaDevolucion = fechaDevolucion;
     }
 
     public String getIsbn() {

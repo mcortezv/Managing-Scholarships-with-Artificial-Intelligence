@@ -8,12 +8,22 @@ public class SolicitudPagoDTO {
     private double montoPagado;
     private String metodoPago;
     private String estatusPago;
+    private String tipoAdeudo;
 
     public SolicitudPagoDTO() {
     }
 
     public Long getIdEstudiante() {
         return idEstudiante;
+    }
+
+
+    public String getTipoAdeudo() {
+        return tipoAdeudo;
+    }
+
+    public void setTipoAdeudo(String tipoAdeudo) {
+        this.tipoAdeudo = tipoAdeudo;
     }
 
     public void setIdEstudiante(Long idEstudiante) {

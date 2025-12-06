@@ -36,7 +36,6 @@ public class Main {
         ControlGobierno controlGobierno = new ControlGobierno();
         ControlBanco controlBanco = new ControlBanco();
         ControlPayPal controlPayPal = new ControlPayPal();
-       
 
         // creacion de fachadas
         IFachadaBanco fachadaBanco = new FachadaBanco(controlBanco);
