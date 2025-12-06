@@ -18,7 +18,7 @@ public class ClaseService {
     }
 
     public List<Clase> obtenerListaClases(Long matricula){
-        List<ClaseDocument> clasesDocument = claseDAO.obtenerListaClasesByMatricula(matricula);
+        List<ClaseDocument> clasesDocument = claseDAO.obtenerListaClasesPendientesByMatricula(matricula);
         List<Clase> clases = new ArrayList<>();
         for(ClaseDocument claseDocument : clasesDocument){
             clases.add(ClaseAdaptador.toEntity(claseDocument));

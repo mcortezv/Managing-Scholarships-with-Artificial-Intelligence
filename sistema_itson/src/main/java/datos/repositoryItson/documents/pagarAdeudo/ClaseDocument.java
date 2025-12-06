@@ -11,11 +11,20 @@ public class ClaseDocument {
     private String aula;
     private Campus campus;
     private String detalles;
+    private String estatus;
 
     public ClaseDocument(){}
 
     public double getCosto() {
         return costo;
+    }
+
+    public String getEstatus() {
+        return estatus;
+    }
+
+    public void setEstatus(String estatus) {
+        this.estatus = estatus;
     }
 
     public void setCosto(double costo) {

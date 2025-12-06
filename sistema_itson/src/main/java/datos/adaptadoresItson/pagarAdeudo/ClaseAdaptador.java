@@ -11,6 +11,7 @@ public class ClaseAdaptador {
 
     public static Clase toEntity(ClaseDocument document){
         Clase clase = new Clase();
+        clase.setEstatus(document.getEstatus());
         clase.setCosto(document.getCosto());
         clase.setIdEstudiante(document.getIdEstudiante());
         clase.setNombre(document.getNombre());
@@ -24,6 +25,7 @@ public class ClaseAdaptador {
 
     public static ClaseDTOI toDtoItson(Clase clase){
         ClaseDTOI dto = new ClaseDTOI();
+        dto.setEstatus(clase.getEstatus());
         dto.setCosto(clase.getCosto());
         dto.setIdEstudiante(clase.getIdEstudiante());
         dto.setNombre(clase.getNombre());

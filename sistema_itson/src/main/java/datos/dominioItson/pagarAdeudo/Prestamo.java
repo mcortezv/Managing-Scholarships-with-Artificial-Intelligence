@@ -11,9 +11,18 @@ public class Prestamo {
     private String titulo;
     private String campus;
     private String detalles;
+    private String estatus;
 
 
     public Prestamo(){}
+
+    public String getEstatus() {
+        return estatus;
+    }
+
+    public void setEstatus(String estatus) {
+        this.estatus = estatus;
+    }
 
     public double getCosto() {
         return costo;

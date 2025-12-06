@@ -11,6 +11,7 @@ public class PrestamoDocument {
     private String titulo;
     private String campus;
     private String detalles;
+    private String estatus;
 
 
     public PrestamoDocument(){}
@@ -21,6 +22,14 @@ public class PrestamoDocument {
 
     public void setCosto(double costo) {
         this.costo = costo;
+    }
+
+    public String getEstatus() {
+        return estatus;
+    }
+
+    public void setEstatus(String estatus) {
+        this.estatus = estatus;
     }
 
     public Long getIdEstudiante(){

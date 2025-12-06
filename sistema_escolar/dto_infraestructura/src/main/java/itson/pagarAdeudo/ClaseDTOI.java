@@ -12,12 +12,22 @@ public class ClaseDTOI {
     private String aula;
     private String campus;
     private String detalles;
+    private String estatus;
+
 
     public ClaseDTOI() {
     }
 
     public Long getIdEstudiante() {
         return idEstudiante;
+    }
+
+    public String getEstatus() {
+        return estatus;
+    }
+
+    public void setEstatus(String estatus) {
+        this.estatus = estatus;
     }
 
     public void setIdEstudiante(Long idEstudiante) {

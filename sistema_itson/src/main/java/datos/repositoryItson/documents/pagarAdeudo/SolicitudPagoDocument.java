@@ -3,12 +3,22 @@ package datos.repositoryItson.documents.pagarAdeudo;
 public class SolicitudPagoDocument {
     private Long idEstudiante;
     private String referenciaPago;
+    private String tipoAdeudo;
     private String fechaPago;
     private double montoPagado;
     private String metodoPago;
     private String estatusPago;
 
+
     public SolicitudPagoDocument() {
+    }
+
+    public String getTipoAdeudo() {
+        return tipoAdeudo;
+    }
+
+    public void setTipoAdeudo(String tipoAdeudo) {
+        this.tipoAdeudo = tipoAdeudo;
     }
 
     public Long getIdEstudiante() {

@@ -49,7 +49,7 @@ public class ItsonAPI implements IItsonAPI {
 
     @Override
     public boolean notificarLiquidacion(SolicitudPagoDTOI solicitudPagoDTOI) {
-        return false;
+        return controlItson.notificarLiquidacion(solicitudPagoDTOI);
     }
 
 

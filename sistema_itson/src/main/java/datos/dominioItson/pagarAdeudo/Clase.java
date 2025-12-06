@@ -11,8 +11,18 @@ public class Clase {
     private String aula;
     private Campus campus;
     private String detalles;
+    private String estatus;
+
 
     public Clase(){}
+
+    public String getEstatus() {
+        return estatus;
+    }
+
+    public void setEstatus(String estatus) {
+        this.estatus = estatus;
+    }
 
     public double getCosto() {
         return costo;

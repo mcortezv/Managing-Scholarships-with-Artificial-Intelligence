@@ -12,6 +12,7 @@ public class PrestamoAdaptador {
     public static Prestamo toEntity(PrestamoDocument document) {
         if (document == null) return null;
         Prestamo prestamo = new Prestamo();
+        prestamo.setEstatus(document.getEstatus());
         prestamo.setCosto(document.getCosto());
         prestamo.setIsbn(document.getIsbn());
         prestamo.setTitulo(document.getTitulo());
@@ -24,6 +25,7 @@ public class PrestamoAdaptador {
     }
     public static PrestamoDTOI toDtoItson(Prestamo prestamo){
         PrestamoDTOI dto = new PrestamoDTOI();
+        dto.setEstatus(prestamo.getEstatus());
         dto.setCosto(prestamo.getCosto());
         dto.setIdEstudiante(prestamo.getIdEstudiante());
         dto.setFechaPrestamo(prestamo.getFechaPrestamo().toString());
