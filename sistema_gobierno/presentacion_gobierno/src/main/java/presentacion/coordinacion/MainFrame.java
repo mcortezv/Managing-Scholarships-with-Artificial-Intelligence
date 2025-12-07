@@ -10,7 +10,6 @@ import presentacion.modificarResolucion.BuscarResolucionPanel;
 import presentacion.modificarResolucion.ModficacionCompletadaPanel;
 import presentacion.modificarResolucion.ModificarConvocatoriaPanel;
 import presentacion.modificarResolucion.ModificarResolucionPanel;
-import presentacion.styles.Panel;
 import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,19 +20,19 @@ import java.util.Map;
  */
 public final class MainFrame extends JFrame {
     private final JPanel centralPanel;
-    private final Map<String, Panel> panels;
+    private final Map<String, JPanel> panels;
     private ICoordinadorAplicacion coordinadorAplicacion;
 
 
     public MainFrame(ICoordinadorAplicacion coordinadorAplicacion) {
-        setTitle("Sistema de Aplicaciones Escolares");
+        setTitle("Sistema de Evaluación de Solicitudes");
         setResizable(false);
         setSize(1500,900);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
         centralPanel = new JPanel(new BorderLayout());
         this.coordinadorAplicacion = coordinadorAplicacion;
-        panels = new HashMap<String, Panel>();
+        panels = new HashMap<String, JPanel>();
 
         // Login
         panels.put("iniciarSesion", new IniciarSesionPanel(this, coordinadorAplicacion));

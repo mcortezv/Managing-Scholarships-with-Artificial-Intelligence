@@ -3,6 +3,8 @@
  */
 
 package presentacion;
+import presentacion.coordinacion.CoordinadorAplicacion;
+import presentacion.coordinacion.MainFrame;
 
 /**
  *
@@ -11,6 +13,8 @@ package presentacion;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        CoordinadorAplicacion coordinadorAplicacion = new CoordinadorAplicacion();
+        MainFrame  mainFrame = new MainFrame(coordinadorAplicacion);
+        mainFrame.setVisible(true);
     }
 }
