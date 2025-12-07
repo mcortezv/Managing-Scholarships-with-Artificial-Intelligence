@@ -40,4 +40,11 @@ public class MainFramePagarAdeudo extends JFrame {
         panels.put("consultaAdeudoMenu", new ConsultaAdeudoMenu(pagarAdeudo, coordinadorAplicacionPagarAdeudo));
     }
 
+    public void showPanel(String nuevoPanel) {
+        centralPanel.removeAll();
+        centralPanel.add(panels.get(nuevoPanel), BorderLayout.CENTER);
+        centralPanel.revalidate();
+        centralPanel.repaint();
+    }
+
 }

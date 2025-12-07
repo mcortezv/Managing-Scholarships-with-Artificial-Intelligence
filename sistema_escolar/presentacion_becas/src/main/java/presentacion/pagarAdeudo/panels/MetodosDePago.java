@@ -10,6 +10,7 @@ import presentacion.styles.Style;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.util.Objects;
 
 public class MetodosDePago extends PanelPagarAdeudo {
@@ -58,7 +59,7 @@ public class MetodosDePago extends PanelPagarAdeudo {
 
         centralPanel.add(contentBox);
 
-        for (java.awt.event.ActionListener al : btnBack.getActionListeners()) {
+        for (ActionListener al : btnBack.getActionListeners()) {
             btnBack.removeActionListener(al);
         }
 
