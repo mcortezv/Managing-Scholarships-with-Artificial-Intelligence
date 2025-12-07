@@ -90,6 +90,9 @@ public class CoordinadorAplicacionActividades implements ICoordinadorAplicacionA
         this.loginDTO= loginDTO;
     }
     
+    public void mostrarMenu(){
+        actividades.showPanel("MenuOpciones");
+    }
     
     
     
@@ -128,8 +131,7 @@ public class CoordinadorAplicacionActividades implements ICoordinadorAplicacionA
         inscripcionDTO.setCosto(grupoSeleccionado.getCosto());
         inscripcionDTO.setDias(grupoSeleccionado.getDias());
         inscripcionDTO.setHoraInicio(grupoSeleccionado.getHoraInicio());
-        inscripcionDTO.setHoraFin(grupoSeleccionado.getHoraFin());
-        
+        inscripcionDTO.setHoraFin(grupoSeleccionado.getHoraFin());  
         return coordinadorNegocioActividades.inscribirActividad(inscripcionDTO);
         
     }
