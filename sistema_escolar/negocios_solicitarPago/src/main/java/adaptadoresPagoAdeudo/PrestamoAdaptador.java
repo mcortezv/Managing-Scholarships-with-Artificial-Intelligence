@@ -1,5 +1,6 @@
 package adaptadoresPagoAdeudo;
 
+import datos.dominioItson.pagarAdeudo.Prestamo;
 import itson.pagarAdeudo.PrestamoDTOI;
 import pagarAdeudo.PrestamoDTO;
 
@@ -37,5 +38,21 @@ public class PrestamoAdaptador {
         dtoi.setEstatus(dto.getEstatus());
         dtoi.setIdEstudiante(dto.getIdEstudiante());
         return dtoi;
+    }
+
+
+    public static PrestamoDTO toDTO(Prestamo entity) {
+        if (entity == null) return null;
+
+        PrestamoDTO dto = new PrestamoDTO();
+        dto.setCosto(entity.getCosto());
+        dto.setFechaDevolucion(entity.getFechaDevolucionProgramada());
+        dto.setIsbn(entity.getIsbn());
+        dto.setTitulo(entity.getTitulo());
+        dto.setCampus(entity.getCampus());
+        dto.setDetalles(entity.getDetalles());
+        dto.setEstatus(entity.getEstatus());
+        dto.setIdEstudiante(entity.getIdEstudiante());
+        return dto;
     }
 }
