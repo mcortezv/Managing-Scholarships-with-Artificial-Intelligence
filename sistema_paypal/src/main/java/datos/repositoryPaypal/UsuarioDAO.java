@@ -6,11 +6,13 @@ import com.mongodb.client.model.Updates;
 import datos.adaptadoresPaypal.UsuarioAdaptador;
 import datos.configMongoPaypal.MongoClienteProvider;
 import datos.dominioPaypal.Usuario;
+import datos.excepcionesPaypal.PaypalException;
 import datos.repositoryPaypal.documents.UsuarioDocument;
 import datos.repositoryPaypal.interfaces.IUsuarioDAO;
 import org.bson.conversions.Bson;
 
 public class UsuarioDAO implements IUsuarioDAO {
+
     private final MongoCollection<UsuarioDocument> col;
 
     public UsuarioDAO() {
@@ -27,8 +29,7 @@ public class UsuarioDAO implements IUsuarioDAO {
             UsuarioDocument doc = col.find(filtro).first();
             return UsuarioAdaptador.toEntity(doc);
         } catch (Exception e) {
-            System.err.println("Error al buscar usuario PayPal: " + e.getMessage());
-            return null;
+            throw new PaypalException("Error al consultar la base de datos de usuarios.");
         }
     }
 
@@ -37,12 +38,10 @@ public class UsuarioDAO implements IUsuarioDAO {
         try {
             Bson filtro = Filters.eq("email", email);
             Bson update = Updates.set("saldo", nuevoSaldo);
-
             col.updateOne(filtro, update);
             return true;
         } catch (Exception e) {
-            System.err.println("Error al actualizar saldo PayPal: " + e.getMessage());
-            return false;
+            throw new PaypalException("No se pudo actualizar el saldo del usuario.");
         }
     }
 }

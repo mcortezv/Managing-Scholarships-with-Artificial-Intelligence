@@ -5,6 +5,7 @@ import datos.repositoryPaypal.UsuarioDAO;
 import datos.repositoryPaypal.interfaces.IUsuarioDAO;
 
 public class UsuarioService {
+
     private final IUsuarioDAO usuarioDAO;
 
     public UsuarioService() {
@@ -27,7 +28,6 @@ public class UsuarioService {
         if (exito) {
             usuario.setSaldo(nuevoSaldo);
         }
-
         return exito;
     }
 }
