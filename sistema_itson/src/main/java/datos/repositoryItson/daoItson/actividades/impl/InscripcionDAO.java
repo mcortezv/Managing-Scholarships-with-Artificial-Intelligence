@@ -5,9 +5,12 @@
 package datos.repositoryItson.daoItson.actividades.impl;
 
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.model.Filters;
 import datos.configMongoItson.MongoClienteProvider;
 import datos.dominioItson.actividades.Inscripcion;
 import datos.repositoryItson.daoItson.actividades.IInscripcionDAO;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -29,6 +32,19 @@ public class InscripcionDAO implements IInscripcionDAO{
             return null;
         }
     }
+    
+     public List<Inscripcion> obtenerInscripciones(String matricula){
+         List<Inscripcion> listaInscripciones = new ArrayList<>();
+         try{
+             col.find(Filters.eq("estudiante.matricula", matricula))
+                     .into(listaInscripciones);
+         } catch(Exception e){
+             System.out.println("error al obtener inscripciones"+e.getMessage());
+         }
+         return listaInscripciones;
+                 
+         
+     }
     
     
     

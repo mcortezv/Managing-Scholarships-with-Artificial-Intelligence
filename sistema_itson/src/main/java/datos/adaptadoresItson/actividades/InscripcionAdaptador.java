@@ -10,7 +10,9 @@ import datos.dominioItson.actividades.Grupo;
 import datos.dominioItson.actividades.Horario;
 import datos.dominioItson.actividades.Inscripcion;
 import itson.actividades.InscripcionDTOItson;
+import itson.actividades.InscripcionesDTOItson;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import org.bson.types.ObjectId;
 
@@ -70,11 +72,23 @@ public class InscripcionAdaptador {
         inscripcionDTOItson.setCosto(inscripcion.getGrupo().getActividad().getCosto());
         inscripcionDTOItson.setHoraInicio(inscripcion.getGrupo().getHorario().getHoraInicio());
         inscripcionDTOItson.setHoraFin(inscripcion.getGrupo().getHorario().getHoraFin());
-        
+        inscripcionDTOItson.setDias(inscripcion.getGrupo().getHorario().getDias());
         inscripcionDTOItson.setIdGrupo(String.valueOf(inscripcion.getGrupo().getId()));
         inscripcionDTOItson.setIdEstudiante(String.valueOf(inscripcion.getEstudiante().getId()));
         return inscripcionDTOItson;
         
+        
+    }
+    
+    public static InscripcionesDTOItson toDTOItson(List<Inscripcion> listaInscripciones){
+        InscripcionesDTOItson inscripcionesDTOItson= new InscripcionesDTOItson();
+        List<InscripcionDTOItson> ListaInscripcionesDTOItson= new ArrayList<>();
+        for(Inscripcion inscripcion: listaInscripciones){
+             InscripcionDTOItson inscripcionDTOItson= toDTOITSON(inscripcion);
+             ListaInscripcionesDTOItson.add(inscripcionDTOItson);        
+        }
+        inscripcionesDTOItson.setInscripciones(ListaInscripcionesDTOItson);
+        return inscripcionesDTOItson;
         
     }
 }

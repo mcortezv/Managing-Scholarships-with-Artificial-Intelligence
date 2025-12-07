@@ -6,9 +6,11 @@ package presentacion.actividadesExtracurriculares.coordNegocio;
 
 import dto.actividades.ActividadDTO;
 import dto.actividades.ActividadesDTO;
+import dto.actividades.EstudianteDTO;
 import dto.actividades.GrupoDTO;
 import dto.actividades.GruposResponseDTO;
 import dto.actividades.InscripcionDTO;
+import dto.actividades.InscripcionesDTO;
 
 
 
@@ -31,6 +33,7 @@ public class CoordinadorNegocioActividades implements ICoordNegocioActividades {
         return fachadaActividad.obtenerActividades();
     }
     
+    
 
    public GruposResponseDTO obtenerGrupos(ActividadDTO actividadDTO){
        return fachadaActividad.obtenerGrupos(actividadDTO);
@@ -39,6 +42,12 @@ public class CoordinadorNegocioActividades implements ICoordNegocioActividades {
    
    public InscripcionDTO inscribirActividad(InscripcionDTO inscripcionDTO){
        return fachadaActividad.inscribirActividad(inscripcionDTO);
+       
+   }
+   
+   // baja 
+   public InscripcionesDTO obtenerInscripciones(EstudianteDTO estudianteDTO){
+       return fachadaActividad.obtenerInscripciones(estudianteDTO);
        
    }
 }

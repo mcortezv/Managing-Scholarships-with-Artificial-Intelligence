@@ -7,9 +7,11 @@ package fachadas;
 import controles.ControlActividad;
 import dto.actividades.ActividadDTO;
 import dto.actividades.ActividadesDTO;
+import dto.actividades.EstudianteDTO;
 import dto.actividades.GrupoDTO;
 import dto.actividades.GruposResponseDTO;
 import dto.actividades.InscripcionDTO;
+import dto.actividades.InscripcionesDTO;
 import interfaces.IFachadaActividad;
 import java.util.List;
 
@@ -35,6 +37,10 @@ public class FachadaActividad implements IFachadaActividad{
     
      public InscripcionDTO inscribirActividad(InscripcionDTO inscripcionDTO){
          return controlActividad.inscribirActividad(inscripcionDTO);
+     }
+     
+     public InscripcionesDTO obtenerInscripciones(EstudianteDTO estudianteDTO){
+         return controlActividad.obtenerInscripciones(estudianteDTO);
      }
 
 

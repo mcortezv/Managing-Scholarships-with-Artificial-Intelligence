@@ -8,7 +8,10 @@ import datos.adaptadoresItson.actividades.InscripcionAdaptador;
 import datos.dominioItson.actividades.Inscripcion;
 import datos.repositoryItson.daoItson.actividades.IInscripcionDAO;
 import datos.repositoryItson.daoItson.actividades.impl.InscripcionDAO;
+import itson.EstudianteDTOItson;
 import itson.actividades.InscripcionDTOItson;
+import itson.actividades.InscripcionesDTOItson;
+import java.util.List;
 
 /**
  *
@@ -26,6 +29,11 @@ public class InscripcionService {
         Inscripcion inscripcion= InscripcionAdaptador.toEntity(inscripcionDTO);
         return InscripcionAdaptador.toDTOITSON(inscripcionDAO.InscribirGrupo(inscripcion));
         
+    }
+    
+    public InscripcionesDTOItson obtenerInscripciones(EstudianteDTOItson estudianteDTO){
+        List<Inscripcion> inscripciones= inscripcionDAO.obtenerInscripciones(String.valueOf(estudianteDTO.getMatricula()));
+        return InscripcionAdaptador.toDTOItson(inscripciones);
     }
     
     

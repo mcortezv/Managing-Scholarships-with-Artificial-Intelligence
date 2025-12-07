@@ -59,6 +59,10 @@ public class MenuOpciones extends PanelActividades{
              coordinadorAplicacionActividades.inscribirActividad();
          });
          
+         botonBaja.addActionListener(e->{
+             coordinadorAplicacionActividades.mostarListaInscripciones();
+         });
+         
          botonVolver.addActionListener(e->{
              coordinadorAplicacionActividades.regresarAlMenuPrincipal();
          });

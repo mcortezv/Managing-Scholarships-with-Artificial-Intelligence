@@ -4,9 +4,11 @@ package interfaces;
 
 import dto.actividades.ActividadDTO;
 import dto.actividades.ActividadesDTO;
+import dto.actividades.EstudianteDTO;
 import dto.actividades.GrupoDTO;
 import dto.actividades.GruposResponseDTO;
 import dto.actividades.InscripcionDTO;
+import dto.actividades.InscripcionesDTO;
 
 /**
  *
@@ -17,4 +19,5 @@ public interface IFachadaActividad {
      ActividadesDTO obtenerActividades();
      GruposResponseDTO obtenerGrupos(ActividadDTO actividadDTO);
      InscripcionDTO inscribirActividad(InscripcionDTO inscripcionDTO);
+     InscripcionesDTO obtenerInscripciones(EstudianteDTO estudianteDTO);
 }
