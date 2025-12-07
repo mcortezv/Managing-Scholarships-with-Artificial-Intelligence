@@ -22,6 +22,7 @@
         <module>persistencia_tutorias</module>
         <module>persistencia_actividades</module>
         <module>negocios_tutorias</module>
+        <module>negocios_tutorias</module>
     </modules>
 
     <properties>

@@ -160,6 +160,18 @@ public class CitaDTO {
                 '}';
     }
 
+    @Override
+    public String toString() {
+        return "CitaDTO{" +
+                "id=" + id +
+                ", fecha=" + fecha +
+                ", hora=" + hora +
+                ", tutor='" + nombreTutor + '\'' +
+                ", materia='" + nombreMateria + '\'' +
+                ", estado='" + estado + '\'' +
+                '}';
+    }
+
 
 
 }

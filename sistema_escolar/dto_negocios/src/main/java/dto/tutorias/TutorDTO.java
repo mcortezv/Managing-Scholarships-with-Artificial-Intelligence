@@ -68,4 +68,9 @@ public class TutorDTO {
     }
 
 
+
+    @Override
+    public String toString() {
+        return nombre;
+    }
 }
