@@ -55,6 +55,16 @@ public class DetalleGrupo extends PanelActividades {
 
         panelContenido.setBorder(new EmptyBorder(30, 40, 30, 40));
         centralPanel.add(panelContenido);
+        
+        centralPanel.add(Box.createVerticalStrut(30));
+        botonSiguiente.setText("Inscribirse");
+        botonSiguiente.setAlignmentX(Component.CENTER_ALIGNMENT);
+        botonSiguiente.setFont(new Font("Sanserif", Font.BOLD, 16));
+       // botonSiguiente.setForeground(Color.WHITE);
+        botonSiguiente.setBackground(new Color(52, 120, 246));
+        Dimension tamanioBoton = new Dimension(200, 50);
+        centralPanel.add(botonSiguiente);
+        centralPanel.add(Box.createVerticalStrut(30));
 
         botonSiguiente.addActionListener(e -> {
             coordinadorAplicacionActividades.inscribirActividadAlumno();
@@ -78,6 +88,7 @@ public class DetalleGrupo extends PanelActividades {
         panelContenido.add(Box.createVerticalGlue());
         panelContenido.revalidate();
         panelContenido.repaint();
+        
 
     }
 
