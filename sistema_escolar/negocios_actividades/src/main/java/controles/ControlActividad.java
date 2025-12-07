@@ -1,4 +1,3 @@
-
 package controles;
 
 import adaptadores.actividades.ActividadesAdaptador;
@@ -31,44 +30,35 @@ public class ControlActividad {
     private final IInscripcionBO inscripcionBO;
     private final IEstudianteBOAct estudianteBO;
 
-
     public ControlActividad(IActividadBO actividadBO, IGrupoBO grupoBO, IInscripcionBO inscripcionBO, IEstudianteBOAct estudianteBO) {
-        this.actividadBO= Objects.requireNonNull(actividadBO);
-        this.grupoBO= Objects.requireNonNull(grupoBO);
-        this.inscripcionBO= Objects.requireNonNull(inscripcionBO);
-        this.estudianteBO= Objects.requireNonNull(estudianteBO);
-        
+        this.actividadBO = Objects.requireNonNull(actividadBO);
+        this.grupoBO = Objects.requireNonNull(grupoBO);
+        this.inscripcionBO = Objects.requireNonNull(inscripcionBO);
+        this.estudianteBO = Objects.requireNonNull(estudianteBO);
+
     }
 
-    public ActividadesDTO obtenerActividades(){
+    public ActividadesDTO obtenerActividades() {
         return actividadBO.obtenerActividades();
     }
-    
-    public GruposResponseDTO obtenerGrupos(ActividadDTO actividadDTO){  
-        return grupoBO.obtenerGrupos(actividadDTO);   
+
+    public GruposResponseDTO obtenerGrupos(ActividadDTO actividadDTO) {
+        return grupoBO.obtenerGrupos(actividadDTO);
     }
-    
-     public InscripcionDTO inscribirActividad(InscripcionDTO inscripcionDTO){
-         EstudianteDTO estudianteDTO= new EstudianteDTO(inscripcionDTO.getMatriculaEstudiante());
-         EstudianteDTO estudianteEncontradoDTO= estudianteBO.obtenerEstudiante(estudianteDTO);
-          EstudianteDTO estudianteGuardar;
-         if(estudianteEncontradoDTO==null){
-             System.out.println("no encontrado");
-              estudianteGuardar= estudianteBO.guardarEstudiante(estudianteDTO);
-             System.out.println("se guardo");
-         } else{
-             estudianteGuardar= estudianteEncontradoDTO;
-         }
-         
-         inscripcionDTO.setIdEstudiante(estudianteGuardar.getId());
-         return inscripcionBO.inscribirActividad(inscripcionDTO);
-         
-         
-     }
 
+    public InscripcionDTO inscribirActividad(InscripcionDTO inscripcionDTO) {
+        EstudianteDTO estudianteDTO = new EstudianteDTO(inscripcionDTO.getMatriculaEstudiante());
+        EstudianteDTO estudianteEncontradoDTO = estudianteBO.obtenerEstudiante(estudianteDTO);
+        EstudianteDTO estudianteGuardar;
+        if (estudianteEncontradoDTO == null) {
+            estudianteGuardar = estudianteBO.guardarEstudiante(estudianteDTO);
+        } else {
+            estudianteGuardar = estudianteEncontradoDTO;
+        }
 
+        inscripcionDTO.setIdEstudiante(estudianteGuardar.getId());
+        return inscripcionBO.inscribirActividad(inscripcionDTO);
 
-
-
+    }
 
 }

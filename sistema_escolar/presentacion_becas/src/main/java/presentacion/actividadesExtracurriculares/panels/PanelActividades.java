@@ -10,6 +10,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import presentacion.actividadesExtracurriculares.coordinador.CoordinadorAplicacionActividades;
 import presentacion.styles.Button;
@@ -19,42 +20,39 @@ import presentacion.styles.Style;
  *
  * @author janethcristinagalvanquinonez
  */
-public abstract class PanelActividades extends JPanel{
-    
+public abstract class PanelActividades extends JPanel {
+
     protected ActividadesExtracurriculares actividades;
     protected CoordinadorAplicacionActividades coordinadorAplicacionActividades;
     protected JPanel centralPanel;
-    protected JPanel southPanel;
     protected Button botonSiguiente;
-    
-    
-    public PanelActividades(ActividadesExtracurriculares actividadesExtracurriculares, CoordinadorAplicacionActividades coordinadorAplicacionActividades){
-        actividades= actividadesExtracurriculares;
-        this.coordinadorAplicacionActividades= coordinadorAplicacionActividades;
+    protected Button botonVolver;
+
+    public PanelActividades(ActividadesExtracurriculares actividadesExtracurriculares, CoordinadorAplicacionActividades coordinadorAplicacionActividades) {
+        actividades = actividadesExtracurriculares;
+        this.coordinadorAplicacionActividades = coordinadorAplicacionActividades;
         this.setLayout(new BorderLayout());
-        
-        
-        botonSiguiente= new Button("siguiente");
-        centralPanel= new JPanel();
-        southPanel= new JPanel();
-      //  southPanel.setBackground(Color.red);
+
+        botonVolver = new Button("volver");
+        botonVolver.setBackground(new Color(33, 150, 243));
+        JPanel panelVolver = new JPanel();
+        panelVolver.setBackground(new Color(240, 240, 240));
+        panelVolver.setLayout(new FlowLayout(FlowLayout.LEFT));
+        panelVolver.setMinimumSize(new Dimension(1500, 50));
+        panelVolver.setMaximumSize(new Dimension(1500, 50));
+        panelVolver.setPreferredSize(new Dimension(1500, 50));
+        panelVolver.add(botonVolver);
+        botonSiguiente = new Button("siguiente");
+        botonSiguiente.setBackground(new Color(52, 120, 246));
+        centralPanel = new JPanel();
         centralPanel.setPreferredSize(new Dimension(1500, 750));
         centralPanel.setLayout(new BoxLayout(centralPanel, BoxLayout.Y_AXIS));
-        southPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
-        southPanel.setPreferredSize(new Dimension(1500, 50));
-        southPanel.setBorder(BorderFactory.createEmptyBorder(0, 30, 0, 0));
-        southPanel.add(botonSiguiente);
         centralPanel.setBackground(Style.PANEL_COLOR);
-        southPanel.setBackground(Style.PANEL_COLOR);
+        add(panelVolver, BorderLayout.NORTH);
         add(centralPanel, BorderLayout.CENTER);
-        add(southPanel, BorderLayout.SOUTH);        
-        
-        
-        
-        
-        
+
     }
-        
-     public abstract void startComponents();
-    
+
+    public abstract void startComponents();
+
 }
