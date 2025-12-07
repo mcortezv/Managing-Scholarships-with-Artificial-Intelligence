@@ -78,32 +78,15 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>${project.groupId}</groupId>
+            <groupId>mcortezv</groupId>
             <artifactId>negocios_tutorias</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.toedter</groupId>
-            <artifactId>jcalendar</artifactId>
-            <version>1.4</version>
+            <version>1.0</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
     <properties>
-        <maven.compiler.release>17</maven.compiler.release>
+        <maven.compiler.release>21</maven.compiler.release>
         <exec.mainClass>presentacion.Main</exec.mainClass>
     </properties>
-    <build>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-            </resource>
 
-            <resource>
-                <directory>../src/main/resources</directory>
-                <includes>
-                    <include>mongo.properties</include>
-                </includes>
-            </resource>
-        </resources>
-    </build>
 </project>

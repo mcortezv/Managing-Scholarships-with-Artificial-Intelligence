@@ -96,28 +96,9 @@ public class Main {
         CoordinadorNegocioTutorias coordinadorNegocioTutorias = new CoordinadorNegocioTutorias(fachadaTutorias);
 
 
-
-        //---------------TUTORÍAS------------
-        ControlTutorias controlTutorias = new ControlTutorias();
-        IFachadaTutorias fachadaTutorias = new FachadaTutorias(controlTutorias);
-        CoordinadorNegocioTutorias coordinadorNegocioTutorias = new CoordinadorNegocioTutorias(fachadaTutorias);
-
-
-        CoordinadorAplicacion coordinadorAplicacion =
-                new CoordinadorAplicacion(fachadaInicioSesion, fachadaSolicitarBeca);
-
-        CoordinadorAplicacionPagarAdeudo coordinadorAplicacionPagarAdeudo =
-                new CoordinadorAplicacionPagarAdeudo(fachadaPago, coordinadorAplicacion);
-
-        CoordinadorAplicacionActividades coordinadorAplicacionActividades =
-                new CoordinadorAplicacionActividades(fachadaAct, coordinadorAplicacion);
-
         CoordinadorAplicacionTutorias coordinadorAplicacionTutorias =
             new CoordinadorAplicacionTutorias(coordinadorAplicacion, coordinadorNegocioTutorias);
 
-
-        CoordinadorAplicacionTutorias coordinadorAplicacionTutorias =
-            new CoordinadorAplicacionTutorias(coordinadorAplicacion, coordinadorNegocioTutorias);
 
         coordinadorAplicacion.setCoordinadorAplicacionPagarAdeudo(coordinadorAplicacionPagarAdeudo);
         coordinadorAplicacion.setCoordinadorAplicacionActividades(coordinadorAplicacionActividades);

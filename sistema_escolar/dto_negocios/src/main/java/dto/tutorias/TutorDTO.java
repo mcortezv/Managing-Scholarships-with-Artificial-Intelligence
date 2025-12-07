@@ -67,10 +67,4 @@ public class TutorDTO {
         return nombre;
     }
 
-
-
-    @Override
-    public String toString() {
-        return nombre;
-    }
 }
