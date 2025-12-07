@@ -10,7 +10,6 @@ import java.awt.event.ActionListener;
  * @author Escalante, Sebastian
  */
 public interface IFachadaPayPal {
-    void mostrarPantallaPago(ActionListener listener);
+    void mostrarPantallaPago(double monto, String concepto, ActionListener listener);
     void cerrarVentanaPaypal();
-    SolicitudPagoDTO ejecutarPago(SolicitudPagoDTO solicitudPagoDTO);
 }

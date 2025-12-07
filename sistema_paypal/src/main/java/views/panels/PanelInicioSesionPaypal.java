@@ -89,7 +89,7 @@ public class PanelInicioSesionPaypal extends JPanel {
                 g2.dispose();
             }
         };
-        btnIngresar.setForeground(WHITE);
+        btnIngresar.setForeground(Color.BLACK);
         btnIngresar.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnIngresar.setMaximumSize(new Dimension(200, 45));
 

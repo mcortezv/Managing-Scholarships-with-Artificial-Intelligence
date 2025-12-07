@@ -9,6 +9,7 @@ import interfaces.IFachadaPago;
 import presentacion.CoordinadorAplicacion;
 import presentacion.pagarAdeudo.PagarAdeudo;
 import presentacion.pagarAdeudo.coordinadorNegocioPagarAdeudo.CoordinadorNegocioPagarAdeudo;
+import presentacion.pagarAdeudo.coordinadorNegocioPagarAdeudo.ICoordinadorNegocioPagarAdeudo;
 import presentacion.pagarAdeudo.mainFraimePagarAdeudo.MainFramePagarAdeudo;
 import presentacion.pagarAdeudo.panels.DetalleClase;
 import presentacion.pagarAdeudo.panels.DetallePrestamo;
@@ -23,18 +24,20 @@ import java.util.List;
 public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionPagarAdeudo {
     private final CoordinadorAplicacion coordinadorPadre;
     private final MainFramePagarAdeudo mainFrame;
-    private final CoordinadorNegocioPagarAdeudo coordinadorNegocioPagarAdeudo;
+    private final ICoordinadorNegocioPagarAdeudo coordinadorNegocioPagarAdeudo;
     private PagarAdeudo pagarAdeudo;
     private String tipoAdeudo;
+
     private List<PrestamoDTO> prestamos;
     private List<ClaseDTO> clases;
     private Double adeudoBibliotecaCache;
     private Double adeudoColegiaturaCache;
+
     private final SolicitudPagoDTO solicitudPagoDTO;
 
-    public CoordinadorAplicacionPagarAdeudo(IFachadaPago fachadaPago, CoordinadorAplicacion coordinadorPadre) {
+    public CoordinadorAplicacionPagarAdeudo(ICoordinadorNegocioPagarAdeudo coordinadorNegocio, CoordinadorAplicacion coordinadorPadre) {
         this.coordinadorPadre = coordinadorPadre;
-        this.coordinadorNegocioPagarAdeudo = new CoordinadorNegocioPagarAdeudo(fachadaPago);
+        this.coordinadorNegocioPagarAdeudo = coordinadorNegocio;
         this.mainFrame = null;
         this.solicitudPagoDTO = new SolicitudPagoDTO();
     }
@@ -105,7 +108,7 @@ public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionP
             abrirPasarelaBanco();
         }
         if ("PAYPAL".equals(metodoPago)){
-           abrirPasarelaPaypal();
+            abrirPasarelaPaypal();
         }
     }
 
@@ -134,6 +137,7 @@ public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionP
             solicitudPagoDTO.setEstatusPago("Pendiente");
             solicitudPagoDTO.setIdEstudiante(SesionUsuario.getInstance().getEstudianteLogeado().getMatricula());
             solicitudPagoDTO.setMetodoPago("BANCO");
+
             if ("Biblioteca".equals(tipoAdeudo)) {
                 solicitudPagoDTO.setMontoPagado(adeudoBibliotecaCache);
                 solicitudPagoDTO.setTipoAdeudo("Biblioteca");
@@ -141,7 +145,9 @@ public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionP
                 solicitudPagoDTO.setMontoPagado(adeudoColegiaturaCache);
                 solicitudPagoDTO.setTipoAdeudo("Colegiatura");
             }
+
             SolicitudPagoDTO resultado = coordinadorNegocioPagarAdeudo.realizarPago(solicitudPagoDTO);
+
             if (resultado != null && "Pagado".equalsIgnoreCase(resultado.getEstatusPago())) {
                 coordinadorNegocioPagarAdeudo.notificarLiquidacion(resultado);
                 coordinadorNegocioPagarAdeudo.cerrarVentanaBanco();
@@ -155,6 +161,7 @@ public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionP
         }
     }
 
+
     private void abrirPasarelaPaypal() {
         int respuesta = JOptionPane.showConfirmDialog(
                 null,
@@ -165,21 +172,24 @@ public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionP
         );
 
         if (respuesta == JOptionPane.YES_OPTION) {
-            ActionListener listenerBotonPagarPaypal = new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    procesarPagoPaypal();
-                }
-            };
-            coordinadorNegocioPagarAdeudo.mostrarVentanaPaypal(listenerBotonPagarPaypal);
+            ActionListener listenerExito = e -> procesarPagoPaypal();
+            double monto = 0;
+            if ("Biblioteca".equals(tipoAdeudo)) {
+                monto = adeudoBibliotecaCache != null ? adeudoBibliotecaCache : 0.0;
+            } else if ("Colegiatura".equals(tipoAdeudo)) {
+                monto = adeudoColegiaturaCache != null ? adeudoColegiaturaCache : 0.0;
+            }
+            String concepto = "Pago de Adeudo - " + tipoAdeudo;
+            coordinadorNegocioPagarAdeudo.mostrarVentanaPaypal(monto, concepto, listenerExito);
         }
     }
 
     private void procesarPagoPaypal() {
         try {
-            solicitudPagoDTO.setEstatusPago("Pendiente");
+            solicitudPagoDTO.setEstatusPago("Pagado");
             solicitudPagoDTO.setIdEstudiante(SesionUsuario.getInstance().getEstudianteLogeado().getMatricula());
             solicitudPagoDTO.setMetodoPago("PAYPAL");
+
             if ("Biblioteca".equals(tipoAdeudo)) {
                 solicitudPagoDTO.setMontoPagado(adeudoBibliotecaCache);
                 solicitudPagoDTO.setTipoAdeudo("Biblioteca");
@@ -188,20 +198,22 @@ public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionP
                 solicitudPagoDTO.setTipoAdeudo("Colegiatura");
             }
 
-            SolicitudPagoDTO resultado = coordinadorNegocioPagarAdeudo.realizarPagoPaypal(solicitudPagoDTO);
-            if (resultado != null && "Pagado".equalsIgnoreCase(resultado.getEstatusPago())) {
-                coordinadorNegocioPagarAdeudo.notificarLiquidacion(resultado);
+            boolean notificado = coordinadorNegocioPagarAdeudo.notificarLiquidacion(solicitudPagoDTO);
+
+            if (notificado) {
                 coordinadorNegocioPagarAdeudo.cerrarVentanaPaypal();
-                JOptionPane.showMessageDialog(null, "¡Pago con PayPal realizado con éxito!");
+                JOptionPane.showMessageDialog(null, "Pago con PayPal registrado exitosamente");
                 limpiarCache();
                 regresarAlMenuPrincipal();
+            } else {
+                JOptionPane.showMessageDialog(null, "El pago se realizó, pero hubo un error al notificar al sistema escolar.", "Advertencia", JOptionPane.WARNING_MESSAGE);
             }
+
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Error en PayPal: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Error al registrar el pago de PayPal: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             System.out.println("Error procesando pago PayPal: " + ex.getMessage());
         }
     }
-
 
     private void limpiarCache() {
         this.prestamos = null;

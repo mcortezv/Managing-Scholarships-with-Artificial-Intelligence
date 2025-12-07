@@ -1,24 +1,29 @@
 package fachadas;
-import controles.ControlPayPal;
-import pagarAdeudo.SolicitudPagoDTO;
-import interfaces.IFachadaPayPal;
 
+import controles.ControlPayPal;
+import interfaces.IFachadaPayPal;
 import java.awt.event.ActionListener;
 
 /**
- *  CASO DE USO PAGAR ADEUDO
+ * CASO DE USO PAGAR ADEUDO (Subsistema PayPal)
  * @author Escalante, Sebastian
  */
 public class FachadaPayPal implements IFachadaPayPal {
-    private final ControlPayPal controlPayPal;
 
+    private final ControlPayPal controlPayPal;
+    public FachadaPayPal() {
+        this.controlPayPal = new ControlPayPal();
+    }
+
+    // O tu constructor con inyección si prefieres mantenerlo
     public FachadaPayPal(ControlPayPal controlPayPal){
         this.controlPayPal = controlPayPal;
     }
 
     @Override
-    public void mostrarPantallaPago(ActionListener listener) {
-        controlPayPal.mostrarVentanaPago(listener);
+    public void mostrarPantallaPago(double monto, String concepto, ActionListener listener) {
+        // Pasamos los datos al control de infraestructura
+        controlPayPal.mostrarVentanaPago(monto, concepto, listener);
     }
 
     @Override
@@ -26,8 +31,6 @@ public class FachadaPayPal implements IFachadaPayPal {
         controlPayPal.cerrarVentana();
     }
 
-    @Override
-    public SolicitudPagoDTO ejecutarPago(SolicitudPagoDTO solicitudPagoDTO) {
-        return controlPayPal.ejecutarPago(solicitudPagoDTO);
-    }
+    // ELIMINADO: public SolicitudPagoDTO ejecutarPago(...)
+    // La lógica de cobro se movió dentro de la ventana de PayPal (ControlPaypalAPI)
 }

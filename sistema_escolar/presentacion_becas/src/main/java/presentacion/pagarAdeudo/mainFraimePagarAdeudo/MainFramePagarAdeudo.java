@@ -3,6 +3,7 @@ package presentacion.pagarAdeudo.mainFraimePagarAdeudo;
 import presentacion.CoordinadorAplicacion;
 import presentacion.pagarAdeudo.PagarAdeudo;
 import presentacion.pagarAdeudo.coordinadorAplicacionPagarAdeudo.CoordinadorAplicacionPagarAdeudo;
+import presentacion.pagarAdeudo.coordinadorAplicacionPagarAdeudo.ICoordinadorAplicacionPagarAdeudo;
 import presentacion.pagarAdeudo.panels.ConsultaAdeudoMenu;
 import presentacion.styles.Button;
 import javax.swing.*;
@@ -12,7 +13,7 @@ import java.util.Map;
 
 public class MainFramePagarAdeudo extends JFrame {
     private final JPanel centralPanel;
-    private Button btnBiblioteca;
+    private final Button btnBiblioteca;
     private Button btnColegiatura;
     private CoordinadorAplicacion coordinadorAplicacion;
     private CoordinadorAplicacionPagarAdeudo coordinadorAplicacionPagarAdeudo;

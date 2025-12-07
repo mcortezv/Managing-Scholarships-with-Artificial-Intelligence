@@ -1,4 +1,5 @@
 package presentacion;
+
 import actividades.dao.interfaces.IEstudianteDAOAct;
 import actividades.daos.EstudianteDAOAct;
 import bo.solicitarBeca.*;
@@ -12,6 +13,10 @@ import bo.pagarAdeudo.AdeudoBO;
 import objetosNegocio.actividades.ActividadBO;
 import presentacion.actividadesExtracurriculares.coordinador.CoordinadorAplicacionActividades;
 import presentacion.pagarAdeudo.coordinadorAplicacionPagarAdeudo.CoordinadorAplicacionPagarAdeudo;
+import presentacion.pagarAdeudo.coordinadorNegocioPagarAdeudo.CoordinadorNegocioPagarAdeudo;
+import presentacion.pagarAdeudo.coordinadorNegocioPagarAdeudo.ICoordinadorNegocioPagarAdeudo;
+import presentacion.interfaces.ICoordinadorNegocio;
+
 import fachadas.FachadaGobierno;
 import interfaces.*;
 import interfaces.actividades.IEstudianteBOAct;
@@ -47,11 +52,12 @@ public class Main {
         IFachadaITSON fachadaITSON = new FachadaItson(controlItson);
         IFachadaGobierno fachadaGobierno = new FachadaGobierno(controlGobierno);
 
-        //  Caso pagar Adeudo
+        //CASO PAGAR ADEUDO
         IAdeudoBO adeudoBO = new AdeudoBO(fachadaITSON);
         IFachadaPago fachadaPago = new FachadaPago(new ControlPago(adeudoBO, fachadaBanco, fachadaPayPal));
+        ICoordinadorNegocioPagarAdeudo coordinadorNegocioPagarAdeudo = new CoordinadorNegocioPagarAdeudo(fachadaPago);
 
-        // caso act extra
+        //ACT EXTRA
         IActividadBO actividadBO = new ActividadBO(fachadaITSON);
         IGrupoBO grupoBO= new GrupoBO(fachadaITSON);
         IEstudianteDAOAct estudianteDAOAct= new EstudianteDAOAct();
@@ -60,12 +66,10 @@ public class Main {
         ControlActividad controlActividad= new ControlActividad(actividadBO, grupoBO, inscripcionBO, estudianteBOAct);
         IFachadaActividad fachadaAct = new FachadaActividad(controlActividad);
 
-        // creacion de daos
         ISolicitudDAO solicitudDAO = new SolicitudDAO();
         IEstudianteDAO estudianteDAO = new EstudianteDAO();
         IDocumentoDAO documentoDAO = new DocumentoDAO();
 
-        // creacion de las bo
         IBecasFiltradasBO becasFiltradasBO = new BecasFiltradasBO(fachadaGobierno);
         IDocumentoBO documentoBO = new DocumentoBO(documentoDAO);
         IEstudianteBO estudianteBO = new EstudianteBO(fachadaITSON, estudianteDAO);
@@ -76,12 +80,15 @@ public class Main {
 
         IFachadaInicioSesion fachadaInicioSesion = new FachadaInicioSesion(new ControlInicioSesion(estudianteBO));
         IFachadaSolicitarBeca fachadaSolicitarBeca = new FachadaSolicitarBeca(new ControlSolicitarBeca(solicitudBO, estudianteBO, tutorBO, becasFiltradasBO, documentoBO, historialAcademicoBO, infoSocioBO));
-        CoordinadorAplicacion coordinadorAplicacion = new CoordinadorAplicacion(fachadaInicioSesion, fachadaSolicitarBeca);
-        CoordinadorAplicacionPagarAdeudo coordinadorAplicacionPagarAdeudo = new CoordinadorAplicacionPagarAdeudo(fachadaPago, coordinadorAplicacion);
 
+        ICoordinadorNegocio coordinadorNegocioGeneral = new CoordinadorNegocio(fachadaInicioSesion, fachadaSolicitarBeca);
+        CoordinadorAplicacion coordinadorAplicacion = new CoordinadorAplicacion(coordinadorNegocioGeneral);
+        CoordinadorAplicacionPagarAdeudo coordinadorAplicacionPagarAdeudo = new CoordinadorAplicacionPagarAdeudo(coordinadorNegocioPagarAdeudo, coordinadorAplicacion);
         CoordinadorAplicacionActividades coordinadorAplicacionActividades = new CoordinadorAplicacionActividades(fachadaAct, coordinadorAplicacion);
+
         coordinadorAplicacion.setCoordinadorAplicacionPagarAdeudo(coordinadorAplicacionPagarAdeudo);
         coordinadorAplicacion.setCoordinadorAplicacionActividades(coordinadorAplicacionActividades);
+
         coordinadorAplicacion.iniciarGUI();
     }
 }

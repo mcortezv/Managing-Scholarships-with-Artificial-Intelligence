@@ -22,7 +22,7 @@ public interface IFachadaPago {
     SolicitudPagoDTO realizarPago(SolicitudPagoDTO solicitudPagoDTO);
     void cerrarVentana();
     //paypal
-    void solicitarVistaPaypal(ActionListener listener);
+    void solicitarVistaPaypal(double monto, String concepto, ActionListener listener);
     void cerrarVentanaPaypal();
     SolicitudPagoDTO realizarPagoPaypal(SolicitudPagoDTO dto);
 }

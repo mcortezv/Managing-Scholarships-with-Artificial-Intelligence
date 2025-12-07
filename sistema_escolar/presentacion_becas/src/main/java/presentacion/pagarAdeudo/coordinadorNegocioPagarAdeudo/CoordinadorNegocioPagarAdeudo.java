@@ -1,15 +1,12 @@
 package presentacion.pagarAdeudo.coordinadorNegocioPagarAdeudo;
 
-
 import dtoGobierno.EstudianteDTO;
 import interfaces.IFachadaPago;
 import java.awt.event.ActionListener;
 import java.util.List;
 import pagarAdeudo.ClaseDTO;
-
 import pagarAdeudo.PrestamoDTO;
 import pagarAdeudo.SolicitudPagoDTO;
-
 
 public class CoordinadorNegocioPagarAdeudo implements ICoordinadorNegocioPagarAdeudo {
     private final IFachadaPago fachadaPago;
@@ -50,7 +47,6 @@ public class CoordinadorNegocioPagarAdeudo implements ICoordinadorNegocioPagarAd
         return fachadaPago.solicitarListaClases(estudianteDTO);
     }
 
-    // --- MÉTODOS BANCO ---
 
     @Override
     public void mostrarVentanaPago(ActionListener listenerBotonPagarDelBanco) {
@@ -58,7 +54,7 @@ public class CoordinadorNegocioPagarAdeudo implements ICoordinadorNegocioPagarAd
     }
 
     @Override
-    public SolicitudPagoDTO realizarPago(SolicitudPagoDTO solicitudPagoDTO){
+    public SolicitudPagoDTO realizarPago(SolicitudPagoDTO solicitudPagoDTO) throws Exception {
         return fachadaPago.realizarPago(solicitudPagoDTO);
     }
 
@@ -67,10 +63,9 @@ public class CoordinadorNegocioPagarAdeudo implements ICoordinadorNegocioPagarAd
         fachadaPago.cerrarVentana();
     }
 
-
     @Override
-    public void mostrarVentanaPaypal(ActionListener listenerBotonPagarPaypal) {
-        fachadaPago.solicitarVistaPaypal(listenerBotonPagarPaypal);
+    public void mostrarVentanaPaypal(double monto, String concepto, ActionListener listener) {
+        fachadaPago.solicitarVistaPaypal(monto, concepto, listener);
     }
 
     @Override

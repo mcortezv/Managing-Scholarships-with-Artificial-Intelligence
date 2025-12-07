@@ -6,20 +6,19 @@ import apiPaypal.interfaces.IPaypalAPI;
 import java.awt.event.ActionListener;
 
 public class PaypalAPI implements IPaypalAPI {
-    private ControlPaypalAPI controlPaypalAPI;
+    private final ControlPaypalAPI controlPaypalAPI;
 
-    @Override
-    public void mostrarVentanaPago(ActionListener actionListener) {
-
+    public PaypalAPI(){
+        this.controlPaypalAPI = new ControlPaypalAPI();
     }
 
     @Override
-    public boolean ejecutarPago(double monto, String concepto) {
-        return false;
+    public void mostrarVentanaPago(double monto, String concepto, ActionListener listenerExito) {
+        controlPaypalAPI.abrirVentanaPago(monto, concepto, listenerExito);
     }
 
     @Override
     public void cerrarVentana() {
-
+        controlPaypalAPI.cerrarVentana();
     }
 }
