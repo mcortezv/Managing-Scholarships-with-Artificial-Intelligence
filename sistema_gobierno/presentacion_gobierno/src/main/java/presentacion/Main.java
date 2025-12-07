@@ -6,9 +6,9 @@ package presentacion;
 
 /**
  *
- * @author mdjes
+ * @author Cortez, Manuel;
  */
-public class Presentacion_gobierno {
+public class Main {
 
     public static void main(String[] args) {
         System.out.println("Hello World!");

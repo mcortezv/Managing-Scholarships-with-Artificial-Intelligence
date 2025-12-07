@@ -10,7 +10,7 @@ from core.reason_model import reason_model
 def train():
     scaler = StandardScaler()
     smote = SMOTE(random_state=42, k_neighbors=1)
-    data = pd.read_csv('core/data/dataset.csv')
+    data = pd.read_csv('core/data/dataset_becas.csv')
 
     X = data[['student_gpa', 'dropout_rate', 'failure_rate', 'semester',
               'degree_program', 'course_load', 'total_household_income', 'housing_type',
