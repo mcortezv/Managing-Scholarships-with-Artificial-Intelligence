@@ -2,7 +2,6 @@ package controles;
 
 import java.awt.event.ActionListener;
 import java.util.List;
-
 import adaptadores.pagarAdeudo.SolicitudPagoAdaptador;
 import adaptadoresPagoAdeudo.ClaseAdaptador;
 import adaptadoresPagoAdeudo.PrestamoAdaptador;
@@ -27,7 +26,7 @@ public class ControlPago {
         this.iFachadaBanco = iFachadaBanco;
     }
 
-    public List<PrestamoDTO>solicitarListaPrestamos(EstudianteDTO estudianteDTO){
+    public List<PrestamoDTO> solicitarListaPrestamos(EstudianteDTO estudianteDTO) {
         Long matricula = estudianteDTO.getMatricula();
         List<Prestamo> listaEntidades = iAdeudoBO.obtenerDetallePrestamo(matricula);
         return listaEntidades.stream()
@@ -35,14 +34,13 @@ public class ControlPago {
                 .toList();
     }
 
-    public List<ClaseDTO> solicitarListaClases(EstudianteDTO estudianteDTO){
+    public List<ClaseDTO> solicitarListaClases(EstudianteDTO estudianteDTO) {
         Long matricula = estudianteDTO.getMatricula();
         List<Clase> listaEntidades = iAdeudoBO.obtenerDetalleClase(matricula);
         return listaEntidades.stream()
                 .map(ClaseAdaptador::toDTO)
                 .toList();
     }
-
     public void solicitarVistaPago(ActionListener listenerBotonPagar) {
         iFachadaBanco.mostrarPantallaPago(listenerBotonPagar);
     }

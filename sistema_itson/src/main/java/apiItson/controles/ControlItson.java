@@ -18,8 +18,10 @@ import datos.serviceItson.GrupoService;
 import datos.serviceItson.actividades.InscripcionService;
 import itson.ActividadDTOItson;
 import itson.ActividadesDTOItson;
+import itson.EstudianteDTOItson;
 import itson.actividades.GruposResponseDTOItson;
 import itson.actividades.InscripcionDTOItson;
+import itson.actividades.InscripcionesDTOItson;
 
 import java.util.List;
 
@@ -90,6 +92,9 @@ public class ControlItson {
 
     public InscripcionDTOItson inscribirActividad(InscripcionDTOItson inscripcionDTOItson){
         return inscripcionService.inscribirActividad(inscripcionDTOItson);
-     
+    }
+    
+    public InscripcionesDTOItson obtenerInscripciones(EstudianteDTOItson estudianteDTO){
+        return inscripcionService.obtenerInscripciones(estudianteDTO);
     }
 }

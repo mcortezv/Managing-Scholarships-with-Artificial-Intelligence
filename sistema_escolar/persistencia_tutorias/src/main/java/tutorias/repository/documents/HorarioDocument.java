@@ -7,6 +7,7 @@ package tutorias.repository.documents;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import org.bson.codecs.pojo.annotations.BsonProperty;
 import org.bson.types.ObjectId;
 import tutorias.dominio.enums.EstadoDisponibilidad;
 
@@ -15,12 +16,25 @@ import tutorias.dominio.enums.EstadoDisponibilidad;
  * @author katia
  */
 public class HorarioDocument {
-    private ObjectId _id;                     
+    @BsonProperty("_id")
+    private ObjectId _id;   
+    
+    @BsonProperty("id")
     private Long id;
+    
+    @BsonProperty("idTutor")
     private Long idTutor;
+    
+    @BsonProperty("fecha")
     private LocalDate fecha;
+    
+    @BsonProperty("hora")
     private LocalTime hora;
+    
+    @BsonProperty("estadoDisponibilidad")
     private EstadoDisponibilidad estadoDisponibilidad;
+    
+    @BsonProperty("creadoEn")
     private Instant creadoEn;
 
     public HorarioDocument() {

@@ -6,11 +6,16 @@ package objetosNegocio.actividades;
 
 import actividades.dao.interfaces.IInscripcionDAO;
 import actividades.dominio.Inscripcion;
+import adaptadores.actividades.EstudianteAdaptador;
 import adaptadores.actividades.InscripcionAdaptador;
+import dto.actividades.EstudianteDTO;
 import dto.actividades.InscripcionDTO;
+import dto.actividades.InscripcionesDTO;
 import interfaces.IFachadaITSON;
 import interfaces.actividades.IInscripcionBO;
+import itson.EstudianteDTOItson;
 import itson.actividades.InscripcionDTOItson;
+import itson.actividades.InscripcionesDTOItson;
 
 /**
  *
@@ -36,6 +41,20 @@ public class InscripcionBO implements IInscripcionBO {
             return InscripcionAdaptador.toDTONegocio(inscripcionDTOIResponse);
 
         }
+    
+    public InscripcionesDTO obtenerInscripciones(EstudianteDTO estudianteDTO){
+        System.out.println(estudianteDTO.getMatricula());
+        EstudianteDTOItson estudianteDTOItson= EstudianteAdaptador.toDTOItson(estudianteDTO);
+        InscripcionesDTOItson inscripcionesDTOItson= fachadaITSON.obtenerInscripciones(estudianteDTOItson);
+        
+        InscripcionesDTO inscripcionesDTO= InscripcionAdaptador.toDTONegocio(inscripcionesDTOItson);
+        for(InscripcionDTO inscripciones: inscripcionesDTO.getInscripciones()){
+            System.out.println(inscripciones.getNombreGrupo());
+        }
+        return inscripcionesDTO;
+        
+        
+    }
 
 
 

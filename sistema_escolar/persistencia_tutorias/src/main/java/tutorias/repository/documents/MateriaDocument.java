@@ -5,6 +5,7 @@
 package tutorias.repository.documents;
 
 import java.time.Instant;
+import org.bson.codecs.pojo.annotations.BsonProperty;
 import org.bson.types.ObjectId;
 
 /**
@@ -12,9 +13,16 @@ import org.bson.types.ObjectId;
  * @author katia
  */
 public class MateriaDocument {
+    @BsonProperty("_id")
     private ObjectId _id;
+    
+    @BsonProperty("idMateria")
     private Long idMateria;
+    
+    @BsonProperty("nombre")
     private String nombre;
+    
+    @BsonProperty("creadoEn")
     private Instant creadoEn;
 
     public MateriaDocument() {

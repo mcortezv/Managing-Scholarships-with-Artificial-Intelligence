@@ -15,17 +15,4 @@
         <module>sistema_banco</module>
         <module>sistema_paypal</module>
     </modules>
-    <build>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-            </resource>
-            <resource>
-                <directory>${project.basedir}/../src/main/resources</directory>
-                <includes>
-                    <include>mongo.properties</include>
-                </includes>
-            </resource>
-        </resources>
-    </build>
 </project>

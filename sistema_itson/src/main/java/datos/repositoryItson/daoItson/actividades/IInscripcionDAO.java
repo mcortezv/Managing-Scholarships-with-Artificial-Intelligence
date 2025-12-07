@@ -5,6 +5,7 @@
 package datos.repositoryItson.daoItson.actividades;
 
 import datos.dominioItson.actividades.Inscripcion;
+import java.util.List;
 
 /**
  *
@@ -12,4 +13,5 @@ import datos.dominioItson.actividades.Inscripcion;
  */
 public interface IInscripcionDAO {
     public Inscripcion InscribirGrupo(Inscripcion inscripcion);
+    public List<Inscripcion> obtenerInscripciones(String matricula);
 }
