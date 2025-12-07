@@ -46,13 +46,14 @@ def main():
         input_df['degree_program'] = le_degree.fit_transform(input_df['degree_program'])
         input_df['housing_type'] = le_housing.fit_transform(input_df['housing_type'])
         input_df['category'] = le_category.fit_transform(input_df['category'])
+        X = input_df.values
 
-        resolution = resolution_model.predict(input_df)[0]
-        reason_pred = reason_model.predict(input_df)[0]
+        resolution = resolution_model.predict(X)[0]
+        reason_pred = reason_model.predict(X)[0]
         reason = le_reason.inverse_transform([reason_pred])[0]
 
-        resolution_confidence = np.max(resolution_model.predict_proba(input_df)[0]) * 100
-        reason_confidence = np.max(reason_model.predict_proba(input_df)[0]) * 100
+        resolution_confidence = np.max(resolution_model.predict_proba(X)[0]) * 100
+        reason_confidence = np.max(reason_model.predict_proba(X)[0]) * 100
         percentage = (resolution_confidence + reason_confidence) / 2
 
         return {
