@@ -6,9 +6,9 @@ import joblib
 def reason_model(X_train_reason_smote, X_val_s, X_test_s, Y_train_reason_smote, Y_val_s, Y_test_s):
 
     parameters = {
-        'n_estimators': [25, 50, 100],
-        'max_depth': [None, 6, 3, 3],
-        'min_samples_split': [2, 2, 1]
+        'n_estimators': [50, 100, 200],
+        'max_depth': [None, 6, 10, 20],
+        'min_samples_split': [2, 5, 10]
     }
 
     parameters_search = GridSearchCV(RandomForestClassifier(random_state=42), parameters, cv=4, scoring = 'f1_macro')
@@ -29,4 +29,4 @@ def reason_model(X_train_reason_smote, X_val_s, X_test_s, Y_train_reason_smote, 
     print("\nClasification Report Reason Model Test:")
     print(classification_report(Y_test_s, Y_test_pred))
 
-    joblib.dump(model, 'saved/reason_model.pkl')
+    joblib.dump(model, 'core/saved/reason_model.pkl')
