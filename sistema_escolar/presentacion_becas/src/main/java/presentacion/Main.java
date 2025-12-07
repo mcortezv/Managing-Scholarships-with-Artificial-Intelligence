@@ -1,7 +1,9 @@
 package presentacion;
 
 import actividades.dao.interfaces.IEstudianteDAOAct;
+import actividades.dao.interfaces.IInscripcionDAO;
 import actividades.daos.EstudianteDAOAct;
+import actividades.daos.InscripcionDAO;
 import bo.solicitarBeca.*;
 import controles.ControlGobierno;
 import controles.*;
@@ -62,7 +64,8 @@ public class Main {
         IGrupoBO grupoBO= new GrupoBO(fachadaITSON);
         IEstudianteDAOAct estudianteDAOAct= new EstudianteDAOAct();
         IEstudianteBOAct estudianteBOAct= new EstudianteBOAct(fachadaITSON, estudianteDAOAct);
-        IInscripcionBO inscripcionBO= new InscripcionBO(fachadaITSON);
+        IInscripcionDAO inscripcionDAO= new InscripcionDAO();
+        IInscripcionBO inscripcionBO= new InscripcionBO(fachadaITSON, inscripcionDAO);
         ControlActividad controlActividad= new ControlActividad(actividadBO, grupoBO, inscripcionBO, estudianteBOAct);
         IFachadaActividad fachadaAct = new FachadaActividad(controlActividad);
 

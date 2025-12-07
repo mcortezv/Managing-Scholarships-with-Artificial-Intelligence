@@ -4,8 +4,15 @@
  */
 package adaptadores.actividades;
 
+import actividades.dominio.Actividad;
+import actividades.dominio.Estudiante;
+import actividades.dominio.Grupo;
+import actividades.dominio.Horario;
+import actividades.dominio.Inscripcion;
 import dto.actividades.InscripcionDTO;
 import itson.actividades.InscripcionDTOItson;
+import java.time.LocalDate;
+import org.bson.types.ObjectId;
 
 /**
  *
@@ -45,6 +52,35 @@ public class InscripcionAdaptador {
         inscripcionDTO.setHoraInicio(inscripcionDTOItson.getHoraInicio());
         inscripcionDTO.setHoraFin(inscripcionDTOItson.getHoraFin());
         return inscripcionDTO;
+    }
+    
+    public static Inscripcion toEntity(InscripcionDTO inscripcionDTO){
+        Inscripcion inscripcion= new Inscripcion();
+        Grupo grupo= new Grupo();
+        inscripcion.setFechaInscripcion(LocalDate.now());
+        //estudiante
+       Estudiante estudiante= new Estudiante();
+       estudiante.setId(new ObjectId(inscripcionDTO.getIdEstudiante()));
+       estudiante.setMatricula(inscripcionDTO.getMatriculaEstudiante());
+       inscripcion.setEstudiante(estudiante);
+       //actividad
+       Actividad actividad= new Actividad();
+       actividad.setNombre(inscripcionDTO.getNombreGrupo());
+       actividad.setCosto(inscripcionDTO.getCosto());
+       grupo.setActividad(actividad);
+       
+       
+       Horario horario= new Horario();
+       horario.setDias(inscripcionDTO.getDias());
+       horario.setHoraInicio(inscripcionDTO.getHoraInicio());
+       horario.setHoraFin(inscripcionDTO.getHoraFin());
+       grupo.setHorario(horario);
+       grupo.setId(new ObjectId(inscripcionDTO.getIdGrupo()));
+       
+       inscripcion.setGrupo(grupo);
+
+        return inscripcion;
+        
     }
     
 }
