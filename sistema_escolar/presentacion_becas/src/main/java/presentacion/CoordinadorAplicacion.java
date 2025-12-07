@@ -1,9 +1,11 @@
 package presentacion;
+
+
 import itson.LoginDTOItson;
-import interfaces.*;
 import presentacion.actividadesExtracurriculares.coordinador.CoordinadorAplicacionActividades;
 import presentacion.actividadesExtracurriculares.panels.ActividadesExtracurriculares;
 import presentacion.interfaces.ICoordinadorAplicacion;
+import presentacion.interfaces.ICoordinadorNegocio;
 import presentacion.login.MainFrame;
 import presentacion.login.exceptions.ContraseniaInvalidaException;
 import presentacion.login.exceptions.IDInvalidoException;
@@ -25,10 +27,9 @@ import java.util.Map;
  *
  * @author janethcristinagalvanquinonez
  */
-
 public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     private MainFrame mainFrame;
-    private final CoordinadorNegocio coordinadorNegocio;
+    private final ICoordinadorNegocio coordinadorNegocio;
     private SolicitarBeca solicitarBeca;
     private BecaDTO becaSeleccionadaDTO;
     private RequisitosDTO requisitosDTO;
@@ -42,8 +43,9 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     private PagarAdeudo pagarAdeudo;
     // act extra
     private CoordinadorAplicacionActividades coordinadorAplicacionActividades;
-    public CoordinadorAplicacion(IFachadaInicioSesion fachadaInicioSesion, IFachadaSolicitarBeca fachadaSolicitarBeca) {
-        this.coordinadorNegocio = new CoordinadorNegocio(fachadaInicioSesion, fachadaSolicitarBeca);
+
+    public CoordinadorAplicacion(ICoordinadorNegocio coordinadorNegocio) {
+        this.coordinadorNegocio = coordinadorNegocio;
         mainFrame = null;
     }
 
@@ -63,7 +65,7 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     public void cerrarSesion(){
         coordinadorNegocio.solicitarCerrarSesion();
     }
-    
+
     public void guardarInfoEstudiante(LoginDTOItson loginDTOItson){
         this.estudiante= loginDTOItson;
     }
@@ -103,7 +105,7 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     }
 
 
-    public void actividades(){   
+    public void actividades(){
         mainFrame.setVisible(false);
         ActividadesExtracurriculares act = new ActividadesExtracurriculares(coordinadorAplicacionActividades);
         act.recuperarLogin(estudiante);

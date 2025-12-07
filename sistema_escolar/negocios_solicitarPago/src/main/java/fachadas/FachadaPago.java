@@ -43,8 +43,8 @@ public class FachadaPago implements IFachadaPago {
     }
 
     @Override
-    public void solicitarVistaPaypal(ActionListener listener) {
-        controlPago.solicitarVistaPayPal(listener);
+    public void solicitarVistaPaypal(double monto, String concepto, ActionListener listener) {
+        controlPago.solicitarVistaPayPal(monto, concepto, listener);
     }
 
     @Override
@@ -54,7 +54,8 @@ public class FachadaPago implements IFachadaPago {
 
     @Override
     public SolicitudPagoDTO realizarPagoPaypal(SolicitudPagoDTO dto) {
-        return controlPago.realizarPagoPaypal(dto);
+        dto.setEstatusPago("Pagado");
+        return dto;
     }
 
     @Override

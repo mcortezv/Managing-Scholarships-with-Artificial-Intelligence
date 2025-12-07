@@ -1,4 +1,5 @@
 package presentacion;
+
 import itson.LoginDTOItson;
 import interfaces.*;
 import bo.solicitarBeca.excepciones.SolicitudInvalidaException;
@@ -18,6 +19,7 @@ import java.util.concurrent.ThreadLocalRandom;
  * @author Cortez, Manuel;
  */
 public class CoordinadorNegocio implements ICoordinadorNegocio {
+
     private final IFachadaInicioSesion fachadaInicioSesion;
     private final IFachadaSolicitarBeca fachadaSolicitarBeca;
 
@@ -32,47 +34,47 @@ public class CoordinadorNegocio implements ICoordinadorNegocio {
     }
 
     @Override
+    public void solicitarCerrarSesion() {
+        fachadaInicioSesion.solicitarLogOut();
+    }
+
+    @Override
+    public EstudianteDTO getEstudianteLogueado() {
+        return fachadaInicioSesion.getEstudianteLogueado();
+    }
+
+    @Override
     public BecasFiltradasDTO obtenerBecasDisponibles(RequisitosDTO requisitosDTO) {
         return fachadaSolicitarBeca.obtenerBecasFiltradas(requisitosDTO);
     }
 
     @Override
-    public void solicitarCerrarSesion() {
-        fachadaInicioSesion.solicitarLogOut();
-    }
-
-
     public void iniciarSolicitud(BecaDTO becaDTO) throws SolicitudInvalidaException {
         fachadaSolicitarBeca.setBeca(becaDTO);
         fachadaSolicitarBeca.iniciarNuevaSolicitud();
     }
 
-    public void procesarHistorialAcademico(HistorialAcademicoDTO historialAcademicDTO) {
-        fachadaSolicitarBeca.setHistorialAcademico(historialAcademicDTO);
-    }
-
+    @Override
     public EstudianteDTO procesarEstudiante(EstudianteDTO estudianteDTO) {
         return fachadaSolicitarBeca.obtenerEstudiante(estudianteDTO);
     }
 
+    @Override
+    public void procesarHistorialAcademico(HistorialAcademicoDTO historialAcademicDTO) {
+        fachadaSolicitarBeca.setHistorialAcademico(historialAcademicDTO);
+    }
+
+    @Override
     public void procesarTutor(TutorDTO tutorDTO) {
         fachadaSolicitarBeca.setDatosTutor(tutorDTO);
     }
 
+    @Override
     public void procesarInformacionSocioeconomica(InformacionSocioeconomicaDTO informacionSocioeconomicaDTO) {
         fachadaSolicitarBeca.setInformacionSocioeconomica(informacionSocioeconomicaDTO);
     }
 
     @Override
-    public boolean enviarSolicitudAGobierno(){
-        return fachadaSolicitarBeca.guardarSolicitud();
-    }
-
-    public EstudianteDTO getEstudianteLogueado() {
-        return fachadaInicioSesion.getEstudianteLogueado();
-
-    }
-
     public void procesarDocumentos(Map<String, File> documentosCargados) throws IOException {
         try {
             List<DocumentoDTO> documentoDTOList = new ArrayList<>();
@@ -84,15 +86,22 @@ public class CoordinadorNegocio implements ICoordinadorNegocio {
                 documentoDTO.setTipo(tipo);
                 documentoDTO.setContenido(Files.readAllBytes(documento.toPath()));
                 documentoDTO.setEstudiante(fachadaInicioSesion.getEstudianteLogueado().getMatricula());
+
                 documentoDTOList.add(documentoDTO);
             }
             fachadaSolicitarBeca.setDocumentos(documentoDTOList);
         } catch (IOException e) {
-            throw new RuntimeException("Error al procesar documentos", e);
+            throw new RuntimeException("Error al procesar documentos: " + e.getMessage(), e);
         }
     }
 
+    @Override
     public SolicitudDTO getSolicitudActual() {
         return fachadaSolicitarBeca.obtenerSolicitudActual();
+    }
+
+    @Override
+    public boolean enviarSolicitudAGobierno(){
+        return fachadaSolicitarBeca.guardarSolicitud();
     }
 }

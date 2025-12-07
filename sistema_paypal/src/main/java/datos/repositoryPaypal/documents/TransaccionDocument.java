@@ -1,10 +1,10 @@
-package datos.dominioPaypal;
+package datos.repositoryPaypal.documents;
 
 import org.bson.types.ObjectId;
 
 import java.util.Date;
 
-public class Transaccion {
+public class TransaccionDocument {
     private ObjectId id;
     private String folio;
     private Date fecha;
@@ -14,8 +14,7 @@ public class Transaccion {
     private String concepto;
     private String estado;
 
-    public Transaccion() {
-    }
+    public TransaccionDocument() {}
 
     public ObjectId getId() { return id; }
     public void setId(ObjectId id) { this.id = id; }
