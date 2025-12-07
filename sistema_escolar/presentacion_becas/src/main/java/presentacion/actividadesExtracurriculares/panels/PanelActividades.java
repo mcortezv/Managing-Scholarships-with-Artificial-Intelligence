@@ -34,7 +34,7 @@ public abstract class PanelActividades extends JPanel {
         this.setLayout(new BorderLayout());
 
         botonVolver = new Button("volver");
-        botonVolver.setBackground(new Color(33, 150, 243));
+        botonVolver.setBackground(new Color(52, 120, 246));
         JPanel panelVolver = new JPanel();
         panelVolver.setBackground(new Color(240, 240, 240));
         panelVolver.setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -43,7 +43,6 @@ public abstract class PanelActividades extends JPanel {
         panelVolver.setPreferredSize(new Dimension(1500, 50));
         panelVolver.add(botonVolver);
         botonSiguiente = new Button("siguiente");
-        botonSiguiente.setBackground(new Color(52, 120, 246));
         centralPanel = new JPanel();
         centralPanel.setPreferredSize(new Dimension(1500, 750));
         centralPanel.setLayout(new BoxLayout(centralPanel, BoxLayout.Y_AXIS));

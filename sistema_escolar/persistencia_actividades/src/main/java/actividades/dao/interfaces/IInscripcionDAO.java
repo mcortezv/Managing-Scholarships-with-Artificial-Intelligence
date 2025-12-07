@@ -2,15 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
-package interfaces.actividades;
+package actividades.dao.interfaces;
 
-import dto.actividades.InscripcionDTO;
+import actividades.dominio.Inscripcion;
 
 /**
  *
  * @author janethcristinagalvanquinonez
  */
-public interface IInscripcionBO {
-  
-    public InscripcionDTO inscribirActividad(InscripcionDTO inscripcionDTO);
+public interface IInscripcionDAO {
+    Inscripcion InscribirGrupo(Inscripcion inscripcion);
 }
