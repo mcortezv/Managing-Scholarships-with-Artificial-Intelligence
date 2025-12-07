@@ -35,9 +35,6 @@ public class Main {
 
     public static void main(String[] args) {
 
-
-
-
         // Controles unicos para mantenerl el singleton
         ControlItson controlItson = new ControlItson();
         ControlGobierno controlGobierno = new ControlGobierno();
