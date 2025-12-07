@@ -26,6 +26,8 @@ import interfaces.actividades.IInscripcionBO;
 import objetosNegocio.actividades.EstudianteBOAct;
 import objetosNegocio.actividades.GrupoBO;
 import objetosNegocio.actividades.InscripcionBO;
+import presentacion.tutorias.coordinadorAplicacion.CoordinadorAplicacionTutorias;
+import presentacion.tutorias.coordinadorNegocio.CoordinadorNegocioTutorias;
 import solicitarBeca.repository.dao.interfaces.IDocumentoDAO;
 import solicitarBeca.repository.dao.interfaces.IEstudianteDAO;
 import solicitarBeca.repository.dao.interfaces.ISolicitudDAO;
@@ -88,8 +90,22 @@ public class Main {
         CoordinadorAplicacionPagarAdeudo coordinadorAplicacionPagarAdeudo = new CoordinadorAplicacionPagarAdeudo(coordinadorNegocioPagarAdeudo, coordinadorAplicacion);
         CoordinadorAplicacionActividades coordinadorAplicacionActividades = new CoordinadorAplicacionActividades(fachadaAct, coordinadorAplicacion);
 
+        //---------------TUTORÍAS------------
+        ControlTutorias controlTutorias = new ControlTutorias();
+        IFachadaTutorias fachadaTutorias = new FachadaTutorias(controlTutorias);
+        CoordinadorNegocioTutorias coordinadorNegocioTutorias = new CoordinadorNegocioTutorias(fachadaTutorias);
+
+
+        CoordinadorAplicacionTutorias coordinadorAplicacionTutorias =
+            new CoordinadorAplicacionTutorias(coordinadorAplicacion, coordinadorNegocioTutorias);
+
+
         coordinadorAplicacion.setCoordinadorAplicacionPagarAdeudo(coordinadorAplicacionPagarAdeudo);
         coordinadorAplicacion.setCoordinadorAplicacionActividades(coordinadorAplicacionActividades);
+
+        coordinadorAplicacion.setCoordinadorAplicacionTutorias(coordinadorAplicacionTutorias);
+
+        coordinadorAplicacion.setCoordinadorAplicacionTutorias(coordinadorAplicacionTutorias);
 
         coordinadorAplicacion.iniciarGUI();
     }

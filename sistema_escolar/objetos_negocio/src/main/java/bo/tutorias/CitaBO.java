@@ -6,9 +6,12 @@ package bo.tutorias;
 
 import adaptadores.tutorias.CitaAdaptador;
 import bo.tutorias.excepciones.CitaInvalidaException;
+import bo.tutorias.excepciones.HorarioException;
 import dto.tutorias.CitaDTO;
 import interfaces.tutorias.ICitaBO;
 import interfaces.tutorias.IHorarioBO;
+import interfaces.tutorias.IMateriaBO;
+import interfaces.tutorias.ITutorBO;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -27,12 +30,16 @@ import tutorias.dominio.enums.EstadoCita;
 public class CitaBO implements ICitaBO{
     private final ICitaDAO citaDAO;
     private final IHorarioBO horarioBO;
+    private final ITutorBO tutorBO;
+    private final IMateriaBO materiaBO;
     
     private static final int MAX_CANCELACIONES_POR_MES = 3;
 
-    public CitaBO(ICitaDAO citaDAO, IHorarioBO horarioBO) {
+    public CitaBO(ICitaDAO citaDAO, IHorarioBO horarioBO, ITutorBO tutorBO, IMateriaBO materiaBO) {
         this.citaDAO = citaDAO;
         this.horarioBO = horarioBO;
+        this.tutorBO = tutorBO;
+        this.materiaBO = materiaBO;
     }
     
     @Override
@@ -53,24 +60,37 @@ public class CitaBO implements ICitaBO{
         verificarDisponibilidadAlumno(citaDTO.getMatriculaAlumno(), citaDTO.getFecha(), citaDTO.getHora());
         
         try {
+            if (citaDTO.getIdHorario() != null) {
+                boolean marcado = horarioBO.marcarHorarioComoOcupado(citaDTO.getIdHorario());
+                if (!marcado) {
+                    throw new CitaInvalidaException("No se pudo marcar el horario como ocupado");
+                }
+            }
+            
             Cita cita = CitaAdaptador.toEntity(citaDTO);
             cita.setEstado(EstadoCita.PENDIENTE);
-            
+
             if (citaDTO.getIdMateria() != null) {
                 Materia materia = new Materia();
                 materia.setId(citaDTO.getIdMateria());
                 cita.setMateria(materia);
             }
-            
             Cita citaCreada = citaDAO.crear(cita);
-            
-            horarioBO.marcarHorarioComoOcupado(citaDTO.getIdHorario());
-            
-            CitaDTO resultado = CitaAdaptador.toDTO(citaCreada);
-            return resultado;
-            
+            return CitaAdaptador.toDTO(citaCreada);
+        } catch (HorarioException ex) {
+            throw new CitaInvalidaException("Error al reservar el horario: ");
+        } catch (CitaInvalidaException ex) {
+            throw ex;
         } catch (Exception ex) {
-            throw new CitaInvalidaException("Error al agendar la cita: " + ex.getMessage());
+            if (citaDTO.getIdHorario() != null) {
+                try {
+                    horarioBO.liberarHorario(citaDTO.getIdHorario());
+                    System.out.println("Horario liberado tras error al crear cita");
+                } catch (Exception e) {
+                    System.err.println("No se pudo liberar el horario: " + e.getMessage());
+                }
+            }
+            throw new CitaInvalidaException("Error al agendar la cita");
         }
     }
 
@@ -82,34 +102,36 @@ public class CitaBO implements ICitaBO{
         if (matriculaAlumno == null) {
             throw new CitaInvalidaException("La matrícula del alumno no puede ser nula");
         }
-        
+
         try {
             List<Cita> citasFuturas = citaDAO.obtenerFuturasPorAlumno(matriculaAlumno);
             Cita cita = citasFuturas.stream()
                 .filter(c -> c.getId().equals(idCita))
                 .findFirst()
                 .orElseThrow(() -> new CitaInvalidaException("No se encontró la cita con ID " + idCita));
-            
+
             LocalDateTime ahora = LocalDateTime.now();
             LocalDateTime horaCita = cita.getFecha().atTime(cita.getHora());
             Duration tiempoRestante = Duration.between(ahora, horaCita);
-            
+
             if (tiempoRestante.toMinutes() < 60) {
                 throw new CitaInvalidaException(
-                    "No se puede cancelar la cita porque falta menos de 1 hora. " +
-                    "Por favor, contacta directamente al tutor."
+                    "Tu cita no ha podido ser cancelada debido a que falta menos de una hora para que se lleve a cabo. " +
+                    "Favor de comunicarte con el tutor correspondiente."
                 );
             }
             Cita citaActualizada = citaDAO.actualizarEstado(idCita, EstadoCita.CANCELADA);
-            //horarioBO.liberarHorario(cita.getIdHorario());
+            if (cita.getIdHorario() != null) {
+               horarioBO.liberarHorario(cita.getIdHorario());
+            }
             return citaActualizada != null && citaActualizada.getEstado() == EstadoCita.CANCELADA;
         } catch (CitaInvalidaException e) {
             throw e;
         } catch (Exception ex) {
-            throw new CitaInvalidaException("Error al cancelar la cita");
+            throw new CitaInvalidaException("Error al cancelar la cita: " + ex.getMessage());
         }
     }
-
+    
     @Override
     public boolean puedeAgendarCita(Long matriculaAlumno) {
         if (matriculaAlumno == null) {
@@ -140,7 +162,7 @@ public class CitaBO implements ICitaBO{
             
             for (Cita cita : citasFuturas) {
                 if (cita.getEstado() == EstadoCita.PENDIENTE) {
-                    CitaDTO dto = CitaAdaptador.toDTO(cita);
+                    CitaDTO dto = convertirCita(cita);
                     citasDTO.add(dto);
                 }
             }
@@ -150,6 +172,66 @@ public class CitaBO implements ICitaBO{
         }
     }
 
+    @Override
+    public List<CitaDTO> obtenerHistorialCompleto(Long matriculaAlumno) {
+        if (matriculaAlumno == null) {
+            throw new CitaInvalidaException("La matrícula del alumno no puede ser nula");
+        }
+        try {
+            List<Cita> citas = citaDAO.obtenerHistorialCompletoAlumno(matriculaAlumno);
+            return convertirListaCitas(citas);
+        } catch (Exception ex) {
+            throw new CitaInvalidaException("Error al obtener el historial completo: " + ex.getMessage());
+        }
+    }
+
+    @Override
+    public List<CitaDTO> obtenerHistorialPorFecha(Long matriculaAlumno, LocalDate fecha) {
+        if (matriculaAlumno == null) {
+            throw new CitaInvalidaException("La matrícula del alumno no puede ser nula");
+        }
+        if (fecha == null) {
+            throw new CitaInvalidaException("La fecha no puede ser nula");
+        }
+        try {
+            List<Cita> citas = citaDAO.obtenerHistorialPorFecha(matriculaAlumno, fecha);
+            return convertirListaCitas(citas);
+        } catch (Exception ex) {
+            throw new CitaInvalidaException("Error al obtener el historial por fecha");
+        }
+    }
+
+    @Override
+    public List<CitaDTO> obtenerHistorialPorMateria(Long matriculaAlumno, Long idMateria) {
+        if (matriculaAlumno == null) {
+            throw new CitaInvalidaException("La matrícula del alumno no puede ser nula");
+        }
+        if (idMateria == null) {
+            throw new CitaInvalidaException("La materia no puede ser nula");
+        }
+        try {
+            List<Cita> citas = citaDAO.obtenerHistorialPorMateria(matriculaAlumno, idMateria);
+            return convertirListaCitas(citas);
+        } catch (Exception ex) {
+            throw new CitaInvalidaException("Error al obtener el historial por materia");
+        }
+    }
+
+    @Override
+    public List<CitaDTO> obtenerHistorialPorFechaYMateria(Long matriculaAlumno, LocalDate fecha, Long idMateria) {
+        if (matriculaAlumno == null) {
+            throw new CitaInvalidaException("La matrícula del alumno no puede ser nula");
+        }
+        if (fecha == null || idMateria == null) {
+            throw new CitaInvalidaException("La fecha y la materia no pueden ser nulas");
+        }
+        try {
+            List<Cita> citas = citaDAO.obtenerHistorialPorFechaYMateria(matriculaAlumno, fecha, idMateria);
+            return convertirListaCitas(citas);
+        } catch (Exception ex) {
+            throw new CitaInvalidaException("Error al obtener el historial por fecha y materia");
+        }
+    }
 
     
     private void validarDatosCita(CitaDTO citaDTO) {
@@ -195,4 +277,40 @@ public class CitaBO implements ICitaBO{
             throw new CitaInvalidaException("Error al verificar disponibilidad" );
         }
     }
+    
+    private CitaDTO convertirCita(Cita cita) {
+        CitaDTO dto = CitaAdaptador.toDTO(cita);
+        if (cita.getIdTutor() != null) {
+            try {
+                dto.setNombreTutor(tutorBO.obtenerTutorPorId(cita.getIdTutor()).getNombre());
+            } catch (Exception e) {
+                dto.setNombreTutor("Tutor no disponible");
+            }
+        }
+        if (cita.getMateria() != null && cita.getMateria().getId() != null) {
+            try {
+                dto.setNombreMateria(materiaBO.obtenerMateriaPorId(cita.getMateria().getId()).getNombre());
+            } catch (Exception e) {
+                dto.setNombreMateria("Materia no disponible");
+            }
+        }
+        return dto;
+    }
+    
+    private List<CitaDTO> convertirListaCitas(List<Cita> citas) {
+        List<CitaDTO> resultado = new ArrayList<>();
+        if (citas == null || citas.isEmpty()) {
+            return resultado;
+        }
+        for (Cita cita : citas) {
+            try {
+                CitaDTO dto = convertirCita(cita);
+                resultado.add(dto);
+            } catch (Exception e) {
+                System.err.println("Error al convertir cita " + cita.getId() + ": " + e.getMessage());
+            }
+        }
+        return resultado;
+    }
+
 }

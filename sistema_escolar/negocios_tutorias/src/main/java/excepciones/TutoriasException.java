@@ -2,15 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package bo.tutorias.excepciones;
+package excepciones;
 
 /**
  *
  * @author katia
  */
-public class HistorialTutoriasException extends RuntimeException {
+public class TutoriasException extends RuntimeException{
 
-    public HistorialTutoriasException(String message) {
+    public TutoriasException(String message) {
         super(message);
     }
     

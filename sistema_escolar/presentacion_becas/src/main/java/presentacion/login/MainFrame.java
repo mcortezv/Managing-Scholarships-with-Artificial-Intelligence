@@ -42,7 +42,7 @@ public final class MainFrame extends JFrame {
         btnApelacion = new Button("Apelacion");
         btnPagoAdeudo = new Button("Pago Adeudo");
         btnActividades = new Button("Actividades");
-        btnTutorias = new Button("Tutorias");
+        btnTutorias = new Button("Tutorías");
         btnCarteras = new Button("Carteras");
 
 
@@ -75,6 +75,9 @@ public final class MainFrame extends JFrame {
         btnActividades.addActionListener( e->{
             coordinadorAplicacion.actividades();
     });
+        btnTutorias.addActionListener(e -> {
+            coordinadorAplicacion.tutorias();
+        });
 
 
     }

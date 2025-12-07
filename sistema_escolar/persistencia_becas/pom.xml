@@ -15,12 +15,6 @@
             <artifactId>mongodb-driver-sync</artifactId>
             <version>5.6.1</version>
         </dependency>
-        <dependency>
-            <groupId>mcortezv</groupId>
-            <artifactId>recursos_compartidos</artifactId>
-            <version>1.0</version>
-        </dependency>
-
     </dependencies>
     <properties>
         <maven.compiler.release>17</maven.compiler.release>

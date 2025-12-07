@@ -16,28 +16,23 @@
         <module>infraestructura_banco</module>
         <module>infraestructura_paypal</module>
         <module>negocios_actividades</module>
-        <module>presentacion_becas</module>
         <module>persistencia_becas</module>
         <module>dto_infraestructura</module>
         <module>persistencia_tutorias</module>
         <module>persistencia_actividades</module>
+        <module>negocios_tutorias</module>
+        <module>presentacion_becas</module>
     </modules>
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <build>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-            </resource>
-            <resource>
-                <directory>../src/main/resources</directory>
-                <includes>
-                    <include>mongo.properties</include>
-                </includes>
-            </resource>
-        </resources>
-    </build>
+    <dependencies>
+        <dependency>
+            <groupId>mcortezv</groupId>
+            <artifactId>recursos_compartidos</artifactId>
+            <version>1.0</version>
+        </dependency>
+    </dependencies>
+
 </project>

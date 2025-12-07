@@ -16,7 +16,6 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.text.Document;
 import org.bson.types.ObjectId;
 import tutorias.config.MongoClientProvider;
 import tutorias.dao.interfaces.IHorarioDAO;
@@ -31,19 +30,16 @@ import tutorias.repository.documents.HorarioDocument;
  */
 public class HorarioDAO implements IHorarioDAO{
     private final MongoCollection<HorarioDocument> col;
-    //private final MongoCollection<Document> colDoc;
 
     public HorarioDAO() {
         MongoDatabase db = MongoClientProvider.INSTANCE.database();
         this.col = db.getCollection("horarios", HorarioDocument.class);
-        //this.colDoc = db.getCollection("horarios", Document.class);
     }
 
     @Override
-    public Horario crear(Horario horario) throws HorarioDAOException{
+    public Horario crear(Horario horario) throws HorarioDAOException {
         try {
             HorarioDocument doc = entityToDocument(horario);
-            
             if (doc.get_id() == null) {
                 doc.set_id(new ObjectId());
             }
@@ -65,7 +61,7 @@ public class HorarioDAO implements IHorarioDAO{
                 and(
                     eq("idTutor", idTutor),
                     eq("fecha", fecha),
-                    eq("estadoDisponibilidad", EstadoDisponibilidad.DISPONIBLE)
+                    eq("estadoDisponibilidad", "DISPONIBLE")
                 )
             ).into(new ArrayList<>());
             return convertirDocumentsADominio(documents);
@@ -73,16 +69,15 @@ public class HorarioDAO implements IHorarioDAO{
             throw new HorarioDAOException("Error al consultar horarios disponibles: " + ex.getMessage());
         }
     }
-
+    
     @Override
-    public Horario actualizarEstado(Long idHorario, EstadoDisponibilidad nuevoEstado) throws HorarioDAOException{
+    public Horario actualizarEstado(Long idHorario, EstadoDisponibilidad nuevoEstado) throws HorarioDAOException {
         try {
-            FindOneAndUpdateOptions options = new FindOneAndUpdateOptions()
-                    .returnDocument(ReturnDocument.AFTER);
+            FindOneAndUpdateOptions options = new FindOneAndUpdateOptions().returnDocument(ReturnDocument.AFTER);
             HorarioDocument actualizado = col.findOneAndUpdate(
-                    eq("id", idHorario),
-                    set("estadoDisponibilidad", nuevoEstado),
-                    options
+                eq("id", idHorario),
+                set("estadoDisponibilidad", nuevoEstado.name()),
+                options
             );
             if (actualizado == null) {
                 throw new HorarioDAOException("No se encontró el horario con id " + idHorario);
@@ -90,6 +85,22 @@ public class HorarioDAO implements IHorarioDAO{
             return documentToEntity(actualizado);
         } catch (MongoException ex) {
             throw new HorarioDAOException("Error al actualizar estado de disponibilidad: " + ex.getMessage());
+        }
+    }
+    
+    @Override
+    public Horario obtenerPorId(Long id) throws HorarioDAOException {
+        if (id == null || id <= 0) {
+            throw new HorarioDAOException("El ID no puede ser nulo o inválido");
+        }
+        try {
+            HorarioDocument doc = col.find(eq("id", id)).first();
+            if (doc == null) {
+                    return null;
+            }
+            return documentToEntity(doc);
+        } catch (MongoException ex) {
+            throw new HorarioDAOException("Error al obtener horario por ID: " + ex.getMessage());
         }
     }
     
@@ -113,7 +124,7 @@ public class HorarioDAO implements IHorarioDAO{
         doc.setIdTutor(horario.getIdTutor());
         doc.setFecha(horario.getFecha());
         doc.setHora(horario.getHora());
-        doc.setEstadoDisponibilidad(horario.getEstadoDisponibilidad());
+        doc.setEstadoDisponibilidad(horario.getEstadoDisponibilidad());        
         return doc;
     }
     

@@ -18,7 +18,6 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.text.Document;
 import org.bson.types.ObjectId;
 import tutorias.config.MongoClientProvider;
 import tutorias.dao.interfaces.ICitaDAO;
@@ -35,12 +34,10 @@ import tutorias.repository.documents.CitaDocument;
 public class CitaDAO implements ICitaDAO {
 
     private final MongoCollection<CitaDocument> col;
-    //private final MongoCollection<Document> colDoc;
     
     public CitaDAO() {
         MongoDatabase db = MongoClientProvider.INSTANCE.database();
         this.col = db.getCollection("citas", CitaDocument.class);
-        //this.colDoc = db.getCollection("citas", Document.class);
     }
     
     @Override
@@ -49,6 +46,9 @@ public class CitaDAO implements ICitaDAO {
             CitaDocument doc = entityToDocument(cita);
             if (doc.get_id() == null) {
                 doc.set_id(new ObjectId());
+            }
+            if (doc.getId() == null) {
+                doc.setId(generarNuevoId());
             }
             if (doc.getCreadoEn() == null) {
                 doc.setCreadoEn(Instant.now());
@@ -134,7 +134,7 @@ public class CitaDAO implements ICitaDAO {
             long count = col.countDocuments(
                 and(
                     eq("matriculaAlumno", matriculaAlumno),
-                    eq("estado", estado),
+                    eq("estado", estado.name()),
                     gte("fecha", inicioMes),
                     lte("fecha", finMes)
                 )
@@ -151,8 +151,8 @@ public class CitaDAO implements ICitaDAO {
             FindOneAndUpdateOptions options = new FindOneAndUpdateOptions()
                     .returnDocument(ReturnDocument.AFTER);
             CitaDocument actualizada = col.findOneAndUpdate(
-                    eq("id", idCita),
-                    set("estado", nuevoEstado),
+                    eq("id", idCita.intValue()),
+                    set("estado", nuevoEstado.name()),
                     options
             );
             if (actualizada == null) {
@@ -228,4 +228,19 @@ public class CitaDAO implements ICitaDAO {
         return resultado;
     }
     
+    private Long generarNuevoId() {
+        try {
+            CitaDocument ultimaCita = col.find()
+                .sort(new org.bson.Document("id", -1))
+                .first();
+            if (ultimaCita == null || ultimaCita.getId() == null) {
+                return 1L;
+            }
+
+            return ultimaCita.getId() + 1;
+
+        } catch (Exception ex) {
+            return System.currentTimeMillis();
+        }
+    }
 }
