@@ -52,7 +52,7 @@ public final class MainFrame extends JFrame {
         panels.put("modificacionCompletada", new ModficacionCompletadaPanel(this, coordinadorAplicacion));
 
         add(centralPanel, BorderLayout.CENTER);
-        centralPanel.add(panels.get("iniciarSesion"));
+        centralPanel.add(panels.get("evaluacion"));
     }
 
     public void showPanel(String nuevoPanel) {
