@@ -68,6 +68,11 @@ public class HorarioDTO {
     public void setEstadoDisponibilidad(String estadoDisponibilidad) {
         this.estadoDisponibilidad = estadoDisponibilidad;
     }
+
+    @Override
+    public String toString() {
+        return hora.toString();
+    }
     
     
 }

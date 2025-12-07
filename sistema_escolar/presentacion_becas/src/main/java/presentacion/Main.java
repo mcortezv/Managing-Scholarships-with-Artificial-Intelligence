@@ -88,8 +88,28 @@ public class Main {
         CoordinadorAplicacionPagarAdeudo coordinadorAplicacionPagarAdeudo = new CoordinadorAplicacionPagarAdeudo(coordinadorNegocioPagarAdeudo, coordinadorAplicacion);
         CoordinadorAplicacionActividades coordinadorAplicacionActividades = new CoordinadorAplicacionActividades(fachadaAct, coordinadorAplicacion);
 
+        //---------------TUTORÍAS------------
+        ControlTutorias controlTutorias = new ControlTutorias();
+        IFachadaTutorias fachadaTutorias = new FachadaTutorias(controlTutorias);
+        CoordinadorNegocioTutorias coordinadorNegocioTutorias = new CoordinadorNegocioTutorias(fachadaTutorias);
+
+
+        CoordinadorAplicacion coordinadorAplicacion =
+                new CoordinadorAplicacion(fachadaInicioSesion, fachadaSolicitarBeca);
+
+        CoordinadorAplicacionPagarAdeudo coordinadorAplicacionPagarAdeudo =
+                new CoordinadorAplicacionPagarAdeudo(fachadaPago, coordinadorAplicacion);
+
+        CoordinadorAplicacionActividades coordinadorAplicacionActividades =
+                new CoordinadorAplicacionActividades(fachadaAct, coordinadorAplicacion);
+
+        CoordinadorAplicacionTutorias coordinadorAplicacionTutorias =
+            new CoordinadorAplicacionTutorias(coordinadorAplicacion, coordinadorNegocioTutorias);
+
         coordinadorAplicacion.setCoordinadorAplicacionPagarAdeudo(coordinadorAplicacionPagarAdeudo);
         coordinadorAplicacion.setCoordinadorAplicacionActividades(coordinadorAplicacionActividades);
+
+        coordinadorAplicacion.setCoordinadorAplicacionTutorias(coordinadorAplicacionTutorias);
 
         coordinadorAplicacion.iniciarGUI();
     }

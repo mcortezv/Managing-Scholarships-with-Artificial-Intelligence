@@ -19,7 +19,7 @@ import java.util.List;
 public interface IFachadaTutorias {
     CitaDTO agendarCita(CitaDTO citaDTO) throws TutoriasException;
     boolean cancelarCita(Long idCita, Long matriculaAlumno) throws TutoriasException;
-//    boolean puedeAgendarCita(Long matriculaAlumno) throws TutoriasException;
+    boolean puedeAgendarCita(Long matriculaAlumno) throws TutoriasException;
     List<CitaDTO> obtenerCitasActivas(Long matriculaAlumno) throws TutoriasException;
     List<CitaDTO> obtenerHistorialCompleto(Long matriculaAlumno) throws TutoriasException;
     List<CitaDTO> obtenerHistorialPorFecha(Long matriculaAlumno, LocalDate fecha) throws TutoriasException;

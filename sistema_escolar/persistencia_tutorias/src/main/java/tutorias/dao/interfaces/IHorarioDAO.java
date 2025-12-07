@@ -20,4 +20,5 @@ public interface IHorarioDAO {
     Horario crear(Horario horario) throws HorarioDAOException;
     List<Horario> obtenerDisponiblesPorTutorYFecha(Long idTutor, LocalDate fecha) throws HorarioDAOException;
     Horario actualizarEstado(Long idHorario, EstadoDisponibilidad nuevoEstado) throws HorarioDAOException;
+    Horario obtenerPorId(Long id) throws HorarioDAOException;
 }

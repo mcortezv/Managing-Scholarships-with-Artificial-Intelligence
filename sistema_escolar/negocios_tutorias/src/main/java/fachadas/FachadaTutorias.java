@@ -35,10 +35,10 @@ public class FachadaTutorias implements IFachadaTutorias{
         return control.cancelarCita(idCita, matriculaAlumno);
     }
     
-//    @Override
-//    public boolean puedeAgendarCita(Long matriculaAlumno) {
-//        return control.puedeAgendarCita(matriculaAlumno);
-//    }
+    @Override
+    public boolean puedeAgendarCita(Long matriculaAlumno) {
+        return control.puedeAgendarCita(matriculaAlumno);
+    }
     
     @Override
     public List<CitaDTO> obtenerCitasActivas(Long matriculaAlumno) {

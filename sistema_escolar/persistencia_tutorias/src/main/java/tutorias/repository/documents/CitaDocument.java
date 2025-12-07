@@ -3,6 +3,7 @@ package tutorias.repository.documents;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import org.bson.codecs.pojo.annotations.BsonProperty;
 import org.bson.types.ObjectId;
 import tutorias.dominio.enums.EstadoCita;
 import tutorias.dominio.enums.Modalidad;
@@ -12,18 +13,43 @@ import tutorias.dominio.enums.Modalidad;
  * @author katia
  */
 public class CitaDocument {
+    @BsonProperty("_id")
     private ObjectId _id;
+    
+    @BsonProperty("id")
     private Long id;               
+    
+    @BsonProperty("matriculaAlumno")
     private Long matriculaAlumno;
+    
+    @BsonProperty("idTutor")
     private Long idTutor;
+    
+    @BsonProperty("idHorario")
     private Long idHorario;
+    
+    @BsonProperty("idMateria")
     private Long idMateria;
+    
+    @BsonProperty("tema")
     private String tema;
+    
+    @BsonProperty("modalidad")
     private Modalidad modalidad;
+    
+    @BsonProperty("fecha")
     private LocalDate fecha;
+    
+    @BsonProperty("hora")
     private LocalTime hora;
+    
+    @BsonProperty("ubicacion")
     private String ubicacion;
+    
+    @BsonProperty("estado")
     private EstadoCita estado;
+    
+    @BsonProperty("creadoEn")
     private Instant creadoEn;
 
     public CitaDocument() {
