@@ -2,23 +2,25 @@ package controles;
 
 import java.awt.event.ActionListener;
 import java.util.List;
-import adaptadores.pagarAdeudo.ClaseAdaptador;
-import adaptadores.pagarAdeudo.PrestamoAdaptador;
+
 import adaptadores.pagarAdeudo.SolicitudPagoAdaptador;
+import adaptadoresPagoAdeudo.ClaseAdaptador;
+import adaptadoresPagoAdeudo.PrestamoAdaptador;
+
 import itson.pagarAdeudo.ClaseDTOI;
 import itson.pagarAdeudo.PrestamoDTOI;
 import itson.pagarAdeudo.SolicitudPagoDTOI;
-import dtoGobierno.EstudianteDTO;
 import interfaces.*;
 import interfaces.pagarAdeudo.IAdeudoBO;
 import pagarAdeudo.ClaseDTO;
 import pagarAdeudo.PrestamoDTO;
 import pagarAdeudo.SolicitudPagoDTO;
+import solicitarBeca.EstudianteDTO;
 
 public class ControlPago {
-    private final IAdeudoBO iAdeudoBO;
-    private final IFachadaBanco iFachadaBanco;
-    private final IFachadaPayPal iFachadaPayPal;
+    protected final IAdeudoBO iAdeudoBO;
+    protected final IFachadaBanco iFachadaBanco;
+    protected final IFachadaPayPal iFachadaPayPal;
 
     public ControlPago(IAdeudoBO adeudoBO, IFachadaBanco iFachadaBanco, IFachadaPayPal fachadaPayPal){
         this.iAdeudoBO = adeudoBO;

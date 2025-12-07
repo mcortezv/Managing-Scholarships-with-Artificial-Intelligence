@@ -1,5 +1,9 @@
 package bo.pagarAdeudo;
 
+import adaptadores.pagarAdeudo.ClaseAdaptador;
+import adaptadores.pagarAdeudo.PrestamoAdaptador;
+import datos.dominioItson.pagarAdeudo.Clase;
+import datos.dominioItson.pagarAdeudo.Prestamo;
 import itson.pagarAdeudo.ClaseDTOI;
 import itson.pagarAdeudo.PrestamoDTOI;
 import itson.pagarAdeudo.SolicitudPagoDTOI;
@@ -16,13 +20,15 @@ public class AdeudoBO implements IAdeudoBO {
     }
 
     @Override
-    public List<PrestamoDTOI> obtenerDetallePrestamo(Long matricula) {
-        return iFachadaITSON.solicitarListaPrestamso(matricula);
+    public List<Prestamo> obtenerDetallePrestamo(Long matricula) {
+        List<PrestamoDTOI> listaPrestamosI = iFachadaITSON.solicitarListaPrestamso(matricula);
+        return PrestamoAdaptador.toEntity(listaPrestamosI);
     }
 
     @Override
-    public List<ClaseDTOI> obtenerDetalleClase(Long matricula) {
-        return iFachadaITSON.solicitarListaClases(matricula);
+    public List<Clase> obtenerDetalleClase(Long matricula) {
+        List<ClaseDTOI> listaClasesI = iFachadaITSON.solicitarListaClases(matricula);
+        return ClaseAdaptador.toEntity(listaClasesI);
     }
 
     @Override

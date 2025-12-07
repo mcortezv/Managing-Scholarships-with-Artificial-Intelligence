@@ -1,7 +1,6 @@
 package presentacion.pagarAdeudo.coordinadorAplicacionPagarAdeudo;
 
 import bo.sesion.SesionUsuario;
-import dtoGobierno.EstudianteDTO;
 import pagarAdeudo.ClaseDTO;
 import pagarAdeudo.PrestamoDTO;
 import pagarAdeudo.SolicitudPagoDTO;
@@ -15,6 +14,7 @@ import presentacion.pagarAdeudo.panels.DetalleClase;
 import presentacion.pagarAdeudo.panels.DetallePrestamo;
 import presentacion.pagarAdeudo.panels.ListaClasesColegiatura;
 import presentacion.pagarAdeudo.panels.ListaPrestamosBiblioteca;
+import solicitarBeca.EstudianteDTO;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -198,9 +198,10 @@ public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionP
                 solicitudPagoDTO.setTipoAdeudo("Colegiatura");
             }
 
-            boolean notificado = coordinadorNegocioPagarAdeudo.notificarLiquidacion(solicitudPagoDTO);
+            SolicitudPagoDTO resultado = coordinadorNegocioPagarAdeudo.realizarPagoPaypal(solicitudPagoDTO);
 
-            if (notificado) {
+            if (resultado != null && "Pagado".equalsIgnoreCase(resultado.getEstatusPago())) {
+                coordinadorNegocioPagarAdeudo.notificarLiquidacion(resultado);
                 coordinadorNegocioPagarAdeudo.cerrarVentanaPaypal();
                 JOptionPane.showMessageDialog(null, "Pago con PayPal registrado exitosamente");
                 limpiarCache();

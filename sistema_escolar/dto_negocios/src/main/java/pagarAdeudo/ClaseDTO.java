@@ -1,13 +1,15 @@
 package pagarAdeudo;
 
 public class ClaseDTO {
-    private String nombre;
+    private Long idEstudiante;
     private double costo;
+    private String nombre;
     private String horario;
     private String profesor;
     private String aula;
     private String campus;
     private String detalles;
+    private String estatus;
 
     public ClaseDTO() {
     }
@@ -20,8 +22,24 @@ public class ClaseDTO {
         return costo;
     }
 
+    public Long getIdEstudiante() {
+        return idEstudiante;
+    }
+
+    public void setIdEstudiante(Long idEstudiante) {
+        this.idEstudiante = idEstudiante;
+    }
+
     public void setCosto(double costo) {
         this.costo = costo;
+    }
+
+    public String getEstatus() {
+        return estatus;
+    }
+
+    public void setEstatus(String estatus) {
+        this.estatus = estatus;
     }
 
     public void setNombre(String nombre) {

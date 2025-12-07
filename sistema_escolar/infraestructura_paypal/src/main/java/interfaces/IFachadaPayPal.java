@@ -1,8 +1,6 @@
 package interfaces;
 
 
-import pagarAdeudo.SolicitudPagoDTO;
-
 import java.awt.event.ActionListener;
 
 /**

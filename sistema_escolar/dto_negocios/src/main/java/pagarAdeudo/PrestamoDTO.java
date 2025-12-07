@@ -1,7 +1,7 @@
 package pagarAdeudo;
 
 public class PrestamoDTO {
-
+    private Long idEstudiante;
     private String fechaPrestamo;
     private double costo;
     private String fechaDevolucion;
@@ -9,8 +9,25 @@ public class PrestamoDTO {
     private String titulo;
     private String campus;
     private String detalles;
+    private String estatus;
 
     public PrestamoDTO() {
+    }
+
+    public String getEstatus() {
+        return estatus;
+    }
+
+    public void setEstatus(String estatus) {
+        this.estatus = estatus;
+    }
+
+    public Long getIdEstudiante() {
+        return idEstudiante;
+    }
+
+    public void setIdEstudiante(Long idEstudiante) {
+        this.idEstudiante = idEstudiante;
     }
 
     public double getCosto() {
