@@ -7,7 +7,6 @@ import static com.mongodb.client.model.Filters.eq;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.text.Document;
 import org.bson.types.ObjectId;
 import tutorias.config.MongoClientProvider;
 import tutorias.dao.interfaces.IMateriaDAO;
@@ -21,12 +20,10 @@ import tutorias.repository.documents.MateriaDocument;
  */
 public class MateriaDAO implements IMateriaDAO{
     private final MongoCollection<MateriaDocument> col;
-    //private final MongoCollection<Document> colDoc;
     
     public MateriaDAO() {
         MongoDatabase db = MongoClientProvider.INSTANCE.database();
         this.col = db.getCollection("materias", MateriaDocument.class);
-        //this.colDoc = db.getCollection("materias", Document.class);
     }
 
     @Override
@@ -64,7 +61,7 @@ public class MateriaDAO implements IMateriaDAO{
     @Override
     public Materia obtenerPorId(Long idMateria) throws MateriaDAOException{
         try {
-            MateriaDocument doc = col.find(eq("idMateria", idMateria)).first();           
+            MateriaDocument doc = col.find(eq("idMateria", idMateria.intValue())).first();           
             if (doc == null) {
                 throw new MateriaDAOException("No se encontró la materia con id " + idMateria);
             }           

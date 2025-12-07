@@ -37,17 +37,18 @@ public class HorarioBO implements IHorarioBO{
         if (fecha.isBefore(LocalDate.now())) {
             throw new HorarioException("No se pueden consultar horarios de fechas pasadas");
         }
-        
+
         try {
             List<Horario> horarios = horarioDAO.obtenerDisponiblesPorTutorYFecha(idTutor, fecha);
             List<HorarioDTO> horariosDTO = new ArrayList<>();
             for (Horario horario : horarios) {
                 HorarioDTO dto = HorarioAdaptador.toDTO(horario);
+                System.out.println("  - Horario ID: " + dto.getId() + ", Hora: " + dto.getHora());
                 horariosDTO.add(dto);
             }
             return horariosDTO;
         } catch (Exception ex) {
-            throw new HorarioException("Error al obtener horarios disponibles.");
+            throw new HorarioException("Error al obtener horarios disponibles: " + ex.getMessage());
         }
     }
 
@@ -56,11 +57,21 @@ public class HorarioBO implements IHorarioBO{
         if (idHorario == null || idHorario <= 0) {
             throw new HorarioException("El ID del horario no puede ser nulo o menor/igual a cero.");
         }
+
         try {
+            Horario horario = horarioDAO.obtenerPorId(idHorario);
+            if (horario == null) {
+                throw new HorarioException("El horario con ID " + idHorario + " no existe");
+            }
+            if (horario.getEstadoDisponibilidad() != EstadoDisponibilidad.DISPONIBLE) {
+                throw new HorarioException("El horario ya no está disponible");
+            }
             Horario actualizado = horarioDAO.actualizarEstado(idHorario, EstadoDisponibilidad.OCUPADO);
             return actualizado != null && actualizado.getEstadoDisponibilidad() == EstadoDisponibilidad.OCUPADO;
+        } catch (HorarioException e) {
+            throw e;
         } catch (Exception ex) {
-            throw new HorarioException("Error al marcar horario como ocupado.");
+            throw new HorarioException("Error al marcar horario como ocupado: ");
         }
     }
 

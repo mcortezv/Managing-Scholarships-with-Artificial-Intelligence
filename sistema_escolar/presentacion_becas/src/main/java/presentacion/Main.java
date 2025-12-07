@@ -12,6 +12,8 @@ import presentacion.actividadesExtracurriculares.coordinador.CoordinadorAplicaci
 import presentacion.pagarAdeudo.coordinadorAplicacionPagarAdeudo.CoordinadorAplicacionPagarAdeudo;
 import fachadas.FachadaGobierno;
 import interfaces.*;
+import presentacion.tutorias.coordinadorAplicacion.CoordinadorAplicacionTutorias;
+import presentacion.tutorias.coordinadorNegocio.CoordinadorNegocioTutorias;
 import solicitarBeca.repository.dao.interfaces.IDocumentoDAO;
 import solicitarBeca.repository.dao.interfaces.IEstudianteDAO;
 import solicitarBeca.repository.dao.interfaces.ISolicitudDAO;
@@ -63,6 +65,13 @@ public class Main {
         IFachadaInicioSesion fachadaInicioSesion = new FachadaInicioSesion(new ControlInicioSesion(estudianteBO));
         IFachadaSolicitarBeca fachadaSolicitarBeca = new FachadaSolicitarBeca(new ControlSolicitarBeca(solicitudBO, estudianteBO, tutorBO, becasFiltradasBO, documentoBO, historialAcademicoBO, infoSocioBO));
 
+        
+        //---------------TUTORÍAS------------
+        ControlTutorias controlTutorias = new ControlTutorias();
+        IFachadaTutorias fachadaTutorias = new FachadaTutorias(controlTutorias);
+        CoordinadorNegocioTutorias coordinadorNegocioTutorias = new CoordinadorNegocioTutorias(fachadaTutorias);
+        
+        
         CoordinadorAplicacion coordinadorAplicacion =
                 new CoordinadorAplicacion(fachadaInicioSesion, fachadaSolicitarBeca);
 
@@ -71,8 +80,14 @@ public class Main {
 
         CoordinadorAplicacionActividades coordinadorAplicacionActividades =
                 new CoordinadorAplicacionActividades(fachadaAct, coordinadorAplicacion);
+        
+        CoordinadorAplicacionTutorias coordinadorAplicacionTutorias = 
+            new CoordinadorAplicacionTutorias(coordinadorAplicacion, coordinadorNegocioTutorias);
+        
         coordinadorAplicacion.setCoordinadorAplicacionPagarAdeudo(coordinadorAplicacionPagarAdeudo);
         coordinadorAplicacion.setCoordinadorAplicacionActividades(coordinadorAplicacionActividades);
+        coordinadorAplicacion.setCoordinadorAplicacionTutorias(coordinadorAplicacionTutorias);
+        
         coordinadorAplicacion.iniciarGUI();
     }
 }

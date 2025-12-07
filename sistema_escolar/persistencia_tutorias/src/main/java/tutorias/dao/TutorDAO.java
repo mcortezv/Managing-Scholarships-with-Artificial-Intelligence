@@ -11,7 +11,6 @@ import static com.mongodb.client.model.Filters.eq;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.text.Document;
 import org.bson.types.ObjectId;
 import tutorias.config.MongoClientProvider;
 import tutorias.dao.interfaces.ITutorDAO;
@@ -25,12 +24,10 @@ import tutorias.repository.documents.TutorDocument;
  */
 public class TutorDAO implements ITutorDAO{
     private final MongoCollection<TutorDocument> col;
-    //private final MongoCollection<Document> colDoc;
 
     public TutorDAO() {
         MongoDatabase db = MongoClientProvider.INSTANCE.database();
         this.col = db.getCollection("tutores", TutorDocument.class);
-        //this.colDoc = db.getCollection("tutores", Document.class);
     }
 
     @Override
@@ -68,7 +65,7 @@ public class TutorDAO implements ITutorDAO{
     @Override
     public Tutor obtenerPorId(Long idTutor) throws TutorDAOException {
         try {
-            TutorDocument doc = col.find(eq("idTutor", idTutor)).first();
+            TutorDocument doc = col.find(eq("idTutor", idTutor.intValue())).first();
             if (doc == null) {
                 throw new TutorDAOException("No se encontró el tutor con id " + idTutor);
             }

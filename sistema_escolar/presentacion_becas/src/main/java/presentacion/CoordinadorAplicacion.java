@@ -20,6 +20,7 @@ import solicitarBeca.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
+import presentacion.tutorias.coordinadorAplicacion.CoordinadorAplicacionTutorias;
 
 /**
  *
@@ -45,6 +46,9 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
         this.coordinadorNegocio = new CoordinadorNegocio(fachadaInicioSesion, fachadaSolicitarBeca);
         mainFrame = null;
     }
+    
+    // Tutorías
+    private CoordinadorAplicacionTutorias coordinadorAplicacionTutorias;
 
     public void iniciarGUI() {
         if (mainFrame == null) {
@@ -106,6 +110,16 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     public void setCoordinadorAplicacionActividades(CoordinadorAplicacionActividades c){
         this.coordinadorAplicacionActividades = c;
     }
+    
+    public void setCoordinadorAplicacionTutorias(CoordinadorAplicacionTutorias c) {
+        this.coordinadorAplicacionTutorias = c;
+    }
+    public void tutorias() {
+        mainFrame.setVisible(false);
+        EstudianteDTO estudiante = getEstudianteLogueado();
+        coordinadorAplicacionTutorias.iniciarTutorias(estudiante.getMatricula());
+    }
+    
     public void main() {
         solicitarBeca.setVisible(false);
         mainFrame.setVisible(true);

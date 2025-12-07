@@ -61,4 +61,9 @@ public class TutorDTO {
     public void setEnlace(String enlace) {
         this.enlace = enlace;
     }
+
+    @Override
+    public String toString() {
+        return nombre;
+    }
 }

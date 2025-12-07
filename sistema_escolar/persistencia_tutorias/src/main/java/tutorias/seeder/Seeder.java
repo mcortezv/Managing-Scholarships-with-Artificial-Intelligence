@@ -96,7 +96,7 @@ public class Seeder {
 //            System.out.println("Horarios insertados.");
 //
 //       
-//            Long matriculaEjemplo = 258835L;
+//            Long matriculaEjemplo = 252855L;
 //
 //            Cita citaPasada = new Cita();
 //            citaPasada.setId(1001L);
