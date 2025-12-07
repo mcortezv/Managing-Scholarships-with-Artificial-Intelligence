@@ -17,6 +17,7 @@ import itson.HistorialAcademicoDTOItson;
 import itson.LoginDTOItson;
 import itson.actividades.GruposResponseDTOItson;
 import itson.actividades.InscripcionDTOItson;
+import itson.actividades.InscripcionesDTOItson;
 
 import java.util.List;
 
@@ -68,6 +69,10 @@ public class ControlItson {
 
     public InscripcionDTOItson inscribirActividad(InscripcionDTOItson inscripcionDTOItson) {
         return api.inscribirActividad(inscripcionDTOItson);
+    }
+    
+    public InscripcionesDTOItson obtenerInscripciones(EstudianteDTOItson estudianteDTO){
+        return api.obtenerInscripciones(estudianteDTO);
     }
 
 }

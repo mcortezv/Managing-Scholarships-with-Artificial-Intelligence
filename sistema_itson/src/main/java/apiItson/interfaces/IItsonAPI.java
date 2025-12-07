@@ -7,8 +7,10 @@ import itson.LoginDTOItson;
 import datos.dominioItson.Estudiante;
 import itson.ActividadDTOItson;
 import itson.ActividadesDTOItson;
+import itson.EstudianteDTOItson;
 import itson.actividades.GruposResponseDTOItson;
 import itson.actividades.InscripcionDTOItson;
+import itson.actividades.InscripcionesDTOItson;
 import itson.pagarAdeudo.SolicitudPagoDTOI;
 
 import java.util.List;
@@ -32,6 +34,7 @@ public interface IItsonAPI {
      ActividadesDTOItson soloicitarActividades();
      GruposResponseDTOItson solicitarGrupos(ActividadDTOItson actividad);
      InscripcionDTOItson inscribirActividad(InscripcionDTOItson inscripcionDTOItson);
+     InscripcionesDTOItson obtenerInscripciones(EstudianteDTOItson estudianteDTO);
 
 
 }

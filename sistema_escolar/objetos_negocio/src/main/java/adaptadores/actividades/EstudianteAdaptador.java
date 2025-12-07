@@ -6,6 +6,8 @@ package adaptadores.actividades;
 
 import actividades.dominio.Estudiante;
 import dto.actividades.EstudianteDTO;
+import itson.EstudianteDTOItson;
+
 
 /**
  *
@@ -25,6 +27,14 @@ public class EstudianteAdaptador {
         Estudiante estudiante= new Estudiante();
         estudiante.setMatricula(estudianteDTO.getMatricula());
         return estudiante;
+    }
+    
+    public static EstudianteDTOItson toDTOItson(EstudianteDTO estudianteDTO){
+        EstudianteDTOItson estudianteDTOItson= new EstudianteDTOItson();
+        estudianteDTOItson.setMatricula(Long.valueOf(estudianteDTO.getMatricula()));
+        return estudianteDTOItson;
+        
+        
     }
 
 }

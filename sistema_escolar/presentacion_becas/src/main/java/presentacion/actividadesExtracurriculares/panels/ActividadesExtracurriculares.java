@@ -71,6 +71,10 @@ public class ActividadesExtracurriculares extends JFrame {
         panel = new DetalleGrupo(this, coordinadorAplicacionActividades);
         panel.startComponents();
         panels.put("DetalleGrupo", panel);
+        
+        panel= new ListaInscripciones(this, coordinadorAplicacionActividades);
+        panel.startComponents();
+        panels.put("ListaInscripciones", panel);
 
     }
 

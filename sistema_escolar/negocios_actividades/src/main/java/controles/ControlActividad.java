@@ -8,6 +8,7 @@ import dto.actividades.EstudianteDTO;
 import dto.actividades.GrupoDTO;
 import dto.actividades.GruposResponseDTO;
 import dto.actividades.InscripcionDTO;
+import dto.actividades.InscripcionesDTO;
 import interfaces.actividades.IActividadBO;
 import interfaces.actividades.IGrupoBO;
 import interfaces.actividades.IInscripcionBO;
@@ -59,6 +60,10 @@ public class ControlActividad {
         inscripcionDTO.setIdEstudiante(estudianteGuardar.getId());
         return inscripcionBO.inscribirActividad(inscripcionDTO);
 
+    }
+    
+    public InscripcionesDTO obtenerInscripciones(EstudianteDTO estudianteDTO){
+        return inscripcionBO.obtenerInscripciones(estudianteDTO);
     }
 
 }

@@ -6,9 +6,11 @@ package presentacion.actividadesExtracurriculares.coordinador;
 
 import dto.actividades.ActividadDTO;
 import dto.actividades.ActividadesDTO;
+import dto.actividades.EstudianteDTO;
 import dto.actividades.GrupoDTO;
 import dto.actividades.GruposResponseDTO;
 import dto.actividades.InscripcionDTO;
+import dto.actividades.InscripcionesDTO;
 
 
 
@@ -21,6 +23,7 @@ import presentacion.CoordinadorAplicacion;
 import presentacion.actividadesExtracurriculares.coordNegocio.CoordinadorNegocioActividades;
 import presentacion.actividadesExtracurriculares.panels.ActividadesExtracurriculares;
 import presentacion.actividadesExtracurriculares.panels.DetalleGrupo;
+import presentacion.actividadesExtracurriculares.panels.ListaInscripciones;
 import presentacion.actividadesExtracurriculares.panels.ResumenClases;
 
 
@@ -39,6 +42,7 @@ public class CoordinadorAplicacionActividades implements ICoordinadorAplicacionA
     private GruposResponseDTO gruposResponseDTO;
     private GrupoDTO grupoSeleccionado;
     private LoginDTOItson loginDTO;
+    private EstudianteDTO estudiante;
 //    private InscripcionDTO inscripcionDTO;
     
     public CoordinadorAplicacionActividades(IFachadaActividad fachadaActividad, CoordinadorAplicacion coordinadorAplicacion){
@@ -79,6 +83,21 @@ public class CoordinadorAplicacionActividades implements ICoordinadorAplicacionA
         return coordinadorNegocioActividades.obtenerActividades();
     }
     
+    public void recuperarLogin(LoginDTOItson loginDTO){
+        this.loginDTO= loginDTO;
+        this.estudiante= new EstudianteDTO();
+        this.estudiante.setMatricula(String.valueOf(loginDTO.getUsuario()));
+        ListaInscripciones listaInscripciones = (ListaInscripciones) actividades.getPanel("ListaInscripciones");
+        listaInscripciones.recuperarEstudiante(loginDTO);
+        
+    }
+    
+    
+    public InscripcionesDTO obtenerInscripciones(EstudianteDTO estudiante){
+       
+        return coordinadorNegocioActividades.obtenerInscripciones(estudiante);
+    }
+    
 
     public GruposResponseDTO obtenerGrupos(ActividadDTO actividadDTO){
        
@@ -86,9 +105,7 @@ public class CoordinadorAplicacionActividades implements ICoordinadorAplicacionA
        
     }
     
-    public void recuperarLogin(LoginDTOItson loginDTO){
-        this.loginDTO= loginDTO;
-    }
+
     
     public void mostrarMenu(){
         actividades.showPanel("MenuOpciones");
@@ -152,6 +169,14 @@ public class CoordinadorAplicacionActividades implements ICoordinadorAplicacionA
     public void setGruposResponseDTO(GruposResponseDTO gruposResponseDTO) {
         this.gruposResponseDTO = gruposResponseDTO;
     }
+    
+    public void mostarListaInscripciones(){
+        ListaInscripciones panel = (ListaInscripciones) actividades.getPanel("ListaInscripciones");
+        panel.cargarElementos();
+        actividades.showPanel("ListaInscripciones");
+    }
+    
+    
     
     
     

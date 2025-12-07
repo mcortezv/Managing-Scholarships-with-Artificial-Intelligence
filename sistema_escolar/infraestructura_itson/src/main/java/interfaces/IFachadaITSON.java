@@ -9,6 +9,7 @@ import itson.HistorialAcademicoDTOItson;
 import itson.LoginDTOItson;
 import itson.actividades.GruposResponseDTOItson;
 import itson.actividades.InscripcionDTOItson;
+import itson.actividades.InscripcionesDTOItson;
 
 import java.util.List;
 
@@ -33,4 +34,5 @@ public interface IFachadaITSON {
     public GruposResponseDTOItson otenerGrupos(ActividadDTOItson actividadDTO);
      public boolean buscarEstudiantePorMatricula(InscripcionDTOItson inscripcionDTOItson);
      public InscripcionDTOItson inscribirActividad(InscripcionDTOItson inscripcionDTOItson);
+     public InscripcionesDTOItson obtenerInscripciones(EstudianteDTOItson estudianteDTO);
 }

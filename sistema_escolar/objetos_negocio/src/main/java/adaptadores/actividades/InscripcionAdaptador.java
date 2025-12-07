@@ -10,8 +10,12 @@ import actividades.dominio.Grupo;
 import actividades.dominio.Horario;
 import actividades.dominio.Inscripcion;
 import dto.actividades.InscripcionDTO;
+import dto.actividades.InscripcionesDTO;
 import itson.actividades.InscripcionDTOItson;
+import itson.actividades.InscripcionesDTOItson;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import org.bson.types.ObjectId;
 
 /**
@@ -52,6 +56,17 @@ public class InscripcionAdaptador {
         inscripcionDTO.setHoraInicio(inscripcionDTOItson.getHoraInicio());
         inscripcionDTO.setHoraFin(inscripcionDTOItson.getHoraFin());
         return inscripcionDTO;
+    }
+    
+    public static InscripcionesDTO toDTONegocio(InscripcionesDTOItson inscripcionesItson){
+        InscripcionesDTO inscripcionesDTO= new InscripcionesDTO();
+        List<InscripcionDTO> listaInscripciones= new ArrayList<>();
+        for(InscripcionDTOItson inscripcion: inscripcionesItson.getInscripciones()){
+            listaInscripciones.add(toDTONegocio(inscripcion));           
+        }
+        inscripcionesDTO.setInscripciones(listaInscripciones);
+        return inscripcionesDTO;
+        
     }
     
     public static Inscripcion toEntity(InscripcionDTO inscripcionDTO){
