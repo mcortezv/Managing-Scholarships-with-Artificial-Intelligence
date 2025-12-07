@@ -1,17 +1,17 @@
 package fachadas;
 
 import controles.ControlPago;
-import dtoGobierno.EstudianteDTO;
 import pagarAdeudo.ClaseDTO;
 import pagarAdeudo.PrestamoDTO;
 import pagarAdeudo.SolicitudPagoDTO;
 import interfaces.IFachadaPago;
+import solicitarBeca.EstudianteDTO;
 import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.util.List;
 
 public class FachadaPago implements IFachadaPago {
-    public ControlPago controlPago;
+    protected ControlPago controlPago;
 
     public FachadaPago(ControlPago controlPago){
         this.controlPago = controlPago;

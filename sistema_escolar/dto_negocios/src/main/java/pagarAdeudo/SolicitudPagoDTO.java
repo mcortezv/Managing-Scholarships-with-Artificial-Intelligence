@@ -1,7 +1,6 @@
 package pagarAdeudo;
 
 public class SolicitudPagoDTO {
-
     private Long idEstudiante;
     private String referenciaPago;
     private String fechaPago;

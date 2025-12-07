@@ -1,12 +1,13 @@
 package presentacion.pagarAdeudo.coordinadorNegocioPagarAdeudo;
 
-import dtoGobierno.EstudianteDTO;
+
 import interfaces.IFachadaPago;
 import java.awt.event.ActionListener;
 import java.util.List;
 import pagarAdeudo.ClaseDTO;
 import pagarAdeudo.PrestamoDTO;
 import pagarAdeudo.SolicitudPagoDTO;
+import solicitarBeca.EstudianteDTO;
 
 public class CoordinadorNegocioPagarAdeudo implements ICoordinadorNegocioPagarAdeudo {
     private final IFachadaPago fachadaPago;

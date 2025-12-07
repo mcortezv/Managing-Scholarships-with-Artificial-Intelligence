@@ -18,7 +18,6 @@ import presentacion.pagarAdeudo.coordinadorAplicacionPagarAdeudo.CoordinadorApli
 import presentacion.pagarAdeudo.coordinadorNegocioPagarAdeudo.CoordinadorNegocioPagarAdeudo;
 import presentacion.pagarAdeudo.coordinadorNegocioPagarAdeudo.ICoordinadorNegocioPagarAdeudo;
 import presentacion.interfaces.ICoordinadorNegocio;
-
 import fachadas.FachadaGobierno;
 import interfaces.*;
 import interfaces.actividades.IEstudianteBOAct;

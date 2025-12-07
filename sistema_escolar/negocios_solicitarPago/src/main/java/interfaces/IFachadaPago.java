@@ -1,12 +1,9 @@
 package interfaces;
 
-import dtoGobierno.EstudianteDTO;
 import pagarAdeudo.ClaseDTO;
 import pagarAdeudo.PrestamoDTO;
 import pagarAdeudo.SolicitudPagoDTO;
-import solicitarBeca.dominio.enums.pagarAdeudo.MetodoPago;
-
-import javax.swing.*;
+import solicitarBeca.EstudianteDTO;
 import java.awt.event.ActionListener;
 import java.util.List;
 
@@ -21,6 +18,7 @@ public interface IFachadaPago {
     void solicitarVistaDePago(ActionListener listener);
     SolicitudPagoDTO realizarPago(SolicitudPagoDTO solicitudPagoDTO);
     void cerrarVentana();
+
     //paypal
     void solicitarVistaPaypal(double monto, String concepto, ActionListener listener);
     void cerrarVentanaPaypal();

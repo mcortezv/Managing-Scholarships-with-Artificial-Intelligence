@@ -1,9 +1,9 @@
 package presentacion.pagarAdeudo.coordinadorAplicacionPagarAdeudo;
 
-import dtoGobierno.EstudianteDTO;
 import pagarAdeudo.ClaseDTO;
 import pagarAdeudo.PrestamoDTO;
 import presentacion.pagarAdeudo.PagarAdeudo;
+import solicitarBeca.EstudianteDTO;
 
 public interface ICoordinadorAplicacionPagarAdeudo {
     void pagarAdeudo();

@@ -1,7 +1,13 @@
 package adaptadores.pagarAdeudo;
 
+import datos.dominioItson.pagarAdeudo.Clase;
+import datos.dominioItson.pagarAdeudo.enums.Campus;
 import pagarAdeudo.ClaseDTO;
 import itson.pagarAdeudo.ClaseDTOI;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class ClaseAdaptador {
 
@@ -33,4 +39,32 @@ public class ClaseAdaptador {
 
         return dtoI;
     }
+
+    public static Clase toEntity(ClaseDTOI dto) {
+        if (dto == null) {
+            return null;
+        }
+        Clase entity = new Clase();
+        entity.setIdEstudiante(dto.getIdEstudiante());
+        entity.setNombre(dto.getNombre());
+        entity.setCosto(dto.getCosto());
+        entity.setHorario(dto.getHorario());
+        entity.setProfesor(dto.getProfesor());
+        entity.setAula(dto.getAula());
+        entity.setDetalles(dto.getDetalles());
+        entity.setEstatus(dto.getEstatus());
+        entity.setCampus(Campus.valueOf(dto.getCampus()));
+        return entity;
+    }
+
+    public static List<Clase> toEntity(List<ClaseDTOI> dtos) {
+        if (dtos == null) {
+            return new ArrayList<>();
+        }
+
+        return dtos.stream()
+                .map(ClaseAdaptador::toEntity)
+                .collect(Collectors.toList());
+    }
+
 }

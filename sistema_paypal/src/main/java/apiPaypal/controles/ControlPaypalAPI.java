@@ -36,6 +36,11 @@ public class ControlPaypalAPI {
                 listenerBotonPagarExitoso.actionPerformed(e);
             }
         });
+
+        this.ventanaPaypal.setAccionCancelar(e -> {
+            int respuesta = JOptionPane.showConfirmDialog(null, "¿Cancelar?", "Salir", JOptionPane.YES_NO_OPTION);
+            if (respuesta == JOptionPane.YES_OPTION) cerrarVentana();
+        });
         this.ventanaPaypal.setAccionVolver(e -> {
             int respuesta = JOptionPane.showConfirmDialog(null, "¿Cancelar?", "Salir", JOptionPane.YES_NO_OPTION);
             if (respuesta == JOptionPane.YES_OPTION) cerrarVentana();

@@ -63,4 +63,8 @@ public class MainFramePaypal extends JDialog {
     public void setAccionPagarFinal(ActionListener listener) {
         panelRealizarPago.setAccionPagarFinal(listener);
     }
+
+    public void setAccionCancelar(ActionListener listener){
+        panelRealizarPago.setAccionCancelar(listener);
+    }
 }

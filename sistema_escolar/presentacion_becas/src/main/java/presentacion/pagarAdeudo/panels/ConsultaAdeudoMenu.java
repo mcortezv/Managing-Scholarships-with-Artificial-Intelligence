@@ -1,13 +1,12 @@
 package presentacion.pagarAdeudo.panels;
 
 import bo.sesion.SesionUsuario;
-import dtoGobierno.EstudianteDTO;
 import presentacion.pagarAdeudo.PagarAdeudo;
 import presentacion.pagarAdeudo.PanelPagarAdeudo;
 import presentacion.pagarAdeudo.coordinadorAplicacionPagarAdeudo.CoordinadorAplicacionPagarAdeudo;
 import presentacion.styles.Button;
 import presentacion.styles.Style;
-
+import solicitarBeca.EstudianteDTO;
 import javax.swing.*;
 import java.awt.*;
 

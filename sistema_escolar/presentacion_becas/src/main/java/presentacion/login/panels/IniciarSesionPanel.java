@@ -87,10 +87,10 @@ public class IniciarSesionPanel extends Panel {
         toggle.run();
 
         btnIniciarSesion.addActionListener(e -> {
-            String usuario = txtUsuario.getText().trim();
-            Long usuarioLong = Long.parseLong(usuario);
-            String contrasenia = new String(txtPassword.getPassword());
             try {
+                String usuario = txtUsuario.getText().trim();
+                Long usuarioLong = Long.parseLong(usuario);
+                String contrasenia = new String(txtPassword.getPassword());
                 LoginDTOItson loginDTO = new LoginDTOItson(usuarioLong,contrasenia);
                 boolean verificarLogin = coordinadorAplicacion.intentarIniciarSesion(loginDTO);
                 if(verificarLogin) {
@@ -104,6 +104,8 @@ public class IniciarSesionPanel extends Panel {
                         SwingUtilities.updateComponentTreeUI(mainFrame);
                         mainFrame.repaint();
                     });
+                }else{
+                    JOptionPane.showMessageDialog(this, "La contraseña no coincide con el usuario");
                 }
             } catch (IDInvalidoException | ContraseniaInvalidaException ex) {
                 JOptionPane.showMessageDialog(mainFrame, ex.getMessage(), "Error de validación", JOptionPane.ERROR_MESSAGE);
