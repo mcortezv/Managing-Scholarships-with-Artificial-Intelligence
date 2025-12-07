@@ -18,10 +18,8 @@ import interfaces.actividades.IEstudianteBOAct;
 import interfaces.actividades.IGrupoBO;
 import interfaces.actividades.IInscripcionBO;
 import objetosNegocio.actividades.EstudianteBOAct;
-//import interfaces.actividades.IInscripcionBO;
 import objetosNegocio.actividades.GrupoBO;
 import objetosNegocio.actividades.InscripcionBO;
-//import objetosNegocio.actividades.InscripcionBO;
 import solicitarBeca.repository.dao.interfaces.IDocumentoDAO;
 import solicitarBeca.repository.dao.interfaces.IEstudianteDAO;
 import solicitarBeca.repository.dao.interfaces.ISolicitudDAO;
@@ -36,6 +34,9 @@ import solicitarBeca.repository.dao.SolicitudDAO;
 public class Main {
 
     public static void main(String[] args) {
+
+
+
 
         // Controles unicos para mantenerl el singleton
         ControlItson controlItson = new ControlItson();
