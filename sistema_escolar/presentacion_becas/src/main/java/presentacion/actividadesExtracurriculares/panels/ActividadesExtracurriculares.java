@@ -8,6 +8,7 @@ import itson.LoginDTOItson;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JFrame;
@@ -15,84 +16,78 @@ import javax.swing.JPanel;
 import presentacion.actividadesExtracurriculares.coordinador.CoordinadorAplicacionActividades;
 
 import presentacion.login.panels.NorthPanel;
+import presentacion.styles.Button;
 
 /**
  *
  * @author janethcristinagalvanquinonez
  */
-public class ActividadesExtracurriculares extends JFrame{
+public class ActividadesExtracurriculares extends JFrame {
+
     private JPanel northPanel;
     private JPanel centralPanel;
     private Map<String, JPanel> panels;
     private CoordinadorAplicacionActividades coordinadorAplicacionActividades;
     private LoginDTOItson loginDTO;
-    
-    public ActividadesExtracurriculares(CoordinadorAplicacionActividades coordinadorAplicacionActividades){
-        this.coordinadorAplicacionActividades= coordinadorAplicacionActividades;
+
+    public ActividadesExtracurriculares(CoordinadorAplicacionActividades coordinadorAplicacionActividades) {
+        this.coordinadorAplicacionActividades = coordinadorAplicacionActividades;
         setTitle("Actividades Extracurriculares");
-        setSize(1500,900);
+        setSize(1500, 900);
+        setResizable(false);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
-       
-        northPanel= new JPanel();
+
+        northPanel = new JPanel();
         northPanel.setBackground(new Color(50, 100, 200));
         northPanel.setPreferredSize(new Dimension(1, 80));
-        centralPanel= new JPanel();
-        panels= new HashMap<>();
-         initializePanels();
+        centralPanel = new JPanel();
+        panels = new HashMap<>();
+        initializePanels();
         add(northPanel, BorderLayout.NORTH);
         add(centralPanel, BorderLayout.CENTER);
-      
-        
+
         showPanel("MenuOpciones");
-        coordinadorAplicacionActividades.setActividades(this);      
-        
+        coordinadorAplicacionActividades.setActividades(this);
+
     }
-    
-    private void initializePanels(){
-        
-       PanelActividades panel;
-//       panel= new ListaActividades(this, coordinadorAplicacionActividades);
-//       panel.startComponents();
-//       panels.put("ListaActividades", panel);
-       
-       panel= new MenuOpciones(this, coordinadorAplicacionActividades);
-       panel.startComponents();
-       panels.put("MenuOpciones", panel);
-       
-       panel= new ListaActividades(this, coordinadorAplicacionActividades);
-       panel.startComponents();
-       panels.put("ListaActividades", panel);
-       
-       panel= new ResumenClases(this, coordinadorAplicacionActividades);
-       panel.startComponents();
-       panels.put("ResumenClases", panel);     
-       
-       panel= new DetalleGrupo(this, coordinadorAplicacionActividades);
-       panel.startComponents();
-       panels.put("DetalleGrupo", panel);
-        
+
+    private void initializePanels() {
+
+        PanelActividades panel;
+
+        panel = new MenuOpciones(this, coordinadorAplicacionActividades);
+        panel.startComponents();
+        panels.put("MenuOpciones", panel);
+
+        panel = new ListaActividades(this, coordinadorAplicacionActividades);
+        panel.startComponents();
+        panels.put("ListaActividades", panel);
+
+        panel = new ResumenClases(this, coordinadorAplicacionActividades);
+        panel.startComponents();
+        panels.put("ResumenClases", panel);
+
+        panel = new DetalleGrupo(this, coordinadorAplicacionActividades);
+        panel.startComponents();
+        panels.put("DetalleGrupo", panel);
+
     }
-    
-       
-    
-    public void showPanel(String pantalla){
+
+    public void showPanel(String pantalla) {
         centralPanel.removeAll();
         centralPanel.add(panels.get(pantalla), BorderLayout.CENTER);
         centralPanel.revalidate();
-        centralPanel.repaint();   
+        centralPanel.repaint();
     }
-    
-    public JPanel getPanel(String key){
+
+    public JPanel getPanel(String key) {
         return panels.get(key);
     }
-    
-    public void recuperarLogin(LoginDTOItson loginDTO){
-        this.loginDTO= loginDTO;
+
+    public void recuperarLogin(LoginDTOItson loginDTO) {
+        this.loginDTO = loginDTO;
         coordinadorAplicacionActividades.recuperarLogin(loginDTO);
     }
-    
-    
-    
-    
+
 }
