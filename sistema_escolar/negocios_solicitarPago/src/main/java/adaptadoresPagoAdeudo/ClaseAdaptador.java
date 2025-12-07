@@ -55,5 +55,4 @@ public class ClaseAdaptador {
         dto.setIdEstudiante(entity.getIdEstudiante());
         return dto;
     }
-
 }

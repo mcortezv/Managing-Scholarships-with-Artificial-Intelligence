@@ -40,6 +40,7 @@ public class PrestamoAdaptador {
         return dtoi;
     }
 
+
     public static PrestamoDTO toDTO(Prestamo entity) {
         if (entity == null) return null;
 
