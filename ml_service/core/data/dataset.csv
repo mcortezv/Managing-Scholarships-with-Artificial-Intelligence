@@ -1,0 +1,505 @@
+student_gpa,dropout_rate,failure_rate,semester,degree_program,course_load,total_household_income,housing_type,employment,debts,category,number_of_scholarships_awarded,resolution,reason
+47.50,33.00,39.00,9,INGENIERA,57.00,41500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,76,Rechazada,Carga academica insuficiente para apoyo
+47.50,33.00,39.00,9,LICENCIATURA,57.00,41500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,76,Rechazada,Carga academica insuficiente para apoyo
+47.50,33.00,39.00,9,MAESTRIA,57.00,41500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,76,Rechazada,Carga academica insuficiente para apoyo
+47.50,33.00,39.00,9,DOCTORADO,57.00,41500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,76,Rechazada,Carga academica insuficiente para apoyo
+70.30,13.50,18.50,7,INGENIERA,73.30,47500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,80,Rechazada,Carga academica insuficiente para apoyo
+70.30,13.50,18.50,7,LICENCIATURA,73.30,47500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,80,Rechazada,Carga academica insuficiente para apoyo
+70.30,13.50,18.50,7,MAESTRIA,73.30,47500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,80,Rechazada,Carga academica insuficiente para apoyo
+70.30,13.50,18.50,7,DOCTORADO,73.30,47500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,80,Rechazada,Carga academica insuficiente para apoyo
+57.90,25.50,32.50,8,INGENIERA,61.80,48500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,85,Aceptada,Constancia perfecta y buen rendimiento academico
+57.90,25.50,32.50,8,LICENCIATURA,61.80,48500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,85,Aceptada,Constancia perfecta y buen rendimiento academico
+57.90,25.50,32.50,8,MAESTRIA,61.80,48500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,85,Aceptada,Constancia perfecta y buen rendimiento academico
+57.90,25.50,32.50,8,DOCTORADO,61.80,48500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,85,Aceptada,Constancia perfecta y buen rendimiento academico
+85.70,5.00,4.00,3,INGENIERA,78.00,14200.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,155,Aceptada,Constancia academica destacada sin deudas
+85.70,5.00,4.00,3,LICENCIATURA,78.00,14200.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,155,Aceptada,Constancia academica destacada sin deudas
+85.70,5.00,4.00,3,MAESTRIA,78.00,14200.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,155,Aceptada,Constancia academica destacada sin deudas
+85.70,5.00,4.00,3,DOCTORADO,78.00,14200.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,155,Aceptada,Constancia academica destacada sin deudas
+97.00,0.20,0.00,2,INGENIERA,94.00,30500.00,DEPARTAMENTO,1,1,CONSTANCIA,97,Aceptada,Constancia academica sin bajas ni reprobaciones
+97.00,0.20,0.00,2,LICENCIATURA,94.00,30500.00,DEPARTAMENTO,1,1,CONSTANCIA,97,Aceptada,Constancia academica sin bajas ni reprobaciones
+97.00,0.20,0.00,2,MAESTRIA,94.00,30500.00,DEPARTAMENTO,1,1,CONSTANCIA,97,Aceptada,Constancia academica sin bajas ni reprobaciones
+97.00,0.20,0.00,2,DOCTORADO,94.00,30500.00,DEPARTAMENTO,1,1,CONSTANCIA,97,Aceptada,Constancia academica sin bajas ni reprobaciones
+56.70,23.50,30.50,8,INGENIERA,63.70,54500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,77,Aceptada,Constancia perfecta y buen rendimiento academico
+56.70,23.50,30.50,8,LICENCIATURA,63.70,54500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,77,Aceptada,Constancia perfecta y buen rendimiento academico
+56.70,23.50,30.50,8,MAESTRIA,63.70,54500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,77,Aceptada,Constancia perfecta y buen rendimiento academico
+56.70,23.50,30.50,8,DOCTORADO,63.70,54500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,77,Aceptada,Constancia perfecta y buen rendimiento academico
+57.60,22.00,29.00,7,INGENIERA,67.60,55500.00,CASA_PROPIA,0,1,ESCASOS_RECURSOS,204,Aceptada,Constancia en carrera de alta desercion
+57.60,22.00,29.00,7,LICENCIATURA,67.60,55500.00,CASA_PROPIA,0,1,ESCASOS_RECURSOS,204,Aceptada,Constancia en carrera de alta desercion
+57.60,22.00,29.00,7,MAESTRIA,67.60,55500.00,CASA_PROPIA,0,1,ESCASOS_RECURSOS,204,Aceptada,Constancia en carrera de alta desercion
+57.60,22.00,29.00,7,DOCTORADO,67.60,55500.00,CASA_PROPIA,0,1,ESCASOS_RECURSOS,204,Aceptada,Constancia en carrera de alta desercion
+94.20,1.20,0.80,2,INGENIERA,87.00,15200.00,VIVIENDA_IMPROVISADA,1,0,EXCELENCIA_ACADEMICA,149,Aceptada,Constancia perfecta y buen rendimiento academico
+94.20,1.20,0.80,2,LICENCIATURA,87.00,15200.00,VIVIENDA_IMPROVISADA,1,0,EXCELENCIA_ACADEMICA,149,Aceptada,Constancia perfecta y buen rendimiento academico
+94.20,1.20,0.80,2,MAESTRIA,87.00,15200.00,VIVIENDA_IMPROVISADA,1,0,EXCELENCIA_ACADEMICA,149,Aceptada,Constancia perfecta y buen rendimiento academico
+94.20,1.20,0.80,2,DOCTORADO,87.00,15200.00,VIVIENDA_IMPROVISADA,1,0,EXCELENCIA_ACADEMICA,149,Aceptada,Constancia perfecta y buen rendimiento academico
+55.10,26.50,33.50,9,INGENIERA,62.10,55500.00,CASA_PROPIA,0,1,ESCASOS_RECURSOS,199,Aceptada,Constancia perfecta y buen rendimiento academico
+55.10,26.50,33.50,9,LICENCIATURA,62.10,55500.00,CASA_PROPIA,0,1,ESCASOS_RECURSOS,199,Aceptada,Constancia perfecta y buen rendimiento academico
+55.10,26.50,33.50,9,MAESTRIA,62.10,55500.00,CASA_PROPIA,0,1,ESCASOS_RECURSOS,199,Aceptada,Constancia perfecta y buen rendimiento academico
+55.10,26.50,33.50,9,DOCTORADO,62.10,55500.00,CASA_PROPIA,0,1,ESCASOS_RECURSOS,199,Aceptada,Constancia perfecta y buen rendimiento academico
+95.90,0.70,0.20,1,INGENIERA,93.00,12200.00,VIVIENDA_IMPROVISADA,1,0,EXCELENCIA_ACADEMICA,154,Aceptada,Constancia perfecta y buen rendimiento academico
+95.90,0.70,0.20,1,LICENCIATURA,93.00,12200.00,VIVIENDA_IMPROVISADA,1,0,EXCELENCIA_ACADEMICA,154,Aceptada,Constancia perfecta y buen rendimiento academico
+95.90,0.70,0.20,1,MAESTRIA,93.00,12200.00,VIVIENDA_IMPROVISADA,1,0,EXCELENCIA_ACADEMICA,154,Aceptada,Constancia perfecta y buen rendimiento academico
+95.90,0.70,0.20,1,DOCTORADO,93.00,12200.00,VIVIENDA_IMPROVISADA,1,0,EXCELENCIA_ACADEMICA,154,Aceptada,Constancia perfecta y buen rendimiento academico
+97.90,0.00,0.00,2,INGENIERA,96.90,47500.00,DEPARTAMENTO,1,0,CONSTANCIA,104,Rechazada,Deudas educativas previas afectan elegibilidad
+97.90,0.00,0.00,2,LICENCIATURA,96.90,47500.00,DEPARTAMENTO,1,0,CONSTANCIA,104,Rechazada,Deudas educativas previas afectan elegibilidad
+97.90,0.00,0.00,2,MAESTRIA,96.90,47500.00,DEPARTAMENTO,1,0,CONSTANCIA,104,Rechazada,Deudas educativas previas afectan elegibilidad
+97.90,0.00,0.00,2,DOCTORADO,96.90,47500.00,DEPARTAMENTO,1,0,CONSTANCIA,104,Rechazada,Deudas educativas previas afectan elegibilidad
+58.40,22.50,28.50,6,INGENIERA,64.20,52500.00,CASA_PROPIA,0,0,ESCASOS_RECURSOS,202,Rechazada,Deudas educativas previas afectan elegibilidad
+58.40,22.50,28.50,6,LICENCIATURA,64.20,52500.00,CASA_PROPIA,0,0,ESCASOS_RECURSOS,202,Rechazada,Deudas educativas previas afectan elegibilidad
+58.40,22.50,28.50,6,MAESTRIA,64.20,52500.00,CASA_PROPIA,0,0,ESCASOS_RECURSOS,202,Rechazada,Deudas educativas previas afectan elegibilidad
+58.40,22.50,28.50,6,DOCTORADO,64.20,52500.00,CASA_PROPIA,0,0,ESCASOS_RECURSOS,202,Rechazada,Deudas educativas previas afectan elegibilidad
+89.40,2.50,1.50,2,INGENIERA,84.00,29500.00,DEPARTAMENTO,1,1,CONSTANCIA,98,Rechazada,Deudas educativas previas afectan elegibilidad
+89.40,2.50,1.50,2,LICENCIATURA,84.00,29500.00,DEPARTAMENTO,1,1,CONSTANCIA,98,Rechazada,Deudas educativas previas afectan elegibilidad
+89.40,2.50,1.50,2,MAESTRIA,84.00,29500.00,DEPARTAMENTO,1,1,CONSTANCIA,98,Rechazada,Deudas educativas previas afectan elegibilidad
+89.40,2.50,1.50,2,DOCTORADO,84.00,29500.00,DEPARTAMENTO,1,1,CONSTANCIA,98,Rechazada,Deudas educativas previas afectan elegibilidad
+88.90,2.80,1.80,3,INGENIERA,85.00,32500.00,DEPARTAMENTO,1,0,CONSTANCIA,103,Rechazada,Deudas educativas previas afectan elegibilidad
+88.90,2.80,1.80,3,LICENCIATURA,85.00,32500.00,DEPARTAMENTO,1,0,CONSTANCIA,103,Rechazada,Deudas educativas previas afectan elegibilidad
+88.90,2.80,1.80,3,MAESTRIA,85.00,32500.00,DEPARTAMENTO,1,0,CONSTANCIA,103,Rechazada,Deudas educativas previas afectan elegibilidad
+88.90,2.80,1.80,3,DOCTORADO,85.00,32500.00,DEPARTAMENTO,1,0,CONSTANCIA,103,Rechazada,Deudas educativas previas afectan elegibilidad
+71.20,15.00,18.00,5,INGENIERA,68.00,51000.00,CASA_PROPIA,0,0,ESCASOS_RECURSOS,198,Aceptada,Escasos recursos con potencial academico demostrado
+71.20,15.00,18.00,5,LICENCIATURA,68.00,51000.00,CASA_PROPIA,0,0,ESCASOS_RECURSOS,198,Aceptada,Escasos recursos con potencial academico demostrado
+71.20,15.00,18.00,5,MAESTRIA,68.00,51000.00,CASA_PROPIA,0,0,ESCASOS_RECURSOS,198,Aceptada,Escasos recursos con potencial academico demostrado
+71.20,15.00,18.00,5,DOCTORADO,68.00,51000.00,CASA_PROPIA,0,0,ESCASOS_RECURSOS,198,Aceptada,Escasos recursos con potencial academico demostrado
+54.80,27.00,33.00,10,INGENIERA,60.00,38500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,83,Aceptada,Escasos recursos con vivienda improvisada
+54.80,27.00,33.00,10,LICENCIATURA,60.00,38500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,83,Aceptada,Escasos recursos con vivienda improvisada
+54.80,27.00,33.00,10,MAESTRIA,60.00,38500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,83,Aceptada,Escasos recursos con vivienda improvisada
+54.80,27.00,33.00,10,DOCTORADO,60.00,38500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,83,Aceptada,Escasos recursos con vivienda improvisada
+93.50,0.80,0.30,1,INGENIERA,91.00,28500.00,DEPARTAMENTO,1,0,CONSTANCIA,101,Rechazada,Estudiante sin empleo para beca trabajo
+93.50,0.80,0.30,1,LICENCIATURA,91.00,28500.00,DEPARTAMENTO,1,0,CONSTANCIA,101,Rechazada,Estudiante sin empleo para beca trabajo
+93.50,0.80,0.30,1,MAESTRIA,91.00,28500.00,DEPARTAMENTO,1,0,CONSTANCIA,101,Rechazada,Estudiante sin empleo para beca trabajo
+93.50,0.80,0.30,1,DOCTORADO,91.00,28500.00,DEPARTAMENTO,1,0,CONSTANCIA,101,Rechazada,Estudiante sin empleo para beca trabajo
+52.10,25.00,30.00,10,INGENIERA,55.00,62000.00,CASA_PROPIA,0,1,ESCASOS_RECURSOS,195,Aceptada,Estudiante trabajador con buen desempeño academico
+52.10,25.00,30.00,10,LICENCIATURA,55.00,62000.00,CASA_PROPIA,0,1,ESCASOS_RECURSOS,195,Aceptada,Estudiante trabajador con buen desempeño academico
+52.10,25.00,30.00,10,MAESTRIA,55.00,62000.00,CASA_PROPIA,0,1,ESCASOS_RECURSOS,195,Aceptada,Estudiante trabajador con buen desempeño academico
+52.10,25.00,30.00,10,DOCTORADO,55.00,62000.00,CASA_PROPIA,0,1,ESCASOS_RECURSOS,195,Aceptada,Estudiante trabajador con buen desempeño academico
+96.20,0.40,0.00,2,INGENIERA,89.00,12800.00,VIVIENDA_IMPROVISADA,1,0,EXCELENCIA_ACADEMICA,152,Aceptada,Estudiante trabajador con excelente promedio
+96.20,0.40,0.00,2,LICENCIATURA,89.00,12800.00,VIVIENDA_IMPROVISADA,1,0,EXCELENCIA_ACADEMICA,152,Aceptada,Estudiante trabajador con excelente promedio
+96.20,0.40,0.00,2,MAESTRIA,89.00,12800.00,VIVIENDA_IMPROVISADA,1,0,EXCELENCIA_ACADEMICA,152,Aceptada,Estudiante trabajador con excelente promedio
+96.20,0.40,0.00,2,DOCTORADO,89.00,12800.00,VIVIENDA_IMPROVISADA,1,0,EXCELENCIA_ACADEMICA,152,Aceptada,Estudiante trabajador con excelente promedio
+97.30,0.10,0.00,1,INGENIERA,95.00,48500.00,DEPARTAMENTO,1,1,CONSTANCIA,101,Aceptada,Estudiante trabajador con horario completo
+97.30,0.10,0.00,1,LICENCIATURA,95.00,48500.00,DEPARTAMENTO,1,1,CONSTANCIA,101,Aceptada,Estudiante trabajador con horario completo
+97.30,0.10,0.00,1,MAESTRIA,95.00,48500.00,DEPARTAMENTO,1,1,CONSTANCIA,101,Aceptada,Estudiante trabajador con horario completo
+97.30,0.10,0.00,1,DOCTORADO,95.00,48500.00,DEPARTAMENTO,1,1,CONSTANCIA,101,Aceptada,Estudiante trabajador con horario completo
+86.80,4.20,3.20,5,INGENIERA,81.00,13200.00,VIVIENDA_IMPROVISADA,1,0,EXCELENCIA_ACADEMICA,145,Aceptada,Estudiante trabajador con responsabilidad comprobada
+86.80,4.20,3.20,5,LICENCIATURA,81.00,13200.00,VIVIENDA_IMPROVISADA,1,0,EXCELENCIA_ACADEMICA,145,Aceptada,Estudiante trabajador con responsabilidad comprobada
+86.80,4.20,3.20,5,MAESTRIA,81.00,13200.00,VIVIENDA_IMPROVISADA,1,0,EXCELENCIA_ACADEMICA,145,Aceptada,Estudiante trabajador con responsabilidad comprobada
+86.80,4.20,3.20,5,DOCTORADO,81.00,13200.00,VIVIENDA_IMPROVISADA,1,0,EXCELENCIA_ACADEMICA,145,Aceptada,Estudiante trabajador con responsabilidad comprobada
+96.80,0.50,0.00,1,INGENIERA,92.00,26500.00,DEPARTAMENTO,1,0,CONSTANCIA,105,Aceptada,Excelencia academica con carga academica completa
+96.80,0.50,0.00,1,LICENCIATURA,92.00,26500.00,DEPARTAMENTO,1,0,CONSTANCIA,105,Aceptada,Excelencia academica con carga academica completa
+96.80,0.50,0.00,1,MAESTRIA,92.00,26500.00,DEPARTAMENTO,1,0,CONSTANCIA,105,Aceptada,Excelencia academica con carga academica completa
+96.80,0.50,0.00,1,DOCTORADO,92.00,26500.00,DEPARTAMENTO,1,0,CONSTANCIA,105,Aceptada,Excelencia academica con carga academica completa
+70.50,12.50,15.50,6,INGENIERA,71.00,42500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,84,Aceptada,Excelencia academica con participacion destacada
+70.50,12.50,15.50,6,LICENCIATURA,71.00,42500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,84,Aceptada,Excelencia academica con participacion destacada
+70.50,12.50,15.50,6,MAESTRIA,71.00,42500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,84,Aceptada,Excelencia academica con participacion destacada
+70.50,12.50,15.50,6,DOCTORADO,71.00,42500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,84,Aceptada,Excelencia academica con participacion destacada
+74.80,9.50,12.50,6,INGENIERA,75.80,55500.00,CASA_PROPIA,0,1,ESCASOS_RECURSOS,197,Aceptada,Excelencia academica con participacion destacada
+74.80,9.50,12.50,6,LICENCIATURA,75.80,55500.00,CASA_PROPIA,0,1,ESCASOS_RECURSOS,197,Aceptada,Excelencia academica con participacion destacada
+74.80,9.50,12.50,6,MAESTRIA,75.80,55500.00,CASA_PROPIA,0,1,ESCASOS_RECURSOS,197,Aceptada,Excelencia academica con participacion destacada
+74.80,9.50,12.50,6,DOCTORADO,75.80,55500.00,CASA_PROPIA,0,1,ESCASOS_RECURSOS,197,Aceptada,Excelencia academica con participacion destacada
+75.90,8.50,11.50,5,INGENIERA,76.90,53500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,76,Aceptada,Excelencia academica con participacion destacada
+75.90,8.50,11.50,5,LICENCIATURA,76.90,53500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,76,Aceptada,Excelencia academica con participacion destacada
+75.90,8.50,11.50,5,MAESTRIA,76.90,53500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,76,Aceptada,Excelencia academica con participacion destacada
+75.90,8.50,11.50,5,DOCTORADO,76.90,53500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,76,Aceptada,Excelencia academica con participacion destacada
+53.90,26.00,32.00,9,INGENIERA,59.00,47000.00,CASA_PROPIA,0,0,ESCASOS_RECURSOS,201,Aceptada,Excelencia academica en semestres iniciales
+53.90,26.00,32.00,9,LICENCIATURA,59.00,47000.00,CASA_PROPIA,0,0,ESCASOS_RECURSOS,201,Aceptada,Excelencia academica en semestres iniciales
+53.90,26.00,32.00,9,MAESTRIA,59.00,47000.00,CASA_PROPIA,0,0,ESCASOS_RECURSOS,201,Aceptada,Excelencia academica en semestres iniciales
+53.90,26.00,32.00,9,DOCTORADO,59.00,47000.00,CASA_PROPIA,0,0,ESCASOS_RECURSOS,201,Aceptada,Excelencia academica en semestres iniciales
+87.50,3.80,2.80,4,INGENIERA,82.50,43500.00,DEPARTAMENTO,1,1,CONSTANCIA,98,Aceptada,Excelencia en carrera de alta dificultad academica
+87.50,3.80,2.80,4,LICENCIATURA,82.50,43500.00,DEPARTAMENTO,1,1,CONSTANCIA,98,Aceptada,Excelencia en carrera de alta dificultad academica
+87.50,3.80,2.80,4,MAESTRIA,82.50,43500.00,DEPARTAMENTO,1,1,CONSTANCIA,98,Aceptada,Excelencia en carrera de alta dificultad academica
+87.50,3.80,2.80,4,DOCTORADO,82.50,43500.00,DEPARTAMENTO,1,1,CONSTANCIA,98,Aceptada,Excelencia en carrera de alta dificultad academica
+95.50,2.00,0.00,3,INGENIERA,85.00,12500.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,150,Aceptada,Excelente rendimiento academico y situacion economica precaria
+95.50,2.00,0.00,3,LICENCIATURA,85.00,12500.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,150,Aceptada,Excelente rendimiento academico y situacion economica precaria
+95.50,2.00,0.00,3,MAESTRIA,85.00,12500.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,150,Aceptada,Excelente rendimiento academico y situacion economica precaria
+95.50,2.00,0.00,3,DOCTORADO,85.00,12500.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,150,Aceptada,Excelente rendimiento academico y situacion economica precaria
+89.70,2.30,1.30,3,INGENIERA,88.00,15800.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,150,Rechazada,Indice de bajas afecta elegibilidad
+89.70,2.30,1.30,3,LICENCIATURA,88.00,15800.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,150,Rechazada,Indice de bajas afecta elegibilidad
+89.70,2.30,1.30,3,MAESTRIA,88.00,15800.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,150,Rechazada,Indice de bajas afecta elegibilidad
+89.70,2.30,1.30,3,DOCTORADO,88.00,15800.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,150,Rechazada,Indice de bajas afecta elegibilidad
+98.50,0.00,0.00,3,INGENIERA,96.50,48500.00,DEPARTAMENTO,1,0,CONSTANCIA,105,Rechazada,Indice de bajas recurrente en historial
+98.50,0.00,0.00,3,LICENCIATURA,96.50,48500.00,DEPARTAMENTO,1,0,CONSTANCIA,105,Rechazada,Indice de bajas recurrente en historial
+98.50,0.00,0.00,3,MAESTRIA,96.50,48500.00,DEPARTAMENTO,1,0,CONSTANCIA,105,Rechazada,Indice de bajas recurrente en historial
+98.50,0.00,0.00,3,DOCTORADO,96.50,48500.00,DEPARTAMENTO,1,0,CONSTANCIA,105,Rechazada,Indice de bajas recurrente en historial
+90.10,2.20,1.20,3,INGENIERA,86.00,11800.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,151,Rechazada,Indice de reprobacion superior al 30%
+90.10,2.20,1.20,3,LICENCIATURA,86.00,11800.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,151,Rechazada,Indice de reprobacion superior al 30%
+90.10,2.20,1.20,3,MAESTRIA,86.00,11800.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,151,Rechazada,Indice de reprobacion superior al 30%
+90.10,2.20,1.20,3,DOCTORADO,86.00,11800.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,151,Rechazada,Indice de reprobacion superior al 30%
+88.60,3.00,2.00,2,INGENIERA,80.00,18500.00,VIVIENDA_IMPROVISADA,1,0,EXCELENCIA_ACADEMICA,145,Rechazada,Indices de reprobacion y bajas demasiado elevados
+88.60,3.00,2.00,2,LICENCIATURA,80.00,18500.00,VIVIENDA_IMPROVISADA,1,0,EXCELENCIA_ACADEMICA,145,Rechazada,Indices de reprobacion y bajas demasiado elevados
+88.60,3.00,2.00,2,MAESTRIA,80.00,18500.00,VIVIENDA_IMPROVISADA,1,0,EXCELENCIA_ACADEMICA,145,Rechazada,Indices de reprobacion y bajas demasiado elevados
+88.60,3.00,2.00,2,DOCTORADO,80.00,18500.00,VIVIENDA_IMPROVISADA,1,0,EXCELENCIA_ACADEMICA,145,Rechazada,Indices de reprobacion y bajas demasiado elevados
+83.50,7.00,6.00,4,INGENIERA,77.00,16800.00,VIVIENDA_IMPROVISADA,1,0,EXCELENCIA_ACADEMICA,148,Devuelta,Informacion de vivienda requiere verificacion
+83.50,7.00,6.00,4,LICENCIATURA,77.00,16800.00,VIVIENDA_IMPROVISADA,1,0,EXCELENCIA_ACADEMICA,148,Devuelta,Informacion de vivienda requiere verificacion
+83.50,7.00,6.00,4,MAESTRIA,77.00,16800.00,VIVIENDA_IMPROVISADA,1,0,EXCELENCIA_ACADEMICA,148,Devuelta,Informacion de vivienda requiere verificacion
+83.50,7.00,6.00,4,DOCTORADO,77.00,16800.00,VIVIENDA_IMPROVISADA,1,0,EXCELENCIA_ACADEMICA,148,Devuelta,Informacion de vivienda requiere verificacion
+64.90,18.50,23.00,7,INGENIERA,67.50,43500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,80,Devuelta,Informacion socioeconomica contradictoria
+64.90,18.50,23.00,7,LICENCIATURA,67.50,43500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,80,Devuelta,Informacion socioeconomica contradictoria
+64.90,18.50,23.00,7,MAESTRIA,67.50,43500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,80,Devuelta,Informacion socioeconomica contradictoria
+64.90,18.50,23.00,7,DOCTORADO,67.50,43500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,80,Devuelta,Informacion socioeconomica contradictoria
+91.20,1.50,1.00,4,INGENIERA,88.00,23500.00,DEPARTAMENTO,1,0,CONSTANCIA,95,Rechazada,Ingreso familiar excede limite para beca economica
+91.20,1.50,1.00,4,LICENCIATURA,88.00,23500.00,DEPARTAMENTO,1,0,CONSTANCIA,95,Rechazada,Ingreso familiar excede limite para beca economica
+91.20,1.50,1.00,4,MAESTRIA,88.00,23500.00,DEPARTAMENTO,1,0,CONSTANCIA,95,Rechazada,Ingreso familiar excede limite para beca economica
+91.20,1.50,1.00,4,DOCTORADO,88.00,23500.00,DEPARTAMENTO,1,0,CONSTANCIA,95,Rechazada,Ingreso familiar excede limite para beca economica
+49.70,31.00,37.00,8,INGENIERA,58.50,52000.00,CASA_PROPIA,0,1,ESCASOS_RECURSOS,197,Rechazada,Ingresos superan limite para apoyo economico
+49.70,31.00,37.00,8,LICENCIATURA,58.50,52000.00,CASA_PROPIA,0,1,ESCASOS_RECURSOS,197,Rechazada,Ingresos superan limite para apoyo economico
+49.70,31.00,37.00,8,MAESTRIA,58.50,52000.00,CASA_PROPIA,0,1,ESCASOS_RECURSOS,197,Rechazada,Ingresos superan limite para apoyo economico
+49.70,31.00,37.00,8,DOCTORADO,58.50,52000.00,CASA_PROPIA,0,1,ESCASOS_RECURSOS,197,Rechazada,Ingresos superan limite para apoyo economico
+85.20,5.50,4.50,5,INGENIERA,79.00,33500.00,DEPARTAMENTO,1,1,CONSTANCIA,96,Aceptada,Potencial academico en situacion vulnerable
+85.20,5.50,4.50,5,LICENCIATURA,79.00,33500.00,DEPARTAMENTO,1,1,CONSTANCIA,96,Aceptada,Potencial academico en situacion vulnerable
+85.20,5.50,4.50,5,MAESTRIA,79.00,33500.00,DEPARTAMENTO,1,1,CONSTANCIA,96,Aceptada,Potencial academico en situacion vulnerable
+85.20,5.50,4.50,5,DOCTORADO,79.00,33500.00,DEPARTAMENTO,1,1,CONSTANCIA,96,Aceptada,Potencial academico en situacion vulnerable
+92.90,1.40,0.70,4,INGENIERA,89.90,13200.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,155,Rechazada,Promedio academico en limite muy ajustado
+92.90,1.40,0.70,4,LICENCIATURA,89.90,13200.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,155,Rechazada,Promedio academico en limite muy ajustado
+92.90,1.40,0.70,4,MAESTRIA,89.90,13200.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,155,Rechazada,Promedio academico en limite muy ajustado
+92.90,1.40,0.70,4,DOCTORADO,89.90,13200.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,155,Rechazada,Promedio academico en limite muy ajustado
+54.60,24.50,31.50,9,INGENIERA,64.60,56500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,83,Rechazada,Promedio academico fluctuante sin tendencia mejora
+54.60,24.50,31.50,9,LICENCIATURA,64.60,56500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,83,Rechazada,Promedio academico fluctuante sin tendencia mejora
+54.60,24.50,31.50,9,MAESTRIA,64.60,56500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,83,Rechazada,Promedio academico fluctuante sin tendencia mejora
+54.60,24.50,31.50,9,DOCTORADO,64.60,56500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,83,Rechazada,Promedio academico fluctuante sin tendencia mejora
+45.20,35.00,40.00,8,INGENIERA,60.00,45000.00,CASA_PROPIA,0,0,ESCASOS_RECURSOS,200,Rechazada,Promedio academico insuficiente para beca de excelencia
+45.20,35.00,40.00,8,LICENCIATURA,60.00,45000.00,CASA_PROPIA,0,0,ESCASOS_RECURSOS,200,Rechazada,Promedio academico insuficiente para beca de excelencia
+45.20,35.00,40.00,8,MAESTRIA,60.00,45000.00,CASA_PROPIA,0,0,ESCASOS_RECURSOS,200,Rechazada,Promedio academico insuficiente para beca de excelencia
+45.20,35.00,40.00,8,DOCTORADO,60.00,45000.00,CASA_PROPIA,0,0,ESCASOS_RECURSOS,200,Rechazada,Promedio academico insuficiente para beca de excelencia
+86.30,4.50,3.50,4,INGENIERA,83.00,13800.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,147,Aceptada,Promedio destacado con carga academica maxima
+86.30,4.50,3.50,4,LICENCIATURA,83.00,13800.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,147,Aceptada,Promedio destacado con carga academica maxima
+86.30,4.50,3.50,4,MAESTRIA,83.00,13800.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,147,Aceptada,Promedio destacado con carga academica maxima
+86.30,4.50,3.50,4,DOCTORADO,83.00,13800.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,147,Aceptada,Promedio destacado con carga academica maxima
+92.70,1.00,0.50,3,INGENIERA,90.00,13200.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,152,Rechazada,Promedio inferior al minimo requerido
+92.70,1.00,0.50,3,LICENCIATURA,90.00,13200.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,152,Rechazada,Promedio inferior al minimo requerido
+92.70,1.00,0.50,3,MAESTRIA,90.00,13200.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,152,Rechazada,Promedio inferior al minimo requerido
+92.70,1.00,0.50,3,DOCTORADO,90.00,13200.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,152,Rechazada,Promedio inferior al minimo requerido
+93.10,0.60,0.10,1,INGENIERA,92.00,13800.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,148,Rechazada,Promedio justo en limite inferior aceptable
+93.10,0.60,0.10,1,LICENCIATURA,92.00,13800.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,148,Rechazada,Promedio justo en limite inferior aceptable
+93.10,0.60,0.10,1,MAESTRIA,92.00,13800.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,148,Rechazada,Promedio justo en limite inferior aceptable
+93.10,0.60,0.10,1,DOCTORADO,92.00,13800.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,148,Rechazada,Promedio justo en limite inferior aceptable
+94.60,1.10,0.60,3,INGENIERA,87.50,37500.00,DEPARTAMENTO,1,1,CONSTANCIA,95,Aceptada,Rendimiento academico excelente y constante
+94.60,1.10,0.60,3,LICENCIATURA,87.50,37500.00,DEPARTAMENTO,1,1,CONSTANCIA,95,Aceptada,Rendimiento academico excelente y constante
+94.60,1.10,0.60,3,MAESTRIA,87.50,37500.00,DEPARTAMENTO,1,1,CONSTANCIA,95,Aceptada,Rendimiento academico excelente y constante
+94.60,1.10,0.60,3,DOCTORADO,87.50,37500.00,DEPARTAMENTO,1,1,CONSTANCIA,95,Aceptada,Rendimiento academico excelente y constante
+98.20,0.10,0.00,1,INGENIERA,97.20,52500.00,DEPARTAMENTO,1,1,CONSTANCIA,100,Aceptada,Rendimiento academico excelente y constante
+98.20,0.10,0.00,1,LICENCIATURA,97.20,52500.00,DEPARTAMENTO,1,1,CONSTANCIA,100,Aceptada,Rendimiento academico excelente y constante
+98.20,0.10,0.00,1,MAESTRIA,97.20,52500.00,DEPARTAMENTO,1,1,CONSTANCIA,100,Aceptada,Rendimiento academico excelente y constante
+98.20,0.10,0.00,1,DOCTORADO,97.20,52500.00,DEPARTAMENTO,1,1,CONSTANCIA,100,Aceptada,Rendimiento academico excelente y constante
+87.10,4.00,3.00,4,INGENIERA,82.00,27500.00,DEPARTAMENTO,1,0,CONSTANCIA,102,Aceptada,Rendimiento sobresaliente en carrera de alta demanda
+87.10,4.00,3.00,4,LICENCIATURA,82.00,27500.00,DEPARTAMENTO,1,0,CONSTANCIA,102,Aceptada,Rendimiento sobresaliente en carrera de alta demanda
+87.10,4.00,3.00,4,MAESTRIA,82.00,27500.00,DEPARTAMENTO,1,0,CONSTANCIA,102,Aceptada,Rendimiento sobresaliente en carrera de alta demanda
+87.10,4.00,3.00,4,DOCTORADO,82.00,27500.00,DEPARTAMENTO,1,0,CONSTANCIA,102,Aceptada,Rendimiento sobresaliente en carrera de alta demanda
+57.40,23.00,29.00,7,INGENIERA,61.00,37500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,77,Rechazada,Semestre avanzado con promedio regular
+57.40,23.00,29.00,7,LICENCIATURA,61.00,37500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,77,Rechazada,Semestre avanzado con promedio regular
+57.40,23.00,29.00,7,MAESTRIA,61.00,37500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,77,Rechazada,Semestre avanzado con promedio regular
+57.40,23.00,29.00,7,DOCTORADO,61.00,37500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,77,Rechazada,Semestre avanzado con promedio regular
+61.30,19.50,25.50,6,INGENIERA,66.30,48500.00,CASA_PROPIA,0,0,ESCASOS_RECURSOS,196,Rechazada,Semestres iniciales con rendimiento deficiente
+61.30,19.50,25.50,6,LICENCIATURA,66.30,48500.00,CASA_PROPIA,0,0,ESCASOS_RECURSOS,196,Rechazada,Semestres iniciales con rendimiento deficiente
+61.30,19.50,25.50,6,MAESTRIA,66.30,48500.00,CASA_PROPIA,0,0,ESCASOS_RECURSOS,196,Rechazada,Semestres iniciales con rendimiento deficiente
+61.30,19.50,25.50,6,DOCTORADO,66.30,48500.00,CASA_PROPIA,0,0,ESCASOS_RECURSOS,196,Rechazada,Semestres iniciales con rendimiento deficiente
+59.30,20.00,25.00,6,INGENIERA,62.00,42000.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,85,Rechazada,Semestres avanzados con bajo rendimiento academico
+59.30,20.00,25.00,6,LICENCIATURA,62.00,42000.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,85,Rechazada,Semestres avanzados con bajo rendimiento academico
+59.30,20.00,25.00,6,MAESTRIA,62.00,42000.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,85,Rechazada,Semestres avanzados con bajo rendimiento academico
+59.30,20.00,25.00,6,DOCTORADO,62.00,42000.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,85,Rechazada,Semestres avanzados con bajo rendimiento academico
+91.30,1.80,0.90,3,INGENIERA,86.50,12200.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,149,Rechazada,Semestres avanzados con bajo rendimiento academico
+91.30,1.80,0.90,3,LICENCIATURA,86.50,12200.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,149,Rechazada,Semestres avanzados con bajo rendimiento academico
+91.30,1.80,0.90,3,MAESTRIA,86.50,12200.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,149,Rechazada,Semestres avanzados con bajo rendimiento academico
+91.30,1.80,0.90,3,DOCTORADO,86.50,12200.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,149,Rechazada,Semestres avanzados con bajo rendimiento academico
+92.40,0.90,0.40,2,INGENIERA,90.50,35500.00,DEPARTAMENTO,1,1,CONSTANCIA,100,Rechazada,Semestres iniciales con rendimiento deficiente
+92.40,0.90,0.40,2,LICENCIATURA,90.50,35500.00,DEPARTAMENTO,1,1,CONSTANCIA,100,Rechazada,Semestres iniciales con rendimiento deficiente
+92.40,0.90,0.40,2,MAESTRIA,90.50,35500.00,DEPARTAMENTO,1,1,CONSTANCIA,100,Rechazada,Semestres iniciales con rendimiento deficiente
+92.40,0.90,0.40,2,DOCTORADO,90.50,35500.00,DEPARTAMENTO,1,1,CONSTANCIA,100,Rechazada,Semestres iniciales con rendimiento deficiente
+71.70,12.00,17.00,8,INGENIERA,74.70,56500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,75,Aceptada,Situacion economica vulnerable con buen desempeno academico
+71.70,12.00,17.00,8,LICENCIATURA,74.70,56500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,75,Aceptada,Situacion economica vulnerable con buen desempeno academico
+71.70,12.00,17.00,8,MAESTRIA,74.70,56500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,75,Aceptada,Situacion economica vulnerable con buen desempeno academico
+71.70,12.00,17.00,8,DOCTORADO,74.70,56500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,75,Aceptada,Situacion economica vulnerable con buen desempeno academico
+78.90,12.00,15.00,6,INGENIERA,70.00,32000.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,80,Aceptada,Situacion economica vulnerable con buen desempeno academico
+78.90,12.00,15.00,6,LICENCIATURA,70.00,32000.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,80,Aceptada,Situacion economica vulnerable con buen desempeno academico
+78.90,12.00,15.00,6,MAESTRIA,70.00,32000.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,80,Aceptada,Situacion economica vulnerable con buen desempeno academico
+78.90,12.00,15.00,6,DOCTORADO,70.00,32000.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,80,Aceptada,Situacion economica vulnerable con buen desempeno academico
+73.60,10.50,13.50,7,INGENIERA,74.50,53500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,82,Aceptada,Situacion economica vulnerable con buen desempeno academico
+73.60,10.50,13.50,7,LICENCIATURA,74.50,53500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,82,Aceptada,Situacion economica vulnerable con buen desempeno academico
+73.60,10.50,13.50,7,MAESTRIA,74.50,53500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,82,Aceptada,Situacion economica vulnerable con buen desempeno academico
+73.60,10.50,13.50,7,DOCTORADO,74.50,53500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,82,Aceptada,Situacion economica vulnerable con buen desempeno academico
+89.20,3.20,2.20,5,INGENIERA,84.20,44500.00,DEPARTAMENTO,1,1,CONSTANCIA,103,Aceptada,Situacion economica vulnerable con buen desempeno academico
+89.20,3.20,2.20,5,LICENCIATURA,84.20,44500.00,DEPARTAMENTO,1,1,CONSTANCIA,103,Aceptada,Situacion economica vulnerable con buen desempeno academico
+89.20,3.20,2.20,5,MAESTRIA,84.20,44500.00,DEPARTAMENTO,1,1,CONSTANCIA,103,Aceptada,Situacion economica vulnerable con buen desempeno academico
+89.20,3.20,2.20,5,DOCTORADO,84.20,44500.00,DEPARTAMENTO,1,1,CONSTANCIA,103,Aceptada,Situacion economica vulnerable con buen desempeno academico
+56.30,24.00,31.00,8,INGENIERA,62.50,60000.00,CASA_PROPIA,0,0,ESCASOS_RECURSOS,200,Aceptada,Situacion economica vulnerable con buen desempeno academico
+56.30,24.00,31.00,8,LICENCIATURA,62.50,60000.00,CASA_PROPIA,0,0,ESCASOS_RECURSOS,200,Aceptada,Situacion economica vulnerable con buen desempeno academico
+56.30,24.00,31.00,8,MAESTRIA,62.50,60000.00,CASA_PROPIA,0,0,ESCASOS_RECURSOS,200,Aceptada,Situacion economica vulnerable con buen desempeno academico
+56.30,24.00,31.00,8,DOCTORADO,62.50,60000.00,CASA_PROPIA,0,0,ESCASOS_RECURSOS,200,Aceptada,Situacion economica vulnerable con buen desempeno academico
+69.80,14.00,17.00,7,INGENIERA,67.00,36500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,79,Aceptada,Situacion economica vulnerable con buen desempeno academico
+69.80,14.00,17.00,7,LICENCIATURA,67.00,36500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,79,Aceptada,Situacion economica vulnerable con buen desempeno academico
+69.80,14.00,17.00,7,MAESTRIA,67.00,36500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,79,Aceptada,Situacion economica vulnerable con buen desempeno academico
+69.80,14.00,17.00,7,DOCTORADO,67.00,36500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,79,Aceptada,Situacion economica vulnerable con buen desempeno academico
+59.80,20.50,27.00,6,INGENIERA,63.80,47500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,75,Rechazada,Tipo de vivienda no coincide con escasos recursos
+59.80,20.50,27.00,6,LICENCIATURA,63.80,47500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,75,Rechazada,Tipo de vivienda no coincide con escasos recursos
+59.80,20.50,27.00,6,MAESTRIA,63.80,47500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,75,Rechazada,Tipo de vivienda no coincide con escasos recursos
+59.80,20.50,27.00,6,DOCTORADO,63.80,47500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,75,Rechazada,Tipo de vivienda no coincide con escasos recursos
+50.30,30.00,36.00,10,INGENIERA,56.00,39500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,82,Rechazada,Tipo de vivienda no coincide con escasos recursos
+50.30,30.00,36.00,10,LICENCIATURA,56.00,39500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,82,Rechazada,Tipo de vivienda no coincide con escasos recursos
+50.30,30.00,36.00,10,MAESTRIA,56.00,39500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,82,Rechazada,Tipo de vivienda no coincide con escasos recursos
+50.30,30.00,36.00,10,DOCTORADO,56.00,39500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,82,Rechazada,Tipo de vivienda no coincide con escasos recursos
+92.00,1.50,0.80,3,INGENIERA,87.00,46500.00,DEPARTAMENTO,1,1,CONSTANCIA,97,Rechazada,Tipo de vivienda no coincide con escasos recursos
+92.00,1.50,0.80,3,LICENCIATURA,87.00,46500.00,DEPARTAMENTO,1,1,CONSTANCIA,97,Rechazada,Tipo de vivienda no coincide con escasos recursos
+92.00,1.50,0.80,3,MAESTRIA,87.00,46500.00,DEPARTAMENTO,1,1,CONSTANCIA,97,Rechazada,Tipo de vivienda no coincide con escasos recursos
+92.00,1.50,0.80,3,DOCTORADO,87.00,46500.00,DEPARTAMENTO,1,1,CONSTANCIA,97,Rechazada,Tipo de vivienda no coincide con escasos recursos
+52.60,28.50,35.50,9,INGENIERA,60.80,49500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,78,Rechazada,Vivienda en residencia estudiantil con recursos
+52.60,28.50,35.50,9,LICENCIATURA,60.80,49500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,78,Rechazada,Vivienda en residencia estudiantil con recursos
+52.60,28.50,35.50,9,MAESTRIA,60.80,49500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,78,Rechazada,Vivienda en residencia estudiantil con recursos
+52.60,28.50,35.50,9,DOCTORADO,60.80,49500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,78,Rechazada,Vivienda en residencia estudiantil con recursos
+93.70,1.20,0.60,3,INGENIERA,88.70,15800.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,154,Rechazada,Vivienda propia no justifica apoyo economico
+93.70,1.20,0.60,3,LICENCIATURA,88.70,15800.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,154,Rechazada,Vivienda propia no justifica apoyo economico
+93.70,1.20,0.60,3,MAESTRIA,88.70,15800.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,154,Rechazada,Vivienda propia no justifica apoyo economico
+93.70,1.20,0.60,3,DOCTORADO,88.70,15800.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,154,Rechazada,Vivienda propia no justifica apoyo economico
+60.10,21.00,26.00,7,INGENIERA,64.50,59000.00,CASA_PROPIA,0,1,ESCASOS_RECURSOS,204,Rechazada,Vivienda propia no justifica apoyo economico
+60.10,21.00,26.00,7,LICENCIATURA,64.50,59000.00,CASA_PROPIA,0,1,ESCASOS_RECURSOS,204,Rechazada,Vivienda propia no justifica apoyo economico
+60.10,21.00,26.00,7,MAESTRIA,64.50,59000.00,CASA_PROPIA,0,1,ESCASOS_RECURSOS,204,Rechazada,Vivienda propia no justifica apoyo economico
+60.10,21.00,26.00,7,DOCTORADO,64.50,59000.00,CASA_PROPIA,0,1,ESCASOS_RECURSOS,204,Rechazada,Vivienda propia no justifica apoyo economico
+47.50,33.00,39.00,9,INGENIERA,57.00,41500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,76,Rechazada,Carga academica insuficiente para apoyo
+47.50,33.00,39.00,9,LICENCIATURA,57.00,41500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,76,Rechazada,Carga academica insuficiente para apoyo
+47.50,33.00,39.00,9,MAESTRIA,57.00,41500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,76,Rechazada,Carga academica insuficiente para apoyo
+47.50,33.00,39.00,9,DOCTORADO,57.00,41500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,76,Rechazada,Carga academica insuficiente para apoyo
+70.30,13.50,18.50,7,INGENIERA,73.30,47500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,80,Rechazada,Carga academica insuficiente para apoyo
+70.30,13.50,18.50,7,LICENCIATURA,73.30,47500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,80,Rechazada,Carga academica insuficiente para apoyo
+70.30,13.50,18.50,7,MAESTRIA,73.30,47500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,80,Rechazada,Carga academica insuficiente para apoyo
+70.30,13.50,18.50,7,DOCTORADO,73.30,47500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,80,Rechazada,Carga academica insuficiente para apoyo
+57.90,25.50,32.50,8,INGENIERA,61.80,48500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,85,Aceptada,Constancia perfecta y buen rendimiento academico
+57.90,25.50,32.50,8,LICENCIATURA,61.80,48500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,85,Aceptada,Constancia perfecta y buen rendimiento academico
+57.90,25.50,32.50,8,MAESTRIA,61.80,48500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,85,Aceptada,Constancia perfecta y buen rendimiento academico
+57.90,25.50,32.50,8,DOCTORADO,61.80,48500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,85,Aceptada,Constancia perfecta y buen rendimiento academico
+85.70,5.00,4.00,3,INGENIERA,78.00,14200.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,155,Aceptada,Constancia academica destacada sin deudas
+85.70,5.00,4.00,3,LICENCIATURA,78.00,14200.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,155,Aceptada,Constancia academica destacada sin deudas
+85.70,5.00,4.00,3,MAESTRIA,78.00,14200.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,155,Aceptada,Constancia academica destacada sin deudas
+85.70,5.00,4.00,3,DOCTORADO,78.00,14200.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,155,Aceptada,Constancia academica destacada sin deudas
+97.00,0.20,0.00,2,INGENIERA,94.00,30500.00,DEPARTAMENTO,1,1,CONSTANCIA,97,Aceptada,Constancia academica sin bajas ni reprobaciones
+97.00,0.20,0.00,2,LICENCIATURA,94.00,30500.00,DEPARTAMENTO,1,1,CONSTANCIA,97,Aceptada,Constancia academica sin bajas ni reprobaciones
+97.00,0.20,0.00,2,MAESTRIA,94.00,30500.00,DEPARTAMENTO,1,1,CONSTANCIA,97,Aceptada,Constancia academica sin bajas ni reprobaciones
+97.00,0.20,0.00,2,DOCTORADO,94.00,30500.00,DEPARTAMENTO,1,1,CONSTANCIA,97,Aceptada,Constancia academica sin bajas ni reprobaciones
+56.70,23.50,30.50,8,INGENIERA,63.70,54500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,77,Aceptada,Constancia perfecta y buen rendimiento academico
+56.70,23.50,30.50,8,LICENCIATURA,63.70,54500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,77,Aceptada,Constancia perfecta y buen rendimiento academico
+56.70,23.50,30.50,8,MAESTRIA,63.70,54500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,77,Aceptada,Constancia perfecta y buen rendimiento academico
+56.70,23.50,30.50,8,DOCTORADO,63.70,54500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,77,Aceptada,Constancia perfecta y buen rendimiento academico
+57.60,22.00,29.00,7,INGENIERA,67.60,55500.00,CASA_PROPIA,0,1,ESCASOS_RECURSOS,204,Aceptada,Constancia en carrera de alta desercion
+57.60,22.00,29.00,7,LICENCIATURA,67.60,55500.00,CASA_PROPIA,0,1,ESCASOS_RECURSOS,204,Aceptada,Constancia en carrera de alta desercion
+57.60,22.00,29.00,7,MAESTRIA,67.60,55500.00,CASA_PROPIA,0,1,ESCASOS_RECURSOS,204,Aceptada,Constancia en carrera de alta desercion
+57.60,22.00,29.00,7,DOCTORADO,67.60,55500.00,CASA_PROPIA,0,1,ESCASOS_RECURSOS,204,Aceptada,Constancia en carrera de alta desercion
+94.20,1.20,0.80,2,INGENIERA,87.00,15200.00,VIVIENDA_IMPROVISADA,1,0,EXCELENCIA_ACADEMICA,149,Aceptada,Constancia perfecta y buen rendimiento academico
+94.20,1.20,0.80,2,LICENCIATURA,87.00,15200.00,VIVIENDA_IMPROVISADA,1,0,EXCELENCIA_ACADEMICA,149,Aceptada,Constancia perfecta y buen rendimiento academico
+94.20,1.20,0.80,2,MAESTRIA,87.00,15200.00,VIVIENDA_IMPROVISADA,1,0,EXCELENCIA_ACADEMICA,149,Aceptada,Constancia perfecta y buen rendimiento academico
+94.20,1.20,0.80,2,DOCTORADO,87.00,15200.00,VIVIENDA_IMPROVISADA,1,0,EXCELENCIA_ACADEMICA,149,Aceptada,Constancia perfecta y buen rendimiento academico
+55.10,26.50,33.50,9,INGENIERA,62.10,55500.00,CASA_PROPIA,0,1,ESCASOS_RECURSOS,199,Aceptada,Constancia perfecta y buen rendimiento academico
+55.10,26.50,33.50,9,LICENCIATURA,62.10,55500.00,CASA_PROPIA,0,1,ESCASOS_RECURSOS,199,Aceptada,Constancia perfecta y buen rendimiento academico
+55.10,26.50,33.50,9,MAESTRIA,62.10,55500.00,CASA_PROPIA,0,1,ESCASOS_RECURSOS,199,Aceptada,Constancia perfecta y buen rendimiento academico
+55.10,26.50,33.50,9,DOCTORADO,62.10,55500.00,CASA_PROPIA,0,1,ESCASOS_RECURSOS,199,Aceptada,Constancia perfecta y buen rendimiento academico
+95.90,0.70,0.20,1,INGENIERA,93.00,12200.00,VIVIENDA_IMPROVISADA,1,0,EXCELENCIA_ACADEMICA,154,Aceptada,Constancia perfecta y buen rendimiento academico
+95.90,0.70,0.20,1,LICENCIATURA,93.00,12200.00,VIVIENDA_IMPROVISADA,1,0,EXCELENCIA_ACADEMICA,154,Aceptada,Constancia perfecta y buen rendimiento academico
+95.90,0.70,0.20,1,MAESTRIA,93.00,12200.00,VIVIENDA_IMPROVISADA,1,0,EXCELENCIA_ACADEMICA,154,Aceptada,Constancia perfecta y buen rendimiento academico
+95.90,0.70,0.20,1,DOCTORADO,93.00,12200.00,VIVIENDA_IMPROVISADA,1,0,EXCELENCIA_ACADEMICA,154,Aceptada,Constancia perfecta y buen rendimiento academico
+97.90,0.00,0.00,2,INGENIERA,96.90,47500.00,DEPARTAMENTO,1,0,CONSTANCIA,104,Rechazada,Deudas educativas previas afectan elegibilidad
+97.90,0.00,0.00,2,LICENCIATURA,96.90,47500.00,DEPARTAMENTO,1,0,CONSTANCIA,104,Rechazada,Deudas educativas previas afectan elegibilidad
+97.90,0.00,0.00,2,MAESTRIA,96.90,47500.00,DEPARTAMENTO,1,0,CONSTANCIA,104,Rechazada,Deudas educativas previas afectan elegibilidad
+97.90,0.00,0.00,2,DOCTORADO,96.90,47500.00,DEPARTAMENTO,1,0,CONSTANCIA,104,Rechazada,Deudas educativas previas afectan elegibilidad
+58.40,22.50,28.50,6,INGENIERA,64.20,52500.00,CASA_PROPIA,0,0,ESCASOS_RECURSOS,202,Rechazada,Deudas educativas previas afectan elegibilidad
+58.40,22.50,28.50,6,LICENCIATURA,64.20,52500.00,CASA_PROPIA,0,0,ESCASOS_RECURSOS,202,Rechazada,Deudas educativas previas afectan elegibilidad
+58.40,22.50,28.50,6,MAESTRIA,64.20,52500.00,CASA_PROPIA,0,0,ESCASOS_RECURSOS,202,Rechazada,Deudas educativas previas afectan elegibilidad
+58.40,22.50,28.50,6,DOCTORADO,64.20,52500.00,CASA_PROPIA,0,0,ESCASOS_RECURSOS,202,Rechazada,Deudas educativas previas afectan elegibilidad
+89.40,2.50,1.50,2,INGENIERA,84.00,29500.00,DEPARTAMENTO,1,1,CONSTANCIA,98,Rechazada,Deudas educativas previas afectan elegibilidad
+89.40,2.50,1.50,2,LICENCIATURA,84.00,29500.00,DEPARTAMENTO,1,1,CONSTANCIA,98,Rechazada,Deudas educativas previas afectan elegibilidad
+89.40,2.50,1.50,2,MAESTRIA,84.00,29500.00,DEPARTAMENTO,1,1,CONSTANCIA,98,Rechazada,Deudas educativas previas afectan elegibilidad
+89.40,2.50,1.50,2,DOCTORADO,84.00,29500.00,DEPARTAMENTO,1,1,CONSTANCIA,98,Rechazada,Deudas educativas previas afectan elegibilidad
+88.90,2.80,1.80,3,INGENIERA,85.00,32500.00,DEPARTAMENTO,1,0,CONSTANCIA,103,Rechazada,Deudas educativas previas afectan elegibilidad
+88.90,2.80,1.80,3,LICENCIATURA,85.00,32500.00,DEPARTAMENTO,1,0,CONSTANCIA,103,Rechazada,Deudas educativas previas afectan elegibilidad
+88.90,2.80,1.80,3,MAESTRIA,85.00,32500.00,DEPARTAMENTO,1,0,CONSTANCIA,103,Rechazada,Deudas educativas previas afectan elegibilidad
+88.90,2.80,1.80,3,DOCTORADO,85.00,32500.00,DEPARTAMENTO,1,0,CONSTANCIA,103,Rechazada,Deudas educativas previas afectan elegibilidad
+71.20,15.00,18.00,5,INGENIERA,68.00,51000.00,CASA_PROPIA,0,0,ESCASOS_RECURSOS,198,Aceptada,Escasos recursos con potencial academico demostrado
+71.20,15.00,18.00,5,LICENCIATURA,68.00,51000.00,CASA_PROPIA,0,0,ESCASOS_RECURSOS,198,Aceptada,Escasos recursos con potencial academico demostrado
+71.20,15.00,18.00,5,MAESTRIA,68.00,51000.00,CASA_PROPIA,0,0,ESCASOS_RECURSOS,198,Aceptada,Escasos recursos con potencial academico demostrado
+71.20,15.00,18.00,5,DOCTORADO,68.00,51000.00,CASA_PROPIA,0,0,ESCASOS_RECURSOS,198,Aceptada,Escasos recursos con potencial academico demostrado
+54.80,27.00,33.00,10,INGENIERA,60.00,38500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,83,Aceptada,Escasos recursos con vivienda improvisada
+54.80,27.00,33.00,10,LICENCIATURA,60.00,38500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,83,Aceptada,Escasos recursos con vivienda improvisada
+54.80,27.00,33.00,10,MAESTRIA,60.00,38500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,83,Aceptada,Escasos recursos con vivienda improvisada
+54.80,27.00,33.00,10,DOCTORADO,60.00,38500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,83,Aceptada,Escasos recursos con vivienda improvisada
+93.50,0.80,0.30,1,INGENIERA,91.00,28500.00,DEPARTAMENTO,1,0,CONSTANCIA,101,Rechazada,Estudiante sin empleo para beca trabajo
+93.50,0.80,0.30,1,LICENCIATURA,91.00,28500.00,DEPARTAMENTO,1,0,CONSTANCIA,101,Rechazada,Estudiante sin empleo para beca trabajo
+93.50,0.80,0.30,1,MAESTRIA,91.00,28500.00,DEPARTAMENTO,1,0,CONSTANCIA,101,Rechazada,Estudiante sin empleo para beca trabajo
+93.50,0.80,0.30,1,DOCTORADO,91.00,28500.00,DEPARTAMENTO,1,0,CONSTANCIA,101,Rechazada,Estudiante sin empleo para beca trabajo
+52.10,25.00,30.00,10,INGENIERA,55.00,62000.00,CASA_PROPIA,0,1,ESCASOS_RECURSOS,195,Aceptada,Estudiante trabajador con buen desempeño academico
+52.10,25.00,30.00,10,LICENCIATURA,55.00,62000.00,CASA_PROPIA,0,1,ESCASOS_RECURSOS,195,Aceptada,Estudiante trabajador con buen desempeño academico
+52.10,25.00,30.00,10,MAESTRIA,55.00,62000.00,CASA_PROPIA,0,1,ESCASOS_RECURSOS,195,Aceptada,Estudiante trabajador con buen desempeño academico
+52.10,25.00,30.00,10,DOCTORADO,55.00,62000.00,CASA_PROPIA,0,1,ESCASOS_RECURSOS,195,Aceptada,Estudiante trabajador con buen desempeño academico
+96.20,0.40,0.00,2,INGENIERA,89.00,12800.00,VIVIENDA_IMPROVISADA,1,0,EXCELENCIA_ACADEMICA,152,Aceptada,Estudiante trabajador con excelente promedio
+96.20,0.40,0.00,2,LICENCIATURA,89.00,12800.00,VIVIENDA_IMPROVISADA,1,0,EXCELENCIA_ACADEMICA,152,Aceptada,Estudiante trabajador con excelente promedio
+96.20,0.40,0.00,2,MAESTRIA,89.00,12800.00,VIVIENDA_IMPROVISADA,1,0,EXCELENCIA_ACADEMICA,152,Aceptada,Estudiante trabajador con excelente promedio
+96.20,0.40,0.00,2,DOCTORADO,89.00,12800.00,VIVIENDA_IMPROVISADA,1,0,EXCELENCIA_ACADEMICA,152,Aceptada,Estudiante trabajador con excelente promedio
+97.30,0.10,0.00,1,INGENIERA,95.00,48500.00,DEPARTAMENTO,1,1,CONSTANCIA,101,Aceptada,Estudiante trabajador con horario completo
+97.30,0.10,0.00,1,LICENCIATURA,95.00,48500.00,DEPARTAMENTO,1,1,CONSTANCIA,101,Aceptada,Estudiante trabajador con horario completo
+97.30,0.10,0.00,1,MAESTRIA,95.00,48500.00,DEPARTAMENTO,1,1,CONSTANCIA,101,Aceptada,Estudiante trabajador con horario completo
+97.30,0.10,0.00,1,DOCTORADO,95.00,48500.00,DEPARTAMENTO,1,1,CONSTANCIA,101,Aceptada,Estudiante trabajador con horario completo
+86.80,4.20,3.20,5,INGENIERA,81.00,13200.00,VIVIENDA_IMPROVISADA,1,0,EXCELENCIA_ACADEMICA,145,Aceptada,Estudiante trabajador con responsabilidad comprobada
+86.80,4.20,3.20,5,LICENCIATURA,81.00,13200.00,VIVIENDA_IMPROVISADA,1,0,EXCELENCIA_ACADEMICA,145,Aceptada,Estudiante trabajador con responsabilidad comprobada
+86.80,4.20,3.20,5,MAESTRIA,81.00,13200.00,VIVIENDA_IMPROVISADA,1,0,EXCELENCIA_ACADEMICA,145,Aceptada,Estudiante trabajador con responsabilidad comprobada
+86.80,4.20,3.20,5,DOCTORADO,81.00,13200.00,VIVIENDA_IMPROVISADA,1,0,EXCELENCIA_ACADEMICA,145,Aceptada,Estudiante trabajador con responsabilidad comprobada
+96.80,0.50,0.00,1,INGENIERA,92.00,26500.00,DEPARTAMENTO,1,0,CONSTANCIA,105,Aceptada,Excelencia academica con carga academica completa
+96.80,0.50,0.00,1,LICENCIATURA,92.00,26500.00,DEPARTAMENTO,1,0,CONSTANCIA,105,Aceptada,Excelencia academica con carga academica completa
+96.80,0.50,0.00,1,MAESTRIA,92.00,26500.00,DEPARTAMENTO,1,0,CONSTANCIA,105,Aceptada,Excelencia academica con carga academica completa
+96.80,0.50,0.00,1,DOCTORADO,92.00,26500.00,DEPARTAMENTO,1,0,CONSTANCIA,105,Aceptada,Excelencia academica con carga academica completa
+70.50,12.50,15.50,6,INGENIERA,71.00,42500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,84,Aceptada,Excelencia academica con participacion destacada
+70.50,12.50,15.50,6,LICENCIATURA,71.00,42500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,84,Aceptada,Excelencia academica con participacion destacada
+70.50,12.50,15.50,6,MAESTRIA,71.00,42500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,84,Aceptada,Excelencia academica con participacion destacada
+70.50,12.50,15.50,6,DOCTORADO,71.00,42500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,84,Aceptada,Excelencia academica con participacion destacada
+74.80,9.50,12.50,6,INGENIERA,75.80,55500.00,CASA_PROPIA,0,1,ESCASOS_RECURSOS,197,Aceptada,Excelencia academica con participacion destacada
+74.80,9.50,12.50,6,LICENCIATURA,75.80,55500.00,CASA_PROPIA,0,1,ESCASOS_RECURSOS,197,Aceptada,Excelencia academica con participacion destacada
+74.80,9.50,12.50,6,MAESTRIA,75.80,55500.00,CASA_PROPIA,0,1,ESCASOS_RECURSOS,197,Aceptada,Excelencia academica con participacion destacada
+74.80,9.50,12.50,6,DOCTORADO,75.80,55500.00,CASA_PROPIA,0,1,ESCASOS_RECURSOS,197,Aceptada,Excelencia academica con participacion destacada
+75.90,8.50,11.50,5,INGENIERA,76.90,53500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,76,Aceptada,Excelencia academica con participacion destacada
+75.90,8.50,11.50,5,LICENCIATURA,76.90,53500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,76,Aceptada,Excelencia academica con participacion destacada
+75.90,8.50,11.50,5,MAESTRIA,76.90,53500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,76,Aceptada,Excelencia academica con participacion destacada
+75.90,8.50,11.50,5,DOCTORADO,76.90,53500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,76,Aceptada,Excelencia academica con participacion destacada
+53.90,26.00,32.00,9,INGENIERA,59.00,47000.00,CASA_PROPIA,0,0,ESCASOS_RECURSOS,201,Aceptada,Excelencia academica en semestres iniciales
+53.90,26.00,32.00,9,LICENCIATURA,59.00,47000.00,CASA_PROPIA,0,0,ESCASOS_RECURSOS,201,Aceptada,Excelencia academica en semestres iniciales
+53.90,26.00,32.00,9,MAESTRIA,59.00,47000.00,CASA_PROPIA,0,0,ESCASOS_RECURSOS,201,Aceptada,Excelencia academica en semestres iniciales
+53.90,26.00,32.00,9,DOCTORADO,59.00,47000.00,CASA_PROPIA,0,0,ESCASOS_RECURSOS,201,Aceptada,Excelencia academica en semestres iniciales
+87.50,3.80,2.80,4,INGENIERA,82.50,43500.00,DEPARTAMENTO,1,1,CONSTANCIA,98,Aceptada,Excelencia en carrera de alta dificultad academica
+87.50,3.80,2.80,4,LICENCIATURA,82.50,43500.00,DEPARTAMENTO,1,1,CONSTANCIA,98,Aceptada,Excelencia en carrera de alta dificultad academica
+87.50,3.80,2.80,4,MAESTRIA,82.50,43500.00,DEPARTAMENTO,1,1,CONSTANCIA,98,Aceptada,Excelencia en carrera de alta dificultad academica
+87.50,3.80,2.80,4,DOCTORADO,82.50,43500.00,DEPARTAMENTO,1,1,CONSTANCIA,98,Aceptada,Excelencia en carrera de alta dificultad academica
+95.50,2.00,0.00,3,INGENIERA,85.00,12500.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,150,Aceptada,Excelente rendimiento academico y situacion economica precaria
+95.50,2.00,0.00,3,LICENCIATURA,85.00,12500.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,150,Aceptada,Excelente rendimiento academico y situacion economica precaria
+95.50,2.00,0.00,3,MAESTRIA,85.00,12500.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,150,Aceptada,Excelente rendimiento academico y situacion economica precaria
+95.50,2.00,0.00,3,DOCTORADO,85.00,12500.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,150,Aceptada,Excelente rendimiento academico y situacion economica precaria
+89.70,2.30,1.30,3,INGENIERA,88.00,15800.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,150,Rechazada,Indice de bajas afecta elegibilidad
+89.70,2.30,1.30,3,LICENCIATURA,88.00,15800.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,150,Rechazada,Indice de bajas afecta elegibilidad
+89.70,2.30,1.30,3,MAESTRIA,88.00,15800.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,150,Rechazada,Indice de bajas afecta elegibilidad
+89.70,2.30,1.30,3,DOCTORADO,88.00,15800.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,150,Rechazada,Indice de bajas afecta elegibilidad
+98.50,0.00,0.00,3,INGENIERA,96.50,48500.00,DEPARTAMENTO,1,0,CONSTANCIA,105,Rechazada,Indice de bajas recurrente en historial
+98.50,0.00,0.00,3,LICENCIATURA,96.50,48500.00,DEPARTAMENTO,1,0,CONSTANCIA,105,Rechazada,Indice de bajas recurrente en historial
+98.50,0.00,0.00,3,MAESTRIA,96.50,48500.00,DEPARTAMENTO,1,0,CONSTANCIA,105,Rechazada,Indice de bajas recurrente en historial
+98.50,0.00,0.00,3,DOCTORADO,96.50,48500.00,DEPARTAMENTO,1,0,CONSTANCIA,105,Rechazada,Indice de bajas recurrente en historial
+90.10,2.20,1.20,3,INGENIERA,86.00,11800.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,151,Rechazada,Indice de reprobacion superior al 30%
+90.10,2.20,1.20,3,LICENCIATURA,86.00,11800.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,151,Rechazada,Indice de reprobacion superior al 30%
+90.10,2.20,1.20,3,MAESTRIA,86.00,11800.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,151,Rechazada,Indice de reprobacion superior al 30%
+90.10,2.20,1.20,3,DOCTORADO,86.00,11800.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,151,Rechazada,Indice de reprobacion superior al 30%
+88.60,3.00,2.00,2,INGENIERA,80.00,18500.00,VIVIENDA_IMPROVISADA,1,0,EXCELENCIA_ACADEMICA,145,Rechazada,Indices de reprobacion y bajas demasiado elevados
+88.60,3.00,2.00,2,LICENCIATURA,80.00,18500.00,VIVIENDA_IMPROVISADA,1,0,EXCELENCIA_ACADEMICA,145,Rechazada,Indices de reprobacion y bajas demasiado elevados
+88.60,3.00,2.00,2,MAESTRIA,80.00,18500.00,VIVIENDA_IMPROVISADA,1,0,EXCELENCIA_ACADEMICA,145,Rechazada,Indices de reprobacion y bajas demasiado elevados
+88.60,3.00,2.00,2,DOCTORADO,80.00,18500.00,VIVIENDA_IMPROVISADA,1,0,EXCELENCIA_ACADEMICA,145,Rechazada,Indices de reprobacion y bajas demasiado elevados
+83.50,7.00,6.00,4,INGENIERA,77.00,16800.00,VIVIENDA_IMPROVISADA,1,0,EXCELENCIA_ACADEMICA,148,Devuelta,Informacion de vivienda requiere verificacion
+83.50,7.00,6.00,4,LICENCIATURA,77.00,16800.00,VIVIENDA_IMPROVISADA,1,0,EXCELENCIA_ACADEMICA,148,Devuelta,Informacion de vivienda requiere verificacion
+83.50,7.00,6.00,4,MAESTRIA,77.00,16800.00,VIVIENDA_IMPROVISADA,1,0,EXCELENCIA_ACADEMICA,148,Devuelta,Informacion de vivienda requiere verificacion
+83.50,7.00,6.00,4,DOCTORADO,77.00,16800.00,VIVIENDA_IMPROVISADA,1,0,EXCELENCIA_ACADEMICA,148,Devuelta,Informacion de vivienda requiere verificacion
+64.90,18.50,23.00,7,INGENIERA,67.50,43500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,80,Devuelta,Informacion socioeconomica contradictoria
+64.90,18.50,23.00,7,LICENCIATURA,67.50,43500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,80,Devuelta,Informacion socioeconomica contradictoria
+64.90,18.50,23.00,7,MAESTRIA,67.50,43500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,80,Devuelta,Informacion socioeconomica contradictoria
+64.90,18.50,23.00,7,DOCTORADO,67.50,43500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,80,Devuelta,Informacion socioeconomica contradictoria
+91.20,1.50,1.00,4,INGENIERA,88.00,23500.00,DEPARTAMENTO,1,0,CONSTANCIA,95,Rechazada,Ingreso familiar excede limite para beca economica
+91.20,1.50,1.00,4,LICENCIATURA,88.00,23500.00,DEPARTAMENTO,1,0,CONSTANCIA,95,Rechazada,Ingreso familiar excede limite para beca economica
+91.20,1.50,1.00,4,MAESTRIA,88.00,23500.00,DEPARTAMENTO,1,0,CONSTANCIA,95,Rechazada,Ingreso familiar excede limite para beca economica
+91.20,1.50,1.00,4,DOCTORADO,88.00,23500.00,DEPARTAMENTO,1,0,CONSTANCIA,95,Rechazada,Ingreso familiar excede limite para beca economica
+49.70,31.00,37.00,8,INGENIERA,58.50,52000.00,CASA_PROPIA,0,1,ESCASOS_RECURSOS,197,Rechazada,Ingresos superan limite para apoyo economico
+49.70,31.00,37.00,8,LICENCIATURA,58.50,52000.00,CASA_PROPIA,0,1,ESCASOS_RECURSOS,197,Rechazada,Ingresos superan limite para apoyo economico
+49.70,31.00,37.00,8,MAESTRIA,58.50,52000.00,CASA_PROPIA,0,1,ESCASOS_RECURSOS,197,Rechazada,Ingresos superan limite para apoyo economico
+49.70,31.00,37.00,8,DOCTORADO,58.50,52000.00,CASA_PROPIA,0,1,ESCASOS_RECURSOS,197,Rechazada,Ingresos superan limite para apoyo economico
+85.20,5.50,4.50,5,INGENIERA,79.00,33500.00,DEPARTAMENTO,1,1,CONSTANCIA,96,Aceptada,Potencial academico en situacion vulnerable
+85.20,5.50,4.50,5,LICENCIATURA,79.00,33500.00,DEPARTAMENTO,1,1,CONSTANCIA,96,Aceptada,Potencial academico en situacion vulnerable
+85.20,5.50,4.50,5,MAESTRIA,79.00,33500.00,DEPARTAMENTO,1,1,CONSTANCIA,96,Aceptada,Potencial academico en situacion vulnerable
+85.20,5.50,4.50,5,DOCTORADO,79.00,33500.00,DEPARTAMENTO,1,1,CONSTANCIA,96,Aceptada,Potencial academico en situacion vulnerable
+92.90,1.40,0.70,4,INGENIERA,89.90,13200.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,155,Rechazada,Promedio academico en limite muy ajustado
+92.90,1.40,0.70,4,LICENCIATURA,89.90,13200.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,155,Rechazada,Promedio academico en limite muy ajustado
+92.90,1.40,0.70,4,MAESTRIA,89.90,13200.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,155,Rechazada,Promedio academico en limite muy ajustado
+92.90,1.40,0.70,4,DOCTORADO,89.90,13200.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,155,Rechazada,Promedio academico en limite muy ajustado
+54.60,24.50,31.50,9,INGENIERA,64.60,56500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,83,Rechazada,Promedio academico fluctuante sin tendencia mejora
+54.60,24.50,31.50,9,LICENCIATURA,64.60,56500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,83,Rechazada,Promedio academico fluctuante sin tendencia mejora
+54.60,24.50,31.50,9,MAESTRIA,64.60,56500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,83,Rechazada,Promedio academico fluctuante sin tendencia mejora
+54.60,24.50,31.50,9,DOCTORADO,64.60,56500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,83,Rechazada,Promedio academico fluctuante sin tendencia mejora
+45.20,35.00,40.00,8,INGENIERA,60.00,45000.00,CASA_PROPIA,0,0,ESCASOS_RECURSOS,200,Rechazada,Promedio academico insuficiente para beca de excelencia
+45.20,35.00,40.00,8,LICENCIATURA,60.00,45000.00,CASA_PROPIA,0,0,ESCASOS_RECURSOS,200,Rechazada,Promedio academico insuficiente para beca de excelencia
+45.20,35.00,40.00,8,MAESTRIA,60.00,45000.00,CASA_PROPIA,0,0,ESCASOS_RECURSOS,200,Rechazada,Promedio academico insuficiente para beca de excelencia
+45.20,35.00,40.00,8,DOCTORADO,60.00,45000.00,CASA_PROPIA,0,0,ESCASOS_RECURSOS,200,Rechazada,Promedio academico insuficiente para beca de excelencia
+86.30,4.50,3.50,4,INGENIERA,83.00,13800.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,147,Aceptada,Promedio destacado con carga academica maxima
+86.30,4.50,3.50,4,LICENCIATURA,83.00,13800.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,147,Aceptada,Promedio destacado con carga academica maxima
+86.30,4.50,3.50,4,MAESTRIA,83.00,13800.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,147,Aceptada,Promedio destacado con carga academica maxima
+86.30,4.50,3.50,4,DOCTORADO,83.00,13800.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,147,Aceptada,Promedio destacado con carga academica maxima
+92.70,1.00,0.50,3,INGENIERA,90.00,13200.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,152,Rechazada,Promedio inferior al minimo requerido
+92.70,1.00,0.50,3,LICENCIATURA,90.00,13200.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,152,Rechazada,Promedio inferior al minimo requerido
+92.70,1.00,0.50,3,MAESTRIA,90.00,13200.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,152,Rechazada,Promedio inferior al minimo requerido
+92.70,1.00,0.50,3,DOCTORADO,90.00,13200.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,152,Rechazada,Promedio inferior al minimo requerido
+93.10,0.60,0.10,1,INGENIERA,92.00,13800.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,148,Rechazada,Promedio justo en limite inferior aceptable
+93.10,0.60,0.10,1,LICENCIATURA,92.00,13800.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,148,Rechazada,Promedio justo en limite inferior aceptable
+93.10,0.60,0.10,1,MAESTRIA,92.00,13800.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,148,Rechazada,Promedio justo en limite inferior aceptable
+93.10,0.60,0.10,1,DOCTORADO,92.00,13800.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,148,Rechazada,Promedio justo en limite inferior aceptable
+94.60,1.10,0.60,3,INGENIERA,87.50,37500.00,DEPARTAMENTO,1,1,CONSTANCIA,95,Aceptada,Rendimiento academico excelente y constante
+94.60,1.10,0.60,3,LICENCIATURA,87.50,37500.00,DEPARTAMENTO,1,1,CONSTANCIA,95,Aceptada,Rendimiento academico excelente y constante
+94.60,1.10,0.60,3,MAESTRIA,87.50,37500.00,DEPARTAMENTO,1,1,CONSTANCIA,95,Aceptada,Rendimiento academico excelente y constante
+94.60,1.10,0.60,3,DOCTORADO,87.50,37500.00,DEPARTAMENTO,1,1,CONSTANCIA,95,Aceptada,Rendimiento academico excelente y constante
+98.20,0.10,0.00,1,INGENIERA,97.20,52500.00,DEPARTAMENTO,1,1,CONSTANCIA,100,Aceptada,Rendimiento academico excelente y constante
+98.20,0.10,0.00,1,LICENCIATURA,97.20,52500.00,DEPARTAMENTO,1,1,CONSTANCIA,100,Aceptada,Rendimiento academico excelente y constante
+98.20,0.10,0.00,1,MAESTRIA,97.20,52500.00,DEPARTAMENTO,1,1,CONSTANCIA,100,Aceptada,Rendimiento academico excelente y constante
+98.20,0.10,0.00,1,DOCTORADO,97.20,52500.00,DEPARTAMENTO,1,1,CONSTANCIA,100,Aceptada,Rendimiento academico excelente y constante
+87.10,4.00,3.00,4,INGENIERA,82.00,27500.00,DEPARTAMENTO,1,0,CONSTANCIA,102,Aceptada,Rendimiento sobresaliente en carrera de alta demanda
+87.10,4.00,3.00,4,LICENCIATURA,82.00,27500.00,DEPARTAMENTO,1,0,CONSTANCIA,102,Aceptada,Rendimiento sobresaliente en carrera de alta demanda
+87.10,4.00,3.00,4,MAESTRIA,82.00,27500.00,DEPARTAMENTO,1,0,CONSTANCIA,102,Aceptada,Rendimiento sobresaliente en carrera de alta demanda
+87.10,4.00,3.00,4,DOCTORADO,82.00,27500.00,DEPARTAMENTO,1,0,CONSTANCIA,102,Aceptada,Rendimiento sobresaliente en carrera de alta demanda
+57.40,23.00,29.00,7,INGENIERA,61.00,37500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,77,Rechazada,Semestre avanzado con promedio regular
+57.40,23.00,29.00,7,LICENCIATURA,61.00,37500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,77,Rechazada,Semestre avanzado con promedio regular
+57.40,23.00,29.00,7,MAESTRIA,61.00,37500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,77,Rechazada,Semestre avanzado con promedio regular
+57.40,23.00,29.00,7,DOCTORADO,61.00,37500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,77,Rechazada,Semestre avanzado con promedio regular
+61.30,19.50,25.50,6,INGENIERA,66.30,48500.00,CASA_PROPIA,0,0,ESCASOS_RECURSOS,196,Rechazada,Semestres iniciales con rendimiento deficiente
+61.30,19.50,25.50,6,LICENCIATURA,66.30,48500.00,CASA_PROPIA,0,0,ESCASOS_RECURSOS,196,Rechazada,Semestres iniciales con rendimiento deficiente
+61.30,19.50,25.50,6,MAESTRIA,66.30,48500.00,CASA_PROPIA,0,0,ESCASOS_RECURSOS,196,Rechazada,Semestres iniciales con rendimiento deficiente
+61.30,19.50,25.50,6,DOCTORADO,66.30,48500.00,CASA_PROPIA,0,0,ESCASOS_RECURSOS,196,Rechazada,Semestres iniciales con rendimiento deficiente
+59.30,20.00,25.00,6,INGENIERA,62.00,42000.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,85,Rechazada,Semestres avanzados con bajo rendimiento academico
+59.30,20.00,25.00,6,LICENCIATURA,62.00,42000.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,85,Rechazada,Semestres avanzados con bajo rendimiento academico
+59.30,20.00,25.00,6,MAESTRIA,62.00,42000.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,85,Rechazada,Semestres avanzados con bajo rendimiento academico
+59.30,20.00,25.00,6,DOCTORADO,62.00,42000.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,85,Rechazada,Semestres avanzados con bajo rendimiento academico
+91.30,1.80,0.90,3,INGENIERA,86.50,12200.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,149,Rechazada,Semestres avanzados con bajo rendimiento academico
+91.30,1.80,0.90,3,LICENCIATURA,86.50,12200.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,149,Rechazada,Semestres avanzados con bajo rendimiento academico
+91.30,1.80,0.90,3,MAESTRIA,86.50,12200.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,149,Rechazada,Semestres avanzados con bajo rendimiento academico
+91.30,1.80,0.90,3,DOCTORADO,86.50,12200.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,149,Rechazada,Semestres avanzados con bajo rendimiento academico
+92.40,0.90,0.40,2,INGENIERA,90.50,35500.00,DEPARTAMENTO,1,1,CONSTANCIA,100,Rechazada,Semestres iniciales con rendimiento deficiente
+92.40,0.90,0.40,2,LICENCIATURA,90.50,35500.00,DEPARTAMENTO,1,1,CONSTANCIA,100,Rechazada,Semestres iniciales con rendimiento deficiente
+92.40,0.90,0.40,2,MAESTRIA,90.50,35500.00,DEPARTAMENTO,1,1,CONSTANCIA,100,Rechazada,Semestres iniciales con rendimiento deficiente
+92.40,0.90,0.40,2,DOCTORADO,90.50,35500.00,DEPARTAMENTO,1,1,CONSTANCIA,100,Rechazada,Semestres iniciales con rendimiento deficiente
+71.70,12.00,17.00,8,INGENIERA,74.70,56500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,75,Aceptada,Situacion economica vulnerable con buen desempeno academico
+71.70,12.00,17.00,8,LICENCIATURA,74.70,56500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,75,Aceptada,Situacion economica vulnerable con buen desempeno academico
+71.70,12.00,17.00,8,MAESTRIA,74.70,56500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,75,Aceptada,Situacion economica vulnerable con buen desempeno academico
+71.70,12.00,17.00,8,DOCTORADO,74.70,56500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,75,Aceptada,Situacion economica vulnerable con buen desempeno academico
+78.90,12.00,15.00,6,INGENIERA,70.00,32000.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,80,Aceptada,Situacion economica vulnerable con buen desempeno academico
+78.90,12.00,15.00,6,LICENCIATURA,70.00,32000.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,80,Aceptada,Situacion economica vulnerable con buen desempeno academico
+78.90,12.00,15.00,6,MAESTRIA,70.00,32000.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,80,Aceptada,Situacion economica vulnerable con buen desempeno academico
+78.90,12.00,15.00,6,DOCTORADO,70.00,32000.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,80,Aceptada,Situacion economica vulnerable con buen desempeno academico
+73.60,10.50,13.50,7,INGENIERA,74.50,53500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,82,Aceptada,Situacion economica vulnerable con buen desempeno academico
+73.60,10.50,13.50,7,LICENCIATURA,74.50,53500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,82,Aceptada,Situacion economica vulnerable con buen desempeno academico
+73.60,10.50,13.50,7,MAESTRIA,74.50,53500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,82,Aceptada,Situacion economica vulnerable con buen desempeno academico
+73.60,10.50,13.50,7,DOCTORADO,74.50,53500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,82,Aceptada,Situacion economica vulnerable con buen desempeno academico
+89.20,3.20,2.20,5,INGENIERA,84.20,44500.00,DEPARTAMENTO,1,1,CONSTANCIA,103,Aceptada,Situacion economica vulnerable con buen desempeno academico
+89.20,3.20,2.20,5,LICENCIATURA,84.20,44500.00,DEPARTAMENTO,1,1,CONSTANCIA,103,Aceptada,Situacion economica vulnerable con buen desempeno academico
+89.20,3.20,2.20,5,MAESTRIA,84.20,44500.00,DEPARTAMENTO,1,1,CONSTANCIA,103,Aceptada,Situacion economica vulnerable con buen desempeno academico
+89.20,3.20,2.20,5,DOCTORADO,84.20,44500.00,DEPARTAMENTO,1,1,CONSTANCIA,103,Aceptada,Situacion economica vulnerable con buen desempeno academico
+56.30,24.00,31.00,8,INGENIERA,62.50,60000.00,CASA_PROPIA,0,0,ESCASOS_RECURSOS,200,Aceptada,Situacion economica vulnerable con buen desempeno academico
+56.30,24.00,31.00,8,LICENCIATURA,62.50,60000.00,CASA_PROPIA,0,0,ESCASOS_RECURSOS,200,Aceptada,Situacion economica vulnerable con buen desempeno academico
+56.30,24.00,31.00,8,MAESTRIA,62.50,60000.00,CASA_PROPIA,0,0,ESCASOS_RECURSOS,200,Aceptada,Situacion economica vulnerable con buen desempeno academico
+56.30,24.00,31.00,8,DOCTORADO,62.50,60000.00,CASA_PROPIA,0,0,ESCASOS_RECURSOS,200,Aceptada,Situacion economica vulnerable con buen desempeno academico
+69.80,14.00,17.00,7,INGENIERA,67.00,36500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,79,Aceptada,Situacion economica vulnerable con buen desempeno academico
+69.80,14.00,17.00,7,LICENCIATURA,67.00,36500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,79,Aceptada,Situacion economica vulnerable con buen desempeno academico
+69.80,14.00,17.00,7,MAESTRIA,67.00,36500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,79,Aceptada,Situacion economica vulnerable con buen desempeno academico
+69.80,14.00,17.00,7,DOCTORADO,67.00,36500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,79,Aceptada,Situacion economica vulnerable con buen desempeno academico
+59.80,20.50,27.00,6,INGENIERA,63.80,47500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,75,Rechazada,Tipo de vivienda no coincide con escasos recursos
+59.80,20.50,27.00,6,LICENCIATURA,63.80,47500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,75,Rechazada,Tipo de vivienda no coincide con escasos recursos
+59.80,20.50,27.00,6,MAESTRIA,63.80,47500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,75,Rechazada,Tipo de vivienda no coincide con escasos recursos
+59.80,20.50,27.00,6,DOCTORADO,63.80,47500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,75,Rechazada,Tipo de vivienda no coincide con escasos recursos
+50.30,30.00,36.00,10,INGENIERA,56.00,39500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,82,Rechazada,Tipo de vivienda no coincide con escasos recursos
+50.30,30.00,36.00,10,LICENCIATURA,56.00,39500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,82,Rechazada,Tipo de vivienda no coincide con escasos recursos
+50.30,30.00,36.00,10,MAESTRIA,56.00,39500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,82,Rechazada,Tipo de vivienda no coincide con escasos recursos
+50.30,30.00,36.00,10,DOCTORADO,56.00,39500.00,RESIDENCIA,0,1,ESTUDIANTE_TRABAJO,82,Rechazada,Tipo de vivienda no coincide con escasos recursos
+92.00,1.50,0.80,3,INGENIERA,87.00,46500.00,DEPARTAMENTO,1,1,CONSTANCIA,97,Rechazada,Tipo de vivienda no coincide con escasos recursos
+92.00,1.50,0.80,3,LICENCIATURA,87.00,46500.00,DEPARTAMENTO,1,1,CONSTANCIA,97,Rechazada,Tipo de vivienda no coincide con escasos recursos
+92.00,1.50,0.80,3,MAESTRIA,87.00,46500.00,DEPARTAMENTO,1,1,CONSTANCIA,97,Rechazada,Tipo de vivienda no coincide con escasos recursos
+92.00,1.50,0.80,3,DOCTORADO,87.00,46500.00,DEPARTAMENTO,1,1,CONSTANCIA,97,Rechazada,Tipo de vivienda no coincide con escasos recursos
+52.60,28.50,35.50,2,INGENIERA,60.80,49500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,78,Rechazada,Vivienda en residencia estudiantil con recursos
+54.60,14.50,2.50,5,LICENCIATURA,60.80,49500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,78,Rechazada,Vivienda en residencia estudiantil con recursos
+52.60,7.50,10.50,7,MAESTRIA,60.80,49500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,78,Rechazada,Vivienda en residencia estudiantil con recursos
+58.60,28.50,35.50,9,DOCTORADO,60.80,49500.00,RESIDENCIA,0,0,ESTUDIANTE_TRABAJO,78,Rechazada,Vivienda en residencia estudiantil con recursos
+93.70,1.20,0.60,3,INGENIERA,88.70,15800.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,154,Rechazada,Vivienda propia no justifica apoyo economico
+93.70,1.20,0.60,3,LICENCIATURA,88.70,15800.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,154,Rechazada,Vivienda propia no justifica apoyo economico
+93.70,1.20,0.60,3,MAESTRIA,88.70,15800.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,154,Rechazada,Vivienda propia no justifica apoyo economico
+93.70,1.20,0.60,3,DOCTORADO,88.70,15800.00,VIVIENDA_IMPROVISADA,1,1,EXCELENCIA_ACADEMICA,154,Rechazada,Vivienda propia no justifica apoyo economico
+60.10,21.00,26.00,7,INGENIERA,64.50,59000.00,CASA_PROPIA,0,1,ESCASOS_RECURSOS,204,Rechazada,Vivienda propia no justifica apoyo economico
+60.10,21.00,26.00,7,LICENCIATURA,64.50,59000.00,CASA_PROPIA,0,1,ESCASOS_RECURSOS,204,Rechazada,Vivienda propia no justifica apoyo economico
+60.10,21.00,26.00,7,MAESTRIA,64.50,59000.00,CASA_PROPIA,0,1,ESCASOS_RECURSOS,204,Rechazada,Vivienda propia no justifica apoyo economico
+60.10,21.00,26.00,7,DOCTORADO,64.50,59000.00,CASA_PROPIA,0,1,ESCASOS_RECURSOS,204,Rechazada,Vivienda propia no justifica apoyo economico
