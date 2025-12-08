@@ -12,4 +12,12 @@
         <maven.compiler.release>23</maven.compiler.release>
         <exec.mainClass>presentacion.Main</exec.mainClass>
     </properties>
+    <dependencies>
+        <dependency>
+            <groupId>mcortezv</groupId>
+            <artifactId>dto_negocios_gobierno</artifactId>
+            <version>1.0</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 </project>

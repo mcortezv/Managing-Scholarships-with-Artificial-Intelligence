@@ -1,31 +1,31 @@
-package presentacion.modificarResolucion;
+package presentacion.evaluarSolicitudes;
 import dtoGobierno.BecaDTO;
 import dtoGobierno.RequisitosDTO;
 import presentacion.coordinacion.MainFrame;
 import presentacion.coordinacion.interfaces.ICoordinadorAplicacion;
+import presentacion.styles.*;
 import presentacion.styles.Button;
-import presentacion.styles.ComboBox;
 import presentacion.styles.Label;
 import presentacion.styles.Panel;
-import presentacion.styles.Style;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
-public class ModificarConvocatoriaPanel extends Panel {
+public class EvaluarConvocatoriaPanel extends Panel {
     private Label titulo;
     private JPanel lista;
     private JScrollPane scroll;
     private ComboBox<BecaDTO> comboConvocatoria;
-    private Button btnModificar;
+    private Button btnEvaluar;
 
-    public ModificarConvocatoriaPanel(MainFrame frame, ICoordinadorAplicacion coordinadorAplicacion) {
+    public EvaluarConvocatoriaPanel(MainFrame frame, ICoordinadorAplicacion coordinadorAplicacion) {
         super(frame, coordinadorAplicacion);
     }
 
     public void startComponents() {
         centralPanel.add(Box.createVerticalStrut(Style.TOP_ESPACIO));
-        titulo = new Label("Modificar Convocatoria");
+        titulo = new Label("Evaluar Convocatoria");
         titulo.setFont(Style.TITLE_FONT);
         titulo.setAlignmentX(CENTER_ALIGNMENT);
         centralPanel.add(titulo);
@@ -51,11 +51,11 @@ public class ModificarConvocatoriaPanel extends Panel {
         centralPanel.add(comboConvocatoria);
         centralPanel.add(Box.createVerticalStrut(Style.BLOQUE_ESPACIO));
 
-        btnModificar = new Button("Moficar");
-        btnModificar.setAlignmentX(CENTER_ALIGNMENT);
-        centralPanel.add(btnModificar);
+        btnEvaluar = new Button("Evaluar");
+        btnEvaluar.setAlignmentX(CENTER_ALIGNMENT);
+        centralPanel.add(btnEvaluar);
 
-        btnModificar.addActionListener(e -> {
+        btnEvaluar.addActionListener(e -> {
             BecaDTO seleccionada = (BecaDTO) comboConvocatoria.getSelectedItem();
             //coordinadorAplicacion.
         });
