@@ -18,7 +18,6 @@ public interface ISolicitudDAO {
 
     Solicitud obtenerPorId(int idSolicitud);
 
-    Solicitud obtenerPorFiltro(String tipoFiltro, String filtro);
 
     boolean actualizar(Solicitud solicitud);
 

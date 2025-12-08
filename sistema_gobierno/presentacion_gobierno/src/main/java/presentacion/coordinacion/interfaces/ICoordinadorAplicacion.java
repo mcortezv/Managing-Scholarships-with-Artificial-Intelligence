@@ -1,22 +1,34 @@
 package presentacion.coordinacion.interfaces;
+
 import dtoGobierno.BecaDTO;
 import dtoGobierno.EvaluadorLoginDTO;
+import dtoGobierno.ResolucionDTO;
+import dtoGobierno.SolicitudDTO;
 
 /**
- *
- * @author Cortez, Manuel;
+ * Interface para el coordinador de aplicación
+ * @author Cortez, Manuel
  */
 public interface ICoordinadorAplicacion {
 
+    // Gestión de sesión
     void iniciarSesion(EvaluadorLoginDTO evaluadorLoginDTO);
-
     void cerrarSesion();
+    void volverHub();
 
-    void modificar();
+    // Evaluar Solicitudes - Navegación
+    void iniciarEvaluarConvocatoria();
+    void seleccionarConvocatoriaEvaluar(BecaDTO becaDTO);
+    void seleccionarSolicitudEvaluar(SolicitudDTO solicitud);
+    void evaluarAutomatica(SolicitudDTO solicitud);
+    void evaluarManual(ResolucionDTO resolucion);
+    void evaluarOtraSolicitud();
 
-    void evaluar();
-
-    void hub();
-
-    void evaluarConvocatoria(BecaDTO becaDTO);
+    // Modificar Resolución - Navegación
+    void iniciarModificarConvocatoria();
+    void iniciarBusquedaResolucion();
+    void buscarResolucion(String tipoFiltro, String filtro);
+    void reevaluarAutomatica(SolicitudDTO solicitud);
+    void modificarResolucion(ResolucionDTO resolucion);
+    void modificarOtraResolucion();
 }
