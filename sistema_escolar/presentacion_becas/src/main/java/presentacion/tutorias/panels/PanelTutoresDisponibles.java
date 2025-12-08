@@ -123,7 +123,9 @@ public class PanelTutoresDisponibles extends PanelTutorias {
             if (clicked) {
                 TutorDTO tutorSeleccionado = tutores.get(row);
                 coordinadorAplicacion.seleccionarTutor(tutorSeleccionado);
-                coordinadorAplicacion.mostrarHorariosDisponibles();
+                
+                boolean hayHorarios = coordinadorAplicacion.intentarMostrarHorariosDisponibles();
+                //coordinadorAplicacion.mostrarHorariosDisponibles();
             }
             clicked = false;
             return "Seleccionar";
