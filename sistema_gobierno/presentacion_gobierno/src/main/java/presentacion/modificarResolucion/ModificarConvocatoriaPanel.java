@@ -53,17 +53,12 @@ public class ModificarConvocatoriaPanel extends Panel {
         centralPanel.add(comboConvocatoria);
         centralPanel.add(Box.createVerticalStrut(Style.BLOQUE_ESPACIO));
 
-        btnModificar = new Button("Moficar");
+        btnModificar = new Button("Modificar");
         btnModificar.setAlignmentX(CENTER_ALIGNMENT);
         centralPanel.add(btnModificar);
 
         btnModificar.addActionListener(e -> {
-            BecaDTO seleccionada = (BecaDTO) comboConvocatoria.getSelectedItem();
-            //coordinadorAplicacion.
-        });
-
-        btnBack.addActionListener(e -> {
-            coordinadorAplicacion.hub();
+            coordinadorAplicacion.iniciarBusquedaResolucion();
         });
     }
 

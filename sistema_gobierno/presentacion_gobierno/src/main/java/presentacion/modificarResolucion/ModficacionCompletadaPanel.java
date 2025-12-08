@@ -1,4 +1,5 @@
 package presentacion.modificarResolucion;
+import dtoGobierno.ResolucionDTO;
 import presentacion.coordinacion.MainFrame;
 import presentacion.coordinacion.interfaces.ICoordinadorAplicacion;
 import presentacion.styles.Button;
@@ -57,7 +58,18 @@ public class ModficacionCompletadaPanel extends Panel {
         centralPanel.add(btnAceptar);
 
         btnAceptar.addActionListener(e -> {
-            //coordinadorAplicacion.aceptar();
+            coordinadorAplicacion.modificarOtraResolucion();
         });
+
     }
+
+    public void setResolucion(ResolucionDTO resolucion) {
+        if (resolucion != null) {
+            String decision = resolucion.getDecision();
+            subTituloH.setText("La resolución ha sido modificada a: " + decision);
+            subTituloL.setText("El estado de la solicitud ha sido actualizado con éxito.");
+        }
+    }
+
+
 }

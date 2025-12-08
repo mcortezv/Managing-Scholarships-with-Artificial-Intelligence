@@ -10,7 +10,7 @@ public interface IFachadaModificarResolucion {
 
     ResolucionDTO buscarResolucion(String nombre, String filtro);
 
-    ResolucionDTO resolverAtomatico(SolicitudDTO solicitud);
+    ResolucionDTO resolverAutomatico(SolicitudDTO solicitud);
 
     boolean resolverManual(ResolucionDTO resolucionDTO);
 
