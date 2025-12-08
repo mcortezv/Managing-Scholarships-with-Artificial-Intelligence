@@ -1,5 +1,5 @@
 package interfaces;
-import dto.pagarAdeudo.SolicitudPagoDTO;
+import itson.pagarAdeudo.SolicitudPagoDTOI;
 
 import java.awt.event.ActionListener;
 
@@ -9,6 +9,6 @@ import java.awt.event.ActionListener;
  */
 public interface IFachadaBanco {
     void mostrarPantallaPago(ActionListener listenerBotonPagar);
-    SolicitudPagoDTO ejecutarPago(SolicitudPagoDTO solicitud);
+    SolicitudPagoDTOI ejecutarPago(SolicitudPagoDTOI solicitud);
     void cerrarVentana();
 }

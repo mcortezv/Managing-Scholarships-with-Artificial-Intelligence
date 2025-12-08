@@ -46,7 +46,8 @@ public class ControlPago {
     }
 
     public SolicitudPagoDTO realizarPago(SolicitudPagoDTO solicitudPagoDTO){
-        return iFachadaBanco.ejecutarPago(solicitudPagoDTO);
+        SolicitudPagoDTOI solicitudPagoDTOI = iFachadaBanco.ejecutarPago(SolicitudPagoAdaptador.toDTOI(solicitudPagoDTO));
+        return SolicitudPagoAdaptador.toDTO(solicitudPagoDTOI);
     }
 
     public void cerrarVentanaBanco() {

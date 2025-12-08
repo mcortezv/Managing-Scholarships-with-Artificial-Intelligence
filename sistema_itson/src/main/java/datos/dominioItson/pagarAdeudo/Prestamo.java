@@ -1,7 +1,5 @@
 package datos.dominioItson.pagarAdeudo;
 
-import java.util.Date;
-
 public class Prestamo {
     private Long idEstudiante;
     private double costo;
