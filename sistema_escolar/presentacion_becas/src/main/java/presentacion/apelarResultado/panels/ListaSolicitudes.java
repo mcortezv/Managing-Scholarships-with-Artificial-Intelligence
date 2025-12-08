@@ -1,27 +1,27 @@
-package presentacion.pagarAdeudo.panels;
+package presentacion.apelarResultado.panels;
 
-import dto.pagarAdeudo.ClaseDTO;
-import presentacion.pagarAdeudo.PagarAdeudo;
-import presentacion.pagarAdeudo.PanelPagarAdeudo;
-import presentacion.pagarAdeudo.coordinadorAplicacionPagarAdeudo.CoordinadorAplicacionPagarAdeudo;
+import presentacion.apelarResultado.ApelarResultado;
+import presentacion.apelarResultado.PanelApelarResultado;
+import presentacion.apelarResultado.coordinadorAplicacionApelarResultado.CoordinadorAplicacionApelarResultado;
 import presentacion.styles.Button;
 import presentacion.styles.CustomTable;
 import presentacion.styles.enums.PanelCategory;
+import solicitarBeca.SolicitudDTO;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.List;
 
-public class ListaClasesColegiatura extends PanelPagarAdeudo {
+public class ListaSolicitudes extends PanelApelarResultado {
 
-    private JLabel lblMontoTotal;
+    private JLabel lblTotalSolicitudes;
     private DefaultTableModel tableModel;
     private CustomTable table;
-    private List<ClaseDTO> clasesCache;
+    private List<SolicitudDTO> solicitudesCache;
 
-    public ListaClasesColegiatura(PagarAdeudo frame, CoordinadorAplicacionPagarAdeudo coordinadorAplicacion) {
-        super(frame, coordinadorAplicacion);
+    public ListaSolicitudes(ApelarResultado mainFrame, CoordinadorAplicacionApelarResultado coordinadorAplicacion) {
+        super(mainFrame, coordinadorAplicacion);
     }
 
     @Override
@@ -36,80 +36,72 @@ public class ListaClasesColegiatura extends PanelPagarAdeudo {
         leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
         leftPanel.setOpaque(false);
 
-        JPanel headerColegiatura = new RoundedPanel(20, new Color(235, 235, 235));
-        headerColegiatura.setPreferredSize(new Dimension(250, 50));
-        headerColegiatura.setMaximumSize(new Dimension(250, 50));
-        headerColegiatura.setLayout(new GridBagLayout());
-        JLabel lblTituloIzq = new JLabel("Colegiatura");
+        JPanel headerApelacion = new RoundedPanel(20, new Color(235, 235, 235));
+        headerApelacion.setPreferredSize(new Dimension(250, 50));
+        headerApelacion.setMaximumSize(new Dimension(250, 50));
+        headerApelacion.setLayout(new GridBagLayout());
+        JLabel lblTituloIzq = new JLabel("Apelación");
         lblTituloIzq.setFont(new Font("SansSerif", Font.PLAIN, 20));
-        headerColegiatura.add(lblTituloIzq);
+        headerApelacion.add(lblTituloIzq);
 
-        JPanel cardPago = new RoundedPanel(20, new Color(235, 235, 235));
-        cardPago.setPreferredSize(new Dimension(250, 200));
-        cardPago.setMaximumSize(new Dimension(250, 200));
-        cardPago.setLayout(new BoxLayout(cardPago, BoxLayout.Y_AXIS));
-        cardPago.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        JPanel cardInfo = new RoundedPanel(20, new Color(235, 235, 235));
+        cardInfo.setPreferredSize(new Dimension(250, 200));
+        cardInfo.setMaximumSize(new Dimension(250, 200));
+        cardInfo.setLayout(new BoxLayout(cardInfo, BoxLayout.Y_AXIS));
+        cardInfo.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
-        JLabel lblMontoTitulo = new JLabel("Monto total:");
-        lblMontoTitulo.setFont(new Font("SansSerif", Font.BOLD, 14));
-        lblMontoTitulo.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JLabel lblInfoTitulo = new JLabel("Solicitudes:");
+        lblInfoTitulo.setFont(new Font("SansSerif", Font.BOLD, 14));
+        lblInfoTitulo.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        lblMontoTotal = new JLabel("$ 0.00 MXN");
-        lblMontoTotal.setFont(new Font("SansSerif", Font.BOLD, 18));
-        lblMontoTotal.setAlignmentX(Component.CENTER_ALIGNMENT);
+        lblTotalSolicitudes = new JLabel("0");
+        lblTotalSolicitudes.setFont(new Font("SansSerif", Font.BOLD, 18));
+        lblTotalSolicitudes.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        JPanel precioBox = new RoundedPanel(10, Color.WHITE);
-        precioBox.setMaximumSize(new Dimension(200, 40));
-        precioBox.add(lblMontoTotal);
+        JPanel infoBox = new RoundedPanel(10, Color.WHITE);
+        infoBox.setMaximumSize(new Dimension(200, 40));
+        infoBox.add(lblTotalSolicitudes);
 
-        Button btnRealizarPago = new Button("Realizar Pago");
-        btnRealizarPago.setBackground(Color.BLACK);
-        btnRealizarPago.setForeground(Color.BLACK);
-        btnRealizarPago.setAlignmentX(Component.CENTER_ALIGNMENT);
-        btnRealizarPago.setMaximumSize(new Dimension(200, 40));
-        btnRealizarPago.addActionListener(e -> coordinadorAplicacion.seleccionarRealizarPago());
-
-        leftPanel.add(headerColegiatura);
+        leftPanel.add(headerApelacion);
         leftPanel.add(Box.createVerticalStrut(30));
 
-        cardPago.add(Box.createVerticalStrut(10));
-        cardPago.add(lblMontoTitulo);
-        cardPago.add(Box.createVerticalStrut(10));
-        cardPago.add(precioBox);
-        cardPago.add(Box.createVerticalStrut(20));
-        cardPago.add(btnRealizarPago);
+        cardInfo.add(Box.createVerticalStrut(10));
+        cardInfo.add(lblInfoTitulo);
+        cardInfo.add(Box.createVerticalStrut(10));
+        cardInfo.add(infoBox);
+        cardInfo.add(Box.createVerticalStrut(20));
 
-        leftPanel.add(cardPago);
+        leftPanel.add(cardInfo);
 
         JPanel rightPanel = new JPanel();
         rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
         rightPanel.setOpaque(false);
 
-        JPanel headerClases = new RoundedPanel(20, new Color(235, 235, 235));
-        headerClases.setPreferredSize(new Dimension(250, 50));
-        headerClases.setMaximumSize(new Dimension(250, 50));
-        headerClases.setLayout(new GridBagLayout());
-        JLabel lblTituloDer = new JLabel("Clases");
+        JPanel headerSolicitudes = new RoundedPanel(20, new Color(235, 235, 235));
+        headerSolicitudes.setPreferredSize(new Dimension(250, 50));
+        headerSolicitudes.setMaximumSize(new Dimension(250, 50));
+        headerSolicitudes.setLayout(new GridBagLayout());
+        JLabel lblTituloDer = new JLabel("Historial de Solicitudes");
         lblTituloDer.setFont(new Font("SansSerif", Font.PLAIN, 20));
-        headerClases.add(lblTituloDer);
+        headerSolicitudes.add(lblTituloDer);
 
         JPanel tableContainer = new RoundedPanel(20, Color.WHITE);
         tableContainer.setLayout(new BorderLayout());
         tableContainer.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
         tableContainer.setPreferredSize(new Dimension(700, 400));
 
-        String[] columnNames = {"Nombre", "Profesor", "Horario", "Aula", "Ver"};
+        String[] columnNames = {"Beca", "Fecha", "Estado", "Ver"};
         tableModel = new DefaultTableModel(columnNames, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
-                return column == 4;
+                return column == 3;
             }
         };
 
-        table = new CustomTable(tableModel, mainFrame, PanelCategory.LISTA_CLASES, this, coordinadorAplicacion);
+        table = new CustomTable(tableModel, mainFrame, PanelCategory.LISTA_SOLICITUDES, this, coordinadorAplicacionApelarResultado);
         table.setRowHeight(30);
 
-        table.getColumnModel().getColumn(4).setCellEditor(new DefaultCellEditor(new JCheckBox()) {
+        table.getColumnModel().getColumn(3).setCellEditor(new DefaultCellEditor(new JCheckBox()) {
             private final Button button = new Button("...");
             private int currentRow;
 
@@ -119,9 +111,9 @@ public class ListaClasesColegiatura extends PanelPagarAdeudo {
                 button.setBackground(Color.WHITE);
                 button.addActionListener(e -> {
                     fireEditingStopped();
-                    if (clasesCache != null && currentRow >= 0 && currentRow < clasesCache.size()) {
-                        ClaseDTO seleccionado = clasesCache.get(currentRow);
-                        coordinadorAplicacion.irADetalleClase(seleccionado);
+                    if (solicitudesCache != null && currentRow >= 0 && currentRow < solicitudesCache.size()) {
+                        SolicitudDTO seleccionado = solicitudesCache.get(currentRow);
+                        coordinadorAplicacionApelarResultado.irADetalleSolicitud(seleccionado);
                     }
                 });
             }
@@ -133,13 +125,12 @@ public class ListaClasesColegiatura extends PanelPagarAdeudo {
             }
         });
 
-        table.getColumnModel().getColumn(4).setCellRenderer((table1, value, isSelected, hasFocus, row, column) -> {
+        table.getColumnModel().getColumn(3).setCellRenderer((table1, value, isSelected, hasFocus, row, column) -> {
             Button btn = new Button("...");
             btn.setFont(new Font("SansSerif", Font.BOLD, 14));
             btn.setBackground(Color.WHITE);
             return btn;
         });
-
 
         JScrollPane scrollPane = new JScrollPane(table);
         scrollPane.setBorder(BorderFactory.createEmptyBorder());
@@ -147,7 +138,7 @@ public class ListaClasesColegiatura extends PanelPagarAdeudo {
 
         tableContainer.add(scrollPane, BorderLayout.CENTER);
 
-        rightPanel.add(headerClases);
+        rightPanel.add(headerSolicitudes);
         rightPanel.add(Box.createVerticalStrut(20));
         rightPanel.add(tableContainer);
 
@@ -158,40 +149,38 @@ public class ListaClasesColegiatura extends PanelPagarAdeudo {
         centralPanel.add(leftPanel, gbc);
 
         gbc.gridx = 1;
-        JLabel arrow = new JLabel("");
+        gbc.weightx = 0;
+        centralPanel.add(Box.createHorizontalStrut(20), gbc);
 
         gbc.gridx = 2;
         gbc.weightx = 1.0;
         gbc.fill = GridBagConstraints.BOTH;
         centralPanel.add(rightPanel, gbc);
 
-        btnBack.addActionListener(e-> mainFrame.showPanel("consultaAdeudoMenu"));
+        btnBack.addActionListener(e -> coordinadorAplicacionApelarResultado.regresarAlMenuPrincipal());
 
         centralPanel.revalidate();
         centralPanel.repaint();
     }
 
-    public void setClases(List<ClaseDTO> clases) {
-        this.clasesCache = clases;
+    public void setSolicitudesCache(List<SolicitudDTO> solicitudes) {
+        this.solicitudesCache = solicitudes;
+
+        if (lblTotalSolicitudes != null) {
+            lblTotalSolicitudes.setText(String.valueOf(solicitudes.size()));
+        }
 
         if (tableModel == null) return;
         tableModel.setRowCount(0);
 
-        for (ClaseDTO c : clases) {
+        for (SolicitudDTO s : solicitudes) {
             Object[] row = {
-                    c.getNombre(),
-                    c.getProfesor(),
-                    c.getHorario(),
-                    c.getAula(),
+                    s.getBeca().getNombre(),
+                    s.getFecha(),
+                    s.getEstado(),
                     "..."
             };
             tableModel.addRow(row);
-        }
-    }
-
-    public void setAdeudo(double adeudo) {
-        if (lblMontoTotal != null) {
-            lblMontoTotal.setText(String.format("$ %.2f MXN", adeudo));
         }
     }
 

@@ -32,7 +32,7 @@ public class AdeudoBO implements IAdeudoBO {
     }
 
     @Override
-    public boolean enviarSolicitudPago(SolicitudPagoDTOI solicitudPagoDTO) {
-        return iFachadaITSON.notificarLiquidacion(solicitudPagoDTO);
+    public void enviarSolicitudPago(SolicitudPagoDTOI solicitudPagoDTO) {
+        iFachadaITSON.notificarLiquidacion(solicitudPagoDTO);
     }
 }

@@ -1,4 +1,4 @@
-package pagarAdeudo;
+package dto.pagarAdeudo;
 
 public class SolicitudPagoDTO {
     private Long idEstudiante;

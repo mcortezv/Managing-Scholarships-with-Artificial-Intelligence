@@ -2,7 +2,7 @@ package adaptadores.pagarAdeudo;
 
 import datos.dominioItson.pagarAdeudo.Clase;
 import datos.dominioItson.pagarAdeudo.enums.Campus;
-import pagarAdeudo.ClaseDTO;
+import dto.pagarAdeudo.ClaseDTO;
 import itson.pagarAdeudo.ClaseDTOI;
 
 import java.util.ArrayList;
