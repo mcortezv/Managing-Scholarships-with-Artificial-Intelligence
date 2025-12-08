@@ -2,7 +2,7 @@ package presentacion.coordinacion;
 import presentacion.coordinacion.interfaces.ICoordinadorAplicacion;
 import presentacion.evaluarSolicitudes.EvaluacionCompletadaPanel;
 import presentacion.evaluarSolicitudes.EvaluacionPanel;
-import presentacion.evaluarSolicitudes.EvaluarConvocatoriasPanel;
+import presentacion.evaluarSolicitudes.EvaluarConvocatoriaPanel;
 import presentacion.login.HubPanel;
 import presentacion.login.IniciarSesionPanel;
 import javax.swing.*;
@@ -40,7 +40,7 @@ public final class MainFrame extends JFrame {
 
 
         // Evaluar Solicitudes
-        panels.put("evaluarConvocatorias", new EvaluarConvocatoriasPanel(this, coordinadorAplicacion));
+        panels.put("evaluarConvocatoria", new EvaluarConvocatoriaPanel(this, coordinadorAplicacion));
         panels.put("evaluacion", new EvaluacionPanel(this, coordinadorAplicacion));
         panels.put("evaluacionCompletada", new EvaluacionCompletadaPanel(this, coordinadorAplicacion));
 
@@ -52,7 +52,7 @@ public final class MainFrame extends JFrame {
         panels.put("modificacionCompletada", new ModficacionCompletadaPanel(this, coordinadorAplicacion));
 
         add(centralPanel, BorderLayout.CENTER);
-        centralPanel.add(panels.get("evaluacion"));
+        centralPanel.add(panels.get("iniciarSesion"));
     }
 
     public void showPanel(String nuevoPanel) {
@@ -68,7 +68,7 @@ public final class MainFrame extends JFrame {
         centralPanel.removeAll();
         switch (nombre) {
             case "iniciarSesion" -> centralPanel.add(panels.get("hub"), BorderLayout.CENTER);
-            case "evaluarConvocatorias" -> centralPanel.add(panels.get("evaluacion"), BorderLayout.CENTER);
+            case "evaluarConvocatoria" -> centralPanel.add(panels.get("evaluacion"), BorderLayout.CENTER);
             case "evaluacion" -> centralPanel.add(panels.get("evaluacionCompletada"), BorderLayout.CENTER);
             case "modificarConvocatoria" -> centralPanel.add(panels.get("buscarResolucion"), BorderLayout.CENTER);
             case "buscarResolucion" -> centralPanel.add(panels.get("modificarResolucion"), BorderLayout.CENTER);
@@ -85,7 +85,7 @@ public final class MainFrame extends JFrame {
         centralPanel.removeAll();
         switch (nombre) {
             case "hub" -> centralPanel.add(panels.get("iniciarSesion"), BorderLayout.CENTER);
-            case "evaluacion" -> centralPanel.add(panels.get("evaluarConvocatorias"), BorderLayout.CENTER);
+            case "evaluacion" -> centralPanel.add(panels.get("evaluarConvocatoria"), BorderLayout.CENTER);
             case "evaluacionCompletada" -> centralPanel.add(panels.get("evaluacion"), BorderLayout.CENTER);
             case "buscarResolucion" -> centralPanel.add(panels.get("modificarConvocatoria"), BorderLayout.CENTER);
             case "modificarResolucion" -> centralPanel.add(panels.get("buscarResolucion"), BorderLayout.CENTER);

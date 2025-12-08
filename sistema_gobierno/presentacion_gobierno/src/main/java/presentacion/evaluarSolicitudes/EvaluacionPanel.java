@@ -14,6 +14,8 @@ import javax.swing.JTextArea;
 
 public class EvaluacionPanel extends Panel {
     private Label titulo;
+    private Button next;
+    private Button previous;
 
     public EvaluacionPanel(MainFrame frame, ICoordinadorAplicacion coordinadorAplicacion) {
         super(frame, coordinadorAplicacion);
@@ -99,6 +101,21 @@ public class EvaluacionPanel extends Panel {
 
         left.add(Box.createRigidArea(new Dimension(0, 20)));
         left.add(solicitudRoundedPanel);
+
+
+
+        JPanel paginacion = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 20));
+        next = new Button("Siguiente");
+        previous = new Button("Anterior");
+        paginacion.setMaximumSize(new Dimension(400, 90));
+        paginacion.setOpaque(false);
+        paginacion.setAlignmentX(Component.CENTER_ALIGNMENT);
+        paginacion.add(previous);
+        paginacion.add(next);
+        left.add(paginacion);
+
+
+
 
 
         JPanel right = new JPanel();
