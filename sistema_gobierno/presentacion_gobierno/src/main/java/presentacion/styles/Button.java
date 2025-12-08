@@ -52,7 +52,10 @@ public class Button extends JButton {
         setUI(new BasicButtonUI());
     }
 
-    public void setPreferredSize(int i, int i1) {
-        this.setPreferredSize(new Dimension(i, i1));
+    public void setButtonSize(int w, int h) {
+        super.setPreferredSize(new Dimension(w, h));
+        super.setMinimumSize(new Dimension(w, h));
+        super.setMaximumSize(new Dimension(w, h));
     }
+
 }
