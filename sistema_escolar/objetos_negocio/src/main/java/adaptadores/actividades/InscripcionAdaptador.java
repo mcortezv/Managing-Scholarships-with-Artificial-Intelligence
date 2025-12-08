@@ -31,13 +31,11 @@ public class InscripcionAdaptador {
         inscripcionDTOItson.setFechaInscripcion(inscripcionDTO.getFechaInscripcion());
         inscripcionDTOItson.setMatriculaEstudiante(inscripcionDTO.getMatriculaEstudiante());
         //id grupo
+        inscripcionDTOItson.setIdActividad(inscripcionDTO.getIdActividad());
         inscripcionDTOItson.setIdGrupo(inscripcionDTO.getIdGrupo()); 
         inscripcionDTOItson.setNombreGrupo(inscripcionDTO.getNombreGrupo());
+        inscripcionDTOItson.setNombreActividad(inscripcionDTO.getNombreActividad());
         inscripcionDTOItson.setCosto(inscripcionDTO.getCosto());
-        inscripcionDTOItson.setDias(inscripcionDTO.getDias());
-        inscripcionDTOItson.setHoraInicio(inscripcionDTO.getHoraInicio());
-        inscripcionDTOItson.setHoraFin(inscripcionDTO.getHoraFin());
-        System.out.println(inscripcionDTOItson);
         return inscripcionDTOItson;
     }
     
@@ -49,6 +47,7 @@ public class InscripcionAdaptador {
         inscripcionDTO.setFechaInscripcion(inscripcionDTOItson.getFechaInscripcion());
         inscripcionDTO.setMatriculaEstudiante(inscripcionDTOItson.getMatriculaEstudiante());
         //grupi
+        inscripcionDTO.setIdActividad(inscripcionDTOItson.getIdActividad());
         inscripcionDTO.setIdGrupo(inscripcionDTOItson.getIdGrupo());
         inscripcionDTO.setNombreGrupo(inscripcionDTOItson.getNombreGrupo());
         inscripcionDTO.setCosto(inscripcionDTOItson.getCosto());
@@ -80,7 +79,7 @@ public class InscripcionAdaptador {
        inscripcion.setEstudiante(estudiante);
        //actividad
        Actividad actividad= new Actividad();
-       actividad.setNombre(inscripcionDTO.getNombreGrupo());
+       actividad.setNombre(inscripcionDTO.getNombreActividad());
        actividad.setCosto(inscripcionDTO.getCosto());
        grupo.setActividad(actividad);
        

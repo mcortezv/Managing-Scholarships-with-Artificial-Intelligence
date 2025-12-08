@@ -27,7 +27,8 @@ public class InscripcionService {
     
     public InscripcionDTOItson inscribirActividad(InscripcionDTOItson inscripcionDTO){
         Inscripcion inscripcion= InscripcionAdaptador.toEntity(inscripcionDTO);
-        return InscripcionAdaptador.toDTOITSON(inscripcionDAO.InscribirGrupo(inscripcion));
+        InscripcionDTOItson inscripcionDTOItson= InscripcionAdaptador.toDTOITSON(inscripcionDAO.InscribirGrupo(inscripcion));
+        return inscripcionDTOItson;
         
     }
     

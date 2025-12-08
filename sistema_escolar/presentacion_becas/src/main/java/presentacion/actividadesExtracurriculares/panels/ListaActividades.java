@@ -122,8 +122,6 @@ public class ListaActividades extends PanelActividades {
             panelContenido.add(Box.createVerticalStrut(5));
             
             boton.addActionListener(e->{
-                System.out.println("hola");
-                 System.out.println("el id es"+actividad.getId());
              coordinadorAplicacionActividades.procesarActividadSeleccionada(actividad);
                
             });
