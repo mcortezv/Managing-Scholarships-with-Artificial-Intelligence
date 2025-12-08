@@ -12,9 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Business Object para gestión de becas
- * Implementa validaciones de reglas de negocio
- *
+ * Business Object corregido para gestión de becas
  * @author Cortez, Manuel
  */
 public class BecaBO implements IBecaBO {
@@ -30,35 +28,45 @@ public class BecaBO implements IBecaBO {
     @Override
     public List<BecaDTO> obtenerListadoBecas() {
         try {
+            System.out.println("DEBUG BecaBO: Obteniendo becas con solicitudes...");
+
             // Obtener becas que tienen solicitudes
             List<Beca> becas = becaDAO.obtenerBecasConSolicitudes();
 
+            System.out.println("DEBUG BecaBO: Becas obtenidas del DAO: " +
+                    (becas != null ? becas.size() : "null"));
+
             if (becas == null || becas.isEmpty()) {
+                System.out.println("DEBUG BecaBO: No hay becas con solicitudes");
                 throw new BecaBOException(
                         "No hay becas con solicitudes disponibles para evaluación");
             }
 
-            // Filtrar solo becas activas
+            // Convertir a DTO (sin filtrar por fechas, ya que solo queremos
+            // becas que tengan solicitudes activas)
             List<BecaDTO> resultado = new ArrayList<>();
-            LocalDate fechaActual = LocalDate.now();
-
             for (Beca beca : becas) {
-                // Validar que la beca esté en periodo activo
-                if (validarBecaActiva(beca, fechaActual)) {
-                    resultado.add(BecaAdaptador.toDTO(beca));
-                }
+                BecaDTO dto = BecaAdaptador.toDTO(beca);
+                resultado.add(dto);
+                System.out.println("DEBUG BecaBO: Agregando beca: " + beca.getNombre() +
+                        " (" + beca.getTipo() + ")");
             }
+
+            System.out.println("DEBUG BecaBO: Total becas a retornar: " + resultado.size());
 
             if (resultado.isEmpty()) {
                 throw new BecaBOException(
-                        "No hay becas activas con solicitudes en este momento");
+                        "No hay becas con solicitudes disponibles");
             }
 
             return resultado;
 
         } catch (BecaBOException ex) {
+            System.err.println("ERROR BecaBO: " + ex.getMessage());
             throw ex;
         } catch (Exception ex) {
+            System.err.println("ERROR BecaBO: " + ex.getMessage());
+            ex.printStackTrace();
             throw new BecaBOException(
                     "Error al obtener listado de becas: " + ex.getMessage());
         }
@@ -66,15 +74,14 @@ public class BecaBO implements IBecaBO {
 
     /**
      * Valida si una beca está activa según su periodo
+     * NOTA: Este método ya no se usa en obtenerListadoBecas() porque
+     * ahora filtramos solo por existencia de solicitudes
      */
     private boolean validarBecaActiva(Beca beca, LocalDate fechaActual) {
-        // Validar que la beca tenga fechas configuradas
         if (beca.getFechaInicio() == null || beca.getFechaFin() == null) {
-            return false; // No se puede evaluar sin fechas
+            return true; // Si no tiene fechas, la consideramos activa
         }
 
-        // Validar que estemos dentro del periodo de la convocatoria
-        // O dentro del periodo de evaluación (hasta fecha de resultados + 30 días)
         boolean dentroConvocatoria =
                 !fechaActual.isBefore(beca.getFechaInicio()) &&
                         !fechaActual.isAfter(beca.getFechaFin());
@@ -85,34 +92,6 @@ public class BecaBO implements IBecaBO {
             dentroEvaluacion = !fechaActual.isAfter(fechaLimiteEvaluacion);
         }
 
-        // La beca está activa si está dentro de convocatoria o dentro del periodo de evaluación
         return dentroConvocatoria || dentroEvaluacion;
-    }
-
-    /**
-     * Valida los requisitos de una beca
-     */
-    private void validarRequisitos(Beca beca) {
-        if (beca.getRequisitos() == null) {
-            throw new BecaBOException(
-                    "La beca debe tener requisitos definidos");
-        }
-
-        // Validar rangos de requisitos
-        if (beca.getRequisitos().getPromedioMinimo() < 0 ||
-                beca.getRequisitos().getPromedioMinimo() > 100) {
-            throw new BecaBOException(
-                    "El promedio mínimo debe estar entre 0 y 100");
-        }
-
-        if (beca.getRequisitos().getIngresoFamiliarMaximo() < 0) {
-            throw new BecaBOException(
-                    "El ingreso familiar máximo no puede ser negativo");
-        }
-
-        if (beca.getRequisitos().getCargaAcademica() < 0) {
-            throw new BecaBOException(
-                    "La carga académica no puede ser negativa");
-        }
     }
 }
