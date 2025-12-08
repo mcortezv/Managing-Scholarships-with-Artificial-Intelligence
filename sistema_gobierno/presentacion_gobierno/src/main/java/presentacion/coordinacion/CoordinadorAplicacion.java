@@ -11,7 +11,6 @@ import presentacion.evaluarSolicitudes.EvaluacionPanel;
 import presentacion.evaluarSolicitudes.EvaluarConvocatoriaPanel;
 import presentacion.modificarResolucion.BuscarResolucionPanel;
 import presentacion.modificarResolucion.ModficacionCompletadaPanel;
-import presentacion.modificarResolucion.ModificarConvocatoriaPanel;
 import presentacion.modificarResolucion.ModificarResolucionPanel;
 
 import javax.swing.*;
@@ -333,7 +332,7 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
             System.out.println("DEBUG: Iniciando modificar convocatoria");
             validarSesionActiva();
             limpiarEstadoModificacion();
-            frame.showPanel("modificarConvocatoria");
+            frame.showPanel("buscarResolucion");
 
         } catch (Exception ex) {
             System.err.println("ERROR en iniciarModificarConvocatoria: " + ex.getMessage());
