@@ -1,8 +1,8 @@
 package presentacion.pagarAdeudo.coordinadorNegocioPagarAdeudo;
 
-import pagarAdeudo.ClaseDTO;
-import pagarAdeudo.PrestamoDTO;
-import pagarAdeudo.SolicitudPagoDTO;
+import dto.pagarAdeudo.ClaseDTO;
+import dto.pagarAdeudo.PrestamoDTO;
+import dto.pagarAdeudo.SolicitudPagoDTO;
 import solicitarBeca.EstudianteDTO;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -23,5 +23,5 @@ public interface ICoordinadorNegocioPagarAdeudo {
     void mostrarVentanaPaypal(double monto, String concepto, ActionListener listener);
     void cerrarVentanaPaypal();
     SolicitudPagoDTO realizarPagoPaypal(SolicitudPagoDTO solicitudPagoDTO);
-    boolean notificarLiquidacion(SolicitudPagoDTO solicitudPagoDTO);
+    void notificarLiquidacion(SolicitudPagoDTO solicitudPagoDTO);
 }

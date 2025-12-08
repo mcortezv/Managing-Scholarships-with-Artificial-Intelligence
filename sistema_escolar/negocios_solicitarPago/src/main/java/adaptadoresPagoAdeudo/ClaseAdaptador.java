@@ -2,7 +2,7 @@ package adaptadoresPagoAdeudo;
 
 import datos.dominioItson.pagarAdeudo.Clase;
 import itson.pagarAdeudo.ClaseDTOI;
-import pagarAdeudo.ClaseDTO;
+import dto.pagarAdeudo.ClaseDTO;
 
 public class ClaseAdaptador {
 

@@ -83,17 +83,9 @@ public final class PagarAdeudo extends JFrame {
         JPanel p =  panels.get(nuevoPanel);
         if (p != null) {
             centralPanel.add(p, BorderLayout.CENTER);
-        } else {
-            System.out.println("PagarAdeudo.showPanel: panel '" + nuevoPanel + "' no encontrado.");
         }
         centralPanel.revalidate();
         centralPanel.repaint();
-    }
-
-    public void agregarPanelDinamico(String nombre, JPanel panel) {
-        this.centralPanel.add(panel, nombre);
-        this.centralPanel.revalidate();
-        this.centralPanel.repaint();
     }
 
 

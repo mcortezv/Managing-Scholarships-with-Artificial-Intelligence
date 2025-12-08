@@ -1,8 +1,8 @@
 package interfaces;
 
-import pagarAdeudo.ClaseDTO;
-import pagarAdeudo.PrestamoDTO;
-import pagarAdeudo.SolicitudPagoDTO;
+import dto.pagarAdeudo.ClaseDTO;
+import dto.pagarAdeudo.PrestamoDTO;
+import dto.pagarAdeudo.SolicitudPagoDTO;
 import solicitarBeca.EstudianteDTO;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -12,7 +12,7 @@ public interface IFachadaPago {
     //itson
     List<PrestamoDTO> solicitarListaPrestamos(EstudianteDTO estudianteDTO);
     List<ClaseDTO> solicitarListaClases(EstudianteDTO estudianteDTO);
-    boolean notificarLiquidacion(SolicitudPagoDTO solicitudPagoDTO);
+    void notificarLiquidacion(SolicitudPagoDTO solicitudPagoDTO);
 
     //banco
     void solicitarVistaDePago(ActionListener listener);

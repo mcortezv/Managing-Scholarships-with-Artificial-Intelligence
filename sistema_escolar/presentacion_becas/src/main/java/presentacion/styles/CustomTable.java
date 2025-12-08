@@ -1,5 +1,7 @@
 package presentacion.styles;
 
+import presentacion.apelarResultado.ApelarResultado;
+import presentacion.apelarResultado.coordinadorAplicacionApelarResultado.CoordinadorAplicacionApelarResultado;
 import presentacion.pagarAdeudo.PagarAdeudo;
 import presentacion.pagarAdeudo.coordinadorAplicacionPagarAdeudo.CoordinadorAplicacionPagarAdeudo;
 import presentacion.styles.enums.PanelCategory;
@@ -12,10 +14,12 @@ import java.awt.*;
 
 public class CustomTable extends JTable {
 
-    private final PagarAdeudo owner;
+    private PagarAdeudo owner;
+    private ApelarResultado apelarResultado;
     private final PanelCategory category;
     private JPanel previous;
-    private final CoordinadorAplicacionPagarAdeudo coordinador;
+    private CoordinadorAplicacionPagarAdeudo coordinador;
+    private CoordinadorAplicacionApelarResultado coordinadorAplicacionApelarResultado;
 
     public CustomTable(
             TableModel model,
@@ -31,6 +35,19 @@ public class CustomTable extends JTable {
         this.coordinador = coordinador;
 
         configStyle();
+    }
+    public CustomTable(
+            TableModel model,
+            ApelarResultado owner,
+            PanelCategory category,
+            JPanel previous,
+            CoordinadorAplicacionApelarResultado coordinador
+    ){
+        super(model);
+        this.apelarResultado = owner;
+        this.category = category;
+        this.previous = previous;
+        this.coordinadorAplicacionApelarResultado = coordinador;
     }
 
     @Override
