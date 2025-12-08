@@ -13,6 +13,7 @@ import org.bson.types.ObjectId;
  */
 public class Grupo {
     private ObjectId id;
+    private String nombreGrupo;
     private int cupoTotal;
     private int cupoDisponible;
     private LocalDate fechaInicio;
@@ -26,7 +27,9 @@ public class Grupo {
     public Grupo() {
     }
 
-    public Grupo(int cupoTotal, int cupoDisponible, LocalDate fechaInicio, LocalDate fechaFin, LocalDate fechaLimiteInscripcion, Horario horario, Actividad actividad, Ubicacion ubicacion, Responsable responsable) {
+    public Grupo(ObjectId id, String nombreGrupo, int cupoTotal, int cupoDisponible, LocalDate fechaInicio, LocalDate fechaFin, LocalDate fechaLimiteInscripcion, Horario horario, Actividad actividad, Ubicacion ubicacion, Responsable responsable) {
+        this.id = id;
+        this.nombreGrupo = nombreGrupo;
         this.cupoTotal = cupoTotal;
         this.cupoDisponible = cupoDisponible;
         this.fechaInicio = fechaInicio;
@@ -37,6 +40,8 @@ public class Grupo {
         this.ubicacion = ubicacion;
         this.responsable = responsable;
     }
+
+    
 
     public int getCupoTotal() {
         return cupoTotal;
@@ -117,14 +122,19 @@ public class Grupo {
     public void setId(ObjectId id) {
         this.id = id;
     }
+
+    public String getNombreGrupo() {
+        return nombreGrupo;
+    }
+
+    public void setNombreGrupo(String nombreGrupo) {
+        this.nombreGrupo = nombreGrupo;
+    }
+    
+    
     
     
 
-    @Override
-    public String toString() {
-        return "Grupo{" + "cupoTotal=" + cupoTotal + ", cupoDisponible=" + cupoDisponible + ", fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin + ", fechaLimiteInscripcion=" + fechaLimiteInscripcion + ", horario=" + horario + ", actividad=" + actividad + ", ubicacion=" + ubicacion + ", responsable=" + responsable + '}';
-    }
-    
     
     
     

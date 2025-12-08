@@ -25,6 +25,7 @@ import presentacion.actividadesExtracurriculares.panels.ActividadesExtracurricul
 import presentacion.actividadesExtracurriculares.panels.DetalleGrupo;
 import presentacion.actividadesExtracurriculares.panels.ListaInscripciones;
 import presentacion.actividadesExtracurriculares.panels.ResumenClases;
+import presentacion.bajaActividades.panels.DetallesActividadBaja;
 
 
 /**
@@ -43,6 +44,7 @@ public class CoordinadorAplicacionActividades implements ICoordinadorAplicacionA
     private GrupoDTO grupoSeleccionado;
     private LoginDTOItson loginDTO;
     private EstudianteDTO estudiante;
+    private InscripcionDTO inscripcionElegida;
 //    private InscripcionDTO inscripcionDTO;
     
     public CoordinadorAplicacionActividades(IFachadaActividad fachadaActividad, CoordinadorAplicacion coordinadorAplicacion){
@@ -141,14 +143,16 @@ public class CoordinadorAplicacionActividades implements ICoordinadorAplicacionA
     
     
     public InscripcionDTO inscribirActividadAlumno(){
+        
         InscripcionDTO inscripcionDTO= new InscripcionDTO();
         inscripcionDTO.setIdGrupo(grupoSeleccionado.getId());
+        inscripcionDTO.setIdActividad(actividadSeleccionada.getId());
+        //la cambio a idestudiante
         inscripcionDTO.setMatriculaEstudiante(String.valueOf(loginDTO.getUsuario()));
-        inscripcionDTO.setNombreGrupo(grupoSeleccionado.getNombreActividad());
+        
+        inscripcionDTO.setNombreGrupo(grupoSeleccionado.getNombreGrupo());
+        inscripcionDTO.setNombreActividad(grupoSeleccionado.getNombreActividad());
         inscripcionDTO.setCosto(grupoSeleccionado.getCosto());
-        inscripcionDTO.setDias(grupoSeleccionado.getDias());
-        inscripcionDTO.setHoraInicio(grupoSeleccionado.getHoraInicio());
-        inscripcionDTO.setHoraFin(grupoSeleccionado.getHoraFin());  
         return coordinadorNegocioActividades.inscribirActividad(inscripcionDTO);
         
     }
@@ -175,6 +179,17 @@ public class CoordinadorAplicacionActividades implements ICoordinadorAplicacionA
         panel.cargarElementos();
         actividades.showPanel("ListaInscripciones");
     }
+    
+    public void inscripcionSeleccionada(InscripcionDTO inscripcion){
+        this.inscripcionElegida= inscripcion;
+        
+    }
+    
+//    public void abrirDetallesActividadBaja(){
+//        DetallesActividadBaja panel = (DetallesActividadBaja) actividades.getPanel("DetallesActividadBaja");
+//        panel
+//        
+//    }
     
     
     

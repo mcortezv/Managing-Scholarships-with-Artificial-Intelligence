@@ -18,6 +18,7 @@ public class InscripcionDTO {
     //estudiante
     private String matriculaEstudiante;
     private String nombreGrupo;
+    private String nombreActividad;
     private double costo;
     //horario
     private List<String> dias;
@@ -25,6 +26,8 @@ public class InscripcionDTO {
     private String horaFin;
     private String idEstudiante;
     private String idGrupo;
+    private String idActividad;
+    private String estado;
 
     public InscripcionDTO() {
     }
@@ -51,18 +54,25 @@ public class InscripcionDTO {
         this.horaFin = horaFin;
     }
 
-    public InscripcionDTO(String id, LocalDate fechaInscripcion, String matriculaEstudiante, String nombreGrupo, double costo, List<String> dias, String horaInicio, String horaFin, String idEstudiante, String idGrupo) {
+    public InscripcionDTO(String id, LocalDate fechaInscripcion, String matriculaEstudiante, String nombreGrupo, String nombreActividad, double costo, List<String> dias, String horaInicio, String horaFin, String idEstudiante, String idGrupo, String idActividad, String estado) {
         this.id = id;
         this.fechaInscripcion = fechaInscripcion;
         this.matriculaEstudiante = matriculaEstudiante;
         this.nombreGrupo = nombreGrupo;
+        this.nombreActividad = nombreActividad;
         this.costo = costo;
         this.dias = dias;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
         this.idEstudiante = idEstudiante;
         this.idGrupo = idGrupo;
+        this.idActividad = idActividad;
+        this.estado = estado;
     }
+
+    
+
+    
     
     
 
@@ -145,6 +155,30 @@ public class InscripcionDTO {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getNombreActividad() {
+        return nombreActividad;
+    }
+
+    public void setNombreActividad(String nombreActividad) {
+        this.nombreActividad = nombreActividad;
+    }
+
+    public String getIdActividad() {
+        return idActividad;
+    }
+
+    public void setIdActividad(String idActividad) {
+        this.idActividad = idActividad;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
     
     

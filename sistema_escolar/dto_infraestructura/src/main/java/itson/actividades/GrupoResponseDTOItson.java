@@ -13,6 +13,7 @@ import java.util.List;
  */
 public class GrupoResponseDTOItson {
     private String id;
+    private String nombreGrupo;
     private int cupoTotal;
     private int cupoDisponible;
     private LocalDate fechaInicio;
@@ -50,8 +51,9 @@ public class GrupoResponseDTOItson {
         this.correoResponsable = correoResponsable;
     }
 
-    public GrupoResponseDTOItson(String id, int cupoTotal, int cupoDisponible, LocalDate fechaInicio, LocalDate fechaFin, LocalDate fechaLimiteInscripcion, String horaInicio, String horaFin, List<String> dias, String nombreActividad, double costo, String nombreUbicacion, String unidad, String nombreResponsable, String correoResponsable) {
+    public GrupoResponseDTOItson(String id, String nombreGrupo, int cupoTotal, int cupoDisponible, LocalDate fechaInicio, LocalDate fechaFin, LocalDate fechaLimiteInscripcion, String horaInicio, String horaFin, List<String> dias, String idActividad, String nombreActividad, double costo, String nombreUbicacion, String unidad, String nombreResponsable, String correoResponsable) {
         this.id = id;
+        this.nombreGrupo = nombreGrupo;
         this.cupoTotal = cupoTotal;
         this.cupoDisponible = cupoDisponible;
         this.fechaInicio = fechaInicio;
@@ -60,6 +62,7 @@ public class GrupoResponseDTOItson {
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
         this.dias = dias;
+        this.idActividad = idActividad;
         this.nombreActividad = nombreActividad;
         this.costo = costo;
         this.nombreUbicacion = nombreUbicacion;
@@ -67,6 +70,10 @@ public class GrupoResponseDTOItson {
         this.nombreResponsable = nombreResponsable;
         this.correoResponsable = correoResponsable;
     }
+
+    
+
+   
 
     public GrupoResponseDTOItson(String id, int cupoTotal, int cupoDisponible, LocalDate fechaInicio, LocalDate fechaFin, LocalDate fechaLimiteInscripcion, String horaInicio, String horaFin, List<String> dias, String idActividad, String nombreActividad, double costo, String nombreUbicacion, String unidad, String nombreResponsable, String correoResponsable) {
         this.id = id;
@@ -220,6 +227,16 @@ public class GrupoResponseDTOItson {
         this.idActividad = idActividad;
     }
 
+    public String getNombreGrupo() {
+        return nombreGrupo;
+    }
+
+    public void setNombreGrupo(String nombreGrupo) {
+        this.nombreGrupo = nombreGrupo;
+    }
+
+    
+    
     
     
 }

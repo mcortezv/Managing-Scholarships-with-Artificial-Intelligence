@@ -4,6 +4,7 @@
  */
 package datos.adaptadoresItson.actividades;
 
+
 import datos.dominioItson.actividades.Actividad;
 import datos.dominioItson.actividades.Estudiante;
 import datos.dominioItson.actividades.Grupo;
@@ -44,17 +45,12 @@ public class InscripcionAdaptador {
        inscripcion.setEstudiante(estudiante);
        //actividad
        Actividad actividad= new Actividad();
-       actividad.setNombre(inscripcionDTOItson.getNombreGrupo());
+       actividad.setId(new ObjectId(inscripcionDTOItson.getIdActividad()));
+       actividad.setNombre(inscripcionDTOItson.getNombreActividad());
        actividad.setCosto(inscripcionDTOItson.getCosto());
        grupo.setActividad(actividad);
-       
-       
-       Horario horario= new Horario();
-       horario.setDias(inscripcionDTOItson.getDias());
-       horario.setHoraInicio(inscripcionDTOItson.getHoraInicio());
-       horario.setHoraFin(inscripcionDTOItson.getHoraFin());
-       grupo.setHorario(horario);
        grupo.setId(new ObjectId(inscripcionDTOItson.getIdGrupo()));
+       grupo.setNombreGrupo(inscripcionDTOItson.getNombreGrupo());
        
        inscripcion.setGrupo(grupo);
 
@@ -70,11 +66,9 @@ public class InscripcionAdaptador {
         inscripcionDTOItson.setMatriculaEstudiante(inscripcion.getEstudiante().getMatricula());
         inscripcionDTOItson.setNombreGrupo(inscripcion.getGrupo().getActividad().getNombre());
         inscripcionDTOItson.setCosto(inscripcion.getGrupo().getActividad().getCosto());
-        inscripcionDTOItson.setHoraInicio(inscripcion.getGrupo().getHorario().getHoraInicio());
-        inscripcionDTOItson.setHoraFin(inscripcion.getGrupo().getHorario().getHoraFin());
-        inscripcionDTOItson.setDias(inscripcion.getGrupo().getHorario().getDias());
         inscripcionDTOItson.setIdGrupo(String.valueOf(inscripcion.getGrupo().getId()));
         inscripcionDTOItson.setIdEstudiante(String.valueOf(inscripcion.getEstudiante().getId()));
+        inscripcionDTOItson.setIdActividad(String.valueOf(inscripcion.getGrupo().getActividad().getId()));
         return inscripcionDTOItson;
         
         
