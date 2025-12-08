@@ -1,4 +1,4 @@
-package datosGobierno.repositoryGobierno.daoGobierno.excepcionesGobierno;
+package datosGobierno.daoGobierno.excepcionesGobierno;
 
 /**
  *

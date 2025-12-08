@@ -17,9 +17,11 @@ public class BuscarResolucionPanel extends Panel {
     private Label titulo;
     private Button btnModificar;
     private TextField textFieldNombre;
+    private ICoordinadorAplicacion coordinadorAplicacion;
 
     public BuscarResolucionPanel(MainFrame frame, ICoordinadorAplicacion coordinadorAplicacion) {
         super(frame, coordinadorAplicacion);
+        this.coordinadorAplicacion = coordinadorAplicacion;
     }
 
     @Override

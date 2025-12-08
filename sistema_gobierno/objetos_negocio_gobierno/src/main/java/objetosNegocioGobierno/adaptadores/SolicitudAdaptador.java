@@ -1,4 +1,5 @@
 package objetosNegocioGobierno.adaptadores;
+import datosGobierno.daoGobierno.documents.SolicitudDocument;
 import datosGobierno.dominioGobierno.Documento;
 import datosGobierno.dominioGobierno.Solicitud;
 import datosGobierno.dominioGobierno.enums.EstadoSolicitud;
@@ -97,6 +98,22 @@ public class SolicitudAdaptador {
             return dto;
         } catch (Exception sinUso){
             throw new SolicitudAdaptadorException("No se pudo mappear la Entidad a DTO Infraestructura");
+        }
+    }
+
+
+    public static SolicitudDTO toDTO(SolicitudDocument solicitud){
+        try {
+            SolicitudDTO dto = new SolicitudDTO();
+            dto.setId(solicitud.getId());
+            dto.setBeca(BecaAdaptador.toDTO(solicitud.getBeca()));
+            dto.setInformacionSocioeconomica(InformacionSocioeconomicaAdaptador.toDTO(solicitud.getInformacionSocioeconomica()));
+            dto.setHistorialAcademico(HistorialAcademicoAdaptador.toDTO(solicitud.getHistorialAcademico()));
+            dto.setFecha(solicitud.getFecha());
+            dto.setEstado(solicitud.getEstado().toString());
+            return dto;
+        } catch (Exception sinUso){
+            throw new SolicitudAdaptadorException("No se pudo mappear la Entidad a DTO");
         }
     }
 }

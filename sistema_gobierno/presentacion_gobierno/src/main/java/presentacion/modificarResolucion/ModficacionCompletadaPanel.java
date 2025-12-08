@@ -15,9 +15,11 @@ public class ModficacionCompletadaPanel extends Panel {
     private presentacion.styles.Label subTituloH;
     private Label subTituloL;
     private Button btnAceptar;
+    private ICoordinadorAplicacion coordinadorAplicacion;
 
     public ModficacionCompletadaPanel(MainFrame frame, ICoordinadorAplicacion coordinadorAplicacion) {
         super(frame, coordinadorAplicacion);
+        this.coordinadorAplicacion = coordinadorAplicacion;
     }
 
     @Override

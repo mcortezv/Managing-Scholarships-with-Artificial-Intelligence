@@ -1,4 +1,4 @@
-package datosGobierno.repositoryGobierno.daoGobierno.interfacesGobierno;
+package datosGobierno.daoGobierno.interfacesGobierno;
 import datosGobierno.dominioGobierno.Resolucion;
 import java.util.List;
 

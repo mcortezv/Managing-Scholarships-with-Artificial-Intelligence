@@ -19,5 +19,17 @@
             <version>1.0</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>mcortezv</groupId>
+            <artifactId>negocios_modificarResolucion</artifactId>
+            <version>1.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>mcortezv</groupId>
+            <artifactId>negocios_evaluarSolicitudes</artifactId>
+            <version>1.0</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 </project>

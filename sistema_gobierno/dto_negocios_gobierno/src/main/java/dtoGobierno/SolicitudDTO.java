@@ -96,4 +96,11 @@ public class SolicitudDTO {
     public void setInformacionSocioeconomica(InformacionSocioeconomicaDTO informacionSocioeconomica) {
         this.informacionSocioeconomica = informacionSocioeconomica;
     }
+
+    @Override
+    public String toString() {
+        return estudiante.getNombre() + "\n" + beca.getTipo() + "\n\n" + beca.getDescripcion() + "\n\nMatricula: " +
+                estudiante.getMatricula() + "\n\nCarrera: " + estudiante.getCarrera() + "\n\nPromedio General: " + historialAcademico.getPromedio()  +
+                "\n\nEstado de la Solicitud: " + estado;
+    }
 }

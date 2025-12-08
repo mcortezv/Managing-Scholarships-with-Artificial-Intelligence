@@ -1,6 +1,6 @@
-package datosGobierno.repositoryGobierno.daoGobierno;
-import datosGobierno.repositoryGobierno.daoGobierno.excepcionesGobierno.ResolucionDAOException;
-import datosGobierno.repositoryGobierno.daoGobierno.interfacesGobierno.IResolucionDAO;
+package datosGobierno.daoGobierno;
+import datosGobierno.daoGobierno.excepcionesGobierno.ResolucionDAOException;
+import datosGobierno.daoGobierno.interfacesGobierno.IResolucionDAO;
 import datosGobierno.dominioGobierno.Resolucion;
 import java.util.List;
 

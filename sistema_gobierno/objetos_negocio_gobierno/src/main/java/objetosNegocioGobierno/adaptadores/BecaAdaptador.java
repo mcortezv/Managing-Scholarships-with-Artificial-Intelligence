@@ -65,6 +65,7 @@ public class BecaAdaptador {
         }
     }
 
+
     public static BecaDTOGobierno toInfraestructuraDTO(Beca  beca){
         try {
             BecaDTOGobierno dto = new BecaDTOGobierno();

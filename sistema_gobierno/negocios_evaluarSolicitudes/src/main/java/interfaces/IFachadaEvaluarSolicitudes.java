@@ -1,4 +1,5 @@
 package interfaces;
+import dtoGobierno.BecaDTO;
 import dtoGobierno.ResolucionDTO;
 import dtoGobierno.SolicitudDTO;
 import java.util.List;
@@ -9,11 +10,13 @@ import java.util.List;
  */
 public interface IFachadaEvaluarSolicitudes {
 
-    List<SolicitudDTO> obtenerListadoSolicitudes(int idConvocatoria);
+    List<BecaDTO> obtenerListadoBecas();
 
     ResolucionDTO evaluacionAutomatica(SolicitudDTO solicitud);
 
     boolean resolverSolicitudManual(ResolucionDTO resolucionDTO);
 
     boolean resolver(ResolucionDTO resolucionDTO);
+
+    List<SolicitudDTO> obtenerSolicitudes(String tipoBeca);
 }

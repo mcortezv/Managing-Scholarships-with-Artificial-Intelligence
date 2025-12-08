@@ -1,13 +1,15 @@
 package dtoGobierno;
 
 public class EvaluadorLoginDTO {
-    private String matricula;
+    private Long matricula;
     private String contrasenia;
 
-    public EvaluadorLoginDTO(String contrasenia, String matricula) {
+    public EvaluadorLoginDTO(String contrasenia, Long matricula) {
         this.contrasenia = contrasenia;
         this.matricula = matricula;
     }
+
+    public EvaluadorLoginDTO() {}
 
     public String getContrasenia() {
         return contrasenia;
@@ -17,11 +19,11 @@ public class EvaluadorLoginDTO {
         this.contrasenia = contrasenia;
     }
 
-    public String getMatricula() {
+    public Long getMatricula() {
         return matricula;
     }
 
-    public void setMatricula(String matricula) {
+    public void setMatricula(Long matricula) {
         this.matricula = matricula;
     }
 }

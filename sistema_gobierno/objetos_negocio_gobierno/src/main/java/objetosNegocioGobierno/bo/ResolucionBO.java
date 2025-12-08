@@ -1,5 +1,5 @@
 package objetosNegocioGobierno.bo;
-import datosGobierno.repositoryGobierno.daoGobierno.interfacesGobierno.IResolucionDAO;
+import datosGobierno.daoGobierno.interfacesGobierno.IResolucionDAO;
 import datosGobierno.dominioGobierno.Resolucion;
 import datosGobierno.dominioGobierno.Solicitud;
 import datosGobierno.dominioGobierno.enums.Decision;

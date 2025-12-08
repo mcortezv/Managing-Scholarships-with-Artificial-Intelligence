@@ -21,6 +21,7 @@ public class HubPanel extends Panel {
 
     public HubPanel(MainFrame frame, ICoordinadorAplicacion coordinadorAplicacion) {
         super(frame, coordinadorAplicacion);
+        this.coordinadorAplicacion = coordinadorAplicacion;
     }
 
     @Override
@@ -76,7 +77,15 @@ public class HubPanel extends Panel {
         add(navbar, BorderLayout.NORTH);
 
         btnCerrarSesion.addActionListener(e -> {
-            //coordinadorAplicacion.cerrarSesion();
+            coordinadorAplicacion.cerrarSesion();
+        });
+
+        btnModificar.addActionListener(e -> {
+            coordinadorAplicacion.modificar();
+        });
+
+        btnEvaluar.addActionListener(e -> {
+            coordinadorAplicacion.evaluar();
         });
     }
 }

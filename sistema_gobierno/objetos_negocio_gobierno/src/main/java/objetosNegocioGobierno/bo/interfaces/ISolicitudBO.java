@@ -1,6 +1,8 @@
 package objetosNegocioGobierno.bo.interfaces;
 import datosGobierno.dominioGobierno.Solicitud;
 import datosGobierno.dominioGobierno.enums.EstadoSolicitud;
+import dtoGobierno.SolicitudDTO;
+
 import java.util.List;
 
 /**
@@ -13,5 +15,6 @@ public interface ISolicitudBO {
 
     Solicitud obtenerSolicitud(int id);
 
-    List<Solicitud> obtenerListadoSolicitudes(int idConvocatoria);
+    List<SolicitudDTO> obtenerListadoSolicitudes(String tipoBeca);
+
 }

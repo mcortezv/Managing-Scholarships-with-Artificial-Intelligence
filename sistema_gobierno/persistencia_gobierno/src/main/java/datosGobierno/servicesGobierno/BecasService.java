@@ -3,15 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package datosGobierno.servicesGobierno;
-import datosGobierno.adaptadoresGobierno.BecaAdaptador;
-import datosGobierno.repositoryGobierno.daoGobierno.BecaDAO;
-import datosGobierno.repositoryGobierno.daoGobierno.excepcionesGobierno.SolicitudDAOException;
-import datosGobierno.repositoryGobierno.documents.BecaDocument;
+import datosGobierno.daoGobierno.BecaDAO;
+import datosGobierno.daoGobierno.excepcionesGobierno.SolicitudDAOException;
+import datosGobierno.dominioGobierno.Beca;
+import datosGobierno.dominioGobierno.BecasFiltradas;
 import gobierno.RequisitosDTOGobierno;
-import solicitarBeca.dominio.Beca;
-import solicitarBeca.dominio.BecasFiltradas;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,11 +22,7 @@ public class BecasService {
     }
 
     public BecasFiltradas obtenerBecas(RequisitosDTOGobierno requisitos) throws SolicitudDAOException {
-        List<BecaDocument> becasDocuments = becaDAO.findByRequisitos(requisitos);
-        List<Beca> becas = new ArrayList<>();
-        for (BecaDocument becaDocument : becasDocuments) {
-            becas.add(BecaAdaptador.toEntity(becaDocument));
-        }
+        List<Beca> becas = becaDAO.findByRequisitos(requisitos);
         return new BecasFiltradas(becas);
     }
 }

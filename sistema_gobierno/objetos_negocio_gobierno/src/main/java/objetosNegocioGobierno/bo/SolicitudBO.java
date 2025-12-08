@@ -1,7 +1,10 @@
 package objetosNegocioGobierno.bo;
-import datosGobierno.repositoryGobierno.daoGobierno.interfacesGobierno.ISolicitudDAO;
+import datosGobierno.daoGobierno.documents.SolicitudDocument;
+import datosGobierno.daoGobierno.interfacesGobierno.ISolicitudDAO;
 import datosGobierno.dominioGobierno.Solicitud;
 import datosGobierno.dominioGobierno.enums.EstadoSolicitud;
+import dtoGobierno.SolicitudDTO;
+import objetosNegocioGobierno.adaptadores.SolicitudAdaptador;
 import objetosNegocioGobierno.bo.excepciones.SolicitudBOException;
 import objetosNegocioGobierno.bo.interfaces.ISolicitudBO;
 import java.util.ArrayList;
@@ -37,13 +40,9 @@ public class SolicitudBO implements ISolicitudBO {
     }
 
     @Override
-    public List<Solicitud> obtenerListadoSolicitudes(int idConvocatoria){
+    public List<SolicitudDTO> obtenerListadoSolicitudes(String tipoBeca){
         try {
-            List<Solicitud> solicitudes = new ArrayList<>();
-            for (Solicitud solicitud: solicitudDAO.obtenerPorConvocatoria(idConvocatoria)){
-                solicitudes.add(solicitud);
-            }
-            return solicitudes;
+            return solicitudDAO.obtenerListadoSolicitudes(tipoBeca);
         } catch (Exception ex){
             throw new SolicitudBOException(ex.getMessage());
         }
