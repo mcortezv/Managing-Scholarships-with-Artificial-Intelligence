@@ -1,4 +1,5 @@
 package presentacion.login;
+import dtoGobierno.EvaluadorLoginDTO;
 import presentacion.coordinacion.MainFrame;
 import presentacion.coordinacion.interfaces.ICoordinadorAplicacion;
 import presentacion.styles.*;
@@ -81,7 +82,16 @@ public class IniciarSesionPanel extends Panel {
         toggle.run();
 
         btnIniciarSesion.addActionListener(e -> {
-            //coordinadorAplicacion.iniciarSesion();
+            try {
+                Long matricula = Long.parseLong(txtUsuario.getText());
+                String contrasenia = txtPassword.getText();
+                EvaluadorLoginDTO dto = new EvaluadorLoginDTO();
+                dto.setMatricula(matricula);
+                dto.setContrasenia(contrasenia);
+                coordinadorAplicacion.iniciarSesion(dto);
+            } catch (Exception ex){
+                JOptionPane.showMessageDialog(mainFrame, "La matricula debe ser un numero entero", "Inicio de Sesión", JOptionPane.ERROR_MESSAGE);
+            }
         });
     }
 }

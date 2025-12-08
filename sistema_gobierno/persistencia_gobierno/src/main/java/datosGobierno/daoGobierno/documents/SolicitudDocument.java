@@ -2,8 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package datosGobierno.dominioGobierno;
+package datosGobierno.daoGobierno.documents;
+import datosGobierno.dominioGobierno.*;
 import datosGobierno.dominioGobierno.enums.EstadoSolicitud;
+import org.bson.types.ObjectId;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -11,19 +13,19 @@ import java.util.List;
  *
  * @author Cortez, Manuel;
  */
-public class Solicitud {
+public class SolicitudDocument {
     private Long id;
     private Beca beca;
-    private Estudiante estudiante;
+    private ObjectId estudiante;
     private InformacionSocioeconomica informacionSocioeconomica;
     private HistorialAcademico historialAcademico;
-    private List<Documento> documentos;
+    private List<ObjectId> documentos;
     private LocalDate fecha;
     private EstadoSolicitud estado;
 
-    public Solicitud() {}
+    public SolicitudDocument() {}
 
-    public Solicitud(Beca beca, List<Documento> documentos, EstadoSolicitud estado, Estudiante estudiante, LocalDate fecha, HistorialAcademico historialAcademico, long id, InformacionSocioeconomica informacionSocioeconomica) {
+    public SolicitudDocument(Beca beca, List<ObjectId> documentos, EstadoSolicitud estado, ObjectId estudiante, LocalDate fecha, HistorialAcademico historialAcademico, Long id, InformacionSocioeconomica informacionSocioeconomica) {
         this.beca = beca;
         this.documentos = documentos;
         this.estado = estado;
@@ -42,11 +44,11 @@ public class Solicitud {
         this.beca = beca;
     }
 
-    public List<Documento> getDocumentos() {
+    public List<ObjectId> getDocumentos() {
         return documentos;
     }
 
-    public void setDocumentos(List<Documento> documentos) {
+    public void setDocumentos(List<ObjectId> documentos) {
         this.documentos = documentos;
     }
 
@@ -58,11 +60,11 @@ public class Solicitud {
         this.estado = estado;
     }
 
-    public Estudiante getEstudiante() {
+    public ObjectId getEstudiante() {
         return estudiante;
     }
 
-    public void setEstudiante(Estudiante estudiante) {
+    public void setEstudiante(ObjectId estudiante) {
         this.estudiante = estudiante;
     }
 
@@ -82,11 +84,11 @@ public class Solicitud {
         this.historialAcademico = historialAcademico;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

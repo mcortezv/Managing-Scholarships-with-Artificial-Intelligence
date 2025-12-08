@@ -1,4 +1,5 @@
 package presentacion.evaluarSolicitudes;
+import dtoGobierno.SolicitudDTO;
 import presentacion.coordinacion.MainFrame;
 import presentacion.coordinacion.interfaces.ICoordinadorAplicacion;
 import presentacion.styles.Button;
@@ -9,6 +10,7 @@ import presentacion.styles.Style;
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 import java.awt.*;
+import java.util.List;
 import javax.swing.JTextArea;
 
 
@@ -16,9 +18,15 @@ public class EvaluacionPanel extends Panel {
     private Label titulo;
     private Button next;
     private Button previous;
+    private List<SolicitudDTO> solicitudes;
+    private SolicitudDTO solicitudActual;
+    private JTextArea solicitudTxtArea;
+    private JTextArea evaluacionTxtArea;
+    private ICoordinadorAplicacion coordinadorAplicacion;
 
     public EvaluacionPanel(MainFrame frame, ICoordinadorAplicacion coordinadorAplicacion) {
         super(frame, coordinadorAplicacion);
+        this.coordinadorAplicacion = coordinadorAplicacion;
     }
 
     @Override
@@ -47,7 +55,7 @@ public class EvaluacionPanel extends Panel {
         left.add(detallesSubtitulo);
 
 
-        JTextArea solicitudTxtArea = new JTextArea(7, 30);
+        solicitudTxtArea = new JTextArea(7, 30);
         solicitudTxtArea.setFont(Style.INPUT_FONT);
         solicitudTxtArea.setLineWrap(true);
         solicitudTxtArea.setForeground(Color.WHITE);
@@ -160,7 +168,7 @@ public class EvaluacionPanel extends Panel {
         right.add(manualWrapper);
         right.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
 
-        JTextArea evaluacionTxtArea = new JTextArea(7, 30);
+        evaluacionTxtArea = new JTextArea(7, 30);
         evaluacionTxtArea.setFont(Style.INPUT_FONT);
         evaluacionTxtArea.setLineWrap(true);
         evaluacionTxtArea.setWrapStyleWord(true);
@@ -221,5 +229,29 @@ public class EvaluacionPanel extends Panel {
         main.add(left);
         main.add(right);
         centralPanel.add(main);
+
+        next.addActionListener(e -> {
+            int index = solicitudes.indexOf(solicitudActual);
+            if (index != solicitudes.size() - 1) {
+                SolicitudDTO solicitud = solicitudes.get(index + 1);
+                solicitudActual = solicitud;
+                solicitudTxtArea.setText(solicitud.toString());
+            }
+        });
+
+        previous.addActionListener(e -> {
+            int index = solicitudes.indexOf(solicitudActual);
+            if (index != 0) {
+                SolicitudDTO solicitud = solicitudes.get(index - 1);
+                solicitudActual = solicitud;
+                solicitudTxtArea.setText(solicitud.toString());
+            }
+        });
+    }
+
+    public void setSolicitudes(List<SolicitudDTO> solicitudes){
+        this.solicitudes = solicitudes;
+        solicitudTxtArea.setText(solicitudes.getFirst().toString());
+        solicitudActual =  solicitudes.getFirst();
     }
 }

@@ -1,10 +1,9 @@
 package datosGobierno.adaptadoresGobierno;
 import datosGobierno.adaptadoresGobierno.excepciones.BecaAdaptadorException;
-import datosGobierno.repositoryGobierno.documents.BecaDocument;
-import solicitarBeca.BecaDTO;
+import datosGobierno.dominioGobierno.Beca;
+import datosGobierno.dominioGobierno.enums.TipoBeca;
+import dtoGobierno.BecaDTO;
 import gobierno.BecaDTOGobierno;
-import solicitarBeca.dominio.Beca;
-import solicitarBeca.dominio.enums.TipoBeca;
 
 /**
  *
@@ -96,24 +95,6 @@ public class BecaAdaptador {
             beca.setFechaResultados(becaResponseDTO.getFechaResultados());
             beca.setTipo(TipoBeca.valueOf(becaResponseDTO.getTipo().toString()));
             beca.setRequisitos(RequisitosAdaptador.toEntity(becaResponseDTO.getRequisitos()));
-            return beca;
-        } catch (Exception ex) {
-            throw new BecaAdaptadorException("Error al convertir ResponseDTO Beca a entidad");
-        }
-    }
-
-    public static Beca toEntity(BecaDocument document){
-        try {
-            Beca beca = new Beca();
-            beca.setCodigo(document.getCodigo());
-            beca.setNombre(document.getNombre());
-            beca.setBecasDisponibles(document.getBecasDisponibles());
-            beca.setDescripcion(document.getDescripcion());
-            beca.setFechaInicio(document.getFechaInicio());
-            beca.setFechaFin(document.getFechaFin());
-            beca.setFechaResultados(document.getFechaResultados());
-            beca.setTipo(TipoBeca.valueOf(document.getTipo().toString()));
-            beca.setRequisitos(RequisitosAdaptador.toEntity(document.getRequisitos()));
             return beca;
         } catch (Exception ex) {
             throw new BecaAdaptadorException("Error al convertir ResponseDTO Beca a entidad");

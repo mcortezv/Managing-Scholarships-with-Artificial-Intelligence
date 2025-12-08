@@ -14,9 +14,11 @@ import java.awt.*;
 public class ModificarResolucionPanel extends Panel {
     private Label titulo;
     private Label estado;
+    private ICoordinadorAplicacion coordinadorAplicacion;
 
     public ModificarResolucionPanel(MainFrame frame, ICoordinadorAplicacion coordinadorAplicacion) {
         super(frame, coordinadorAplicacion);
+        this.coordinadorAplicacion = coordinadorAplicacion;
     }
 
     @Override

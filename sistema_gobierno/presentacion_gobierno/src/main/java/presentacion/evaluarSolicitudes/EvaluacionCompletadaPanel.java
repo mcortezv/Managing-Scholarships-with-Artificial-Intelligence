@@ -17,9 +17,11 @@ public class EvaluacionCompletadaPanel extends Panel {
     private Label subTituloL;
     private Button btnAceptar;
     private Button btnModificar;
+    private ICoordinadorAplicacion coordinadorAplicacion;
 
     public EvaluacionCompletadaPanel(MainFrame frame, ICoordinadorAplicacion coordinadorAplicacion) {
         super(frame, coordinadorAplicacion);
+        this.coordinadorAplicacion = coordinadorAplicacion;
     }
 
     @Override

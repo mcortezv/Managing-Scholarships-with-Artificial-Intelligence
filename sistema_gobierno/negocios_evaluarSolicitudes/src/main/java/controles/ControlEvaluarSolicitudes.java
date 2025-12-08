@@ -2,12 +2,14 @@ package controles;
 import datosGobierno.dominioGobierno.Resolucion;
 import datosGobierno.dominioGobierno.Solicitud;
 import datosGobierno.dominioGobierno.enums.EstadoSolicitud;
+import dtoGobierno.BecaDTO;
 import gobierno.ResolucionDTOGobierno;
 import gobierno.SolicitudDTOGobierno;
 import dtoGobierno.ResolucionDTO;
 import dtoGobierno.SolicitudDTO;
 import objetosNegocioGobierno.adaptadores.ResolucionAdaptador;
 import objetosNegocioGobierno.adaptadores.SolicitudAdaptador;
+import objetosNegocioGobierno.bo.interfaces.IBecaBO;
 import objetosNegocioGobierno.bo.interfaces.IResolucionBO;
 import objetosNegocioGobierno.bo.interfaces.ISolicitudBO;
 import java.util.ArrayList;
@@ -20,22 +22,20 @@ import java.util.List;
 public class ControlEvaluarSolicitudes {
     private final IResolucionBO resolucionBO;
     private final ISolicitudBO solicitudBO;
+    private final IBecaBO becaBO;
 
-    public ControlEvaluarSolicitudes(IResolucionBO resolucionBO, ISolicitudBO solicitudBO) {
+    public List<BecaDTO> obtenerListadoBecas(){
+        return becaBO.obtenerListadoBecas();
+    }
+
+    public ControlEvaluarSolicitudes(IResolucionBO resolucionBO, ISolicitudBO solicitudBO, IBecaBO becaBO) {
         this.resolucionBO = resolucionBO;
         this.solicitudBO = solicitudBO;
+        this.becaBO = becaBO;
     }
 
     public void evaluarConvocatoria(int idConvocatoria){
         // No recuerdo para que lo cree
-    }
-
-    public List<SolicitudDTO> obtenerListadoSolicitudes(int idConvocatoria){
-        List<SolicitudDTO> solicitudes = new ArrayList<>();
-        for (Solicitud solicitud: solicitudBO.obtenerListadoSolicitudes(idConvocatoria)){
-            solicitudes.add(SolicitudAdaptador.toDTO(solicitud));
-        }
-        return solicitudes;
     }
 
     public ResolucionDTO evaluacionAutomatica(SolicitudDTO solicitudDTO){
@@ -62,5 +62,9 @@ public class ControlEvaluarSolicitudes {
 
     public boolean cambiarEstadoSolicitud(int id, String nuevoEstado){
         return solicitudBO.cambiarEstado(id, EstadoSolicitud.valueOf(nuevoEstado));
+    }
+
+    public List<SolicitudDTO> obtenerSolicitudes(String tipoBeca){
+        return solicitudBO.obtenerListadoSolicitudes(tipoBeca);
     }
 }

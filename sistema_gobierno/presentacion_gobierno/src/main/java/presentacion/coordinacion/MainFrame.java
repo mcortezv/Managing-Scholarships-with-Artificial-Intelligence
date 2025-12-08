@@ -62,35 +62,7 @@ public final class MainFrame extends JFrame {
         centralPanel.repaint();
     }
 
-    public void nextPanel() {
-        JPanel panelActual = (JPanel) centralPanel.getComponent(0);
-        String nombre = panelActual.getName();
-        centralPanel.removeAll();
-        switch (nombre) {
-            case "iniciarSesion" -> centralPanel.add(panels.get("hub"), BorderLayout.CENTER);
-            case "evaluarConvocatoria" -> centralPanel.add(panels.get("evaluacion"), BorderLayout.CENTER);
-            case "evaluacion" -> centralPanel.add(panels.get("evaluacionCompletada"), BorderLayout.CENTER);
-            case "modificarConvocatoria" -> centralPanel.add(panels.get("buscarResolucion"), BorderLayout.CENTER);
-            case "buscarResolucion" -> centralPanel.add(panels.get("modificarResolucion"), BorderLayout.CENTER);
-            case "modificarResolucion" -> centralPanel.add(panels.get("modificacionCompletada"), BorderLayout.CENTER);
-            case "modificacionCompletada" -> centralPanel.add(panels.get("hub"), BorderLayout.CENTER);
-        }
-        centralPanel.revalidate();
-        centralPanel.repaint();
-    }
-
-    public void backPanel() {
-        JPanel panelActual = (JPanel) centralPanel.getComponent(0);
-        String nombre = panelActual.getName();
-        centralPanel.removeAll();
-        switch (nombre) {
-            case "hub" -> centralPanel.add(panels.get("iniciarSesion"), BorderLayout.CENTER);
-            case "evaluacion" -> centralPanel.add(panels.get("evaluarConvocatoria"), BorderLayout.CENTER);
-            case "evaluacionCompletada" -> centralPanel.add(panels.get("evaluacion"), BorderLayout.CENTER);
-            case "buscarResolucion" -> centralPanel.add(panels.get("modificarConvocatoria"), BorderLayout.CENTER);
-            case "modificarResolucion" -> centralPanel.add(panels.get("buscarResolucion"), BorderLayout.CENTER);
-        }
-        centralPanel.revalidate();
-        centralPanel.repaint();
+    public JPanel getPanel(String panel) {
+        return panels.get(panel);
     }
 }

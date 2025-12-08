@@ -18,9 +18,11 @@ public class ModificarConvocatoriaPanel extends Panel {
     private JScrollPane scroll;
     private ComboBox<BecaDTO> comboConvocatoria;
     private Button btnModificar;
+    private ICoordinadorAplicacion coordinadorAplicacion;
 
     public ModificarConvocatoriaPanel(MainFrame frame, ICoordinadorAplicacion coordinadorAplicacion) {
         super(frame, coordinadorAplicacion);
+        this.coordinadorAplicacion = coordinadorAplicacion;
     }
 
     public void startComponents() {
@@ -58,6 +60,10 @@ public class ModificarConvocatoriaPanel extends Panel {
         btnModificar.addActionListener(e -> {
             BecaDTO seleccionada = (BecaDTO) comboConvocatoria.getSelectedItem();
             //coordinadorAplicacion.
+        });
+
+        btnBack.addActionListener(e -> {
+            coordinadorAplicacion.hub();
         });
     }
 

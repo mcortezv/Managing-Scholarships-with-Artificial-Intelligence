@@ -1,6 +1,6 @@
 package datosGobierno.servicesGobierno;
-import datosGobierno.repositoryGobierno.daoGobierno.SolicitudDAO;
-import datosGobierno.repositoryGobierno.daoGobierno.excepcionesGobierno.SolicitudDAOException;
+import datosGobierno.daoGobierno.SolicitudDAO;
+import datosGobierno.daoGobierno.excepcionesGobierno.SolicitudDAOException;
 import gobierno.SolicitudDTOGobierno;
 
 /**

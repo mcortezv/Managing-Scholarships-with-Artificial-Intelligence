@@ -1,9 +1,8 @@
 package datosGobierno.adaptadoresGobierno;
 import datosGobierno.adaptadoresGobierno.excepciones.RequisitosAdaptadorException;
-import datosGobierno.repositoryGobierno.documents.RequisitosDocument;
-import solicitarBeca.RequisitosDTO;
+import datosGobierno.dominioGobierno.Requisitos;
+import dtoGobierno.RequisitosDTO;
 import gobierno.RequisitosDTOGobierno;
-import solicitarBeca.dominio.Requisitos;
 
 /**
  *
@@ -101,22 +100,6 @@ public class RequisitosAdaptador {
             requisitos.setIndiceReprobacion(dto.getIndiceReprobacion());
             requisitos.setTrabajo(dto.isTrabajo());
             requisitos.setDeudas(dto.isDeudas());
-            return requisitos;
-        } catch (Exception ex) {
-            throw new RequisitosAdaptadorException("Error al convertir DTO Requisitos a Entidad");
-        }
-    }
-
-    public static Requisitos toEntity(RequisitosDocument document){
-        try {
-            Requisitos requisitos = new Requisitos();
-            requisitos.setPromedioMinimo(document.getPromedioMinimo());
-            requisitos.setIngresoFamiliarMaximo(document.getIngresoFamiliarMaximo());
-            requisitos.setPorcentajeBajas(document.getPorcentajeBajas());
-            requisitos.setCargaAcademica(document.getCargaAcademica());
-            requisitos.setIndiceReprobacion(document.getIndiceReprobacion());
-            requisitos.setTrabajo(document.isTrabajo());
-            requisitos.setDeudas(document.isDeudas());
             return requisitos;
         } catch (Exception ex) {
             throw new RequisitosAdaptadorException("Error al convertir DTO Requisitos a Entidad");

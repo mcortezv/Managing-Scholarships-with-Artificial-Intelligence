@@ -18,9 +18,11 @@ public class EvaluarConvocatoriaPanel extends Panel {
     private JScrollPane scroll;
     private ComboBox<BecaDTO> comboConvocatoria;
     private Button btnEvaluar;
+    private ICoordinadorAplicacion coordinadorAplicacion;
 
     public EvaluarConvocatoriaPanel(MainFrame frame, ICoordinadorAplicacion coordinadorAplicacion) {
         super(frame, coordinadorAplicacion);
+        this.coordinadorAplicacion = coordinadorAplicacion;
     }
 
     public void startComponents() {
@@ -57,7 +59,11 @@ public class EvaluarConvocatoriaPanel extends Panel {
 
         btnEvaluar.addActionListener(e -> {
             BecaDTO seleccionada = (BecaDTO) comboConvocatoria.getSelectedItem();
-            //coordinadorAplicacion.
+            coordinadorAplicacion.evaluarConvocatoria(seleccionada);
+        });
+
+        btnBack.addActionListener(e -> {
+            coordinadorAplicacion.hub();
         });
     }
 
@@ -72,7 +78,8 @@ public class EvaluarConvocatoriaPanel extends Panel {
                 lista.add(Box.createVerticalStrut(16));
             }
         } else {
-            Label lbl = new Label("Lo sentimos. No hay Convocatorias Disponibles para Modificar.");
+            Label lbl = new Label("Lo sentimos. No hay Convocatorias Disponibles para Evaluar.");
+            lbl.setAlignmentX(CENTER_ALIGNMENT);
             lbl.setForeground(Style.TEXT_COLOR);
             lista.add(lbl);
         }
