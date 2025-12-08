@@ -10,9 +10,9 @@ import datos.dominioItson.pagarAdeudo.Prestamo;
 import itson.pagarAdeudo.SolicitudPagoDTOI;
 import interfaces.*;
 import interfaces.pagarAdeudo.IAdeudoBO;
-import pagarAdeudo.ClaseDTO;
-import pagarAdeudo.PrestamoDTO;
-import pagarAdeudo.SolicitudPagoDTO;
+import dto.pagarAdeudo.ClaseDTO;
+import dto.pagarAdeudo.PrestamoDTO;
+import dto.pagarAdeudo.SolicitudPagoDTO;
 import solicitarBeca.EstudianteDTO;
 
 public class ControlPago {
@@ -62,8 +62,8 @@ public class ControlPago {
     }
 
 
-    public boolean notificarLiquidacion(SolicitudPagoDTO solicitudPagoDTO){
+    public void notificarLiquidacion(SolicitudPagoDTO solicitudPagoDTO){
         SolicitudPagoDTOI solicitudPagoDTOI = SolicitudPagoAdaptador.toDTOI(solicitudPagoDTO);
-        return iAdeudoBO.enviarSolicitudPago(solicitudPagoDTOI);
+        iAdeudoBO.enviarSolicitudPago(solicitudPagoDTOI);
     }
 }

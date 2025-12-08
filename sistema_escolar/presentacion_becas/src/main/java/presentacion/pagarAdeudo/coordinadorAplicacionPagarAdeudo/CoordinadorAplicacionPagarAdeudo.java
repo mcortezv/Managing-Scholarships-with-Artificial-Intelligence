@@ -1,13 +1,11 @@
 package presentacion.pagarAdeudo.coordinadorAplicacionPagarAdeudo;
 
 import bo.sesion.SesionUsuario;
-import pagarAdeudo.ClaseDTO;
-import pagarAdeudo.PrestamoDTO;
-import pagarAdeudo.SolicitudPagoDTO;
-import interfaces.IFachadaPago;
+import dto.pagarAdeudo.ClaseDTO;
+import dto.pagarAdeudo.PrestamoDTO;
+import dto.pagarAdeudo.SolicitudPagoDTO;
 import presentacion.CoordinadorAplicacion;
 import presentacion.pagarAdeudo.PagarAdeudo;
-import presentacion.pagarAdeudo.coordinadorNegocioPagarAdeudo.CoordinadorNegocioPagarAdeudo;
 import presentacion.pagarAdeudo.coordinadorNegocioPagarAdeudo.ICoordinadorNegocioPagarAdeudo;
 import presentacion.pagarAdeudo.mainFraimePagarAdeudo.MainFramePagarAdeudo;
 import presentacion.pagarAdeudo.panels.DetalleClase;

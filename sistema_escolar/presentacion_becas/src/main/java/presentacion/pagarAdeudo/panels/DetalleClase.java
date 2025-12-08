@@ -1,6 +1,6 @@
 package presentacion.pagarAdeudo.panels;
 
-import pagarAdeudo.ClaseDTO;
+import dto.pagarAdeudo.ClaseDTO;
 import presentacion.pagarAdeudo.PagarAdeudo;
 import presentacion.pagarAdeudo.PanelPagarAdeudo;
 import presentacion.pagarAdeudo.coordinadorAplicacionPagarAdeudo.CoordinadorAplicacionPagarAdeudo;
@@ -12,7 +12,6 @@ import java.awt.*;
 public class DetalleClase extends PanelPagarAdeudo {
     private ClaseDTO claseDTO;
 
-    // Componentes visuales
     private JLabel lblTituloMateria;
     private JLabel lblEstado;
     private JLabel txtProfesor;

@@ -1,9 +1,8 @@
 package fachadas;
 import controles.ControlBanco;
-import pagarAdeudo.SolicitudPagoDTO;
+import dto.pagarAdeudo.SolicitudPagoDTO;
 import interfaces.IFachadaBanco;
 
-import javax.swing.*;
 import java.awt.event.ActionListener;
 
 

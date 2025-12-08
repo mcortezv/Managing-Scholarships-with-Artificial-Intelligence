@@ -1,6 +1,6 @@
 package adaptadores.pagarAdeudo;
 
-import pagarAdeudo.SolicitudPagoDTO;
+import dto.pagarAdeudo.SolicitudPagoDTO;
 import itson.pagarAdeudo.SolicitudPagoDTOI;
 
 public class SolicitudPagoAdaptador {
