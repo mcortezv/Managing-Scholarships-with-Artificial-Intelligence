@@ -33,6 +33,7 @@ public class GruposAdaptador {
     public static GrupoDTO DTOItsonToDTOActividades(GrupoResponseDTOItson grupoResponseDTOItson){
         GrupoDTO grupoDTO= new GrupoDTO();
         grupoDTO.setId(grupoResponseDTOItson.getId());
+        grupoDTO.setNombreGrupo(grupoResponseDTOItson.getNombreGrupo());
         grupoDTO.setCupoTotal(grupoResponseDTOItson.getCupoTotal());
         grupoDTO.setCupoDisponible(grupoResponseDTOItson.getCupoDisponible());
         grupoDTO.setFechaInicio(grupoResponseDTOItson.getFechaInicio());

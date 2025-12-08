@@ -18,7 +18,7 @@ public class Inscripcion {
     private String estado;
     private Baja baja;
     private Estudiante estudiante;
-    private Grupo grupo;  
+    private Grupo grupo;
 
     public Inscripcion() {
     }

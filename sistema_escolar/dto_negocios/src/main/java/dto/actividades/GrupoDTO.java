@@ -12,6 +12,7 @@ import java.util.List;
  * @author janethcristinagalvanquinonez
  */
 public class GrupoDTO {
+    String nombreGrupo;
     private String id;
     private int cupoTotal;
     private int cupoDisponible;
@@ -50,7 +51,8 @@ public class GrupoDTO {
         this.correoResponsable = correoResponsable;
     }
 
-    public GrupoDTO(String id, int cupoTotal, int cupoDisponible, LocalDate fechaInicio, LocalDate fechaFin, LocalDate fechaLimiteInscripcion, String horaInicio, String horaFin, List<String> dias, String idActividad, String nombreActividad, double costo, String nombreUbicacion, String unidad, String nombreResponsable, String correoResponsable) {
+    public GrupoDTO(String nombreGrupo, String id, int cupoTotal, int cupoDisponible, LocalDate fechaInicio, LocalDate fechaFin, LocalDate fechaLimiteInscripcion, String horaInicio, String horaFin, List<String> dias, String idActividad, String nombreActividad, double costo, String nombreUbicacion, String unidad, String nombreResponsable, String correoResponsable) {
+        this.nombreGrupo = nombreGrupo;
         this.id = id;
         this.cupoTotal = cupoTotal;
         this.cupoDisponible = cupoDisponible;
@@ -68,6 +70,8 @@ public class GrupoDTO {
         this.nombreResponsable = nombreResponsable;
         this.correoResponsable = correoResponsable;
     }
+
+    
 
     
     
@@ -204,6 +208,14 @@ public class GrupoDTO {
 
     public void setIdActividad(String idActividad) {
         this.idActividad = idActividad;
+    }
+
+    public String getNombreGrupo() {
+        return nombreGrupo;
+    }
+
+    public void setNombreGrupo(String nombreGrupo) {
+        this.nombreGrupo = nombreGrupo;
     }
     
     

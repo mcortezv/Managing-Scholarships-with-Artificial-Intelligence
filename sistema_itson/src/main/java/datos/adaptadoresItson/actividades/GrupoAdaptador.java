@@ -31,6 +31,7 @@ public class GrupoAdaptador {
     public static GrupoResponseDTOItson toDTO(Grupo grupo){
         GrupoResponseDTOItson grupoResponseDTOItson= new GrupoResponseDTOItson();
         grupoResponseDTOItson.setId(String.valueOf(grupo.getId()));
+        grupoResponseDTOItson.setNombreGrupo(grupo.getNombreGrupo());
         grupoResponseDTOItson.setCupoTotal(grupo.getCupoTotal());
         grupoResponseDTOItson.setCupoDisponible(grupo.getCupoDisponible());
         grupoResponseDTOItson.setFechaInicio(grupo.getFechaInicio());

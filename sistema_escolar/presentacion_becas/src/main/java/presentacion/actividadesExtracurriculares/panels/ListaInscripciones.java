@@ -123,6 +123,7 @@ public class ListaInscripciones extends PanelActividades{
             panelContenido.add(Box.createVerticalStrut(5));
             
             boton.addActionListener(e->{
+                coordinadorAplicacionActividades.inscripcionSeleccionada(inscripcion);
                  System.out.println("el id es"+inscripcion.getId());
            
                
