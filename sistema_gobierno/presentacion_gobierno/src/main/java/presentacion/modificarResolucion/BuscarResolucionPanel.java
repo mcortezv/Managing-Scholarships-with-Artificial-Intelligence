@@ -157,5 +157,25 @@ public class BuscarResolucionPanel extends Panel {
         main.add(left);
         main.add(right);
         centralPanel.add(main);
+
+        btnModificar.addActionListener(e -> {
+            String nombre = textFieldNombre.getText().trim();
+            if (nombre.isEmpty()) {
+                JOptionPane.showMessageDialog(mainFrame,
+                        "Debe ingresar un nombre para buscar",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            coordinadorAplicacion.buscarResolucion("NOMBRE", nombre);
+        });
+
+        // Modificar el ActionListener del btnBack:
+        btnBack.addActionListener(e -> {
+            coordinadorAplicacion.volverHub();
+        });
+    }
+
+    public void limpiarBusqueda() {
+        textFieldNombre.setText("");
     }
 }

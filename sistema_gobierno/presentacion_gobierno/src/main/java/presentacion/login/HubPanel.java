@@ -67,25 +67,25 @@ public class HubPanel extends Panel {
         centralPanel.add(main);
         centralPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
 
-        imgPanel = new ImgPanel("/assets/hero.png");
-        imgPanel.setMaximumSize(new Dimension(1500, 520));
-        centralPanel.add(imgPanel);
-
+        hero = new ImgPanel("/assets/hero.png");
+        hero.setMaximumSize(new Dimension(1500, 520));
+        centralPanel.add(hero);
 
         navbar.add(leftPanel, BorderLayout.WEST);
         navbar.add(rightPanel, BorderLayout.EAST);
         add(navbar, BorderLayout.NORTH);
 
+        // ActionListeners conectados al coordinador
         btnCerrarSesion.addActionListener(e -> {
             coordinadorAplicacion.cerrarSesion();
         });
 
         btnModificar.addActionListener(e -> {
-            coordinadorAplicacion.modificar();
+            coordinadorAplicacion.iniciarModificarConvocatoria();
         });
 
         btnEvaluar.addActionListener(e -> {
-            coordinadorAplicacion.evaluar();
+            coordinadorAplicacion.iniciarEvaluarConvocatoria();
         });
     }
 }

@@ -5,7 +5,7 @@ import dtoGobierno.SolicitudDTO;
 import interfaces.IFachadaModificarResolucion;
 
 /**
- *
+ * Fachada corregida con todos los métodos
  * @author Cortez, Manuel;
  */
 public class FachadaModificarResolucion implements IFachadaModificarResolucion {
@@ -21,8 +21,8 @@ public class FachadaModificarResolucion implements IFachadaModificarResolucion {
     }
 
     @Override
-    public ResolucionDTO resolverAtomatico(SolicitudDTO solicitud){
-        return controlModificarResolucion.resolverAtomatico(solicitud);
+    public ResolucionDTO resolverAutomatico(SolicitudDTO solicitud){
+        return controlModificarResolucion.resolverAutomatico(solicitud);
     }
 
     @Override

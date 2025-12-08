@@ -201,7 +201,7 @@ public class CoordinadorNegocio implements ICoordinadorNegocio {
             validarSolicitudParaReevaluacion(solicitud);
 
             ResolucionDTO resolucion =
-                    fachadaModificarResolucion.resolverAtomatico(solicitud);
+                    fachadaModificarResolucion.resolverAutomatico(solicitud);
 
             if (resolucion == null) {
                 throw new RuntimeException("Error al re-evaluar automáticamente");
