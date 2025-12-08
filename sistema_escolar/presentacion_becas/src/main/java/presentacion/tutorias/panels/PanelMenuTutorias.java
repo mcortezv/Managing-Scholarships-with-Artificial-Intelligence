@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package presentacion.tutorias.panels;
 
 import java.awt.Component;
@@ -14,7 +10,6 @@ import presentacion.styles.Label;
 import presentacion.styles.Style;
 import presentacion.tutorias.coordinadorAplicacion.CoordinadorAplicacionTutorias;
 import presentacion.tutorias.jframePrincipal.Tutorias;
-
 /**
  *
  * @author katia
@@ -32,35 +27,35 @@ public class PanelMenuTutorias extends PanelTutorias {
     
     @Override
     public void startComponents() {
-        centralPanel.add(Box.createVerticalStrut(Style.TOP_ESPACIO));
+        centralPanel.add(Box.createVerticalGlue());
         
         titulo = new Label("Tutorías Académicas");
         titulo.setFont(Style.TITLE_FONT);
         titulo.setAlignmentX(Component.CENTER_ALIGNMENT);
         centralPanel.add(titulo);
-        centralPanel.add(Box.createVerticalStrut(Style.TITULO_ESPACIO * 2));
+        centralPanel.add(Box.createVerticalStrut(Style.TITULO_ESPACIO * 3));
         
         JPanel botonesPanel = new JPanel();
         botonesPanel.setOpaque(false);
         botonesPanel.setLayout(new BoxLayout(botonesPanel, BoxLayout.Y_AXIS));
-        botonesPanel.setMaximumSize(new Dimension(400, 400));
+        botonesPanel.setMaximumSize(new Dimension(500, 500));
         botonesPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
         
         btnAgendarTutoria = new Button("Agendar Tutoría");
         btnAgendarTutoria.setAlignmentX(Component.CENTER_ALIGNMENT);
-        btnAgendarTutoria.setMaximumSize(new Dimension(300, 60));
+        btnAgendarTutoria.setMaximumSize(new Dimension(400, 70));
         botonesPanel.add(btnAgendarTutoria);
-        botonesPanel.add(Box.createVerticalStrut(30));
+        botonesPanel.add(Box.createVerticalStrut(35));
         
         btnCancelarTutoria = new Button("Cancelar Tutoría");
         btnCancelarTutoria.setAlignmentX(Component.CENTER_ALIGNMENT);
-        btnCancelarTutoria.setMaximumSize(new Dimension(300, 60));
+        btnCancelarTutoria.setMaximumSize(new Dimension(400, 70));
         botonesPanel.add(btnCancelarTutoria);
-        botonesPanel.add(Box.createVerticalStrut(30));
+        botonesPanel.add(Box.createVerticalStrut(35));
         
         btnHistorial = new Button("Historial Tutorías Solicitadas");
         btnHistorial.setAlignmentX(Component.CENTER_ALIGNMENT);
-        btnHistorial.setMaximumSize(new Dimension(300, 60));
+        btnHistorial.setMaximumSize(new Dimension(400, 70));
         botonesPanel.add(btnHistorial);
         
         centralPanel.add(botonesPanel);
