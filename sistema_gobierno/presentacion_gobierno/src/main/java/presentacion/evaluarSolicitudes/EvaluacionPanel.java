@@ -1,4 +1,6 @@
 package presentacion.evaluarSolicitudes;
+import dtoGobierno.BecaDTO;
+import dtoGobierno.ResolucionDTO;
 import dtoGobierno.SolicitudDTO;
 import presentacion.coordinacion.MainFrame;
 import presentacion.coordinacion.interfaces.ICoordinadorAplicacion;
@@ -10,6 +12,7 @@ import presentacion.styles.Style;
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 import java.awt.*;
+import java.time.LocalDate;
 import java.util.List;
 import javax.swing.JTextArea;
 
@@ -253,5 +256,90 @@ public class EvaluacionPanel extends Panel {
         this.solicitudes = solicitudes;
         solicitudTxtArea.setText(solicitudes.getFirst().toString());
         solicitudActual =  solicitudes.getFirst();
+    }
+
+    public void setBecaActual(BecaDTO beca) {
+        this.setBecaActual(beca);
+        titulo.setText("Evaluación " + beca.getNombre());
+    }
+
+    public void mostrarFormularioEvaluacionManual(SolicitudDTO solicitud) {
+        this.solicitudActual = solicitud;
+        solicitudTxtArea.setText(solicitud.toString());
+
+        // Mostrar un diálogo para capturar la evaluación manual
+        JDialog dialog = new JDialog((Frame) SwingUtilities.getWindowAncestor(this),
+                "Evaluación Manual", true);
+        dialog.setLayout(new BorderLayout());
+        dialog.setSize(600, 400);
+        dialog.setLocationRelativeTo(this);
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
+        Label lblDecision = new Label("Decisión:");
+        lblDecision.setAlignmentX(Component.LEFT_ALIGNMENT);
+        panel.add(lblDecision);
+        panel.add(Box.createVerticalStrut(10));
+
+        ComboBox<String> comboDecision = new ComboBox<>(
+                new String[]{"ACEPTADA", "RECHAZADA", "DEVUELTA"});
+        comboDecision.setMaximumSize(new Dimension(400, 50));
+        comboDecision.setAlignmentX(Component.LEFT_ALIGNMENT);
+        panel.add(comboDecision);
+        panel.add(Box.createVerticalStrut(20));
+
+        Label lblMotivo = new Label("Motivo (mínimo 10 caracteres):");
+        lblMotivo.setAlignmentX(Component.LEFT_ALIGNMENT);
+        panel.add(lblMotivo);
+        panel.add(Box.createVerticalStrut(10));
+
+        JTextArea txtMotivo = new JTextArea(5, 30);
+        txtMotivo.setLineWrap(true);
+        txtMotivo.setWrapStyleWord(true);
+        txtMotivo.setFont(Style.INPUT_FONT);
+        JScrollPane scrollMotivo = new JScrollPane(txtMotivo);
+        scrollMotivo.setMaximumSize(new Dimension(400, 150));
+        scrollMotivo.setAlignmentX(Component.LEFT_ALIGNMENT);
+        panel.add(scrollMotivo);
+        panel.add(Box.createVerticalStrut(20));
+
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        buttonPanel.setMaximumSize(new Dimension(Integer.MAX_VALUE, 50));
+        buttonPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+        Button btnCancelar = new Button("Cancelar");
+        Button btnGuardar = new Button("Guardar");
+
+        btnCancelar.addActionListener(e -> dialog.dispose());
+
+        btnGuardar.addActionListener(e -> {
+            String decision = (String) comboDecision.getSelectedItem();
+            String motivo = txtMotivo.getText().trim();
+
+            if (motivo.length() < 10) {
+                JOptionPane.showMessageDialog(dialog,
+                        "El motivo debe tener al menos 10 caracteres",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            ResolucionDTO resolucion = new ResolucionDTO();
+            resolucion.setSolicitud(solicitud);
+            resolucion.setDecision(decision);
+            resolucion.setMotivo(motivo);
+            resolucion.setFechaEvaluacion(LocalDate.now());
+
+            dialog.dispose();
+            coordinadorAplicacion.evaluarManual(resolucion);
+        });
+
+        buttonPanel.add(btnCancelar);
+        buttonPanel.add(btnGuardar);
+        panel.add(buttonPanel);
+
+        dialog.add(panel);
+        dialog.setVisible(true);
     }
 }

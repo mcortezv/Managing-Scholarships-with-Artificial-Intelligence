@@ -1,4 +1,5 @@
 package presentacion.evaluarSolicitudes;
+import dtoGobierno.ResolucionDTO;
 import presentacion.coordinacion.MainFrame;
 import presentacion.coordinacion.interfaces.ICoordinadorAplicacion;
 import presentacion.styles.Button;
@@ -67,11 +68,19 @@ public class EvaluacionCompletadaPanel extends Panel {
         centralPanel.add(buttonPanel);
 
         btnAceptar.addActionListener(e -> {
-            //coordinadorAplicacion.aceptar();
+            coordinadorAplicacion.evaluarOtraSolicitud();
         });
 
         btnModificar.addActionListener(e -> {
-            //coordinadorAplicacion.modificar();
+            coordinadorAplicacion.volverHub();
         });
+    }
+
+    public void setResolucion(ResolucionDTO resolucion) {
+        if (resolucion != null) {
+            String decision = resolucion.getDecision();
+            subTituloH.setText("La solicitud ha sido " + decision.toLowerCase());
+            subTituloL.setText("y se ha notificado al estudiante.");
+        }
     }
 }
