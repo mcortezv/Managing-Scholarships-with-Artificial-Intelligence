@@ -8,7 +8,6 @@ import presentacion.login.IniciarSesionPanel;
 import javax.swing.*;
 import presentacion.modificarResolucion.BuscarResolucionPanel;
 import presentacion.modificarResolucion.ModficacionCompletadaPanel;
-import presentacion.modificarResolucion.ModificarConvocatoriaPanel;
 import presentacion.modificarResolucion.ModificarResolucionPanel;
 import java.awt.*;
 import java.util.HashMap;
@@ -46,7 +45,6 @@ public final class MainFrame extends JFrame {
 
 
         // Modificar Resolucion
-        panels.put("modificarConvocatoria", new ModificarConvocatoriaPanel(this, coordinadorAplicacion));
         panels.put("buscarResolucion", new BuscarResolucionPanel(this, coordinadorAplicacion));
         panels.put("modificarResolucion", new ModificarResolucionPanel(this, coordinadorAplicacion));
         panels.put("modificacionCompletada", new ModficacionCompletadaPanel(this, coordinadorAplicacion));
