@@ -319,4 +319,24 @@ public class CoordinadorAplicacionTutorias implements ICoordinadorAplicacionTuto
     public void setTutorias(Tutorias tutorias) {
         this.tutorias = tutorias;
     }
+    
+    public boolean intentarMostrarHorariosDisponibles(){
+        try{
+            List<HorarioDTO> horarios = coordinadorNegocio.obtenerHorariosDisponibles(tutorSeleccionado.getId(), fechaSeleccionada);
+            if (horarios == null || horarios.isEmpty()){
+                JOptionPane.showMessageDialog(tutorias, "No hay horarios disponibles para este tutor en la fecha seleccionada",
+                "Sin horarios", JOptionPane.INFORMATION_MESSAGE);
+                return false;
+            }
+            PanelHorariosDisponibles panel = (PanelHorariosDisponibles) tutorias.getPanel("horariosDisponibles");
+            panel.setNombreTutor(tutorSeleccionado.getNombre());
+            panel.setHorarios(horarios);
+            tutorias.showPanel("horariosDisponibles");
+            return true;
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(
+            tutorias, "Error al obtener horarios: " + e.getMessage(), "Error",JOptionPane.ERROR_MESSAGE);
+        return false;
+        }
+    }
 }
