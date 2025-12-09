@@ -1,35 +1,39 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package datosGobierno.dominioGobierno;
+package datosGobierno.documents;
+import datosGobierno.dominioGobierno.Beca;
+import datosGobierno.dominioGobierno.HistorialAcademico;
+import datosGobierno.dominioGobierno.InformacionSocioeconomica;
 import datosGobierno.dominioGobierno.enums.EstadoSolicitud;
+import org.bson.types.ObjectId;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.List;
 
 /**
- * The type Solicitud.
+ * The type Solicitud document.
  *
  * @author Cortez, Manuel;
  */
-public class Solicitud {
+public class SolicitudDocument {
+    private ObjectId _id;
     private Long id;
     private Beca beca;
-    private Estudiante estudiante;
+    private ObjectId estudiante;
     private InformacionSocioeconomica informacionSocioeconomica;
     private HistorialAcademico historialAcademico;
-    private List<Documento> documentos;
+    private List<ObjectId> documentos;
     private LocalDate fecha;
     private EstadoSolicitud estado;
+    private Instant creadoEn;
 
     /**
-     * Instantiates a new Solicitud.
+     * Instantiates a new Solicitud document.
      */
-    public Solicitud() {}
+    public SolicitudDocument() {}
 
     /**
-     * Instantiates a new Solicitud.
+     * Instantiates a new Solicitud document.
      *
+     * @param _id                       the id
      * @param beca                      the beca
      * @param documentos                the documentos
      * @param estado                    the estado
@@ -38,8 +42,10 @@ public class Solicitud {
      * @param historialAcademico        the historial academico
      * @param id                        the id
      * @param informacionSocioeconomica the informacion socioeconomica
+     * @param creadoEn                  the creado en
      */
-    public Solicitud(Beca beca, List<Documento> documentos, EstadoSolicitud estado, Estudiante estudiante, LocalDate fecha, HistorialAcademico historialAcademico, long id, InformacionSocioeconomica informacionSocioeconomica) {
+    public SolicitudDocument(ObjectId _id, Beca beca, List<ObjectId> documentos, EstadoSolicitud estado, ObjectId estudiante, LocalDate fecha, HistorialAcademico historialAcademico, Long id, InformacionSocioeconomica informacionSocioeconomica, Instant  creadoEn) {
+        this._id = _id;
         this.beca = beca;
         this.documentos = documentos;
         this.estado = estado;
@@ -48,6 +54,25 @@ public class Solicitud {
         this.historialAcademico = historialAcademico;
         this.id = id;
         this.informacionSocioeconomica = informacionSocioeconomica;
+        this.creadoEn = creadoEn;
+    }
+
+    /**
+     * Gets id.
+     *
+     * @return the id
+     */
+    public ObjectId get_id() {
+        return _id;
+    }
+
+    /**
+     * Sets id.
+     *
+     * @param _id the id
+     */
+    public void set_id(ObjectId _id) {
+        this._id = _id;
     }
 
     /**
@@ -73,7 +98,7 @@ public class Solicitud {
      *
      * @return the documentos
      */
-    public List<Documento> getDocumentos() {
+    public List<ObjectId> getDocumentos() {
         return documentos;
     }
 
@@ -82,7 +107,7 @@ public class Solicitud {
      *
      * @param documentos the documentos
      */
-    public void setDocumentos(List<Documento> documentos) {
+    public void setDocumentos(List<ObjectId> documentos) {
         this.documentos = documentos;
     }
 
@@ -109,7 +134,7 @@ public class Solicitud {
      *
      * @return the estudiante
      */
-    public Estudiante getEstudiante() {
+    public ObjectId getEstudiante() {
         return estudiante;
     }
 
@@ -118,7 +143,7 @@ public class Solicitud {
      *
      * @param estudiante the estudiante
      */
-    public void setEstudiante(Estudiante estudiante) {
+    public void setEstudiante(ObjectId estudiante) {
         this.estudiante = estudiante;
     }
 
@@ -163,7 +188,7 @@ public class Solicitud {
      *
      * @return the id
      */
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -172,7 +197,7 @@ public class Solicitud {
      *
      * @param id the id
      */
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -192,5 +217,23 @@ public class Solicitud {
      */
     public void setInformacionSocioeconomica(InformacionSocioeconomica informacionSocioeconomica) {
         this.informacionSocioeconomica = informacionSocioeconomica;
+    }
+
+    /**
+     * Gets creado en.
+     *
+     * @return the creado en
+     */
+    public Instant getCreadoEn() {
+        return creadoEn;
+    }
+
+    /**
+     * Sets creado en.
+     *
+     * @param creadoEn the creado en
+     */
+    public void setCreadoEn(Instant creadoEn) {
+        this.creadoEn = creadoEn;
     }
 }

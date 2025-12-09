@@ -1,16 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package datosGobierno.dominioGobierno;
+package datosGobierno.documents;
+import datosGobierno.dominioGobierno.Tutor;
 import datosGobierno.dominioGobierno.enums.Carrera;
+import org.bson.types.ObjectId;
+import java.time.Instant;
 
 /**
- * The type Estudiante.
+ * The type Estudiante document.
  *
  * @author Cortez, Manuel;
  */
-public class Estudiante {
+public class EstudianteDocument {
+    private ObjectId _id;
     private Long matricula;
     private String nombre;
     private Carrera carrera;
@@ -19,15 +19,17 @@ public class Estudiante {
     private String telefono;
     private String direccion;
     private String correo;
+    private Instant creadoEn;
 
     /**
-     * Instantiates a new Estudiante.
+     * Instantiates a new Estudiante document.
      */
-    public Estudiante() {}
+    public EstudianteDocument() {}
 
     /**
-     * Instantiates a new Estudiante.
+     * Instantiates a new Estudiante document.
      *
+     * @param _id         the id
      * @param carrera     the carrera
      * @param contrasenia the contrasenia
      * @param correo      the correo
@@ -36,8 +38,10 @@ public class Estudiante {
      * @param nombre      the nombre
      * @param telefono    the telefono
      * @param tutor       the tutor
+     * @param creadoEn    the creado en
      */
-    public Estudiante(Carrera carrera, String contrasenia, String correo, String direccion, Long matricula, String nombre, String telefono, Tutor tutor) {
+    public EstudianteDocument(ObjectId _id,Carrera carrera, String contrasenia, String correo, String direccion, Long matricula, String nombre, String telefono, Tutor tutor, Instant  creadoEn) {
+        this._id = _id;
         this.carrera = carrera;
         this.contrasenia = contrasenia;
         this.correo = correo;
@@ -46,6 +50,25 @@ public class Estudiante {
         this.nombre = nombre;
         this.telefono = telefono;
         this.tutor = tutor;
+        this.creadoEn = creadoEn;
+    }
+
+    /**
+     * Gets id.
+     *
+     * @return the id
+     */
+    public ObjectId get_id() {
+        return _id;
+    }
+
+    /**
+     * Sets id.
+     *
+     * @param _id the id
+     */
+    public void set_id(ObjectId _id) {
+        this._id = _id;
     }
 
     /**
@@ -190,5 +213,23 @@ public class Estudiante {
      */
     public void setTutor(Tutor tutor) {
         this.tutor = tutor;
+    }
+
+    /**
+     * Gets creado en.
+     *
+     * @return the creado en
+     */
+    public Instant getCreadoEn() {
+        return creadoEn;
+    }
+
+    /**
+     * Sets creado en.
+     *
+     * @param creadoEn the creado en
+     */
+    public void setCreadoEn(Instant creadoEn) {
+        this.creadoEn = creadoEn;
     }
 }

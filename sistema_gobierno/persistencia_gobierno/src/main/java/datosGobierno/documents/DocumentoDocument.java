@@ -1,39 +1,59 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package datosGobierno.dominioGobierno;
+package datosGobierno.documents;
 import datosGobierno.dominioGobierno.enums.TipoDocumento;
+import org.bson.types.ObjectId;
+import java.time.Instant;
 
 /**
- * The type Documento.
+ * The type Documento document.
  *
  * @author Cortez, Manuel;
  */
-public class Documento {
+public class DocumentoDocument {
+    private ObjectId _id;
     private Long identificador;
     private TipoDocumento tipo;
     private byte[] contenido;
-    private Estudiante estudiante;
+    private ObjectId estudiante;
+    private Instant creadoEn;
 
     /**
-     * Instantiates a new Documento.
+     * Instantiates a new Documento document.
      */
-    public Documento() {}
+    public DocumentoDocument() {}
 
     /**
-     * Instantiates a new Documento.
+     * Instantiates a new Documento document.
      *
      * @param contenido     the contenido
      * @param estudiante    the estudiante
      * @param identificador the identificador
      * @param tipo          the tipo
+     * @param creadoEn      the creado en
      */
-    public Documento(byte[] contenido, Estudiante estudiante, Long identificador, TipoDocumento tipo) {
+    public DocumentoDocument(byte[] contenido, ObjectId estudiante, Long identificador, TipoDocumento tipo, Instant  creadoEn) {
         this.contenido = contenido;
         this.estudiante = estudiante;
         this.identificador = identificador;
         this.tipo = tipo;
+        this.creadoEn = creadoEn;
+    }
+
+    /**
+     * Gets id.
+     *
+     * @return the id
+     */
+    public ObjectId get_id() {
+        return _id;
+    }
+
+    /**
+     * Sets id.
+     *
+     * @param _id the id
+     */
+    public void set_id(ObjectId _id) {
+        this._id = _id;
     }
 
     /**
@@ -59,7 +79,7 @@ public class Documento {
      *
      * @return the estudiante
      */
-    public Estudiante getEstudiante() {
+    public ObjectId getEstudiante() {
         return estudiante;
     }
 
@@ -68,7 +88,7 @@ public class Documento {
      *
      * @param estudiante the estudiante
      */
-    public void setEstudiante(Estudiante estudiante) {
+    public void setEstudiante(ObjectId estudiante) {
         this.estudiante = estudiante;
     }
 
@@ -106,5 +126,23 @@ public class Documento {
      */
     public void setTipo(TipoDocumento tipo) {
         this.tipo = tipo;
+    }
+
+    /**
+     * Gets creado en.
+     *
+     * @return the creado en
+     */
+    public Instant getCreadoEn() {
+        return creadoEn;
+    }
+
+    /**
+     * Sets creado en.
+     *
+     * @param creadoEn the creado en
+     */
+    public void setCreadoEn(Instant creadoEn) {
+        this.creadoEn = creadoEn;
     }
 }

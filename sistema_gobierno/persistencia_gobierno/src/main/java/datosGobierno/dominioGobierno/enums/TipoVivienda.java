@@ -5,9 +5,25 @@
 package datosGobierno.dominioGobierno.enums;
 
 /**
+ * The enum Tipo vivienda.
  *
  * @author Cortez, Manuel;
  */
 public enum TipoVivienda {
-    CASA_PROPIA, DEPARTAMENTO, RESIDENCIA, VIVIENDA_IMPROVISADA;
+    /**
+     * Casa propia tipo vivienda.
+     */
+    CASA_PROPIA,
+    /**
+     * Departamento tipo vivienda.
+     */
+    DEPARTAMENTO,
+    /**
+     * Residencia tipo vivienda.
+     */
+    RESIDENCIA,
+    /**
+     * Vivienda improvisada tipo vivienda.
+     */
+    VIVIENDA_IMPROVISADA;
 }
