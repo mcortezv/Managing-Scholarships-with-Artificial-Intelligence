@@ -34,27 +34,6 @@ public class HistorialAcademicoAdaptador {
     }
 
     /**
-     * To entity historial academico.
-     *
-     * @param dto the dto
-     * @return the historial academico
-     */
-    public static HistorialAcademico toEntity(HistorialAcademicoDTOGobierno dto){
-        try {
-            HistorialAcademico historialAcademico = new HistorialAcademico();
-            historialAcademico.setCarrera(Carrera.valueOf(dto.getCarrera()));
-            historialAcademico.setPromedio(dto.getPromedio());
-            historialAcademico.setPorcentajeBajas(dto.getPorcentajeBajas());
-            historialAcademico.setCargaAcademica(dto.getCargaAcademica());
-            historialAcademico.setSemestre(dto.getSemestre());
-            historialAcademico.setIndiceReprobacion(dto.getIndiceReprobacion());
-            return historialAcademico;
-        } catch (Exception sinUso){
-            throw new HistorialAcademicoAdaptadorException("No se pudo mappear el HistorialAcademicoDTOGobierno a entidad HistorialAcademico");
-        }
-    }
-
-    /**
      * To dto historial academico dto.
      *
      * @param historialAcademico the historial academico

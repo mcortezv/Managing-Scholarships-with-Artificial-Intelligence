@@ -1,6 +1,6 @@
 package presentacion.pagarAdeudo.panels;
 
-import bo.sesion.SesionUsuario;
+import objetosNegocio.bo.sesion.SesionUsuario;
 import presentacion.pagarAdeudo.PagarAdeudo;
 import presentacion.pagarAdeudo.PanelPagarAdeudo;
 import presentacion.pagarAdeudo.coordinadorAplicacionPagarAdeudo.CoordinadorAplicacionPagarAdeudo;

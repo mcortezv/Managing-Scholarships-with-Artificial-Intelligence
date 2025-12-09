@@ -15,31 +15,23 @@ public class Documento {
     private Long identificador;
     private TipoDocumento tipo;
     private byte[] contenido;
-    private Long estudiante;
+    private Estudiante estudiante;
 
     public Documento() {}
 
-    public Documento(byte[] contenido, Long estudiante, Long identificador, TipoDocumento tipo) {
+    public Documento(byte[] contenido, Estudiante estudiante, Long identificador, TipoDocumento tipo) {
         this.contenido = contenido;
         this.estudiante = estudiante;
         this.identificador = identificador;
         this.tipo = tipo;
     }
 
-    public byte[] getContenido() {
-        return contenido;
+    public TipoDocumento getTipo() {
+        return tipo;
     }
 
-    public void setContenido(byte[] contenido) {
-        this.contenido = contenido;
-    }
-
-    public Long getEstudiante() {
-        return estudiante;
-    }
-
-    public void setEstudiante(Long estudiante) {
-        this.estudiante = estudiante;
+    public void setTipo(TipoDocumento tipo) {
+        this.tipo = tipo;
     }
 
     public Long getIdentificador() {
@@ -50,12 +42,20 @@ public class Documento {
         this.identificador = identificador;
     }
 
-    public TipoDocumento getTipo() {
-        return tipo;
+    public Estudiante getEstudiante() {
+        return estudiante;
     }
 
-    public void setTipo(TipoDocumento tipo) {
-        this.tipo = tipo;
+    public void setEstudiante(Estudiante estudiante) {
+        this.estudiante = estudiante;
+    }
+
+    public byte[] getContenido() {
+        return contenido;
+    }
+
+    public void setContenido(byte[] contenido) {
+        this.contenido = contenido;
     }
 
     @Override

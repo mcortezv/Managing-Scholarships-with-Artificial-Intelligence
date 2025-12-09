@@ -35,12 +35,6 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>mcortezv</groupId>
-            <artifactId>dto_negocios_gobierno</artifactId>
-            <version>1.0</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>persistencia_tutorias</artifactId>
             <version>${project.version}</version>

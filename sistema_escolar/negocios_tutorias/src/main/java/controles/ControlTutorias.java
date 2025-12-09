@@ -4,18 +4,18 @@
  */
 package controles;
 
-import bo.tutorias.CitaBO;
-import bo.tutorias.HorarioBO;
-import bo.tutorias.MateriaBO;
-import bo.tutorias.TutorBO;
+import objetosNegocio.bo.tutorias.CitaBO;
+import objetosNegocio.bo.tutorias.HorarioBO;
+import objetosNegocio.bo.tutorias.MateriaBO;
+import objetosNegocio.bo.tutorias.TutorBO;
 import dto.tutorias.CitaDTO;
 import dto.tutorias.HorarioDTO;
 import dto.tutorias.MateriaDTO;
 import dto.tutorias.TutorDTO;
-import interfaces.tutorias.ICitaBO;
-import interfaces.tutorias.IHorarioBO;
-import interfaces.tutorias.IMateriaBO;
-import interfaces.tutorias.ITutorBO;
+import objetosNegocio.bo.tutorias.interfaces.ICitaBO;
+import objetosNegocio.bo.tutorias.interfaces.IHorarioBO;
+import objetosNegocio.bo.tutorias.interfaces.IMateriaBO;
+import objetosNegocio.bo.tutorias.interfaces.ITutorBO;
 import java.time.LocalDate;
 import java.util.List;
 import tutorias.dao.CitaDAO;

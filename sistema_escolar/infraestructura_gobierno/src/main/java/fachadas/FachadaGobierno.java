@@ -14,12 +14,18 @@ import solicitarBeca.EstudianteDTO;
 import java.util.List;
 
 /**
+ * The type Fachada gobierno.
  *
  * @author janethcristinagalvanquinonez
  */
 public class FachadaGobierno implements IFachadaGobierno{
     private final ControlGobierno controlGobierno;
 
+    /**
+     * Instantiates a new Fachada gobierno.
+     *
+     * @param controlGobierno the control gobierno
+     */
     public FachadaGobierno(ControlGobierno controlGobierno) {
         this.controlGobierno = controlGobierno;
     }

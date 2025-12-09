@@ -1,7 +1,5 @@
 package presentacion.pagarAdeudo.panels;
 
-import bo.sesion.SesionUsuario;
-import dtoGobierno.EstudianteDTO;
 import presentacion.pagarAdeudo.PagarAdeudo;
 import presentacion.pagarAdeudo.PanelPagarAdeudo;
 import presentacion.pagarAdeudo.coordinadorAplicacionPagarAdeudo.CoordinadorAplicacionPagarAdeudo;

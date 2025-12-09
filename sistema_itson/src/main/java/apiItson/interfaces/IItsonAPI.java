@@ -5,15 +5,14 @@ import datos.dominioItson.pagarAdeudo.Clase;
 import datos.dominioItson.pagarAdeudo.Prestamo;
 import itson.LoginDTOItson;
 import datos.dominioItson.Estudiante;
-import itson.ActividadDTOItson;
-import itson.ActividadesDTOItson;
+import itson.actividades.ActividadDTOItson;
+import itson.actividades.ActividadesDTOItson;
 import itson.EstudianteDTOItson;
 import itson.actividades.BajaDTOItson;
 import itson.actividades.GrupoResponseDTOItson;
 import itson.actividades.GruposResponseDTOItson;
 import itson.actividades.InscripcionDTOItson;
 import itson.actividades.InscripcionesDTOItson;
-import itson.pagarAdeudo.SolicitudPagoDTOI;
 
 import java.util.List;
 
