@@ -10,12 +10,18 @@ import gobierno.SolicitudDTOGobierno;
 import interfaces.IFachadaGobierno;
 
 /**
+ * The type Fachada gobierno.
  *
  * @author janethcristinagalvanquinonez
  */
 public class FachadaGobierno implements IFachadaGobierno{
     private final ControlGobierno controlGobierno;
 
+    /**
+     * Instantiates a new Fachada gobierno.
+     *
+     * @param controlGobierno the control gobierno
+     */
     public FachadaGobierno(ControlGobierno controlGobierno) {
         this.controlGobierno = controlGobierno;
     }

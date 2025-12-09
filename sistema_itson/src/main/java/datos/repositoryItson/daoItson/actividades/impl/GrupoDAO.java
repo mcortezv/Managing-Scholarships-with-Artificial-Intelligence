@@ -10,8 +10,6 @@ import datos.configMongoItson.MongoClienteProvider;
 import datos.dominioItson.actividades.Actividad;
 import datos.dominioItson.actividades.Grupo;
 
-import datos.repositoryItson.documents.pagarAdeudo.ClaseDocument;
-import itson.ActividadDTOItson;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

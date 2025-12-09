@@ -1,7 +1,7 @@
 package controles;
 
-import interfaces.apelarResultado.IApelacionBO;
-import interfaces.solicitarBeca.ISolicitudBO;
+import objetosNegocio.bo.apelarResultado.interfaces.IApelacionBO;
+import objetosNegocio.bo.solicitarBeca.intefaces.ISolicitudBO;
 
 public class ControlApelacion {
     private ISolicitudBO iSolicitudBO;

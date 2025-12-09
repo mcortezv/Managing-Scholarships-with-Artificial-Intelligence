@@ -1,7 +1,7 @@
 package presentacion.interfaces;
 
 
-import bo.solicitarBeca.excepciones.SolicitudInvalidaException;
+import objetosNegocio.bo.solicitarBeca.excepciones.SolicitudInvalidaException;
 import itson.LoginDTOItson;
 import solicitarBeca.*;
 

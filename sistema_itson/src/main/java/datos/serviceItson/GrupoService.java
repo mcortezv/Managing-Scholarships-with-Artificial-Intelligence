@@ -10,7 +10,7 @@ import datos.dominioItson.actividades.Actividad;
 import datos.dominioItson.actividades.Grupo;
 
 import datos.repositoryItson.daoItson.actividades.impl.GrupoDAO;
-import itson.ActividadDTOItson;
+import itson.actividades.ActividadDTOItson;
 import itson.actividades.GruposResponseDTOItson;
 import java.util.List;
 

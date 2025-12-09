@@ -6,7 +6,7 @@ package datos.serviceItson;
 
 
 import datos.repositoryItson.daoItson.impl.ActividadDAO;
-import itson.ActividadesDTOItson;
+import itson.actividades.ActividadesDTOItson;
 import datos.adaptadoresItson.actividades.ActividadAdaptador;
 import datos.dominioItson.actividades.Actividad;
 import java.util.List;
