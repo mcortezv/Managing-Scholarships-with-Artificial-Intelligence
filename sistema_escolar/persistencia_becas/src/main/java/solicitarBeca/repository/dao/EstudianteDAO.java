@@ -23,7 +23,7 @@ public class EstudianteDAO implements IEstudianteDAO {
     }
 
     @Override
-    public ObjectId create(EstudianteDocument entity) throws EstudianteDAOException {
+    public ObjectId guardar(EstudianteDocument entity) throws EstudianteDAOException {
         try {
             if (entity.get_id() == null) {
                 entity.set_id(new ObjectId());

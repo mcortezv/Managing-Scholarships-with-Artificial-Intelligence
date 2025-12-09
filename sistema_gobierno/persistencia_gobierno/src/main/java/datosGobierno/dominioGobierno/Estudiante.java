@@ -6,6 +6,7 @@ package datosGobierno.dominioGobierno;
 import datosGobierno.dominioGobierno.enums.Carrera;
 
 /**
+ * The type Estudiante.
  *
  * @author Cortez, Manuel;
  */
@@ -19,8 +20,23 @@ public class Estudiante {
     private String direccion;
     private String correo;
 
+    /**
+     * Instantiates a new Estudiante.
+     */
     public Estudiante() {}
 
+    /**
+     * Instantiates a new Estudiante.
+     *
+     * @param carrera     the carrera
+     * @param contrasenia the contrasenia
+     * @param correo      the correo
+     * @param direccion   the direccion
+     * @param matricula   the matricula
+     * @param nombre      the nombre
+     * @param telefono    the telefono
+     * @param tutor       the tutor
+     */
     public Estudiante(Carrera carrera, String contrasenia, String correo, String direccion, Long matricula, String nombre, String telefono, Tutor tutor) {
         this.carrera = carrera;
         this.contrasenia = contrasenia;
@@ -32,66 +48,146 @@ public class Estudiante {
         this.tutor = tutor;
     }
 
+    /**
+     * Gets carrera.
+     *
+     * @return the carrera
+     */
     public Carrera getCarrera() {
         return carrera;
     }
 
+    /**
+     * Sets carrera.
+     *
+     * @param carrera the carrera
+     */
     public void setCarrera(Carrera carrera) {
         this.carrera = carrera;
     }
 
+    /**
+     * Gets contrasenia.
+     *
+     * @return the contrasenia
+     */
     public String getContrasenia() {
         return contrasenia;
     }
 
+    /**
+     * Sets contrasenia.
+     *
+     * @param contrasenia the contrasenia
+     */
     public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
     }
 
+    /**
+     * Gets correo.
+     *
+     * @return the correo
+     */
     public String getCorreo() {
         return correo;
     }
 
+    /**
+     * Sets correo.
+     *
+     * @param correo the correo
+     */
     public void setCorreo(String correo) {
         this.correo = correo;
     }
 
+    /**
+     * Gets direccion.
+     *
+     * @return the direccion
+     */
     public String getDireccion() {
         return direccion;
     }
 
+    /**
+     * Sets direccion.
+     *
+     * @param direccion the direccion
+     */
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
 
+    /**
+     * Gets matricula.
+     *
+     * @return the matricula
+     */
     public Long getMatricula() {
         return matricula;
     }
 
+    /**
+     * Sets matricula.
+     *
+     * @param matricula the matricula
+     */
     public void setMatricula(Long matricula) {
         this.matricula = matricula;
     }
 
+    /**
+     * Gets nombre.
+     *
+     * @return the nombre
+     */
     public String getNombre() {
         return nombre;
     }
 
+    /**
+     * Sets nombre.
+     *
+     * @param nombre the nombre
+     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
+    /**
+     * Gets telefono.
+     *
+     * @return the telefono
+     */
     public String getTelefono() {
         return telefono;
     }
 
+    /**
+     * Sets telefono.
+     *
+     * @param telefono the telefono
+     */
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
+    /**
+     * Gets tutor.
+     *
+     * @return the tutor
+     */
     public Tutor getTutor() {
         return tutor;
     }
 
+    /**
+     * Sets tutor.
+     *
+     * @param tutor the tutor
+     */
     public void setTutor(Tutor tutor) {
         this.tutor = tutor;
     }

@@ -1,5 +1,4 @@
 package datosGobierno.daoGobierno;
-
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
@@ -8,17 +7,20 @@ import datosGobierno.daoGobierno.excepcionesGobierno.ResolucionDAOException;
 import datosGobierno.daoGobierno.interfacesGobierno.IResolucionDAO;
 import datosGobierno.dominioGobierno.Resolucion;
 import org.bson.conversions.Bson;
-
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * DAO para operaciones de Resolución en MongoDB
+ *
  * @author Cortez, Manuel
  */
 public class ResolucionDAO implements IResolucionDAO {
     private final MongoCollection<Resolucion> col;
 
+    /**
+     * Instantiates a new Resolucion dao.
+     */
     public ResolucionDAO() {
         this.col = MongoClienteProvider.INSTANCE.getCollection("resoluciones", Resolucion.class);
     }
@@ -29,19 +31,13 @@ public class ResolucionDAO implements IResolucionDAO {
             if (resolucion == null) {
                 throw new ResolucionDAOException("La resolución no puede ser nula");
             }
-
-            // Validar que no exista ya una resolución para esta solicitud
             Bson filtro = Filters.eq("solicitud.id", resolucion.getSolicitud().getId());
             Resolucion existente = col.find(filtro).first();
-
             if (existente != null) {
-                throw new ResolucionDAOException(
-                        "Ya existe una resolución para la solicitud " + resolucion.getSolicitud().getId());
+                throw new ResolucionDAOException("Ya existe una resolución para la solicitud " + resolucion.getSolicitud().getId());
             }
-
             col.insertOne(resolucion);
             return true;
-
         } catch (Exception ex) {
             throw new ResolucionDAOException("Error al guardar la resolución: " + ex.getMessage());
         }
@@ -53,28 +49,19 @@ public class ResolucionDAO implements IResolucionDAO {
             if (resolucion == null) {
                 throw new ResolucionDAOException("La resolución no puede ser nula");
             }
-
-            // Buscar por ID de solicitud
             Bson filtro = Filters.eq("solicitud.id", resolucion.getSolicitud().getId());
-
-            // Verificar que exista
             Resolucion existente = col.find(filtro).first();
             if (existente == null) {
-                throw new ResolucionDAOException(
-                        "No existe resolución para la solicitud " + resolucion.getSolicitud().getId());
+                throw new ResolucionDAOException("No existe resolución para la solicitud " + resolucion.getSolicitud().getId());
             }
-
-            // Actualizar campos
             Bson update = Updates.combine(
                     Updates.set("decision", resolucion.getDecision()),
                     Updates.set("motivo", resolucion.getMotivo()),
                     Updates.set("fechaEvaluacion", resolucion.getFechaEvaluacion()),
                     Updates.set("solicitud", resolucion.getSolicitud())
             );
-
             col.updateOne(filtro, update);
             return true;
-
         } catch (Exception ex) {
             throw new ResolucionDAOException("Error al actualizar la resolución: " + ex.getMessage());
         }
@@ -85,13 +72,10 @@ public class ResolucionDAO implements IResolucionDAO {
         try {
             Bson filtro = Filters.eq("solicitud.id", (long) id);
             Resolucion resolucion = col.find(filtro).first();
-
             if (resolucion == null) {
                 throw new ResolucionDAOException("No se encontró resolución con ID " + id);
             }
-
             return resolucion;
-
         } catch (Exception ex) {
             throw new ResolucionDAOException("Error al obtener la resolución por ID: " + ex.getMessage());
         }
@@ -101,40 +85,30 @@ public class ResolucionDAO implements IResolucionDAO {
     public Resolucion obtenerPorFiltro(String tipoFiltro, String filtro) {
         try {
             Bson query;
-
             switch (tipoFiltro.toUpperCase()) {
                 case "MATRICULA":
                     query = Filters.eq("solicitud.estudiante.matricula", Long.parseLong(filtro));
                     break;
-
                 case "NOMBRE":
-                    // Búsqueda case-insensitive por regex
                     query = Filters.regex("solicitud.estudiante.nombre",
                             ".*" + filtro + ".*", "i");
                     break;
-
                 case "ID_SOLICITUD":
                     query = Filters.eq("solicitud.id", Long.parseLong(filtro));
                     break;
-
                 default:
                     throw new ResolucionDAOException("Tipo de filtro inválido: " + tipoFiltro);
             }
-
             Resolucion resolucion = col.find(query).first();
-
             if (resolucion == null) {
                 throw new ResolucionDAOException(
                         "No se encontró resolución con " + tipoFiltro + ": " + filtro);
             }
-
             return resolucion;
-
         } catch (NumberFormatException ex) {
             throw new ResolucionDAOException("Formato de filtro inválido: " + filtro);
         } catch (Exception ex) {
-            throw new ResolucionDAOException(
-                    "Error al obtener resolución por filtro: " + ex.getMessage());
+            throw new ResolucionDAOException("Error al obtener resolución por filtro: " + ex.getMessage());
         }
     }
 
@@ -144,16 +118,15 @@ public class ResolucionDAO implements IResolucionDAO {
             List<Resolucion> resoluciones = new ArrayList<>();
             col.find().into(resoluciones);
             return resoluciones;
-
         } catch (Exception ex) {
-            throw new ResolucionDAOException(
-                    "Error al obtener todas las resoluciones: " + ex.getMessage());
+            throw new ResolucionDAOException("Error al obtener todas las resoluciones: " + ex.getMessage());
         }
     }
 
     /**
      * Obtiene resoluciones por tipo de beca
      */
+    @Override
     public List<Resolucion> obtenerPorTipoBeca(String tipoBeca) {
         try {
             List<Resolucion> resoluciones = new ArrayList<>();
@@ -170,6 +143,7 @@ public class ResolucionDAO implements IResolucionDAO {
     /**
      * Obtiene resoluciones por decisión
      */
+    @Override
     public List<Resolucion> obtenerPorDecision(String decision) {
         try {
             List<Resolucion> resoluciones = new ArrayList<>();
@@ -186,6 +160,7 @@ public class ResolucionDAO implements IResolucionDAO {
     /**
      * Elimina una resolución (para casos especiales)
      */
+    @Override
     public boolean eliminar(long idSolicitud) {
         try {
             Bson filtro = Filters.eq("solicitud.id", idSolicitud);

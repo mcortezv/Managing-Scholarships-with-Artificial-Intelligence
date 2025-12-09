@@ -6,11 +6,17 @@ import interfaces.IFachadaModificarResolucion;
 
 /**
  * Fachada corregida con todos los métodos
+ *
  * @author Cortez, Manuel;
  */
 public class FachadaModificarResolucion implements IFachadaModificarResolucion {
     private final ControlModificarResolucion controlModificarResolucion;
 
+    /**
+     * Instantiates a new Fachada modificar resolucion.
+     *
+     * @param controlModificarResolucion the control modificar resolucion
+     */
     public FachadaModificarResolucion(ControlModificarResolucion controlModificarResolucion) {
         this.controlModificarResolucion = controlModificarResolucion;
     }

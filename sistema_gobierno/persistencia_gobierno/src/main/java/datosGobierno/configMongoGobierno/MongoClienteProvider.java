@@ -16,10 +16,14 @@ import java.io.InputStream;
 import java.util.Properties;
 
 /**
+ * The enum Mongo cliente provider.
  *
- * @author katia
+ * @author Cortez, Manuel;
  */
 public enum MongoClienteProvider {
+    /**
+     * Instance mongo cliente provider.
+     */
     INSTANCE;
     private final MongoClient client;
     private final String dbName;
@@ -42,10 +46,20 @@ public enum MongoClienteProvider {
         }
     }
 
+    /**
+     * Client mongo client.
+     *
+     * @return the mongo client
+     */
     public MongoClient client() {
         return client;
     }
 
+    /**
+     * Database mongo database.
+     *
+     * @return the mongo database
+     */
     public MongoDatabase database() {
         CodecRegistry pojoCodecRegistry = CodecRegistries.fromRegistries(
                 MongoClientSettings.getDefaultCodecRegistry(),
@@ -54,6 +68,14 @@ public enum MongoClienteProvider {
         return client.getDatabase(dbName).withCodecRegistry(pojoCodecRegistry);
     }
 
+    /**
+     * Gets collection.
+     *
+     * @param <T>  the type parameter
+     * @param name the name
+     * @param type the type
+     * @return the collection
+     */
     public <T> MongoCollection<T> getCollection(String name, Class<T> type) {
         return database().getCollection(name, type);
     }

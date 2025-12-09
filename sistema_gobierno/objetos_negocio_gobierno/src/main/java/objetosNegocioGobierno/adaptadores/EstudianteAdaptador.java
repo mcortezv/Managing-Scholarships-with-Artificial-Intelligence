@@ -1,4 +1,3 @@
-
 package objetosNegocioGobierno.adaptadores;
 import datosGobierno.dominioGobierno.Estudiante;
 import datosGobierno.dominioGobierno.enums.Carrera;
@@ -7,72 +6,105 @@ import gobierno.EstudianteDTOGobierno;
 import objetosNegocioGobierno.adaptadores.excepciones.EstudianteAdaptadorException;
 
 /**
+ * The type Estudiante adaptador.
  *
  * @author Cortez, Manuel;
  */
 public class EstudianteAdaptador {
 
+    /**
+     * To entity estudiante.
+     *
+     * @param dto the dto
+     * @return the estudiante
+     */
     public static Estudiante toEntity(EstudianteDTO dto){
         try {
             Estudiante estudiante = new Estudiante();
             estudiante.setMatricula(dto.getMatricula());
             estudiante.setNombre(dto.getNombre());
             estudiante.setCarrera(Carrera.valueOf(dto.getCarrera()));
-            estudiante.setTutor(TutorAdaptador.toEntity(dto.getTutor()));
+            if (dto.getTutor() != null) {
+                estudiante.setTutor(TutorAdaptador.toEntity(dto.getTutor()));
+            }
             estudiante.setTelefono(dto.getTelefono());
             estudiante.setDireccion(dto.getDireccion());
             estudiante.setCorreo(dto.getCorreo());
             return estudiante;
         } catch (Exception sinUso){
-            throw new EstudianteAdaptadorException("No se pudo mappear la DTO a Entidad");
+            throw new EstudianteAdaptadorException("No se pudo mappear el EstudianteDTO a entidad Estudiante");
         }
     }
 
+    /**
+     * To entity estudiante.
+     *
+     * @param dto the dto
+     * @return the estudiante
+     */
     public static Estudiante toEntity(EstudianteDTOGobierno dto){
         try {
             Estudiante estudiante = new Estudiante();
             estudiante.setMatricula(dto.getMatricula());
             estudiante.setNombre(dto.getNombre());
             estudiante.setCarrera(Carrera.valueOf(dto.getCarrera()));
-            estudiante.setTutor(TutorAdaptador.toEntity(dto.getTutor()));
+            if (estudiante.getTutor() != null) {
+                estudiante.setTutor(TutorAdaptador.toEntity(dto.getTutor()));
+            }
             estudiante.setTelefono(dto.getTelefono());
             estudiante.setDireccion(dto.getDireccion());
             estudiante.setCorreo(dto.getCorreo());
             return estudiante;
         } catch (Exception sinUso){
-            throw new EstudianteAdaptadorException("No se pudo mappear la DTO de Infraestructura a Entidad");
+            throw new EstudianteAdaptadorException("No se pudo mappear el EstudianteDTOGobierno a entidad Estudiante");
         }
     }
 
+    /**
+     * To dto estudiante dto.
+     *
+     * @param estudiante the estudiante
+     * @return the estudiante dto
+     */
     public static EstudianteDTO toDTO(Estudiante estudiante){
         try {
             EstudianteDTO dto = new EstudianteDTO();
             dto.setMatricula(estudiante.getMatricula());
             dto.setNombre(estudiante.getNombre());
             dto.setCarrera(estudiante.getCarrera().toString());
-            dto.setTutor(TutorAdaptador.toDTO(estudiante.getTutor()));
+            if (estudiante.getTutor() != null) {
+                dto.setTutor(TutorAdaptador.toDTO(estudiante.getTutor()));
+            }
             dto.setTelefono(estudiante.getTelefono());
             dto.setDireccion(estudiante.getDireccion());
             dto.setCorreo(estudiante.getCorreo());
             return dto;
         } catch (Exception sinUso){
-            throw new EstudianteAdaptadorException("No se pudo mappear la Entidad a DTO");
+            throw new EstudianteAdaptadorException("No se pudo mappear la entidad Estudiante a EstudianteDTO");
         }
     }
 
+    /**
+     * To infraestructura dto estudiante dto gobierno.
+     *
+     * @param estudiante the estudiante
+     * @return the estudiante dto gobierno
+     */
     public static EstudianteDTOGobierno toInfraestructuraDTO(Estudiante  estudiante){
         try {
             EstudianteDTOGobierno dto = new EstudianteDTOGobierno();
             dto.setMatricula(estudiante.getMatricula());
             dto.setNombre(estudiante.getNombre());
             dto.setCarrera(estudiante.getCarrera().toString());
-            dto.setTutor(TutorAdaptador.toInfraestructuraDTO(estudiante.getTutor()));
+            if (estudiante.getTutor() != null){
+                dto.setTutor(TutorAdaptador.toInfraestructuraDTO(estudiante.getTutor()));
+            }
             dto.setTelefono(estudiante.getTelefono());
             dto.setDireccion(estudiante.getDireccion());
             dto.setCorreo(estudiante.getCorreo());
             return dto;
         } catch (Exception sinUso){
-            throw new EstudianteAdaptadorException("No se pudo mappear la Entidad a DTO Infraestructura");
+            throw new EstudianteAdaptadorException("No se pudo mappear la entidad Estudiante a EstudianteDTOGobierno");
         }
     }
 }

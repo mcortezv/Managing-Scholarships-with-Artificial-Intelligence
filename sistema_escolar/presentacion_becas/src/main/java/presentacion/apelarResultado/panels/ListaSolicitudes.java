@@ -17,7 +17,6 @@ public class ListaSolicitudes extends PanelApelarResultado {
 
     private JLabel lblTotalSolicitudes;
     private DefaultTableModel tableModel;
-    private CustomTable table;
     private List<SolicitudDTO> solicitudesCache;
 
     public ListaSolicitudes(ApelarResultado mainFrame, CoordinadorAplicacionApelarResultado coordinadorAplicacion) {
@@ -39,7 +38,8 @@ public class ListaSolicitudes extends PanelApelarResultado {
         JPanel headerApelacion = new RoundedPanel(20, new Color(235, 235, 235));
         headerApelacion.setPreferredSize(new Dimension(250, 50));
         headerApelacion.setMaximumSize(new Dimension(250, 50));
-        headerApelacion.setLayout(new GridBagLayout());
+        headerApelacion.setLayout(new GridBagLayout()); // Centra el texto automáticamente
+
         JLabel lblTituloIzq = new JLabel("Apelación");
         lblTituloIzq.setFont(new Font("SansSerif", Font.PLAIN, 20));
         headerApelacion.add(lblTituloIzq);
@@ -50,7 +50,7 @@ public class ListaSolicitudes extends PanelApelarResultado {
         cardInfo.setLayout(new BoxLayout(cardInfo, BoxLayout.Y_AXIS));
         cardInfo.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
-        JLabel lblInfoTitulo = new JLabel("Solicitudes:");
+        JLabel lblInfoTitulo = new JLabel("Total Solicitudes:");
         lblInfoTitulo.setFont(new Font("SansSerif", Font.BOLD, 14));
         lblInfoTitulo.setAlignmentX(Component.CENTER_ALIGNMENT);
 
@@ -81,6 +81,7 @@ public class ListaSolicitudes extends PanelApelarResultado {
         headerSolicitudes.setPreferredSize(new Dimension(250, 50));
         headerSolicitudes.setMaximumSize(new Dimension(250, 50));
         headerSolicitudes.setLayout(new GridBagLayout());
+
         JLabel lblTituloDer = new JLabel("Historial de Solicitudes");
         lblTituloDer.setFont(new Font("SansSerif", Font.PLAIN, 20));
         headerSolicitudes.add(lblTituloDer);
@@ -98,7 +99,7 @@ public class ListaSolicitudes extends PanelApelarResultado {
             }
         };
 
-        table = new CustomTable(tableModel, mainFrame, PanelCategory.LISTA_SOLICITUDES, this, coordinadorAplicacionApelarResultado);
+        CustomTable table = new CustomTable(tableModel, mainFrame, PanelCategory.LISTA_SOLICITUDES, this, coordinadorAplicacionApelarResultado);
         table.setRowHeight(30);
 
         table.getColumnModel().getColumn(3).setCellEditor(new DefaultCellEditor(new JCheckBox()) {
@@ -108,7 +109,6 @@ public class ListaSolicitudes extends PanelApelarResultado {
             {
                 button.setOpaque(true);
                 button.setFont(new Font("SansSerif", Font.BOLD, 14));
-                button.setBackground(Color.WHITE);
                 button.addActionListener(e -> {
                     fireEditingStopped();
                     if (solicitudesCache != null && currentRow >= 0 && currentRow < solicitudesCache.size()) {
@@ -147,17 +147,11 @@ public class ListaSolicitudes extends PanelApelarResultado {
         gbc.anchor = GridBagConstraints.NORTH;
         gbc.insets = new Insets(20, 20, 20, 20);
         centralPanel.add(leftPanel, gbc);
-
-        gbc.gridx = 1;
-        gbc.weightx = 0;
-        centralPanel.add(Box.createHorizontalStrut(20), gbc);
-
+        btnBack.addActionListener(e -> coordinadorAplicacionApelarResultado.regresarAlMenuPrincipal());
         gbc.gridx = 2;
         gbc.weightx = 1.0;
         gbc.fill = GridBagConstraints.BOTH;
         centralPanel.add(rightPanel, gbc);
-
-        btnBack.addActionListener(e -> coordinadorAplicacionApelarResultado.regresarAlMenuPrincipal());
 
         centralPanel.revalidate();
         centralPanel.repaint();
@@ -184,7 +178,7 @@ public class ListaSolicitudes extends PanelApelarResultado {
         }
     }
 
-    public static class RoundedPanel extends JPanel {
+    static class RoundedPanel extends JPanel {
         private int cornerRadius = 15;
         private final Color backgroundColor;
 
@@ -203,10 +197,8 @@ public class ListaSolicitudes extends PanelApelarResultado {
             int height = getHeight();
             Graphics2D graphics = (Graphics2D) g;
             graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
             graphics.setColor(new Color(0,0,0,30));
             graphics.fillRoundRect(3, 3, width-3, height-3, arcs.width, arcs.height);
-
             graphics.setColor(backgroundColor);
             graphics.fillRoundRect(0, 0, width - 1, height - 1, arcs.width, arcs.height);
         }

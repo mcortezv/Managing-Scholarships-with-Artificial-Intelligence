@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package fachadas;
+
 import adaptadores.solicitarBeca.EstudianteAdaptador;
 import controles.ControlSolicitarBeca;
 import bo.solicitarBeca.excepciones.SolicitudInvalidaException;
@@ -12,19 +13,19 @@ import solicitarBeca.dominio.*;
 import java.util.List;
 
 /**
- *                          FACHADA
+ * FACHADA
+ * 
  * @author janethcristinagalvanquinonez
  */
 public class FachadaSolicitarBeca implements IFachadaSolicitarBeca {
     private final ControlSolicitarBeca controlSolicitud;
     private Solicitud solicitudActual;
     private Estudiante estudianteActual;
-    
-    public FachadaSolicitarBeca(ControlSolicitarBeca gestor){
+
+    public FachadaSolicitarBeca(ControlSolicitarBeca gestor) {
         this.controlSolicitud = gestor;
     }
 
-  
     public BecasFiltradasDTO obtenerBecasFiltradas(RequisitosDTO requisitos) throws SolicitudInvalidaException {
         return controlSolicitud.obtenerBecasFiltradas(requisitos);
     }
@@ -62,7 +63,8 @@ public class FachadaSolicitarBeca implements IFachadaSolicitarBeca {
     }
 
     @Override
-    public void setInformacionSocioeconomica(InformacionSocioeconomicaDTO informacionSocioeconomica) throws SolicitudInvalidaException {
+    public void setInformacionSocioeconomica(InformacionSocioeconomicaDTO informacionSocioeconomica)
+            throws SolicitudInvalidaException {
         controlSolicitud.setInformacionSocioeconomica(informacionSocioeconomica);
     }
 

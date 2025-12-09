@@ -1,55 +1,126 @@
 package datosGobierno.adaptadoresGobierno;
 import datosGobierno.adaptadoresGobierno.excepciones.SolicitudAdaptadorException;
+import datosGobierno.documents.SolicitudDocument;
 import datosGobierno.dominioGobierno.Documento;
 import datosGobierno.dominioGobierno.Solicitud;
 import datosGobierno.dominioGobierno.enums.EstadoSolicitud;
 import dtoGobierno.DocumentoDTO;
 import dtoGobierno.SolicitudDTO;
+import gobierno.DocumentoDTOGobierno;
+import gobierno.SolicitudDTOGobierno;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * The type Solicitud adaptador.
+ */
 public class SolicitudAdaptador {
 
+    /**
+     * To entity solicitud.
+     *
+     * @param dto the dto
+     * @return the solicitud
+     */
     public static Solicitud toEntity(SolicitudDTO dto) {
         try {
             Solicitud solicitud = new Solicitud();
             solicitud.setBeca(BecaAdaptador.toEntity(dto.getBeca()));
             solicitud.setEstado(EstadoSolicitud.valueOf(dto.getEstado()));
-            solicitud.setEstudiante(EstudianteAdaptador.toEntity(dto.getEstudiante()));
+            if (dto.getEstudiante() != null) {
+                solicitud.setEstudiante(EstudianteAdaptador.toEntity(dto.getEstudiante()));
+            }
             solicitud.setFecha(dto.getFecha());
             solicitud.setId(dto.getId());
             solicitud.setHistorialAcademico(HistorialAcademicoAdaptador.toEntity(dto.getHistorialAcademico()));
             solicitud.setInformacionSocioeconomica(InformacionSocioeconomicaAdaptador.toEntity(dto.getInformacionSocioeconomica()));
-            List<Documento> documentos = new ArrayList<>();
-            for (DocumentoDTO documentoDTO : dto.getDocumentos()) {
-                documentos.add(DocumentoAdaptador.toEntity(documentoDTO));
+            if (dto.getDocumentos() != null) {
+                List<Documento> documentos = new ArrayList<>();
+                for (DocumentoDTO documentoDTO : dto.getDocumentos()) {
+                    documentos.add(DocumentoAdaptador.toEntity(documentoDTO));
+                }
+                solicitud.setDocumentos(documentos);
             }
-            solicitud.setDocumentos(documentos);
             return solicitud;
         } catch (Exception ex) {
-            throw new SolicitudAdaptadorException("Error al convertir SolicitudDTO a Solicitud");
+            throw new SolicitudAdaptadorException("Error al convertir SolicitudDTO a entidad Solicitud");
         }
     }
 
+    /**
+     * To entity solicitud.
+     *
+     * @param dto the dto
+     * @return the solicitud
+     */
+    public static Solicitud toEntity(SolicitudDTOGobierno dto) {
+        try {
+            Solicitud solicitud = new Solicitud();
+            solicitud.setBeca(BecaAdaptador.toEntity(dto.getBeca()));
+            solicitud.setEstado(EstadoSolicitud.valueOf(dto.getEstado()));
+            if (dto.getEstudiante() != null) {
+                solicitud.setEstudiante(EstudianteAdaptador.toEntity(dto.getEstudiante()));
+            }
+            solicitud.setFecha(dto.getFecha());
+            solicitud.setId(dto.getId());
+            solicitud.setHistorialAcademico(HistorialAcademicoAdaptador.toEntity(dto.getHistorialAcademico()));
+            solicitud.setInformacionSocioeconomica(InformacionSocioeconomicaAdaptador.toEntity(dto.getInformacionSocioeconomica()));
+            if (dto.getDocumentos() != null) {
+                List<Documento> documentos = new ArrayList<>();
+                for (DocumentoDTOGobierno documentoDTO : dto.getDocumentos()) {
+                    documentos.add(DocumentoAdaptador.toEntity(documentoDTO));
+                }
+                solicitud.setDocumentos(documentos);
+            }
+            return solicitud;
+        } catch (Exception ex) {
+            throw new SolicitudAdaptadorException("Error al convertir SolicitudDTOGobierno a entidad Solicitud");
+        }
+    }
+
+    public static SolicitudDocument toDocument(SolicitudDTOGobierno dto) {
+        try {
+            SolicitudDocument solicitud = new SolicitudDocument();
+            solicitud.setBeca(BecaAdaptador.toEntity(dto.getBeca()));
+            solicitud.setEstado(EstadoSolicitud.valueOf(dto.getEstado()));
+            solicitud.setFecha(dto.getFecha());
+            solicitud.setId(dto.getId());
+            solicitud.setHistorialAcademico(HistorialAcademicoAdaptador.toEntity(dto.getHistorialAcademico()));
+            solicitud.setInformacionSocioeconomica(InformacionSocioeconomicaAdaptador.toEntity(dto.getInformacionSocioeconomica()));
+            return solicitud;
+        } catch (Exception ex) {
+            throw new SolicitudAdaptadorException("Error al convertir SolicitudDTOGobierno a entidad SolicitudDocument");
+        }
+    }
+
+    /**
+     * To dto solicitud dto.
+     *
+     * @param solicitud the solicitud
+     * @return the solicitud dto
+     */
     public static SolicitudDTO toDTO(Solicitud solicitud) {
         try {
             SolicitudDTO dto = new SolicitudDTO();
             dto.setBeca(BecaAdaptador.toDTO(solicitud.getBeca()));
             dto.setEstado(solicitud.getEstado().toString());
-            dto.setEstudiante(EstudianteAdaptador.toDTO(solicitud.getEstudiante()));
+            if (solicitud.getEstudiante() != null) {
+                dto.setEstudiante(EstudianteAdaptador.toDTO(solicitud.getEstudiante()));
+            }
             dto.setFecha(solicitud.getFecha());
             dto.setId(solicitud.getId());
             dto.setHistorialAcademico(HistorialAcademicoAdaptador.toDTO(solicitud.getHistorialAcademico()));
             dto.setInformacionSocioeconomica(InformacionSocioeconomicaAdaptador.toDTO(solicitud.getInformacionSocioeconomica()));
-            List<DocumentoDTO> documentos = new ArrayList<>();
-            for (Documento documento: solicitud.getDocumentos()) {
-                documentos.add(DocumentoAdaptador.toDTO(documento));
+            if (solicitud.getDocumentos() != null) {
+                List<DocumentoDTO> documentos = new ArrayList<>();
+                for (Documento documento: solicitud.getDocumentos()) {
+                    documentos.add(DocumentoAdaptador.toDTO(documento));
+                }
+                dto.setDocumentos(documentos);
             }
-            dto.setDocumentos(documentos);
             return dto;
         } catch (Exception ex) {
-            throw new SolicitudAdaptadorException("Error al convertir Solicitud a SolicitudDTO");
+            throw new SolicitudAdaptadorException("Error al convertir entidad Solicitud a SolicitudDTO");
         }
     }
 }

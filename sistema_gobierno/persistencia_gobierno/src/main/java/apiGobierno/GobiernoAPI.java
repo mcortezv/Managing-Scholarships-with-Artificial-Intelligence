@@ -6,12 +6,16 @@ import gobierno.RequisitosDTOGobierno;
 import gobierno.SolicitudDTOGobierno;
 
 /**
+ * The type Gobierno api.
  *
  * @author Cortez, Manuel;
  */
 public class GobiernoAPI implements IGobiernoAPI {
     private final GobiernoControl gobiernoControl;
 
+    /**
+     * Instantiates a new Gobierno api.
+     */
     public GobiernoAPI(){
         this.gobiernoControl = new GobiernoControl();
     }

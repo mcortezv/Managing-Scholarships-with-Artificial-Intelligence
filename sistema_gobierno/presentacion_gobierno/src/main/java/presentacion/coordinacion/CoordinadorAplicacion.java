@@ -18,7 +18,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 /**
- * Coordinador de aplicación corregido
+ * Coordinador de aplicación corregido con actualización automática
  * @author Cortez, Manuel
  */
 public class CoordinadorAplicacion implements ICoordinadorAplicacion {
@@ -153,8 +153,20 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
             List<SolicitudDTO> solicitudes =
                     coordinadorNegocio.obtenerSolicitudes(becaDTO.getTipo());
 
-            System.out.println("DEBUG: Solicitudes obtenidas: " +
+            System.out.println("DEBUG: Solicitudes ACTIVAS obtenidas: " +
                     (solicitudes != null ? solicitudes.size() : "null"));
+
+            // Verificar si hay solicitudes activas
+            if (solicitudes == null || solicitudes.isEmpty()) {
+                mostrarMensaje(
+                        "No hay solicitudes activas pendientes para esta beca.\n" +
+                                "Todas las solicitudes han sido evaluadas o la convocatoria está completa.",
+                        "Sin Solicitudes Activas",
+                        JOptionPane.INFORMATION_MESSAGE
+                );
+                iniciarEvaluarConvocatoria(); // Volver al listado de becas
+                return;
+            }
 
             EvaluacionPanel panel = (EvaluacionPanel) frame.getPanel("evaluacion");
             panel.setBecaActual(becaDTO);
@@ -199,7 +211,7 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     @Override
     public void evaluarAutomatica(SolicitudDTO solicitud) {
         try {
-            System.out.println("DEBUG: Evaluando automáticamente");
+            System.out.println("DEBUG: Evaluando automáticamente solicitud ID: " + solicitud.getId());
             validarSesionActiva();
 
             if (solicitud == null) {
@@ -210,22 +222,22 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
             mostrarMensaje("Procesando evaluación automática...\nEsto puede tomar unos segundos.",
                     "Evaluando", JOptionPane.INFORMATION_MESSAGE);
 
-            ResolucionDTO resolucion =
-                    coordinadorNegocio.evaluarSolicitudAutomatica(solicitud);
+            ResolucionDTO resolucion = coordinadorNegocio.evaluarSolicitudAutomatica(solicitud);
 
             this.resolucionActual = resolucion;
 
             int confirmacion = JOptionPane.showConfirmDialog(
                     frame,
-                    String.format("Evaluación Automática:\n\nDecisión: %s\nMotivo: %s\n\n¿Desea guardar esta evaluación?",
-                            resolucion.getDecision(), resolucion.getMotivo()),
+                    String.format("Evaluación Automática:\n\nDecisión: %s\nMotivo: %s\nPrecisión: %.2f%%\n\n¿Desea guardar esta evaluación?",
+                            resolucion.getDecision(), resolucion.getMotivo(),
+                            resolucion.getPrecision() != null ? resolucion.getPrecision() : 0.0),
                     "Confirmar Evaluación",
                     JOptionPane.YES_NO_OPTION,
                     JOptionPane.QUESTION_MESSAGE
             );
 
             if (confirmacion == JOptionPane.YES_OPTION) {
-                guardarEvaluacion(resolucion);
+                guardarEvaluacionYAvanzar(resolucion);
             }
 
         } catch (Exception ex) {
@@ -275,7 +287,7 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
             );
 
             if (confirmacion == JOptionPane.YES_OPTION) {
-                guardarEvaluacion(resolucion);
+                guardarEvaluacionYAvanzar(resolucion);
             }
 
         } catch (Exception ex) {
@@ -285,25 +297,35 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
         }
     }
 
-    private void guardarEvaluacion(ResolucionDTO resolucion) {
+    /**
+     * CORREGIDO: Guarda la evaluación y avanza automáticamente a la siguiente solicitud
+     */
+    private void guardarEvaluacionYAvanzar(ResolucionDTO resolucion) {
         try {
-            System.out.println("DEBUG: Guardando evaluación");
+            System.out.println("DEBUG: Guardando evaluación y avanzando");
             boolean exitoso = coordinadorNegocio.guardarResolucion(resolucion);
 
             if (exitoso) {
-                EvaluacionCompletadaPanel panel =
-                        (EvaluacionCompletadaPanel) frame.getPanel("evaluacionCompletada");
-                panel.setResolucion(resolucion);
-                frame.showPanel("evaluacionCompletada");
+                System.out.println("DEBUG: Evaluación guardada exitosamente");
 
-                mostrarMensaje("Evaluación guardada exitosamente", "Éxito",
-                        JOptionPane.INFORMATION_MESSAGE);
+                // Obtener el panel de evaluación
+                EvaluacionPanel panel = (EvaluacionPanel) frame.getPanel("evaluacion");
+
+                // Avanzar a la siguiente solicitud automáticamente
+                panel.avanzarSiguienteSolicitud();
+
+                mostrarMensaje(
+                        String.format("Solicitud evaluada: %s\n\nSe ha avanzado a la siguiente solicitud automáticamente.",
+                                resolucion.getDecision()),
+                        "Evaluación Guardada",
+                        JOptionPane.INFORMATION_MESSAGE
+                );
             } else {
                 mostrarError("No se pudo guardar la evaluación");
             }
 
         } catch (Exception ex) {
-            System.err.println("ERROR en guardarEvaluacion: " + ex.getMessage());
+            System.err.println("ERROR en guardarEvaluacionYAvanzar: " + ex.getMessage());
             ex.printStackTrace();
             mostrarError("Error al guardar evaluación: " + ex.getMessage());
         }
@@ -312,15 +334,33 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     @Override
     public void evaluarOtraSolicitud() {
         try {
-            System.out.println("DEBUG: Evaluando otra solicitud");
+            System.out.println("DEBUG: Evaluando otra solicitud / completando evaluación");
+
+            // Si hay una beca seleccionada, intentar cargar más solicitudes de la misma
             if (becaSeleccionada != null) {
-                seleccionarConvocatoriaEvaluar(becaSeleccionada);
-            } else {
-                iniciarEvaluarConvocatoria();
+                List<SolicitudDTO> solicitudesRestantes =
+                        coordinadorNegocio.obtenerSolicitudes(becaSeleccionada.getTipo());
+
+                if (solicitudesRestantes != null && !solicitudesRestantes.isEmpty()) {
+                    // Todavía hay solicitudes - volver al panel de evaluación
+                    System.out.println("DEBUG: Quedan " + solicitudesRestantes.size() +
+                            " solicitudes, volviendo a evaluación");
+                    seleccionarConvocatoriaEvaluar(becaSeleccionada);
+                    return;
+                }
             }
+
+            // No quedan solicitudes - mostrar pantalla de completado
+            System.out.println("DEBUG: No quedan solicitudes, mostrando pantalla completada");
+            EvaluacionCompletadaPanel panel =
+                    (EvaluacionCompletadaPanel) frame.getPanel("evaluacionCompletada");
+            frame.showPanel("evaluacionCompletada");
+
         } catch (Exception ex) {
             System.err.println("ERROR en evaluarOtraSolicitud: " + ex.getMessage());
-            mostrarError("Error al volver a evaluación: " + ex.getMessage());
+            ex.printStackTrace();
+            mostrarError("Error: " + ex.getMessage());
+            iniciarEvaluarConvocatoria();
         }
     }
 
@@ -347,8 +387,7 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
             System.out.println("DEBUG: Iniciando búsqueda de resolución");
             validarSesionActiva();
 
-            BuscarResolucionPanel panel =
-                    (BuscarResolucionPanel) frame.getPanel("buscarResolucion");
+            BuscarResolucionPanel panel = (BuscarResolucionPanel) frame.getPanel("buscarResolucion");
             panel.limpiarBusqueda();
             frame.showPanel("buscarResolucion");
 

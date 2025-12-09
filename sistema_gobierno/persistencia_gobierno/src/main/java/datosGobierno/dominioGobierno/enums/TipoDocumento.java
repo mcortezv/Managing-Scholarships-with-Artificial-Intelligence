@@ -5,9 +5,29 @@
 package datosGobierno.dominioGobierno.enums;
 
 /**
+ * The enum Tipo documento.
  *
  * @author Cortez, Manuel;
  */
 public enum TipoDocumento {
-    CURP, INE, KARDEX, COMPROBANTE_INSCIRPCION, COMPROBANTE_INGRESOS;
+    /**
+     * Curp tipo documento.
+     */
+    CURP,
+    /**
+     * Ine tipo documento.
+     */
+    INE,
+    /**
+     * Kardex tipo documento.
+     */
+    KARDEX,
+    /**
+     * Comprobante inscirpcion tipo documento.
+     */
+    COMPROBANTE_INSCIRPCION,
+    /**
+     * Comprobante ingresos tipo documento.
+     */
+    COMPROBANTE_INGRESOS;
 }

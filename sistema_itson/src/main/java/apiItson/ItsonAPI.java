@@ -1,4 +1,5 @@
 package apiItson;
+
 import apiItson.controles.ControlItson;
 import apiItson.interfaces.IItsonAPI;
 import itson.pagarAdeudo.SolicitudPagoDTOI;
@@ -20,7 +21,7 @@ import java.util.List;
 public class ItsonAPI implements IItsonAPI {
     private final ControlItson controlItson;
 
-    public ItsonAPI(){
+    public ItsonAPI() {
         this.controlItson = new ControlItson();
     }
 
@@ -31,11 +32,11 @@ public class ItsonAPI implements IItsonAPI {
 
     @Override
     public Estudiante obtenerDatosEstudiante(Long matricula) {
-       return controlItson.solicitarDatosEstudiante(matricula);
+        return controlItson.solicitarDatosEstudiante(matricula);
     }
 
     @Override
-    public HistorialAcademico obtenerHistorialAcademico(Long matricula){
+    public HistorialAcademico obtenerHistorialAcademico(Long matricula) {
         return controlItson.obtenerHistorialAcademico(matricula);
     }
 
@@ -55,25 +56,21 @@ public class ItsonAPI implements IItsonAPI {
         return controlItson.notificarLiquidacion(solicitudPagoDTOI);
     }
 
-
-
-
-    //actividades
+    // actividades
     @Override
     public ActividadesDTOItson soloicitarActividades() {
         return controlItson.solicitarActividades();
     }
 
-
     public GruposResponseDTOItson solicitarGrupos(ActividadDTOItson actividad) {
         return controlItson.obtenerGrupos(actividad);
     }
 
-    public InscripcionDTOItson inscribirActividad(InscripcionDTOItson inscripcionDTOItson){
+    public InscripcionDTOItson inscribirActividad(InscripcionDTOItson inscripcionDTOItson) {
         return controlItson.inscribirActividad(inscripcionDTOItson);
     }
-    
-    public InscripcionesDTOItson obtenerInscripciones(EstudianteDTOItson estudianteDTO){
+
+    public InscripcionesDTOItson obtenerInscripciones(EstudianteDTOItson estudianteDTO) {
         return controlItson.obtenerInscripciones(estudianteDTO);
     }
 }

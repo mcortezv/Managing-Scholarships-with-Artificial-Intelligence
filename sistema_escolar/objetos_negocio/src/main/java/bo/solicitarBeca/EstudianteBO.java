@@ -8,7 +8,6 @@ import solicitarBeca.repository.dao.interfaces.IEstudianteDAO;
 import itson.EstudianteDTOItson;
 import interfaces.solicitarBeca.IEstudianteBO;
 import interfaces.IFachadaITSON;
-import interfaces.actividades.IEstudianteBOAct;
 import solicitarBeca.repository.documents.EstudianteDocument;
 
 /**
@@ -61,7 +60,7 @@ public class EstudianteBO implements IEstudianteBO {
 
     public void guardarEstudiante(EstudianteDocument estudiante) throws EstudianteInvalidoException {
         try {
-            estudianteDAO.create(estudiante);
+            estudianteDAO.guardar(estudiante);
         } catch (Exception ex) {
             throw new EstudianteInvalidoException(ex.getMessage());
         }

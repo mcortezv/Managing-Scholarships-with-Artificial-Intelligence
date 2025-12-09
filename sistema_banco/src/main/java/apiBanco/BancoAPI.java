@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 public class BancoAPI implements IBancoAPI {
     private final ControlBancoAPI controlBancoAPI;
 
-    public BancoAPI(){
+    public BancoAPI() {
         this.controlBancoAPI = new ControlBancoAPI();
     }
 

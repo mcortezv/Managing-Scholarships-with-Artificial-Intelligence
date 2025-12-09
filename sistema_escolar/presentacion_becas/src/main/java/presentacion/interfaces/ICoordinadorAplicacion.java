@@ -19,7 +19,7 @@ public interface ICoordinadorAplicacion {
     void cerrarSesion();
     void guardarInfoEstudiante(LoginDTOItson loginDTOItson);
     EstudianteDTO getEstudianteLogueado();
-    void main(); // Regresar al menú principal (ocultar otros módulos)
+    void main();
     void mostrarMainFrame();
     void solicitarBeca();
     void pagarAdeudo();
