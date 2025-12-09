@@ -10,6 +10,7 @@ import itson.ActividadesDTOItson;
 import itson.EstudianteDTOItson;
 import itson.HistorialAcademicoDTOItson;
 import itson.LoginDTOItson;
+import itson.actividades.GrupoResponseDTOItson;
 import itson.actividades.GruposResponseDTOItson;
 import itson.actividades.InscripcionDTOItson;
 import itson.actividades.InscripcionesDTOItson;
@@ -88,6 +89,11 @@ public class FachadaItson implements IFachadaITSON {
     public InscripcionesDTOItson obtenerInscripciones(EstudianteDTOItson estudianteDTO){
         return controlItson.obtenerInscripciones(estudianteDTO);
     } 
+    
+        
+    public GrupoResponseDTOItson obtenerGrupoInscrito(InscripcionDTOItson inscripcion){
+        return controlItson.obtenerGrupoInscrito(inscripcion);
+    }
 
     @Override
     public boolean buscarEstudiantePorMatricula(InscripcionDTOItson inscripcionDTOItson) {

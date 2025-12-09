@@ -19,29 +19,32 @@ import java.util.List;
  *
  * @author janethcristinagalvanquinonez
  */
-public class FachadaActividad implements IFachadaActividad{
+public class FachadaActividad implements IFachadaActividad {
 
     private ControlActividad controlActividad;
 
     public FachadaActividad(ControlActividad controlActividad) {
-        this.controlActividad= controlActividad;
+        this.controlActividad = controlActividad;
     }
 
-    public ActividadesDTO obtenerActividades(){
+    public ActividadesDTO obtenerActividades() {
         return controlActividad.obtenerActividades();
     }
-    
-    public GruposResponseDTO obtenerGrupos(ActividadDTO actividadDTO){
+
+    public GruposResponseDTO obtenerGrupos(ActividadDTO actividadDTO) {
         return controlActividad.obtenerGrupos(actividadDTO);
     }
-    
-     public InscripcionDTO inscribirActividad(InscripcionDTO inscripcionDTO){
-         return controlActividad.inscribirActividad(inscripcionDTO);
-     }
-     
-     public InscripcionesDTO obtenerInscripciones(EstudianteDTO estudianteDTO){
-         return controlActividad.obtenerInscripciones(estudianteDTO);
-     }
 
+    public InscripcionDTO inscribirActividad(InscripcionDTO inscripcionDTO) {
+        return controlActividad.inscribirActividad(inscripcionDTO);
+    }
+
+    public InscripcionesDTO obtenerInscripciones(EstudianteDTO estudianteDTO) {
+        return controlActividad.obtenerInscripciones(estudianteDTO);
+    }
+
+    public GrupoDTO obtenerGrupoInscrito(InscripcionDTO inscripcionDTO) {
+        return controlActividad.obtenerGrupoInscrito(inscripcionDTO);
+    }
 
 }
