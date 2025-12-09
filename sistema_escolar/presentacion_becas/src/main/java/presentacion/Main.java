@@ -4,16 +4,23 @@ import actividades.dao.interfaces.IEstudianteDAOAct;
 import actividades.dao.interfaces.IInscripcionDAO;
 import actividades.daos.EstudianteDAOAct;
 import actividades.daos.InscripcionDAO;
+import bo.apelarResultado.ApelacionBO;
 import bo.solicitarBeca.*;
 import controles.ControlGobierno;
 import controles.*;
 import fachadas.*;
 import interfaces.actividades.IActividadBO;
+import interfaces.apelarResultado.IApelacionBO;
 import interfaces.pagarAdeudo.IAdeudoBO;
 import interfaces.solicitarBeca.*;
 import bo.pagarAdeudo.AdeudoBO;
 import objetosNegocio.actividades.ActividadBO;
 import presentacion.actividadesExtracurriculares.coordinador.CoordinadorAplicacionActividades;
+import presentacion.apelarResultado.ApelarResultado;
+import presentacion.apelarResultado.coordinadorAplicacionApelarResultado.CoordinadorAplicacionApelarResultado;
+import presentacion.apelarResultado.coordinadorAplicacionApelarResultado.ICoordinadorAplicacionApelarResultado;
+import presentacion.apelarResultado.coordinadorNegocioApelarResultado.CoordinadorNegocioApelarResultado;
+import presentacion.apelarResultado.coordinadorNegocioApelarResultado.ICoordinadorNegocioApelarResultado;
 import presentacion.pagarAdeudo.coordinadorAplicacionPagarAdeudo.CoordinadorAplicacionPagarAdeudo;
 import presentacion.pagarAdeudo.coordinadorNegocioPagarAdeudo.CoordinadorNegocioPagarAdeudo;
 import presentacion.pagarAdeudo.coordinadorNegocioPagarAdeudo.ICoordinadorNegocioPagarAdeudo;
@@ -60,6 +67,9 @@ public class Main {
         IFachadaPago fachadaPago = new FachadaPago(new ControlPago(adeudoBO, fachadaBanco, fachadaPayPal));
         ICoordinadorNegocioPagarAdeudo coordinadorNegocioPagarAdeudo = new CoordinadorNegocioPagarAdeudo(fachadaPago);
 
+
+
+
         //ACT EXTRA
         IActividadBO actividadBO = new ActividadBO(fachadaITSON);
         IGrupoBO grupoBO= new GrupoBO(fachadaITSON);
@@ -85,9 +95,21 @@ public class Main {
         IFachadaInicioSesion fachadaInicioSesion = new FachadaInicioSesion(new ControlInicioSesion(estudianteBO));
         IFachadaSolicitarBeca fachadaSolicitarBeca = new FachadaSolicitarBeca(new ControlSolicitarBeca(solicitudBO, estudianteBO, tutorBO, becasFiltradasBO, documentoBO, historialAcademicoBO, infoSocioBO));
 
+
+        //cordinadores generales
         ICoordinadorNegocio coordinadorNegocioGeneral = new CoordinadorNegocio(fachadaInicioSesion, fachadaSolicitarBeca);
         CoordinadorAplicacion coordinadorAplicacion = new CoordinadorAplicacion(coordinadorNegocioGeneral);
+
+        //pagar adeudo
         CoordinadorAplicacionPagarAdeudo coordinadorAplicacionPagarAdeudo = new CoordinadorAplicacionPagarAdeudo(coordinadorNegocioPagarAdeudo, coordinadorAplicacion);
+
+        //apelar resultado
+        IApelacionBO apelacionBO = new ApelacionBO(fachadaGobierno);
+        IFachadaApelacion iFachadaApelacion = new FachadaApelacion(new ControlApelacion(solicitudBO,apelacionBO));
+        ICoordinadorNegocioApelarResultado iCoordinadorNegocioApelarResultado = new CoordinadorNegocioApelarResultado(iFachadaApelacion);
+        CoordinadorAplicacionApelarResultado coordinadorAplicacionApelarResultad = new CoordinadorAplicacionApelarResultado(iCoordinadorNegocioApelarResultado,coordinadorAplicacion);
+
+        //actividades
         CoordinadorAplicacionActividades coordinadorAplicacionActividades = new CoordinadorAplicacionActividades(fachadaAct, coordinadorAplicacion);
 
         //---------------TUTORÍAS------------
@@ -101,6 +123,9 @@ public class Main {
 
 
         coordinadorAplicacion.setCoordinadorAplicacionPagarAdeudo(coordinadorAplicacionPagarAdeudo);
+
+        coordinadorAplicacion.setCoordinadorAplicacionApelarResultado(coordinadorAplicacionApelarResultad);
+
         coordinadorAplicacion.setCoordinadorAplicacionActividades(coordinadorAplicacionActividades);
 
         coordinadorAplicacion.setCoordinadorAplicacionTutorias(coordinadorAplicacionTutorias);
