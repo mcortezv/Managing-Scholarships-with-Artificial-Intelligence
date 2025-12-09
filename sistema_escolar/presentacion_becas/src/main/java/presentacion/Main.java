@@ -1,5 +1,4 @@
 package presentacion;
-
 import actividades.dao.interfaces.IEstudianteDAOAct;
 import actividades.dao.interfaces.IInscripcionDAO;
 import actividades.daos.EstudianteDAOAct;
@@ -86,12 +85,10 @@ public class Main {
         IDocumentoBO documentoBO = new DocumentoBO(documentoDAO);
         IEstudianteBO estudianteBO = new EstudianteBO(fachadaITSON, estudianteDAO);
         IHistorialAcademicoBO historialAcademicoBO = new HistorialAcademicoBO(fachadaITSON);
-        IInformacionSocioeconomicaBO infoSocioBO = new InformacionSocioeconomicaBO();
         ISolicitudBO solicitudBO = new SolicitudBO(fachadaGobierno, solicitudDAO);
-        ITutorBO tutorBO = new TutorBO();
 
         IFachadaInicioSesion fachadaInicioSesion = new FachadaInicioSesion(new ControlInicioSesion(estudianteBO));
-        IFachadaSolicitarBeca fachadaSolicitarBeca = new FachadaSolicitarBeca(new ControlSolicitarBeca(solicitudBO, estudianteBO, tutorBO, becasFiltradasBO, documentoBO, historialAcademicoBO, infoSocioBO));
+        IFachadaSolicitarBeca fachadaSolicitarBeca = new FachadaSolicitarBeca(new ControlSolicitarBeca(solicitudBO, estudianteBO, becasFiltradasBO, documentoBO, historialAcademicoBO));
 
 
         //cordinadores generales
