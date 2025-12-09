@@ -48,6 +48,7 @@ public class CustomTable extends JTable {
         this.category = category;
         this.previous = previous;
         this.coordinadorAplicacionApelarResultado = coordinador;
+        configStyle();
     }
 
     @Override

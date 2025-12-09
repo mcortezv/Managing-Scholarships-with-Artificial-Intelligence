@@ -74,11 +74,14 @@ public final class MainFrame extends JFrame {
         
         btnActividades.addActionListener( e->{
             coordinadorAplicacion.actividades();
-    });
+        });
         btnTutorias.addActionListener(e -> {
             coordinadorAplicacion.tutorias();
         });
 
+        btnApelacion.addActionListener(e ->{
+            coordinadorAplicacion.apelacion();
+        });
 
     }
 
