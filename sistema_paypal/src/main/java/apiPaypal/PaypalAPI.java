@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 public class PaypalAPI implements IPaypalAPI {
     private final ControlPaypalAPI controlPaypalAPI;
 
-    public PaypalAPI(){
+    public PaypalAPI() {
         this.controlPaypalAPI = new ControlPaypalAPI();
     }
 

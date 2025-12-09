@@ -4,9 +4,19 @@ import datosGobierno.dominioGobierno.InformacionSocioeconomica;
 import datosGobierno.dominioGobierno.enums.TipoVivienda;
 import dtoGobierno.InformacionSocioeconomicaDTO;
 
-
+/**
+ * The type Informacion socioeconomica adaptador.
+ *
+ * @author Cortez, Manuel;
+ */
 public class InformacionSocioeconomicaAdaptador {
 
+    /**
+     * To entity informacion socioeconomica.
+     *
+     * @param dto the dto
+     * @return the informacion socioeconomica
+     */
     public static InformacionSocioeconomica toEntity(InformacionSocioeconomicaDTO dto) {
         try {
             InformacionSocioeconomica informacionSocioeconomica = new InformacionSocioeconomica();
@@ -16,10 +26,16 @@ public class InformacionSocioeconomicaAdaptador {
             informacionSocioeconomica.setIngresoTotalFamilarMensual(dto.getIngresoTotalFamilarMensual());
             return informacionSocioeconomica;
         } catch (Exception ex) {
-            throw new InformacionSocioeconomicaAdaptadorException("Error al convertir InformacionSocioeconomicaDTO a InformacionSocioeconomica");
+            throw new InformacionSocioeconomicaAdaptadorException("Error al convertir InformacionSocioeconomicaDTO a entidad InformacionSocioeconomica");
         }
     }
 
+    /**
+     * To dto informacion socioeconomica dto.
+     *
+     * @param informacionSocioeconomica the informacion socioeconomica
+     * @return the informacion socioeconomica dto
+     */
     public static InformacionSocioeconomicaDTO toDTO(InformacionSocioeconomica informacionSocioeconomica) {
         try {
             InformacionSocioeconomicaDTO dto = new InformacionSocioeconomicaDTO();
@@ -29,7 +45,7 @@ public class InformacionSocioeconomicaAdaptador {
             dto.setIngresoTotalFamilarMensual(informacionSocioeconomica.getIngresoTotalFamilarMensual());
             return dto;
         } catch (Exception ex) {
-            throw new InformacionSocioeconomicaAdaptadorException("Error al convertir InformacionSocioeconomica a InformacionSocioeconomicaDTO");
+            throw new InformacionSocioeconomicaAdaptadorException("Error al convertir entidad InformacionSocioeconomica a InformacionSocioeconomicaDTO");
         }
     }
 }

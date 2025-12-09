@@ -1,15 +1,13 @@
 package datosGobierno.daoGobierno;
-
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
 import datosGobierno.configMongoGobierno.MongoClienteProvider;
-import datosGobierno.daoGobierno.documents.SolicitudDocument;
+import datosGobierno.documents.SolicitudDocument;
 import datosGobierno.daoGobierno.excepcionesGobierno.BecaDAOException;
 import datosGobierno.daoGobierno.interfacesGobierno.IBecaDAO;
 import datosGobierno.dominioGobierno.Beca;
 import gobierno.RequisitosDTOGobierno;
 import org.bson.conversions.Bson;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;

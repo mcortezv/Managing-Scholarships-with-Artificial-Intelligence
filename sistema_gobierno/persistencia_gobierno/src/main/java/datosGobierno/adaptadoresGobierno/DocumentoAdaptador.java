@@ -4,9 +4,19 @@ import datosGobierno.dominioGobierno.Documento;
 import datosGobierno.dominioGobierno.enums.TipoDocumento;
 import dtoGobierno.DocumentoDTO;
 
-
+/**
+ * The type Documento adaptador.
+ *
+ * @author Cortez, Manuel;
+ */
 public class DocumentoAdaptador {
 
+    /**
+     * To entity documento.
+     *
+     * @param dto the dto
+     * @return the documento
+     */
     public static Documento toEntity(DocumentoDTO dto) {
         try {
             Documento documento = new Documento();
@@ -16,10 +26,16 @@ public class DocumentoAdaptador {
             documento.setEstudiante(EstudianteAdaptador.toEntity(dto.getEstudiante()));
             return documento;
         } catch (Exception ex) {
-            throw new DocumentoAdaptadorException("Error al convertir Documento DTO a Documento");
+            throw new DocumentoAdaptadorException("Error al convertir DocumentoDTO a entidad Documento");
         }
     }
 
+    /**
+     * To dto documento dto.
+     *
+     * @param documento the documento
+     * @return the documento dto
+     */
     public static DocumentoDTO toDTO(Documento documento) {
         try {
             DocumentoDTO dto = new DocumentoDTO();
@@ -29,8 +45,7 @@ public class DocumentoAdaptador {
             dto.setEstudiante(EstudianteAdaptador.toDTO(documento.getEstudiante()));
             return dto;
         } catch (Exception ex) {
-            throw new DocumentoAdaptadorException("Error al converit Documento a DocumentoDTO");
+            throw new DocumentoAdaptadorException("Error al converir entidada Documento a DocumentoDTO");
         }
     }
-
 }

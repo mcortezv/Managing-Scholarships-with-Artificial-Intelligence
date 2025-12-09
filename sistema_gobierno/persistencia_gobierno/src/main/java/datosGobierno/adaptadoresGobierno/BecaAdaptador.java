@@ -6,11 +6,18 @@ import dtoGobierno.BecaDTO;
 import gobierno.BecaDTOGobierno;
 
 /**
+ * The type Beca adaptador.
  *
  * @author Cortez, Manuel;
  */
 public class BecaAdaptador {
 
+    /**
+     * To dto beca dto.
+     *
+     * @param beca the beca
+     * @return the beca dto
+     */
     public static BecaDTO toDTO(Beca beca){
         try {
             BecaDTO becaDTO = new BecaDTO();
@@ -25,10 +32,16 @@ public class BecaAdaptador {
             becaDTO.setRequisitos(RequisitosAdaptador.toDTO(beca.getRequisitos()));
             return becaDTO;
         } catch (Exception ex) {
-            throw new BecaAdaptadorException("Error al convertir entidad Beca a DTO");
+            throw new BecaAdaptadorException("Error al convertir entidad Beca a BecaDTO");
         }
     }
 
+    /**
+     * To dto beca dto.
+     *
+     * @param beca the beca
+     * @return the beca dto
+     */
     public static BecaDTO toDTO(BecaDTOGobierno beca){
         try {
             BecaDTO becaDTO = new BecaDTO();
@@ -43,10 +56,16 @@ public class BecaAdaptador {
             becaDTO.setRequisitos(RequisitosAdaptador.toDTO(beca.getRequisitos()));
             return becaDTO;
         } catch (Exception ex) {
-            throw new BecaAdaptadorException("Error al convertir entidad Beca a DTO");
+            throw new BecaAdaptadorException("Error al convertir BecaDTOGobierno a BecaDTO");
         }
     }
 
+    /**
+     * To dto gobierno beca dto gobierno.
+     *
+     * @param beca the beca
+     * @return the beca dto gobierno
+     */
     public static BecaDTOGobierno toDTOGobierno(Beca beca){
         try {
             BecaDTOGobierno becaDTO = new BecaDTOGobierno();
@@ -61,10 +80,16 @@ public class BecaAdaptador {
             becaDTO.setRequisitos(RequisitosAdaptador.toDTOGobierno(beca.getRequisitos()));
             return becaDTO;
         } catch (Exception ex) {
-            throw new BecaAdaptadorException("Error al convertir entidad Beca a DTO");
+            throw new BecaAdaptadorException("Error al convertir entidad Beca a BecaDTOGobierno");
         }
     }
 
+    /**
+     * To entity beca.
+     *
+     * @param becaDTO the beca dto
+     * @return the beca
+     */
     public static Beca toEntity(BecaDTO becaDTO){
         try {
             Beca beca = new Beca();
@@ -79,10 +104,16 @@ public class BecaAdaptador {
             beca.setRequisitos(RequisitosAdaptador.toEntity(becaDTO.getRequisitos()));
             return beca;
         } catch (Exception ex) {
-            throw new BecaAdaptadorException("Error al convertir DTO Beca a entidad");
+            throw new BecaAdaptadorException("Error al convertir BecaDTO a entidad Beca");
         }
     }
 
+    /**
+     * To entity beca.
+     *
+     * @param becaResponseDTO the beca response dto
+     * @return the beca
+     */
     public static Beca toEntity(BecaDTOGobierno becaResponseDTO){
         try {
             Beca beca = new Beca();
@@ -97,7 +128,7 @@ public class BecaAdaptador {
             beca.setRequisitos(RequisitosAdaptador.toEntity(becaResponseDTO.getRequisitos()));
             return beca;
         } catch (Exception ex) {
-            throw new BecaAdaptadorException("Error al convertir ResponseDTO Beca a entidad");
+            throw new BecaAdaptadorException("Error al convertir BecaDTOGobierno a entidad Beca");
         }
     }
 }

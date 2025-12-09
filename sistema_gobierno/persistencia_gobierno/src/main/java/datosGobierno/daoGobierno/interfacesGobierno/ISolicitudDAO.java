@@ -1,5 +1,4 @@
 package datosGobierno.daoGobierno.interfacesGobierno;
-import datosGobierno.daoGobierno.documents.SolicitudDocument;
 import datosGobierno.dominioGobierno.Solicitud;
 import datosGobierno.dominioGobierno.enums.EstadoSolicitud;
 import dtoGobierno.SolicitudDTO;

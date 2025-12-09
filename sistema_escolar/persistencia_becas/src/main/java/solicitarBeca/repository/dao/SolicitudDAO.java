@@ -1,4 +1,5 @@
 package solicitarBeca.repository.dao;
+
 import com.mongodb.MongoException;
 import com.mongodb.client.MongoCollection;
 import org.bson.Document;
