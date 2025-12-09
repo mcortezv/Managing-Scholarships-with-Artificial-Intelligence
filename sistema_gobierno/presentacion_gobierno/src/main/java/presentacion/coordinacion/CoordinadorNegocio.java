@@ -129,8 +129,7 @@ public class CoordinadorNegocio implements ICoordinadorNegocio {
             validarSesionActiva();
             validarSolicitudParaEvaluacion(solicitud);
 
-            ResolucionDTO resolucion =
-                    fachadaEvaluarSolicitudes.evaluacionAutomatica(solicitud);
+            ResolucionDTO resolucion = fachadaEvaluarSolicitudes.evaluacionAutomatica(solicitud);
 
             if (resolucion == null) {
                 throw new RuntimeException("Error al generar evaluación automática");

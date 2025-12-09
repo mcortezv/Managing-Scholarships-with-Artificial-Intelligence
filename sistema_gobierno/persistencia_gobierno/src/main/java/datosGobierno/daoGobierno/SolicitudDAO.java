@@ -84,7 +84,7 @@ public class SolicitudDAO implements ISolicitudDAO {
             }
 
             // Buscar la solicitud
-            Bson filtro = Filters.eq("_id", (long) id);
+            Bson filtro = Filters.eq("id", (long) id);
             SolicitudDocument solicitud = col.find(filtro).first();
 
             if (solicitud == null) {
@@ -149,9 +149,8 @@ public class SolicitudDAO implements ISolicitudDAO {
             MongoCollection<SolicitudDocument> colDoc = MongoClienteProvider.INSTANCE
                     .getCollection("solicitudes", SolicitudDocument.class);
 
-            Bson filtro = Filters.eq("_id", (long) idSolicitud);
+            Bson filtro = Filters.eq("id", idSolicitud);
             SolicitudDocument solicitudDoc = colDoc.find(filtro).first();
-
             if (solicitudDoc == null) {
                 throw new SolicitudDAOException("No se encontró solicitud con ID " + idSolicitud);
             }

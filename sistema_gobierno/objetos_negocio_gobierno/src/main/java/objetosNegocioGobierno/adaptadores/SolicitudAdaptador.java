@@ -25,11 +25,13 @@ public class SolicitudAdaptador {
             solicitud.setEstudiante(EstudianteAdaptador.toEntity(dto.getEstudiante()));
             solicitud.setInformacionSocioeconomica(InformacionSocioeconomicaAdaptador.toEntity(dto.getInformacionSocioeconomica()));
             solicitud.setHistorialAcademico(HistorialAcademicoAdaptador.toEntity(dto.getHistorialAcademico()));
-            List<Documento> documentos = new ArrayList<>();
-            for (DocumentoDTO documentoDTO : dto.getDocumentos()){
-                documentos.add(DocumentoAdaptador.toEntity(documentoDTO));
+            if (dto.getDocumentos() != null) {
+                List<Documento> documentos = new ArrayList<>();
+                for (DocumentoDTO documentoDTO : dto.getDocumentos()){
+                    documentos.add(DocumentoAdaptador.toEntity(documentoDTO));
+                }
+                solicitud.setDocumentos(documentos);
             }
-            solicitud.setDocumentos(documentos);
             solicitud.setFecha(dto.getFecha());
             solicitud.setEstado(EstadoSolicitud.valueOf(dto.getEstado()));
             return solicitud;
@@ -46,11 +48,13 @@ public class SolicitudAdaptador {
             solicitud.setEstudiante(EstudianteAdaptador.toEntity(dto.getEstudiante()));
             solicitud.setInformacionSocioeconomica(InformacionSocioeconomicaAdaptador.toEntity(dto.getInformacionSocioeconomica()));
             solicitud.setHistorialAcademico(HistorialAcademicoAdaptador.toEntity(dto.getHistorialAcademico()));
-            List<Documento> documentos = new ArrayList<>();
-            for (DocumentoDTOGobierno documentoDTO : dto.getDocumentos()){
-                documentos.add(DocumentoAdaptador.toEntity(documentoDTO));
+            if (solicitud.getDocumentos() != null) {
+                List<Documento> documentos = new ArrayList<>();
+                for (DocumentoDTOGobierno documentoDTO : dto.getDocumentos()){
+                    documentos.add(DocumentoAdaptador.toEntity(documentoDTO));
+                }
+                solicitud.setDocumentos(documentos);
             }
-            solicitud.setDocumentos(documentos);
             solicitud.setFecha(dto.getFecha());
             solicitud.setEstado(EstadoSolicitud.valueOf(dto.getEstado()));
             return solicitud;
@@ -67,11 +71,13 @@ public class SolicitudAdaptador {
             dto.setEstudiante(EstudianteAdaptador.toDTO(solicitud.getEstudiante()));
             dto.setInformacionSocioeconomica(InformacionSocioeconomicaAdaptador.toDTO(solicitud.getInformacionSocioeconomica()));
             dto.setHistorialAcademico(HistorialAcademicoAdaptador.toDTO(solicitud.getHistorialAcademico()));
-            List<DocumentoDTO> documentoDTO = new ArrayList<>();
-            for (Documento documento : solicitud.getDocumentos()){
-                documentoDTO.add(DocumentoAdaptador.toDTO(documento));
+            if (solicitud.getDocumentos() != null) {
+                List<DocumentoDTO> documentoDTO = new ArrayList<>();
+                for (Documento documento : solicitud.getDocumentos()){
+                    documentoDTO.add(DocumentoAdaptador.toDTO(documento));
+                }
+                dto.setDocumentos(documentoDTO);
             }
-            dto.setDocumentos(documentoDTO);
             dto.setFecha(solicitud.getFecha());
             dto.setEstado(solicitud.getEstado().toString());
             return dto;
@@ -88,11 +94,13 @@ public class SolicitudAdaptador {
             dto.setEstudiante(EstudianteAdaptador.toInfraestructuraDTO(solicitud.getEstudiante()));
             dto.setInformacionSocioeconomica(InformacionSocioeconomicaAdaptador.toInfraestructuraDTO(solicitud.getInformacionSocioeconomica()));
             dto.setHistorialAcademico(HistorialAcademicoAdaptador.toInfraestructuraDTO(solicitud.getHistorialAcademico()));
-            List<DocumentoDTOGobierno> documentoInfraestructuraDTO = new ArrayList<>();
-            for (Documento documento : solicitud.getDocumentos()){
-                documentoInfraestructuraDTO.add(DocumentoAdaptador.toInfraestructuraDTO(documento));
+            if (solicitud.getDocumentos() != null){
+                List<DocumentoDTOGobierno> documentoInfraestructuraDTO = new ArrayList<>();
+                for (Documento documento : solicitud.getDocumentos()){
+                    documentoInfraestructuraDTO.add(DocumentoAdaptador.toInfraestructuraDTO(documento));
+                }
+                dto.setDocumentos(documentoInfraestructuraDTO);
             }
-            dto.setDocumentos(documentoInfraestructuraDTO);
             dto.setFecha(solicitud.getFecha());
             dto.setEstado(solicitud.getEstado().toString());
             return dto;

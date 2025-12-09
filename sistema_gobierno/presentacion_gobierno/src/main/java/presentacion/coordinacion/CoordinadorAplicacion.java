@@ -210,15 +210,14 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
             mostrarMensaje("Procesando evaluación automática...\nEsto puede tomar unos segundos.",
                     "Evaluando", JOptionPane.INFORMATION_MESSAGE);
 
-            ResolucionDTO resolucion =
-                    coordinadorNegocio.evaluarSolicitudAutomatica(solicitud);
+            ResolucionDTO resolucion = coordinadorNegocio.evaluarSolicitudAutomatica(solicitud);
 
             this.resolucionActual = resolucion;
 
             int confirmacion = JOptionPane.showConfirmDialog(
                     frame,
-                    String.format("Evaluación Automática:\n\nDecisión: %s\nMotivo: %s\n\n¿Desea guardar esta evaluación?",
-                            resolucion.getDecision(), resolucion.getMotivo()),
+                    String.format("Evaluación Automática:\n\nDecisión: %s\nMotivo: %s\nPrecision: %f\n\n¿Desea guardar esta evaluación?",
+                            resolucion.getDecision(), resolucion.getMotivo(), resolucion.getPrecision()),
                     "Confirmar Evaluación",
                     JOptionPane.YES_NO_OPTION,
                     JOptionPane.QUESTION_MESSAGE

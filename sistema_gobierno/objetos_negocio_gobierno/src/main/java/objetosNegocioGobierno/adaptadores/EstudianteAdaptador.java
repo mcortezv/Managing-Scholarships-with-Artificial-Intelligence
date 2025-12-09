@@ -18,7 +18,9 @@ public class EstudianteAdaptador {
             estudiante.setMatricula(dto.getMatricula());
             estudiante.setNombre(dto.getNombre());
             estudiante.setCarrera(Carrera.valueOf(dto.getCarrera()));
-            estudiante.setTutor(TutorAdaptador.toEntity(dto.getTutor()));
+            if (dto.getTutor() != null) {
+                estudiante.setTutor(TutorAdaptador.toEntity(dto.getTutor()));
+            }
             estudiante.setTelefono(dto.getTelefono());
             estudiante.setDireccion(dto.getDireccion());
             estudiante.setCorreo(dto.getCorreo());
@@ -34,7 +36,9 @@ public class EstudianteAdaptador {
             estudiante.setMatricula(dto.getMatricula());
             estudiante.setNombre(dto.getNombre());
             estudiante.setCarrera(Carrera.valueOf(dto.getCarrera()));
-            estudiante.setTutor(TutorAdaptador.toEntity(dto.getTutor()));
+            if (estudiante.getTutor() != null) {
+                estudiante.setTutor(TutorAdaptador.toEntity(dto.getTutor()));
+            }
             estudiante.setTelefono(dto.getTelefono());
             estudiante.setDireccion(dto.getDireccion());
             estudiante.setCorreo(dto.getCorreo());
@@ -50,7 +54,9 @@ public class EstudianteAdaptador {
             dto.setMatricula(estudiante.getMatricula());
             dto.setNombre(estudiante.getNombre());
             dto.setCarrera(estudiante.getCarrera().toString());
-            dto.setTutor(TutorAdaptador.toDTO(estudiante.getTutor()));
+            if (estudiante.getTutor() != null) {
+                dto.setTutor(TutorAdaptador.toDTO(estudiante.getTutor()));
+            }
             dto.setTelefono(estudiante.getTelefono());
             dto.setDireccion(estudiante.getDireccion());
             dto.setCorreo(estudiante.getCorreo());
@@ -66,7 +72,9 @@ public class EstudianteAdaptador {
             dto.setMatricula(estudiante.getMatricula());
             dto.setNombre(estudiante.getNombre());
             dto.setCarrera(estudiante.getCarrera().toString());
-            dto.setTutor(TutorAdaptador.toInfraestructuraDTO(estudiante.getTutor()));
+            if (estudiante.getTutor() != null){
+                dto.setTutor(TutorAdaptador.toInfraestructuraDTO(estudiante.getTutor()));
+            }
             dto.setTelefono(estudiante.getTelefono());
             dto.setDireccion(estudiante.getDireccion());
             dto.setCorreo(estudiante.getCorreo());

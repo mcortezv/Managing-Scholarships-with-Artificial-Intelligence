@@ -10,13 +10,15 @@ public class ResolucionDTOGobierno {
     private String decision;
     private String motivo;
     private LocalDate fechaEvaluacion;
+    private Double precision;
 
     public ResolucionDTOGobierno(){}
 
-    public ResolucionDTOGobierno(String decision, LocalDate fechaEvaluacion, String motivo, SolicitudDTOGobierno solicitud) {
+    public ResolucionDTOGobierno(String decision, LocalDate fechaEvaluacion, String motivo, Double precision, SolicitudDTOGobierno solicitud) {
         this.decision = decision;
         this.fechaEvaluacion = fechaEvaluacion;
         this.motivo = motivo;
+        this.precision = precision;
         this.solicitud = solicitud;
     }
 
@@ -50,5 +52,13 @@ public class ResolucionDTOGobierno {
 
     public void setSolicitud(SolicitudDTOGobierno solicitud) {
         this.solicitud = solicitud;
+    }
+
+    public Double getPrecision() {
+        return precision;
+    }
+
+    public void setPrecision(Double precision) {
+        this.precision = precision;
     }
 }

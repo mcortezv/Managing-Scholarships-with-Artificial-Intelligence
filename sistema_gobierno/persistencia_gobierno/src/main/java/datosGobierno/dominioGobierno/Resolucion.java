@@ -1,6 +1,7 @@
 package datosGobierno.dominioGobierno;
 import datosGobierno.dominioGobierno.enums.Decision;
 import java.time.LocalDate;
+import java.util.Optional;
 
 /**
  *
@@ -11,13 +12,15 @@ public class Resolucion {
     private Decision decision;
     private String motivo;
     private LocalDate fechaEvaluacion;
+    private Double precison;
 
     public Resolucion(){}
 
-    public Resolucion(Decision decision, LocalDate fechaEvaluacion, String motivo, Solicitud solicitud) {
+    public Resolucion(Decision decision, LocalDate fechaEvaluacion, String motivo, Double precison, Solicitud solicitud) {
         this.decision = decision;
         this.fechaEvaluacion = fechaEvaluacion;
         this.motivo = motivo;
+        this.precison = precison;
         this.solicitud = solicitud;
     }
 
@@ -51,5 +54,13 @@ public class Resolucion {
 
     public void setSolicitud(Solicitud solicitud) {
         this.solicitud = solicitud;
+    }
+
+    public Double getPrecison() {
+        return precison;
+    }
+
+    public void setPrecison(Double precison) {
+        this.precison = precison;
     }
 }

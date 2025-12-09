@@ -17,6 +17,9 @@ public class ResolucionAdaptador {
             resolucion.setSolicitud(SolicitudAdaptador.toEntity(dto.getSolicitud()));
             resolucion.setDecision(Decision.valueOf(dto.getDecision()));
             resolucion.setMotivo(dto.getMotivo());
+            if (dto.getPrecision() != null){
+                resolucion.setPrecison(dto.getPrecision());
+            }
             resolucion.setFechaEvaluacion(dto.getFechaEvaluacion());
             return resolucion;
         } catch (Exception sinUso){
@@ -30,6 +33,9 @@ public class ResolucionAdaptador {
             resolucion.setSolicitud(SolicitudAdaptador.toEntity(dto.getSolicitud()));
             resolucion.setDecision(Decision.valueOf(dto.getDecision()));
             resolucion.setMotivo(dto.getMotivo());
+            if (dto.getPrecision() != null){
+                resolucion.setPrecison(dto.getPrecision());
+            }
             resolucion.setFechaEvaluacion(dto.getFechaEvaluacion());
             return resolucion;
         } catch (Exception sinUso){
@@ -43,6 +49,9 @@ public class ResolucionAdaptador {
             dto.setSolicitud(SolicitudAdaptador.toDTO(resolucion.getSolicitud()));
             dto.setDecision(resolucion.getDecision().toString());
             dto.setMotivo(resolucion.getMotivo());
+            if (resolucion.getPrecison() != null){
+                dto.setPrecision(resolucion.getPrecison());
+            }
             dto.setFechaEvaluacion(resolucion.getFechaEvaluacion());
             return dto;
         } catch (Exception sinUso){
@@ -56,6 +65,9 @@ public class ResolucionAdaptador {
             dto.setSolicitud(SolicitudAdaptador.toInfraestructuraDTO(resolucion.getSolicitud()));
             dto.setDecision(resolucion.getDecision().toString());
             dto.setMotivo(resolucion.getMotivo());
+            if (resolucion.getPrecison() != null){
+                dto.setPrecision(resolucion.getPrecison());
+            }
             dto.setFechaEvaluacion(resolucion.getFechaEvaluacion());
             return dto;
         } catch (Exception sinUso){

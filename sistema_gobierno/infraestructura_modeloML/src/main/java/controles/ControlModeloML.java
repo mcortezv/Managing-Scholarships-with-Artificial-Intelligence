@@ -93,8 +93,7 @@ public class ControlModeloML {
     /**
      * Parsea la respuesta JSON de la API a ResolucionDTOGobierno
      */
-    private ResolucionDTOGobierno parsearRespuesta(String jsonResponse,
-                                                   SolicitudDTOGobierno solicitud) {
+    private ResolucionDTOGobierno parsearRespuesta(String jsonResponse, SolicitudDTOGobierno solicitud) {
         try {
             JsonNode root = objectMapper.readTree(jsonResponse);
 
@@ -102,6 +101,7 @@ public class ControlModeloML {
             resolucion.setSolicitud(solicitud);
             resolucion.setDecision(mapearDecision(root.get("resolution").asText()));
             resolucion.setMotivo(root.get("reason").asText());
+            resolucion.setPrecision(root.get("resolution_confidence").asDouble());
             resolucion.setFechaEvaluacion(LocalDate.now());
 
             // Logging de confianza (opcional)

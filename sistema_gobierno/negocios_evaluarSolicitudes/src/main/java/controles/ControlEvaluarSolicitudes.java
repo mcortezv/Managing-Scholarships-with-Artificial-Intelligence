@@ -72,12 +72,10 @@ public class ControlEvaluarSolicitudes {
 
             // Convertir a entidad y DTO de infraestructura
             Solicitud solicitud = SolicitudAdaptador.toEntity(solicitudDTO);
-            SolicitudDTOGobierno solicitudInfraestructuraDTO =
-                    SolicitudAdaptador.toInfraestructuraDTO(solicitud);
+            SolicitudDTOGobierno solicitudInfraestructuraDTO = SolicitudAdaptador.toInfraestructuraDTO(solicitud);
 
             // Llamar al modelo de ML
-            ResolucionDTOGobierno resolucionInfraestructuraDTO =
-                    resolucionBO.crearResolucionAutomatica(solicitudInfraestructuraDTO);
+            ResolucionDTOGobierno resolucionInfraestructuraDTO = resolucionBO.crearResolucionAutomatica(solicitudInfraestructuraDTO);
 
             // Validar que la resolución sea coherente
             validarResolucion(resolucionInfraestructuraDTO);
