@@ -1,9 +1,14 @@
 package controles;
 import apiGobierno.GobiernoAPI;
 import apiGobierno.interfaces.IGobiernoAPI;
+import dto.apelacionResultado.ApelacionDTO;
 import gobierno.BecasDisponiblesDTOGobierno;
 import gobierno.RequisitosDTOGobierno;
 import gobierno.SolicitudDTOGobierno;
+import solicitarBeca.EstudianteDTO;
+import solicitarBeca.SolicitudDTO;
+
+import java.util.List;
 
 /**
  *
@@ -41,6 +46,17 @@ public class ControlGobierno {
 }
 
     public boolean enviarSolicitud(SolicitudDTOGobierno solicitudDTO) {
+        return true;
+    }
+
+
+
+    //apelar resultado
+    public List<SolicitudDTOGobierno> obtenerSolicitudesPorEstudiante(EstudianteDTO estudianteDTO){
+        return List.of();
+    }
+
+    public boolean registrarApelacion(ApelacionDTO apelacionDTO){
         return true;
     }
 }

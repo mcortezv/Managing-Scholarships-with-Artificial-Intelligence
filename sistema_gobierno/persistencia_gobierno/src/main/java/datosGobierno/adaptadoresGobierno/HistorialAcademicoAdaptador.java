@@ -72,4 +72,24 @@ public class HistorialAcademicoAdaptador {
             throw new HistorialAcademicoAdaptadorException("Error al convertir entidad HistorialAcademico a HistorialAcademicoDTO");
         }
     }
+
+    public static HistorialAcademicoDTOGobierno toDTOGobierno(HistorialAcademico entity) {
+        try {
+            if (entity == null) {
+                return null;
+            }
+            HistorialAcademicoDTOGobierno dto = new HistorialAcademicoDTOGobierno();
+            dto.setCargaAcademica(entity.getCargaAcademica());
+            dto.setIndiceReprobacion(entity.getIndiceReprobacion());
+            dto.setPorcentajeBajas(entity.getPorcentajeBajas());
+            dto.setPromedio(entity.getPromedio());
+            dto.setSemestre(entity.getSemestre());
+            if (entity.getCarrera() != null) {
+                dto.setCarrera(entity.getCarrera().toString());
+            }
+            return dto;
+        } catch (Exception ex) {
+            throw new HistorialAcademicoAdaptadorException("Error al convertir HistorialAcademico a HistorialAcademicoDTOGobierno");
+        }
+    }
 }

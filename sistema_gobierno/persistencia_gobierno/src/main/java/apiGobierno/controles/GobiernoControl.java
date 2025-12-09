@@ -1,9 +1,12 @@
 package apiGobierno.controles;
+import datosGobierno.adaptadoresGobierno.SolicitudAdaptador;
 import datosGobierno.servicesGobierno.BecasService;
 import datosGobierno.servicesGobierno.SolicitudService;
 import gobierno.BecasDisponiblesDTOGobierno;
+import gobierno.EstudianteDTOGobierno;
 import gobierno.RequisitosDTOGobierno;
 import gobierno.SolicitudDTOGobierno;
+import java.util.List;
 
 /**
  * The type Gobierno control.
@@ -40,5 +43,9 @@ public class GobiernoControl {
      */
     public BecasDisponiblesDTOGobierno obtenerBecas(RequisitosDTOGobierno requisitosDTO) {
         return becasService.obtenerBecas(requisitosDTO);
+    }
+
+    public List<SolicitudDTOGobierno> obtenerListaSolicitudesPorEstudiante(EstudianteDTOGobierno estudianteDTO){
+        return SolicitudAdaptador.toDTOGobierno(solicitudService.obtenerListaSolicudesPorEstudiante(estudianteDTO));
     }
 }

@@ -85,4 +85,24 @@ public class DocumentoAdaptador {
             throw new DocumentoAdaptadorException("Error al converir entidada Documento a DocumentoDTO");
         }
     }
+
+    public static DocumentoDTOGobierno toDTOGobierno(Documento documento) {
+        try {
+            if (documento == null) {
+                return null;
+            }
+            DocumentoDTOGobierno dto = new DocumentoDTOGobierno();
+            dto.setIdentificador(documento.getIdentificador());
+            dto.setContenido(documento.getContenido());
+            if (documento.getTipo() != null) {
+                dto.setTipo(documento.getTipo().toString());
+            }
+           // dto.setEstudiante(documento.getEstudiante().getMatricula());
+
+            return dto;
+        } catch (Exception ex) {
+            throw new DocumentoAdaptadorException("Error al convertir Documento a DocumentoDTOGobierno: " + ex.getMessage());
+        }
+    }
+
 }

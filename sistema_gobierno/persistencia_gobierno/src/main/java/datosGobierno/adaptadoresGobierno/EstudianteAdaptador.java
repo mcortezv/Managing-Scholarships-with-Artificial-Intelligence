@@ -106,4 +106,26 @@ public class EstudianteAdaptador {
             throw new EstudianteAdaptadorException("Error al convertir entidad Estudiante a EstudianteDTO");
         }
     }
+
+    public static EstudianteDTOGobierno toDTOGobierno(Estudiante estudiante) {
+        try {
+            if (estudiante == null) {
+                return null;
+            }
+            EstudianteDTOGobierno dto = new EstudianteDTOGobierno();
+            dto.setMatricula(estudiante.getMatricula());
+            dto.setNombre(estudiante.getNombre());
+            dto.setCorreo(estudiante.getCorreo());
+            dto.setTelefono(estudiante.getTelefono());
+            dto.setDireccion(estudiante.getDireccion());
+            if (estudiante.getCarrera() != null) {
+                dto.setCarrera(estudiante.getCarrera().toString());
+            }
+            return dto;
+        } catch (Exception ex) {
+            throw new EstudianteAdaptadorException("Error al convertir Estudiante a EstudianteDTOGobierno: " + ex.getMessage());
+        }
+    }
+
+
 }
