@@ -10,6 +10,7 @@ public class PrestamoAdaptador {
         if (entity == null) return null;
         PrestamoDTO dto = new PrestamoDTO();
         dto.setCosto(entity.getCosto());
+        dto.setFechaPrestamo(entity.getFechaPrestamo());
         dto.setFechaDevolucion(entity.getFechaDevolucionProgramada());
         dto.setIsbn(entity.getIsbn());
         dto.setTitulo(entity.getTitulo());
