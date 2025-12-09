@@ -1,6 +1,6 @@
 package adaptadores.solicitarBeca;
 import adaptadores.solicitarBeca.excepciones.RequisitosAdaptadorException;
-import datosGobierno.repositoryGobierno.documents.RequisitosDocument;
+//import datosGobierno.repositoryGobierno.documents.RequisitosDocument;
 import solicitarBeca.RequisitosDTO;
 import gobierno.RequisitosDTOGobierno;
 import solicitarBeca.dominio.Requisitos;
@@ -107,19 +107,19 @@ public class RequisitosAdaptador {
         }
     }
 
-    public static Requisitos toEntity(RequisitosDocument document){
-        try {
-            Requisitos requisitos = new Requisitos();
-            requisitos.setPromedioMinimo(document.getPromedioMinimo());
-            requisitos.setIngresoFamiliarMaximo(document.getIngresoFamiliarMaximo());
-            requisitos.setPorcentajeBajas(document.getPorcentajeBajas());
-            requisitos.setCargaAcademica(document.getCargaAcademica());
-            requisitos.setIndiceReprobacion(document.getIndiceReprobacion());
-            requisitos.setTrabajo(document.isTrabajo());
-            requisitos.setDeudas(document.isDeudas());
-            return requisitos;
-        } catch (Exception ex) {
-            throw new datosGobierno.adaptadoresGobierno.excepciones.RequisitosAdaptadorException("Error al convertir Documento Requisitos a Entidad");
-        }
-    }
+//    public static Requisitos toEntity(RequisitosDocument document){
+//        try {
+//            Requisitos requisitos = new Requisitos();
+//            requisitos.setPromedioMinimo(document.getPromedioMinimo());
+//            requisitos.setIngresoFamiliarMaximo(document.getIngresoFamiliarMaximo());
+//            requisitos.setPorcentajeBajas(document.getPorcentajeBajas());
+//            requisitos.setCargaAcademica(document.getCargaAcademica());
+//            requisitos.setIndiceReprobacion(document.getIndiceReprobacion());
+//            requisitos.setTrabajo(document.isTrabajo());
+//            requisitos.setDeudas(document.isDeudas());
+//            return requisitos;
+//        } catch (Exception ex) {
+//            throw new datosGobierno.adaptadoresGobierno.excepciones.RequisitosAdaptadorException("Error al convertir Documento Requisitos a Entidad");
+//        }
+//    }
 }

@@ -20,7 +20,7 @@ public class ClaseAdaptador {
         clase.setHorario(document.getHorario());
         clase.setProfesor(document.getProfesor());
         clase.setAula(document.getAula());
-        clase.setCampus(Campus.valueOf(document.getCampus()));
+        clase.setCampus(Campus.valueOf(document.getCampus().toUpperCase()));
         clase.setDetalles(document.getDetalles());
         return clase;
     }

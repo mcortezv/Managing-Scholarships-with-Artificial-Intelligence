@@ -2,9 +2,9 @@ package controles;
 
 import java.awt.event.ActionListener;
 import java.util.List;
-import adaptadores.pagarAdeudo.SolicitudPagoAdaptador;
 import adaptadoresPagoAdeudo.ClaseAdaptador;
 import adaptadoresPagoAdeudo.PrestamoAdaptador;
+import adaptadoresPagoAdeudo.SolicitudPagoAdapdator;
 import datos.dominioItson.pagarAdeudo.Clase;
 import datos.dominioItson.pagarAdeudo.Prestamo;
 import itson.pagarAdeudo.SolicitudPagoDTOI;
@@ -46,7 +46,8 @@ public class ControlPago {
     }
 
     public SolicitudPagoDTO realizarPago(SolicitudPagoDTO solicitudPagoDTO){
-        return iFachadaBanco.ejecutarPago(solicitudPagoDTO);
+        SolicitudPagoDTOI solicitudPagoDTOI = iFachadaBanco.ejecutarPago(SolicitudPagoAdapdator.toDTOI(solicitudPagoDTO));
+        return SolicitudPagoAdapdator.toDTO(solicitudPagoDTOI);
     }
 
     public void cerrarVentanaBanco() {
@@ -63,7 +64,7 @@ public class ControlPago {
 
 
     public void notificarLiquidacion(SolicitudPagoDTO solicitudPagoDTO){
-        SolicitudPagoDTOI solicitudPagoDTOI = SolicitudPagoAdaptador.toDTOI(solicitudPagoDTO);
+        SolicitudPagoDTOI solicitudPagoDTOI = SolicitudPagoAdapdator.toDTOI(solicitudPagoDTO);
         iAdeudoBO.enviarSolicitudPago(solicitudPagoDTOI);
     }
 }
