@@ -6,11 +6,18 @@ import gobierno.BecaDTOGobierno;
 import objetosNegocioGobierno.adaptadores.excepciones.BecaAdaptadorException;
 
 /**
+ * The type Beca adaptador.
  *
  * @author Cortez, Manuel;
  */
 public class BecaAdaptador {
 
+    /**
+     * To entity beca.
+     *
+     * @param dto the dto
+     * @return the beca
+     */
     public static Beca toEntity(BecaDTO dto){
         try {
             Beca beca = new Beca();
@@ -25,10 +32,16 @@ public class BecaAdaptador {
             beca.setFechaResultados(dto.getFechaResultados());
             return beca;
         } catch (Exception sinUso){
-            throw new BecaAdaptadorException("No se pudo mappear la DTO a Entidad");
+            throw new BecaAdaptadorException("No se pudo mappear la BecaDTO a entidad Beca");
         }
     }
 
+    /**
+     * To entity beca.
+     *
+     * @param dto the dto
+     * @return the beca
+     */
     public static Beca toEntity(BecaDTOGobierno dto){
         try {
             Beca beca = new Beca();
@@ -43,10 +56,16 @@ public class BecaAdaptador {
             beca.setFechaResultados(dto.getFechaResultados());
             return beca;
         } catch (Exception sinUso){
-            throw new BecaAdaptadorException("No se pudo mappear la DTO de Infraestructura a Entidad");
+            throw new BecaAdaptadorException("No se pudo mappear la BecaDTOGobierno a entidad Beca");
         }
     }
 
+    /**
+     * To dto beca dto.
+     *
+     * @param beca the beca
+     * @return the beca dto
+     */
     public static BecaDTO toDTO(Beca beca){
         try {
             BecaDTO dto = new BecaDTO();
@@ -61,11 +80,17 @@ public class BecaAdaptador {
             dto.setFechaResultados(beca.getFechaResultados());
             return dto;
         } catch (Exception sinUso){
-            throw new BecaAdaptadorException("No se pudo mappear la Entidad a DTO");
+            throw new BecaAdaptadorException("No se pudo mappear la entidad Beca a BecaDTO");
         }
     }
 
 
+    /**
+     * To infraestructura dto beca dto gobierno.
+     *
+     * @param beca the beca
+     * @return the beca dto gobierno
+     */
     public static BecaDTOGobierno toInfraestructuraDTO(Beca  beca){
         try {
             BecaDTOGobierno dto = new BecaDTOGobierno();
@@ -80,7 +105,7 @@ public class BecaAdaptador {
             dto.setFechaResultados(beca.getFechaResultados());
             return dto;
         } catch (Exception sinUso){
-            throw new BecaAdaptadorException("No se pudo mappear la Entidad a DTO Infraestructura");
+            throw new BecaAdaptadorException("No se pudo mappear la entidad Beca a BecaDTOGobierno");
         }
     }
 }

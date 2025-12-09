@@ -1,5 +1,4 @@
 package objetosNegocioGobierno.bo;
-
 import datosGobierno.adaptadoresGobierno.SolicitudAdaptador;
 import datosGobierno.daoGobierno.interfacesGobierno.ISolicitudDAO;
 import datosGobierno.dominioGobierno.Solicitud;
@@ -7,7 +6,6 @@ import datosGobierno.dominioGobierno.enums.EstadoSolicitud;
 import dtoGobierno.SolicitudDTO;
 import objetosNegocioGobierno.bo.excepciones.SolicitudBOException;
 import objetosNegocioGobierno.bo.interfaces.ISolicitudBO;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -21,6 +19,11 @@ import java.util.List;
 public class SolicitudBO implements ISolicitudBO {
     private final ISolicitudDAO solicitudDAO;
 
+    /**
+     * Instantiates a new Solicitud bo.
+     *
+     * @param solicitudDAO the solicitud dao
+     */
     public SolicitudBO(ISolicitudDAO solicitudDAO) {
         if (solicitudDAO == null) {
             throw new IllegalArgumentException("SolicitudDAO no puede ser nulo");
@@ -39,8 +42,7 @@ public class SolicitudBO implements ISolicitudBO {
             Solicitud solicitud = solicitudDAO.obtenerPorId(id);
 
             if (solicitud == null) {
-                throw new SolicitudBOException(
-                        "No se encontró solicitud con ID: " + id);
+                throw new SolicitudBOException("No se encontró solicitud con ID: " + id);
             }
 
             // Validar transición de estado
@@ -52,8 +54,7 @@ public class SolicitudBO implements ISolicitudBO {
         } catch (SolicitudBOException ex) {
             throw ex;
         } catch (Exception ex) {
-            throw new SolicitudBOException(
-                    "Error al cambiar estado de solicitud: " + ex.getMessage());
+            throw new SolicitudBOException("Error al cambiar estado de solicitud: " + ex.getMessage());
         }
     }
 
@@ -65,8 +66,7 @@ public class SolicitudBO implements ISolicitudBO {
             Solicitud solicitud = solicitudDAO.obtenerPorId(id);
 
             if (solicitud == null) {
-                throw new SolicitudBOException(
-                        "No se encontró solicitud con ID: " + id);
+                throw new SolicitudBOException("No se encontró solicitud con ID: " + id);
             }
 
             return solicitud;
@@ -74,8 +74,7 @@ public class SolicitudBO implements ISolicitudBO {
         } catch (SolicitudBOException ex) {
             throw ex;
         } catch (Exception ex) {
-            throw new SolicitudBOException(
-                    "Error al obtener solicitud: " + ex.getMessage());
+            throw new SolicitudBOException("Error al obtener solicitud: " + ex.getMessage());
         }
     }
 
@@ -91,8 +90,7 @@ public class SolicitudBO implements ISolicitudBO {
             }
 
             if (solicitudes == null || solicitudes.isEmpty()) {
-                throw new SolicitudBOException(
-                        "No hay solicitudes para el tipo de beca: " + tipoBeca);
+                throw new SolicitudBOException("No hay solicitudes para el tipo de beca: " + tipoBeca);
             }
 
             return solicitudes;
@@ -100,12 +98,9 @@ public class SolicitudBO implements ISolicitudBO {
         } catch (SolicitudBOException ex) {
             throw ex;
         } catch (Exception ex) {
-            throw new SolicitudBOException(
-                    "Error al obtener listado de solicitudes: " + ex.getMessage());
+            throw new SolicitudBOException("Error al obtener listado de solicitudes: " + ex.getMessage());
         }
     }
-
-    // ============= MÉTODOS PRIVADOS DE VALIDACIÓN =============
 
     /**
      * Valida que el ID sea válido
@@ -133,11 +128,8 @@ public class SolicitudBO implements ISolicitudBO {
             throw new SolicitudBOException("El tipo de beca no puede estar vacío");
         }
 
-        List<String> tiposValidos = Arrays.asList(
-                "EXCELENCIA_ACADEMICA",
-                "ESCASOS_RECURSOS",
-                "CONSTANCIA",
-                "ESTUDIANTE_TRABAJO"
+        List<String> tiposValidos = Arrays.asList("EXCELENCIA_ACADEMICA", "ESCASOS_RECURSOS",
+                "CONSTANCIA", "ESTUDIANTE_TRABAJO"
         );
 
         if (!tiposValidos.contains(tipoBeca.toUpperCase())) {
@@ -148,18 +140,17 @@ public class SolicitudBO implements ISolicitudBO {
     /**
      * Valida la transición de estado según las reglas de negocio
      *
-     * Reglas:
-     * - ACTIVA puede pasar a: ACEPTADA, RECHAZADA, DEVUELTA
-     * - DEVUELTA puede pasar a: ACTIVA, ACEPTADA, RECHAZADA
-     * - ACEPTADA solo puede cambiar a: RECHAZADA (modificación excepcional)
-     * - RECHAZADA solo puede cambiar a: ACEPTADA (modificación excepcional)
+     * Reglas
+     * - ACTIVA puede pasar a ACEPTADA, RECHAZADA, DEVUELTA
+     * - DEVUELTA puede pasar a ACTIVA, ACEPTADA, RECHAZADA
+     * - ACEPTADA solo puede cambiar a RECHAZADA
+     * - RECHAZADA solo puede cambiar a ACEPTADA
      */
     private void validarTransicionEstado(EstadoSolicitud estadoActual,
                                          EstadoSolicitud nuevoEstado) {
         // No se puede mantener el mismo estado
         if (estadoActual == nuevoEstado) {
-            throw new SolicitudBOException(
-                    "La solicitud ya está en estado: " + estadoActual);
+            throw new SolicitudBOException("La solicitud ya está en estado: " + estadoActual);
         }
 
         switch (estadoActual) {
@@ -180,8 +171,7 @@ public class SolicitudBO implements ISolicitudBO {
                 break;
 
             default:
-                throw new SolicitudBOException(
-                        "Estado actual no reconocido: " + estadoActual);
+                throw new SolicitudBOException("Estado actual no reconocido: " + estadoActual);
         }
     }
 
@@ -196,8 +186,7 @@ public class SolicitudBO implements ISolicitudBO {
         );
 
         if (!estadosValidos.contains(nuevoEstado)) {
-            throw new SolicitudBOException(
-                    String.format("Transición inválida: ACTIVA → %s. " +
+            throw new SolicitudBOException(String.format("Transición inválida: ACTIVA -> %s. " +
                             "Estados válidos: ACEPTADA, RECHAZADA, DEVUELTA", nuevoEstado));
         }
     }
@@ -213,8 +202,7 @@ public class SolicitudBO implements ISolicitudBO {
         );
 
         if (!estadosValidos.contains(nuevoEstado)) {
-            throw new SolicitudBOException(
-                    String.format("Transición inválida: DEVUELTA → %s. " +
+            throw new SolicitudBOException(String.format("Transición inválida: DEVUELTA → %s. " +
                             "Estados válidos: ACTIVA, ACEPTADA, RECHAZADA", nuevoEstado));
         }
     }
@@ -225,10 +213,8 @@ public class SolicitudBO implements ISolicitudBO {
      */
     private void validarTransicionDesdeAceptada(EstadoSolicitud nuevoEstado) {
         if (nuevoEstado != EstadoSolicitud.RECHAZADA) {
-            throw new SolicitudBOException(
-                    String.format("Transición inválida: ACEPTADA → %s. " +
-                                    "Solo se puede cambiar a RECHAZADA mediante modificación de resolución",
-                            nuevoEstado));
+            throw new SolicitudBOException(String.format("Transición inválida: ACEPTADA → %s. " +
+                                    "Solo se puede cambiar a RECHAZADA mediante modificación de resolución", nuevoEstado));
         }
     }
 
@@ -238,10 +224,8 @@ public class SolicitudBO implements ISolicitudBO {
      */
     private void validarTransicionDesdeRechazada(EstadoSolicitud nuevoEstado) {
         if (nuevoEstado != EstadoSolicitud.ACEPTADA) {
-            throw new SolicitudBOException(
-                    String.format("Transición inválida: RECHAZADA → %s. " +
-                                    "Solo se puede cambiar a ACEPTADA mediante modificación de resolución",
-                            nuevoEstado));
+            throw new SolicitudBOException(String.format("Transición inválida: RECHAZADA -> %s. " +
+                                    "Solo se puede cambiar a ACEPTADA mediante modificación de resolución", nuevoEstado));
         }
     }
 }

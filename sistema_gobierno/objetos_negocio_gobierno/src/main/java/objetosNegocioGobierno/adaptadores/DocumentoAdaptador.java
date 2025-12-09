@@ -6,11 +6,18 @@ import dtoGobierno.DocumentoDTO;
 import objetosNegocioGobierno.adaptadores.excepciones.DocumentoAdaptadorException;
 
 /**
+ * The type Documento adaptador.
  *
  * @author Cortez, Manuel;
  */
 public class DocumentoAdaptador {
 
+    /**
+     * To entity documento.
+     *
+     * @param dto the dto
+     * @return the documento
+     */
     public static Documento toEntity(DocumentoDTO dto){
         try {
             Documento documento = new Documento();
@@ -20,10 +27,16 @@ public class DocumentoAdaptador {
             documento.setEstudiante(EstudianteAdaptador.toEntity(dto.getEstudiante()));
             return documento;
         } catch (Exception sinUso){
-            throw new DocumentoAdaptadorException("No se pudo mappear la DTO a Entidad");
+            throw new DocumentoAdaptadorException("No se pudo mappear el DocumentoDTO a entidad Documento");
         }
     }
 
+    /**
+     * To entity documento.
+     *
+     * @param dto the dto
+     * @return the documento
+     */
     public static Documento toEntity(DocumentoDTOGobierno dto){
         try {
             Documento documento = new Documento();
@@ -33,10 +46,16 @@ public class DocumentoAdaptador {
             documento.setEstudiante(EstudianteAdaptador.toEntity(dto.getEstudiante()));
             return documento;
         } catch (Exception sinUso){
-            throw new DocumentoAdaptadorException("No se pudo mappear la DTO de Infraestructura a Entidad");
+            throw new DocumentoAdaptadorException("No se pudo mappear el DocumentoDTOGobierno a entidad Documento");
         }
     }
 
+    /**
+     * To dto documento dto.
+     *
+     * @param documento the documento
+     * @return the documento dto
+     */
     public static DocumentoDTO toDTO(Documento documento){
         try {
             DocumentoDTO dto = new DocumentoDTO();
@@ -46,10 +65,16 @@ public class DocumentoAdaptador {
             dto.setEstudiante(EstudianteAdaptador.toDTO(documento.getEstudiante()));
             return dto;
         } catch (Exception sinUso){
-            throw new DocumentoAdaptadorException("No se pudo mappear la Entidad a DTO");
+            throw new DocumentoAdaptadorException("No se pudo mappear el DocumentoDTO a entidad Documento");
         }
     }
 
+    /**
+     * To infraestructura dto documento dto gobierno.
+     *
+     * @param documento the documento
+     * @return the documento dto gobierno
+     */
     public static DocumentoDTOGobierno toInfraestructuraDTO(Documento  documento){
         try {
             DocumentoDTOGobierno dto = new DocumentoDTOGobierno();
@@ -59,7 +84,7 @@ public class DocumentoAdaptador {
             dto.setEstudiante(EstudianteAdaptador.toInfraestructuraDTO(documento.getEstudiante()));
             return dto;
         } catch (Exception sinUso){
-            throw new DocumentoAdaptadorException("No se pudo mappear la Entidad a DTO Infraestructura");
+            throw new DocumentoAdaptadorException("No se pudo mappear la entidad Documento a DocumentoDTOGobierno");
         }
     }
 }
