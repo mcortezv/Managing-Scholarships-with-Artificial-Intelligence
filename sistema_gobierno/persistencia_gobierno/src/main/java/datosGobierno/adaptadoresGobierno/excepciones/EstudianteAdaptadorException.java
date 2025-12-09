@@ -1,13 +1,13 @@
 package datosGobierno.adaptadoresGobierno.excepciones;
 
 /**
- * The type Requisitos adaptador exception.
+ * The type Estudiante adaptador exception.
  *
  * @author Cortez, Manuel;
  */
 public class EstudianteAdaptadorException extends RuntimeException {
     /**
-     * Instantiates a new Requisitos adaptador exception.
+     * Instantiates a new Estudiante adaptador exception.
      *
      * @param msg the msg
      */

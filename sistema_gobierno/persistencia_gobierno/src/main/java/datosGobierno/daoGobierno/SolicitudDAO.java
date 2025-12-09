@@ -16,9 +16,17 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Solicitud dao.
+ *
+ * @author Cortez, Manuel;
+ */
 public class SolicitudDAO implements ISolicitudDAO {
     private final MongoCollection<SolicitudDocument> col;
 
+    /**
+     * Instantiates a new Solicitud dao.
+     */
     public SolicitudDAO(){
         this.col = MongoClienteProvider.INSTANCE.getCollection("solicitudes", SolicitudDocument.class);
     }

@@ -12,11 +12,15 @@ import java.util.List;
 
 /**
  * DAO para operaciones de Resolución en MongoDB
+ *
  * @author Cortez, Manuel
  */
 public class ResolucionDAO implements IResolucionDAO {
     private final MongoCollection<Resolucion> col;
 
+    /**
+     * Instantiates a new Resolucion dao.
+     */
     public ResolucionDAO() {
         this.col = MongoClienteProvider.INSTANCE.getCollection("resoluciones", Resolucion.class);
     }

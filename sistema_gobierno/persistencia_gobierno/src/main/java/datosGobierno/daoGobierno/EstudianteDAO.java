@@ -10,6 +10,7 @@ import solicitarBeca.config.MongoClientProvider;
 import java.time.Instant;
 
 /**
+ * The type Estudiante dao.
  *
  * @author Cortez, Manuel;
  */
@@ -17,6 +18,9 @@ public class EstudianteDAO implements IEstudianteDAO {
     private final MongoCollection<EstudianteDocument> col;
     private final MongoCollection<Document> colDoc;
 
+    /**
+     * Instantiates a new Estudiante dao.
+     */
     public EstudianteDAO() {
         this.col = MongoClientProvider.INSTANCE.getCollection("estudiantes", EstudianteDocument.class);
         this.colDoc = MongoClientProvider.INSTANCE.getCollection("estudiantes", Document.class);
