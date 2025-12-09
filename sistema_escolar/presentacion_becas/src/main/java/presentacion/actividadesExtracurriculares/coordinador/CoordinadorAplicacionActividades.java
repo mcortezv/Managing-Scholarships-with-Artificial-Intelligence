@@ -6,6 +6,7 @@ package presentacion.actividadesExtracurriculares.coordinador;
 
 import dto.actividades.ActividadDTO;
 import dto.actividades.ActividadesDTO;
+import dto.actividades.BajaDTO;
 import dto.actividades.EstudianteDTO;
 import dto.actividades.GrupoDTO;
 import dto.actividades.GruposResponseDTO;
@@ -158,6 +159,7 @@ public class CoordinadorAplicacionActividades implements ICoordinadorAplicacionA
         return coordinadorNegocioActividades.inscribirActividad(inscripcionDTO);
         
     }
+
     
     public ActividadesExtracurriculares getActividades() {
         return actividades;
@@ -193,6 +195,13 @@ public class CoordinadorAplicacionActividades implements ICoordinadorAplicacionA
         this.grupoActividadDTO= grupoInscrito;
         return grupoInscrito;
         
+    }
+    
+        
+    public BajaDTO darBajaActividad(String motivo){
+      
+        BajaDTO bajaDTO= new BajaDTO(inscripcionElegida.getId(), motivo);
+        return coordinadorNegocioActividades.darBajaActividad(bajaDTO);
     }
     
 //

@@ -22,13 +22,13 @@ public class Inscripcion {
     private Grupo grupo;
 
     public Inscripcion() {
+        this.estado = "ACTIVA";
+        this.baja = null;
     }
 
     public Inscripcion(ObjectId id, LocalDate fechaInscripcion, String estado, Baja baja, Estudiante estudiante, Grupo grupo) {
         this.id = id;
         this.fechaInscripcion = fechaInscripcion;
-        this.estado = estado;
-        this.baja = baja;
         this.estudiante = estudiante;
         this.grupo = grupo;
     }

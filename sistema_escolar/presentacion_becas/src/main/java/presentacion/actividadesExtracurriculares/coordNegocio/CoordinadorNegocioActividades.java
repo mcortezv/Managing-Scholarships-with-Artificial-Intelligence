@@ -6,6 +6,7 @@ package presentacion.actividadesExtracurriculares.coordNegocio;
 
 import dto.actividades.ActividadDTO;
 import dto.actividades.ActividadesDTO;
+import dto.actividades.BajaDTO;
 import dto.actividades.EstudianteDTO;
 import dto.actividades.GrupoDTO;
 import dto.actividades.GruposResponseDTO;
@@ -55,4 +56,8 @@ public class CoordinadorNegocioActividades implements ICoordNegocioActividades {
        System.out.println("cordnegocio"+inscripcionDTO.getIdGrupo());
        return fachadaActividad.obtenerGrupoInscrito(inscripcionDTO);
    }
+   
+    public BajaDTO darBajaActividad(BajaDTO baja){
+        return fachadaActividad.darBajaActividad(baja);
+    }
 }
