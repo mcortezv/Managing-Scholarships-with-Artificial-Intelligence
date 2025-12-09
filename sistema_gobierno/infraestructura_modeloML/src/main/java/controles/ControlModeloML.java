@@ -1,11 +1,9 @@
 package controles;
-
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import excepciones.InfraestructuraModelMLException;
 import gobierno.ResolucionDTOGobierno;
 import gobierno.SolicitudDTOGobierno;
-
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -33,32 +31,25 @@ public class ControlModeloML {
      */
     public ResolucionDTOGobierno predecir(SolicitudDTOGobierno solicitud) {
         try {
-            // Construir el JSON de entrada para la API
             String jsonInput = construirJsonSolicitud(solicitud);
-
-            // Crear la petición HTTP
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create(API_URL))
                     .header("Content-Type", "application/json")
                     .POST(HttpRequest.BodyPublishers.ofString(jsonInput))
                     .build();
 
-            // Enviar petición y obtener respuesta
             HttpResponse<String> response = httpClient.send(request,
                     HttpResponse.BodyHandlers.ofString());
 
-            // Verificar código de respuesta
             if (response.statusCode() != 200) {
                 throw new InfraestructuraModelMLException(
                         "Error en API de ML. Código: " + response.statusCode());
             }
 
-            // Parsear respuesta JSON
             return parsearRespuesta(response.body(), solicitud);
 
         } catch (Exception ex) {
-            throw new InfraestructuraModelMLException(
-                    "Error al llamar a la API de ML: " + ex.getMessage());
+            throw new InfraestructuraModelMLException("Error al llamar a la API de ML: " + ex.getMessage());
         }
     }
 
@@ -67,26 +58,24 @@ public class ControlModeloML {
      */
     private String construirJsonSolicitud(SolicitudDTOGobierno solicitud) {
         try {
-            // Mapear los datos de la solicitud al formato esperado por la API
             var solicitudML = new SolicitudMLRequest(
                     solicitud.getHistorialAcademico().getPromedio(),
                     solicitud.getHistorialAcademico().getPorcentajeBajas(),
                     solicitud.getHistorialAcademico().getIndiceReprobacion(),
                     solicitud.getHistorialAcademico().getSemestre(),
-                    mapearCarrera(solicitud.getHistorialAcademico().getCarrera()),
+                    solicitud.getHistorialAcademico().getCarrera(),
                     solicitud.getHistorialAcademico().getCargaAcademica(),
                     solicitud.getInformacionSocioeconomica().getIngresoTotalFamilarMensual().doubleValue(),
-                    mapearTipoVivienda(solicitud.getInformacionSocioeconomica().getTipoVivienda()),
+                    solicitud.getInformacionSocioeconomica().getTipoVivienda(),
                     solicitud.getInformacionSocioeconomica().getTrabajo() ? 1 : 0,
                     solicitud.getInformacionSocioeconomica().getDeudas() ? 1 : 0,
-                    mapearTipoBeca(solicitud.getBeca().getTipo()),
+                    solicitud.getBeca().getTipo(),
                     solicitud.getBeca().getBecasDisponibles()
             );
 
             return objectMapper.writeValueAsString(solicitudML);
         } catch (Exception ex) {
-            throw new InfraestructuraModelMLException(
-                    "Error al construir JSON de solicitud: " + ex.getMessage());
+            throw new InfraestructuraModelMLException("Error al construir JSON de solicitud: " + ex.getMessage());
         }
     }
 
@@ -103,57 +92,12 @@ public class ControlModeloML {
             resolucion.setMotivo(root.get("reason").asText());
             resolucion.setPrecision(root.get("resolution_confidence").asDouble());
             resolucion.setFechaEvaluacion(LocalDate.now());
-
-            // Logging de confianza (opcional)
             double porcentaje = root.get("percentage").asDouble();
             System.out.println("Predicción con confianza: " + porcentaje + "%");
 
             return resolucion;
         } catch (Exception ex) {
-            throw new InfraestructuraModelMLException(
-                    "Error al parsear respuesta de ML: " + ex.getMessage());
-        }
-    }
-
-    /**
-     * Mapea el tipo de carrera al formato esperado por la API
-     */
-    private String mapearCarrera(String carrera) {
-        switch (carrera.toUpperCase()) {
-            case "INGENIERIA": return "Engineering";
-            case "LICENCIATURA": return "Bachelor";
-            case "MAESTRIA": return "Masters";
-            case "DOCTORADO": return "Doctorate";
-            default: return "Bachelor";
-        }
-    }
-
-    /**
-     * Mapea el tipo de vivienda al formato esperado por la API
-     */
-    private String mapearTipoVivienda(String tipoVivienda) {
-        switch (tipoVivienda.toUpperCase()) {
-            case "CASA_PROPIA": return "Own House";
-            case "DEPARTAMENTO": return "Apartment";
-            case "RESIDENCIA": return "Residence";
-            case "VIVIENDA_IMPROVISADA": return "Improvised Housing";
-            default: return "Apartment";
-        }
-    }
-
-    /**
-     * Mapea el tipo de beca al formato esperado por la API
-     * IMPORTANTE: La API usa los mismos nombres para todas las becas
-     */
-    private String mapearTipoBeca(String tipoBeca) {
-        // Según la estructura de la API, todas las becas usan el mismo nombre
-        // Solo se diferencian por sus requisitos
-        switch (tipoBeca.toUpperCase()) {
-            case "EXCELENCIA_ACADEMICA": return "Academic Excellence";
-            case "ESCASOS_RECURSOS": return "Low Income";
-            case "CONSTANCIA": return "Persistence";
-            case "ESTUDIANTE_TRABAJO": return "Working Student";
-            default: return tipoBeca; // Usar el nombre original si no coincide
+            throw new InfraestructuraModelMLException("Error al parsear respuesta de ML: " + ex.getMessage());
         }
     }
 
@@ -162,12 +106,7 @@ public class ControlModeloML {
      */
     private String mapearDecision(String resolutionAPI) {
         // La API devuelve: 0 (Rechazada), 1 (Aceptada), 2 (Devuelta)
-        switch (resolutionAPI) {
-            case "0": return "RECHAZADA";
-            case "1": return "ACEPTADA";
-            case "2": return "DEVUELTA";
-            default: return "RECHAZADA";
-        }
+        return  resolutionAPI.toUpperCase();
     }
 
     /**
