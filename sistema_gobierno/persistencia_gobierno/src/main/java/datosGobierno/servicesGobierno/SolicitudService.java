@@ -6,12 +6,18 @@ import datosGobierno.daoGobierno.DocumentoDAO;
 import datosGobierno.daoGobierno.EstudianteDAO;
 import datosGobierno.daoGobierno.SolicitudDAO;
 import datosGobierno.daoGobierno.excepcionesGobierno.SolicitudDAOException;
+import datosGobierno.daoGobierno.interfacesGobierno.ISolicitudDAO;
 import datosGobierno.documents.DocumentoDocument;
 import datosGobierno.documents.SolicitudDocument;
+import datosGobierno.dominioGobierno.Solicitud;
+import dtoGobierno.EstudianteDTO;
 import gobierno.DocumentoDTOGobierno;
+import gobierno.EstudianteDTOGobierno;
 import gobierno.SolicitudDTOGobierno;
 import org.bson.types.ObjectId;
 import java.util.ArrayList;
+import java.util.List;
+
 import java.util.List;
 
 /**
@@ -53,5 +59,9 @@ public class SolicitudService {
         solicitudDocument.setEstudiante(idEstudiante);
         solicitudDAO.guardarSolicitud(solicitudDocument);
         return true;
+    }
+
+    public List<Solicitud> obtenerListaSolicudesPorEstudiante(EstudianteDTOGobierno estudianteDTO){
+        return solicitudDAO.obtenerListaSolicitudesPorEstudiante(estudianteDTO);
     }
 }

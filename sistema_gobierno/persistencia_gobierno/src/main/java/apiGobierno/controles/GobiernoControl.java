@@ -1,9 +1,16 @@
 package apiGobierno.controles;
+import datosGobierno.adaptadoresGobierno.BecasFiltradasAdaptador;
+import datosGobierno.adaptadoresGobierno.SolicitudAdaptador;
+import datosGobierno.dominioGobierno.Solicitud;
 import datosGobierno.servicesGobierno.BecasService;
 import datosGobierno.servicesGobierno.SolicitudService;
 import gobierno.BecasDisponiblesDTOGobierno;
+import gobierno.EstudianteDTOGobierno;
 import gobierno.RequisitosDTOGobierno;
 import gobierno.SolicitudDTOGobierno;
+
+import java.util.Collections;
+import java.util.List;
 
 /**
  * The type Gobierno control.

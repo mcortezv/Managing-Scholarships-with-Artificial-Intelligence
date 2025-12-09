@@ -66,4 +66,23 @@ public class InformacionSocioeconomicaAdaptador {
             throw new InformacionSocioeconomicaAdaptadorException("Error al convertir entidad InformacionSocioeconomica a InformacionSocioeconomicaDTO");
         }
     }
+
+    public static InformacionSocioeconomicaDTOGobierno toDTOGobierno(InformacionSocioeconomica entity) {
+        try {
+            if (entity == null) {
+                return null;
+            }
+            InformacionSocioeconomicaDTOGobierno dto = new InformacionSocioeconomicaDTOGobierno();
+            dto.setDeudas(entity.getDeudas());
+            dto.setTrabajo(entity.getTrabajo());
+            dto.setIngresoTotalFamilarMensual(entity.getIngresoTotalFamilarMensual());
+            if (entity.getTipoVivienda() != null) {
+                dto.setTipoVivienda(entity.getTipoVivienda().toString());
+            }
+            return dto;
+        } catch (Exception ex) {
+            throw new InformacionSocioeconomicaAdaptadorException("Error al convertir InformacionSocioeconomica a InformacionSocioeconomicaDTOGobierno");
+        }
+    }
+
 }

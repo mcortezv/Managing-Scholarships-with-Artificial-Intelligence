@@ -2,6 +2,10 @@ package datosGobierno.daoGobierno.interfacesGobierno;
 import datosGobierno.documents.SolicitudDocument;
 import datosGobierno.dominioGobierno.Solicitud;
 import datosGobierno.dominioGobierno.enums.EstadoSolicitud;
+import dtoGobierno.EstudianteDTO;
+import dtoGobierno.SolicitudDTO;
+import gobierno.EstudianteDTOGobierno;
+import gobierno.SolicitudDTOGobierno;
 import java.util.List;
 
 /**
@@ -50,4 +54,8 @@ public interface ISolicitudDAO {
      * @return the boolean
      */
     boolean cambiarEstado(int id, EstadoSolicitud estado);
+
+
+    //apelar resultado
+    List<Solicitud> obtenerListaSolicitudesPorEstudiante(EstudianteDTOGobierno estudianteDTO);
 }

@@ -1,9 +1,13 @@
 package apiGobierno;
 import apiGobierno.controles.GobiernoControl;
 import apiGobierno.interfaces.IGobiernoAPI;
+import dtoGobierno.EstudianteDTO;
 import gobierno.BecasDisponiblesDTOGobierno;
+import gobierno.EstudianteDTOGobierno;
 import gobierno.RequisitosDTOGobierno;
 import gobierno.SolicitudDTOGobierno;
+
+import java.util.List;
 
 /**
  * The type Gobierno api.
@@ -28,5 +32,11 @@ public class GobiernoAPI implements IGobiernoAPI {
     @Override
     public BecasDisponiblesDTOGobierno obtenerBecas(RequisitosDTOGobierno requisitosDTO) {
         return gobiernoControl.obtenerBecas(requisitosDTO);
+    }
+
+    //apelar resultado
+    @Override
+    public List<SolicitudDTOGobierno> obtenerListaSolicitudesPorEstudiante(EstudianteDTOGobierno estudianteDTO) {
+        return gobiernoControl.obtenerListaSolicitudesPorEstudiante(estudianteDTO);
     }
 }

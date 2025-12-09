@@ -1,7 +1,12 @@
 package apiGobierno.interfaces;
+import dtoGobierno.EstudianteDTO;
+import dtoGobierno.SolicitudDTO;
 import gobierno.BecasDisponiblesDTOGobierno;
+import gobierno.EstudianteDTOGobierno;
 import gobierno.RequisitosDTOGobierno;
 import gobierno.SolicitudDTOGobierno;
+
+import java.util.List;
 
 /**
  * The interface Gobierno api.
@@ -25,4 +30,8 @@ public interface IGobiernoAPI {
      * @return the becas disponibles dto gobierno
      */
     BecasDisponiblesDTOGobierno obtenerBecas(RequisitosDTOGobierno requisitosDTO);
+
+
+    //apelar resultado
+    List<SolicitudDTOGobierno> obtenerListaSolicitudesPorEstudiante(EstudianteDTOGobierno estudianteDTO);
 }
