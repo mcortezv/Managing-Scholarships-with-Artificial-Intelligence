@@ -7,6 +7,7 @@ package fachadas;
 import controles.ControlActividad;
 import dto.actividades.ActividadDTO;
 import dto.actividades.ActividadesDTO;
+import dto.actividades.BajaDTO;
 import dto.actividades.EstudianteDTO;
 import dto.actividades.GrupoDTO;
 import dto.actividades.GruposResponseDTO;
@@ -45,6 +46,10 @@ public class FachadaActividad implements IFachadaActividad {
 
     public GrupoDTO obtenerGrupoInscrito(InscripcionDTO inscripcionDTO) {
         return controlActividad.obtenerGrupoInscrito(inscripcionDTO);
+    }
+    
+    public BajaDTO darBajaActividad(BajaDTO baja){
+        return controlActividad.darBajaActividad(baja);
     }
 
 }

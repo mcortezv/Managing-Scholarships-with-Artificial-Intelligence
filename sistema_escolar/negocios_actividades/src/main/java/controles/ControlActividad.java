@@ -4,6 +4,7 @@ import adaptadores.actividades.ActividadesAdaptador;
 import adaptadores.actividades.GruposAdaptador;
 import dto.actividades.ActividadDTO;
 import dto.actividades.ActividadesDTO;
+import dto.actividades.BajaDTO;
 import dto.actividades.EstudianteDTO;
 import dto.actividades.GrupoDTO;
 import dto.actividades.GruposResponseDTO;
@@ -68,6 +69,14 @@ public class ControlActividad {
 
     public GrupoDTO obtenerGrupoInscrito(InscripcionDTO inscripcionDTO) {
         return inscripcionBO.obtenerGrupoInscrito(inscripcionDTO);
+    }
+    
+    public BajaDTO darBajaActividad(BajaDTO baja){
+        BajaDTO bajaGuardada= inscripcionBO.darBajaActividad(baja);
+        if(bajaGuardada != null){
+             inscripcionBO.actualizarEstadoInscripcion(bajaGuardada.getIdInscripcion());
+        }
+        return bajaGuardada;
     }
 
 }

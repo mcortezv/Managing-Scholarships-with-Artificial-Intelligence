@@ -6,10 +6,12 @@ package objetosNegocio.actividades;
 
 import actividades.dao.interfaces.IInscripcionDAO;
 import actividades.dominio.Inscripcion;
+import adaptadores.actividades.BajaAdaptador;
 import adaptadores.actividades.EstudianteAdaptador;
 import adaptadores.actividades.GruposAdaptador;
 import adaptadores.actividades.InscripcionAdaptador;
 import datos.adaptadoresItson.actividades.GrupoAdaptador;
+import dto.actividades.BajaDTO;
 import dto.actividades.EstudianteDTO;
 import dto.actividades.GrupoDTO;
 import dto.actividades.InscripcionDTO;
@@ -18,6 +20,7 @@ import interfaces.IFachadaITSON;
 import interfaces.actividades.IInscripcionBO;
 
 import itson.EstudianteDTOItson;
+import itson.actividades.BajaDTOItson;
 import itson.actividades.GrupoResponseDTOItson;
 import itson.actividades.InscripcionDTOItson;
 import itson.actividades.InscripcionesDTOItson;
@@ -62,6 +65,17 @@ public class InscripcionBO implements IInscripcionBO {
         GrupoResponseDTOItson grupoDTOItson= fachadaITSON.obtenerGrupoInscrito(inscripcionDTOItson);
         GrupoDTO grupo= GruposAdaptador.DTOItsonToDTOActividades(grupoDTOItson);
         return grupo;
+    }
+    
+    public BajaDTO darBajaActividad(BajaDTO baja){
+        BajaDTOItson bajaDTOItson= BajaAdaptador.toDTOItson(baja);
+        BajaDTOItson bajaDTOItsonResponse= fachadaITSON.darBajaActividad(bajaDTOItson);
+        return BajaAdaptador.toDTONegocio(bajaDTOItsonResponse);
+        
+    }
+    
+    public boolean actualizarEstadoInscripcion(String idInscripcion){
+        return fachadaITSON.actualizarEstadoInscripcion(idInscripcion);
     }
 
 

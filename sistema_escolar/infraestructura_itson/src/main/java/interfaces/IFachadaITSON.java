@@ -7,6 +7,7 @@ import itson.ActividadesDTOItson;
 import itson.EstudianteDTOItson;
 import itson.HistorialAcademicoDTOItson;
 import itson.LoginDTOItson;
+import itson.actividades.BajaDTOItson;
 import itson.actividades.GrupoResponseDTOItson;
 import itson.actividades.GruposResponseDTOItson;
 import itson.actividades.InscripcionDTOItson;
@@ -37,4 +38,7 @@ public interface IFachadaITSON {
      public InscripcionDTOItson inscribirActividad(InscripcionDTOItson inscripcionDTOItson);
      public InscripcionesDTOItson obtenerInscripciones(EstudianteDTOItson estudianteDTO);
      public GrupoResponseDTOItson obtenerGrupoInscrito(InscripcionDTOItson inscripcion);
+     public BajaDTOItson darBajaActividad(BajaDTOItson baja);
+     
+     public boolean actualizarEstadoInscripcion(String idInscripcion);
 }
