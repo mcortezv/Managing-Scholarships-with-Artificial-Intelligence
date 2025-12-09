@@ -6,11 +6,18 @@ import gobierno.HistorialAcademicoDTOGobierno;
 import objetosNegocioGobierno.adaptadores.excepciones.HistorialAcademicoAdaptadorException;
 
 /**
+ * The type Historial academico adaptador.
  *
  * @author Cortez, Manuel;
  */
 public class HistorialAcademicoAdaptador {
 
+    /**
+     * To entity historial academico.
+     *
+     * @param dto the dto
+     * @return the historial academico
+     */
     public static HistorialAcademico toEntity(HistorialAcademicoDTO dto){
         try {
             HistorialAcademico historialAcademico = new HistorialAcademico();
@@ -22,10 +29,16 @@ public class HistorialAcademicoAdaptador {
             historialAcademico.setIndiceReprobacion(dto.getIndiceReprobacion());
             return historialAcademico;
         } catch (Exception sinUso){
-            throw new HistorialAcademicoAdaptadorException("No se pudo mappear la DTO a Entidad");
+            throw new HistorialAcademicoAdaptadorException("No se pudo mappear el HistorialAcademicoDTO a entidad HistorialAcademico");
         }
     }
 
+    /**
+     * To entity historial academico.
+     *
+     * @param dto the dto
+     * @return the historial academico
+     */
     public static HistorialAcademico toEntity(HistorialAcademicoDTOGobierno dto){
         try {
             HistorialAcademico historialAcademico = new HistorialAcademico();
@@ -37,10 +50,16 @@ public class HistorialAcademicoAdaptador {
             historialAcademico.setIndiceReprobacion(dto.getIndiceReprobacion());
             return historialAcademico;
         } catch (Exception sinUso){
-            throw new HistorialAcademicoAdaptadorException("No se pudo mappear la DTO de Infraestructura a Entidad");
+            throw new HistorialAcademicoAdaptadorException("No se pudo mappear el HistorialAcademicoDTOGobierno a entidad HistorialAcademico");
         }
     }
 
+    /**
+     * To dto historial academico dto.
+     *
+     * @param historialAcademico the historial academico
+     * @return the historial academico dto
+     */
     public static HistorialAcademicoDTO toDTO(HistorialAcademico historialAcademico){
         try {
             HistorialAcademicoDTO dto = new HistorialAcademicoDTO();
@@ -52,11 +71,17 @@ public class HistorialAcademicoAdaptador {
             dto.setIndiceReprobacion(historialAcademico.getIndiceReprobacion());
             return dto;
         } catch (Exception sinUso){
-            throw new HistorialAcademicoAdaptadorException("No se pudo mappear la Entidad a DTO");
+            throw new HistorialAcademicoAdaptadorException("No se pudo mappear la entidad HistorialAcademico a HistorialAcademicoDTO");
         }
     }
 
-    public static HistorialAcademicoDTOGobierno toInfraestructuraDTO(HistorialAcademico  historialAcademico){
+    /**
+     * To infraestructura dto historial academico dto gobierno.
+     *
+     * @param historialAcademico the historial academico
+     * @return the historial academico dto gobierno
+     */
+    public static HistorialAcademicoDTOGobierno toInfraestructuraDTO(HistorialAcademico historialAcademico){
         try {
             HistorialAcademicoDTOGobierno dto = new HistorialAcademicoDTOGobierno();
             dto.setCarrera(historialAcademico.getCarrera().toString());
@@ -67,7 +92,7 @@ public class HistorialAcademicoAdaptador {
             dto.setIndiceReprobacion(historialAcademico.getIndiceReprobacion());
             return dto;
         } catch (Exception sinUso){
-            throw new HistorialAcademicoAdaptadorException("No se pudo mappear la Entidad a DTO Infraestructura");
+            throw new HistorialAcademicoAdaptadorException("No se pudo mappear la entidad HistorialAcademico a HistorialAcademicoDTOGobierno");
         }
     }
 }

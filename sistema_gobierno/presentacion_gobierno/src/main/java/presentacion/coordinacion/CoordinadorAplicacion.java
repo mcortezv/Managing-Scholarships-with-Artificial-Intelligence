@@ -387,8 +387,7 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
             System.out.println("DEBUG: Iniciando búsqueda de resolución");
             validarSesionActiva();
 
-            BuscarResolucionPanel panel =
-                    (BuscarResolucionPanel) frame.getPanel("buscarResolucion");
+            BuscarResolucionPanel panel = (BuscarResolucionPanel) frame.getPanel("buscarResolucion");
             panel.limpiarBusqueda();
             frame.showPanel("buscarResolucion");
 

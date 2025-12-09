@@ -1,5 +1,4 @@
 package objetosNegocioGobierno.bo;
-
 import datosGobierno.daoGobierno.interfacesGobierno.IResolucionDAO;
 import datosGobierno.dominioGobierno.Resolucion;
 import datosGobierno.dominioGobierno.Solicitud;
@@ -10,7 +9,6 @@ import gobierno.SolicitudDTOGobierno;
 import interfaces.IFachadaModeloML;
 import objetosNegocioGobierno.bo.excepciones.ResolucionBOException;
 import objetosNegocioGobierno.bo.interfaces.IResolucionBO;
-
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
@@ -24,13 +22,17 @@ import java.util.List;
 public class ResolucionBO implements IResolucionBO {
     private final IResolucionDAO resolucionDAO;
     private final IFachadaModeloML fachadaModeloML;
-
-    // Constantes de reglas de negocio
     private static final int MOTIVO_MIN_LENGTH = 10;
     private static final int MOTIVO_MAX_LENGTH = 500;
     private static final int DIAS_MODIFICACION_LIMITE = 30;
     private static final int DIAS_POST_RESULTADOS_LIMITE = 15;
 
+    /**
+     * Instantiates a new Resolucion bo.
+     *
+     * @param resolucionDAO   the resolucion dao
+     * @param fachadaModeloML the fachada modelo ml
+     */
     public ResolucionBO(IResolucionDAO resolucionDAO, IFachadaModeloML fachadaModeloML) {
         if (resolucionDAO == null) {
             throw new IllegalArgumentException("ResolucionDAO no puede ser nulo");
@@ -43,8 +45,7 @@ public class ResolucionBO implements IResolucionBO {
     }
 
     @Override
-    public Resolucion crearResolucion(Solicitud solicitud, Decision decision,
-                                      String motivo, LocalDate fechaEvaluacion) {
+    public Resolucion crearResolucion(Solicitud solicitud, Decision decision, String motivo, LocalDate fechaEvaluacion) {
         try {
             // Validaciones de reglas de negocio
             validarSolicitudParaResolucion(solicitud);
@@ -64,8 +65,7 @@ public class ResolucionBO implements IResolucionBO {
         } catch (ResolucionBOException ex) {
             throw ex;
         } catch (Exception ex) {
-            throw new ResolucionBOException(
-                    "Error al crear resolución: " + ex.getMessage());
+            throw new ResolucionBOException("Error al crear resolución: " + ex.getMessage());
         }
     }
 
@@ -86,8 +86,7 @@ public class ResolucionBO implements IResolucionBO {
         } catch (ResolucionBOException ex) {
             throw ex;
         } catch (Exception ex) {
-            throw new ResolucionBOException(
-                    "Error al resolver solicitud: " + ex.getMessage());
+            throw new ResolucionBOException("Error al resolver solicitud: " + ex.getMessage());
         }
     }
 
@@ -100,8 +99,7 @@ public class ResolucionBO implements IResolucionBO {
 
             // Validar que la solicitud esté en estado ACTIVA
             if (!"ACTIVA".equals(solicitud.getEstado())) {
-                throw new ResolucionBOException(
-                        "Solo se pueden evaluar automáticamente solicitudes en estado ACTIVA");
+                throw new ResolucionBOException("Solo se pueden evaluar automáticamente solicitudes en estado ACTIVA");
             }
 
             // Validar datos requeridos para ML
@@ -111,8 +109,7 @@ public class ResolucionBO implements IResolucionBO {
             ResolucionDTOGobierno resolucion = fachadaModeloML.generarPrediccion(solicitud);
 
             if (resolucion == null) {
-                throw new ResolucionBOException(
-                        "El modelo de ML no pudo generar una predicción");
+                throw new ResolucionBOException("El modelo de ML no pudo generar una predicción");
             }
 
             // Validar que la resolución generada sea coherente
@@ -123,8 +120,7 @@ public class ResolucionBO implements IResolucionBO {
         } catch (ResolucionBOException ex) {
             throw ex;
         } catch (Exception ex) {
-            throw new ResolucionBOException(
-                    "Error al crear resolución automática: " + ex.getMessage());
+            throw new ResolucionBOException("Error al crear resolución automática: " + ex.getMessage());
         }
     }
 
@@ -138,8 +134,7 @@ public class ResolucionBO implements IResolucionBO {
             Resolucion resolucion = resolucionDAO.obtenerPorId(id);
 
             if (resolucion == null) {
-                throw new ResolucionBOException(
-                        "No se encontró resolución con ID: " + id);
+                throw new ResolucionBOException("No se encontró resolución con ID: " + id);
             }
 
             return resolucion;
@@ -147,8 +142,7 @@ public class ResolucionBO implements IResolucionBO {
         } catch (ResolucionBOException ex) {
             throw ex;
         } catch (Exception ex) {
-            throw new ResolucionBOException(
-                    "Error al obtener resolución: " + ex.getMessage());
+            throw new ResolucionBOException("Error al obtener resolución: " + ex.getMessage());
         }
     }
 
@@ -160,8 +154,7 @@ public class ResolucionBO implements IResolucionBO {
             Resolucion resolucion = resolucionDAO.obtenerPorFiltro(tipoFiltro, filtro);
 
             if (resolucion == null) {
-                throw new ResolucionBOException(
-                        "No se encontró resolución con " + tipoFiltro + ": " + filtro);
+                throw new ResolucionBOException("No se encontró resolución con " + tipoFiltro + ": " + filtro);
             }
 
             return resolucion;
@@ -169,8 +162,7 @@ public class ResolucionBO implements IResolucionBO {
         } catch (ResolucionBOException ex) {
             throw ex;
         } catch (Exception ex) {
-            throw new ResolucionBOException(
-                    "Error al buscar resolución: " + ex.getMessage());
+            throw new ResolucionBOException("Error al buscar resolución: " + ex.getMessage());
         }
     }
 
@@ -188,12 +180,9 @@ public class ResolucionBO implements IResolucionBO {
         } catch (ResolucionBOException ex) {
             throw ex;
         } catch (Exception ex) {
-            throw new ResolucionBOException(
-                    "Error al actualizar resolución: " + ex.getMessage());
+            throw new ResolucionBOException("Error al actualizar resolución: " + ex.getMessage());
         }
     }
-
-    // ============= MÉTODOS PRIVADOS DE VALIDACIÓN =============
 
     /**
      * Valida que una solicitud sea válida para crear resolución
@@ -208,13 +197,11 @@ public class ResolucionBO implements IResolucionBO {
         }
 
         if (solicitud.getEstudiante() == null) {
-            throw new ResolucionBOException(
-                    "La solicitud debe tener un estudiante asociado");
+            throw new ResolucionBOException("La solicitud debe tener un estudiante asociado");
         }
 
         if (solicitud.getBeca() == null) {
-            throw new ResolucionBOException(
-                    "La solicitud debe tener una beca asociada");
+            throw new ResolucionBOException("La solicitud debe tener una beca asociada");
         }
     }
 
@@ -226,9 +213,7 @@ public class ResolucionBO implements IResolucionBO {
             throw new ResolucionBOException("La decisión no puede ser nula");
         }
 
-        List<Decision> decisionesValidas = Arrays.asList(
-                Decision.ACEPTADA, Decision.RECHAZADA, Decision.DEVUELTA
-        );
+        List<Decision> decisionesValidas = Arrays.asList(Decision.ACEPTADA, Decision.RECHAZADA, Decision.DEVUELTA);
 
         if (!decisionesValidas.contains(decision)) {
             throw new ResolucionBOException("Decisión inválida: " + decision);
@@ -244,15 +229,11 @@ public class ResolucionBO implements IResolucionBO {
         }
 
         if (motivo.trim().length() < MOTIVO_MIN_LENGTH) {
-            throw new ResolucionBOException(
-                    String.format("El motivo debe tener al menos %d caracteres",
-                            MOTIVO_MIN_LENGTH));
+            throw new ResolucionBOException(String.format("El motivo debe tener al menos %d caracteres", MOTIVO_MIN_LENGTH));
         }
 
         if (motivo.trim().length() > MOTIVO_MAX_LENGTH) {
-            throw new ResolucionBOException(
-                    String.format("El motivo no puede exceder %d caracteres",
-                            MOTIVO_MAX_LENGTH));
+            throw new ResolucionBOException(String.format("El motivo no puede exceder %d caracteres", MOTIVO_MAX_LENGTH));
         }
     }
 
@@ -265,14 +246,12 @@ public class ResolucionBO implements IResolucionBO {
         }
 
         if (fechaEvaluacion.isAfter(LocalDate.now())) {
-            throw new ResolucionBOException(
-                    "La fecha de evaluación no puede ser futura");
+            throw new ResolucionBOException("La fecha de evaluación no puede ser futura");
         }
 
-        // Validar que no sea demasiado antigua (por ejemplo, más de 1 año)
+        // Validar que no sea demasiado antigua
         if (fechaEvaluacion.isBefore(LocalDate.now().minusYears(1))) {
-            throw new ResolucionBOException(
-                    "La fecha de evaluación no puede ser mayor a 1 año atrás");
+            throw new ResolucionBOException("La fecha de evaluación no puede ser mayor a 1 año atrás");
         }
     }
 
@@ -294,24 +273,19 @@ public class ResolucionBO implements IResolucionBO {
      * Valida que una resolución sea modificable según reglas de negocio
      */
     private void validarResolucionModificable(Resolucion resolucion) {
-        // Validar periodo de modificación (30 días desde evaluación)
-        LocalDate fechaLimite = resolucion.getFechaEvaluacion()
-                .plusDays(DIAS_MODIFICACION_LIMITE);
+        // Validar periodo de modificación
+        LocalDate fechaLimite = resolucion.getFechaEvaluacion().plusDays(DIAS_MODIFICACION_LIMITE);
 
         if (LocalDate.now().isAfter(fechaLimite)) {
-            throw new ResolucionBOException(
-                    String.format("El periodo de modificación ha expirado (%d días desde evaluación)",
-                            DIAS_MODIFICACION_LIMITE));
+            throw new ResolucionBOException(String.format("El periodo de modificación ha expirado (%d días desde evaluación)", DIAS_MODIFICACION_LIMITE));
         }
 
-        // Validar periodo post-resultados
+        // Validar periodo posresultados
         if (resolucion.getSolicitud().getBeca().getFechaResultados() != null) {
-            LocalDate fechaLimiteResultados = resolucion.getSolicitud()
-                    .getBeca().getFechaResultados().plusDays(DIAS_POST_RESULTADOS_LIMITE);
+            LocalDate fechaLimiteResultados = resolucion.getSolicitud().getBeca().getFechaResultados().plusDays(DIAS_POST_RESULTADOS_LIMITE);
 
             if (LocalDate.now().isAfter(fechaLimiteResultados)) {
-                throw new ResolucionBOException(
-                        String.format("No se pueden modificar resoluciones después de %d días " +
+                throw new ResolucionBOException(String.format("No se pueden modificar resoluciones después de %d días " +
                                 "de publicados los resultados", DIAS_POST_RESULTADOS_LIMITE));
             }
         }
@@ -322,26 +296,22 @@ public class ResolucionBO implements IResolucionBO {
      */
     private void validarDatosParaML(SolicitudDTOGobierno solicitud) {
         if (solicitud.getHistorialAcademico() == null) {
-            throw new ResolucionBOException(
-                    "La solicitud debe tener historial académico para evaluación automática");
+            throw new ResolucionBOException("La solicitud debe tener historial académico para evaluación automática");
         }
 
         if (solicitud.getInformacionSocioeconomica() == null) {
-            throw new ResolucionBOException(
-                    "La solicitud debe tener información socioeconómica para evaluación automática");
+            throw new ResolucionBOException("La solicitud debe tener información socioeconómica para evaluación automática");
         }
 
         // Validar rangos de valores
         double promedio = solicitud.getHistorialAcademico().getPromedio();
         if (promedio < 0 || promedio > 100) {
-            throw new ResolucionBOException(
-                    "El promedio debe estar entre 0 y 100");
+            throw new ResolucionBOException("El promedio debe estar entre 0 y 100");
         }
 
         if (solicitud.getHistorialAcademico().getSemestre() < 1 ||
                 solicitud.getHistorialAcademico().getSemestre() > 12) {
-            throw new ResolucionBOException(
-                    "El semestre debe estar entre 1 y 12");
+            throw new ResolucionBOException("El semestre debe estar entre 1 y 12");
         }
     }
 
@@ -350,22 +320,17 @@ public class ResolucionBO implements IResolucionBO {
      */
     private void validarResolucionML(ResolucionDTOGobierno resolucion) {
         if (resolucion.getDecision() == null || resolucion.getDecision().trim().isEmpty()) {
-            throw new ResolucionBOException(
-                    "La resolución de ML no contiene una decisión válida");
+            throw new ResolucionBOException("La resolución de ML no contiene una decisión válida");
         }
 
         if (resolucion.getMotivo() == null || resolucion.getMotivo().trim().isEmpty()) {
-            throw new ResolucionBOException(
-                    "La resolución de ML no contiene un motivo válido");
+            throw new ResolucionBOException("La resolución de ML no contiene un motivo válido");
         }
 
-        List<String> decisionesValidas = Arrays.asList(
-                "ACEPTADA", "RECHAZADA", "DEVUELTA"
-        );
+        List<String> decisionesValidas = Arrays.asList("ACEPTADA", "RECHAZADA", "DEVUELTA");
 
         if (!decisionesValidas.contains(resolucion.getDecision().toUpperCase())) {
-            throw new ResolucionBOException(
-                    "La decisión de ML es inválida: " + resolucion.getDecision());
+            throw new ResolucionBOException("La decisión de ML es inválida: " + resolucion.getDecision());
         }
     }
 
@@ -381,13 +346,10 @@ public class ResolucionBO implements IResolucionBO {
             throw new ResolucionBOException("El filtro no puede estar vacío");
         }
 
-        List<String> tiposFiltroValidos = Arrays.asList(
-                "MATRICULA", "NOMBRE", "ID_SOLICITUD"
-        );
+        List<String> tiposFiltroValidos = Arrays.asList("MATRICULA", "NOMBRE", "ID_SOLICITUD");
 
         if (!tiposFiltroValidos.contains(tipoFiltro.toUpperCase())) {
-            throw new ResolucionBOException(
-                    "Tipo de filtro inválido: " + tipoFiltro);
+            throw new ResolucionBOException("Tipo de filtro inválido: " + tipoFiltro);
         }
     }
 
@@ -398,14 +360,11 @@ public class ResolucionBO implements IResolucionBO {
         try {
             Resolucion existente = resolucionDAO.obtenerPorId((int) idSolicitud);
             if (existente != null) {
-                throw new ResolucionBOException(
-                        "Ya existe una resolución para esta solicitud");
+                throw new ResolucionBOException("Ya existe una resolución para esta solicitud");
             }
         } catch (Exception ex) {
-            // Si no se encuentra, está bien
             if (!ex.getMessage().contains("No se encontró")) {
-                throw new ResolucionBOException(
-                        "Error al verificar resolución existente: " + ex.getMessage());
+                throw new ResolucionBOException("Error al verificar resolución existente: " + ex.getMessage());
             }
         }
     }
@@ -427,10 +386,8 @@ public class ResolucionBO implements IResolucionBO {
                 nuevoEstado = EstadoSolicitud.DEVUELTA;
                 break;
             default:
-                throw new ResolucionBOException(
-                        "Decisión no reconocida: " + resolucion.getDecision());
+                throw new ResolucionBOException("Decisión no reconocida: " + resolucion.getDecision());
         }
-
         resolucion.getSolicitud().setEstado(nuevoEstado);
     }
 }

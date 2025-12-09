@@ -117,7 +117,9 @@ public class ModificarResolucionPanel extends Panel {
         left.add(estado);
 
 
-
+        btnBack.addActionListener(e -> {
+            coordinadorAplicacion.iniciarBusquedaResolucion();
+        });
 
 
         JPanel right = new JPanel();
