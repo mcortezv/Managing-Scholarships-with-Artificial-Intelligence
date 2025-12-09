@@ -59,19 +59,24 @@ public class EvaluarConvocatoriaPanel extends Panel {
 
         btnEvaluar.addActionListener(e -> {
             BecaDTO seleccionada = (BecaDTO) comboConvocatoria.getSelectedItem();
-            coordinadorAplicacion.evaluarConvocatoria(seleccionada);
+            if (seleccionada == null) {
+                JOptionPane.showMessageDialog(mainFrame,
+                        "Debe seleccionar una beca",
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            coordinadorAplicacion.seleccionarConvocatoriaEvaluar(seleccionada);
         });
 
         btnBack.addActionListener(e -> {
-            coordinadorAplicacion.hub();
+            coordinadorAplicacion.volverHub();
         });
     }
 
     public void setBecas(List<BecaDTO> becas) {
-        for (BecaDTO beca : becas) {
-            comboConvocatoria.add(beca);
-        }
         lista.removeAll();
+
         if (becas != null && !becas.isEmpty()) {
             for (BecaDTO b : becas) {
                 lista.add(crearItem(b));
@@ -83,12 +88,16 @@ public class EvaluarConvocatoriaPanel extends Panel {
             lbl.setForeground(Style.TEXT_COLOR);
             lista.add(lbl);
         }
+
         lista.revalidate();
         lista.repaint();
 
-        comboConvocatoria.setModel(new DefaultComboBoxModel<>(
-                becas == null ? new BecaDTO[]{} : becas.toArray(new BecaDTO[0])
-        ));
+        comboConvocatoria.removeAllItems();
+        if (becas != null) {
+            for (BecaDTO beca : becas) {
+                comboConvocatoria.addItem(beca);
+            }
+        }
     }
 
     private JComponent crearItem(BecaDTO b) {
@@ -121,11 +130,14 @@ public class EvaluarConvocatoriaPanel extends Panel {
         return card;
     }
 
-    private String safe(String s) { return s == null ? "" : s; }
+    private String safe(String s) {
+        return s == null ? "" : s;
+    }
 
     private String descripcionBeca(BecaDTO b) {
         RequisitosDTO r = b.getRequisitos();
         if (r == null) return "Está dirigida a estudiantes con buen desempeño académico.";
+
         StringBuilder sb = new StringBuilder("Está dirigida a estudiantes ");
         boolean pusoAlgo = false;
 

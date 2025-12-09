@@ -1,4 +1,6 @@
 package presentacion.modificarResolucion;
+import dtoGobierno.ResolucionDTO;
+import dtoGobierno.SolicitudDTO;
 import presentacion.coordinacion.MainFrame;
 import presentacion.coordinacion.interfaces.ICoordinadorAplicacion;
 import presentacion.styles.Button;
@@ -10,10 +12,16 @@ import presentacion.styles.Style;
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 import java.awt.*;
+import java.time.LocalDate;
 
 public class ModificarResolucionPanel extends Panel {
     private Label titulo;
     private Label estado;
+    private ResolucionDTO resolucionActual;
+    private SolicitudDTO solicitudActual;
+    private JTextArea solicitudTxtArea;
+    private JTextArea evaluacionTxtArea;
+    private ComboBox<String> comboManual;
     private ICoordinadorAplicacion coordinadorAplicacion;
 
     public ModificarResolucionPanel(MainFrame frame, ICoordinadorAplicacion coordinadorAplicacion) {
@@ -47,7 +55,7 @@ public class ModificarResolucionPanel extends Panel {
         left.add(detallesSubtitulo);
 
 
-        JTextArea solicitudTxtArea = new JTextArea(7, 30);
+        solicitudTxtArea = new JTextArea(7, 30);
         solicitudTxtArea.setFont(Style.INPUT_FONT);
         solicitudTxtArea.setLineWrap(true);
         solicitudTxtArea.setForeground(Color.WHITE);
@@ -148,13 +156,13 @@ public class ModificarResolucionPanel extends Panel {
         manualWrapper.setMaximumSize(new Dimension(700, 50));
         manualWrapper.setOpaque(false);
         Label manualWrapperSubtitulo = new Label("Motivo: ");
-        ComboBox<String> comboManual = new ComboBox<>(new String[]{"Aprobar", "Rechazar", "Devolver"});
+        comboManual = new ComboBox<>(new String[]{"Aprobar", "Rechazar", "Devolver"});
         manualWrapper.add(manualWrapperSubtitulo);
         manualWrapper.add(comboManual);
         right.add(manualWrapper);
         right.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
 
-        JTextArea evaluacionTxtArea = new JTextArea(7, 30);
+        evaluacionTxtArea = new JTextArea(7, 30);
         evaluacionTxtArea.setFont(Style.INPUT_FONT);
         evaluacionTxtArea.setLineWrap(true);
         evaluacionTxtArea.setWrapStyleWord(true);
@@ -215,5 +223,60 @@ public class ModificarResolucionPanel extends Panel {
         main.add(left);
         main.add(right);
         centralPanel.add(main);
+
+        btnGenerar.addActionListener(e -> {
+            if (solicitudActual != null) {
+                coordinadorAplicacion.reevaluarAutomatica(solicitudActual);
+            } else {
+                JOptionPane.showMessageDialog(mainFrame,
+                        "No hay solicitud cargada para re-evaluar",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        });
+
+        btnResolver.addActionListener(e -> {
+            if (resolucionActual == null) {
+                JOptionPane.showMessageDialog(mainFrame,
+                        "No hay resolución cargada para modificar",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            String decision = (String) comboManual.getSelectedItem();
+            String motivo = evaluacionTxtArea.getText().trim();
+
+            if (motivo.isEmpty() || motivo.length() < 10) {
+                JOptionPane.showMessageDialog(mainFrame,
+                        "El motivo debe tener al menos 10 caracteres",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            ResolucionDTO nuevaResolucion = new ResolucionDTO();
+            nuevaResolucion.setSolicitud(solicitudActual);
+            nuevaResolucion.setDecision(decision);
+            nuevaResolucion.setMotivo(motivo);
+            nuevaResolucion.setFechaEvaluacion(LocalDate.now());
+
+            coordinadorAplicacion.modificarResolucion(nuevaResolucion);
+        });
+
+    }
+
+    public void setResolucion(ResolucionDTO resolucion) {
+        this.resolucionActual = resolucion;
+        this.solicitudActual = resolucion.getSolicitud();
+
+        // Mostrar la información de la solicitud
+        solicitudTxtArea.setText(solicitudActual.toString());
+
+        // Mostrar el estado actual
+        estado.setText("Estado Actual: " + solicitudActual.getEstado());
+
+        // Mostrar la resolución actual
+        evaluacionTxtArea.setText(resolucion.getMotivo());
+
+        // Seleccionar la decisión actual
+        comboManual.setSelectedItem(resolucion.getDecision());
     }
 }

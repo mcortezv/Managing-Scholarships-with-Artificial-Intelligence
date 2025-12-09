@@ -1,6 +1,6 @@
 package presentacion.pagarAdeudo.panels;
 
-import pagarAdeudo.ClaseDTO;
+import dto.pagarAdeudo.ClaseDTO;
 import presentacion.pagarAdeudo.PagarAdeudo;
 import presentacion.pagarAdeudo.PanelPagarAdeudo;
 import presentacion.pagarAdeudo.coordinadorAplicacionPagarAdeudo.CoordinadorAplicacionPagarAdeudo;
@@ -195,7 +195,7 @@ public class ListaClasesColegiatura extends PanelPagarAdeudo {
         }
     }
 
-    static class RoundedPanel extends JPanel {
+    public static class RoundedPanel extends JPanel {
         private int cornerRadius = 15;
         private final Color backgroundColor;
 

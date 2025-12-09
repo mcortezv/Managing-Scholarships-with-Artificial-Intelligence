@@ -2,7 +2,7 @@ package adaptadoresPagoAdeudo;
 
 import datos.dominioItson.pagarAdeudo.Prestamo;
 import itson.pagarAdeudo.PrestamoDTOI;
-import pagarAdeudo.PrestamoDTO;
+import dto.pagarAdeudo.PrestamoDTO;
 
 public class PrestamoAdaptador {
 

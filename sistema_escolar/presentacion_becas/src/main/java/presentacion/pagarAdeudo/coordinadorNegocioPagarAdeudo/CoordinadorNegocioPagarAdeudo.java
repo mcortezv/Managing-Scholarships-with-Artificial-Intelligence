@@ -4,9 +4,9 @@ package presentacion.pagarAdeudo.coordinadorNegocioPagarAdeudo;
 import interfaces.IFachadaPago;
 import java.awt.event.ActionListener;
 import java.util.List;
-import pagarAdeudo.ClaseDTO;
-import pagarAdeudo.PrestamoDTO;
-import pagarAdeudo.SolicitudPagoDTO;
+import dto.pagarAdeudo.ClaseDTO;
+import dto.pagarAdeudo.PrestamoDTO;
+import dto.pagarAdeudo.SolicitudPagoDTO;
 import solicitarBeca.EstudianteDTO;
 
 public class CoordinadorNegocioPagarAdeudo implements ICoordinadorNegocioPagarAdeudo {
@@ -80,7 +80,7 @@ public class CoordinadorNegocioPagarAdeudo implements ICoordinadorNegocioPagarAd
     }
 
     @Override
-    public boolean notificarLiquidacion(SolicitudPagoDTO solicitudPagoDTO) {
-        return fachadaPago.notificarLiquidacion(solicitudPagoDTO);
+    public void notificarLiquidacion(SolicitudPagoDTO solicitudPagoDTO) {
+        fachadaPago.notificarLiquidacion(solicitudPagoDTO);
     }
 }

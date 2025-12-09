@@ -1,12 +1,12 @@
 package fachadas;
 
 import controles.ControlPago;
-import pagarAdeudo.ClaseDTO;
-import pagarAdeudo.PrestamoDTO;
-import pagarAdeudo.SolicitudPagoDTO;
+import dto.pagarAdeudo.ClaseDTO;
+import dto.pagarAdeudo.PrestamoDTO;
+import dto.pagarAdeudo.SolicitudPagoDTO;
 import interfaces.IFachadaPago;
 import solicitarBeca.EstudianteDTO;
-import javax.swing.*;
+
 import java.awt.event.ActionListener;
 import java.util.List;
 
@@ -59,7 +59,7 @@ public class FachadaPago implements IFachadaPago {
     }
 
     @Override
-    public boolean notificarLiquidacion(SolicitudPagoDTO solicitudPagoDTO) {
-        return controlPago.notificarLiquidacion(solicitudPagoDTO);
+    public void notificarLiquidacion(SolicitudPagoDTO solicitudPagoDTO) {
+        controlPago.notificarLiquidacion(solicitudPagoDTO);
     }
 }

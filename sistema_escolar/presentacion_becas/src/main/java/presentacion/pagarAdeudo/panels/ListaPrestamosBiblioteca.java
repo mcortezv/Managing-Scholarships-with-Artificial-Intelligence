@@ -1,6 +1,6 @@
 package presentacion.pagarAdeudo.panels;
 
-import pagarAdeudo.PrestamoDTO;
+import dto.pagarAdeudo.PrestamoDTO;
 import presentacion.pagarAdeudo.PagarAdeudo;
 import presentacion.pagarAdeudo.PanelPagarAdeudo;
 import presentacion.pagarAdeudo.coordinadorAplicacionPagarAdeudo.CoordinadorAplicacionPagarAdeudo;

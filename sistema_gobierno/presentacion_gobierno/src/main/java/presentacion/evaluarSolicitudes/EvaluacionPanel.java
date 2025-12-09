@@ -1,4 +1,6 @@
 package presentacion.evaluarSolicitudes;
+import dtoGobierno.BecaDTO;
+import dtoGobierno.ResolucionDTO;
 import dtoGobierno.SolicitudDTO;
 import presentacion.coordinacion.MainFrame;
 import presentacion.coordinacion.interfaces.ICoordinadorAplicacion;
@@ -10,6 +12,7 @@ import presentacion.styles.Style;
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 import java.awt.*;
+import java.time.LocalDate;
 import java.util.List;
 import javax.swing.JTextArea;
 
@@ -18,10 +21,13 @@ public class EvaluacionPanel extends Panel {
     private Label titulo;
     private Button next;
     private Button previous;
+    private Button btnGenerar;
+    private Button btnResolver;
     private List<SolicitudDTO> solicitudes;
     private SolicitudDTO solicitudActual;
     private JTextArea solicitudTxtArea;
     private JTextArea evaluacionTxtArea;
+    private ComboBox<String> comboManual;
     private ICoordinadorAplicacion coordinadorAplicacion;
 
     public EvaluacionPanel(MainFrame frame, ICoordinadorAplicacion coordinadorAplicacion) {
@@ -33,7 +39,7 @@ public class EvaluacionPanel extends Panel {
     public void startComponents() {
         centralPanel.add(Box.createVerticalStrut(Style.TOP_ESPACIO));
 
-        titulo = new Label("Evaluación Beca ARA");
+        titulo = new Label("Evaluación Beca");
         titulo.setFont(Style.TITLE_FONT);
         titulo.setAlignmentX(CENTER_ALIGNMENT);
         centralPanel.add(titulo);
@@ -61,6 +67,7 @@ public class EvaluacionPanel extends Panel {
         solicitudTxtArea.setForeground(Color.WHITE);
         solicitudTxtArea.setWrapStyleWord(true);
         solicitudTxtArea.setOpaque(false);
+        solicitudTxtArea.setEditable(false);
         solicitudTxtArea.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         JScrollPane solicitudScrollPane = new JScrollPane(solicitudTxtArea);
@@ -146,7 +153,7 @@ public class EvaluacionPanel extends Panel {
         modelWrapper.add(comboModelo);
         right.add(modelWrapper);
 
-        Button btnGenerar = new Button("Generar");
+        btnGenerar = new Button("Generar");
         btnGenerar.setAlignmentX(CENTER_ALIGNMENT);
         right.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
         right.add(btnGenerar);
@@ -161,8 +168,8 @@ public class EvaluacionPanel extends Panel {
         JPanel manualWrapper = new JPanel(new FlowLayout(FlowLayout.CENTER, 200, 0));
         manualWrapper.setMaximumSize(new Dimension(700, 50));
         manualWrapper.setOpaque(false);
-        Label manualWrapperSubtitulo = new Label("Motivo: ");
-        ComboBox<String> comboManual = new ComboBox<>(new String[]{"Aprobar", "Rechazar", "Devolver"});
+        Label manualWrapperSubtitulo = new Label("Decisión: ");
+        comboManual = new ComboBox<>(new String[]{"ACEPTADA", "RECHAZADA", "DEVUELTA"});
         manualWrapper.add(manualWrapperSubtitulo);
         manualWrapper.add(comboManual);
         right.add(manualWrapper);
@@ -221,7 +228,7 @@ public class EvaluacionPanel extends Panel {
         right.add(Box.createRigidArea(new Dimension(0, 20)));
         right.add(roundedPanel);
 
-        Button btnResolver = new Button("Resolver Solicitud");
+        btnResolver = new Button("Resolver Solicitud");
         btnResolver.setAlignmentX(CENTER_ALIGNMENT);
         right.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
         right.add(btnResolver);
@@ -230,28 +237,178 @@ public class EvaluacionPanel extends Panel {
         main.add(right);
         centralPanel.add(main);
 
+        configurarEventos();
+    }
+
+    private void configurarEventos() {
         next.addActionListener(e -> {
-            int index = solicitudes.indexOf(solicitudActual);
-            if (index != solicitudes.size() - 1) {
-                SolicitudDTO solicitud = solicitudes.get(index + 1);
-                solicitudActual = solicitud;
-                solicitudTxtArea.setText(solicitud.toString());
+            if (solicitudes != null && solicitudActual != null) {
+                int index = solicitudes.indexOf(solicitudActual);
+                if (index < solicitudes.size() - 1) {
+                    solicitudActual = solicitudes.get(index + 1);
+                    actualizarVisualizacionSolicitud();
+                    limpiarCamposEvaluacion();
+                }
             }
         });
 
         previous.addActionListener(e -> {
-            int index = solicitudes.indexOf(solicitudActual);
-            if (index != 0) {
-                SolicitudDTO solicitud = solicitudes.get(index - 1);
-                solicitudActual = solicitud;
-                solicitudTxtArea.setText(solicitud.toString());
+            if (solicitudes != null && solicitudActual != null) {
+                int index = solicitudes.indexOf(solicitudActual);
+                if (index > 0) {
+                    solicitudActual = solicitudes.get(index - 1);
+                    actualizarVisualizacionSolicitud();
+                    limpiarCamposEvaluacion();
+                }
             }
+        });
+
+        btnGenerar.addActionListener(e -> {
+            if (solicitudActual == null) {
+                JOptionPane.showMessageDialog(mainFrame,
+                        "No hay solicitud seleccionada",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            coordinadorAplicacion.evaluarAutomatica(solicitudActual);
+        });
+
+        btnResolver.addActionListener(e -> {
+            if (solicitudActual == null) {
+                JOptionPane.showMessageDialog(mainFrame,
+                        "No hay solicitud seleccionada",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            String decision = (String) comboManual.getSelectedItem();
+            String motivo = evaluacionTxtArea.getText().trim();
+
+            if (motivo.isEmpty() || motivo.length() < 10) {
+                JOptionPane.showMessageDialog(mainFrame,
+                        "El motivo debe tener al menos 10 caracteres",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            ResolucionDTO resolucion = new ResolucionDTO();
+            resolucion.setSolicitud(solicitudActual);
+            resolucion.setDecision(decision);
+            resolucion.setMotivo(motivo);
+            resolucion.setFechaEvaluacion(LocalDate.now());
+
+            coordinadorAplicacion.evaluarManual(resolucion);
+        });
+
+        btnBack.addActionListener(e -> {
+            coordinadorAplicacion.volverHub();
         });
     }
 
-    public void setSolicitudes(List<SolicitudDTO> solicitudes){
+    public void setSolicitudes(List<SolicitudDTO> solicitudes) {
         this.solicitudes = solicitudes;
-        solicitudTxtArea.setText(solicitudes.getFirst().toString());
-        solicitudActual =  solicitudes.getFirst();
+        if (solicitudes != null && !solicitudes.isEmpty()) {
+            solicitudActual = solicitudes.get(0);
+            actualizarVisualizacionSolicitud();
+            limpiarCamposEvaluacion();
+        }
+    }
+
+    // CORREGIDO: Eliminada recursión
+    public void setBecaActual(BecaDTO beca) {
+        if (beca != null) {
+            titulo.setText("Evaluación " + beca.getNombre());
+        }
+    }
+
+    private void actualizarVisualizacionSolicitud() {
+        if (solicitudActual != null) {
+            solicitudTxtArea.setText(solicitudActual.toString());
+            solicitudTxtArea.setCaretPosition(0);
+        }
+    }
+
+    private void limpiarCamposEvaluacion() {
+        evaluacionTxtArea.setText("");
+        comboManual.setSelectedIndex(0);
+    }
+
+    public void mostrarFormularioEvaluacionManual(SolicitudDTO solicitud) {
+        this.solicitudActual = solicitud;
+        actualizarVisualizacionSolicitud();
+
+        JDialog dialog = new JDialog((Frame) SwingUtilities.getWindowAncestor(this),
+                "Evaluación Manual", true);
+        dialog.setLayout(new BorderLayout());
+        dialog.setSize(600, 400);
+        dialog.setLocationRelativeTo(this);
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
+        Label lblDecision = new Label("Decisión:");
+        lblDecision.setAlignmentX(Component.LEFT_ALIGNMENT);
+        panel.add(lblDecision);
+        panel.add(Box.createVerticalStrut(10));
+
+        ComboBox<String> comboDecision = new ComboBox<>(
+                new String[]{"ACEPTADA", "RECHAZADA", "DEVUELTA"});
+        comboDecision.setMaximumSize(new Dimension(400, 50));
+        comboDecision.setAlignmentX(Component.LEFT_ALIGNMENT);
+        panel.add(comboDecision);
+        panel.add(Box.createVerticalStrut(20));
+
+        Label lblMotivo = new Label("Motivo (mínimo 10 caracteres):");
+        lblMotivo.setAlignmentX(Component.LEFT_ALIGNMENT);
+        panel.add(lblMotivo);
+        panel.add(Box.createVerticalStrut(10));
+
+        JTextArea txtMotivo = new JTextArea(5, 30);
+        txtMotivo.setLineWrap(true);
+        txtMotivo.setWrapStyleWord(true);
+        txtMotivo.setFont(Style.INPUT_FONT);
+        JScrollPane scrollMotivo = new JScrollPane(txtMotivo);
+        scrollMotivo.setMaximumSize(new Dimension(400, 150));
+        scrollMotivo.setAlignmentX(Component.LEFT_ALIGNMENT);
+        panel.add(scrollMotivo);
+        panel.add(Box.createVerticalStrut(20));
+
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        buttonPanel.setMaximumSize(new Dimension(Integer.MAX_VALUE, 50));
+        buttonPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+        Button btnCancelar = new Button("Cancelar");
+        Button btnGuardar = new Button("Guardar");
+
+        btnCancelar.addActionListener(e -> dialog.dispose());
+
+        btnGuardar.addActionListener(e -> {
+            String decision = (String) comboDecision.getSelectedItem();
+            String motivo = txtMotivo.getText().trim();
+
+            if (motivo.length() < 10) {
+                JOptionPane.showMessageDialog(dialog,
+                        "El motivo debe tener al menos 10 caracteres",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            ResolucionDTO resolucion = new ResolucionDTO();
+            resolucion.setSolicitud(solicitud);
+            resolucion.setDecision(decision);
+            resolucion.setMotivo(motivo);
+            resolucion.setFechaEvaluacion(LocalDate.now());
+
+            dialog.dispose();
+            coordinadorAplicacion.evaluarManual(resolucion);
+        });
+
+        buttonPanel.add(btnCancelar);
+        buttonPanel.add(btnGuardar);
+        panel.add(buttonPanel);
+
+        dialog.add(panel);
+        dialog.setVisible(true);
     }
 }

@@ -1,7 +1,7 @@
 package adaptadores.pagarAdeudo;
 
 import datos.dominioItson.pagarAdeudo.Prestamo;
-import pagarAdeudo.PrestamoDTO;
+import dto.pagarAdeudo.PrestamoDTO;
 import itson.pagarAdeudo.PrestamoDTOI;
 
 import java.util.ArrayList;

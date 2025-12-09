@@ -2,9 +2,8 @@ package controles;
 
 import apiBanco.BancoAPI;
 import apiBanco.interfaces.IBancoAPI;
-import pagarAdeudo.SolicitudPagoDTO;
+import dto.pagarAdeudo.SolicitudPagoDTO;
 
-import javax.swing.*;
 import java.awt.event.ActionListener;
 
 /**
