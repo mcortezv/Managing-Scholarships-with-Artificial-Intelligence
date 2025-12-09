@@ -10,11 +10,14 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
@@ -26,11 +29,12 @@ import presentacion.actividadesExtracurriculares.panels.PanelActividades;
  *
  * @author janethcristinagalvanquinonez
  */
-public class DetallesActividadBaja extends PanelActividades{
+public class DetallesExtraBaja extends PanelActividades{
     
     JPanel panelContenido;
+    private JTextArea fieldMotivo;
 
-    public DetallesActividadBaja(ActividadesExtracurriculares actividadesExtracurriculares, CoordinadorAplicacionActividades coordinadorAplicacionActividades) {
+    public DetallesExtraBaja(ActividadesExtracurriculares actividadesExtracurriculares, CoordinadorAplicacionActividades coordinadorAplicacionActividades) {
         super(actividadesExtracurriculares, coordinadorAplicacionActividades);
     }
     
@@ -71,7 +75,10 @@ public class DetallesActividadBaja extends PanelActividades{
         centralPanel.add(Box.createVerticalStrut(30));
 
         botonSiguiente.addActionListener(e -> {
-            coordinadorAplicacionActividades.mostrarDetallesExtraBaja();
+            String motivo= fieldMotivo.getText();
+            System.out.println(motivo);
+            
+      //      coordinadorAplicacionActividades.inscribirActividadAlumno();
         });
 
         botonVolver.addActionListener(e -> {
@@ -85,16 +92,32 @@ public class DetallesActividadBaja extends PanelActividades{
         panelContenido.removeAll();
         panelContenido.add(Box.createVerticalGlue());
         System.out.println(inscripcion.getId());
-        panelContenido.add(crearCampo("Nombre de grupo", inscripcion.getNombreGrupo()));
+        panelContenido.add(crearCampo("Fecha de Inscripcion",  inscripcion.getFechaInscripcion().toString()));
         panelContenido.add(Box.createVerticalStrut(20));
-        panelContenido.add(crearCampo("Unidad", grupoInscripcionDTO.getUnidad()));
+        LocalDate fechaInicio = grupoInscripcionDTO.getFechaInicio();
+        long diasPasados = ChronoUnit.DAYS.between(fechaInicio, LocalDate.now());
+        panelContenido.add(crearCampo("Dias pasados", String.valueOf(diasPasados)));;
+        LocalDate fechaFin = grupoInscripcionDTO.getFechaFin();
+        long diasFaltantes = fechaFin.toEpochDay() - LocalDate.now().toEpochDay();
+        panelContenido.add(crearCampo("Dias faltantes ", String.valueOf(diasFaltantes)));
         panelContenido.add(Box.createVerticalStrut(20));
-        panelContenido.add(crearCampo("Responsable de la Actividad", grupoInscripcionDTO.getNombreResponsable()));
-        panelContenido.add(Box.createVerticalStrut(20));
-        panelContenido.add(crearCampo("Lugar ",  grupoInscripcionDTO.getNombreUbicacion()));
-        panelContenido.add(Box.createVerticalStrut(20));
-        panelContenido.add(crearCampo("Horario ", grupoInscripcionDTO.getHoraInicio()+"-"+grupoInscripcionDTO.getHoraFin()));
-        panelContenido.add(Box.createVerticalGlue());
+        
+        
+        JLabel labelMotivo= new JLabel("Motivo de la Baja");
+        labelMotivo.setFont(new Font("SansSerif", Font.PLAIN, 14));
+        labelMotivo.setForeground(Color.GRAY);
+        labelMotivo.setAlignmentX(Component.CENTER_ALIGNMENT);
+        fieldMotivo = new JTextArea(3, 20);
+        fieldMotivo.setLineWrap(true);
+        fieldMotivo.setWrapStyleWord(true);
+        fieldMotivo.setBorder(BorderFactory.createCompoundBorder(
+                new LineBorder(new Color(200, 200, 200), 1),
+                new EmptyBorder(5, 10, 5, 10)
+        ));
+        panelContenido.add(labelMotivo);
+        panelContenido.add(fieldMotivo);
+        
+        panelContenido.add(Box.createVerticalGlue());       
         panelContenido.revalidate();
         panelContenido.repaint();
         
@@ -136,8 +159,11 @@ public class DetallesActividadBaja extends PanelActividades{
     
     
     
+    
+    
 
     
     
     
 }
+    

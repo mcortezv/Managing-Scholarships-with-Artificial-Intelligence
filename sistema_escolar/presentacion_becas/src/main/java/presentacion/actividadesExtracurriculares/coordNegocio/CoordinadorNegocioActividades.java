@@ -50,4 +50,9 @@ public class CoordinadorNegocioActividades implements ICoordNegocioActividades {
        return fachadaActividad.obtenerInscripciones(estudianteDTO);
        
    }
+   
+   public GrupoDTO obtenerGrupoInscrito(InscripcionDTO inscripcionDTO){
+       System.out.println("cordnegocio"+inscripcionDTO.getIdGrupo());
+       return fachadaActividad.obtenerGrupoInscrito(inscripcionDTO);
+   }
 }

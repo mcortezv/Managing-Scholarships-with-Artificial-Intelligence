@@ -5,6 +5,7 @@
 package presentacion.actividadesExtracurriculares.panels;
 
 import dto.actividades.EstudianteDTO;
+import dto.actividades.GrupoDTO;
 import dto.actividades.InscripcionDTO;
 import dto.actividades.InscripcionesDTO;
 import itson.LoginDTOItson;
@@ -98,7 +99,7 @@ public class ListaInscripciones extends PanelActividades{
         
         
         for(InscripcionDTO inscripcion:inscripcionesDTO.getInscripciones()){
-            Button boton= new Button(inscripcion.getNombreGrupo());
+            Button boton= new Button(inscripcion.getNombreActividad()+" ,  "+inscripcion.getNombreGrupo());
             boton.setAlignmentX(Component.CENTER_ALIGNMENT);
             boton.setBackground(new Color(60, 100, 220));
             boton.setOpaque(true);
@@ -123,8 +124,13 @@ public class ListaInscripciones extends PanelActividades{
             panelContenido.add(Box.createVerticalStrut(5));
             
             boton.addActionListener(e->{
-                coordinadorAplicacionActividades.inscripcionSeleccionada(inscripcion);
-                 System.out.println("el id es"+inscripcion.getId());
+                 System.out.println("pantalla"+inscripcion.getIdGrupo());
+                  coordinadorAplicacionActividades.inscripcionSeleccionada(inscripcion);
+                  coordinadorAplicacionActividades.mostrarDetallesActividad();
+                // System.out.println("en lista inscripciones"+grupoDTO.getNombreResponsable()+grupoDTO.getUnidad());
+                
+               
+                
            
                
             });

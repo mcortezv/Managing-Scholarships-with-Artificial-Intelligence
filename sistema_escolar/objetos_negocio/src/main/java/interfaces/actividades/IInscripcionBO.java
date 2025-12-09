@@ -5,6 +5,7 @@
 package interfaces.actividades;
 
 import dto.actividades.EstudianteDTO;
+import dto.actividades.GrupoDTO;
 import dto.actividades.InscripcionDTO;
 import dto.actividades.InscripcionesDTO;
 
@@ -16,4 +17,5 @@ public interface IInscripcionBO {
   
     public InscripcionDTO inscribirActividad(InscripcionDTO inscripcionDTO);
     public InscripcionesDTO obtenerInscripciones(EstudianteDTO estudianteDTO);
+    public GrupoDTO obtenerGrupoInscrito(InscripcionDTO inscripcionDTO);
 }

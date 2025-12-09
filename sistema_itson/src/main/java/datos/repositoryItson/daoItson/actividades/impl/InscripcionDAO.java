@@ -9,6 +9,8 @@ import com.mongodb.client.model.Filters;
 import datos.configMongoItson.MongoClienteProvider;
 import datos.dominioItson.actividades.Inscripcion;
 import datos.repositoryItson.daoItson.actividades.IInscripcionDAO;
+import itson.actividades.GrupoResponseDTOItson;
+import itson.actividades.InscripcionDTOItson;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,6 +47,8 @@ public class InscripcionDAO implements IInscripcionDAO{
                  
          
      }
+     
+
     
     
     

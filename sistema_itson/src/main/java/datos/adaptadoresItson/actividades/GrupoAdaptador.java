@@ -6,10 +6,13 @@ package datos.adaptadoresItson.actividades;
 
 
 import datos.dominioItson.actividades.Grupo;
+import datos.dominioItson.actividades.Inscripcion;
 import itson.actividades.GrupoResponseDTOItson;
 import itson.actividades.GruposResponseDTOItson;
+import itson.actividades.InscripcionDTOItson;
 import java.util.ArrayList;
 import java.util.List;
+import org.bson.types.ObjectId;
 
 /**
  *
@@ -27,6 +30,11 @@ public class GrupoAdaptador {
         gruposResponseDTOItson.setGruposItson(grupoLista);
         return gruposResponseDTOItson;
     }
+//    
+//    public static Inscripcion toEntity(InscripcionDTOItson inscripcionDTOItson){
+//        Inscripcion inscripcion= new Inscripcion();
+//        inscripcion.setId((ObjectId)inscripcionDTOItson.getIdInscipcion());
+//    }
     
     public static GrupoResponseDTOItson toDTO(Grupo grupo){
         GrupoResponseDTOItson grupoResponseDTOItson= new GrupoResponseDTOItson();
