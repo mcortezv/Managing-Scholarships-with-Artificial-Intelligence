@@ -1,12 +1,12 @@
 package datosGobierno.daoGobierno;
 import com.mongodb.MongoException;
 import com.mongodb.client.MongoCollection;
+import datosGobierno.daoGobierno.excepcionesGobierno.EstudianteDAOException;
+import datosGobierno.daoGobierno.interfacesGobierno.IEstudianteDAO;
+import datosGobierno.documents.EstudianteDocument;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 import solicitarBeca.config.MongoClientProvider;
-import solicitarBeca.excepciones.EstudianteDAOException;
-import solicitarBeca.repository.dao.interfaces.IEstudianteDAO;
-import solicitarBeca.repository.documents.EstudianteDocument;
 import java.time.Instant;
 
 /**

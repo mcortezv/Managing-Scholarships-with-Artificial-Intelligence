@@ -1,5 +1,6 @@
 package datosGobierno.adaptadoresGobierno;
 import datosGobierno.adaptadoresGobierno.excepciones.DocumentoAdaptadorException;
+import datosGobierno.documents.DocumentoDocument;
 import datosGobierno.dominioGobierno.Documento;
 import datosGobierno.dominioGobierno.enums.TipoDocumento;
 import dtoGobierno.DocumentoDTO;
@@ -45,6 +46,24 @@ public class DocumentoAdaptador {
             return documento;
         } catch (Exception ex) {
             throw new DocumentoAdaptadorException("Error al convertir DocumentoDTOGobierno a entidad Documento");
+        }
+    }
+
+    /**
+     * To document documento document.
+     *
+     * @param dto the dto
+     * @return the documento document
+     */
+    public static DocumentoDocument toDocument(DocumentoDTOGobierno dto) {
+        try {
+            DocumentoDocument documento = new DocumentoDocument();
+            documento.setIdentificador(dto.getIdentificador());
+            documento.setTipo(TipoDocumento.valueOf(dto.getTipo()));
+            documento.setContenido(dto.getContenido());
+            return documento;
+        } catch (Exception ex) {
+            throw new DocumentoAdaptadorException("Error al convertir DocumentoDTOGobierno a DocumentoDocument");
         }
     }
 

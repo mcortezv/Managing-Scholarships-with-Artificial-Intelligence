@@ -1,11 +1,11 @@
 package datosGobierno.daoGobierno;
 import com.mongodb.MongoException;
 import com.mongodb.client.MongoCollection;
+import datosGobierno.configMongoGobierno.MongoClienteProvider;
+import datosGobierno.daoGobierno.excepcionesGobierno.DocumentoDAOException;
+import datosGobierno.daoGobierno.interfacesGobierno.IDocumentoDAO;
+import datosGobierno.documents.DocumentoDocument;
 import org.bson.types.ObjectId;
-import solicitarBeca.config.MongoClientProvider;
-import solicitarBeca.excepciones.DocumentoDAOException;
-import solicitarBeca.repository.dao.interfaces.IDocumentoDAO;
-import solicitarBeca.repository.documents.DocumentoDocument;
 import java.time.Instant;
 
 /**
@@ -20,7 +20,7 @@ public class DocumentoDAO implements IDocumentoDAO {
      * Instantiates a new Documento dao.
      */
     public DocumentoDAO() {
-        this.col = MongoClientProvider.INSTANCE.getCollection("documentos", DocumentoDocument.class);
+        this.col = MongoClienteProvider.INSTANCE.getCollection("documentos", DocumentoDocument.class);
     }
 
     @Override

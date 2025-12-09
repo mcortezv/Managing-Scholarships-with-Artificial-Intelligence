@@ -1,5 +1,6 @@
 package datosGobierno.adaptadoresGobierno;
 import datosGobierno.adaptadoresGobierno.excepciones.SolicitudAdaptadorException;
+import datosGobierno.documents.SolicitudDocument;
 import datosGobierno.dominioGobierno.Documento;
 import datosGobierno.dominioGobierno.Solicitud;
 import datosGobierno.dominioGobierno.enums.EstadoSolicitud;
@@ -77,6 +78,20 @@ public class SolicitudAdaptador {
         }
     }
 
+    public static SolicitudDocument toDocument(SolicitudDTOGobierno dto) {
+        try {
+            SolicitudDocument solicitud = new SolicitudDocument();
+            solicitud.setBeca(BecaAdaptador.toEntity(dto.getBeca()));
+            solicitud.setEstado(EstadoSolicitud.valueOf(dto.getEstado()));
+            solicitud.setFecha(dto.getFecha());
+            solicitud.setId(dto.getId());
+            solicitud.setHistorialAcademico(HistorialAcademicoAdaptador.toEntity(dto.getHistorialAcademico()));
+            solicitud.setInformacionSocioeconomica(InformacionSocioeconomicaAdaptador.toEntity(dto.getInformacionSocioeconomica()));
+            return solicitud;
+        } catch (Exception ex) {
+            throw new SolicitudAdaptadorException("Error al convertir SolicitudDTOGobierno a entidad SolicitudDocument");
+        }
+    }
 
     /**
      * To dto solicitud dto.

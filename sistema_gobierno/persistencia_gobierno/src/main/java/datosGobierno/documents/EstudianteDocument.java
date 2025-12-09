@@ -1,7 +1,7 @@
 package datosGobierno.documents;
+import datosGobierno.dominioGobierno.Tutor;
+import datosGobierno.dominioGobierno.enums.Carrera;
 import org.bson.types.ObjectId;
-import solicitarBeca.dominio.Tutor;
-import solicitarBeca.dominio.enums.Carrera;
 import java.time.Instant;
 
 /**

@@ -1,6 +1,6 @@
 package datosGobierno.documents;
+import datosGobierno.dominioGobierno.enums.TipoDocumento;
 import org.bson.types.ObjectId;
-import solicitarBeca.dominio.enums.TipoDocumento;
 import java.time.Instant;
 
 /**
