@@ -3,11 +3,10 @@ import datosGobierno.adaptadoresGobierno.excepciones.DocumentoAdaptadorException
 import datosGobierno.dominioGobierno.Documento;
 import datosGobierno.dominioGobierno.enums.TipoDocumento;
 import dtoGobierno.DocumentoDTO;
+import gobierno.DocumentoDTOGobierno;
 
 /**
  * The type Documento adaptador.
- *
- * @author Cortez, Manuel;
  */
 public class DocumentoAdaptador {
 
@@ -27,6 +26,25 @@ public class DocumentoAdaptador {
             return documento;
         } catch (Exception ex) {
             throw new DocumentoAdaptadorException("Error al convertir DocumentoDTO a entidad Documento");
+        }
+    }
+
+    /**
+     * To entity documento.
+     *
+     * @param dto the dto
+     * @return the documento
+     */
+    public static Documento toEntity(DocumentoDTOGobierno dto) {
+        try {
+            Documento documento = new Documento();
+            documento.setIdentificador(dto.getIdentificador());
+            documento.setTipo(TipoDocumento.valueOf(dto.getTipo()));
+            documento.setContenido(dto.getContenido());
+            documento.setEstudiante(EstudianteAdaptador.toEntity(dto.getEstudiante()));
+            return documento;
+        } catch (Exception ex) {
+            throw new DocumentoAdaptadorException("Error al convertir DocumentoDTOGobierno a entidad Documento");
         }
     }
 

@@ -9,5 +9,5 @@ import solicitarBeca.repository.documents.EstudianteDocument;
  */
 public interface IEstudianteDAO {
 
-    ObjectId create(EstudianteDocument entity) throws EstudianteDAOException;
+    ObjectId guardar(EstudianteDocument entity) throws EstudianteDAOException;
 }

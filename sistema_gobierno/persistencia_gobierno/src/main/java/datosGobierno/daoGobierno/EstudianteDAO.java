@@ -1,5 +1,4 @@
 package datosGobierno.daoGobierno;
-
 import com.mongodb.MongoException;
 import com.mongodb.client.MongoCollection;
 import org.bson.Document;
@@ -8,7 +7,6 @@ import solicitarBeca.config.MongoClientProvider;
 import solicitarBeca.excepciones.EstudianteDAOException;
 import solicitarBeca.repository.dao.interfaces.IEstudianteDAO;
 import solicitarBeca.repository.documents.EstudianteDocument;
-
 import java.time.Instant;
 
 /**
@@ -25,7 +23,7 @@ public class EstudianteDAO implements IEstudianteDAO {
     }
 
     @Override
-    public ObjectId create(EstudianteDocument entity) throws EstudianteDAOException {
+    public ObjectId guardar(EstudianteDocument entity) throws EstudianteDAOException {
         try {
             if (entity.get_id() == null) {
                 entity.set_id(new ObjectId());

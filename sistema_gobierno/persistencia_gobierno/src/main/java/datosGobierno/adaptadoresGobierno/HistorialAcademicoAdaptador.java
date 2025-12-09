@@ -3,11 +3,10 @@ import datosGobierno.adaptadoresGobierno.excepciones.HistorialAcademicoAdaptador
 import datosGobierno.dominioGobierno.HistorialAcademico;
 import datosGobierno.dominioGobierno.enums.Carrera;
 import dtoGobierno.HistorialAcademicoDTO;
+import gobierno.HistorialAcademicoDTOGobierno;
 
 /**
  * The type Historial academico adaptador.
- *
- * @author Cortez, Manuel;
  */
 public class HistorialAcademicoAdaptador {
 
@@ -29,6 +28,27 @@ public class HistorialAcademicoAdaptador {
             return historialAcademico;
         } catch (Exception ex) {
             throw new HistorialAcademicoAdaptadorException("Error al convertir HistorialAcademicoDTO a entidad HistorialAcademico");
+        }
+    }
+
+    /**
+     * To entity historial academico.
+     *
+     * @param dto the dto
+     * @return the historial academico
+     */
+    public static HistorialAcademico toEntity(HistorialAcademicoDTOGobierno dto) {
+        try {
+            HistorialAcademico historialAcademico = new HistorialAcademico();
+            historialAcademico.setCargaAcademica(dto.getCargaAcademica());
+            historialAcademico.setIndiceReprobacion(dto.getIndiceReprobacion());
+            historialAcademico.setPorcentajeBajas(dto.getPorcentajeBajas());
+            historialAcademico.setCarrera(Carrera.valueOf(dto.getCarrera()));
+            historialAcademico.setPromedio(dto.getPromedio());
+            historialAcademico.setSemestre(dto.getSemestre());
+            return historialAcademico;
+        } catch (Exception ex) {
+            throw new HistorialAcademicoAdaptadorException("Error al convertir HistorialAcademicoDTOGobierno a entidad HistorialAcademico");
         }
     }
 

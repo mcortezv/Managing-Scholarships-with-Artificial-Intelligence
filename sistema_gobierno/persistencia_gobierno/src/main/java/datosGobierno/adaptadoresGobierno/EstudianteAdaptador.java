@@ -3,11 +3,10 @@ import datos.adaptadoresItson.excepciones.EstudianteAdaptadorException;
 import datosGobierno.dominioGobierno.Estudiante;
 import datosGobierno.dominioGobierno.enums.Carrera;
 import dtoGobierno.EstudianteDTO;
+import gobierno.EstudianteDTOGobierno;
 
 /**
  * The type Estudiante adaptador.
- *
- * @author Cortez, Manuel;
  */
 public class EstudianteAdaptador {
 
@@ -32,6 +31,30 @@ public class EstudianteAdaptador {
             return estudiante;
         } catch (Exception ex) {
             throw new EstudianteAdaptadorException("Error al convertir EstudianteDTO a entidad Estudiante");
+        }
+    }
+
+    /**
+     * To entity estudiante.
+     *
+     * @param dto the dto
+     * @return the estudiante
+     */
+    public static Estudiante toEntity(EstudianteDTOGobierno dto) {
+        try {
+            Estudiante estudiante = new Estudiante();
+            estudiante.setCarrera(Carrera.valueOf(dto.getCarrera()));
+            estudiante.setNombre(dto.getNombre());
+            estudiante.setCorreo(dto.getCorreo());
+            estudiante.setTelefono(dto.getTelefono());
+            if (estudiante.getContrasenia() != null) {
+                estudiante.setContrasenia(dto.getContrasenia());
+            }
+            estudiante.setDireccion(dto.getDireccion());
+            estudiante.setMatricula(dto.getMatricula());
+            return estudiante;
+        } catch (Exception ex) {
+            throw new EstudianteAdaptadorException("Error al convertir EstudianteDTOGobierno a entidad Estudiante");
         }
     }
 

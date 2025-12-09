@@ -1,9 +1,9 @@
 package datosGobierno.documents;
+import datosGobierno.dominioGobierno.Beca;
+import datosGobierno.dominioGobierno.HistorialAcademico;
+import datosGobierno.dominioGobierno.InformacionSocioeconomica;
+import datosGobierno.dominioGobierno.enums.EstadoSolicitud;
 import org.bson.types.ObjectId;
-import solicitarBeca.dominio.Beca;
-import solicitarBeca.dominio.HistorialAcademico;
-import solicitarBeca.dominio.InformacionSocioeconomica;
-import solicitarBeca.dominio.enums.EstadoSolicitud;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.util.List;

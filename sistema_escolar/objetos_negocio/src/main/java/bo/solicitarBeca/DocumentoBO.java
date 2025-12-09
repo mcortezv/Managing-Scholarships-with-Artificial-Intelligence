@@ -28,7 +28,7 @@ public class DocumentoBO implements IDocumentoBO {
     @Override
     public void guardarDocumento(DocumentoDocument documento) throws DocumentoInvalidoException {
         try {
-            documentoDAO.create(documento);
+            documentoDAO.guardar(documento);
         } catch (Exception ex) {
             throw new DocumentoInvalidoException(ex.getMessage());
         }

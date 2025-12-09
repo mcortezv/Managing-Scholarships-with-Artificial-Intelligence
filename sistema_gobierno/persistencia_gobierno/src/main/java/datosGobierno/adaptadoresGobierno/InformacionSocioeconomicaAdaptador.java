@@ -3,11 +3,10 @@ import datosGobierno.adaptadoresGobierno.excepciones.InformacionSocioeconomicaAd
 import datosGobierno.dominioGobierno.InformacionSocioeconomica;
 import datosGobierno.dominioGobierno.enums.TipoVivienda;
 import dtoGobierno.InformacionSocioeconomicaDTO;
+import gobierno.InformacionSocioeconomicaDTOGobierno;
 
 /**
  * The type Informacion socioeconomica adaptador.
- *
- * @author Cortez, Manuel;
  */
 public class InformacionSocioeconomicaAdaptador {
 
@@ -27,6 +26,25 @@ public class InformacionSocioeconomicaAdaptador {
             return informacionSocioeconomica;
         } catch (Exception ex) {
             throw new InformacionSocioeconomicaAdaptadorException("Error al convertir InformacionSocioeconomicaDTO a entidad InformacionSocioeconomica");
+        }
+    }
+
+    /**
+     * To entity informacion socioeconomica.
+     *
+     * @param dto the dto
+     * @return the informacion socioeconomica
+     */
+    public static InformacionSocioeconomica toEntity(InformacionSocioeconomicaDTOGobierno dto) {
+        try {
+            InformacionSocioeconomica informacionSocioeconomica = new InformacionSocioeconomica();
+            informacionSocioeconomica.setDeudas(dto.getDeudas());
+            informacionSocioeconomica.setTrabajo(dto.getTrabajo());
+            informacionSocioeconomica.setTipoVivienda(TipoVivienda.valueOf(dto.getTipoVivienda()));
+            informacionSocioeconomica.setIngresoTotalFamilarMensual(dto.getIngresoTotalFamilarMensual());
+            return informacionSocioeconomica;
+        } catch (Exception ex) {
+            throw new InformacionSocioeconomicaAdaptadorException("Error al convertir InformacionSocioeconomicaDTOGobierno a entidad InformacionSocioeconomica");
         }
     }
 

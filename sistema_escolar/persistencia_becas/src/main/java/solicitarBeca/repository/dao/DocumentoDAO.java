@@ -23,7 +23,7 @@ public class DocumentoDAO implements IDocumentoDAO {
     }
 
     @Override
-    public ObjectId create(DocumentoDocument entity) throws DocumentoDAOException {
+    public ObjectId guardar(DocumentoDocument entity) throws DocumentoDAOException {
         try {
             if (entity.get_id() == null) {
                 entity.set_id(new ObjectId());

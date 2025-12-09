@@ -5,13 +5,13 @@ import datosGobierno.dominioGobierno.Solicitud;
 import datosGobierno.dominioGobierno.enums.EstadoSolicitud;
 import dtoGobierno.DocumentoDTO;
 import dtoGobierno.SolicitudDTO;
+import gobierno.DocumentoDTOGobierno;
+import gobierno.SolicitudDTOGobierno;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * The type Solicitud adaptador.
- *
- * @author Cortez, Manuel;
  */
 public class SolicitudAdaptador {
 
@@ -45,6 +45,38 @@ public class SolicitudAdaptador {
             throw new SolicitudAdaptadorException("Error al convertir SolicitudDTO a entidad Solicitud");
         }
     }
+
+    /**
+     * To entity solicitud.
+     *
+     * @param dto the dto
+     * @return the solicitud
+     */
+    public static Solicitud toEntity(SolicitudDTOGobierno dto) {
+        try {
+            Solicitud solicitud = new Solicitud();
+            solicitud.setBeca(BecaAdaptador.toEntity(dto.getBeca()));
+            solicitud.setEstado(EstadoSolicitud.valueOf(dto.getEstado()));
+            if (dto.getEstudiante() != null) {
+                solicitud.setEstudiante(EstudianteAdaptador.toEntity(dto.getEstudiante()));
+            }
+            solicitud.setFecha(dto.getFecha());
+            solicitud.setId(dto.getId());
+            solicitud.setHistorialAcademico(HistorialAcademicoAdaptador.toEntity(dto.getHistorialAcademico()));
+            solicitud.setInformacionSocioeconomica(InformacionSocioeconomicaAdaptador.toEntity(dto.getInformacionSocioeconomica()));
+            if (dto.getDocumentos() != null) {
+                List<Documento> documentos = new ArrayList<>();
+                for (DocumentoDTOGobierno documentoDTO : dto.getDocumentos()) {
+                    documentos.add(DocumentoAdaptador.toEntity(documentoDTO));
+                }
+                solicitud.setDocumentos(documentos);
+            }
+            return solicitud;
+        } catch (Exception ex) {
+            throw new SolicitudAdaptadorException("Error al convertir SolicitudDTOGobierno a entidad Solicitud");
+        }
+    }
+
 
     /**
      * To dto solicitud dto.

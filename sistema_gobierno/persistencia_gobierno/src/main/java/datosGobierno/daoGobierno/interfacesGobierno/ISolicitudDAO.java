@@ -1,24 +1,53 @@
 package datosGobierno.daoGobierno.interfacesGobierno;
+import datosGobierno.documents.SolicitudDocument;
 import datosGobierno.dominioGobierno.Solicitud;
 import datosGobierno.dominioGobierno.enums.EstadoSolicitud;
-import dtoGobierno.SolicitudDTO;
-import gobierno.SolicitudDTOGobierno;
 import java.util.List;
 
 /**
- *
- * @author Cortez, Manuel;
+ * The interface Solicitud dao.
  */
 public interface ISolicitudDAO {
 
-    boolean guardarSolicitud(SolicitudDTOGobierno solicitud);
+    /**
+     * Guardar solicitud boolean.
+     *
+     * @param solicitud the solicitud
+     * @return the boolean
+     */
+    boolean guardarSolicitud(SolicitudDocument solicitud);
 
-    List<SolicitudDTO> obtenerListadoSolicitudes(String tipoBeca);
+    /**
+     * Obtener listado solicitudes list.
+     *
+     * @param tipoBeca the tipo beca
+     * @return the list
+     */
+    List<Solicitud> obtenerListadoSolicitudes(String tipoBeca);
 
+    /**
+     * Obtener por id solicitud.
+     *
+     * @param idSolicitud the id solicitud
+     * @return the solicitud
+     */
     Solicitud obtenerPorId(int idSolicitud);
 
 
+    /**
+     * Actualizar boolean.
+     *
+     * @param solicitud the solicitud
+     * @return the boolean
+     */
     boolean actualizar(Solicitud solicitud);
 
+    /**
+     * Cambiar estado boolean.
+     *
+     * @param id     the id
+     * @param estado the estado
+     * @return the boolean
+     */
     boolean cambiarEstado(int id, EstadoSolicitud estado);
 }

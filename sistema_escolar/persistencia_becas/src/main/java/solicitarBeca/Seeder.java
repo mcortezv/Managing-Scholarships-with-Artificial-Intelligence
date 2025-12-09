@@ -38,7 +38,7 @@ public class Seeder {
             estudiante.setContrasenia("Manuel123");
             estudiante.setTutor(new Tutor("Dora Imelda", Parentesco.MADRE, "6441434194", "Cd. Obregon", "dimelda@gmail.com"));
             estudiante.setCreadoEn(Instant.now());
-            ObjectId estudianteId = estudianteDAO.create(estudiante);
+            ObjectId estudianteId = estudianteDAO.guardar(estudiante);
             System.out.println("Estudiante Insertado: " + estudianteId);
 
 
@@ -49,7 +49,7 @@ public class Seeder {
             doc.setIdentificador(1L);
             doc.setEstudiante(estudianteId);
             doc.setCreadoEn(Instant.now());
-            ObjectId documentoId = documentoDAO.create(doc);
+            ObjectId documentoId = documentoDAO.guardar(doc);
             System.out.println("Documento Insertado: " + documentoId);
 
 
