@@ -34,7 +34,6 @@ public class Main {
 
     public static void main(String[] args) {
 
-
         ControlModeloML controlModeloML = new ControlModeloML();
         IResolucionDAO resolucionDAO = new ResolucionDAO();
         ISolicitudDAO solicitudDAO = new SolicitudDAO();

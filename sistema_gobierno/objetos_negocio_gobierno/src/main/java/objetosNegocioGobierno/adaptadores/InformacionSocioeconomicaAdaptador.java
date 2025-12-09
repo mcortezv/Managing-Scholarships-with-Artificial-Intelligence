@@ -6,11 +6,18 @@ import gobierno.InformacionSocioeconomicaDTOGobierno;
 import objetosNegocioGobierno.adaptadores.excepciones.InformacionSocioeconomicaAdaptadorException;
 
 /**
+ * The type Informacion socioeconomica adaptador.
  *
  * @author Cortez, Manuel;
  */
 public class InformacionSocioeconomicaAdaptador {
 
+    /**
+     * To entity informacion socioeconomica.
+     *
+     * @param dto the dto
+     * @return the informacion socioeconomica
+     */
     public static InformacionSocioeconomica toEntity(InformacionSocioeconomicaDTO dto){
         try {
             InformacionSocioeconomica informacionSocioeconomica = new InformacionSocioeconomica();
@@ -20,10 +27,16 @@ public class InformacionSocioeconomicaAdaptador {
             informacionSocioeconomica.setDeudas(dto.getDeudas());
             return informacionSocioeconomica;
         } catch (Exception sinUso){
-            throw new InformacionSocioeconomicaAdaptadorException("No se pudo mappear la DTO a Entidad");
+            throw new InformacionSocioeconomicaAdaptadorException("No se pudo mappear la InformacionSocioeconomicaDTO a entidad InformacionSocioeconomica");
         }
     }
 
+    /**
+     * To entity informacion socioeconomica.
+     *
+     * @param dto the dto
+     * @return the informacion socioeconomica
+     */
     public static InformacionSocioeconomica toEntity(InformacionSocioeconomicaDTOGobierno dto){
         try {
             InformacionSocioeconomica informacionSocioeconomica = new InformacionSocioeconomica();
@@ -33,10 +46,16 @@ public class InformacionSocioeconomicaAdaptador {
             informacionSocioeconomica.setDeudas(dto.getDeudas());
             return informacionSocioeconomica;
         } catch (Exception sinUso){
-            throw new InformacionSocioeconomicaAdaptadorException("No se pudo mappear la DTO de Infraestructura a Entidad");
+            throw new InformacionSocioeconomicaAdaptadorException("No se pudo mappear la InformacionSocioeconomicaDTOGobierno a entidad InformacionSocioeconomica");
         }
     }
 
+    /**
+     * To dto informacion socioeconomica dto.
+     *
+     * @param informacionSocioeconomica the informacion socioeconomica
+     * @return the informacion socioeconomica dto
+     */
     public static InformacionSocioeconomicaDTO toDTO(InformacionSocioeconomica informacionSocioeconomica){
         try {
             InformacionSocioeconomicaDTO dto = new InformacionSocioeconomicaDTO();
@@ -46,11 +65,17 @@ public class InformacionSocioeconomicaAdaptador {
             dto.setDeudas(informacionSocioeconomica.getDeudas());
             return dto;
         } catch (Exception sinUso){
-            throw new InformacionSocioeconomicaAdaptadorException("No se pudo mappear la Entidad a DTO");
+            throw new InformacionSocioeconomicaAdaptadorException("No se pudo mappear la entidad InformacionSocioeconomica a InformacionSocioeconomicaDTO");
         }
     }
 
-    public static InformacionSocioeconomicaDTOGobierno toInfraestructuraDTO(InformacionSocioeconomica  informacionSocioeconomica){
+    /**
+     * To infraestructura dto informacion socioeconomica dto gobierno.
+     *
+     * @param informacionSocioeconomica the informacion socioeconomica
+     * @return the informacion socioeconomica dto gobierno
+     */
+    public static InformacionSocioeconomicaDTOGobierno toInfraestructuraDTO(InformacionSocioeconomica informacionSocioeconomica){
         try {
             InformacionSocioeconomicaDTOGobierno dto = new InformacionSocioeconomicaDTOGobierno();
             dto.setIngresoTotalFamilarMensual(informacionSocioeconomica.getIngresoTotalFamilarMensual());
@@ -59,7 +84,7 @@ public class InformacionSocioeconomicaAdaptador {
             dto.setDeudas(informacionSocioeconomica.getDeudas());
             return dto;
         } catch (Exception sinUso){
-            throw new InformacionSocioeconomicaAdaptadorException("No se pudo mappear la Entidad a DTO Infraestructura");
+            throw new InformacionSocioeconomicaAdaptadorException("No se pudo mappear la entidad InformacionSocioeconomica a InformacionSocioeconomicaDTOGobierno");
         }
     }
 }

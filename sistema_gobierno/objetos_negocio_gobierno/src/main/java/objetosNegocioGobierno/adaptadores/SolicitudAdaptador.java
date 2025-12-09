@@ -1,5 +1,4 @@
 package objetosNegocioGobierno.adaptadores;
-import datosGobierno.documents.SolicitudDocument;
 import datosGobierno.dominioGobierno.Documento;
 import datosGobierno.dominioGobierno.Solicitud;
 import datosGobierno.dominioGobierno.enums.EstadoSolicitud;
@@ -12,11 +11,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * The type Solicitud adaptador.
  *
  * @author Cortez, Manuel;
  */
 public class SolicitudAdaptador {
 
+    /**
+     * To entity solicitud.
+     *
+     * @param dto the dto
+     * @return the solicitud
+     */
     public static Solicitud toEntity(SolicitudDTO dto){
         try {
             Solicitud solicitud = new Solicitud();
@@ -36,10 +42,16 @@ public class SolicitudAdaptador {
             solicitud.setEstado(EstadoSolicitud.valueOf(dto.getEstado()));
             return solicitud;
         } catch (Exception sinUso){
-            throw new SolicitudAdaptadorException("No se pudo mappear la DTO a Entidad");
+            throw new SolicitudAdaptadorException("No se pudo mappear la SolicitudDTO a entidad Solicitud");
         }
     }
 
+    /**
+     * To entity solicitud.
+     *
+     * @param dto the dto
+     * @return the solicitud
+     */
     public static Solicitud toEntity(SolicitudDTOGobierno dto){
         try {
             Solicitud solicitud = new Solicitud();
@@ -59,10 +71,16 @@ public class SolicitudAdaptador {
             solicitud.setEstado(EstadoSolicitud.valueOf(dto.getEstado()));
             return solicitud;
         } catch (Exception sinUso){
-            throw new SolicitudAdaptadorException("No se pudo mappear la DTO de Infraestructura a Entidad");
+            throw new SolicitudAdaptadorException("No se pudo mappear la SolicitudDTOGobierno a entidad Solicitud");
         }
     }
 
+    /**
+     * To dto solicitud dto.
+     *
+     * @param solicitud the solicitud
+     * @return the solicitud dto
+     */
     public static SolicitudDTO toDTO(Solicitud solicitud){
         try {
             SolicitudDTO dto = new SolicitudDTO();
@@ -82,10 +100,16 @@ public class SolicitudAdaptador {
             dto.setEstado(solicitud.getEstado().toString());
             return dto;
         } catch (Exception sinUso){
-            throw new SolicitudAdaptadorException("No se pudo mappear la Entidad a DTO");
+            throw new SolicitudAdaptadorException("No se pudo mappear la entidad Solicitud a SolicitudDTO");
         }
     }
 
+    /**
+     * To infraestructura dto solicitud dto gobierno.
+     *
+     * @param solicitud the solicitud
+     * @return the solicitud dto gobierno
+     */
     public static SolicitudDTOGobierno toInfraestructuraDTO(Solicitud  solicitud){
         try {
             SolicitudDTOGobierno dto = new SolicitudDTOGobierno();
@@ -105,23 +129,7 @@ public class SolicitudAdaptador {
             dto.setEstado(solicitud.getEstado().toString());
             return dto;
         } catch (Exception sinUso){
-            throw new SolicitudAdaptadorException("No se pudo mappear la Entidad a DTO Infraestructura");
-        }
-    }
-
-
-    public static SolicitudDTO toDTO(SolicitudDocument solicitud){
-        try {
-            SolicitudDTO dto = new SolicitudDTO();
-            dto.setId(solicitud.getId());
-            dto.setBeca(BecaAdaptador.toDTO(solicitud.getBeca()));
-            dto.setInformacionSocioeconomica(InformacionSocioeconomicaAdaptador.toDTO(solicitud.getInformacionSocioeconomica()));
-            dto.setHistorialAcademico(HistorialAcademicoAdaptador.toDTO(solicitud.getHistorialAcademico()));
-            dto.setFecha(solicitud.getFecha());
-            dto.setEstado(solicitud.getEstado().toString());
-            return dto;
-        } catch (Exception sinUso){
-            throw new SolicitudAdaptadorException("No se pudo mappear la Entidad a DTO");
+            throw new SolicitudAdaptadorException("No se pudo mappear la entidad Solicitud a SolicitudDTOGobierno");
         }
     }
 }

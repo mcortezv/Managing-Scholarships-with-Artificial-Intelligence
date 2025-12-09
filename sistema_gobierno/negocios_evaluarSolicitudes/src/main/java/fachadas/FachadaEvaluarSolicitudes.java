@@ -7,6 +7,7 @@ import interfaces.IFachadaEvaluarSolicitudes;
 import java.util.List;
 
 /**
+ * The type Fachada evaluar solicitudes.
  *
  * @author Cortez, Manuel;
  */
@@ -17,6 +18,11 @@ public class FachadaEvaluarSolicitudes implements IFachadaEvaluarSolicitudes {
         return this.controlEvaluarSolicitudes.obtenerListadoBecas();
     }
 
+    /**
+     * Instantiates a new Fachada evaluar solicitudes.
+     *
+     * @param controlEvaluarSolicitudes the control evaluar solicitudes
+     */
     public FachadaEvaluarSolicitudes(ControlEvaluarSolicitudes controlEvaluarSolicitudes) {
         this.controlEvaluarSolicitudes = controlEvaluarSolicitudes;
     }
