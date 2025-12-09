@@ -22,6 +22,7 @@
         <module>persistencia_actividades</module>
         <module>negocios_tutorias</module>
         <module>presentacion_becas</module>
+        <module>negocios_apelarResultado</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
