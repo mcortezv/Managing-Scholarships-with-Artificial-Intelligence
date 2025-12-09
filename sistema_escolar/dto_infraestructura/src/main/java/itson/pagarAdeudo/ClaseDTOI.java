@@ -14,7 +14,6 @@ public class ClaseDTOI {
     private String detalles;
     private String estatus;
 
-
     public ClaseDTOI() {
     }
 

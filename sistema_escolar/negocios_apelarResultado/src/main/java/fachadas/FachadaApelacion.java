@@ -1,4 +1,12 @@
 package fachadas;
 
-public class FachadaApelacion {
+import controles.ControlApelacion;
+import interfaces.IFachadaApelacion;
+
+public class FachadaApelacion implements IFachadaApelacion {
+    private final ControlApelacion controlApelacion;
+
+    public FachadaApelacion(ControlApelacion controlApelacion) {
+        this.controlApelacion = controlApelacion;
+    }
 }

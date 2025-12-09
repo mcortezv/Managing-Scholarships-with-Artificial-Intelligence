@@ -1,7 +1,7 @@
 package fachadas;
 import controles.ControlBanco;
-import dto.pagarAdeudo.SolicitudPagoDTO;
 import interfaces.IFachadaBanco;
+import itson.pagarAdeudo.SolicitudPagoDTOI;
 
 import java.awt.event.ActionListener;
 
@@ -24,7 +24,7 @@ public class FachadaBanco implements IFachadaBanco {
     }
 
     @Override
-    public SolicitudPagoDTO ejecutarPago(SolicitudPagoDTO solicitud) {
+    public SolicitudPagoDTOI ejecutarPago(SolicitudPagoDTOI solicitud) {
         return controlBanco.ejecutarPago(solicitud);
     }
 

@@ -4,6 +4,8 @@ package presentacion;
 import itson.LoginDTOItson;
 import presentacion.actividadesExtracurriculares.coordinador.CoordinadorAplicacionActividades;
 import presentacion.actividadesExtracurriculares.panels.ActividadesExtracurriculares;
+import presentacion.apelarResultado.ApelarResultado;
+import presentacion.apelarResultado.coordinadorAplicacionApelarResultado.CoordinadorAplicacionApelarResultado;
 import presentacion.interfaces.ICoordinadorAplicacion;
 import presentacion.interfaces.ICoordinadorNegocio;
 import presentacion.login.MainFrame;
@@ -42,6 +44,12 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     // pagar adeudo
     private CoordinadorAplicacionPagarAdeudo coordinadorAplicacionPagarAdeudo;
     private PagarAdeudo pagarAdeudo;
+
+    //apelar resultado
+    private CoordinadorAplicacionApelarResultado coordinadorAplicacionApelarResultado;
+    private ApelarResultado apelarResultado;
+
+
     // act extra
     private CoordinadorAplicacionActividades coordinadorAplicacionActividades;
 
@@ -108,6 +116,17 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
         }
     }
 
+    public void apelacion(){
+        try{
+            if(mainFrame != null) mainFrame.setVisible(false);
+            apelarResultado = new ApelarResultado(this,coordinadorAplicacionApelarResultado);
+            apelarResultado.setVisible(true);
+        }catch (Exception e){
+            e.printStackTrace();
+            if(mainFrame != null) mainFrame.setVisible(true);
+        }
+    }
+
 
     public void actividades(){
         mainFrame.setVisible(false);
@@ -119,6 +138,10 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
 
     public void setCoordinadorAplicacionPagarAdeudo(CoordinadorAplicacionPagarAdeudo c) {
         this.coordinadorAplicacionPagarAdeudo = c;
+    }
+
+    public void setCoordinadorAplicacionApelarResultado(CoordinadorAplicacionApelarResultado c){
+        this.coordinadorAplicacionApelarResultado = c;
     }
 
     public void setCoordinadorAplicacionActividades(CoordinadorAplicacionActividades c){
@@ -133,6 +156,8 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
         EstudianteDTO estudiante = getEstudianteLogueado();
         coordinadorAplicacionTutorias.iniciarTutorias(estudiante.getMatricula());
     }
+
+
     
     public void main() {
         solicitarBeca.setVisible(false);

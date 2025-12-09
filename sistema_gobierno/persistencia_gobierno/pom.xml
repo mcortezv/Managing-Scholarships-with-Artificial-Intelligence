@@ -47,10 +47,5 @@
             <version>1.0</version>
             <scope>compile</scope>
         </dependency>
-            <dependency>
-                <groupId>mcortezv</groupId>
-                <artifactId>recursos_compartidos</artifactId>
-                <version>1.0</version>
-            </dependency>
         </dependencies>
 </project>
