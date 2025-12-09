@@ -13,7 +13,6 @@ public class CuentaService {
         this.cuentaDAO = new CuentaDAO();
     }
 
-
     public Cuenta validarYObtenerCuenta(String numero, String cvv, String fechaVencimiento) throws BancoException {
         Cuenta cuenta = cuentaDAO.buscarPorNumeroTarjeta(numero);
         if (cuenta == null) {
@@ -28,7 +27,6 @@ public class CuentaService {
         }
         return cuenta;
     }
-
 
     public boolean verificarFondos(Cuenta cuenta, double monto) {
         return cuenta.getSaldo() >= monto;

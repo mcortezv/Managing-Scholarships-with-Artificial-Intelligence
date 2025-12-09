@@ -1,6 +1,5 @@
 package objetosNegocioGobierno.adaptadores;
 import datosGobierno.dominioGobierno.Documento;
-import datosGobierno.dominioGobierno.Estudiante;
 import datosGobierno.dominioGobierno.enums.TipoDocumento;
 import gobierno.DocumentoDTOGobierno;
 import dtoGobierno.DocumentoDTO;
@@ -31,9 +30,7 @@ public class DocumentoAdaptador {
             documento.setIdentificador(dto.getIdentificador());
             documento.setTipo(TipoDocumento.valueOf(dto.getTipo()));
             documento.setContenido(dto.getContenido());
-            Estudiante estudiante = new Estudiante();
-            estudiante.setMatricula(dto.getEstudiante());
-            documento.setEstudiante(estudiante);
+            documento.setEstudiante(EstudianteAdaptador.toEntity(dto.getEstudiante()));
             return documento;
         } catch (Exception sinUso){
             throw new DocumentoAdaptadorException("No se pudo mappear la DTO de Infraestructura a Entidad");
@@ -59,7 +56,7 @@ public class DocumentoAdaptador {
             dto.setIdentificador(documento.getIdentificador());
             dto.setTipo(documento.getTipo().toString());
             dto.setContenido(documento.getContenido());
-            dto.setEstudiante(EstudianteAdaptador.toInfraestructuraDTO(documento.getEstudiante()).getMatricula());
+            dto.setEstudiante(EstudianteAdaptador.toInfraestructuraDTO(documento.getEstudiante()));
             return dto;
         } catch (Exception sinUso){
             throw new DocumentoAdaptadorException("No se pudo mappear la Entidad a DTO Infraestructura");

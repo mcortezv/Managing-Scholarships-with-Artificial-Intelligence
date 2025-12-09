@@ -5,10 +5,53 @@
 package datosGobierno.dominioGobierno.enums;
 
 /**
+ * The enum Parentesco.
  *
  * @author Cortez, Manuel;
  */
 public enum Parentesco {
-    PADRE, MADRE, ABUELO, ABUELA, HERMANO, HERMANA,
-    TIO, TIA, PADRASTRO, MADRASTRA, TUTOR_OFICIAL;
+    /**
+     * Padre parentesco.
+     */
+    PADRE,
+    /**
+     * Madre parentesco.
+     */
+    MADRE,
+    /**
+     * Abuelo parentesco.
+     */
+    ABUELO,
+    /**
+     * Abuela parentesco.
+     */
+    ABUELA,
+    /**
+     * Hermano parentesco.
+     */
+    HERMANO,
+    /**
+     * Hermana parentesco.
+     */
+    HERMANA,
+    /**
+     * Tio parentesco.
+     */
+    TIO,
+    /**
+     * Tia parentesco.
+     */
+    TIA,
+    /**
+     * Padrastro parentesco.
+     */
+    PADRASTRO,
+    /**
+     * Madrastra parentesco.
+     */
+    MADRASTRA,
+    /**
+     * Tutor oficial parentesco.
+     */
+    TUTOR_OFICIAL;
 }

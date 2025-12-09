@@ -5,9 +5,25 @@
 package datosGobierno.dominioGobierno.enums;
 
 /**
+ * The enum Estado solicitud.
  *
  * @author Cortez, Manuel;
  */
 public enum EstadoSolicitud {
-    ACTIVA, ACEPTADA, RECHAZADA, DEVUELTA;
+    /**
+     * Activa estado solicitud.
+     */
+    ACTIVA,
+    /**
+     * Aceptada estado solicitud.
+     */
+    ACEPTADA,
+    /**
+     * Rechazada estado solicitud.
+     */
+    RECHAZADA,
+    /**
+     * Devuelta estado solicitud.
+     */
+    DEVUELTA;
 }

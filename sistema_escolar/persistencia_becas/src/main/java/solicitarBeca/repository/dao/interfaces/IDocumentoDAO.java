@@ -9,5 +9,5 @@ import solicitarBeca.repository.documents.DocumentoDocument;
  */
 public interface IDocumentoDAO {
 
-    ObjectId create(DocumentoDocument entity) throws DocumentoDAOException;
+    ObjectId guardar(DocumentoDocument entity) throws DocumentoDAOException;
 }

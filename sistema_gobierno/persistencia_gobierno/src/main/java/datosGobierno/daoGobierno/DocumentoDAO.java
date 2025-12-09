@@ -1,25 +1,26 @@
-package solicitarBeca.repository.dao;
+package datosGobierno.daoGobierno;
 import com.mongodb.MongoException;
 import com.mongodb.client.MongoCollection;
-import org.bson.Document;
+import datosGobierno.configMongoGobierno.MongoClienteProvider;
+import datosGobierno.daoGobierno.excepcionesGobierno.DocumentoDAOException;
+import datosGobierno.daoGobierno.interfacesGobierno.IDocumentoDAO;
+import datosGobierno.documents.DocumentoDocument;
 import org.bson.types.ObjectId;
-import solicitarBeca.config.MongoClientProvider;
-import solicitarBeca.excepciones.DocumentoDAOException;
-import solicitarBeca.repository.dao.interfaces.IDocumentoDAO;
-import solicitarBeca.repository.documents.DocumentoDocument;
 import java.time.Instant;
 
 /**
+ * The type Documento dao.
  *
  * @author Cortez, Manuel;
  */
 public class DocumentoDAO implements IDocumentoDAO {
     private final MongoCollection<DocumentoDocument> col;
-    private final MongoCollection<Document> colDoc;
 
+    /**
+     * Instantiates a new Documento dao.
+     */
     public DocumentoDAO() {
-        this.col = MongoClientProvider.INSTANCE.getCollection("documentos", DocumentoDocument.class);
-        this.colDoc = MongoClientProvider.INSTANCE.getCollection("documentos", Document.class);
+        this.col = MongoClienteProvider.INSTANCE.getCollection("documentos", DocumentoDocument.class);
     }
 
     @Override

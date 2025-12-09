@@ -1,5 +1,6 @@
 package objetosNegocioGobierno.bo;
 
+import datosGobierno.adaptadoresGobierno.SolicitudAdaptador;
 import datosGobierno.daoGobierno.interfacesGobierno.ISolicitudDAO;
 import datosGobierno.dominioGobierno.Solicitud;
 import datosGobierno.dominioGobierno.enums.EstadoSolicitud;
@@ -7,6 +8,7 @@ import dtoGobierno.SolicitudDTO;
 import objetosNegocioGobierno.bo.excepciones.SolicitudBOException;
 import objetosNegocioGobierno.bo.interfaces.ISolicitudBO;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -82,7 +84,11 @@ public class SolicitudBO implements ISolicitudBO {
         try {
             validarTipoBeca(tipoBeca);
 
-            List<SolicitudDTO> solicitudes = solicitudDAO.obtenerListadoSolicitudes(tipoBeca);
+            List<SolicitudDTO> solicitudes = new ArrayList<>();
+
+            for (Solicitud solicitud : solicitudDAO.obtenerListadoSolicitudes(tipoBeca)){
+                solicitudes.add(SolicitudAdaptador.toDTO(solicitud));
+            }
 
             if (solicitudes == null || solicitudes.isEmpty()) {
                 throw new SolicitudBOException(

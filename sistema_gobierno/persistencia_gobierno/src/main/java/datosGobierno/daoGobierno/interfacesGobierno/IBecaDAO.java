@@ -8,11 +8,23 @@ import gobierno.RequisitosDTOGobierno;
 import java.util.List;
 
 /**
+ * The interface Beca dao.
  *
  * @author janethcristinagalvanquinonez
  */
 public interface IBecaDAO {
-    List<Beca> findByRequisitos(RequisitosDTOGobierno requisitos);
+    /**
+     * Filtrar por requisitos list.
+     *
+     * @param requisitos the requisitos
+     * @return the list
+     */
+    List<Beca> filtrarPorRequisitos(RequisitosDTOGobierno requisitos);
 
+    /**
+     * Obtener becas con solicitudes list.
+     *
+     * @return the list
+     */
     List<Beca> obtenerBecasConSolicitudes();
 }

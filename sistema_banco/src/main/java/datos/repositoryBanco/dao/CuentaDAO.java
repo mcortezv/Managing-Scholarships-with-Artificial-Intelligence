@@ -13,7 +13,7 @@ public class CuentaDAO implements ICuentaDAO {
     private final MongoCollection<Cuenta> col;
 
     public CuentaDAO() {
-        this.col = MongoClienteProvider.INSTANCE.getCollection("cuentas",Cuenta.class);
+        this.col = MongoClienteProvider.INSTANCE.getCollection("cuentas", Cuenta.class);
     }
 
     @Override
@@ -31,8 +31,7 @@ public class CuentaDAO implements ICuentaDAO {
         try {
             col.updateOne(
                     Filters.eq("numeroTarjeta", numeroTarjeta),
-                    Updates.set("saldo", nuevoSaldo)
-            );
+                    Updates.set("saldo", nuevoSaldo));
             return true;
         } catch (Exception e) {
             System.err.println("Error al actualizar saldo: " + e.getMessage());

@@ -1,4 +1,5 @@
 package controles;
+
 import adaptadores.solicitarBeca.*;
 import itson.EstudianteDTOItson;
 import excepciones.DocumentoInvalidoException;
@@ -35,12 +36,12 @@ public class ControlSolicitarBeca {
     private Solicitud solicitudActual;
 
     public ControlSolicitarBeca(ISolicitudBO solicitudBO,
-                                IEstudianteBO estudianteBO,
-                                ITutorBO tutorBO,
-                                IBecasFiltradasBO becaBO,
-                                IDocumentoBO documentoBO,
-                                IHistorialAcademicoBO historialBO,
-                                IInformacionSocioeconomicaBO socioBO) {
+            IEstudianteBO estudianteBO,
+            ITutorBO tutorBO,
+            IBecasFiltradasBO becaBO,
+            IDocumentoBO documentoBO,
+            IHistorialAcademicoBO historialBO,
+            IInformacionSocioeconomicaBO socioBO) {
         this.solicitudBO = Objects.requireNonNull(solicitudBO);
         this.estudianteBO = Objects.requireNonNull(estudianteBO);
         this.tutorBO = Objects.requireNonNull(tutorBO);
@@ -64,8 +65,10 @@ public class ControlSolicitarBeca {
 
     public BecasFiltradasDTO obtenerBecasFiltradas(RequisitosDTO requisitosDTO) throws SolicitarBecaException {
         try {
-           this.becasFiltradas = BecasFiltradasAdaptador.toEntity(becasFiltradasBO.obtenerBecasFiltradas(RequisitosAdaptador.toDTOGobierno(requisitosDTO))) ;
-            return BecasFiltradasAdaptador.toDTO(becasFiltradasBO.obtenerBecasFiltradas(RequisitosAdaptador.toDTOGobierno(requisitosDTO)));
+            this.becasFiltradas = BecasFiltradasAdaptador
+                    .toEntity(becasFiltradasBO.obtenerBecasFiltradas(RequisitosAdaptador.toDTOGobierno(requisitosDTO)));
+            return BecasFiltradasAdaptador
+                    .toDTO(becasFiltradasBO.obtenerBecasFiltradas(RequisitosAdaptador.toDTOGobierno(requisitosDTO)));
         } catch (Exception ex) {
             throw new SolicitarBecaException(ex.getMessage());
         }
@@ -92,7 +95,8 @@ public class ControlSolicitarBeca {
 
     public void asignarHistorial(HistorialAcademicoDTO historialAcademicoDTO) throws SolicitarBecaException {
         try {
-            HistorialAcademico historialAcademico = HistorialAcademicoAdaptador.toEntity(historialBO.crearHistorial(historialAcademicoDTO.getMatriculaEstudiante()));
+            HistorialAcademico historialAcademico = HistorialAcademicoAdaptador
+                    .toEntity(historialBO.crearHistorial(historialAcademicoDTO.getMatriculaEstudiante()));
             historialAcademico.setCarrera(Carrera.valueOf(historialAcademicoDTO.getCarrera()));
             historialAcademico.setCargaAcademica(historialAcademicoDTO.getCargaAcademica());
             historialAcademico.setSemestre(historialAcademicoDTO.getSemestre());
@@ -104,8 +108,10 @@ public class ControlSolicitarBeca {
 
     public void asignarTutor(TutorDTO tutorDTO) throws SolicitarBecaException {
         try {
-            if (tutorDTO.getNombre() == null || tutorDTO.getNombre().equals("")) {}
-            Tutor tutor = tutorBO.crearTutor(tutorDTO.getNombre(), Parentesco.valueOf(tutorDTO.getParentesco()), tutorDTO.getTelefono(), tutorDTO.getDireccion(), tutorDTO.getCorreo());
+            if (tutorDTO.getNombre() == null || tutorDTO.getNombre().equals("")) {
+            }
+            Tutor tutor = tutorBO.crearTutor(tutorDTO.getNombre(), Parentesco.valueOf(tutorDTO.getParentesco()),
+                    tutorDTO.getTelefono(), tutorDTO.getDireccion(), tutorDTO.getCorreo());
             estudiante.setTutor(tutor);
             solicitudActual.setEstudiante(estudiante);
         } catch (Exception ex) {
@@ -119,7 +125,9 @@ public class ControlSolicitarBeca {
                 throw new SolicitarBecaException("No se han adjuntado documentos para asignar.");
 
             }
-            InformacionSocioeconomica infoSocio = socioBO.crearInformacionSocioeconomica(infoSoDTO.getIngresoTotalFamilarMensual(), TipoVivienda.valueOf(infoSoDTO.getTipoVivienda()), infoSoDTO.isTrabajo(), infoSoDTO.isDeudas());
+            InformacionSocioeconomica infoSocio = socioBO.crearInformacionSocioeconomica(
+                    infoSoDTO.getIngresoTotalFamilarMensual(), TipoVivienda.valueOf(infoSoDTO.getTipoVivienda()),
+                    infoSoDTO.isTrabajo(), infoSoDTO.isDeudas());
             solicitudActual.setInformacionSocioeconomica(infoSocio);
         } catch (Exception ex) {
             throw new SolicitarBecaException(ex.getMessage());
@@ -133,7 +141,7 @@ public class ControlSolicitarBeca {
         List<Documento> documentosEntidad = new ArrayList<>();
         try {
             for (DocumentoDTO dto : documentosDTO) {
-                //validarDocumento(dto);
+                // validarDocumento(dto);
                 Documento documento = DocumentoAdaptador.toEntity(dto);
                 documentosEntidad.add(documento);
             }
@@ -154,7 +162,8 @@ public class ControlSolicitarBeca {
         }
         int maxBytes = 5 * 1024 * 1024;
         if (contenido.length > maxBytes) {
-            throw new DocumentoInvalidoException("El documento '" + nombreDoc + "' excede el tamaño máximo permitido 5MB");
+            throw new DocumentoInvalidoException(
+                    "El documento '" + nombreDoc + "' excede el tamaño máximo permitido 5MB");
         }
         if (contenido.length < 5) {
             throw new DocumentoInvalidoException("El documento '" + nombreDoc + "' es inválido (muy corto).");
@@ -184,11 +193,13 @@ public class ControlSolicitarBeca {
             estudianteBO.guardarEstudiante(estudianteDocument);
             List<ObjectId> documentos = new ArrayList<>();
             for (Documento documento : solicitudActual.getDocumentos()) {
-                DocumentoDocument documentoDocument = DocumentoAdaptador.toDocument(documento, estudianteDocument.get_id());
+                DocumentoDocument documentoDocument = DocumentoAdaptador.toDocument(documento,
+                        estudianteDocument.get_id());
                 documentos.add(documentoDocument.get_id());
                 documentoBO.guardarDocumento(documentoDocument);
             }
-            SolicitudDocument solicitudDocument = SolicitudAdaptador.toDocument(solicitudActual, estudianteDocument.get_id(), documentos);
+            SolicitudDocument solicitudDocument = SolicitudAdaptador.toDocument(solicitudActual,
+                    estudianteDocument.get_id(), documentos);
             solicitudBO.guardarSolicitud(solicitudDocument);
             return true;
         } catch (Exception ex) {
