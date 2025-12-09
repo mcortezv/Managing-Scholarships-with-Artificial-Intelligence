@@ -78,7 +78,7 @@ public class DetallesExtraBaja extends PanelActividades{
             String motivo= fieldMotivo.getText();
             System.out.println(motivo);
             
-      //      coordinadorAplicacionActividades.inscribirActividadAlumno();
+           coordinadorAplicacionActividades.darBajaActividad(motivo);
         });
 
         botonVolver.addActionListener(e -> {

@@ -6,6 +6,8 @@ package datos.repositoryItson.daoItson.actividades.impl;
 
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Updates;
+import com.mongodb.client.result.UpdateResult;
 import datos.configMongoItson.MongoClienteProvider;
 import datos.dominioItson.actividades.Inscripcion;
 import datos.repositoryItson.daoItson.actividades.IInscripcionDAO;
@@ -13,6 +15,7 @@ import itson.actividades.GrupoResponseDTOItson;
 import itson.actividades.InscripcionDTOItson;
 import java.util.ArrayList;
 import java.util.List;
+import org.bson.types.ObjectId;
 
 /**
  *
@@ -47,6 +50,15 @@ public class InscripcionDAO implements IInscripcionDAO{
                  
          
      }
+     
+     public boolean actualizarEstado(ObjectId idInscripcion){
+         UpdateResult resultado= col.updateOne(
+                 Filters.eq("_id", idInscripcion),
+                 Updates.set("estado", "baja")
+         );
+         return resultado.getModifiedCount() > 0;
+     }
+     
      
 
     

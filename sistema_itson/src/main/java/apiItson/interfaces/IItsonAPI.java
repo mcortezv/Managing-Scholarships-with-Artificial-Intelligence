@@ -8,6 +8,7 @@ import datos.dominioItson.Estudiante;
 import itson.ActividadDTOItson;
 import itson.ActividadesDTOItson;
 import itson.EstudianteDTOItson;
+import itson.actividades.BajaDTOItson;
 import itson.actividades.GrupoResponseDTOItson;
 import itson.actividades.GruposResponseDTOItson;
 import itson.actividades.InscripcionDTOItson;
@@ -37,6 +38,8 @@ public interface IItsonAPI {
      InscripcionDTOItson inscribirActividad(InscripcionDTOItson inscripcionDTOItson);
      InscripcionesDTOItson obtenerInscripciones(EstudianteDTOItson estudianteDTO);
      GrupoResponseDTOItson obtenerGrupoInscrito(InscripcionDTOItson inscripcion);
-
+     BajaDTOItson darBajaActividad(BajaDTOItson baja);
+     
+     public boolean actualizarEstadoInscripcion(String idInscripcion);
 
 }

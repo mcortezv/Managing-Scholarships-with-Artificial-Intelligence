@@ -2,44 +2,34 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package datos.dominioItson.actividades;
+package dto.actividades;
 
 import java.time.LocalDate;
-import org.bson.types.ObjectId;
 
 /**
  *
  * @author janethcristinagalvanquinonez
  */
-public class Baja {
-    private ObjectId idInscripcion;
-    private LocalDate fecha;
+public class BajaDTO {
+    
+    private String idInscripcion;
     private String motivo;
+    private LocalDate fechaBaja;
 
-    public Baja() {
-        this.fecha= LocalDate.now();
+    public BajaDTO() {
     }
 
-    public Baja(ObjectId idInscripcion, LocalDate fecha, String motivo) {
+    public BajaDTO(String idInscripcion, String motivo) {
         this.idInscripcion = idInscripcion;
-        this.fecha = fecha;
         this.motivo = motivo;
     }
 
-    public ObjectId getIdInscripcion() {
+    public String getIdInscripcion() {
         return idInscripcion;
     }
 
-    public void setIdInscripcion(ObjectId idInscripcion) {
+    public void setIdInscripcion(String idInscripcion) {
         this.idInscripcion = idInscripcion;
-    }
-
-    public LocalDate getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(LocalDate fecha) {
-        this.fecha = fecha;
     }
 
     public String getMotivo() {
@@ -49,6 +39,16 @@ public class Baja {
     public void setMotivo(String motivo) {
         this.motivo = motivo;
     }
+
+    public LocalDate getFechaBaja() {
+        return fechaBaja;
+    }
+
+    public void setFechaBaja(LocalDate fechaBaja) {
+        this.fechaBaja = fechaBaja;
+    }
+    
+    
     
     
     
