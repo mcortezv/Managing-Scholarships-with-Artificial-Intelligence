@@ -1,6 +1,7 @@
 package bo.solicitarBeca;
 import gobierno.SolicitudDTOGobierno;
 import bo.solicitarBeca.excepciones.SolicitudInvalidaException;
+import solicitarBeca.EstudianteDTO;
 import solicitarBeca.repository.dao.interfaces.ISolicitudDAO;
 import solicitarBeca.dominio.*;
 import solicitarBeca.dominio.enums.EstadoSolicitud;
@@ -115,5 +116,11 @@ public class SolicitudBO implements ISolicitudBO {
         } catch (Exception ex) {
             throw new SolicitudInvalidaException(ex.getMessage());
         }
+    }
+
+    //apelar resultado
+    @Override
+    public List<Solicitud> obtenerSolicitudesPorEstudiante(EstudianteDTO estudianteDTO) {
+        return List.of();
     }
 }

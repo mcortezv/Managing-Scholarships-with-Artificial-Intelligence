@@ -8,18 +8,19 @@ import solicitarBeca.SolicitudDTO;
 import java.util.List;
 
 public class CoordinadorNegocioApelarResultado implements ICoordinadorNegocioApelarResultado{
-    private IFachadaApelacion fachadaApelacion;
+    private final IFachadaApelacion fachadaApelacion;
+
     public CoordinadorNegocioApelarResultado(IFachadaApelacion iFachadaApelacion){
         this.fachadaApelacion = iFachadaApelacion;
     }
 
     @Override
     public List<SolicitudDTO> obtenerSolicitudesPorEstudiante(EstudianteDTO estudianteDTO) {
-        return List.of();
+        return fachadaApelacion.obtenerSolicitudesPorEstudiante(estudianteDTO);
     }
 
     @Override
     public boolean registrarApelacion(ApelacionDTO apelacionDTO) {
-        return false;
+        return fachadaApelacion.registrarApelacion(apelacionDTO);
     }
 }

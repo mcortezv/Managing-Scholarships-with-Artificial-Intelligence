@@ -103,4 +103,14 @@ public class SolicitudAdaptador {
             throw new BecasFiltradasAdaptadorException("Error al convertir entidad Solicitud a Document");
         }
     }
+    public static List<SolicitudDTO> toDTO(List<Solicitud> solicitudes) {
+        List<SolicitudDTO> listaDTOs = new ArrayList<>();
+        if (solicitudes != null) {
+            for (Solicitud solicitud : solicitudes) {
+                listaDTOs.add(toDTO(solicitud));
+            }
+        }
+
+        return listaDTOs;
+    }
 }

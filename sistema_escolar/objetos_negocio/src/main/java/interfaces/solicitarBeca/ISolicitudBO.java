@@ -1,6 +1,7 @@
 package interfaces.solicitarBeca;
 import gobierno.SolicitudDTOGobierno;
 import bo.solicitarBeca.excepciones.SolicitudInvalidaException;
+import solicitarBeca.EstudianteDTO;
 import solicitarBeca.dominio.*;
 import solicitarBeca.repository.documents.SolicitudDocument;
 
@@ -29,4 +30,7 @@ public interface ISolicitudBO {
     void guardarSolicitud(SolicitudDocument solicitud) throws SolicitudInvalidaException;
 
     void enviarSolicitud(SolicitudDTOGobierno solicitud) throws SolicitudInvalidaException;
+
+    //apelar resultado
+    List<Solicitud> obtenerSolicitudesPorEstudiante(EstudianteDTO estudianteDTO);
 }

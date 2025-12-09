@@ -4,10 +4,14 @@
  */
 package fachadas;
 import controles.ControlGobierno;
+import dto.apelacionResultado.ApelacionDTO;
 import gobierno.BecasDisponiblesDTOGobierno;
 import gobierno.RequisitosDTOGobierno;
 import gobierno.SolicitudDTOGobierno;
 import interfaces.IFachadaGobierno;
+import solicitarBeca.EstudianteDTO;
+
+import java.util.List;
 
 /**
  *
@@ -29,4 +33,17 @@ public class FachadaGobierno implements IFachadaGobierno{
     public boolean enviarSolicitud(SolicitudDTOGobierno solicitudDTO) {
         return controlGobierno.enviarSolicitud(solicitudDTO);
     }
+
+
+    //apelacion resultados
+    @Override
+    public List<SolicitudDTOGobierno> obtenerSolicitudesPorEstudiante(EstudianteDTO estudianteDTO) {
+        return controlGobierno.obtenerSolicitudesPorEstudiante(estudianteDTO);
+    }
+
+    @Override
+    public boolean registrarApelacion(ApelacionDTO apelacionDTO) {
+        return controlGobierno.registrarApelacion(apelacionDTO);
+    }
+
 }
