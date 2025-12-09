@@ -168,6 +168,21 @@ public class SolicitudAdaptador {
         }
     }
 
+    public static List<SolicitudDTOGobierno> toDTOGobierno(List<Solicitud> solicitudes) {
+        if (solicitudes == null) {
+            return new ArrayList<>();
+        }
+        try {
+            List<SolicitudDTOGobierno> listaDTO = new ArrayList<>();
+            for (Solicitud solicitud : solicitudes) {
+                listaDTO.add(toDTOGobierno(solicitud));
+            }
+            return listaDTO;
+        } catch (Exception ex) {
+            throw new SolicitudAdaptadorException("Error al convertir lista de Solicitudes: " + ex.getMessage());
+        }
+    }
+
 
 
 }
