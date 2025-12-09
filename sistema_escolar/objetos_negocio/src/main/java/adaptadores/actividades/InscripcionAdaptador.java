@@ -9,6 +9,7 @@ import actividades.dominio.Estudiante;
 import actividades.dominio.Grupo;
 import actividades.dominio.Horario;
 import actividades.dominio.Inscripcion;
+import dto.actividades.GrupoDTO;
 import dto.actividades.InscripcionDTO;
 import dto.actividades.InscripcionesDTO;
 import itson.actividades.InscripcionDTOItson;
@@ -50,11 +51,18 @@ public class InscripcionAdaptador {
         inscripcionDTO.setIdActividad(inscripcionDTOItson.getIdActividad());
         inscripcionDTO.setIdGrupo(inscripcionDTOItson.getIdGrupo());
         inscripcionDTO.setNombreGrupo(inscripcionDTOItson.getNombreGrupo());
+        inscripcionDTO.setNombreActividad(inscripcionDTOItson.getNombreActividad());
         inscripcionDTO.setCosto(inscripcionDTOItson.getCosto());
         inscripcionDTO.setDias(inscripcionDTOItson.getDias());
         inscripcionDTO.setHoraInicio(inscripcionDTOItson.getHoraInicio());
         inscripcionDTO.setHoraFin(inscripcionDTOItson.getHoraFin());
         return inscripcionDTO;
+    }
+    
+    public static InscripcionDTOItson toDTOItsonID(InscripcionDTO inscripcion){
+        InscripcionDTOItson inscripcionDTOItson= new InscripcionDTOItson();
+        inscripcionDTOItson.setIdGrupo(inscripcion.getIdGrupo());
+        return inscripcionDTOItson;
     }
     
     public static InscripcionesDTO toDTONegocio(InscripcionesDTOItson inscripcionesItson){

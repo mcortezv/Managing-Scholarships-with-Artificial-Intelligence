@@ -12,6 +12,7 @@ import datos.dominioItson.Estudiante;
 import itson.ActividadDTOItson;
 import itson.ActividadesDTOItson;
 import itson.EstudianteDTOItson;
+import itson.actividades.GrupoResponseDTOItson;
 import itson.actividades.GruposResponseDTOItson;
 import itson.actividades.InscripcionDTOItson;
 import itson.actividades.InscripcionesDTOItson;
@@ -68,6 +69,10 @@ public class ItsonAPI implements IItsonAPI {
 
     public InscripcionDTOItson inscribirActividad(InscripcionDTOItson inscripcionDTOItson) {
         return controlItson.inscribirActividad(inscripcionDTOItson);
+    }
+    
+    public GrupoResponseDTOItson obtenerGrupoInscrito(InscripcionDTOItson inscripcion){
+        return controlItson.obtenerGrupoInscrito(inscripcion);
     }
 
     public InscripcionesDTOItson obtenerInscripciones(EstudianteDTOItson estudianteDTO) {

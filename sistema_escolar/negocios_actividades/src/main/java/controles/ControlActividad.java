@@ -61,9 +61,13 @@ public class ControlActividad {
         return inscripcionBO.inscribirActividad(inscripcionDTO);
 
     }
-    
-    public InscripcionesDTO obtenerInscripciones(EstudianteDTO estudianteDTO){
+
+    public InscripcionesDTO obtenerInscripciones(EstudianteDTO estudianteDTO) {
         return inscripcionBO.obtenerInscripciones(estudianteDTO);
+    }
+
+    public GrupoDTO obtenerGrupoInscrito(InscripcionDTO inscripcionDTO) {
+        return inscripcionBO.obtenerGrupoInscrito(inscripcionDTO);
     }
 
 }

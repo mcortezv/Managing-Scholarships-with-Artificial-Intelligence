@@ -14,6 +14,8 @@ import java.util.Map;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import presentacion.actividadesExtracurriculares.coordinador.CoordinadorAplicacionActividades;
+import presentacion.bajaActividades.panels.DetallesActividadBaja;
+import presentacion.bajaActividades.panels.DetallesExtraBaja;
 
 import presentacion.login.panels.NorthPanel;
 import presentacion.styles.Button;
@@ -75,6 +77,15 @@ public class ActividadesExtracurriculares extends JFrame {
         panel= new ListaInscripciones(this, coordinadorAplicacionActividades);
         panel.startComponents();
         panels.put("ListaInscripciones", panel);
+        
+        panel= new DetallesActividadBaja(this, coordinadorAplicacionActividades);
+        panel.startComponents();
+        panels.put("DetallesActividadBaja", panel);
+        
+        panel= new DetallesExtraBaja(this, coordinadorAplicacionActividades);
+        panel.startComponents();
+        panels.put("DetallesExtraBaja", panel);
+        
 
     }
 

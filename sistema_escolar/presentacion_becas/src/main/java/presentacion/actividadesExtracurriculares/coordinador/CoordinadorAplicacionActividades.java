@@ -26,6 +26,7 @@ import presentacion.actividadesExtracurriculares.panels.DetalleGrupo;
 import presentacion.actividadesExtracurriculares.panels.ListaInscripciones;
 import presentacion.actividadesExtracurriculares.panels.ResumenClases;
 import presentacion.bajaActividades.panels.DetallesActividadBaja;
+import presentacion.bajaActividades.panels.DetallesExtraBaja;
 
 
 /**
@@ -45,6 +46,7 @@ public class CoordinadorAplicacionActividades implements ICoordinadorAplicacionA
     private LoginDTOItson loginDTO;
     private EstudianteDTO estudiante;
     private InscripcionDTO inscripcionElegida;
+    private GrupoDTO grupoActividadDTO;
 //    private InscripcionDTO inscripcionDTO;
     
     public CoordinadorAplicacionActividades(IFachadaActividad fachadaActividad, CoordinadorAplicacion coordinadorAplicacion){
@@ -180,10 +182,43 @@ public class CoordinadorAplicacionActividades implements ICoordinadorAplicacionA
         actividades.showPanel("ListaInscripciones");
     }
     
-    public void inscripcionSeleccionada(InscripcionDTO inscripcion){
+
+    
+    public GrupoDTO inscripcionSeleccionada(InscripcionDTO inscripcion){
         this.inscripcionElegida= inscripcion;
+        System.out.println("cordapl"+inscripcion.getIdGrupo());
+        InscripcionDTO inscripcionGrupo = new InscripcionDTO();
+        inscripcionGrupo.setIdGrupo(inscripcion.getIdGrupo());
+        GrupoDTO grupoInscrito= coordinadorNegocioActividades.obtenerGrupoInscrito(inscripcionGrupo);
+        this.grupoActividadDTO= grupoInscrito;
+        return grupoInscrito;
         
     }
+    
+//
+//    
+//    public GrupoDTO obtenerGrupoInscrito(InscripcionDTO inscripcion){
+//        System.out.println(inscripcion.getIdGrupo());
+//        GrupoDTO grupo= coordinadorNegocioActividades.obtenerGrupoInscrito(inscripcion);
+//        this.grupoActividadDTO= grupo;
+//        System.out.println("presentacion");
+//        System.out.println(grupo.getNombreResponsable());
+//        return grupo;
+//    }
+    
+      public void mostrarDetallesActividad(){
+        DetallesActividadBaja panel= (DetallesActividadBaja) actividades.getPanel("DetallesActividadBaja");
+        panel.cargarInscripcion(inscripcionElegida, grupoActividadDTO);
+        actividades.showPanel("DetallesActividadBaja");
+    }
+      
+      public void mostrarDetallesExtraBaja(){
+          DetallesExtraBaja panel= (DetallesExtraBaja) actividades.getPanel("DetallesExtraBaja");
+          panel.cargarInscripcion(inscripcionElegida, grupoActividadDTO);
+          actividades.showPanel("DetallesExtraBaja");
+      }
+    
+    
     
 //    public void abrirDetallesActividadBaja(){
 //        DetallesActividadBaja panel = (DetallesActividadBaja) actividades.getPanel("DetallesActividadBaja");

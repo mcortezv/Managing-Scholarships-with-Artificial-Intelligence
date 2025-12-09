@@ -69,6 +69,8 @@ public class InscripcionDTOItson {
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
     }
+    
+    
 
     
 
