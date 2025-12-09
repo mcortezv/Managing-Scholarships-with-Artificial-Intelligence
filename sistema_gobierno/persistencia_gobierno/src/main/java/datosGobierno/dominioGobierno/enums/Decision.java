@@ -1,5 +1,21 @@
 package datosGobierno.dominioGobierno.enums;
 
+/**
+ * The enum Decision.
+ *
+ * @author Cortez, Manuel;
+ */
 public enum Decision {
-    ACEPTADA, RECHAZADA, DEVUELTA;
+    /**
+     * Aceptada decision.
+     */
+    ACEPTADA,
+    /**
+     * Rechazada decision.
+     */
+    RECHAZADA,
+    /**
+     * Devuelta decision.
+     */
+    DEVUELTA;
 }

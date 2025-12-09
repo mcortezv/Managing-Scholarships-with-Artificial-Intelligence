@@ -5,10 +5,25 @@
 package datosGobierno.dominioGobierno.enums;
 
 /**
+ * The enum Tipo beca.
  *
  * @author Cortez, Manuel;
  */
 public enum TipoBeca {
-    EXCELENCIA_ACADEMICA, ESCASOS_RECURSOS,
-    CONSTANCIA, ESTUDIANTE_TRABAJO
+    /**
+     * Excelencia academica tipo beca.
+     */
+    EXCELENCIA_ACADEMICA,
+    /**
+     * Escasos recursos tipo beca.
+     */
+    ESCASOS_RECURSOS,
+    /**
+     * Constancia tipo beca.
+     */
+    CONSTANCIA,
+    /**
+     * Estudiante trabajo tipo beca.
+     */
+    ESTUDIANTE_TRABAJO
 }

@@ -5,9 +5,25 @@
 package datosGobierno.dominioGobierno.enums;
 
 /**
+ * The enum Carrera.
  *
  * @author Cortez, Manuel;
  */
 public enum Carrera {
-    INGENIERIA, LICENCIATURA, MAESTRIA, DOCTORADO;
+    /**
+     * Ingenieria carrera.
+     */
+    INGENIERIA,
+    /**
+     * Licenciatura carrera.
+     */
+    LICENCIATURA,
+    /**
+     * Maestria carrera.
+     */
+    MAESTRIA,
+    /**
+     * Doctorado carrera.
+     */
+    DOCTORADO;
 }
