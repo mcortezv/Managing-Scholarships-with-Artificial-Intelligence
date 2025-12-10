@@ -14,6 +14,8 @@ import itson.actividades.ActividadesDTOItson;
 import itson.EstudianteDTOItson;
 import itson.HistorialAcademicoDTOItson;
 import itson.LoginDTOItson;
+import itson.actividades.BajaDTOItson;
+import itson.actividades.GrupoResponseDTOItson;
 import itson.actividades.GruposResponseDTOItson;
 import itson.actividades.InscripcionDTOItson;
 import itson.actividades.InscripcionesDTOItson;
@@ -141,5 +143,17 @@ public class ControlItson {
      */
     public InscripcionesDTOItson obtenerInscripciones(EstudianteDTOItson estudianteDTO){
         return api.obtenerInscripciones(estudianteDTO);
+    }
+    
+    public BajaDTOItson darBajaActividad(BajaDTOItson baja){
+        return api.darBajaActividad(baja);
+    }
+    
+    public boolean actualizarEstadoInscripcion(String idInscripcion){
+        return api.actualizarEstadoInscripcion(idInscripcion);
+    }
+    
+    public GrupoResponseDTOItson obtenerGrupoInscrito(InscripcionDTOItson inscripcion){
+        return api.obtenerGrupoInscrito(inscripcion);
     }
 }

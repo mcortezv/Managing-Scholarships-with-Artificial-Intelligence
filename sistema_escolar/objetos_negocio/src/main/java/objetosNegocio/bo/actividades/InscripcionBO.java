@@ -12,9 +12,12 @@ import dto.actividades.InscripcionDTO;
 import dto.actividades.InscripcionesDTO;
 import interfaces.IFachadaITSON;
 import itson.EstudianteDTOItson;
+import itson.actividades.BajaDTOItson;
+import itson.actividades.GrupoResponseDTOItson;
 import itson.actividades.InscripcionDTOItson;
 import itson.actividades.InscripcionesDTOItson;
 import objetosNegocio.adaptadores.actividades.EstudianteAdaptador;
+import objetosNegocio.adaptadores.actividades.GruposAdaptador;
 import objetosNegocio.adaptadores.actividades.InscripcionAdaptador;
 import objetosNegocio.bo.actividades.interfaces.IInscripcionBO;
 
@@ -54,22 +57,23 @@ public class InscripcionBO implements IInscripcionBO {
     }
     
     public GrupoDTO obtenerGrupoInscrito(InscripcionDTO inscripcionDTO){
+        System.out.println("en bo"+inscripcionDTO.getIdGrupo());
         InscripcionDTOItson inscripcionDTOItson= InscripcionAdaptador.toDTOItsonID(inscripcionDTO);
-        //GrupoResponseDTOItson grupoDTOItson= fachadaITSON.obtenerGrupoInscrito(inscripcionDTOItson);
-        //GrupoDTO grupo= GruposAdaptador.DTOItsonToDTOActividades(grupoDTOItson);
-        //return grupo;
-        return null;
+        GrupoResponseDTOItson grupoDTOItson= fachadaITSON.obtenerGrupoInscrito(inscripcionDTOItson);
+        GrupoDTO grupo= GruposAdaptador.DTOItsonToDTOActividades(grupoDTOItson);
+        return grupo;
+     
     }
     
     public BajaDTO darBajaActividad(BajaDTO baja){
-        //BajaDTOItson bajaDTOItson= adaptadores.actividades.BajaAdaptador.toDTOItson(baja);
-        //BajaDTOItson bajaDTOItsonResponse= fachadaITSON.darBajaActividad(bajaDTOItson);
-        //return adaptadores.actividades.BajaAdaptador.toDTONegocio(bajaDTOItsonResponse);
-        return null;
+        BajaDTOItson bajaDTOItson= adaptadores.actividades.BajaAdaptador.toDTOItson(baja);
+        BajaDTOItson bajaDTOItsonResponse= fachadaITSON.darBajaActividad(bajaDTOItson);
+        return adaptadores.actividades.BajaAdaptador.toDTONegocio(bajaDTOItsonResponse);
+
     }
     
     public boolean actualizarEstadoInscripcion(String idInscripcion){
-        //return fachadaITSON.actualizarEstadoInscripcion(idInscripcion);
-        return true;
+        return fachadaITSON.actualizarEstadoInscripcion(idInscripcion);
+       
     }
 }
