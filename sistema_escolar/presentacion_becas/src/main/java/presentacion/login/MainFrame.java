@@ -30,7 +30,7 @@ public final class MainFrame extends JFrame {
     public MainFrame(CoordinadorAplicacion coordinadorAplicacion) {
         setTitle("Sistema de Aplicaciones Escolares");
         setResizable(false);
-        setSize(1500,900);
+        setSize(1500,1200);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
         northPanel = new NorthPanel();
