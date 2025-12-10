@@ -1,7 +1,8 @@
-package objetosNegocio.bo.actividades;/*
+/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+package objetosNegocio.bo.actividades;
 import actividades.dao.interfaces.IInscripcionDAO;
 import actividades.dominio.Inscripcion;
 import dto.actividades.BajaDTO;
@@ -11,12 +12,9 @@ import dto.actividades.InscripcionDTO;
 import dto.actividades.InscripcionesDTO;
 import interfaces.IFachadaITSON;
 import itson.EstudianteDTOItson;
-import itson.actividades.BajaDTOItson;
-import itson.actividades.GrupoResponseDTOItson;
 import itson.actividades.InscripcionDTOItson;
 import itson.actividades.InscripcionesDTOItson;
 import objetosNegocio.adaptadores.actividades.EstudianteAdaptador;
-import objetosNegocio.adaptadores.actividades.GruposAdaptador;
 import objetosNegocio.adaptadores.actividades.InscripcionAdaptador;
 import objetosNegocio.bo.actividades.interfaces.IInscripcionBO;
 
@@ -57,22 +55,21 @@ public class InscripcionBO implements IInscripcionBO {
     
     public GrupoDTO obtenerGrupoInscrito(InscripcionDTO inscripcionDTO){
         InscripcionDTOItson inscripcionDTOItson= InscripcionAdaptador.toDTOItsonID(inscripcionDTO);
-        GrupoResponseDTOItson grupoDTOItson= fachadaITSON.obtenerGrupoInscrito(inscripcionDTOItson);
-        GrupoDTO grupo= GruposAdaptador.DTOItsonToDTOActividades(grupoDTOItson);
-        return grupo;
+        //GrupoResponseDTOItson grupoDTOItson= fachadaITSON.obtenerGrupoInscrito(inscripcionDTOItson);
+        //GrupoDTO grupo= GruposAdaptador.DTOItsonToDTOActividades(grupoDTOItson);
+        //return grupo;
+        return null;
     }
     
     public BajaDTO darBajaActividad(BajaDTO baja){
-        BajaDTOItson bajaDTOItson= adaptadores.actividades.BajaAdaptador.toDTOItson(baja);
-        BajaDTOItson bajaDTOItsonResponse= fachadaITSON.darBajaActividad(bajaDTOItson);
-        return adaptadores.actividades.BajaAdaptador.toDTONegocio(bajaDTOItsonResponse);
-        
+        //BajaDTOItson bajaDTOItson= adaptadores.actividades.BajaAdaptador.toDTOItson(baja);
+        //BajaDTOItson bajaDTOItsonResponse= fachadaITSON.darBajaActividad(bajaDTOItson);
+        //return adaptadores.actividades.BajaAdaptador.toDTONegocio(bajaDTOItsonResponse);
+        return null;
     }
     
     public boolean actualizarEstadoInscripcion(String idInscripcion){
-        return fachadaITSON.actualizarEstadoInscripcion(idInscripcion);
+        //return fachadaITSON.actualizarEstadoInscripcion(idInscripcion);
+        return true;
     }
-
-
-
 }
