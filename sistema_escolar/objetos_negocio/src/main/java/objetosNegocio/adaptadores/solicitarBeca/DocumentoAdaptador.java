@@ -1,6 +1,7 @@
 package objetosNegocio.adaptadores.solicitarBeca;
 import objetosNegocio.adaptadores.solicitarBeca.excepciones.BecasFiltradasAdaptadorException;
 import objetosNegocio.adaptadores.solicitarBeca.excepciones.DocumentoAdaptadorException;
+import gobierno.EstudianteDTOGobierno;
 import solicitarBeca.DocumentoDTO;
 import gobierno.DocumentoDTOGobierno;
 import solicitarBeca.dominio.Documento;
@@ -63,7 +64,9 @@ public class DocumentoAdaptador {
             dto.setIdentificador(documento.getIdentificador());
             dto.setTipo(documento.getTipo().toString());
             dto.setContenido(documento.getContenido());
-            dto.setEstudiante(documento.getEstudiante());
+            EstudianteDTOGobierno estudianteDTOGobierno = new EstudianteDTOGobierno();
+            estudianteDTOGobierno.setMatricula(documento.getEstudiante());
+            dto.setEstudiante(estudianteDTOGobierno.getMatricula());
             return dto;
         } catch (Exception ex) {
             throw new BecasFiltradasAdaptadorException("Error al convertir entidad Documento a DocumentoDTOGobierno");
