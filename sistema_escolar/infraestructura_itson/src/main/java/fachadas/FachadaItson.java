@@ -97,22 +97,19 @@ public class FachadaItson implements IFachadaITSON {
     
         
     public GrupoResponseDTOItson obtenerGrupoInscrito(InscripcionDTOItson inscripcion){
-        //return controlItson.obtenerGrupoInscrito(inscripcion);
-        return null;
+        return controlItson.obtenerGrupoInscrito(inscripcion);
+       
     }
     
     public BajaDTOItson darBajaActividad(BajaDTOItson baja){
-        //return controlItson.darBajaActividad(baja);
-        return null;
+        return controlItson.darBajaActividad(baja);
+
     }
     
     public boolean actualizarEstadoInscripcion(String idInscripcion){
-        //return controlItson.actualizarEstadoInscripcion(idInscripcion);
-        return true;
+        return controlItson.actualizarEstadoInscripcion(idInscripcion);
+
     }
 
-    @Override
-    public boolean buscarEstudiantePorMatricula(InscripcionDTOItson inscripcionDTOItson) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+
 }
