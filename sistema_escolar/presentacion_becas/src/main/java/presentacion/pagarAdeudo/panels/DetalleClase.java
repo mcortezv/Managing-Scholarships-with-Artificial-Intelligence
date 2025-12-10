@@ -10,7 +10,6 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 
 public class DetalleClase extends PanelPagarAdeudo {
-    private ClaseDTO claseDTO;
 
     private JLabel lblTituloMateria;
     private JLabel lblEstado;
@@ -156,7 +155,6 @@ public class DetalleClase extends PanelPagarAdeudo {
     }
 
     public void setClase(ClaseDTO claseDTO){
-        this.claseDTO = claseDTO;
         if(claseDTO != null){
             lblTituloMateria.setText(claseDTO.getNombre().toUpperCase());
             txtProfesor.setText(claseDTO.getProfesor());

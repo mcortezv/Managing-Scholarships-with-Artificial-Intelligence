@@ -10,7 +10,6 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 
 public class DetallePrestamo extends PanelPagarAdeudo {
-    private PrestamoDTO prestamoDTO;
 
     private JLabel lblTituloPrincipal;
     private JLabel lblEstado;
@@ -160,7 +159,6 @@ public class DetallePrestamo extends PanelPagarAdeudo {
     }
 
     public void setPrestamo(PrestamoDTO prestamo){
-        this.prestamoDTO = prestamo;
         if(prestamo != null) {
             lblTituloPrincipal.setText("PRÉSTAMO");
             txtFechaPrestamo.setText(prestamo.getFechaPrestamo());

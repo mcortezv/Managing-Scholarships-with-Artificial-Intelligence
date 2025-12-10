@@ -6,7 +6,6 @@ import presentacion.pagarAdeudo.PagarAdeudo;
 import solicitarBeca.EstudianteDTO;
 
 public interface ICoordinadorAplicacionPagarAdeudo {
-    void pagarAdeudo();
     void regresarAlMenuPrincipal();
     void seleccionarAdeudoBiblioteca(EstudianteDTO estudianteDTO);
     void seleccionarAdeudoColegiatura(EstudianteDTO estudianteDTO);
