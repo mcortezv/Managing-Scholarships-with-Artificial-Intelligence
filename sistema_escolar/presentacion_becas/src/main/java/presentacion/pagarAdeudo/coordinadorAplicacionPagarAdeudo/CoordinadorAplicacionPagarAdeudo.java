@@ -23,17 +23,16 @@ public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionP
     private final ICoordinadorNegocioPagarAdeudo coordinadorNegocioPagarAdeudo;
     private PagarAdeudo pagarAdeudo;
     private String tipoAdeudo;
-
     private List<PrestamoDTO> prestamos;
     private List<ClaseDTO> clases;
     private Double adeudoBibliotecaCache;
     private Double adeudoColegiaturaCache;
 
-    private final SolicitudPagoDTO solicitudPagoDTO;
+    private SolicitudPagoDTO solicitudPagoDTO;
 
-    public CoordinadorAplicacionPagarAdeudo(ICoordinadorNegocioPagarAdeudo coordinadorNegocio, CoordinadorAplicacion coordinadorPadre) {
-        this.coordinadorPadre = coordinadorPadre;
-        this.coordinadorNegocioPagarAdeudo = coordinadorNegocio;
+    public CoordinadorAplicacionPagarAdeudo(ICoordinadorNegocioPagarAdeudo negocio, CoordinadorAplicacion padre) {
+        this.coordinadorPadre = padre;
+        this.coordinadorNegocioPagarAdeudo = negocio;
         this.mainFrame = null;
         this.solicitudPagoDTO = new SolicitudPagoDTO();
     }
@@ -90,12 +89,14 @@ public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionP
         pagarAdeudo.showPanel("listaClasesColegiatura");
     }
 
+    @Override
     public void irADetallePrestamo(PrestamoDTO prestamoSeleccionado) {
         DetallePrestamo panel = (DetallePrestamo) pagarAdeudo.getPanel("detallePrestamo");
         panel.setPrestamo(prestamoSeleccionado);
         pagarAdeudo.showPanel("detallePrestamo");
     }
-
+    
+    @Override
     public void irADetalleClase(ClaseDTO claseSeleccionada) {
         DetalleClase panel = (DetalleClase) pagarAdeudo.getPanel("detalleClase");
         panel.setClase(claseSeleccionada);
@@ -217,6 +218,7 @@ public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionP
         this.clases = null;
         this.adeudoBibliotecaCache = null;
         this.adeudoColegiaturaCache = null;
+        this.solicitudPagoDTO = new SolicitudPagoDTO();
     }
 
     public void setPagarAdeudo(PagarAdeudo pagarAdeudo) {
