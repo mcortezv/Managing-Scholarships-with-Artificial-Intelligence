@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class SolicitudDocument {
     private ObjectId _id;
-    private Long id;
+    private Long idSolicitud;
     private Beca beca;
     private ObjectId estudiante;
     private InformacionSocioeconomica informacionSocioeconomica;
@@ -40,11 +40,11 @@ public class SolicitudDocument {
      * @param estudiante                the estudiante
      * @param fecha                     the fecha
      * @param historialAcademico        the historial academico
-     * @param id                        the id
+     * @param idSolicitud               the id
      * @param informacionSocioeconomica the informacion socioeconomica
      * @param creadoEn                  the creado en
      */
-    public SolicitudDocument(ObjectId _id, Beca beca, List<ObjectId> documentos, EstadoSolicitud estado, ObjectId estudiante, LocalDate fecha, HistorialAcademico historialAcademico, Long id, InformacionSocioeconomica informacionSocioeconomica, Instant  creadoEn) {
+    public SolicitudDocument(ObjectId _id, Beca beca, List<ObjectId> documentos, EstadoSolicitud estado, ObjectId estudiante, LocalDate fecha, HistorialAcademico historialAcademico, Long idSolicitud, InformacionSocioeconomica informacionSocioeconomica, Instant  creadoEn) {
         this._id = _id;
         this.beca = beca;
         this.documentos = documentos;
@@ -52,7 +52,7 @@ public class SolicitudDocument {
         this.estudiante = estudiante;
         this.fecha = fecha;
         this.historialAcademico = historialAcademico;
-        this.id = id;
+        this.idSolicitud = idSolicitud;
         this.informacionSocioeconomica = informacionSocioeconomica;
         this.creadoEn = creadoEn;
     }
@@ -188,17 +188,17 @@ public class SolicitudDocument {
      *
      * @return the id
      */
-    public Long getId() {
-        return id;
+    public Long getIdSolicitud() {
+        return idSolicitud;
     }
 
     /**
      * Sets id.
      *
-     * @param id the id
+     * @param idSolicitud the id
      */
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdSolicitud(Long idSolicitud) {
+        this.idSolicitud = idSolicitud;
     }
 
     /**

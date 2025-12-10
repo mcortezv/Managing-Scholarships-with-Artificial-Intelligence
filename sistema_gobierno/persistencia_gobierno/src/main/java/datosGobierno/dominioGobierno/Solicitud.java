@@ -13,7 +13,7 @@ import java.util.List;
  * @author Cortez, Manuel;
  */
 public class Solicitud {
-    private Long id;
+    private Long idSolicitud;
     private Beca beca;
     private Estudiante estudiante;
     private InformacionSocioeconomica informacionSocioeconomica;
@@ -36,17 +36,17 @@ public class Solicitud {
      * @param estudiante                the estudiante
      * @param fecha                     the fecha
      * @param historialAcademico        the historial academico
-     * @param id                        the id
+     * @param idSolicitud               the id
      * @param informacionSocioeconomica the informacion socioeconomica
      */
-    public Solicitud(Beca beca, List<Documento> documentos, EstadoSolicitud estado, Estudiante estudiante, LocalDate fecha, HistorialAcademico historialAcademico, long id, InformacionSocioeconomica informacionSocioeconomica) {
+    public Solicitud(Beca beca, List<Documento> documentos, EstadoSolicitud estado, Estudiante estudiante, LocalDate fecha, HistorialAcademico historialAcademico, Long idSolicitud, InformacionSocioeconomica informacionSocioeconomica) {
         this.beca = beca;
         this.documentos = documentos;
         this.estado = estado;
         this.estudiante = estudiante;
         this.fecha = fecha;
         this.historialAcademico = historialAcademico;
-        this.id = id;
+        this.idSolicitud = idSolicitud;
         this.informacionSocioeconomica = informacionSocioeconomica;
     }
 
@@ -163,17 +163,17 @@ public class Solicitud {
      *
      * @return the id
      */
-    public long getId() {
-        return id;
+    public Long getIdSolicitud() {
+        return idSolicitud;
     }
 
     /**
      * Sets id.
      *
-     * @param id the id
+     * @param idSolicitud the id
      */
-    public void setId(long id) {
-        this.id = id;
+    public void setIdSolicitud(Long idSolicitud) {
+        this.idSolicitud = idSolicitud;
     }
 
     /**

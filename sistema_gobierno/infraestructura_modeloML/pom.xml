@@ -13,7 +13,6 @@
         <exec.mainClass>fachadas.Infraestructura_modeloML</exec.mainClass>
     </properties>
     <dependencies>
-        <!-- Dependencia existente -->
         <dependency>
             <groupId>mcortezv</groupId>
             <artifactId>dto_infraestructura</artifactId>
@@ -27,13 +26,6 @@
             <artifactId>jackson-databind</artifactId>
             <version>2.15.2</version>
         </dependency>
-
-        <!-- Java HTTP Client ya viene en Java 11+ -->
-        <!-- No necesita dependencia adicional -->
-
-    <!-- ========================================= -->
-    <!-- Para persistencia_gobierno - Agregar Jackson si no está -->
-    <!-- ========================================= -->
 
     <dependency>
         <groupId>com.fasterxml.jackson.datatype</groupId>

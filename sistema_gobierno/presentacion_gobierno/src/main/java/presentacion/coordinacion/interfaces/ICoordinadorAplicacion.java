@@ -1,5 +1,4 @@
 package presentacion.coordinacion.interfaces;
-
 import dtoGobierno.BecaDTO;
 import dtoGobierno.EvaluadorLoginDTO;
 import dtoGobierno.ResolucionDTO;
@@ -19,15 +18,16 @@ public interface ICoordinadorAplicacion {
     // Evaluar Solicitudes - Navegación
     void iniciarEvaluarConvocatoria();
     void seleccionarConvocatoriaEvaluar(BecaDTO becaDTO);
-    void seleccionarSolicitudEvaluar(SolicitudDTO solicitud);
     void evaluarAutomatica(SolicitudDTO solicitud);
     void evaluarManual(ResolucionDTO resolucion);
     void evaluarOtraSolicitud();
+    void finalizarEvaluacion();
 
     // Modificar Resolución - Navegación
     void iniciarModificarConvocatoria();
     void iniciarBusquedaResolucion();
     void buscarResolucion(String tipoFiltro, String filtro);
+
     void reevaluarAutomatica(SolicitudDTO solicitud);
     void modificarResolucion(ResolucionDTO resolucion);
     void modificarOtraResolucion();

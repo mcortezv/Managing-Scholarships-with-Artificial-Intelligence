@@ -29,10 +29,10 @@ public class ResolucionDAO implements IResolucionDAO {
             if (resolucion == null) {
                 throw new ResolucionDAOException("La resolución no puede ser nula");
             }
-            Bson filtro = Filters.eq("solicitud.id", resolucion.getSolicitud().getId());
+            Bson filtro = Filters.eq("solicitud.id", resolucion.getSolicitud().getIdSolicitud());
             Resolucion existente = col.find(filtro).first();
             if (existente != null) {
-                throw new ResolucionDAOException("Ya existe una resolución para la solicitud " + resolucion.getSolicitud().getId());
+                throw new ResolucionDAOException("Ya existe una resolución para la solicitud " + resolucion.getSolicitud().getIdSolicitud());
             }
             col.insertOne(resolucion);
             return true;
@@ -47,10 +47,10 @@ public class ResolucionDAO implements IResolucionDAO {
             if (resolucion == null) {
                 throw new ResolucionDAOException("La resolución no puede ser nula");
             }
-            Bson filtro = Filters.eq("solicitud.id", resolucion.getSolicitud().getId());
+            Bson filtro = Filters.eq("solicitud.idSolicitud", resolucion.getSolicitud().getIdSolicitud());
             Resolucion existente = col.find(filtro).first();
             if (existente == null) {
-                throw new ResolucionDAOException("No existe resolución para la solicitud " + resolucion.getSolicitud().getId());
+                throw new ResolucionDAOException("No existe resolución para la solicitud " + resolucion.getSolicitud().getIdSolicitud());
             }
             Bson update = Updates.combine(
                     Updates.set("decision", resolucion.getDecision()),
@@ -92,7 +92,7 @@ public class ResolucionDAO implements IResolucionDAO {
                             ".*" + filtro + ".*", "i");
                     break;
                 case "ID_SOLICITUD":
-                    query = Filters.eq("solicitud.id", Long.parseLong(filtro));
+                    query = Filters.eq("solicitud.idSolicitud", Long.parseLong(filtro));
                     break;
                 default:
                     throw new ResolucionDAOException("Tipo de filtro inválido: " + tipoFiltro);

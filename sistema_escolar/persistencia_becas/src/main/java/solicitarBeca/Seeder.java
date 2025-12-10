@@ -39,7 +39,6 @@ public class Seeder {
             estudiante.setTutor(new Tutor("Dora Imelda", Parentesco.MADRE, "6441434194", "Cd. Obregon", "dimelda@gmail.com"));
             estudiante.setCreadoEn(Instant.now());
             ObjectId estudianteId = estudianteDAO.guardar(estudiante);
-            System.out.println("Estudiante Insertado: " + estudianteId);
 
 
             DocumentoDocument doc = new DocumentoDocument();
@@ -50,7 +49,6 @@ public class Seeder {
             doc.setEstudiante(estudianteId);
             doc.setCreadoEn(Instant.now());
             ObjectId documentoId = documentoDAO.guardar(doc);
-            System.out.println("Documento Insertado: " + documentoId);
 
 
             SolicitudDocument sol = new SolicitudDocument();
@@ -62,7 +60,6 @@ public class Seeder {
             sol.setEstado(EstadoSolicitud.ACEPTADA);
             sol.setCreadoEn(Instant.now());
             ObjectId solicitudId = solicitudDAO.create(sol);
-            System.out.println("Solicitud Insertada: " + solicitudId);
 
 
         } catch (Exception ex) {
