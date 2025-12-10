@@ -1,6 +1,4 @@
-package datos.repositoryItson.documents.pagarAdeudo;
-
-import datos.dominioItson.pagarAdeudo.enums.Campus;
+package datos.repositoryItson.daoItson.pagarAdeudo.documents;
 
 public class ClaseDocument {
     private Long idEstudiante;

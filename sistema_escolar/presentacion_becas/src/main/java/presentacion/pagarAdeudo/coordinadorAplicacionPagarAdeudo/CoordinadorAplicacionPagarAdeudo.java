@@ -1,9 +1,9 @@
 package presentacion.pagarAdeudo.coordinadorAplicacionPagarAdeudo;
 
-import objetosNegocio.bo.sesion.SesionUsuario;
 import dto.pagarAdeudo.ClaseDTO;
 import dto.pagarAdeudo.PrestamoDTO;
 import dto.pagarAdeudo.SolicitudPagoDTO;
+import excepciones.NegociosSolicitarPagoException;
 import presentacion.CoordinadorAplicacion;
 import presentacion.pagarAdeudo.PagarAdeudo;
 import presentacion.pagarAdeudo.coordinadorNegocioPagarAdeudo.ICoordinadorNegocioPagarAdeudo;
@@ -13,9 +13,7 @@ import presentacion.pagarAdeudo.panels.DetallePrestamo;
 import presentacion.pagarAdeudo.panels.ListaClasesColegiatura;
 import presentacion.pagarAdeudo.panels.ListaPrestamosBiblioteca;
 import solicitarBeca.EstudianteDTO;
-
 import javax.swing.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
@@ -60,9 +58,13 @@ public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionP
     public void seleccionarAdeudoBiblioteca(EstudianteDTO estudianteDTO) {
         this.setTipoAdeudo("Biblioteca");
         if (this.prestamos == null) {
-            System.out.println("Consultando API (Biblioteca)...");
-            this.prestamos = coordinadorNegocioPagarAdeudo.obtenerListaPrestamos(estudianteDTO);
-            this.adeudoBibliotecaCache = coordinadorNegocioPagarAdeudo.calcularTotalPrestamos(this.prestamos);
+            try{
+                this.prestamos = coordinadorNegocioPagarAdeudo.obtenerListaPrestamos(estudianteDTO);
+                this.adeudoBibliotecaCache = coordinadorNegocioPagarAdeudo.calcularTotalPrestamos(this.prestamos);
+            }catch (NegociosSolicitarPagoException ex){
+                JOptionPane.showMessageDialog(null, ex.getMessage());
+                return;
+            }
         }
         ListaPrestamosBiblioteca panel = (ListaPrestamosBiblioteca) pagarAdeudo.getPanel("listaPrestamosBiblioteca");
         panel.setAdeudo(this.adeudoBibliotecaCache);
@@ -74,8 +76,13 @@ public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionP
     public void seleccionarAdeudoColegiatura(EstudianteDTO estudianteDTO) {
         this.setTipoAdeudo("Colegiatura");
         if (this.clases == null) {
-            this.clases = coordinadorNegocioPagarAdeudo.obtenerListaClases(estudianteDTO);
-            this.adeudoColegiaturaCache = coordinadorNegocioPagarAdeudo.calcularTotalClases(this.clases);
+            try{
+                this.clases = coordinadorNegocioPagarAdeudo.obtenerListaClases(estudianteDTO);
+                this.adeudoColegiaturaCache = coordinadorNegocioPagarAdeudo.calcularTotalClases(this.clases);
+            }catch (NegociosSolicitarPagoException ex){
+                JOptionPane.showMessageDialog(null, ex.getMessage());
+                return;
+            }
         }
         ListaClasesColegiatura panel = (ListaClasesColegiatura) pagarAdeudo.getPanel("listaClasesColegiatura");
         panel.setAdeudo(this.adeudoColegiaturaCache);
@@ -120,12 +127,7 @@ public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionP
         );
 
         if (respuesta == JOptionPane.YES_OPTION) {
-            ActionListener listenerBotonPagarDelBanco = new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    procesarPagoBanco();
-                }
-            };
+            ActionListener listenerBotonPagarDelBanco = e -> procesarPagoBanco();
             coordinadorNegocioPagarAdeudo.mostrarVentanaPago(listenerBotonPagarDelBanco);
         }
     }
@@ -133,9 +135,7 @@ public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionP
     private void procesarPagoBanco() {
         try {
             solicitudPagoDTO.setEstatusPago("Pendiente");
-            solicitudPagoDTO.setIdEstudiante(SesionUsuario.getInstance().getEstudianteLogeado().getMatricula());
             solicitudPagoDTO.setMetodoPago("BANCO");
-
             if ("Biblioteca".equals(tipoAdeudo)) {
                 solicitudPagoDTO.setMontoPagado(adeudoBibliotecaCache);
                 solicitudPagoDTO.setTipoAdeudo("Biblioteca");
@@ -185,7 +185,6 @@ public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionP
     private void procesarPagoPaypal() {
         try {
             solicitudPagoDTO.setEstatusPago("Pagado");
-            solicitudPagoDTO.setIdEstudiante(SesionUsuario.getInstance().getEstudianteLogeado().getMatricula());
             solicitudPagoDTO.setMetodoPago("PAYPAL");
 
             if ("Biblioteca".equals(tipoAdeudo)) {
@@ -210,7 +209,6 @@ public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionP
 
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Error al registrar el pago de PayPal: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            System.out.println("Error procesando pago PayPal: " + ex.getMessage());
         }
     }
 

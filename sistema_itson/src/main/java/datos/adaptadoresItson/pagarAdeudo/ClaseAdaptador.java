@@ -3,7 +3,7 @@ package datos.adaptadoresItson.pagarAdeudo;
 import datos.dominioItson.pagarAdeudo.enums.Campus;
 import itson.pagarAdeudo.ClaseDTOI;
 import datos.dominioItson.pagarAdeudo.Clase;
-import datos.repositoryItson.documents.pagarAdeudo.ClaseDocument;
+import datos.repositoryItson.daoItson.pagarAdeudo.documents.ClaseDocument;
 
 import java.util.ArrayList;
 import java.util.List;

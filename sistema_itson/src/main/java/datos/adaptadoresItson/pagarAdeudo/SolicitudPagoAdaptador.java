@@ -2,7 +2,7 @@ package datos.adaptadoresItson.pagarAdeudo;
 
 import itson.pagarAdeudo.SolicitudPagoDTOI;
 import datos.dominioItson.pagarAdeudo.SolicitudPago;
-import datos.repositoryItson.documents.pagarAdeudo.SolicitudPagoDocument;
+import datos.repositoryItson.daoItson.pagarAdeudo.documents.SolicitudPagoDocument;
 import java.util.ArrayList;
 import java.util.List;
 
