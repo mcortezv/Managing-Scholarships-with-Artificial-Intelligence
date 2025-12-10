@@ -26,4 +26,6 @@ public interface ISolicitudBO {
      * @return the list
      */
     List<SolicitudDTO> obtenerListadoSolicitudes(String tipoBeca);
+
+
 }

@@ -252,4 +252,6 @@ public class ControlSolicitarBeca {
             throw new SolicitarBecaException(ex.getMessage());
         }
     }
+
+
 }

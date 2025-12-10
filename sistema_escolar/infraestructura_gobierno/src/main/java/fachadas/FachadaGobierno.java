@@ -6,6 +6,7 @@ package fachadas;
 import controles.ControlGobierno;
 import dto.apelacionResultado.ApelacionDTO;
 import gobierno.BecasDisponiblesDTOGobierno;
+import gobierno.EstudianteDTOGobierno;
 import gobierno.RequisitosDTOGobierno;
 import gobierno.SolicitudDTOGobierno;
 import interfaces.IFachadaGobierno;
@@ -43,7 +44,7 @@ public class FachadaGobierno implements IFachadaGobierno{
 
     //apelacion resultados
     @Override
-    public List<SolicitudDTOGobierno> obtenerSolicitudesPorEstudiante(EstudianteDTO estudianteDTO) {
+    public List<SolicitudDTOGobierno> obtenerSolicitudesPorEstudiante(EstudianteDTOGobierno estudianteDTO) {
         return controlGobierno.obtenerSolicitudesPorEstudiante(estudianteDTO);
     }
 

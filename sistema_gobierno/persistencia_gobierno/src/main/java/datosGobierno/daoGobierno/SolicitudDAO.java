@@ -139,4 +139,40 @@ public class SolicitudDAO implements ISolicitudDAO {
             throw new SolicitudDAOException("Error al obtener la solicitud por ID: " + ex.getMessage());
         }
     }
+
+    @Override
+    public List<Solicitud> obtenerPorIdEstudiante(ObjectId idEstudiante) {
+        try {
+            if (idEstudiante == null) {
+                return new ArrayList<>();
+            }
+            MongoCollection<Estudiante> colEst = MongoClienteProvider.INSTANCE
+                    .getCollection("estudiantes", Estudiante.class);
+            Estudiante estudiante = colEst.find(Filters.eq("_id", idEstudiante)).first();
+            if (estudiante == null) {
+                return new ArrayList<>();
+            }
+            MongoCollection<SolicitudDocument> colSol = MongoClienteProvider.INSTANCE
+                    .getCollection("solicitudes", SolicitudDocument.class);
+            Bson filtro = Filters.eq("estudiante", idEstudiante);
+            List<SolicitudDocument> documentos = new ArrayList<>();
+            colSol.find(filtro).into(documentos);
+            List<Solicitud> resultado = new ArrayList<>();
+            for (SolicitudDocument doc : documentos) {
+                Solicitud solicitud = new Solicitud();
+                solicitud.setIdSolicitud(doc.getIdSolicitud());
+                solicitud.setFecha(doc.getFecha());
+                solicitud.setEstado(doc.getEstado());
+                solicitud.setBeca(doc.getBeca());
+                solicitud.setHistorialAcademico(doc.getHistorialAcademico());
+                solicitud.setInformacionSocioeconomica(doc.getInformacionSocioeconomica());
+                solicitud.setEstudiante(estudiante);
+                resultado.add(solicitud);
+            }
+            return resultado;
+        } catch (Exception ex) {
+            throw new SolicitudDAOException("Error al obtener solicitudes por estudiante: " + ex.getMessage());
+        }
+    }
+
 }

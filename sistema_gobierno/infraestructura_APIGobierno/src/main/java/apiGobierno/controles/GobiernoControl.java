@@ -45,8 +45,7 @@ public class GobiernoControl {
         return becasService.obtenerBecas(requisitosDTO);
     }
 
-    public List<SolicitudDTOGobierno> obtenerListaSolicitudesPorEstudiante(EstudianteDTOGobierno estudianteDTO){
-        //return SolicitudAdaptador.toDTOGobierno(solicitudService.obtenerListaSolicudesPorEstudiante(estudianteDTO));
-        return null;
+    public List<SolicitudDTOGobierno> obtenerListaSolicudesPorEstudiante(EstudianteDTOGobierno estudianteDTO){
+        return solicitudService.obtenerListaSolicudesPorEstudiante(estudianteDTO);
     }
 }
