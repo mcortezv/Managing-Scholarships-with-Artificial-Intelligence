@@ -1,4 +1,4 @@
-package bo.pagarAdeudo.excepciones;
+package objetosNegocio.adaptadores.pagarAdeudo.excepciones;
 
 public class AdeudoException extends RuntimeException {
     public AdeudoException(String message) {

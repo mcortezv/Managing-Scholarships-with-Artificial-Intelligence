@@ -69,6 +69,8 @@ public class FachadaItson implements IFachadaITSON {
     public boolean notificarLiquidacion(SolicitudPagoDTOI solicitudPagoDTOI) {
         return controlItson.solicitarLiquidacion(solicitudPagoDTOI);
     }
+
+
     /**
      * AQUI TERMINA CASO DE USO PAGAR ADEUDO
      */

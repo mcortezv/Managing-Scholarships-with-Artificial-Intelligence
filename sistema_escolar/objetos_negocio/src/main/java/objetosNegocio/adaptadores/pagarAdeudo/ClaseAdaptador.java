@@ -25,44 +25,12 @@ public class ClaseAdaptador {
         return dto;
     }
 
-    public static ClaseDTOI toDTOI(ClaseDTO dto) {
-        if (dto == null) return null;
-        ClaseDTOI dtoI = new ClaseDTOI();
-        dtoI.setCosto(dto.getCosto());
-        dtoI.setNombre(dto.getNombre());
-        dtoI.setHorario(dto.getHorario());
-        dtoI.setProfesor(dto.getProfesor());
-        dtoI.setAula(dto.getAula());
-        dtoI.setCampus(dto.getCampus());
-        dtoI.setDetalles(dto.getDetalles());
-
-        return dtoI;
-    }
-
-    public static Clase toEntity(ClaseDTOI dto) {
-        if (dto == null) {
-            return null;
-        }
-        Clase entity = new Clase();
-        entity.setIdEstudiante(dto.getIdEstudiante());
-        entity.setNombre(dto.getNombre());
-        entity.setCosto(dto.getCosto());
-        entity.setHorario(dto.getHorario());
-        entity.setProfesor(dto.getProfesor());
-        entity.setAula(dto.getAula());
-        entity.setDetalles(dto.getDetalles());
-        entity.setEstatus(dto.getEstatus());
-        entity.setCampus(Campus.valueOf(dto.getCampus()));
-        return entity;
-    }
-
-    public static List<Clase> toEntity(List<ClaseDTOI> dtos) {
-        if (dtos == null) {
+    public static List<ClaseDTO> toDTO(List<ClaseDTOI> dtosI) {
+        if (dtosI == null) {
             return new ArrayList<>();
         }
-
-        return dtos.stream()
-                .map(ClaseAdaptador::toEntity)
+        return dtosI.stream()
+                .map(ClaseAdaptador::toDTO)
                 .collect(Collectors.toList());
     }
 

@@ -2,12 +2,7 @@ package controles;
 
 import java.awt.event.ActionListener;
 import java.util.List;
-import adaptadoresPagoAdeudo.ClaseAdaptador;
-import adaptadoresPagoAdeudo.PrestamoAdaptador;
 import adaptadoresPagoAdeudo.SolicitudPagoAdapdator;
-import datos.dominioItson.pagarAdeudo.Clase;
-import datos.dominioItson.pagarAdeudo.Prestamo;
-import excepciones.NegociosSolicitarPagoException;
 import itson.pagarAdeudo.SolicitudPagoDTOI;
 import interfaces.*;
 import objetosNegocio.bo.pagarAdeudo.interfaces.IAdeudoBO;
@@ -29,18 +24,12 @@ public class ControlPago {
 
     public List<PrestamoDTO> solicitarListaPrestamos(EstudianteDTO estudianteDTO) {
         Long matricula = estudianteDTO.getMatricula();
-        List<Prestamo> listaEntidades = iAdeudoBO.obtenerDetallePrestamo(matricula);
-        return listaEntidades.stream()
-                .map(PrestamoAdaptador::toDTO)
-                .toList();
+        return iAdeudoBO.obtenerDetallePrestamo(matricula);
     }
 
     public List<ClaseDTO> solicitarListaClases(EstudianteDTO estudianteDTO) {
         Long matricula = estudianteDTO.getMatricula();
-        List<Clase> listaEntidades = iAdeudoBO.obtenerDetalleClase(matricula);
-        return listaEntidades.stream()
-                .map(ClaseAdaptador::toDTO)
-                .toList();
+        return iAdeudoBO.obtenerDetalleClase(matricula);
     }
 
     public void solicitarVistaPago(ActionListener listenerBotonPagar) {

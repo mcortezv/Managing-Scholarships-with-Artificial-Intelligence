@@ -1,8 +1,8 @@
 package objetosNegocio.bo.pagarAdeudo;
 
-import bo.pagarAdeudo.excepciones.AdeudoException;
-import datos.dominioItson.pagarAdeudo.Clase;
-import datos.dominioItson.pagarAdeudo.Prestamo;
+import objetosNegocio.adaptadores.pagarAdeudo.excepciones.AdeudoException;
+import dto.pagarAdeudo.ClaseDTO;
+import dto.pagarAdeudo.PrestamoDTO;
 import itson.pagarAdeudo.ClaseDTOI;
 import itson.pagarAdeudo.PrestamoDTOI;
 import itson.pagarAdeudo.SolicitudPagoDTOI;
@@ -21,9 +21,9 @@ public class AdeudoBO implements IAdeudoBO {
     }
 
     @Override
-    public List<Prestamo> obtenerDetallePrestamo(Long matricula) {
+    public List<PrestamoDTO> obtenerDetallePrestamo(Long matricula) {
         List<PrestamoDTOI> listaPrestamosI = iFachadaITSON.solicitarListaPrestamso(matricula);
-        List<Prestamo> prestamos = PrestamoAdaptador.toEntity(listaPrestamosI);
+        List<PrestamoDTO> prestamos = PrestamoAdaptador.toDTO(listaPrestamosI);
         if (prestamos.isEmpty()) {
             throw new AdeudoException("El estudiante no tiene préstamos pendientes de pago.");
         }
@@ -31,9 +31,9 @@ public class AdeudoBO implements IAdeudoBO {
     }
 
     @Override
-    public List<Clase> obtenerDetalleClase(Long matricula) {
+    public List<ClaseDTO> obtenerDetalleClase(Long matricula) {
         List<ClaseDTOI> listaClasesI = iFachadaITSON.solicitarListaClases(matricula);
-        List<Clase> clases = ClaseAdaptador.toEntity(listaClasesI);
+        List<ClaseDTO> clases = ClaseAdaptador.toDTO(listaClasesI);
         if (clases.isEmpty()) {
             throw new AdeudoException("El estudiante no tiene adeudos de colegiatura.");
         }
