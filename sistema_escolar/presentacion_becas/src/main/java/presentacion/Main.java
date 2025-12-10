@@ -1,24 +1,21 @@
 package presentacion;
-
 import actividades.dao.interfaces.IEstudianteDAOAct;
 import actividades.dao.interfaces.IInscripcionDAO;
 import actividades.daos.EstudianteDAOAct;
 import actividades.daos.InscripcionDAO;
-import bo.apelarResultado.ApelacionBO;
-import bo.solicitarBeca.*;
+import objetosNegocio.bo.apelarResultado.ApelacionBO;
 import controles.ControlGobierno;
 import controles.*;
 import fachadas.*;
-import interfaces.actividades.IActividadBO;
-import interfaces.apelarResultado.IApelacionBO;
-import interfaces.pagarAdeudo.IAdeudoBO;
-import interfaces.solicitarBeca.*;
-import bo.pagarAdeudo.AdeudoBO;
-import objetosNegocio.actividades.ActividadBO;
+import objetosNegocio.bo.solicitarBeca.*;
+import objetosNegocio.bo.actividades.interfaces.IActividadBO;
+import objetosNegocio.bo.apelarResultado.interfaces.IApelacionBO;
+import objetosNegocio.bo.pagarAdeudo.interfaces.IAdeudoBO;
+import objetosNegocio.bo.pagarAdeudo.AdeudoBO;
+import objetosNegocio.bo.actividades.ActividadBO;
+import objetosNegocio.bo.solicitarBeca.intefaces.*;
 import presentacion.actividadesExtracurriculares.coordinador.CoordinadorAplicacionActividades;
-import presentacion.apelarResultado.ApelarResultado;
 import presentacion.apelarResultado.coordinadorAplicacionApelarResultado.CoordinadorAplicacionApelarResultado;
-import presentacion.apelarResultado.coordinadorAplicacionApelarResultado.ICoordinadorAplicacionApelarResultado;
 import presentacion.apelarResultado.coordinadorNegocioApelarResultado.CoordinadorNegocioApelarResultado;
 import presentacion.apelarResultado.coordinadorNegocioApelarResultado.ICoordinadorNegocioApelarResultado;
 import presentacion.pagarAdeudo.coordinadorAplicacionPagarAdeudo.CoordinadorAplicacionPagarAdeudo;
@@ -27,12 +24,12 @@ import presentacion.pagarAdeudo.coordinadorNegocioPagarAdeudo.ICoordinadorNegoci
 import presentacion.interfaces.ICoordinadorNegocio;
 import fachadas.FachadaGobierno;
 import interfaces.*;
-import interfaces.actividades.IEstudianteBOAct;
-import interfaces.actividades.IGrupoBO;
-import interfaces.actividades.IInscripcionBO;
-import objetosNegocio.actividades.EstudianteBOAct;
-import objetosNegocio.actividades.GrupoBO;
-import objetosNegocio.actividades.InscripcionBO;
+import objetosNegocio.bo.actividades.interfaces.IEstudianteBOAct;
+import objetosNegocio.bo.actividades.interfaces.IGrupoBO;
+import objetosNegocio.bo.actividades.interfaces.IInscripcionBO;
+import objetosNegocio.bo.actividades.EstudianteBOAct;
+import objetosNegocio.bo.actividades.GrupoBO;
+import objetosNegocio.bo.actividades.InscripcionBO;
 import presentacion.tutorias.coordinadorAplicacion.CoordinadorAplicacionTutorias;
 import presentacion.tutorias.coordinadorNegocio.CoordinadorNegocioTutorias;
 import solicitarBeca.repository.dao.interfaces.IDocumentoDAO;
@@ -88,12 +85,10 @@ public class Main {
         IDocumentoBO documentoBO = new DocumentoBO(documentoDAO);
         IEstudianteBO estudianteBO = new EstudianteBO(fachadaITSON, estudianteDAO);
         IHistorialAcademicoBO historialAcademicoBO = new HistorialAcademicoBO(fachadaITSON);
-        IInformacionSocioeconomicaBO infoSocioBO = new InformacionSocioeconomicaBO();
-        ISolicitudBO solicitudBO = new SolicitudBO(fachadaGobierno, solicitudDAO);
-        ITutorBO tutorBO = new TutorBO();
+        ISolicitudBO solicitudBO = new SolicitudBO(fachadaGobierno, solicitudDAO, estudianteDAO, documentoDAO);
 
         IFachadaInicioSesion fachadaInicioSesion = new FachadaInicioSesion(new ControlInicioSesion(estudianteBO));
-        IFachadaSolicitarBeca fachadaSolicitarBeca = new FachadaSolicitarBeca(new ControlSolicitarBeca(solicitudBO, estudianteBO, tutorBO, becasFiltradasBO, documentoBO, historialAcademicoBO, infoSocioBO));
+        IFachadaSolicitarBeca fachadaSolicitarBeca = new FachadaSolicitarBeca(new ControlSolicitarBeca(solicitudBO, estudianteBO, becasFiltradasBO, documentoBO, historialAcademicoBO));
 
 
         //cordinadores generales

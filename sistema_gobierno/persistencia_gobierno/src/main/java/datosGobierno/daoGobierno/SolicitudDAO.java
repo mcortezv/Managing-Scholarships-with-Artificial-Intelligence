@@ -3,8 +3,6 @@ import com.mongodb.MongoException;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
-import datosGobierno.adaptadoresGobierno.EstudianteAdaptador;
-import datosGobierno.adaptadoresGobierno.SolicitudAdaptador;
 import datosGobierno.configMongoGobierno.MongoClienteProvider;
 import datosGobierno.documents.SolicitudDocument;
 import datosGobierno.daoGobierno.excepcionesGobierno.SolicitudDAOException;
@@ -12,10 +10,6 @@ import datosGobierno.daoGobierno.interfacesGobierno.ISolicitudDAO;
 import datosGobierno.dominioGobierno.Estudiante;
 import datosGobierno.dominioGobierno.Solicitud;
 import datosGobierno.dominioGobierno.enums.EstadoSolicitud;
-import dtoGobierno.EstudianteDTO;
-import dtoGobierno.SolicitudDTO;
-import gobierno.EstudianteDTOGobierno;
-import gobierno.SolicitudDTOGobierno;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 import java.time.Instant;
@@ -38,7 +32,7 @@ public class SolicitudDAO implements ISolicitudDAO {
     }
 
     @Override
-    public boolean guardarSolicitud(SolicitudDocument solicitud){
+    public boolean guardar(SolicitudDocument solicitud){
         try {
             if (solicitud.get_id() == null) {
                 solicitud.set_id(new ObjectId());
@@ -85,40 +79,24 @@ public class SolicitudDAO implements ISolicitudDAO {
         }
     }
 
-    /**
-     * Valida que la transición de estado sea válida según reglas de negocio
-     */
-    private void validarTransicionEstado(EstadoSolicitud estadoActual, EstadoSolicitud nuevoEstado) {
-        // ACTIVA puede pasar a: ACEPTADA, RECHAZADA, DEVUELTA
-        if (estadoActual == EstadoSolicitud.ACTIVA) {
-            if (nuevoEstado != EstadoSolicitud.ACEPTADA &&
-                    nuevoEstado != EstadoSolicitud.RECHAZADA &&
-                    nuevoEstado != EstadoSolicitud.DEVUELTA) {
-                throw new SolicitudDAOException(
-                        "Transición de estado inválida: ACTIVA -> " + nuevoEstado);
+    @Override
+    public boolean cambiarEstado(int id, EstadoSolicitud estado) {
+        try {
+            if (estado == null) {
+                throw new SolicitudDAOException("El estado no puede ser nulo");
             }
-            return;
-        }
-
-        // DEVUELTA puede volver a ACTIVA o pasar a ACEPTADA/RECHAZADA
-        if (estadoActual == EstadoSolicitud.DEVUELTA) {
-            if (nuevoEstado != EstadoSolicitud.ACTIVA &&
-                    nuevoEstado != EstadoSolicitud.ACEPTADA &&
-                    nuevoEstado != EstadoSolicitud.RECHAZADA) {
-                throw new SolicitudDAOException(
-                        "Transición de estado inválida: DEVUELTA -> " + nuevoEstado);
+            Bson filtro = Filters.eq("id", (long) id);
+            SolicitudDocument solicitud = col.find(filtro).first();
+            if (solicitud == null) {
+                throw new SolicitudDAOException("No se encontró solicitud con ID " + id);
             }
-            return;
-        }
-
-        // ACEPTADA y RECHAZADA son estados finales, solo pueden modificarse en casos especiales
-        if (estadoActual == EstadoSolicitud.ACEPTADA || estadoActual == EstadoSolicitud.RECHAZADA) {
-            // Solo se permite cambiar entre ACEPTADA y RECHAZADA (modificación de resolución)
-            if (!(estadoActual == EstadoSolicitud.ACEPTADA && nuevoEstado == EstadoSolicitud.RECHAZADA) &&
-                    !(estadoActual == EstadoSolicitud.RECHAZADA && nuevoEstado == EstadoSolicitud.ACEPTADA)) {
-                throw new SolicitudDAOException(
-                        "No se puede cambiar el estado de una solicitud finalizada a " + nuevoEstado);
-            }
+            Bson update = Updates.set("estado", estado);
+            col.updateOne(filtro, update);
+            return true;
+        } catch (SolicitudDAOException ex) {
+            throw ex;
+        } catch (Exception ex) {
+            throw new SolicitudDAOException("Error al cambiar el estado de la solicitud: " + ex.getMessage());
         }
     }
 
@@ -159,70 +137,6 @@ public class SolicitudDAO implements ISolicitudDAO {
             throw ex;
         } catch (Exception ex) {
             throw new SolicitudDAOException("Error al obtener la solicitud por ID: " + ex.getMessage());
-        }
-    }
-
-    @Override
-    public boolean actualizar(Solicitud solicitud) {
-        try {
-            if (solicitud == null) {
-                throw new SolicitudDAOException("La solicitud no puede ser nula");
-            }
-
-            Bson filtro = Filters.eq("id", solicitud.getId());
-
-            SolicitudDocument existente = col.find(filtro).first();
-            if (existente == null) {
-                throw new SolicitudDAOException("No existe solicitud con ID " + solicitud.getId());
-            }
-            Bson update = Updates.combine(
-                    Updates.set("beca", solicitud.getBeca()),
-                    Updates.set("informacionSocioeconomica", solicitud.getInformacionSocioeconomica()),
-                    Updates.set("historialAcademico", solicitud.getHistorialAcademico()),
-                    Updates.set("estado", solicitud.getEstado()),
-                    Updates.set("fecha", solicitud.getFecha())
-            );
-
-            col.updateOne(filtro, update);
-            return true;
-
-        } catch (SolicitudDAOException ex) {
-            throw ex;
-        } catch (Exception ex) {
-            throw new SolicitudDAOException("Error al actualizar la solicitud: " + ex.getMessage());
-        }
-    }
-
-    @Override
-    public boolean cambiarEstado(int id, EstadoSolicitud estado) {
-        return false;
-    }
-
-
-    //apelar resultado
-    @Override
-    public List<Solicitud> obtenerListaSolicitudesPorEstudiante(EstudianteDTOGobierno estudianteDTO) {
-        if (estudianteDTO == null) {
-            return new ArrayList<>();
-        }
-        try {
-            MongoCollection<EstudianteDTO> colEstudiantes = MongoClienteProvider.INSTANCE.getCollection("estudiantes", EstudianteDTO.class);
-            EstudianteDTO estudianteEncontrado = colEstudiantes.find(Filters.eq("matricula", estudianteDTO.getMatricula())).first();
-            if (estudianteEncontrado == null) {
-                return new ArrayList<>();
-            }
-           // Estudiante estudianteEntidad = EstudianteAdaptador.toEntity(estudianteDTO);
-            List<SolicitudDocument> docs = new ArrayList<>();
-            col.find(Filters.eq("estudiante", estudianteEncontrado.getMatricula())).into(docs);
-            List<Solicitud> listaResultado = new ArrayList<>();
-            for (SolicitudDocument doc : docs) {
-              //  Solicitud solicitudEntidad = SolicitudAdaptador.toEntity(doc, estudianteEntidad);
-               // listaResultado.add(solicitudEntidad);
-            }
-            return listaResultado;
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            throw new SolicitudDAOException("Error al obtener solicitudes por matrícula: " + ex.getMessage());
         }
     }
 }

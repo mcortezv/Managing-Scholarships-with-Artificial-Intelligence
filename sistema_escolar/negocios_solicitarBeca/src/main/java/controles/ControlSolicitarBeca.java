@@ -1,56 +1,53 @@
 package controles;
-
-import adaptadores.solicitarBeca.*;
-import itson.EstudianteDTOItson;
 import excepciones.DocumentoInvalidoException;
 import excepciones.SolicitarBecaException;
-import interfaces.solicitarBeca.*;
-import org.bson.types.ObjectId;
+import objetosNegocio.bo.solicitarBeca.intefaces.*;
 import solicitarBeca.*;
-import solicitarBeca.dominio.*;
-import solicitarBeca.dominio.enums.Carrera;
-import solicitarBeca.dominio.enums.Parentesco;
-import solicitarBeca.dominio.enums.TipoVivienda;
-import solicitarBeca.repository.documents.DocumentoDocument;
-import solicitarBeca.repository.documents.EstudianteDocument;
-import solicitarBeca.repository.documents.SolicitudDocument;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /**
+ * The type Control solicitar beca.
  *
  * @author Cortez, Manuel;
  */
 public class ControlSolicitarBeca {
     private final ISolicitudBO solicitudBO;
     private final IEstudianteBO estudianteBO;
-    private final ITutorBO tutorBO;
     private final IBecasFiltradasBO becasFiltradasBO;
     private final IDocumentoBO documentoBO;
     private final IHistorialAcademicoBO historialBO;
-    private final IInformacionSocioeconomicaBO socioBO;
-    private BecasFiltradas becasFiltradas;
-    private Beca becaActual;
-    private Estudiante estudiante;
-    private Solicitud solicitudActual;
+    private BecasFiltradasDTO becasFiltradas;
+    private BecaDTO becaActual;
+    private EstudianteDTO estudiante;
+    private SolicitudDTO solicitudActual;
 
+    /**
+     * Instantiates a new Control solicitar beca.
+     *
+     * @param solicitudBO  the solicitud bo
+     * @param estudianteBO the estudiante bo
+     * @param becaBO       the beca bo
+     * @param documentoBO  the documento bo
+     * @param historialBO  the historial bo
+     */
     public ControlSolicitarBeca(ISolicitudBO solicitudBO,
             IEstudianteBO estudianteBO,
-            ITutorBO tutorBO,
             IBecasFiltradasBO becaBO,
             IDocumentoBO documentoBO,
-            IHistorialAcademicoBO historialBO,
-            IInformacionSocioeconomicaBO socioBO) {
+            IHistorialAcademicoBO historialBO) {
         this.solicitudBO = Objects.requireNonNull(solicitudBO);
         this.estudianteBO = Objects.requireNonNull(estudianteBO);
-        this.tutorBO = Objects.requireNonNull(tutorBO);
         this.becasFiltradasBO = Objects.requireNonNull(becaBO);
         this.documentoBO = Objects.requireNonNull(documentoBO);
         this.historialBO = Objects.requireNonNull(historialBO);
-        this.socioBO = Objects.requireNonNull(socioBO);
     }
 
+    /**
+     * Iniciar solicitud.
+     *
+     * @throws SolicitarBecaException the solicitar beca exception
+     */
     public void iniciarSolicitud() throws SolicitarBecaException {
         try {
             this.solicitudActual = solicitudBO.crearSolicitud(becaActual);
@@ -59,93 +56,128 @@ public class ControlSolicitarBeca {
         }
     }
 
+    /**
+     * Sets beca actual.
+     *
+     * @param becaActual the beca actual
+     */
     public void setBecaActual(BecaDTO becaActual) {
-        this.becaActual = BecaAdaptador.toEntity(becaActual);
+        this.becaActual = becaActual;
     }
 
+    /**
+     * Obtener becas filtradas becas filtradas dto.
+     *
+     * @param requisitosDTO the requisitos dto
+     * @return the becas filtradas dto
+     * @throws SolicitarBecaException the solicitar beca exception
+     */
     public BecasFiltradasDTO obtenerBecasFiltradas(RequisitosDTO requisitosDTO) throws SolicitarBecaException {
         try {
-            this.becasFiltradas = BecasFiltradasAdaptador
-                    .toEntity(becasFiltradasBO.obtenerBecasFiltradas(RequisitosAdaptador.toDTOGobierno(requisitosDTO)));
-            return BecasFiltradasAdaptador
-                    .toDTO(becasFiltradasBO.obtenerBecasFiltradas(RequisitosAdaptador.toDTOGobierno(requisitosDTO)));
+            this.becasFiltradas = becasFiltradasBO.obtenerBecasFiltradas(requisitosDTO);
+            return becasFiltradas;
         } catch (Exception ex) {
             throw new SolicitarBecaException(ex.getMessage());
         }
     }
 
+    /**
+     * Obtener beca por id beca dto.
+     *
+     * @param id the id
+     * @return the beca dto
+     * @throws SolicitarBecaException the solicitar beca exception
+     */
     public BecaDTO obtenerBecaPorId(Long id) throws SolicitarBecaException {
         try {
             becaActual = becasFiltradasBO.obtenerBecaPorCodigo(id, becasFiltradas);
-            return BecaAdaptador.toDTO(becaActual);
+            return becaActual;
         } catch (Exception ex) {
             throw new SolicitarBecaException(ex.getMessage());
         }
     }
 
+    /**
+     * Obtener estudiante estudiante dto.
+     *
+     * @param id the id
+     * @return the estudiante dto
+     * @throws SolicitarBecaException the solicitar beca exception
+     */
     public EstudianteDTO obtenerEstudiante(Long id) throws SolicitarBecaException {
         try {
-            EstudianteDTOItson estudianteResponseDTO = estudianteBO.crearEstudiante(id);
-            estudiante = EstudianteAdaptador.toEntity(estudianteResponseDTO);
-            return EstudianteAdaptador.toDTO(estudianteResponseDTO);
+            estudiante = estudianteBO.crearEstudiante(id);
+            return estudiante;
         } catch (Exception ex) {
             throw new SolicitarBecaException(ex.getMessage());
         }
     }
 
+    /**
+     * Asignar historial.
+     *
+     * @param historialAcademicoDTO the historial academico dto
+     * @throws SolicitarBecaException the solicitar beca exception
+     */
     public void asignarHistorial(HistorialAcademicoDTO historialAcademicoDTO) throws SolicitarBecaException {
         try {
-            HistorialAcademico historialAcademico = HistorialAcademicoAdaptador
-                    .toEntity(historialBO.crearHistorial(historialAcademicoDTO.getMatriculaEstudiante()));
-            historialAcademico.setCarrera(Carrera.valueOf(historialAcademicoDTO.getCarrera()));
-            historialAcademico.setCargaAcademica(historialAcademicoDTO.getCargaAcademica());
-            historialAcademico.setSemestre(historialAcademicoDTO.getSemestre());
+            HistorialAcademicoDTO historialAcademico = historialBO.crearHistorial(historialAcademicoDTO.getMatriculaEstudiante());
             solicitudActual.setHistorialAcademico(historialAcademico);
         } catch (Exception ex) {
             throw new SolicitarBecaException(ex.getMessage());
         }
     }
 
+    /**
+     * Asignar tutor.
+     *
+     * @param tutorDTO the tutor dto
+     * @throws SolicitarBecaException the solicitar beca exception
+     */
     public void asignarTutor(TutorDTO tutorDTO) throws SolicitarBecaException {
         try {
             if (tutorDTO.getNombre() == null || tutorDTO.getNombre().equals("")) {
             }
-            Tutor tutor = tutorBO.crearTutor(tutorDTO.getNombre(), Parentesco.valueOf(tutorDTO.getParentesco()),
-                    tutorDTO.getTelefono(), tutorDTO.getDireccion(), tutorDTO.getCorreo());
-            estudiante.setTutor(tutor);
+            estudiante.setTutor(tutorDTO);
             solicitudActual.setEstudiante(estudiante);
         } catch (Exception ex) {
             throw new SolicitarBecaException(ex.getMessage());
         }
     }
 
+    /**
+     * Sets informacion socioeconomica.
+     *
+     * @param infoSoDTO the info so dto
+     * @throws SolicitarBecaException the solicitar beca exception
+     */
     public void setInformacionSocioeconomica(InformacionSocioeconomicaDTO infoSoDTO) throws SolicitarBecaException {
         try {
             if (infoSoDTO == null) {
                 throw new SolicitarBecaException("No se han adjuntado documentos para asignar.");
 
             }
-            InformacionSocioeconomica infoSocio = socioBO.crearInformacionSocioeconomica(
-                    infoSoDTO.getIngresoTotalFamilarMensual(), TipoVivienda.valueOf(infoSoDTO.getTipoVivienda()),
-                    infoSoDTO.isTrabajo(), infoSoDTO.isDeudas());
-            solicitudActual.setInformacionSocioeconomica(infoSocio);
+            solicitudActual.setInformacionSocioeconomica(infoSoDTO);
         } catch (Exception ex) {
             throw new SolicitarBecaException(ex.getMessage());
         }
     }
 
+    /**
+     * Asignar documentos.
+     *
+     * @param documentosDTO the documentos dto
+     * @throws SolicitarBecaException the solicitar beca exception
+     */
     public void asignarDocumentos(List<DocumentoDTO> documentosDTO) throws SolicitarBecaException {
         if (documentosDTO == null || documentosDTO.isEmpty()) {
             throw new SolicitarBecaException("No se han adjuntado documentos para asignar.");
         }
-        List<Documento> documentosEntidad = new ArrayList<>();
         try {
             for (DocumentoDTO dto : documentosDTO) {
                 // validarDocumento(dto);
-                Documento documento = DocumentoAdaptador.toEntity(dto);
-                documentosEntidad.add(documento);
             }
-            solicitudActual.setDocumentos(documentosEntidad);
+            solicitudActual.setDocumentos(documentosDTO);
         } catch (DocumentoInvalidoException ex) {
             throw new SolicitarBecaException("Error en los documentos: " + ex.getMessage());
         } catch (Exception ex) {
@@ -177,36 +209,42 @@ public class ControlSolicitarBeca {
         }
     }
 
+    /**
+     * Obtener solicitud actual solicitud dto.
+     *
+     * @return the solicitud dto
+     * @throws SolicitarBecaException the solicitar beca exception
+     */
     public SolicitudDTO obtenerSolicitudActual() throws SolicitarBecaException {
         try {
-            return SolicitudAdaptador.toDTO(solicitudActual);
+            return solicitudActual;
         } catch (Exception ex) {
             throw new SolicitarBecaException(ex.getMessage());
         }
     }
 
+    /**
+     * Guardar solicitud boolean.
+     *
+     * @return the boolean
+     * @throws SolicitarBecaException the solicitar beca exception
+     */
     public boolean guardarSolicitud() throws SolicitarBecaException {
         try {
             solicitudBO.validarSolicitudCompleta(solicitudActual);
-            solicitudBO.enviarSolicitud(SolicitudAdaptador.toDTOGobierno(solicitudActual));
-            EstudianteDocument estudianteDocument = EstudianteAdaptador.toDocument(solicitudActual.getEstudiante());
-            estudianteBO.guardarEstudiante(estudianteDocument);
-            List<ObjectId> documentos = new ArrayList<>();
-            for (Documento documento : solicitudActual.getDocumentos()) {
-                DocumentoDocument documentoDocument = DocumentoAdaptador.toDocument(documento,
-                        estudianteDocument.get_id());
-                documentos.add(documentoDocument.get_id());
-                documentoBO.guardarDocumento(documentoDocument);
-            }
-            SolicitudDocument solicitudDocument = SolicitudAdaptador.toDocument(solicitudActual,
-                    estudianteDocument.get_id(), documentos);
-            solicitudBO.guardarSolicitud(solicitudDocument);
+            solicitudBO.enviarSolicitud(solicitudActual);
+            solicitudBO.guardarSolicitud(solicitudActual);
             return true;
         } catch (Exception ex) {
             throw new SolicitarBecaException(ex.getMessage());
         }
     }
 
+    /**
+     * Cancelar solicitud.
+     *
+     * @throws SolicitarBecaException the solicitar beca exception
+     */
     public void cancelarSolicitud() throws SolicitarBecaException {
         try {
             solicitudActual.setBeca(null);

@@ -1,6 +1,5 @@
 package apiItson.controles;
 import itson.pagarAdeudo.*;
-import datos.adaptadoresItson.actividades.GrupoAdaptador;
 
 import datos.dominioItson.HistorialAcademico;
 import datos.dominioItson.pagarAdeudo.Clase;
@@ -16,8 +15,8 @@ import datos.dominioItson.Estudiante;
 import datos.serviceItson.EstudianteService;
 import datos.serviceItson.GrupoService;
 import datos.serviceItson.actividades.InscripcionService;
-import itson.ActividadDTOItson;
-import itson.ActividadesDTOItson;
+import itson.actividades.ActividadDTOItson;
+import itson.actividades.ActividadesDTOItson;
 import itson.EstudianteDTOItson;
 import itson.actividades.BajaDTOItson;
 import itson.actividades.GrupoResponseDTOItson;

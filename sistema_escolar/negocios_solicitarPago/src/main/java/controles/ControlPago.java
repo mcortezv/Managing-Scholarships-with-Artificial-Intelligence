@@ -9,7 +9,7 @@ import datos.dominioItson.pagarAdeudo.Clase;
 import datos.dominioItson.pagarAdeudo.Prestamo;
 import itson.pagarAdeudo.SolicitudPagoDTOI;
 import interfaces.*;
-import interfaces.pagarAdeudo.IAdeudoBO;
+import objetosNegocio.bo.pagarAdeudo.interfaces.IAdeudoBO;
 import dto.pagarAdeudo.ClaseDTO;
 import dto.pagarAdeudo.PrestamoDTO;
 import dto.pagarAdeudo.SolicitudPagoDTO;

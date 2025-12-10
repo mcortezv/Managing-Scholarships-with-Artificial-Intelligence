@@ -6,8 +6,8 @@ package datos.adaptadoresItson.actividades;
 
 
 import datos.dominioItson.actividades.Actividad;
-import itson.ActividadDTOItson;
-import itson.ActividadesDTOItson;
+import itson.actividades.ActividadDTOItson;
+import itson.actividades.ActividadesDTOItson;
 
 import java.util.ArrayList;
 import java.util.List;

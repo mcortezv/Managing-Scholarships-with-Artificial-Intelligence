@@ -55,6 +55,27 @@ public class HistorialAcademicoAdaptador {
     /**
      * To dto historial academico dto.
      *
+     * @param dto the dto
+     * @return the historial academico dto
+     */
+    public static HistorialAcademicoDTO toDTO(HistorialAcademicoDTOGobierno dto) {
+        try {
+            HistorialAcademicoDTO historialAcademico = new HistorialAcademicoDTO();
+            historialAcademico.setCargaAcademica(dto.getCargaAcademica());
+            historialAcademico.setIndiceReprobacion(dto.getIndiceReprobacion());
+            historialAcademico.setPorcentajeBajas(dto.getPorcentajeBajas());
+            historialAcademico.setCarrera(dto.getCarrera());
+            historialAcademico.setPromedio(dto.getPromedio());
+            historialAcademico.setSemestre(dto.getSemestre());
+            return historialAcademico;
+        } catch (Exception ex) {
+            throw new HistorialAcademicoAdaptadorException("Error al convertir HistorialAcademicoDTOGobierno a entidad HistorialAcademicoDTO");
+        }
+    }
+
+    /**
+     * To dto historial academico dto.
+     *
      * @param historialAcademico the historial academico
      * @return the historial academico dto
      */

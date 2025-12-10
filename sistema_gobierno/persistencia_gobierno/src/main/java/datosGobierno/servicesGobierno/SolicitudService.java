@@ -6,18 +6,15 @@ import datosGobierno.daoGobierno.DocumentoDAO;
 import datosGobierno.daoGobierno.EstudianteDAO;
 import datosGobierno.daoGobierno.SolicitudDAO;
 import datosGobierno.daoGobierno.excepcionesGobierno.SolicitudDAOException;
+import datosGobierno.daoGobierno.interfacesGobierno.IDocumentoDAO;
+import datosGobierno.daoGobierno.interfacesGobierno.IEstudianteDAO;
 import datosGobierno.daoGobierno.interfacesGobierno.ISolicitudDAO;
 import datosGobierno.documents.DocumentoDocument;
 import datosGobierno.documents.SolicitudDocument;
-import datosGobierno.dominioGobierno.Solicitud;
-import dtoGobierno.EstudianteDTO;
 import gobierno.DocumentoDTOGobierno;
-import gobierno.EstudianteDTOGobierno;
 import gobierno.SolicitudDTOGobierno;
 import org.bson.types.ObjectId;
 import java.util.ArrayList;
-import java.util.List;
-
 import java.util.List;
 
 /**
@@ -26,9 +23,9 @@ import java.util.List;
  * @author Cortez, Manuel;
  */
 public class SolicitudService {
-    private final SolicitudDAO solicitudDAO;
-    private final EstudianteDAO estudianteDAO;
-    private final DocumentoDAO documentoDAO;
+    private final ISolicitudDAO solicitudDAO;
+    private final IEstudianteDAO estudianteDAO;
+    private final IDocumentoDAO documentoDAO;
 
     /**
      * Instantiates a new Solicitud service.
@@ -57,11 +54,7 @@ public class SolicitudService {
         SolicitudDocument solicitudDocument = SolicitudAdaptador.toDocument(solicitud);
         solicitudDocument.setDocumentos(documentos);
         solicitudDocument.setEstudiante(idEstudiante);
-        solicitudDAO.guardarSolicitud(solicitudDocument);
+        solicitudDAO.guardar(solicitudDocument);
         return true;
-    }
-
-    public List<Solicitud> obtenerListaSolicudesPorEstudiante(EstudianteDTOGobierno estudianteDTO){
-        return solicitudDAO.obtenerListaSolicitudesPorEstudiante(estudianteDTO);
     }
 }

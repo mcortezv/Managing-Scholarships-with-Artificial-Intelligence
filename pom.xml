@@ -14,5 +14,6 @@
         <module>recursos_compartidos</module>
         <module>sistema_banco</module>
         <module>sistema_paypal</module>
+        <module>sistema_gobierno/infraestructura_APIGobierno</module>
     </modules>
 </project>

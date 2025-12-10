@@ -3,10 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package fachadas;
-
-import adaptadores.solicitarBeca.EstudianteAdaptador;
+import objetosNegocio.adaptadores.solicitarBeca.EstudianteAdaptador;
 import controles.ControlSolicitarBeca;
-import bo.solicitarBeca.excepciones.SolicitudInvalidaException;
+import objetosNegocio.bo.solicitarBeca.excepciones.SolicitudInvalidaException;
 import interfaces.IFachadaSolicitarBeca;
 import solicitarBeca.*;
 import solicitarBeca.dominio.*;
@@ -14,7 +13,7 @@ import java.util.List;
 
 /**
  * FACHADA
- * 
+ *
  * @author janethcristinagalvanquinonez
  */
 public class FachadaSolicitarBeca implements IFachadaSolicitarBeca {
@@ -22,6 +21,11 @@ public class FachadaSolicitarBeca implements IFachadaSolicitarBeca {
     private Solicitud solicitudActual;
     private Estudiante estudianteActual;
 
+    /**
+     * Instantiates a new Fachada solicitar beca.
+     *
+     * @param gestor the gestor
+     */
     public FachadaSolicitarBeca(ControlSolicitarBeca gestor) {
         this.controlSolicitud = gestor;
     }

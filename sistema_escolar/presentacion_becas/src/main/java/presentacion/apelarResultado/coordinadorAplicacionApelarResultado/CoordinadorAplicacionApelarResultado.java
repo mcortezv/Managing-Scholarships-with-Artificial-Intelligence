@@ -1,6 +1,6 @@
 package presentacion.apelarResultado.coordinadorAplicacionApelarResultado;
 
-import bo.sesion.SesionUsuario;
+import objetosNegocio.bo.sesion.SesionUsuario;
 import dto.apelacionResultado.ApelacionDTO;
 import presentacion.CoordinadorAplicacion;
 import presentacion.apelarResultado.ApelarResultado;

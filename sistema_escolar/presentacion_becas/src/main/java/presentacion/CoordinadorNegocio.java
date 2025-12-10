@@ -2,7 +2,7 @@ package presentacion;
 
 import itson.LoginDTOItson;
 import interfaces.*;
-import bo.solicitarBeca.excepciones.SolicitudInvalidaException;
+import objetosNegocio.bo.solicitarBeca.excepciones.SolicitudInvalidaException;
 import presentacion.interfaces.ICoordinadorNegocio;
 import solicitarBeca.*;
 
