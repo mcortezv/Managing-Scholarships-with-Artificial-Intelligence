@@ -12,6 +12,7 @@ import dto.actividades.GrupoDTO;
 import dto.actividades.GruposResponseDTO;
 import dto.actividades.InscripcionDTO;
 import dto.actividades.InscripcionesDTO;
+import excepciones.ActividadesException;
 
 
 
@@ -19,6 +20,7 @@ import interfaces.IFachadaActividad;
 import itson.LoginDTOItson;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 import presentacion.CoordinadorAplicacion;
 import presentacion.actividadesExtracurriculares.coordNegocio.CoordinadorNegocioActividades;
@@ -99,16 +101,24 @@ public class CoordinadorAplicacionActividades implements ICoordinadorAplicacionA
     
     
     public InscripcionesDTO obtenerInscripciones(EstudianteDTO estudiante){
-       
+       try{
         return coordinadorNegocioActividades.obtenerInscripciones(estudiante);
+       } catch(ActividadesException ex){
+           JOptionPane.showMessageDialog(null, ex.getMessage(), "No se han encontrado inscripciones", JOptionPane.ERROR_MESSAGE);
+       }
+       return new InscripcionesDTO();
     }
     
 
     public GruposResponseDTO obtenerGrupos(ActividadDTO actividadDTO){
-       
-        return coordinadorNegocioActividades.obtenerGrupos(actividadDTO);
-       
+       try{
+            return coordinadorNegocioActividades.obtenerGrupos(actividadDTO);      
+       } catch(ActividadesException ex){
+           JOptionPane.showMessageDialog(null, ex.getMessage());
+       }
+      return null;
     }
+        
     
 
     
@@ -119,11 +129,13 @@ public class CoordinadorAplicacionActividades implements ICoordinadorAplicacionA
     
     
     public void procesarActividadSeleccionada(ActividadDTO actividad){
-        this.actividadSeleccionada= actividad;
-        this.gruposResponseDTO= coordinadorNegocioActividades.obtenerGrupos(actividad);
-        System.out.println(loginDTO.getUsuario());
-        mostrarGrupos();
-        
+        try{
+            this.actividadSeleccionada= actividad;
+            this.gruposResponseDTO= coordinadorNegocioActividades.obtenerGrupos(actividad);
+            mostrarGrupos();
+        } catch(ActividadesException ex){
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "No se ha podido cargar el grupo", JOptionPane.ERROR_MESSAGE);
+        }
     }
     
 //    public void procesarGrupo(GrupoDTO grupoDTO){
@@ -132,6 +144,7 @@ public class CoordinadorAplicacionActividades implements ICoordinadorAplicacionA
 //    }
     
     public void mostrarGrupos(){
+        
         ResumenClases resumenClases = (ResumenClases) actividades.getPanel("ResumenClases");
         resumenClases.obtenerGrupos(gruposResponseDTO);
         actividades.showPanel("ResumenClases");
@@ -146,19 +159,27 @@ public class CoordinadorAplicacionActividades implements ICoordinadorAplicacionA
     
     
     public InscripcionDTO inscribirActividadAlumno(){
-        
-        InscripcionDTO inscripcionDTO= new InscripcionDTO();
-        inscripcionDTO.setIdGrupo(grupoSeleccionado.getId());
-        inscripcionDTO.setIdActividad(actividadSeleccionada.getId());
-        //la cambio a idestudiante
-        inscripcionDTO.setMatriculaEstudiante(String.valueOf(loginDTO.getUsuario()));
-        
-        inscripcionDTO.setNombreGrupo(grupoSeleccionado.getNombreGrupo());
-        inscripcionDTO.setNombreActividad(grupoSeleccionado.getNombreActividad());
-        inscripcionDTO.setCosto(grupoSeleccionado.getCosto());
-        return coordinadorNegocioActividades.inscribirActividad(inscripcionDTO);
-        
-    }
+        try{
+            InscripcionDTO inscripcionResponse= new InscripcionDTO();
+            InscripcionDTO inscripcionDTO= new InscripcionDTO();
+            inscripcionDTO.setIdGrupo(grupoSeleccionado.getId());
+            inscripcionDTO.setIdActividad(actividadSeleccionada.getId());
+            //la cambio a idestudiante
+            inscripcionDTO.setMatriculaEstudiante(String.valueOf(loginDTO.getUsuario()));
+
+            inscripcionDTO.setNombreGrupo(grupoSeleccionado.getNombreGrupo());
+            inscripcionDTO.setNombreActividad(grupoSeleccionado.getNombreActividad());
+            inscripcionDTO.setCosto(grupoSeleccionado.getCosto());
+            inscripcionResponse= coordinadorNegocioActividades.inscribirActividad(inscripcionDTO);
+            if(inscripcionResponse!=null){
+                JOptionPane.showMessageDialog(null, "Inscripcion guardada con exito");
+                return inscripcionResponse;
+            } 
+        } catch(ActividadesException ex){
+            JOptionPane.showMessageDialog(null, "Ha ocurrido un error al inscribir"+ ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+            return new InscripcionDTO();
+        }
 
     
     public ActividadesExtracurriculares getActividades() {
@@ -188,7 +209,6 @@ public class CoordinadorAplicacionActividades implements ICoordinadorAplicacionA
     
     public GrupoDTO inscripcionSeleccionada(InscripcionDTO inscripcion){
         this.inscripcionElegida= inscripcion;
-        System.out.println("cordapl"+inscripcion.getIdGrupo());
         InscripcionDTO inscripcionGrupo = new InscripcionDTO();
         inscripcionGrupo.setIdGrupo(inscripcion.getIdGrupo());
         GrupoDTO grupoInscrito= coordinadorNegocioActividades.obtenerGrupoInscrito(inscripcionGrupo);

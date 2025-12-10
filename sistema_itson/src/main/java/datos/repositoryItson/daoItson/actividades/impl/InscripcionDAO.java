@@ -21,48 +21,43 @@ import org.bson.types.ObjectId;
  *
  * @author janethcristinagalvanquinonez
  */
-public class InscripcionDAO implements IInscripcionDAO{
-    
+public class InscripcionDAO implements IInscripcionDAO {
+
     private final MongoCollection<Inscripcion> col;
 
     public InscripcionDAO() {
         this.col = MongoClienteProvider.INSTANCE.getCollection("inscripcion", Inscripcion.class);
     }
-    
-    public Inscripcion InscribirGrupo(Inscripcion inscripcion){
-        try{
+
+    public Inscripcion InscribirGrupo(Inscripcion inscripcion) {
+        try {
             col.insertOne(inscripcion);
             return inscripcion;
-        } catch(Exception e){
+        } catch (Exception e) {
             return null;
         }
     }
-    
-     public List<Inscripcion> obtenerInscripciones(String matricula){
-         List<Inscripcion> listaInscripciones = new ArrayList<>();
-         try{
-             col.find(Filters.eq("estudiante.matricula", matricula))
-                     .into(listaInscripciones);
-         } catch(Exception e){
-             System.out.println("error al obtener inscripciones"+e.getMessage());
-         }
-         return listaInscripciones;
-                 
-         
-     }
-     
-     public boolean actualizarEstado(ObjectId idInscripcion){
-         UpdateResult resultado= col.updateOne(
-                 Filters.eq("_id", idInscripcion),
-                 Updates.set("estado", "baja")
-         );
-         return resultado.getModifiedCount() > 0;
-     }
-     
-     
 
-    
-    
-    
+    public List<Inscripcion> obtenerInscripciones(String matricula) {
+        List<Inscripcion> listaInscripciones = new ArrayList<>();
+        try {
+            col.find(Filters.and(
+                    Filters.eq("estudiante.matricula", matricula),
+                    Filters.eq("estado", "ACTIVA")
+            )).into(listaInscripciones);
+        } catch (Exception e) {
+            System.out.println("error al obtener inscripciones" + e.getMessage());
+        }
+        return listaInscripciones;
+
+    }
+
+    public boolean actualizarEstado(ObjectId idInscripcion) {
+        UpdateResult resultado = col.updateOne(
+                Filters.eq("_id", idInscripcion),
+                Updates.set("estado", "baja")
+        );
+        return resultado.getModifiedCount() > 0;
+    }
 
 }
