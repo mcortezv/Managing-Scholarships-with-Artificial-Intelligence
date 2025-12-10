@@ -1,12 +1,6 @@
 package controles;
 
-import dto.actividades.ActividadDTO;
-import dto.actividades.ActividadesDTO;
-import dto.actividades.BajaDTO;
-import dto.actividades.EstudianteDTO;
-import dto.actividades.GruposResponseDTO;
-import dto.actividades.InscripcionDTO;
-import dto.actividades.InscripcionesDTO;
+import dto.actividades.*;
 import objetosNegocio.bo.actividades.interfaces.IActividadBO;
 import objetosNegocio.bo.actividades.interfaces.IGrupoBO;
 import objetosNegocio.bo.actividades.interfaces.IInscripcionBO;

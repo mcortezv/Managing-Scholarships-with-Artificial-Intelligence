@@ -97,16 +97,18 @@ public class FachadaItson implements IFachadaITSON {
     
         
     public GrupoResponseDTOItson obtenerGrupoInscrito(InscripcionDTOItson inscripcion){
-        return controlItson.obtenerGrupoInscrito(inscripcion);
+        //return controlItson.obtenerGrupoInscrito(inscripcion);
+        return null;
     }
     
     public BajaDTOItson darBajaActividad(BajaDTOItson baja){
-        return controlItson.darBajaActividad(baja);
-        
+        //return controlItson.darBajaActividad(baja);
+        return null;
     }
     
     public boolean actualizarEstadoInscripcion(String idInscripcion){
-        return controlItson.actualizarEstadoInscripcion(idInscripcion);
+        //return controlItson.actualizarEstadoInscripcion(idInscripcion);
+        return true;
     }
 
     @Override

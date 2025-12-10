@@ -48,5 +48,5 @@ public interface ISolicitudDAO {
 
 
     //apelar resultado
-    List<Solicitud> obtenerListaSolicitudesPorEstudiante(EstudianteDTOGobierno estudianteDTO);
+    //List<Solicitud> obtenerListaSolicitudesPorEstudiante(EstudianteDTOGobierno estudianteDTO);
 }
