@@ -30,7 +30,7 @@ import presentacion.actividadesExtracurriculares.coordinador.CoordinadorAplicaci
 public class ResumenClases extends PanelActividades {
 
     private JPanel panelContenido;
-    private JPanel panelGrupo;
+  //  private JPanel panelGrupo;
 
     public ResumenClases(ActividadesExtracurriculares actividadesExtracurriculares, CoordinadorAplicacionActividades coordinadorAplicacionActividades) {
         super(actividadesExtracurriculares, coordinadorAplicacionActividades);
@@ -62,11 +62,11 @@ public class ResumenClases extends PanelActividades {
         panelContenido.removeAll();
         //  GruposResponseDTO gruposResponseDTO= coordinadorAplicacionActividades.getGruposResponseDTO();
         for (GrupoDTO grupo : gruposResponseDTO.getGrupos()) {
-            panelGrupo = new JPanel();
-            panelGrupo.setLayout(new BoxLayout(panelGrupo, BoxLayout.Y_AXIS));
-            panelGrupo.setMaximumSize(new Dimension(Integer.MAX_VALUE, 120));
-            panelGrupo.setPreferredSize(new Dimension(Integer.MAX_VALUE, 120));
-            panelGrupo.setBorder(BorderFactory.createCompoundBorder(
+            JPanel panelActual = new JPanel();
+            panelActual.setLayout(new BoxLayout(panelActual, BoxLayout.Y_AXIS));
+            panelActual.setMaximumSize(new Dimension(Integer.MAX_VALUE, 120));
+            panelActual.setPreferredSize(new Dimension(Integer.MAX_VALUE, 120));
+            panelActual.setBorder(BorderFactory.createCompoundBorder(
                     new LineBorder(new Color(30, 60, 160), 2),
                     new EmptyBorder(10, 15, 10, 15)
             ));
@@ -82,14 +82,23 @@ public class ResumenClases extends PanelActividades {
             JLabel labelHora = new JLabel(grupo.getHoraInicio() + " - " + grupo.getHoraFin());
             labelHora.setAlignmentX(Component.CENTER_ALIGNMENT);
             labelHora.setFont(new Font("SansSerif", Font.PLAIN, 16));
-            panelGrupo.add(labelNombre);
-            panelGrupo.add(labelPrecio);
-            panelGrupo.add(labelUnidad);
-            panelGrupo.add(labelHora);
-            panelGrupo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-            panelContenido.add(panelGrupo);
-
-            panelGrupo.addMouseListener(new MouseAdapter() {
+            panelActual.add(labelNombre);
+            panelActual.add(labelPrecio);
+            panelActual.add(labelUnidad);
+            panelActual.add(labelHora);
+            panelActual.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+            panelContenido.add(panelActual);
+            panelContenido.add(Box.createVerticalStrut(20));
+            
+            panelActual.addMouseListener(new MouseAdapter() {
+                
+                public void mouseEntered(MouseEvent e) {
+                    panelActual.setBackground(new Color(220, 235, 255));
+                }
+                
+                public void mouseExited(MouseEvent e) {
+                    panelActual.setBackground(Color.WHITE);
+                }
                 public void mouseClicked(MouseEvent e) {
                     coordinadorAplicacionActividades.mostrarGrupo(grupo);
                 }
