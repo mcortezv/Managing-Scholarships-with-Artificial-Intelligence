@@ -1,6 +1,7 @@
 package controles;
 
 import dto.actividades.*;
+import excepciones.ActividadesException;
 import objetosNegocio.bo.actividades.interfaces.IActividadBO;
 import objetosNegocio.bo.actividades.interfaces.IGrupoBO;
 import objetosNegocio.bo.actividades.interfaces.IInscripcionBO;
@@ -29,12 +30,33 @@ public class ControlActividad {
     }
 
     public ActividadesDTO obtenerActividades() {
-        return actividadBO.obtenerActividades();
+        try {
+            ActividadesDTO actividadesDTO = actividadBO.obtenerActividades();
+            if (actividadesDTO == null || actividadesDTO.getActividades() == null || actividadesDTO.getActividades().isEmpty()) {
+                throw new ActividadesException("No hay existencia de actividades");
+            }
+            return actividadesDTO;
+        } catch (Exception ex) {
+            throw new ActividadesException(ex.getMessage());
+        }
     }
 
     public GruposResponseDTO obtenerGrupos(ActividadDTO actividadDTO) {
-        return grupoBO.obtenerGrupos(actividadDTO);
+        try {
+            GruposResponseDTO gruposDTO = grupoBO.obtenerGrupos(actividadDTO);
+            if (gruposDTO == null || gruposDTO.getGrupos() == null || gruposDTO.getGrupos().isEmpty()) {
+                throw new ActividadesException("no hay grupos abiertos para esta actividad");
+            }
+            return gruposDTO;
+            } catch(ActividadesException e){
+                    throw e;
+                    
+
+        } catch (Exception ex) {
+            throw new ActividadesException("Error al obtener grupos" + ex.getMessage());
+        }
     }
+
 
     public InscripcionDTO inscribirActividad(InscripcionDTO inscripcionDTO) {
         EstudianteDTO estudianteDTO = new EstudianteDTO(inscripcionDTO.getMatriculaEstudiante());
@@ -52,19 +74,34 @@ public class ControlActividad {
     }
 
     public InscripcionesDTO obtenerInscripciones(EstudianteDTO estudianteDTO) {
-        return inscripcionBO.obtenerInscripciones(estudianteDTO);
+        try {
+            return inscripcionBO.obtenerInscripciones(estudianteDTO);
+        } catch (Exception ex) {
+            throw new ActividadesException("Ha ocurrido un error al cargar tus inscripciones");
+        }
+
     }
 
     public GrupoDTO obtenerGrupoInscrito(InscripcionDTO inscripcionDTO) {
-        return inscripcionBO.obtenerGrupoInscrito(inscripcionDTO);
-    }
-    
-    public BajaDTO darBajaActividad(BajaDTO baja){
-        BajaDTO bajaGuardada= inscripcionBO.darBajaActividad(baja);
-        if(bajaGuardada != null){
-             inscripcionBO.actualizarEstadoInscripcion(bajaGuardada.getIdInscripcion());
+        try {
+            return inscripcionBO.obtenerGrupoInscrito(inscripcionDTO);
+        } catch (Exception ex) {
+            throw new ActividadesException(("Error al obtener grupo"));
         }
-        return bajaGuardada;
     }
 
+    public BajaDTO darBajaActividad(BajaDTO baja) {
+        try {
+            BajaDTO bajaGuardada = inscripcionBO.darBajaActividad(baja);
+            if (bajaGuardada != null) {
+                inscripcionBO.actualizarEstadoInscripcion(bajaGuardada.getIdInscripcion());
+            } else {
+                throw new ActividadesException(("Error al procesar la baja"));
+            }
+            return bajaGuardada;
+        } catch (Exception ex) {
+            throw new ActividadesException(ex.getMessage());
+        }
+
+    }
 }
