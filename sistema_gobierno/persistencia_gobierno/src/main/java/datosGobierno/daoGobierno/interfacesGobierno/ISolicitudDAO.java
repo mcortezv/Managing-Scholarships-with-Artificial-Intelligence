@@ -19,7 +19,7 @@ public interface ISolicitudDAO {
      * @param solicitud the solicitud
      * @return the boolean
      */
-    boolean guardarSolicitud(SolicitudDocument solicitud);
+    boolean guardar(SolicitudDocument solicitud);
 
     /**
      * Obtener listado solicitudes list.
@@ -37,15 +37,6 @@ public interface ISolicitudDAO {
      */
     Solicitud obtenerPorId(int idSolicitud);
 
-
-    /**
-     * Actualizar boolean.
-     *
-     * @param solicitud the solicitud
-     * @return the boolean
-     */
-    boolean actualizar(Solicitud solicitud);
-
     /**
      * Cambiar estado boolean.
      *
@@ -57,5 +48,5 @@ public interface ISolicitudDAO {
 
 
     //apelar resultado
-    List<Solicitud> obtenerListaSolicitudesPorEstudiante(EstudianteDTOGobierno estudianteDTO);
+    //List<Solicitud> obtenerListaSolicitudesPorEstudiante(EstudianteDTOGobierno estudianteDTO);
 }

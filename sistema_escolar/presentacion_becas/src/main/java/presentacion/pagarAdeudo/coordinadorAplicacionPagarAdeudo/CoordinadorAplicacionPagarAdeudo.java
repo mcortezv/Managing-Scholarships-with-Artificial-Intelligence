@@ -1,6 +1,6 @@
 package presentacion.pagarAdeudo.coordinadorAplicacionPagarAdeudo;
 
-import bo.sesion.SesionUsuario;
+import objetosNegocio.bo.sesion.SesionUsuario;
 import dto.pagarAdeudo.ClaseDTO;
 import dto.pagarAdeudo.PrestamoDTO;
 import dto.pagarAdeudo.SolicitudPagoDTO;

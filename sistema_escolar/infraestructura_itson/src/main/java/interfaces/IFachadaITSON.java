@@ -1,17 +1,11 @@
 package interfaces;
+import itson.actividades.*;
 import itson.pagarAdeudo.ClaseDTOI;
 import itson.pagarAdeudo.PrestamoDTOI;
 import itson.pagarAdeudo.SolicitudPagoDTOI;
-import itson.ActividadDTOItson;
-import itson.ActividadesDTOItson;
 import itson.EstudianteDTOItson;
 import itson.HistorialAcademicoDTOItson;
 import itson.LoginDTOItson;
-import itson.actividades.BajaDTOItson;
-import itson.actividades.GrupoResponseDTOItson;
-import itson.actividades.GruposResponseDTOItson;
-import itson.actividades.InscripcionDTOItson;
-import itson.actividades.InscripcionesDTOItson;
 
 import java.util.List;
 

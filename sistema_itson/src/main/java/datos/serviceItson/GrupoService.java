@@ -3,15 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package datos.serviceItson;
-
 import datos.adaptadoresItson.actividades.ActividadAdaptador;
 import datos.adaptadoresItson.actividades.GrupoAdaptador;
 import datos.dominioItson.actividades.Actividad;
 import datos.dominioItson.actividades.Grupo;
 import datos.adaptadoresItson.actividades.InscripcionAdaptador;
-import datos.dominioItson.actividades.Inscripcion;
 import datos.repositoryItson.daoItson.actividades.impl.GrupoDAO;
-import itson.ActividadDTOItson;
+import itson.actividades.ActividadDTOItson;
 import itson.actividades.GrupoResponseDTOItson;
 import itson.actividades.GruposResponseDTOItson;
 import itson.actividades.InscripcionDTOItson;

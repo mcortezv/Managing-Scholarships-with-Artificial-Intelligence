@@ -13,7 +13,7 @@ public class DocumentoDTO {
     private Long identificador;
     private String tipo;
     private byte[] contenido;
-    private EstudianteDTO estudiante;
+    private Long estudiante;
 
     /**
      * Instantiates a new Documento dto.
@@ -28,7 +28,7 @@ public class DocumentoDTO {
      * @param identificador the identificador
      * @param tipo          the tipo
      */
-    public DocumentoDTO(byte[] contenido, EstudianteDTO estudiante, Long identificador, String tipo) {
+    public DocumentoDTO(byte[] contenido, Long estudiante, Long identificador, String tipo) {
         this.contenido = contenido;
         this.estudiante = estudiante;
         this.identificador = identificador;
@@ -58,7 +58,7 @@ public class DocumentoDTO {
      *
      * @return the estudiante
      */
-    public EstudianteDTO getEstudiante() {
+    public Long getEstudiante() {
         return estudiante;
     }
 
@@ -67,7 +67,7 @@ public class DocumentoDTO {
      *
      * @param estudiante the estudiante
      */
-    public void setEstudiante(EstudianteDTO estudiante) {
+    public void setEstudiante(Long estudiante) {
         this.estudiante = estudiante;
     }
 

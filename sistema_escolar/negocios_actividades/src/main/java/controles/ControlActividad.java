@@ -1,25 +1,13 @@
 package controles;
 
-import adaptadores.actividades.ActividadesAdaptador;
-import adaptadores.actividades.GruposAdaptador;
-import dto.actividades.ActividadDTO;
-import dto.actividades.ActividadesDTO;
-import dto.actividades.BajaDTO;
-import dto.actividades.EstudianteDTO;
-import dto.actividades.GrupoDTO;
-import dto.actividades.GruposResponseDTO;
-import dto.actividades.InscripcionDTO;
-import dto.actividades.InscripcionesDTO;
-import interfaces.actividades.IActividadBO;
-import interfaces.actividades.IGrupoBO;
-import interfaces.actividades.IInscripcionBO;
+import dto.actividades.*;
+import objetosNegocio.bo.actividades.interfaces.IActividadBO;
+import objetosNegocio.bo.actividades.interfaces.IGrupoBO;
+import objetosNegocio.bo.actividades.interfaces.IInscripcionBO;
 //import interfaces.actividades.IInscripcionBO;
-import itson.ActividadDTOItson;
-import itson.ActividadesDTOItson;
-import itson.actividades.GruposResponseDTOItson;
 
 import java.util.Objects;
-import interfaces.actividades.IEstudianteBOAct;
+import objetosNegocio.bo.actividades.interfaces.IEstudianteBOAct;
 
 /**
  *
