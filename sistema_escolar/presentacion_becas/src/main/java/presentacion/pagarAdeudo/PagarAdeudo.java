@@ -71,11 +71,6 @@ public final class PagarAdeudo extends JFrame {
         panel.startComponents();
         panels.put("metodosDePago", panel);
 
-        panel = new ConfirmacionPago(this, coordinadorAplicacionPagarAdeudo);
-        panel.startComponents();
-        panels.put("confirmacionPago", panel);
-
-
     }
 
     public void showPanel(String nuevoPanel) {
