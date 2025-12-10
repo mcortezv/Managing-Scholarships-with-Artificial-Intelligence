@@ -1,6 +1,5 @@
 package apiBanco.interfaces;
 
-import javax.swing.*;
 import java.awt.event.ActionListener;
 
 public interface IBancoAPI {

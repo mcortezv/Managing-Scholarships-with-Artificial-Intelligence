@@ -64,9 +64,6 @@ public class Main {
         IFachadaPago fachadaPago = new FachadaPago(new ControlPago(adeudoBO, fachadaBanco, fachadaPayPal));
         ICoordinadorNegocioPagarAdeudo coordinadorNegocioPagarAdeudo = new CoordinadorNegocioPagarAdeudo(fachadaPago);
 
-
-
-
         //ACT EXTRA
         IActividadBO actividadBO = new ActividadBO(fachadaITSON);
         IGrupoBO grupoBO= new GrupoBO(fachadaITSON);
