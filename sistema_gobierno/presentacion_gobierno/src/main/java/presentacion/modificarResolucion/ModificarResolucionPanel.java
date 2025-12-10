@@ -158,7 +158,7 @@ public class ModificarResolucionPanel extends Panel {
         manualWrapper.setMaximumSize(new Dimension(700, 50));
         manualWrapper.setOpaque(false);
         Label manualWrapperSubtitulo = new Label("Motivo: ");
-        comboManual = new ComboBox<>(new String[]{"Aprobar", "Rechazar", "Devolver"});
+        comboManual = new ComboBox<>(new String[]{"ACEPTADA", "RECHAZADA", "DEVUELTA"});
         manualWrapper.add(manualWrapperSubtitulo);
         manualWrapper.add(comboManual);
         right.add(manualWrapper);
@@ -254,13 +254,11 @@ public class ModificarResolucionPanel extends Panel {
                 return;
             }
 
-            ResolucionDTO nuevaResolucion = new ResolucionDTO();
-            nuevaResolucion.setSolicitud(solicitudActual);
-            nuevaResolucion.setDecision(decision);
-            nuevaResolucion.setMotivo(motivo);
-            nuevaResolucion.setFechaEvaluacion(LocalDate.now());
+            resolucionActual.setDecision(decision);
+            resolucionActual.setMotivo(motivo);
+            resolucionActual.setFechaEvaluacion(LocalDate.now());
 
-            coordinadorAplicacion.modificarResolucion(nuevaResolucion);
+            coordinadorAplicacion.modificarResolucion(resolucionActual);
         });
 
     }

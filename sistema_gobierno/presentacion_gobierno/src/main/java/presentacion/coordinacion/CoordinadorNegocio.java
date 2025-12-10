@@ -30,7 +30,6 @@ public class CoordinadorNegocio implements ICoordinadorNegocio {
         this.sesionIniciada = false;
     }
 
-    // ============= GESTIÓN DE SESIÓN =============
 
     @Override
     public boolean iniciarSesion(EvaluadorLoginDTO evaluadorLoginDTO) {
@@ -75,12 +74,7 @@ public class CoordinadorNegocio implements ICoordinadorNegocio {
         return sesionIniciada;
     }
 
-    @Override
-    public EvaluadorLoginDTO getEvaluadorActual() {
-        return evaluadorActual;
-    }
 
-    // ============= EVALUAR SOLICITUDES =============
 
     @Override
     public List<BecaDTO> obtenerBecasConSolicitudes() {
@@ -170,7 +164,7 @@ public class CoordinadorNegocio implements ICoordinadorNegocio {
         }
     }
 
-    // ============= MODIFICAR RESOLUCIÓN =============
+
 
     @Override
     public ResolucionDTO buscarResolucion(String tipoFiltro, String filtro) {
@@ -241,7 +235,7 @@ public class CoordinadorNegocio implements ICoordinadorNegocio {
         }
     }
 
-    // ============= VALIDACIONES DE COORDINADOR =============
+
 
     /**
      * Valida que haya una sesión activa
@@ -334,15 +328,6 @@ public class CoordinadorNegocio implements ICoordinadorNegocio {
      */
     private void validarResolucionParaModificacion(ResolucionDTO resolucion) {
         validarResolucionManual(resolucion);
-
-        // Validar que el motivo indique modificación
-        String motivoLower = resolucion.getMotivo().toLowerCase();
-        if (!motivoLower.contains("modificación") &&
-                !motivoLower.contains("corrección") &&
-                !motivoLower.contains("revisión")) {
-            throw new RuntimeException(
-                    "El motivo debe explicar claramente la razón de la modificación");
-        }
     }
 
     /**

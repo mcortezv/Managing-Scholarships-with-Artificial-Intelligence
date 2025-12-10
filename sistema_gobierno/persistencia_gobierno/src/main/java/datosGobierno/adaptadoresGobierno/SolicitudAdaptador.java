@@ -29,7 +29,7 @@ public class SolicitudAdaptador {
                 solicitud.setEstudiante(EstudianteAdaptador.toEntity(dto.getEstudiante()));
             }
             solicitud.setFecha(dto.getFecha());
-            solicitud.setId(dto.getId());
+            solicitud.setIdSolicitud(dto.getIdSolicitud());
             solicitud.setHistorialAcademico(HistorialAcademicoAdaptador.toEntity(dto.getHistorialAcademico()));
             solicitud.setInformacionSocioeconomica(InformacionSocioeconomicaAdaptador.toEntity(dto.getInformacionSocioeconomica()));
             if (dto.getDocumentos() != null) {
@@ -57,10 +57,10 @@ public class SolicitudAdaptador {
             solicitud.setBeca(BecaAdaptador.toEntity(dto.getBeca()));
             solicitud.setEstado(EstadoSolicitud.valueOf(dto.getEstado()));
             if (dto.getEstudiante() != null) {
-                //solicitud.setEstudiante(EstudianteAdaptador.toEntity(dto.getEstudiante()));
+                solicitud.setEstudiante(EstudianteAdaptador.toEntity(dto.getEstudiante()));
             }
             solicitud.setFecha(dto.getFecha());
-            solicitud.setId(dto.getId());
+            solicitud.setIdSolicitud(dto.getId());
             solicitud.setHistorialAcademico(HistorialAcademicoAdaptador.toEntity(dto.getHistorialAcademico()));
             solicitud.setInformacionSocioeconomica(InformacionSocioeconomicaAdaptador.toEntity(dto.getInformacionSocioeconomica()));
             if (dto.getDocumentos() != null) {
@@ -82,7 +82,7 @@ public class SolicitudAdaptador {
             solicitud.setBeca(BecaAdaptador.toEntity(dto.getBeca()));
             solicitud.setEstado(EstadoSolicitud.valueOf(dto.getEstado()));
             solicitud.setFecha(dto.getFecha());
-            solicitud.setId(dto.getId());
+            solicitud.setIdSolicitud(dto.getId());
             solicitud.setHistorialAcademico(HistorialAcademicoAdaptador.toEntity(dto.getHistorialAcademico()));
             solicitud.setInformacionSocioeconomica(InformacionSocioeconomicaAdaptador.toEntity(dto.getInformacionSocioeconomica()));
             return solicitud;
@@ -106,7 +106,7 @@ public class SolicitudAdaptador {
                 dto.setEstudiante(EstudianteAdaptador.toDTO(solicitud.getEstudiante()));
             }
             dto.setFecha(solicitud.getFecha());
-            dto.setId(solicitud.getId());
+            dto.setIdSolicitud(solicitud.getIdSolicitud());
             dto.setHistorialAcademico(HistorialAcademicoAdaptador.toDTO(solicitud.getHistorialAcademico()));
             dto.setInformacionSocioeconomica(InformacionSocioeconomicaAdaptador.toDTO(solicitud.getInformacionSocioeconomica()));
             if (solicitud.getDocumentos() != null) {
@@ -125,7 +125,7 @@ public class SolicitudAdaptador {
     public static SolicitudDTOGobierno toDTOGobierno(Solicitud solicitud) {
         try {
             SolicitudDTOGobierno dto = new SolicitudDTOGobierno();
-            dto.setId(solicitud.getId());
+            dto.setId(solicitud.getIdSolicitud());
             dto.setFecha(solicitud.getFecha());
             if (solicitud.getEstado() != null) {
                 dto.setEstado(solicitud.getEstado().toString());
@@ -153,7 +153,7 @@ public class SolicitudAdaptador {
                 return null;
             }
             Solicitud solicitud = new Solicitud();
-            solicitud.setId(doc.getId());
+            solicitud.setIdSolicitud(doc.getIdSolicitud());
             solicitud.setFecha(doc.getFecha());
             solicitud.setEstado(doc.getEstado());
             solicitud.setEstudiante(estudianteEntity);

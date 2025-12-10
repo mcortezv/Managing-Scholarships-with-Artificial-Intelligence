@@ -139,7 +139,7 @@ public class ControlModificarResolucion {
                 throw new NegociosModificarResolucionesException("La solicitud no puede ser nula");
             }
 
-            return solicitudBO.cambiarEstado(Math.toIntExact(solicitud.getId()), EstadoSolicitud.valueOf(solicitud.getEstado()));
+            return solicitudBO.cambiarEstado(Math.toIntExact(solicitud.getIdSolicitud()), EstadoSolicitud.valueOf(solicitud.getEstado()));
         } catch (Exception ex) {
             throw new NegociosModificarResolucionesException("Error al cambiar estado de solicitud: " + ex.getMessage());
         }
@@ -214,12 +214,6 @@ public class ControlModificarResolucion {
         if (resolucion == null) {
             throw new NegociosModificarResolucionesException("La resolución no puede ser nula");
         }
-
-        // Validar que la beca aún esté en periodo de resultados
-        LocalDate fechaResultados = resolucion.getSolicitud().getBeca().getFechaResultados();
-        if (fechaResultados != null && LocalDate.now().isAfter(fechaResultados.plusDays(15))) {
-            throw new NegociosModificarResolucionesException("No se pueden modificar resoluciones después de 15 días de publicados los resultados");
-        }
     }
 
     /**
@@ -286,7 +280,7 @@ public class ControlModificarResolucion {
         validarResolucionManual(resolucion);
 
         // Verificar que la resolución exista
-        if (resolucion.getSolicitud().getId() <= 0) {
+        if (resolucion.getSolicitud().getIdSolicitud() <= 0) {
             throw new NegociosModificarResolucionesException("La solicitud debe tener un ID válido");
         }
     }

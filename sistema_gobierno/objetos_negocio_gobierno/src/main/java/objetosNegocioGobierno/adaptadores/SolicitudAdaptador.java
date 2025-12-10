@@ -26,7 +26,7 @@ public class SolicitudAdaptador {
     public static Solicitud toEntity(SolicitudDTO dto){
         try {
             Solicitud solicitud = new Solicitud();
-            solicitud.setId(dto.getId());
+            solicitud.setIdSolicitud(dto.getIdSolicitud());
             solicitud.setBeca(BecaAdaptador.toEntity(dto.getBeca()));
             solicitud.setEstudiante(EstudianteAdaptador.toEntity(dto.getEstudiante()));
             solicitud.setInformacionSocioeconomica(InformacionSocioeconomicaAdaptador.toEntity(dto.getInformacionSocioeconomica()));
@@ -55,7 +55,7 @@ public class SolicitudAdaptador {
     public static Solicitud toEntity(SolicitudDTOGobierno dto){
         try {
             Solicitud solicitud = new Solicitud();
-            solicitud.setId(dto.getId());
+            solicitud.setIdSolicitud(dto.getId());
             solicitud.setBeca(BecaAdaptador.toEntity(dto.getBeca()));
             solicitud.setEstudiante(EstudianteAdaptador.toEntity(dto.getEstudiante()));
             solicitud.setInformacionSocioeconomica(InformacionSocioeconomicaAdaptador.toEntity(dto.getInformacionSocioeconomica()));
@@ -84,7 +84,7 @@ public class SolicitudAdaptador {
     public static SolicitudDTO toDTO(Solicitud solicitud){
         try {
             SolicitudDTO dto = new SolicitudDTO();
-            dto.setId(solicitud.getId());
+            dto.setIdSolicitud(solicitud.getIdSolicitud());
             dto.setBeca(BecaAdaptador.toDTO(solicitud.getBeca()));
             dto.setEstudiante(EstudianteAdaptador.toDTO(solicitud.getEstudiante()));
             dto.setInformacionSocioeconomica(InformacionSocioeconomicaAdaptador.toDTO(solicitud.getInformacionSocioeconomica()));
@@ -113,7 +113,7 @@ public class SolicitudAdaptador {
     public static SolicitudDTOGobierno toInfraestructuraDTO(Solicitud  solicitud){
         try {
             SolicitudDTOGobierno dto = new SolicitudDTOGobierno();
-            dto.setId(solicitud.getId());
+            dto.setId(solicitud.getIdSolicitud());
             dto.setBeca(BecaAdaptador.toInfraestructuraDTO(solicitud.getBeca()));
             dto.setEstudiante(EstudianteAdaptador.toInfraestructuraDTO(solicitud.getEstudiante()));
             dto.setInformacionSocioeconomica(InformacionSocioeconomicaAdaptador.toInfraestructuraDTO(solicitud.getInformacionSocioeconomica()));

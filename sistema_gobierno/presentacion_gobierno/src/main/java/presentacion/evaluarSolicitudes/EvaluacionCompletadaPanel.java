@@ -68,11 +68,11 @@ public class EvaluacionCompletadaPanel extends Panel {
         centralPanel.add(buttonPanel);
 
         btnAceptar.addActionListener(e -> {
-            coordinadorAplicacion.evaluarOtraSolicitud();
+            coordinadorAplicacion.volverHub();
         });
 
         btnModificar.addActionListener(e -> {
-            coordinadorAplicacion.volverHub();
+            coordinadorAplicacion.iniciarModificarConvocatoria();
         });
     }
 

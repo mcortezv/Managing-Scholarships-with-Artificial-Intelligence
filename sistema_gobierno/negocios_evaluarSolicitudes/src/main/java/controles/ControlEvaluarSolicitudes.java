@@ -104,8 +104,10 @@ public class ControlEvaluarSolicitudes {
             String nuevoEstado = resolucionDTO.getDecision();
 
             // Cambiar estado de la solicitud
-            if (cambiarEstadoSolicitud(Math.toIntExact(resolucionDTO.getSolicitud().getId()), nuevoEstado)) {
+            System.out.println("Prueba es aqui");
+            if (cambiarEstadoSolicitud(Math.toIntExact(resolucionDTO.getSolicitud().getIdSolicitud()), nuevoEstado)) {
                 // Guardar la resolución
+                System.out.println("gwe");
                 return resolucionBO.resolver(resolucionDTO);
             }
 
@@ -125,8 +127,11 @@ public class ControlEvaluarSolicitudes {
             validarResolucionManual(resolucionDTO);
 
             String nuevoEstado = resolucionDTO.getDecision();
+            System.out.println("Si");
+            System.out.println(resolucionDTO.getSolicitud().getIdSolicitud());
+            int id = Math.toIntExact(resolucionDTO.getSolicitud().getIdSolicitud());
+            if (cambiarEstadoSolicitud(id, nuevoEstado)) {
 
-            if (cambiarEstadoSolicitud(Math.toIntExact(resolucionDTO.getSolicitud().getId()), nuevoEstado)) {
                 return resolucionBO.resolver(resolucionDTO);
             }
 
@@ -230,8 +235,9 @@ public class ControlEvaluarSolicitudes {
         if (resolucion.getDecision() == null || resolucion.getDecision().trim().isEmpty()) {
             throw new NegociosEvaluarSolicitudesException("Debe especificar una decisión");
         }
-
+        System.out.println("gega");
         List<String> decisionesValidas = List.of("ACEPTADA", "RECHAZADA", "DEVUELTA");
+        System.out.println("aceptada");
         if (!decisionesValidas.contains(resolucion.getDecision().toUpperCase())) {
             throw new NegociosEvaluarSolicitudesException("Decisión inválida: " + resolucion.getDecision());
         }
