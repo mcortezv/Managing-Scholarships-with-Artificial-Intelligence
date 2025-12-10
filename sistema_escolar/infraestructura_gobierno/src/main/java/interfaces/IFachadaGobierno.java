@@ -1,6 +1,7 @@
 package interfaces;
 import dto.apelacionResultado.ApelacionDTO;
 import gobierno.BecasDisponiblesDTOGobierno;
+import gobierno.EstudianteDTOGobierno;
 import gobierno.RequisitosDTOGobierno;
 import gobierno.SolicitudDTOGobierno;
 import solicitarBeca.EstudianteDTO;
@@ -30,7 +31,7 @@ public interface IFachadaGobierno {
      */
     boolean enviarSolicitud(SolicitudDTOGobierno solicitudDTO);
 
-    List<SolicitudDTOGobierno> obtenerSolicitudesPorEstudiante(EstudianteDTO estudianteDTO);
+    List<SolicitudDTOGobierno> obtenerSolicitudesPorEstudiante(EstudianteDTOGobierno estudianteDTO);
 
     boolean registrarApelacion(ApelacionDTO apelacionDTO);
 }

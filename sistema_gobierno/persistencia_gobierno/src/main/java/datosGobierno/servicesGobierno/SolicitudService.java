@@ -11,7 +11,9 @@ import datosGobierno.daoGobierno.interfacesGobierno.IEstudianteDAO;
 import datosGobierno.daoGobierno.interfacesGobierno.ISolicitudDAO;
 import datosGobierno.documents.DocumentoDocument;
 import datosGobierno.documents.SolicitudDocument;
+import datosGobierno.dominioGobierno.Solicitud;
 import gobierno.DocumentoDTOGobierno;
+import gobierno.EstudianteDTOGobierno;
 import gobierno.SolicitudDTOGobierno;
 import org.bson.types.ObjectId;
 import java.util.ArrayList;
@@ -56,5 +58,19 @@ public class SolicitudService {
         solicitudDocument.setEstudiante(idEstudiante);
         solicitudDAO.guardar(solicitudDocument);
         return true;
+    }
+
+    public List<SolicitudDTOGobierno> obtenerListaSolicudesPorEstudiante(EstudianteDTOGobierno estudianteDTOGobierno){
+        if (estudianteDTOGobierno == null || estudianteDTOGobierno.getMatricula() == null) {
+            return new ArrayList<>();
+        }
+        try {
+            ObjectId idMongo = new ObjectId(String.valueOf(estudianteDTOGobierno.getMatricula()));
+            List<Solicitud> listaEntidades = solicitudDAO.obtenerPorIdEstudiante(idMongo);
+            return SolicitudAdaptador.toDTOGobierno(listaEntidades);
+        } catch (IllegalArgumentException e) {
+            System.out.println("El ID del estudiante no es un ObjectId válido: " + e.getMessage());
+            return new ArrayList<>();
+        }
     }
 }

@@ -6,6 +6,8 @@ import dtoGobierno.EstudianteDTO;
 import dtoGobierno.SolicitudDTO;
 import gobierno.EstudianteDTOGobierno;
 import gobierno.SolicitudDTOGobierno;
+import org.bson.types.ObjectId;
+
 import java.util.List;
 
 /**
@@ -48,5 +50,5 @@ public interface ISolicitudDAO {
 
 
     //apelar resultado
-    //List<Solicitud> obtenerListaSolicitudesPorEstudiante(EstudianteDTOGobierno estudianteDTO);
+    List<Solicitud> obtenerPorIdEstudiante(ObjectId idEstudiante);
 }

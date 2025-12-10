@@ -37,6 +37,6 @@ public class GobiernoAPI implements IGobiernoAPI {
     //apelar resultado
     @Override
     public List<SolicitudDTOGobierno> obtenerListaSolicitudesPorEstudiante(EstudianteDTOGobierno estudianteDTO) {
-        return gobiernoControl.obtenerListaSolicitudesPorEstudiante(estudianteDTO);
+        return gobiernoControl.obtenerListaSolicudesPorEstudiante(estudianteDTO);
     }
 }
