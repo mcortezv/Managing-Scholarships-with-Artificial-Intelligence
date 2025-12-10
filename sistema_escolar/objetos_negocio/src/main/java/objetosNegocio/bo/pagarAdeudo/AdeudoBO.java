@@ -42,6 +42,11 @@ public class AdeudoBO implements IAdeudoBO {
 
     @Override
     public void enviarSolicitudPago(SolicitudPagoDTOI solicitudPagoDTO) {
-        iFachadaITSON.notificarLiquidacion(solicitudPagoDTO);
+        try{
+            iFachadaITSON.notificarLiquidacion(solicitudPagoDTO);
+        }catch (AdeudoException exception){
+            throw new AdeudoException("No se pudo enviar la solicitud del pago");
+        }
+
     }
 }

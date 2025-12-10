@@ -34,7 +34,6 @@ public class CoordinadorAplicacionApelarResultado implements ICoordinadorAplicac
         EstudianteDTO estudianteLogueado = SesionUsuario.getInstance().getEstudianteLogeado();
 
         if (this.solicitudesCache == null) {
-            System.out.println("Consultando API (Solicitudes)...");
             this.solicitudesCache = coordinadorNegocio.obtenerSolicitudesPorEstudiante(estudianteLogueado);
         }
 

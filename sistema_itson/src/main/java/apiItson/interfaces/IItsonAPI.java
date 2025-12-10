@@ -31,6 +31,7 @@ public interface IItsonAPI {
     List<Prestamo> obtenerListaPrestamosBiblioteca(Long matricula);
     List<Clase> obtenerListaClaseColegiatura(Long matricula);
     boolean notificarLiquidacion(SolicitudPagoDTOI solicitudPagoDTOI);
+
     //actividades
      ActividadesDTOItson soloicitarActividades();
      GruposResponseDTOItson solicitarGrupos(ActividadDTOItson actividad);
