@@ -173,6 +173,7 @@ public class CoordinadorAplicacionActividades implements ICoordinadorAplicacionA
             inscripcionResponse= coordinadorNegocioActividades.inscribirActividad(inscripcionDTO);
             if(inscripcionResponse!=null){
                 JOptionPane.showMessageDialog(null, "Inscripcion guardada con exito");
+                mostrarMenu();
                 return inscripcionResponse;
             } 
         } catch(ActividadesException ex){
@@ -219,9 +220,18 @@ public class CoordinadorAplicacionActividades implements ICoordinadorAplicacionA
     
         
     public BajaDTO darBajaActividad(String motivo){
-      
+      try{
         BajaDTO bajaDTO= new BajaDTO(inscripcionElegida.getId(), motivo);
-        return coordinadorNegocioActividades.darBajaActividad(bajaDTO);
+        BajaDTO bajaResponse= coordinadorNegocioActividades.darBajaActividad(bajaDTO);
+        if(bajaResponse!=null){
+            JOptionPane.showMessageDialog(null, "Baja de actividad guardada con exito");
+            mostrarMenu();
+            return bajaResponse;
+        }
+      } catch(ActividadesException ex){
+          JOptionPane.showMessageDialog(null, "Ha ocurrido un error al dar de baja la actividad"+ ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+      }
+      return new BajaDTO();
     }
     
 //
