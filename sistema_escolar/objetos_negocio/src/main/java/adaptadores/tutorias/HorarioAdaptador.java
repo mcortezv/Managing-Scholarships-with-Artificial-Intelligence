@@ -6,10 +6,8 @@ package adaptadores.tutorias;
 
 import adaptadores.tutorias.excepciones.HorarioAdaptadorException;
 import dto.tutorias.HorarioDTO;
-import org.bson.types.ObjectId;
 import tutorias.dominio.Horario;
 import tutorias.dominio.enums.EstadoDisponibilidad;
-import tutorias.repository.documents.HorarioDocument;
 
 /**
  *
@@ -54,34 +52,4 @@ public class HorarioAdaptador {
         }
     }
 
-//    public static Horario toEntity(HorarioDocument doc) {
-//        if (doc == null) return null;
-//        try {
-//            Horario horario = new Horario();
-//            horario.setId(doc.getId());
-//            horario.setIdTutor(doc.getIdTutor());
-//            horario.setFecha(doc.getFecha());
-//            horario.setHora(doc.getHora());
-//            horario.setEstadoDisponibilidad(doc.getEstadoDisponibilidad());
-//            return horario;
-//        } catch (Exception ex) {
-//            throw new HorarioAdaptadorException("Error al convertir HorarioDocument a entidad");
-//        }
-//    }
-//
-//    public static HorarioDocument toDocument(Horario horario) {
-//        if (horario == null) return null;
-//        try {
-//            HorarioDocument doc = new HorarioDocument();
-//            doc.set_id(new ObjectId());
-//            doc.setId(horario.getId());
-//            doc.setIdTutor(horario.getIdTutor());
-//            doc.setFecha(horario.getFecha());
-//            doc.setHora(horario.getHora());
-//            doc.setEstadoDisponibilidad(horario.getEstadoDisponibilidad());
-//            return doc;
-//        } catch (Exception ex) {
-//            throw new HorarioAdaptadorException("Error al convertir entidad Horario a HorarioDocument");
-//        }
-//    }
 }
