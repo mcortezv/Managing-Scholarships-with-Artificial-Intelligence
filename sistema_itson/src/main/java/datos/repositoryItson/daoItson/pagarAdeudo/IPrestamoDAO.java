@@ -1,6 +1,6 @@
 package datos.repositoryItson.daoItson.pagarAdeudo;
 
-import datos.repositoryItson.documents.pagarAdeudo.PrestamoDocument;
+import datos.repositoryItson.daoItson.pagarAdeudo.documents.PrestamoDocument;
 import java.util.List;
 
 public interface IPrestamoDAO {

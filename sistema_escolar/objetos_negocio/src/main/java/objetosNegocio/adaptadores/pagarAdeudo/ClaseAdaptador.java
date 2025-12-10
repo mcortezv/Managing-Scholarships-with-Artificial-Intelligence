@@ -4,7 +4,6 @@ import datos.dominioItson.pagarAdeudo.Clase;
 import datos.dominioItson.pagarAdeudo.enums.Campus;
 import dto.pagarAdeudo.ClaseDTO;
 import itson.pagarAdeudo.ClaseDTOI;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;

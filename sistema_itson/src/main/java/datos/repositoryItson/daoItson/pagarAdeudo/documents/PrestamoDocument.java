@@ -1,6 +1,4 @@
-package datos.repositoryItson.documents.pagarAdeudo;
-
-import java.util.Date;
+package datos.repositoryItson.daoItson.pagarAdeudo.documents;
 
 public class PrestamoDocument {
     private Long idEstudiante;

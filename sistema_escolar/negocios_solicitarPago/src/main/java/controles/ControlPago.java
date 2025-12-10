@@ -7,6 +7,7 @@ import adaptadoresPagoAdeudo.PrestamoAdaptador;
 import adaptadoresPagoAdeudo.SolicitudPagoAdapdator;
 import datos.dominioItson.pagarAdeudo.Clase;
 import datos.dominioItson.pagarAdeudo.Prestamo;
+import excepciones.NegociosSolicitarPagoException;
 import itson.pagarAdeudo.SolicitudPagoDTOI;
 import interfaces.*;
 import objetosNegocio.bo.pagarAdeudo.interfaces.IAdeudoBO;
@@ -41,6 +42,7 @@ public class ControlPago {
                 .map(ClaseAdaptador::toDTO)
                 .toList();
     }
+
     public void solicitarVistaPago(ActionListener listenerBotonPagar) {
         iFachadaBanco.mostrarPantallaPago(listenerBotonPagar);
     }

@@ -1,4 +1,4 @@
-package datos.repositoryItson.documents.pagarAdeudo;
+package datos.repositoryItson.daoItson.pagarAdeudo.documents;
 
 public class SolicitudPagoDocument {
     private Long idEstudiante;

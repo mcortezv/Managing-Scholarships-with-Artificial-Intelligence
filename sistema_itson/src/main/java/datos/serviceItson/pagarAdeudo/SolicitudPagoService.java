@@ -5,7 +5,7 @@ import datos.repositoryItson.daoItson.pagarAdeudo.impl.PrestamoDAO;
 import itson.pagarAdeudo.SolicitudPagoDTOI;
 import datos.adaptadoresItson.pagarAdeudo.SolicitudPagoAdaptador;
 import datos.repositoryItson.daoItson.pagarAdeudo.impl.SolicitudPagoDAO;
-import datos.repositoryItson.documents.pagarAdeudo.SolicitudPagoDocument;
+import datos.repositoryItson.daoItson.pagarAdeudo.documents.SolicitudPagoDocument;
 
 public class SolicitudPagoService {
     private final SolicitudPagoDAO solicitudPagoDAO;
@@ -30,7 +30,6 @@ public class SolicitudPagoService {
         String tipo = solicitud.getTipoAdeudo();
         Long idEstudiante = solicitud.getIdEstudiante();
         if (tipo == null) {
-            System.err.println("Advertencia: El tipo de adeudo es nulo, no se actualizaron registros.");
             return;
         }
         if ("Biblioteca".equalsIgnoreCase(tipo)) {

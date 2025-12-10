@@ -3,7 +3,7 @@ package datos.serviceItson.pagarAdeudo;
 import datos.adaptadoresItson.pagarAdeudo.PrestamoAdaptador;
 import datos.dominioItson.pagarAdeudo.Prestamo;
 import datos.repositoryItson.daoItson.pagarAdeudo.impl.PrestamoDAO;
-import datos.repositoryItson.documents.pagarAdeudo.PrestamoDocument;
+import datos.repositoryItson.daoItson.pagarAdeudo.documents.PrestamoDocument;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,8 +19,6 @@ public class PrestamoService {
         List<Prestamo> prestamos = new ArrayList<>();
         for(PrestamoDocument prestamoDocument : prestamoDocuments){
             prestamos.add(PrestamoAdaptador.toEntity(prestamoDocument));
-            System.out.println("Prestamos service\n");
-            System.out.println(prestamoDocument.getCosto());
         }
         return prestamos;
     }

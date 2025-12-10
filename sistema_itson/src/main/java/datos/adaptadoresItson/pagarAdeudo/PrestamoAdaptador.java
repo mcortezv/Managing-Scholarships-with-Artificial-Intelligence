@@ -2,7 +2,7 @@ package datos.adaptadoresItson.pagarAdeudo;
 
 import itson.pagarAdeudo.PrestamoDTOI;
 import datos.dominioItson.pagarAdeudo.Prestamo;
-import datos.repositoryItson.documents.pagarAdeudo.PrestamoDocument;
+import datos.repositoryItson.daoItson.pagarAdeudo.documents.PrestamoDocument;
 
 import java.util.ArrayList;
 import java.util.List;

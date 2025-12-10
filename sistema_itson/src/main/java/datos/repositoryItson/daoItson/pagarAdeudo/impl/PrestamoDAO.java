@@ -6,7 +6,7 @@ import com.mongodb.client.model.Updates;
 import datos.configMongoItson.MongoClienteProvider;
 import datos.excepciones.DaoException;
 import datos.repositoryItson.daoItson.pagarAdeudo.IPrestamoDAO;
-import datos.repositoryItson.documents.pagarAdeudo.PrestamoDocument;
+import datos.repositoryItson.daoItson.pagarAdeudo.documents.PrestamoDocument;
 import org.bson.conversions.Bson;
 
 import java.util.ArrayList;
@@ -39,12 +39,10 @@ public class PrestamoDAO implements IPrestamoDAO {
                     Filters.eq("idEstudiante", idEstudiante),
                     Filters.eq("estatus", "Pendiente")
             );
-
             Bson actualizacion = Updates.set("estatus", "Pagado");
             col.updateMany(filtro, actualizacion);
-            System.out.println("Préstamos actualizados a PAGADO para el estudiante: " + idEstudiante);
         } catch (Exception e) {
-            System.err.println("Error al liquidar préstamos: " + e.getMessage());
+            throw new DaoException("Error al liquidar prestamos: " + e.getMessage());
         }
     }
 

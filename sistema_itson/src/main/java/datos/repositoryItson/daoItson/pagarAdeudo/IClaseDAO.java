@@ -1,6 +1,6 @@
 package datos.repositoryItson.daoItson.pagarAdeudo;
 
-import datos.repositoryItson.documents.pagarAdeudo.ClaseDocument;
+import datos.repositoryItson.daoItson.pagarAdeudo.documents.ClaseDocument;
 
 import java.util.List;
 

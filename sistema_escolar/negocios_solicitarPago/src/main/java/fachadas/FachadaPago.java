@@ -5,6 +5,7 @@ import dto.pagarAdeudo.ClaseDTO;
 import dto.pagarAdeudo.PrestamoDTO;
 import dto.pagarAdeudo.SolicitudPagoDTO;
 import interfaces.IFachadaPago;
+import objetosNegocio.bo.sesion.SesionUsuario;
 import solicitarBeca.EstudianteDTO;
 
 import java.awt.event.ActionListener;
@@ -34,6 +35,7 @@ public class FachadaPago implements IFachadaPago {
 
     @Override
     public SolicitudPagoDTO realizarPago(SolicitudPagoDTO solicitudPagoDTO) {
+        solicitudPagoDTO.setIdEstudiante(SesionUsuario.getInstance().getEstudianteLogeado().getMatricula());
         return controlPago.realizarPago(solicitudPagoDTO);
     }
 
@@ -54,6 +56,7 @@ public class FachadaPago implements IFachadaPago {
 
     @Override
     public SolicitudPagoDTO realizarPagoPaypal(SolicitudPagoDTO dto) {
+        dto.setIdEstudiante(SesionUsuario.getInstance().getEstudianteLogeado().getMatricula());
         dto.setEstatusPago("Pagado");
         return dto;
     }
