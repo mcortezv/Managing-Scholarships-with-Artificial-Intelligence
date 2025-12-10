@@ -6,6 +6,7 @@ package datosGobierno.servicesGobierno;
 import datosGobierno.adaptadoresGobierno.BecaAdaptador;
 import datosGobierno.daoGobierno.BecaDAO;
 import datosGobierno.daoGobierno.excepcionesGobierno.SolicitudDAOException;
+import datosGobierno.daoGobierno.interfacesGobierno.IBecaDAO;
 import datosGobierno.dominioGobierno.Beca;
 import gobierno.BecaDTOGobierno;
 import gobierno.BecasDisponiblesDTOGobierno;
@@ -19,7 +20,7 @@ import java.util.List;
  * @author janethcristinagalvanquinonez
  */
 public class BecasService {
-    private final BecaDAO becaDAO;
+    private final IBecaDAO becaDAO;
 
     /**
      * Instantiates a new Becas service.

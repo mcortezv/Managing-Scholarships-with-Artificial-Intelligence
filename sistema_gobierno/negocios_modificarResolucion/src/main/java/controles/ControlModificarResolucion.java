@@ -2,11 +2,11 @@ package controles;
 import datosGobierno.dominioGobierno.Resolucion;
 import datosGobierno.dominioGobierno.Solicitud;
 import datosGobierno.dominioGobierno.enums.Decision;
+import datosGobierno.dominioGobierno.enums.EstadoSolicitud;
 import dtoGobierno.ResolucionDTO;
 import dtoGobierno.SolicitudDTO;
 import excepciones.NegociosModificarResolucionesException;
 import gobierno.ResolucionDTOGobierno;
-import gobierno.SolicitudDTOGobierno;
 import objetosNegocioGobierno.adaptadores.ResolucionAdaptador;
 import objetosNegocioGobierno.adaptadores.SolicitudAdaptador;
 import objetosNegocioGobierno.bo.interfaces.IResolucionBO;
@@ -38,7 +38,7 @@ public class ControlModificarResolucion {
             validarParametrosBusqueda(tipoFiltro, filtro);
 
             // Buscar resolución
-            Resolucion resolucion = resolucionBO.obtenerResolucionPorFiltro(tipoFiltro, filtro);
+            ResolucionDTO resolucion = resolucionBO.obtenerResolucionPorFiltro(tipoFiltro, filtro);
 
             if (resolucion == null) {
                 throw new NegociosModificarResolucionesException("No se encontró resolución con el filtro proporcionado");
@@ -46,7 +46,7 @@ public class ControlModificarResolucion {
 
             validarResolucionModificable(resolucion);
 
-            return ResolucionAdaptador.toDTO(resolucion);
+            return resolucion;
 
         } catch (Exception ex) {
             throw new NegociosModificarResolucionesException("Error al buscar resolución: " + ex.getMessage());
@@ -63,12 +63,8 @@ public class ControlModificarResolucion {
             // Validar que la solicitud pueda ser reevaludada
             validarSolicitudParaReevaluacion(solicitudDTO);
 
-            // Convertir a entidad y DTO de infraestructura
-            Solicitud solicitud = SolicitudAdaptador.toEntity(solicitudDTO);
-            SolicitudDTOGobierno solicitudInfraestructuraDTO = SolicitudAdaptador.toInfraestructuraDTO(solicitud);
-
             // Llamar al modelo de ML
-            ResolucionDTOGobierno resolucionInfraestructuraDTO = resolucionBO.crearResolucionAutomatica(solicitudInfraestructuraDTO);
+            ResolucionDTOGobierno resolucionInfraestructuraDTO = resolucionBO.crearResolucionAutomatica(solicitudDTO);
 
             // Validar coherencia
             if (resolucionInfraestructuraDTO == null) {
@@ -101,12 +97,10 @@ public class ControlModificarResolucion {
             String motivo = resolucionDTO.getMotivo();
             LocalDate fechaEvaluacion = resolucionDTO.getFechaEvaluacion();
 
-            Resolucion resolucion = resolucionBO.crearResolucion(
-                    solicitud, decision, motivo, fechaEvaluacion);
 
             // Cambiar estado de la solicitud
-            if (cambiarEstadoSolicitud(resolucion.getSolicitud())) {
-                return resolucionBO.actualizarResolucion(resolucion);
+            if (cambiarEstadoSolicitud(resolucionDTO.getSolicitud())) {
+                return resolucionBO.actualizarResolucion(resolucionDTO);
             }
 
             return false;
@@ -125,12 +119,9 @@ public class ControlModificarResolucion {
             // Validar que la resolución exista y sea modificable
             validarModificacionResolucion(resolucionDTO);
 
-            // Convertir a entidad
-            Resolucion resolucion = ResolucionAdaptador.toEntity(resolucionDTO);
-
             // Cambiar estado de la solicitud si cambió la decisión
-            if (cambiarEstadoSolicitud(resolucion.getSolicitud())) {
-                return resolucionBO.actualizarResolucion(resolucion);
+            if (cambiarEstadoSolicitud(resolucionDTO.getSolicitud())) {
+                return resolucionBO.actualizarResolucion(resolucionDTO);
             }
 
             return false;
@@ -142,13 +133,13 @@ public class ControlModificarResolucion {
     /**
      * Cambia el estado de una solicitud según su resolución
      */
-    public boolean cambiarEstadoSolicitud(Solicitud solicitud) {
+    public boolean cambiarEstadoSolicitud(SolicitudDTO solicitud) {
         try {
             if (solicitud == null) {
                 throw new NegociosModificarResolucionesException("La solicitud no puede ser nula");
             }
 
-            return solicitudBO.cambiarEstado((int) solicitud.getId(), solicitud.getEstado());
+            return solicitudBO.cambiarEstado(Math.toIntExact(solicitud.getId()), EstadoSolicitud.valueOf(solicitud.getEstado()));
         } catch (Exception ex) {
             throw new NegociosModificarResolucionesException("Error al cambiar estado de solicitud: " + ex.getMessage());
         }
@@ -219,7 +210,7 @@ public class ControlModificarResolucion {
     /**
      * Valida que una resolución sea modificable
      */
-    private void validarResolucionModificable(Resolucion resolucion) {
+    private void validarResolucionModificable(ResolucionDTO resolucion) {
         if (resolucion == null) {
             throw new NegociosModificarResolucionesException("La resolución no puede ser nula");
         }

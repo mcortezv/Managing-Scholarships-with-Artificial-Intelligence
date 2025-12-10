@@ -71,7 +71,7 @@ public class ControlEvaluarSolicitudes {
             SolicitudDTOGobierno solicitudInfraestructuraDTO = SolicitudAdaptador.toInfraestructuraDTO(solicitud);
 
             // Llamar al modelo de ML
-            ResolucionDTOGobierno resolucionInfraestructuraDTO = resolucionBO.crearResolucionAutomatica(solicitudInfraestructuraDTO);
+            ResolucionDTOGobierno resolucionInfraestructuraDTO = resolucionBO.crearResolucionAutomatica(solicitudDTO);
 
             // Validar que la resolución sea coherente
             validarResolucion(resolucionInfraestructuraDTO);
@@ -104,9 +104,9 @@ public class ControlEvaluarSolicitudes {
             String nuevoEstado = resolucionDTO.getDecision();
 
             // Cambiar estado de la solicitud
-            if (cambiarEstadoSolicitud((int) resolucionDTO.getSolicitud().getId(), nuevoEstado)) {
+            if (cambiarEstadoSolicitud(Math.toIntExact(resolucionDTO.getSolicitud().getId()), nuevoEstado)) {
                 // Guardar la resolución
-                return resolucionBO.resolver(ResolucionAdaptador.toEntity(resolucionDTO));
+                return resolucionBO.resolver(resolucionDTO);
             }
 
             return false;
@@ -126,8 +126,8 @@ public class ControlEvaluarSolicitudes {
 
             String nuevoEstado = resolucionDTO.getDecision();
 
-            if (cambiarEstadoSolicitud((int) resolucionDTO.getSolicitud().getId(), nuevoEstado)) {
-                return resolucionBO.resolver(ResolucionAdaptador.toEntity(resolucionDTO));
+            if (cambiarEstadoSolicitud(Math.toIntExact(resolucionDTO.getSolicitud().getId()), nuevoEstado)) {
+                return resolucionBO.resolver(resolucionDTO);
             }
 
             return false;

@@ -233,10 +233,6 @@ public class ControlSolicitarBeca {
         try {
             solicitudBO.validarSolicitudCompleta(solicitudActual);
             solicitudBO.enviarSolicitud(solicitudActual);
-            estudianteBO.guardarEstudiante(estudiante);
-            for (DocumentoDTO documento : solicitudActual.getDocumentos()) {
-                documentoBO.guardarDocumento(documento);
-            }
             solicitudBO.guardarSolicitud(solicitudActual);
             return true;
         } catch (Exception ex) {

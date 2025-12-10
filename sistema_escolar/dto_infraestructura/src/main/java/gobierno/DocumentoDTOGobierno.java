@@ -13,7 +13,7 @@ public class DocumentoDTOGobierno {
     private Long identificador;
     private String tipo;
     private byte[] contenido;
-    private EstudianteDTOGobierno estudiante;
+    private Long estudiante;
 
     /**
      * Instantiates a new Documento dto gobierno.
@@ -28,7 +28,7 @@ public class DocumentoDTOGobierno {
      * @param identificador the identificador
      * @param tipo          the tipo
      */
-    public DocumentoDTOGobierno(byte[] contenido, EstudianteDTOGobierno estudiante, Long identificador, String tipo) {
+    public DocumentoDTOGobierno(byte[] contenido, Long estudiante, Long identificador, String tipo) {
         this.contenido = contenido;
         this.estudiante = estudiante;
         this.identificador = identificador;
@@ -58,7 +58,7 @@ public class DocumentoDTOGobierno {
      *
      * @return the estudiante
      */
-    public EstudianteDTOGobierno getEstudiante() {
+    public Long getEstudiante() {
         return estudiante;
     }
 
@@ -67,7 +67,7 @@ public class DocumentoDTOGobierno {
      *
      * @param estudiante the estudiante
      */
-    public void setEstudiante(EstudianteDTOGobierno estudiante) {
+    public void setEstudiante(Long estudiante) {
         this.estudiante = estudiante;
     }
 

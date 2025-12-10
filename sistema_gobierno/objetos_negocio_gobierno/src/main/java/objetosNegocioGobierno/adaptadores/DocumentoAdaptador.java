@@ -24,7 +24,7 @@ public class DocumentoAdaptador {
             documento.setIdentificador(dto.getIdentificador());
             documento.setTipo(TipoDocumento.valueOf(dto.getTipo()));
             documento.setContenido(dto.getContenido());
-            documento.setEstudiante(EstudianteAdaptador.toEntity(dto.getEstudiante()));
+            documento.setEstudiante(dto.getEstudiante());
             return documento;
         } catch (Exception sinUso){
             throw new DocumentoAdaptadorException("No se pudo mappear el DocumentoDTO a entidad Documento");
@@ -43,7 +43,7 @@ public class DocumentoAdaptador {
             documento.setIdentificador(dto.getIdentificador());
             documento.setTipo(TipoDocumento.valueOf(dto.getTipo()));
             documento.setContenido(dto.getContenido());
-            documento.setEstudiante(EstudianteAdaptador.toEntity(dto.getEstudiante()));
+            documento.setEstudiante(dto.getEstudiante());
             return documento;
         } catch (Exception sinUso){
             throw new DocumentoAdaptadorException("No se pudo mappear el DocumentoDTOGobierno a entidad Documento");
@@ -62,7 +62,7 @@ public class DocumentoAdaptador {
             dto.setIdentificador(documento.getIdentificador());
             dto.setTipo(documento.getTipo().toString());
             dto.setContenido(documento.getContenido());
-            dto.setEstudiante(EstudianteAdaptador.toDTO(documento.getEstudiante()));
+            dto.setEstudiante(documento.getEstudiante());
             return dto;
         } catch (Exception sinUso){
             throw new DocumentoAdaptadorException("No se pudo mappear el DocumentoDTO a entidad Documento");
@@ -81,7 +81,7 @@ public class DocumentoAdaptador {
             dto.setIdentificador(documento.getIdentificador());
             dto.setTipo(documento.getTipo().toString());
             dto.setContenido(documento.getContenido());
-            dto.setEstudiante(EstudianteAdaptador.toInfraestructuraDTO(documento.getEstudiante()));
+            dto.setEstudiante(documento.getEstudiante());
             return dto;
         } catch (Exception sinUso){
             throw new DocumentoAdaptadorException("No se pudo mappear la entidad Documento a DocumentoDTOGobierno");

@@ -23,7 +23,7 @@ public class DocumentoAdaptador {
             documento.setIdentificador(dto.getIdentificador());
             documento.setTipo(TipoDocumento.valueOf(dto.getTipo()));
             documento.setContenido(dto.getContenido());
-            documento.setEstudiante(EstudianteAdaptador.toEntity(dto.getEstudiante()));
+            documento.setEstudiante(dto.getEstudiante());
             return documento;
         } catch (Exception ex) {
             throw new DocumentoAdaptadorException("Error al convertir DocumentoDTO a entidad Documento");
@@ -42,7 +42,7 @@ public class DocumentoAdaptador {
             documento.setIdentificador(dto.getIdentificador());
             documento.setTipo(TipoDocumento.valueOf(dto.getTipo()));
             documento.setContenido(dto.getContenido());
-            documento.setEstudiante(EstudianteAdaptador.toEntity(dto.getEstudiante()));
+            documento.setEstudiante(dto.getEstudiante());
             return documento;
         } catch (Exception ex) {
             throw new DocumentoAdaptadorException("Error al convertir DocumentoDTOGobierno a entidad Documento");
@@ -79,7 +79,7 @@ public class DocumentoAdaptador {
             dto.setIdentificador(documento.getIdentificador());
             dto.setTipo(documento.getTipo().toString());
             dto.setContenido(documento.getContenido());
-            dto.setEstudiante(EstudianteAdaptador.toDTO(documento.getEstudiante()));
+            dto.setEstudiante(documento.getEstudiante());
             return dto;
         } catch (Exception ex) {
             throw new DocumentoAdaptadorException("Error al converir entidada Documento a DocumentoDTO");

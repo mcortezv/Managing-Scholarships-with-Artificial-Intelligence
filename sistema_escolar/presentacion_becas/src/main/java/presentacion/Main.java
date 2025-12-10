@@ -85,7 +85,7 @@ public class Main {
         IDocumentoBO documentoBO = new DocumentoBO(documentoDAO);
         IEstudianteBO estudianteBO = new EstudianteBO(fachadaITSON, estudianteDAO);
         IHistorialAcademicoBO historialAcademicoBO = new HistorialAcademicoBO(fachadaITSON);
-        ISolicitudBO solicitudBO = new SolicitudBO(fachadaGobierno, solicitudDAO);
+        ISolicitudBO solicitudBO = new SolicitudBO(fachadaGobierno, solicitudDAO, estudianteDAO, documentoDAO);
 
         IFachadaInicioSesion fachadaInicioSesion = new FachadaInicioSesion(new ControlInicioSesion(estudianteBO));
         IFachadaSolicitarBeca fachadaSolicitarBeca = new FachadaSolicitarBeca(new ControlSolicitarBeca(solicitudBO, estudianteBO, becasFiltradasBO, documentoBO, historialAcademicoBO));

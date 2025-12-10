@@ -32,7 +32,7 @@ public class SolicitudDAO implements ISolicitudDAO {
     }
 
     @Override
-    public boolean guardarSolicitud(SolicitudDocument solicitud){
+    public boolean guardar(SolicitudDocument solicitud){
         try {
             if (solicitud.get_id() == null) {
                 solicitud.set_id(new ObjectId());
@@ -137,37 +137,6 @@ public class SolicitudDAO implements ISolicitudDAO {
             throw ex;
         } catch (Exception ex) {
             throw new SolicitudDAOException("Error al obtener la solicitud por ID: " + ex.getMessage());
-        }
-    }
-
-    @Override
-    public boolean actualizar(Solicitud solicitud) {
-        try {
-            if (solicitud == null) {
-                throw new SolicitudDAOException("La solicitud no puede ser nula");
-            }
-
-            Bson filtro = Filters.eq("id", solicitud.getId());
-
-            SolicitudDocument existente = col.find(filtro).first();
-            if (existente == null) {
-                throw new SolicitudDAOException("No existe solicitud con ID " + solicitud.getId());
-            }
-            Bson update = Updates.combine(
-                    Updates.set("beca", solicitud.getBeca()),
-                    Updates.set("informacionSocioeconomica", solicitud.getInformacionSocioeconomica()),
-                    Updates.set("historialAcademico", solicitud.getHistorialAcademico()),
-                    Updates.set("estado", solicitud.getEstado()),
-                    Updates.set("fecha", solicitud.getFecha())
-            );
-
-            col.updateOne(filtro, update);
-            return true;
-
-        } catch (SolicitudDAOException ex) {
-            throw ex;
-        } catch (Exception ex) {
-            throw new SolicitudDAOException("Error al actualizar la solicitud: " + ex.getMessage());
         }
     }
 }
