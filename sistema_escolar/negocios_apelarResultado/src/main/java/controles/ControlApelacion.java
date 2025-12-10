@@ -11,4 +11,5 @@ public class ControlApelacion {
         this.iSolicitudBO = solicitudBO;
         this.iApelacionBO = iApelacionBO;
     }
+
 }
