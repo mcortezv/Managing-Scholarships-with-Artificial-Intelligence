@@ -126,7 +126,7 @@ public class ListaInscripciones extends PanelActividades{
             boton.addActionListener(e->{
                  System.out.println("pantalla"+inscripcion.getIdGrupo());
                   coordinadorAplicacionActividades.inscripcionSeleccionada(inscripcion);
-                  coordinadorAplicacionActividades.mostrarDetallesActividad();
+                 coordinadorAplicacionActividades.mostrarDetallesActividad();
                 // System.out.println("en lista inscripciones"+grupoDTO.getNombreResponsable()+grupoDTO.getUnidad());
                 
                
