@@ -4,6 +4,7 @@ import apiItson.ItsonAPI;
 import apiItson.interfaces.IItsonAPI;
 import datos.dominioItson.pagarAdeudo.Clase;
 import excepciones.InfraestructuraItsonException;
+import itson.actividades.*;
 import itson.pagarAdeudo.ClaseDTOI;
 import itson.pagarAdeudo.PrestamoDTOI;
 import itson.pagarAdeudo.SolicitudPagoDTOI;
@@ -12,16 +13,10 @@ import datos.adaptadoresItson.HistorialAcademicoAdaptador;
 import datos.adaptadoresItson.pagarAdeudo.ClaseAdaptador;
 import datos.adaptadoresItson.pagarAdeudo.PrestamoAdaptador;
 import datos.dominioItson.Estudiante;
-import itson.ActividadDTOItson;
-import itson.ActividadesDTOItson;
+
 import itson.EstudianteDTOItson;
 import itson.HistorialAcademicoDTOItson;
 import itson.LoginDTOItson;
-import itson.actividades.BajaDTOItson;
-import itson.actividades.GrupoResponseDTOItson;
-import itson.actividades.GruposResponseDTOItson;
-import itson.actividades.InscripcionDTOItson;
-import itson.actividades.InscripcionesDTOItson;
 
 import java.util.ArrayList;
 import java.util.List;

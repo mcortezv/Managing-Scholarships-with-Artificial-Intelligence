@@ -1,11 +1,11 @@
 package fachadas;
 
-import bo.sesion.SesionUsuario;
 import controles.ControlPago;
 import dto.pagarAdeudo.ClaseDTO;
 import dto.pagarAdeudo.PrestamoDTO;
 import dto.pagarAdeudo.SolicitudPagoDTO;
 import interfaces.IFachadaPago;
+import objetosNegocio.bo.sesion.SesionUsuario;
 import solicitarBeca.EstudianteDTO;
 
 import java.awt.event.ActionListener;

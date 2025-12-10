@@ -1,7 +1,5 @@
-package bo.pagarAdeudo;
+package objetosNegocio.bo.pagarAdeudo;
 
-import adaptadores.pagarAdeudo.ClaseAdaptador;
-import adaptadores.pagarAdeudo.PrestamoAdaptador;
 import bo.pagarAdeudo.excepciones.AdeudoException;
 import datos.dominioItson.pagarAdeudo.Clase;
 import datos.dominioItson.pagarAdeudo.Prestamo;
@@ -9,7 +7,9 @@ import itson.pagarAdeudo.ClaseDTOI;
 import itson.pagarAdeudo.PrestamoDTOI;
 import itson.pagarAdeudo.SolicitudPagoDTOI;
 import interfaces.IFachadaITSON;
-import interfaces.pagarAdeudo.IAdeudoBO;
+import objetosNegocio.adaptadores.pagarAdeudo.ClaseAdaptador;
+import objetosNegocio.adaptadores.pagarAdeudo.PrestamoAdaptador;
+import objetosNegocio.bo.pagarAdeudo.interfaces.IAdeudoBO;
 
 import java.util.List;
 
