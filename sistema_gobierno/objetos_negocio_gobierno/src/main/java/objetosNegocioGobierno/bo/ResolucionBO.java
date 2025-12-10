@@ -54,7 +54,7 @@ public class ResolucionBO implements IResolucionBO {
             validarResolucionCompleta(resolucion);
 
             // Verificar que no exista ya una resolución para esta solicitud
-            verificarResolucionNoExistente(resolucion.getSolicitud().getId());
+            verificarResolucionNoExistente(resolucion.getSolicitud().getIdSolicitud());
 
             // Actualizar estado de solicitud según decisión
             actualizarEstadoSolicitud(resolucion);
@@ -150,7 +150,7 @@ public class ResolucionBO implements IResolucionBO {
             throw new ResolucionBOException("La solicitud no puede ser nula");
         }
 
-        if (solicitud.getId() <= 0) {
+        if (solicitud.getIdSolicitud() <= 0) {
             throw new ResolucionBOException("La solicitud debe tener un ID válido");
         }
 
@@ -233,20 +233,6 @@ public class ResolucionBO implements IResolucionBO {
     private void validarResolucionModificable(ResolucionDTO resolucion) {
         // Validar periodo de modificación
         LocalDate fechaLimite = resolucion.getFechaEvaluacion().plusDays(DIAS_MODIFICACION_LIMITE);
-
-        if (LocalDate.now().isAfter(fechaLimite)) {
-            throw new ResolucionBOException(String.format("El periodo de modificación ha expirado (%d días desde evaluación)", DIAS_MODIFICACION_LIMITE));
-        }
-
-        // Validar periodo posresultados
-        if (resolucion.getSolicitud().getBeca().getFechaResultados() != null) {
-            LocalDate fechaLimiteResultados = resolucion.getSolicitud().getBeca().getFechaResultados().plusDays(DIAS_POST_RESULTADOS_LIMITE);
-
-            if (LocalDate.now().isAfter(fechaLimiteResultados)) {
-                throw new ResolucionBOException(String.format("No se pueden modificar resoluciones después de %d días " +
-                                "de publicados los resultados", DIAS_POST_RESULTADOS_LIMITE));
-            }
-        }
     }
 
     /**

@@ -30,8 +30,6 @@ public class EvaluacionPanel extends Panel {
     private Button btnResolver;
     private List<SolicitudDTO> solicitudes;
     private SolicitudDTO solicitudActual;
-
-    // AGREGADO: Variable de índice que faltaba
     private int indiceActual;
 
     private JTextArea solicitudTxtArea;
@@ -42,7 +40,7 @@ public class EvaluacionPanel extends Panel {
     public EvaluacionPanel(MainFrame frame, ICoordinadorAplicacion coordinadorAplicacion) {
         super(frame, coordinadorAplicacion);
         this.coordinadorAplicacion = coordinadorAplicacion;
-        this.indiceActual = 0; // Inicializar
+        this.indiceActual = 0;
     }
 
     @Override
@@ -244,7 +242,6 @@ public class EvaluacionPanel extends Panel {
     }
 
     private void configurarEventos() {
-        // CORREGIDO: Usar índice en lugar de indexOf
         next.addActionListener(e -> {
             if (solicitudes != null && !solicitudes.isEmpty() &&
                     indiceActual < solicitudes.size() - 1) {
@@ -304,16 +301,11 @@ public class EvaluacionPanel extends Panel {
         });
 
         btnBack.addActionListener(e -> {
-            coordinadorAplicacion.volverHub();
+            coordinadorAplicacion.iniciarEvaluarConvocatoria();
         });
     }
 
-    /**
-     * CORREGIDO: Crear copia mutable de la lista
-     */
     public void setSolicitudes(List<SolicitudDTO> solicitudes) {
-        System.out.println("DEBUG Panel: Recibiendo " +
-                (solicitudes != null ? solicitudes.size() : "null") + " solicitudes");
 
         // Crear copia mutable para poder modificar
         this.solicitudes = solicitudes != null ? new ArrayList<>(solicitudes) : new ArrayList<>();
@@ -339,26 +331,19 @@ public class EvaluacionPanel extends Panel {
         }
     }
 
-    /**
-     * MÉTODO CRÍTICO: Avanza a la siguiente solicitud después de evaluar
-     */
     public void avanzarSiguienteSolicitud() {
-        System.out.println("DEBUG Panel: Avanzando a siguiente solicitud");
 
         if (solicitudes == null || solicitudes.isEmpty() || solicitudActual == null) {
-            System.out.println("DEBUG Panel: No hay solicitudes para avanzar");
             coordinadorAplicacion.evaluarOtraSolicitud();
             return;
         }
 
         // Eliminar la solicitud actual (la que acabamos de evaluar)
         solicitudes.remove(indiceActual);
-        System.out.println("DEBUG Panel: Solicitudes restantes: " + solicitudes.size());
 
         // Verificar si quedan solicitudes
         if (solicitudes.isEmpty()) {
-            System.out.println("DEBUG Panel: No quedan más solicitudes");
-            coordinadorAplicacion.evaluarOtraSolicitud();
+            coordinadorAplicacion.finalizarEvaluacion();
             return;
         }
 
@@ -372,9 +357,6 @@ public class EvaluacionPanel extends Panel {
         actualizarVisualizacionSolicitud();
         limpiarCamposEvaluacion();
         actualizarEstadoBotones();
-
-        System.out.println("DEBUG Panel: Mostrando solicitud " + (indiceActual + 1) +
-                " de " + solicitudes.size());
     }
 
     private void actualizarVisualizacionSolicitud() {
@@ -389,9 +371,6 @@ public class EvaluacionPanel extends Panel {
         comboManual.setSelectedIndex(0);
     }
 
-    /**
-     * AGREGADO: Actualizar estado de botones de navegación
-     */
     private void actualizarEstadoBotones() {
         if (solicitudes != null && !solicitudes.isEmpty()) {
             previous.setEnabled(indiceActual > 0);
@@ -403,9 +382,6 @@ public class EvaluacionPanel extends Panel {
         }
     }
 
-    /**
-     * AGREGADO: Deshabilitar todos los controles
-     */
     private void deshabilitarControles() {
         previous.setEnabled(false);
         next.setEnabled(false);

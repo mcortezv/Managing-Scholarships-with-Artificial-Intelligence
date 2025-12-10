@@ -18,7 +18,6 @@ public interface ICoordinadorNegocio {
     boolean iniciarSesion(EvaluadorLoginDTO evaluadorLoginDTO);
     void cerrarSesion();
     boolean haySesionIniciada();
-    EvaluadorLoginDTO getEvaluadorActual();
 
     // Evaluar Solicitudes
     List<BecaDTO> obtenerBecasConSolicitudes();

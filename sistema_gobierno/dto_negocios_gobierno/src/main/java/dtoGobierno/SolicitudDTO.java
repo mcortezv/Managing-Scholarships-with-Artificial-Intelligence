@@ -12,7 +12,7 @@ import java.util.List;
  * @author Cortez, Manuel;
  */
 public class SolicitudDTO {
-    private Long id;
+    private Long idSolicitud;
     private BecaDTO beca;
     private EstudianteDTO estudiante;
     private InformacionSocioeconomicaDTO informacionSocioeconomica;
@@ -35,17 +35,17 @@ public class SolicitudDTO {
      * @param estudiante                the estudiante
      * @param fecha                     the fecha
      * @param historialAcademico        the historial academico
-     * @param id                        the id
+     * @param idSolicitud               the id
      * @param informacionSocioeconomica the informacion socioeconomica
      */
-    public SolicitudDTO(BecaDTO beca, List<DocumentoDTO> documentos, String estado, EstudianteDTO estudiante, LocalDate fecha, HistorialAcademicoDTO historialAcademico, Long id, InformacionSocioeconomicaDTO informacionSocioeconomica) {
+    public SolicitudDTO(BecaDTO beca, List<DocumentoDTO> documentos, String estado, EstudianteDTO estudiante, LocalDate fecha, HistorialAcademicoDTO historialAcademico, Long idSolicitud, InformacionSocioeconomicaDTO informacionSocioeconomica) {
         this.beca = beca;
         this.documentos = documentos;
         this.estado = estado;
         this.estudiante = estudiante;
         this.fecha = fecha;
         this.historialAcademico = historialAcademico;
-        this.id = id;
+        this.idSolicitud = idSolicitud;
         this.informacionSocioeconomica = informacionSocioeconomica;
     }
 
@@ -162,17 +162,17 @@ public class SolicitudDTO {
      *
      * @return the id
      */
-    public Long getId() {
-        return id;
+    public Long getIdSolicitud() {
+        return idSolicitud;
     }
 
     /**
      * Sets id.
      *
-     * @param id the id
+     * @param idSolicitud the id
      */
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdSolicitud(Long idSolicitud) {
+        this.idSolicitud = idSolicitud;
     }
 
     /**

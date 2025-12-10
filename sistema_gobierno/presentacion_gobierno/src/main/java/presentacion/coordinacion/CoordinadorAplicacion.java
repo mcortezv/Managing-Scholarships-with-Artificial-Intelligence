@@ -6,7 +6,6 @@ import dtoGobierno.ResolucionDTO;
 import dtoGobierno.SolicitudDTO;
 import presentacion.coordinacion.interfaces.ICoordinadorAplicacion;
 import presentacion.coordinacion.interfaces.ICoordinadorNegocio;
-import presentacion.evaluarSolicitudes.EvaluacionCompletadaPanel;
 import presentacion.evaluarSolicitudes.EvaluacionPanel;
 import presentacion.evaluarSolicitudes.EvaluarConvocatoriaPanel;
 import presentacion.modificarResolucion.BuscarResolucionPanel;
@@ -36,20 +35,15 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
         this.frame.setVisible(true);
     }
 
-    // ============= GESTIÓN DE SESIÓN =============
 
     @Override
     public void iniciarSesion(EvaluadorLoginDTO evaluadorLoginDTO) {
         try {
-            System.out.println("DEBUG: Intentando iniciar sesión...");
-
             if (coordinadorNegocio.iniciarSesion(evaluadorLoginDTO)) {
-                System.out.println("DEBUG: Sesión iniciada correctamente");
                 mostrarMensaje("Bienvenido al sistema", "Inicio de Sesión",
                         JOptionPane.INFORMATION_MESSAGE);
                 frame.showPanel("hub");
             } else {
-                System.out.println("DEBUG: Credenciales inválidas");
                 mostrarMensaje("Credenciales inválidas. Por favor, verifique su matrícula y contraseña.",
                         "Error de Autenticación", JOptionPane.ERROR_MESSAGE);
             }
@@ -87,7 +81,6 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     @Override
     public void volverHub() {
         try {
-            System.out.println("DEBUG: Volviendo al Hub");
             limpiarEstadoNavegacion();
             frame.showPanel("hub");
         } catch (Exception ex) {
@@ -109,17 +102,14 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
         volverHub();
     }
 
-    // ============= EVALUAR SOLICITUDES =============
+
 
     @Override
     public void iniciarEvaluarConvocatoria() {
         try {
-            System.out.println("DEBUG: Iniciando evaluar convocatoria");
             validarSesionActiva();
 
             List<BecaDTO> becas = coordinadorNegocio.obtenerBecasConSolicitudes();
-            System.out.println("DEBUG: Becas obtenidas del negocio: " +
-                    (becas != null ? becas.size() : "null"));
 
             EvaluarConvocatoriaPanel panel =
                     (EvaluarConvocatoriaPanel) frame.getPanel("evaluarConvocatoria");
@@ -127,7 +117,6 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
             panel.setBecas(becas);
             frame.showPanel("evaluarConvocatoria");
 
-            System.out.println("DEBUG: Panel mostrado correctamente");
 
         } catch (Exception ex) {
             System.err.println("ERROR en iniciarEvaluarConvocatoria: " + ex.getMessage());
@@ -139,8 +128,6 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     @Override
     public void seleccionarConvocatoriaEvaluar(BecaDTO becaDTO) {
         try {
-            System.out.println("DEBUG: Seleccionando convocatoria: " +
-                    (becaDTO != null ? becaDTO.getNombre() : "null"));
 
             validarSesionActiva();
 
@@ -153,8 +140,6 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
             List<SolicitudDTO> solicitudes =
                     coordinadorNegocio.obtenerSolicitudes(becaDTO.getTipo());
 
-            System.out.println("DEBUG: Solicitudes ACTIVAS obtenidas: " +
-                    (solicitudes != null ? solicitudes.size() : "null"));
 
             // Verificar si hay solicitudes activas
             if (solicitudes == null || solicitudes.isEmpty()) {
@@ -184,34 +169,10 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
         seleccionarConvocatoriaEvaluar(becaDTO);
     }
 
-    @Override
-    public void seleccionarSolicitudEvaluar(SolicitudDTO solicitud) {
-        try {
-            validarSesionActiva();
-
-            if (solicitud == null) {
-                mostrarError("Debe seleccionar una solicitud");
-                return;
-            }
-
-            if (!"ACTIVA".equals(solicitud.getEstado())) {
-                mostrarError("Solo se pueden evaluar solicitudes en estado ACTIVA");
-                return;
-            }
-
-            this.solicitudSeleccionada = solicitud;
-            mostrarOpcionesEvaluacion();
-
-        } catch (Exception ex) {
-            System.err.println("ERROR en seleccionarSolicitudEvaluar: " + ex.getMessage());
-            mostrarError("Error al seleccionar solicitud: " + ex.getMessage());
-        }
-    }
 
     @Override
     public void evaluarAutomatica(SolicitudDTO solicitud) {
         try {
-            System.out.println("DEBUG: Evaluando automáticamente solicitud ID: " + solicitud.getId());
             validarSesionActiva();
 
             if (solicitud == null) {
@@ -250,7 +211,6 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     @Override
     public void evaluarManual(ResolucionDTO resolucion) {
         try {
-            System.out.println("DEBUG: Evaluando manualmente");
             validarSesionActiva();
 
             if (resolucion == null) {
@@ -302,11 +262,9 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
      */
     private void guardarEvaluacionYAvanzar(ResolucionDTO resolucion) {
         try {
-            System.out.println("DEBUG: Guardando evaluación y avanzando");
             boolean exitoso = coordinadorNegocio.guardarResolucion(resolucion);
 
             if (exitoso) {
-                System.out.println("DEBUG: Evaluación guardada exitosamente");
 
                 // Obtener el panel de evaluación
                 EvaluacionPanel panel = (EvaluacionPanel) frame.getPanel("evaluacion");
@@ -334,7 +292,6 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     @Override
     public void evaluarOtraSolicitud() {
         try {
-            System.out.println("DEBUG: Evaluando otra solicitud / completando evaluación");
 
             // Si hay una beca seleccionada, intentar cargar más solicitudes de la misma
             if (becaSeleccionada != null) {
@@ -343,33 +300,34 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
 
                 if (solicitudesRestantes != null && !solicitudesRestantes.isEmpty()) {
                     // Todavía hay solicitudes - volver al panel de evaluación
-                    System.out.println("DEBUG: Quedan " + solicitudesRestantes.size() +
-                            " solicitudes, volviendo a evaluación");
-                    seleccionarConvocatoriaEvaluar(becaSeleccionada);
+                    EvaluacionPanel panel = (EvaluacionPanel) frame.getPanel("evaluacion");
+                    panel.setSolicitudes(solicitudesRestantes);
+                    panel.setBecaActual(becaSeleccionada);
+                    frame.showPanel("evaluacion");
                     return;
                 }
             }
 
             // No quedan solicitudes - mostrar pantalla de completado
-            System.out.println("DEBUG: No quedan solicitudes, mostrando pantalla completada");
-            EvaluacionCompletadaPanel panel =
-                    (EvaluacionCompletadaPanel) frame.getPanel("evaluacionCompletada");
-            frame.showPanel("evaluacionCompletada");
 
         } catch (Exception ex) {
             System.err.println("ERROR en evaluarOtraSolicitud: " + ex.getMessage());
             ex.printStackTrace();
             mostrarError("Error: " + ex.getMessage());
-            iniciarEvaluarConvocatoria();
+            volverHub();
         }
     }
 
-    // ============= MODIFICAR RESOLUCIÓN =============
+    @Override
+    public void finalizarEvaluacion() {
+        frame.showPanel("evaluacionCompletada");
+    }
+
+
 
     @Override
     public void iniciarModificarConvocatoria() {
         try {
-            System.out.println("DEBUG: Iniciando modificar convocatoria");
             validarSesionActiva();
             limpiarEstadoModificacion();
             frame.showPanel("buscarResolucion");
@@ -384,7 +342,6 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     @Override
     public void iniciarBusquedaResolucion() {
         try {
-            System.out.println("DEBUG: Iniciando búsqueda de resolución");
             validarSesionActiva();
 
             BuscarResolucionPanel panel = (BuscarResolucionPanel) frame.getPanel("buscarResolucion");
@@ -401,7 +358,6 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     @Override
     public void buscarResolucion(String tipoFiltro, String filtro) {
         try {
-            System.out.println("DEBUG: Buscando resolución - Tipo: " + tipoFiltro + ", Filtro: " + filtro);
             validarSesionActiva();
 
             if (tipoFiltro == null || tipoFiltro.trim().isEmpty()) {
@@ -429,7 +385,6 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
 
     private void mostrarResolucionEncontrada(ResolucionDTO resolucion) {
         try {
-            System.out.println("DEBUG: Mostrando resolución encontrada");
             ModificarResolucionPanel panel =
                     (ModificarResolucionPanel) frame.getPanel("modificarResolucion");
             panel.setResolucion(resolucion);
@@ -445,11 +400,10 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     @Override
     public void reevaluarAutomatica(SolicitudDTO solicitud) {
         try {
-            System.out.println("DEBUG: Re-evaluando automáticamente");
             validarSesionActiva();
 
             if (solicitud == null) {
-                mostrarError("No hay solicitud para re-evaluar");
+                mostrarError("No hay solicitud para reevaluar");
                 return;
             }
 
@@ -488,7 +442,6 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     @Override
     public void modificarResolucion(ResolucionDTO resolucion) {
         try {
-            System.out.println("DEBUG: Modificando resolución");
             validarSesionActiva();
 
             if (resolucion == null) {
@@ -508,17 +461,6 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
 
             if (resolucion.getMotivo().length() < 10) {
                 mostrarError("El motivo debe tener al menos 10 caracteres");
-                return;
-            }
-
-            String motivoLower = resolucion.getMotivo().toLowerCase();
-            if (!motivoLower.contains("modificación") &&
-                    !motivoLower.contains("corrección") &&
-                    !motivoLower.contains("revisión") &&
-                    !motivoLower.contains("modificacion") &&
-                    !motivoLower.contains("correccion") &&
-                    !motivoLower.contains("revision")) {
-                mostrarError("El motivo debe explicar claramente la razón de la modificación");
                 return;
             }
 
@@ -544,7 +486,6 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
 
     private void guardarModificacion(ResolucionDTO resolucion) {
         try {
-            System.out.println("DEBUG: Guardando modificación");
             boolean exitoso = coordinadorNegocio.modificarResolucion(resolucion);
 
             if (exitoso) {
@@ -571,7 +512,7 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
         iniciarBusquedaResolucion();
     }
 
-    // ============= UTILIDADES =============
+
 
     private void validarSesionActiva() {
         if (!coordinadorNegocio.haySesionIniciada()) {

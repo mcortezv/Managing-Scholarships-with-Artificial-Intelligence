@@ -45,8 +45,7 @@ public class SolicitudBO implements ISolicitudBO {
                 throw new SolicitudBOException("No se encontró solicitud con ID: " + id);
             }
 
-            // Validar transición de estado
-            validarTransicionEstado(solicitud.getEstado(), nuevoEstado);
+
 
             // Cambiar estado
             return solicitudDAO.cambiarEstado(id, nuevoEstado);

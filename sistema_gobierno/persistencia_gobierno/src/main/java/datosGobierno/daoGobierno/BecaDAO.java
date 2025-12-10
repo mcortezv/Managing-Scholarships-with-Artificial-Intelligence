@@ -52,7 +52,8 @@ public class BecaDAO implements IBecaDAO {
     public List<Beca> obtenerBecasConSolicitudes() {
         try {
             List<SolicitudDocument> solicitudes = new ArrayList<>();
-            colSolicitudes.find().into(solicitudes);
+            Bson filtroSol = Filters.eq("estado", "ACTIVA");
+            colSolicitudes.find(filtroSol).into(solicitudes);
             if (solicitudes.isEmpty()) {
                 return new ArrayList<>();
             }
@@ -67,7 +68,7 @@ public class BecaDAO implements IBecaDAO {
             }
             List<Beca> becasConSolicitudes = new ArrayList<>();
             for (String tipo : tiposBecaConSolicitudes) {
-                Bson filtro = Filters.eq("tipo", tipo);
+                Bson filtro = Filters.and(Filters.eq("tipo", tipo));
                 List<Beca> becasTipo = new ArrayList<>();
                 colBecas.find(filtro).into(becasTipo);
                 becasConSolicitudes.addAll(becasTipo);

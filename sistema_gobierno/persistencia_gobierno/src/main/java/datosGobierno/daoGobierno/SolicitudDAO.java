@@ -63,7 +63,7 @@ public class SolicitudDAO implements ISolicitudDAO {
                 Estudiante estudiante = colEst.find(Filters.eq("_id", sol.getEstudiante())).first();
                 if (estudiante != null) {
                     Solicitud solicitud = new Solicitud();
-                    solicitud.setId(sol.getId());
+                    solicitud.setIdSolicitud(sol.getIdSolicitud());
                     solicitud.setFecha(sol.getFecha());
                     solicitud.setEstado(sol.getEstado());
                     solicitud.setBeca(sol.getBeca());
@@ -85,7 +85,7 @@ public class SolicitudDAO implements ISolicitudDAO {
             if (estado == null) {
                 throw new SolicitudDAOException("El estado no puede ser nulo");
             }
-            Bson filtro = Filters.eq("id", (long) id);
+            Bson filtro = Filters.eq("idSolicitud", (long) id);
             SolicitudDocument solicitud = col.find(filtro).first();
             if (solicitud == null) {
                 throw new SolicitudDAOException("No se encontró solicitud con ID " + id);
@@ -106,7 +106,7 @@ public class SolicitudDAO implements ISolicitudDAO {
             MongoCollection<SolicitudDocument> colDoc = MongoClienteProvider.INSTANCE
                     .getCollection("solicitudes", SolicitudDocument.class);
 
-            Bson filtro = Filters.eq("id", (long) idSolicitud);
+            Bson filtro = Filters.eq("idSolicitud", (long) idSolicitud);
             SolicitudDocument solicitudDoc = colDoc.find(filtro).first();
 
             if (solicitudDoc == null) {
@@ -123,7 +123,7 @@ public class SolicitudDAO implements ISolicitudDAO {
             }
 
             Solicitud solicitud = new Solicitud();
-            solicitud.setId(solicitudDoc.getId());
+            solicitud.setIdSolicitud(solicitudDoc.getIdSolicitud());
             solicitud.setBeca(solicitudDoc.getBeca());
             solicitud.setEstudiante(estudiante);
             solicitud.setInformacionSocioeconomica(solicitudDoc.getInformacionSocioeconomica());
