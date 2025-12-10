@@ -46,6 +46,7 @@ public class GobiernoControl {
     }
 
     public List<SolicitudDTOGobierno> obtenerListaSolicitudesPorEstudiante(EstudianteDTOGobierno estudianteDTO){
-        return SolicitudAdaptador.toDTOGobierno(solicitudService.obtenerListaSolicudesPorEstudiante(estudianteDTO));
+        //return SolicitudAdaptador.toDTOGobierno(solicitudService.obtenerListaSolicudesPorEstudiante(estudianteDTO));
+        return null;
     }
 }

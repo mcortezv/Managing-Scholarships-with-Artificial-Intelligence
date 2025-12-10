@@ -17,11 +17,13 @@ public class FachadaApelacion implements IFachadaApelacion {
 
     @Override
     public List<SolicitudDTO> obtenerSolicitudesPorEstudiante(EstudianteDTO estudianteDTO) {
-        return controlApelacion.obtenerSolicitudesPorEstudiante(estudianteDTO);
+        //return controlApelacion.obtenerSolicitudesPorEstudiante(estudianteDTO);
+        return null;
     }
 
     @Override
     public boolean registrarApelacion(ApelacionDTO apelacionDTO) {
-        return controlApelacion.registrarApelacion(apelacionDTO);
+        //return controlApelacion.registrarApelacion(apelacionDTO);
+        return true;
     }
 }

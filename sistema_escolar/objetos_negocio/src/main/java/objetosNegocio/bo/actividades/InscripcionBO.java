@@ -1,29 +1,24 @@
-/*
+package objetosNegocio.bo.actividades;/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package objetosNegocio.actividades;
-
 import actividades.dao.interfaces.IInscripcionDAO;
 import actividades.dominio.Inscripcion;
-import adaptadores.actividades.BajaAdaptador;
-import adaptadores.actividades.EstudianteAdaptador;
-import adaptadores.actividades.GruposAdaptador;
-import adaptadores.actividades.InscripcionAdaptador;
-import datos.adaptadoresItson.actividades.GrupoAdaptador;
 import dto.actividades.BajaDTO;
 import dto.actividades.EstudianteDTO;
 import dto.actividades.GrupoDTO;
 import dto.actividades.InscripcionDTO;
 import dto.actividades.InscripcionesDTO;
 import interfaces.IFachadaITSON;
-import interfaces.actividades.IInscripcionBO;
-
 import itson.EstudianteDTOItson;
 import itson.actividades.BajaDTOItson;
 import itson.actividades.GrupoResponseDTOItson;
 import itson.actividades.InscripcionDTOItson;
 import itson.actividades.InscripcionesDTOItson;
+import objetosNegocio.adaptadores.actividades.EstudianteAdaptador;
+import objetosNegocio.adaptadores.actividades.GruposAdaptador;
+import objetosNegocio.adaptadores.actividades.InscripcionAdaptador;
+import objetosNegocio.bo.actividades.interfaces.IInscripcionBO;
 
 
 /**
@@ -68,9 +63,9 @@ public class InscripcionBO implements IInscripcionBO {
     }
     
     public BajaDTO darBajaActividad(BajaDTO baja){
-        BajaDTOItson bajaDTOItson= BajaAdaptador.toDTOItson(baja);
+        BajaDTOItson bajaDTOItson= adaptadores.actividades.BajaAdaptador.toDTOItson(baja);
         BajaDTOItson bajaDTOItsonResponse= fachadaITSON.darBajaActividad(bajaDTOItson);
-        return BajaAdaptador.toDTONegocio(bajaDTOItsonResponse);
+        return adaptadores.actividades.BajaAdaptador.toDTONegocio(bajaDTOItsonResponse);
         
     }
     

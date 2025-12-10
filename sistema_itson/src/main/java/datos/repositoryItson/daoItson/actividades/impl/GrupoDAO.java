@@ -9,12 +9,6 @@ import com.mongodb.client.model.Filters;
 import datos.configMongoItson.MongoClienteProvider;
 import datos.dominioItson.actividades.Actividad;
 import datos.dominioItson.actividades.Grupo;
-import datos.dominioItson.actividades.Inscripcion;
-
-import datos.repositoryItson.documents.pagarAdeudo.ClaseDocument;
-import itson.ActividadDTOItson;
-import itson.actividades.GrupoResponseDTOItson;
-import itson.actividades.InscripcionDTOItson;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

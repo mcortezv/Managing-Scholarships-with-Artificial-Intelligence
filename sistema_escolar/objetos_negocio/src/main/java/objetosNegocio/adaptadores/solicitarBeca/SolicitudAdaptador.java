@@ -13,6 +13,7 @@ import solicitarBeca.dominio.Documento;
 import solicitarBeca.dominio.Solicitud;
 import solicitarBeca.dominio.enums.EstadoSolicitud;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The type Solicitud adaptador.
