@@ -1,11 +1,9 @@
 package objetosNegocioGobierno.bo.interfaces;
 import datosGobierno.dominioGobierno.Resolucion;
-import datosGobierno.dominioGobierno.Solicitud;
-import datosGobierno.dominioGobierno.enums.Decision;
+import dtoGobierno.ResolucionDTO;
+import dtoGobierno.SolicitudDTO;
 import gobierno.ResolucionDTOGobierno;
 import gobierno.SolicitudDTOGobierno;
-import java.time.LocalDate;
-
 /**
  * The interface Resolucion bo.
  *
@@ -14,23 +12,12 @@ import java.time.LocalDate;
 public interface IResolucionBO {
 
     /**
-     * Crear resolucion resolucion.
-     *
-     * @param solicitud       the solicitud
-     * @param decision        the decision
-     * @param motivo          the motivo
-     * @param fechaEvaluacion the fecha evaluacion
-     * @return the resolucion
-     */
-    Resolucion crearResolucion(Solicitud solicitud, Decision decision, String motivo, LocalDate fechaEvaluacion);
-
-    /**
      * Resolver boolean.
      *
      * @param resolucion the resolucion
      * @return the boolean
      */
-    boolean resolver(Resolucion resolucion);
+    boolean resolver(ResolucionDTO resolucion);
 
     /**
      * Crear resolucion automatica resolucion dto gobierno.
@@ -38,15 +25,7 @@ public interface IResolucionBO {
      * @param solicitud the solicitud
      * @return the resolucion dto gobierno
      */
-    ResolucionDTOGobierno crearResolucionAutomatica(SolicitudDTOGobierno solicitud);
-
-    /**
-     * Obtener resolucion resolucion.
-     *
-     * @param id the id
-     * @return the resolucion
-     */
-    Resolucion obtenerResolucion(int id);
+    ResolucionDTOGobierno crearResolucionAutomatica(SolicitudDTO solicitud);
 
     /**
      * Obtener resolucion por filtro resolucion.
@@ -55,7 +34,7 @@ public interface IResolucionBO {
      * @param filtro     the filtro
      * @return the resolucion
      */
-    Resolucion obtenerResolucionPorFiltro(String tipoFiltro, String filtro);
+    ResolucionDTO obtenerResolucionPorFiltro(String tipoFiltro, String filtro);
 
     /**
      * Actualizar resolucion boolean.
@@ -63,5 +42,5 @@ public interface IResolucionBO {
      * @param resolucion the resolucion
      * @return the boolean
      */
-    boolean actualizarResolucion(Resolucion resolucion);
+    boolean actualizarResolucion(ResolucionDTO resolucion);
 }

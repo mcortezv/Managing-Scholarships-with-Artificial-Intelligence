@@ -28,14 +28,6 @@ public interface IEstudianteBO {
     EstudianteDTO crearEstudiante(Long matricula) throws EstudianteInvalidoException;
 
     /**
-     * Guardar estudiante.
-     *
-     * @param estudiante the estudiante
-     * @throws EstudianteInvalidoException the estudiante invalido exception
-     */
-    void guardarEstudiante(EstudianteDTO estudiante) throws EstudianteInvalidoException;
-
-    /**
      * Cerrar sesion.
      */
     void cerrarSesion();

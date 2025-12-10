@@ -4,9 +4,13 @@ import datosGobierno.dominioGobierno.Resolucion;
 import datosGobierno.dominioGobierno.Solicitud;
 import datosGobierno.dominioGobierno.enums.Decision;
 import datosGobierno.dominioGobierno.enums.EstadoSolicitud;
+import dtoGobierno.ResolucionDTO;
+import dtoGobierno.SolicitudDTO;
 import gobierno.ResolucionDTOGobierno;
 import gobierno.SolicitudDTOGobierno;
 import interfaces.IFachadaModeloML;
+import objetosNegocioGobierno.adaptadores.ResolucionAdaptador;
+import objetosNegocioGobierno.adaptadores.SolicitudAdaptador;
 import objetosNegocioGobierno.bo.excepciones.ResolucionBOException;
 import objetosNegocioGobierno.bo.interfaces.IResolucionBO;
 import java.time.LocalDate;
@@ -45,32 +49,7 @@ public class ResolucionBO implements IResolucionBO {
     }
 
     @Override
-    public Resolucion crearResolucion(Solicitud solicitud, Decision decision, String motivo, LocalDate fechaEvaluacion) {
-        try {
-            // Validaciones de reglas de negocio
-            validarSolicitudParaResolucion(solicitud);
-            validarDecision(decision);
-            validarMotivo(motivo);
-            validarFechaEvaluacion(fechaEvaluacion);
-
-            // Crear resolución
-            Resolucion resolucion = new Resolucion();
-            resolucion.setSolicitud(solicitud);
-            resolucion.setDecision(decision);
-            resolucion.setMotivo(motivo.trim());
-            resolucion.setFechaEvaluacion(fechaEvaluacion);
-
-            return resolucion;
-
-        } catch (ResolucionBOException ex) {
-            throw ex;
-        } catch (Exception ex) {
-            throw new ResolucionBOException("Error al crear resolución: " + ex.getMessage());
-        }
-    }
-
-    @Override
-    public boolean resolver(Resolucion resolucion) {
+    public boolean resolver(ResolucionDTO resolucion) {
         try {
             validarResolucionCompleta(resolucion);
 
@@ -81,7 +60,7 @@ public class ResolucionBO implements IResolucionBO {
             actualizarEstadoSolicitud(resolucion);
 
             // Guardar resolución
-            return resolucionDAO.guardar(resolucion);
+            return resolucionDAO.guardar(ResolucionAdaptador.toEntity(resolucion));
 
         } catch (ResolucionBOException ex) {
             throw ex;
@@ -91,7 +70,7 @@ public class ResolucionBO implements IResolucionBO {
     }
 
     @Override
-    public ResolucionDTOGobierno crearResolucionAutomatica(SolicitudDTOGobierno solicitud) {
+    public ResolucionDTOGobierno crearResolucionAutomatica(SolicitudDTO solicitud) {
         try {
             if (solicitud == null) {
                 throw new ResolucionBOException("La solicitud no puede ser nula");
@@ -106,7 +85,8 @@ public class ResolucionBO implements IResolucionBO {
             validarDatosParaML(solicitud);
 
             // Llamar a la fachada de ML
-            ResolucionDTOGobierno resolucion = fachadaModeloML.generarPrediccion(solicitud);
+            Solicitud entity = SolicitudAdaptador.toEntity(solicitud);
+            ResolucionDTOGobierno resolucion = fachadaModeloML.generarPrediccion(SolicitudAdaptador.toInfraestructuraDTO(entity));
 
             if (resolucion == null) {
                 throw new ResolucionBOException("El modelo de ML no pudo generar una predicción");
@@ -125,29 +105,7 @@ public class ResolucionBO implements IResolucionBO {
     }
 
     @Override
-    public Resolucion obtenerResolucion(int id) {
-        try {
-            if (id <= 0) {
-                throw new ResolucionBOException("ID de resolución inválido");
-            }
-
-            Resolucion resolucion = resolucionDAO.obtenerPorId(id);
-
-            if (resolucion == null) {
-                throw new ResolucionBOException("No se encontró resolución con ID: " + id);
-            }
-
-            return resolucion;
-
-        } catch (ResolucionBOException ex) {
-            throw ex;
-        } catch (Exception ex) {
-            throw new ResolucionBOException("Error al obtener resolución: " + ex.getMessage());
-        }
-    }
-
-    @Override
-    public Resolucion obtenerResolucionPorFiltro(String tipoFiltro, String filtro) {
+    public ResolucionDTO obtenerResolucionPorFiltro(String tipoFiltro, String filtro) {
         try {
             validarParametrosBusqueda(tipoFiltro, filtro);
 
@@ -157,7 +115,7 @@ public class ResolucionBO implements IResolucionBO {
                 throw new ResolucionBOException("No se encontró resolución con " + tipoFiltro + ": " + filtro);
             }
 
-            return resolucion;
+            return ResolucionAdaptador.toDTO(resolucion);
 
         } catch (ResolucionBOException ex) {
             throw ex;
@@ -167,7 +125,7 @@ public class ResolucionBO implements IResolucionBO {
     }
 
     @Override
-    public boolean actualizarResolucion(Resolucion resolucion) {
+    public boolean actualizarResolucion(ResolucionDTO resolucion) {
         try {
             validarResolucionCompleta(resolucion);
             validarResolucionModificable(resolucion);
@@ -175,7 +133,7 @@ public class ResolucionBO implements IResolucionBO {
             // Actualizar estado de solicitud según nueva decisión
             actualizarEstadoSolicitud(resolucion);
 
-            return resolucionDAO.actualizar(resolucion);
+            return resolucionDAO.actualizar(ResolucionAdaptador.toEntity(resolucion));
 
         } catch (ResolucionBOException ex) {
             throw ex;
@@ -187,7 +145,7 @@ public class ResolucionBO implements IResolucionBO {
     /**
      * Valida que una solicitud sea válida para crear resolución
      */
-    private void validarSolicitudParaResolucion(Solicitud solicitud) {
+    private void validarSolicitudParaResolucion(SolicitudDTO solicitud) {
         if (solicitud == null) {
             throw new ResolucionBOException("La solicitud no puede ser nula");
         }
@@ -208,12 +166,12 @@ public class ResolucionBO implements IResolucionBO {
     /**
      * Valida que la decisión sea válida
      */
-    private void validarDecision(Decision decision) {
+    private void validarDecision(String decision) {
         if (decision == null) {
             throw new ResolucionBOException("La decisión no puede ser nula");
         }
 
-        List<Decision> decisionesValidas = Arrays.asList(Decision.ACEPTADA, Decision.RECHAZADA, Decision.DEVUELTA);
+        List<String> decisionesValidas = Arrays.asList(Decision.ACEPTADA.toString(), Decision.RECHAZADA.toString(), Decision.DEVUELTA.toString());
 
         if (!decisionesValidas.contains(decision)) {
             throw new ResolucionBOException("Decisión inválida: " + decision);
@@ -258,7 +216,7 @@ public class ResolucionBO implements IResolucionBO {
     /**
      * Valida una resolución completa
      */
-    private void validarResolucionCompleta(Resolucion resolucion) {
+    private void validarResolucionCompleta(ResolucionDTO resolucion) {
         if (resolucion == null) {
             throw new ResolucionBOException("La resolución no puede ser nula");
         }
@@ -272,7 +230,7 @@ public class ResolucionBO implements IResolucionBO {
     /**
      * Valida que una resolución sea modificable según reglas de negocio
      */
-    private void validarResolucionModificable(Resolucion resolucion) {
+    private void validarResolucionModificable(ResolucionDTO resolucion) {
         // Validar periodo de modificación
         LocalDate fechaLimite = resolucion.getFechaEvaluacion().plusDays(DIAS_MODIFICACION_LIMITE);
 
@@ -294,7 +252,7 @@ public class ResolucionBO implements IResolucionBO {
     /**
      * Valida los datos necesarios para evaluación por ML
      */
-    private void validarDatosParaML(SolicitudDTOGobierno solicitud) {
+    private void validarDatosParaML(SolicitudDTO solicitud) {
         if (solicitud.getHistorialAcademico() == null) {
             throw new ResolucionBOException("La solicitud debe tener historial académico para evaluación automática");
         }
@@ -372,10 +330,10 @@ public class ResolucionBO implements IResolucionBO {
     /**
      * Actualiza el estado de la solicitud según la decisión
      */
-    private void actualizarEstadoSolicitud(Resolucion resolucion) {
+    private void actualizarEstadoSolicitud(ResolucionDTO resolucion) {
         EstadoSolicitud nuevoEstado;
 
-        switch (resolucion.getDecision()) {
+        switch (Decision.valueOf(resolucion.getDecision())) {
             case ACEPTADA:
                 nuevoEstado = EstadoSolicitud.ACEPTADA;
                 break;
@@ -388,6 +346,6 @@ public class ResolucionBO implements IResolucionBO {
             default:
                 throw new ResolucionBOException("Decisión no reconocida: " + resolucion.getDecision());
         }
-        resolucion.getSolicitud().setEstado(nuevoEstado);
+        resolucion.getSolicitud().setEstado(nuevoEstado.toString());
     }
 }

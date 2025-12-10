@@ -1,5 +1,4 @@
 package objetosNegocioGobierno.bo.interfaces;
-import datosGobierno.dominioGobierno.Solicitud;
 import datosGobierno.dominioGobierno.enums.EstadoSolicitud;
 import dtoGobierno.SolicitudDTO;
 import java.util.List;
@@ -19,14 +18,6 @@ public interface ISolicitudBO {
      * @return the boolean
      */
     boolean cambiarEstado(int id, EstadoSolicitud nuevoEstado);
-
-    /**
-     * Obtener solicitud solicitud.
-     *
-     * @param id the id
-     * @return the solicitud
-     */
-    Solicitud obtenerSolicitud(int id);
 
     /**
      * Obtener listado solicitudes list.

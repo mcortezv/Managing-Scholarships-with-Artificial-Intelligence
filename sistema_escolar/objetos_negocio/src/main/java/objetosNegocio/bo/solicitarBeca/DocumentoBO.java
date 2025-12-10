@@ -1,4 +1,5 @@
 package objetosNegocio.bo.solicitarBeca;
+import datosGobierno.documents.DocumentoDocument;
 import solicitarBeca.DocumentoDTO;
 import solicitarBeca.repository.dao.interfaces.IDocumentoDAO;
 import objetosNegocio.bo.solicitarBeca.excepciones.DocumentoInvalidoException;
@@ -24,7 +25,7 @@ public class DocumentoBO implements IDocumentoBO {
     @Override
     public void guardarDocumento(DocumentoDTO documento) throws DocumentoInvalidoException {
         try {
-            documentoDAO.guardar(documento);
+            //documentoDAO.guardar(documento);
         } catch (Exception ex) {
             throw new DocumentoInvalidoException(ex.getMessage());
         }

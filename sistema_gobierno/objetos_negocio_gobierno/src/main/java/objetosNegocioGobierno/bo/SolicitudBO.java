@@ -59,26 +59,6 @@ public class SolicitudBO implements ISolicitudBO {
     }
 
     @Override
-    public Solicitud obtenerSolicitud(int id) {
-        try {
-            validarId(id);
-
-            Solicitud solicitud = solicitudDAO.obtenerPorId(id);
-
-            if (solicitud == null) {
-                throw new SolicitudBOException("No se encontró solicitud con ID: " + id);
-            }
-
-            return solicitud;
-
-        } catch (SolicitudBOException ex) {
-            throw ex;
-        } catch (Exception ex) {
-            throw new SolicitudBOException("Error al obtener solicitud: " + ex.getMessage());
-        }
-    }
-
-    @Override
     public List<SolicitudDTO> obtenerListadoSolicitudes(String tipoBeca) {
         try {
             validarTipoBeca(tipoBeca);

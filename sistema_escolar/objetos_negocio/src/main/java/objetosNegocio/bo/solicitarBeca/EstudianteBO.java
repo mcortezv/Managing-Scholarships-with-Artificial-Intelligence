@@ -57,13 +57,4 @@ public class EstudianteBO implements IEstudianteBO {
     public EstudianteDTO crearEstudiante(Long matricula){
         return EstudianteAdaptador.toDTO(fachadaITSON.verificarEstudiante(matricula));
     }
-
-    @Override
-    public void guardarEstudiante(EstudianteDTO estudiante) throws EstudianteInvalidoException {
-        try {
-            estudianteDAO.guardar(estudiante);
-        } catch (Exception ex) {
-            throw new EstudianteInvalidoException(ex.getMessage());
-        }
-    }
 }

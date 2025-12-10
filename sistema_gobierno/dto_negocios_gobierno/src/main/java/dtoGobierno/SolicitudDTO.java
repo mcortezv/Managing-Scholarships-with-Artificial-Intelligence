@@ -12,7 +12,7 @@ import java.util.List;
  * @author Cortez, Manuel;
  */
 public class SolicitudDTO {
-    private long id;
+    private Long id;
     private BecaDTO beca;
     private EstudianteDTO estudiante;
     private InformacionSocioeconomicaDTO informacionSocioeconomica;
@@ -38,7 +38,7 @@ public class SolicitudDTO {
      * @param id                        the id
      * @param informacionSocioeconomica the informacion socioeconomica
      */
-    public SolicitudDTO(BecaDTO beca, List<DocumentoDTO> documentos, String estado, EstudianteDTO estudiante, LocalDate fecha, HistorialAcademicoDTO historialAcademico, long id, InformacionSocioeconomicaDTO informacionSocioeconomica) {
+    public SolicitudDTO(BecaDTO beca, List<DocumentoDTO> documentos, String estado, EstudianteDTO estudiante, LocalDate fecha, HistorialAcademicoDTO historialAcademico, Long id, InformacionSocioeconomicaDTO informacionSocioeconomica) {
         this.beca = beca;
         this.documentos = documentos;
         this.estado = estado;
@@ -162,7 +162,7 @@ public class SolicitudDTO {
      *
      * @return the id
      */
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -171,7 +171,7 @@ public class SolicitudDTO {
      *
      * @param id the id
      */
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
