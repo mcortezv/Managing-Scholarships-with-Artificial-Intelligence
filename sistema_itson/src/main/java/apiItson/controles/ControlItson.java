@@ -91,10 +91,13 @@ public class ControlItson {
       return grupoService.obtenerGrupos(actividad);
     }
 
-    public InscripcionDTOItson inscribirActividad(InscripcionDTOItson inscripcionDTOItson){
-        return inscripcionService.inscribirActividad(inscripcionDTOItson);
+    public InscripcionDTOItson inscribirActividadExterno(InscripcionDTOItson inscripcionDTOItson){
+        Estudiante est= solicitarDatosEstudiante((Long.valueOf(inscripcionDTOItson.getMatriculaEstudiante())));
+        inscripcionDTOItson.setIdEstudiante(String.valueOf(est.getId()));
+        return inscripcionService.inscribirActividadExterno(inscripcionDTOItson);
     }
-    
+
+
     public InscripcionesDTOItson obtenerInscripciones(EstudianteDTOItson estudianteDTO){
         return inscripcionService.obtenerInscripciones(estudianteDTO);
     }

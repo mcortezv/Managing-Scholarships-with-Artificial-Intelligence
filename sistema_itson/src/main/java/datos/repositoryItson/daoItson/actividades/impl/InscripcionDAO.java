@@ -45,6 +45,7 @@ public class InscripcionDAO implements IInscripcionDAO {
                     Filters.eq("estudiante.matricula", matricula),
                     Filters.eq("estado", "ACTIVA")
             )).into(listaInscripciones);
+
         } catch (Exception e) {
             System.out.println("error al obtener inscripciones" + e.getMessage());
         }

@@ -23,14 +23,15 @@ public class EstudianteAdaptador {
         return estudianteDTO;
     }
     
-    public static Estudiante toEntity(EstudianteDTO estudianteDTO){
+    public static Estudiante toEntity(String matricula){
         Estudiante estudiante= new Estudiante();
-        estudiante.setMatricula(estudianteDTO.getMatricula());
+        estudiante.setMatricula(matricula);
         return estudiante;
     }
     
     public static EstudianteDTOItson toDTOItson(EstudianteDTO estudianteDTO){
         EstudianteDTOItson estudianteDTOItson= new EstudianteDTOItson();
+     //   estudianteDTOItson.setId(estudianteDTO.getId());
         estudianteDTOItson.setMatricula(Long.valueOf(estudianteDTO.getMatricula()));
         return estudianteDTOItson;
         

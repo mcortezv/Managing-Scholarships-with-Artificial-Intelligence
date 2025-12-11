@@ -16,7 +16,8 @@ import dto.actividades.InscripcionesDTO;
  */
 public interface IInscripcionBO {
   
-    public InscripcionDTO inscribirActividad(InscripcionDTO inscripcionDTO);
+    public InscripcionDTO inscribirActividadExterno(InscripcionDTO inscripcionDTO);
+    public InscripcionDTO inscribirActividadLocal(InscripcionDTO inscripcionDTO);
     public InscripcionesDTO obtenerInscripciones(EstudianteDTO estudianteDTO);
     public GrupoDTO obtenerGrupoInscrito(InscripcionDTO inscripcionDTO);
     public BajaDTO darBajaActividad(BajaDTO baja);

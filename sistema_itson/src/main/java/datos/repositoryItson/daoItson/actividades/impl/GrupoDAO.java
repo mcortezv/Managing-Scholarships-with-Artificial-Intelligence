@@ -28,9 +28,11 @@ public class GrupoDAO {
         this.col = MongoClienteProvider.INSTANCE.getCollection("grupos", Grupo.class);
     }
 
+    
+    // la esta buscando por nombre, no por ID 
     public List<Grupo> obtenerGrupos(Actividad actividad) {
         Bson filtro = Filters.and(
-                Filters.eq("actividad.nombre", actividad.getNombre()),
+                Filters.eq("actividad.id", actividad.getId()),
                 Filters.gt("cupoDisponible", 0),
                 Filters.gte("fechaLimiteInscripcion", new Date())
         );

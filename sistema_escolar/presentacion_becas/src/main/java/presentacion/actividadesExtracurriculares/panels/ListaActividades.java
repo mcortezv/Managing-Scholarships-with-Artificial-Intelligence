@@ -98,6 +98,7 @@ public class ListaActividades extends PanelActividades {
         
         for(ActividadDTO actividad:actividadesDTO.getActividades()){
             Button boton= new Button(actividad.getNombre());
+           
             boton.setAlignmentX(Component.CENTER_ALIGNMENT);
             boton.setBackground(new Color(60, 100, 220));
             boton.setOpaque(true);
