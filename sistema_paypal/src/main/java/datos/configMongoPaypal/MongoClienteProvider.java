@@ -51,4 +51,5 @@ public enum MongoClienteProvider {
     public <T> MongoCollection<T> getCollection(String name, Class<T> type) {
         return database().getCollection(name, type);
     }
+
 }
