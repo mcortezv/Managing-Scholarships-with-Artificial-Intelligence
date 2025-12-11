@@ -92,7 +92,7 @@ public class ControlItson {
         return api.darBajaActividad(baja);
     }
 
-    public boolean actualizarEstadoInscripcion(String idInscripcion){
-        return api.actualizarEstadoInscripcion(idInscripcion);
-    }
+//    public boolean actualizarEstadoInscripcion(String idInscripcion){
+//        return api.actualizarEstadoInscripcion(idInscripcion);
+//    }
 }

@@ -107,7 +107,11 @@ public class ControlItson {
     }
     
     public BajaDTOItson darBajaActividad(BajaDTOItson baja){
-        return inscripcionService.darBajaActividad(baja);
+        BajaDTOItson bajaDTO= inscripcionService.darBajaActividad(baja);
+        if(bajaDTO!=null){
+            actualizarEstadoInscripcion(baja.getIdInscripcion());
+        }
+        return bajaDTO;
     }
     
     public boolean actualizarEstadoInscripcion(String idInscripcion){
