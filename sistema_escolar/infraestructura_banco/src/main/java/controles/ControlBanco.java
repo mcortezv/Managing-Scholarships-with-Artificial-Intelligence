@@ -3,6 +3,7 @@ package controles;
 import apiBanco.BancoAPI;
 import apiBanco.interfaces.IBancoAPI;
 import dto.pagarAdeudo.SolicitudPagoDTO;
+import excepciones.InfraestructuraBancoException;
 import itson.pagarAdeudo.SolicitudPagoDTOI;
 
 import java.awt.event.ActionListener;
@@ -18,28 +19,33 @@ public class ControlBanco {
         this.iBancoAPI = new BancoAPI();
     }
 
-    public void mostrarVentanaPago(ActionListener listener) {
-        iBancoAPI.mostrarVentanaPago(listener);
+    public void mostrarVentanaPago(ActionListener listener){
+            iBancoAPI.mostrarVentanaPago(listener);
     }
 
-    public SolicitudPagoDTOI ejecutarPago(SolicitudPagoDTOI solicitud) {
+    public SolicitudPagoDTOI ejecutarPago(SolicitudPagoDTOI solicitud){
         double monto = solicitud.getMontoPagado();
         String estatusResultante = procesarTransaccion(monto);
         solicitud.setEstatusPago(estatusResultante);
         return solicitud;
     }
 
-    private String procesarTransaccion(double monto) {
-        String concepto = "Pago desde app de itson";
-        boolean exito = iBancoAPI.ejecutarPago(monto, concepto);
-        if (exito) {
-            return "Pagado";
-        } else {
-            return "Rechazado";
-        }
+    private String procesarTransaccion(double monto){
+            String concepto = "Pago desde app de itson";
+            boolean exito = iBancoAPI.ejecutarPago(monto, concepto);
+            if (exito) {
+                return "Pagado";
+            } else {
+                return "Rechazado";
+            }
     }
 
     public void cerrarVentana() {
-        iBancoAPI.cerrarVentana();
+        try{
+            iBancoAPI.cerrarVentana();
+        }catch (Exception exception){
+            throw new InfraestructuraBancoException("Error al cerrar la ventana");
+        }
+
     }
 }

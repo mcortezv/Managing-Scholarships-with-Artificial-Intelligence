@@ -1,5 +1,6 @@
 package fachadas;
 import controles.ControlBanco;
+import excepciones.InfraestructuraBancoException;
 import interfaces.IFachadaBanco;
 import itson.pagarAdeudo.SolicitudPagoDTOI;
 
@@ -19,12 +20,12 @@ public class FachadaBanco implements IFachadaBanco {
     }
 
     @Override
-    public void mostrarPantallaPago(ActionListener listenerBotonPagar) {
+    public void mostrarPantallaPago(ActionListener listenerBotonPagar){
         controlBanco.mostrarVentanaPago(listenerBotonPagar);
     }
 
     @Override
-    public SolicitudPagoDTOI ejecutarPago(SolicitudPagoDTOI solicitud) {
+    public SolicitudPagoDTOI ejecutarPago(SolicitudPagoDTOI solicitud){
         return controlBanco.ejecutarPago(solicitud);
     }
 
