@@ -29,6 +29,8 @@ public class ControlActividad {
 
     }
 
+    
+   //caso de uso inscripciones
     public ActividadesDTO obtenerActividades() {
         try {
             ActividadesDTO actividadesDTO = actividadBO.obtenerActividades();
@@ -58,26 +60,63 @@ public class ControlActividad {
     }
 
 
-    public InscripcionDTO inscribirActividad(InscripcionDTO inscripcionDTO) {
-        EstudianteDTO estudianteDTO = new EstudianteDTO(inscripcionDTO.getMatriculaEstudiante());
-        EstudianteDTO estudianteEncontradoDTO = estudianteBO.obtenerEstudiante(estudianteDTO);
-        EstudianteDTO estudianteGuardar;
-        if (estudianteEncontradoDTO == null) {
-            estudianteGuardar = estudianteBO.guardarEstudiante(estudianteDTO);
-        } else {
-            estudianteGuardar = estudianteEncontradoDTO;
+//    public InscripcionDTO inscribirActividad(InscripcionDTO inscripcionDTO) {
+//        EstudianteDTO estudianteDTO = new EstudianteDTO(inscripcionDTO.getMatriculaEstudiante());
+//        EstudianteDTO estudianteEncontradoDTO = estudianteBO.obtenerEstudiante(estudianteDTO);
+//        EstudianteDTO estudianteGuardar;
+//        if (estudianteEncontradoDTO == null) {
+//            estudianteGuardar = estudianteBO.guardarEstudiante(estudianteDTO);
+//        } else {
+//            estudianteGuardar = estudianteEncontradoDTO;
+//        }
+//
+//        inscripcionDTO.setIdEstudiante(estudianteGuardar.getId());
+//        return inscripcionBO.inscribirActividad(inscripcionDTO);
+//
+//    }
+    
+    public InscripcionDTO inscribirActividad(InscripcionDTO inscripcionDTO){
+        InscripcionDTO inscripcionExterno= inscribirActividadExterno(inscripcionDTO);
+        if(inscripcionExterno!=null){
+            inscribirActividadLocal(inscripcionDTO);
         }
-
-        inscripcionDTO.setIdEstudiante(estudianteGuardar.getId());
-        return inscripcionBO.inscribirActividad(inscripcionDTO);
-
+        return inscripcionExterno;
     }
-
+    
+    public InscripcionDTO inscribirActividadExterno(InscripcionDTO inscripcionDTO){
+        return inscripcionBO.inscribirActividadExterno(inscripcionDTO);
+    }
+    
+    
+    
+    public InscripcionDTO inscribirActividadLocal(InscripcionDTO inscripcionDTO){
+        EstudianteDTO estudianteDTOEncontrado= buscarEstudiantePorMatricula(inscripcionDTO.getMatriculaEstudiante());
+        if(estudianteDTOEncontrado!=null){
+            inscripcionDTO.setIdEstudiante(estudianteDTOEncontrado.getId());
+        }   
+        if(estudianteDTOEncontrado==null){
+            EstudianteDTO estudianteGuardado= guardarEstudiante(inscripcionDTO.getMatriculaEstudiante());
+            inscripcionDTO.setIdEstudiante(estudianteGuardado.getId());
+            
+        }
+         return inscripcionBO.inscribirActividadLocal(inscripcionDTO);
+         
+    }
+    
+    public EstudianteDTO buscarEstudiantePorMatricula(String matricula){
+        return estudianteBO.obtenerEstudiantePorMatricula(matricula);
+    }
+    
+    public EstudianteDTO guardarEstudiante(String matricula){
+        return estudianteBO.guardarEstudiante(matricula);
+    }
+    
+    //caso de uso baja 
     public InscripcionesDTO obtenerInscripciones(EstudianteDTO estudianteDTO) {
         try {
             return inscripcionBO.obtenerInscripciones(estudianteDTO);
         } catch (Exception ex) {
-            throw new ActividadesException("Ha ocurrido un error al cargar tus inscripciones");
+            throw new ActividadesException("Ha ocurrido un error al cargar tus inscripciones"+ex.getMessage());
         }
 
     }

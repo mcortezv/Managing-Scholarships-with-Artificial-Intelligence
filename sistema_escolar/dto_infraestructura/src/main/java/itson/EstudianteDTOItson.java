@@ -6,6 +6,7 @@ package itson;
  * @author Escalante, Sebastian.
  */
 public class EstudianteDTOItson {
+    private String id;
     private Long matricula;
     private String nombre;
     private String carrera;
@@ -145,4 +146,14 @@ public class EstudianteDTOItson {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+    
+    
 }

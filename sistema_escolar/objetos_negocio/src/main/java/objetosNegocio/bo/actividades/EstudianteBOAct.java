@@ -25,16 +25,16 @@ public class EstudianteBOAct implements IEstudianteBOAct{
         this.estudianteDAO= estudianteDAO;
     }
     
-    public EstudianteDTO obtenerEstudiante(EstudianteDTO estudianteDTO){
-        Estudiante estudiante= estudianteDAO.buscarPorMatricula(estudianteDTO.getMatricula());
+    public EstudianteDTO obtenerEstudiantePorMatricula(String matricula){
+        Estudiante estudiante= estudianteDAO.buscarPorMatricula(matricula);
         if(estudiante==null){
             return null;
         }
         return EstudianteAdaptador.toDTO(estudiante);
     }
     
-    public EstudianteDTO guardarEstudiante(EstudianteDTO estudianteDTO){
-        Estudiante estudianteGuardar= EstudianteAdaptador.toEntity(estudianteDTO);
+    public EstudianteDTO guardarEstudiante(String matricula){
+        Estudiante estudianteGuardar= EstudianteAdaptador.toEntity(matricula);
         Estudiante estudiante= estudianteDAO.guardarEstudiante(estudianteGuardar);
         return EstudianteAdaptador.toDTO(estudiante);
     }

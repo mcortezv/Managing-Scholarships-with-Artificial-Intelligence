@@ -88,8 +88,8 @@ public class FachadaItson implements IFachadaITSON {
         return controlItson.obtenerGrupos(actividadDTO);
     }
 
-    public InscripcionDTOItson inscribirActividad(InscripcionDTOItson inscripcionDTOItson) {
-        return controlItson.inscribirActividad(inscripcionDTOItson);
+    public InscripcionDTOItson inscribirActividadExterno(InscripcionDTOItson inscripcionDTOItson) {
+        return controlItson.inscribirActividadExterno(inscripcionDTOItson);
     }
     
     public InscripcionesDTOItson obtenerInscripciones(EstudianteDTOItson estudianteDTO){

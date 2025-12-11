@@ -11,6 +11,7 @@ import itson.actividades.ActividadesDTOItson;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.bson.types.ObjectId;
 
 /**
  *
@@ -39,6 +40,7 @@ public class ActividadAdaptador {
     
     public static Actividad toEntity(ActividadDTOItson actividadDTO){
         Actividad actividad= new Actividad();
+        actividad.setId(new ObjectId(actividadDTO.getId()));
         actividad.setCosto(actividadDTO.getCosto());
         actividad.setNombre(actividadDTO.getNombre());
         return actividad;

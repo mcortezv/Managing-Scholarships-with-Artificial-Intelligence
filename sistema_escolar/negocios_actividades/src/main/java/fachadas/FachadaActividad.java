@@ -28,6 +28,8 @@ public class FachadaActividad implements IFachadaActividad {
         this.controlActividad = controlActividad;
     }
 
+    
+    //caso de uso  inscripciones
     public ActividadesDTO obtenerActividades() {
         return controlActividad.obtenerActividades();
     }
@@ -39,7 +41,9 @@ public class FachadaActividad implements IFachadaActividad {
     public InscripcionDTO inscribirActividad(InscripcionDTO inscripcionDTO) {
         return controlActividad.inscribirActividad(inscripcionDTO);
     }
-
+    
+    
+    ////caso de uso baja 
     public InscripcionesDTO obtenerInscripciones(EstudianteDTO estudianteDTO) {
         return controlActividad.obtenerInscripciones(estudianteDTO);
     }

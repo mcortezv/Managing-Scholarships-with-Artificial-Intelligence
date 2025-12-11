@@ -67,8 +67,8 @@ public class ItsonAPI implements IItsonAPI {
         return controlItson.obtenerGrupos(actividad);
     }
 
-    public InscripcionDTOItson inscribirActividad(InscripcionDTOItson inscripcionDTOItson) {
-        return controlItson.inscribirActividad(inscripcionDTOItson);
+    public InscripcionDTOItson inscribirActividadExterno(InscripcionDTOItson inscripcionDTOItson) {
+        return controlItson.inscribirActividadExterno(inscripcionDTOItson);
     }
     
     public GrupoResponseDTOItson obtenerGrupoInscrito(InscripcionDTOItson inscripcion){

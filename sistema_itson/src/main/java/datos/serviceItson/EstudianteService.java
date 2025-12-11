@@ -26,7 +26,8 @@ public class EstudianteService {
     
     public Estudiante solicitarDatosEstudiante(Long matricula){
         return estudianteDAO.findByMatricula(matricula).orElse(null);
-             
     }
+    
+    
     
 }
