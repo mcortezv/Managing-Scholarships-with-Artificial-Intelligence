@@ -75,8 +75,8 @@ public class ControlItson {
         return api.solicitarGrupos(actividadDTOItson);
     }
 
-    public InscripcionDTOItson inscribirActividad(InscripcionDTOItson inscripcionDTOItson) {
-        return api.inscribirActividad(inscripcionDTOItson);
+    public InscripcionDTOItson inscribirActividadExterno(InscripcionDTOItson inscripcionDTOItson) {
+        return api.inscribirActividadExterno(inscripcionDTOItson);
     }
     
     public InscripcionesDTOItson obtenerInscripciones(EstudianteDTOItson estudianteDTO){

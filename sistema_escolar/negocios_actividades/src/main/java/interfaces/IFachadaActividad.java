@@ -17,9 +17,13 @@ import dto.actividades.InscripcionesDTO;
  */
 public interface IFachadaActividad {
 
+    //caso de uso inscripciones
+    
      ActividadesDTO obtenerActividades();
      GruposResponseDTO obtenerGrupos(ActividadDTO actividadDTO);
      InscripcionDTO inscribirActividad(InscripcionDTO inscripcionDTO);
+     
+     //caso de uso baja 
      InscripcionesDTO obtenerInscripciones(EstudianteDTO estudianteDTO);
      GrupoDTO obtenerGrupoInscrito(InscripcionDTO inscripcionDTO);
      BajaDTO darBajaActividad(BajaDTO baja);

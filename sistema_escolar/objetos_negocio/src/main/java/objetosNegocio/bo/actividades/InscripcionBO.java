@@ -36,16 +36,30 @@ public class InscripcionBO implements IInscripcionBO {
         this.inscripcionDAO= inscripcionDAO;
     }
 
-    public InscripcionDTO inscribirActividad(InscripcionDTO inscripcionDTO) {
-            InscripcionDTOItson inscripcionDTOItson = InscripcionAdaptador.toDTOItson(inscripcionDTO);
-            InscripcionDTOItson inscripcionDTOIResponse = fachadaITSON.inscribirActividad(inscripcionDTOItson);
-            if(inscripcionDTOIResponse!=null){
-                Inscripcion inscripcionGuardar= InscripcionAdaptador.toEntity(inscripcionDTO);
-                Inscripcion inscripcionGuardada= inscripcionDAO.InscribirGrupo(inscripcionGuardar);
-            }
-            return InscripcionAdaptador.toDTONegocio(inscripcionDTOIResponse);
-
-        }
+//    public InscripcionDTO inscribirActividad(InscripcionDTO inscripcionDTO) {
+//            InscripcionDTOItson inscripcionDTOItson = InscripcionAdaptador.toDTOItson(inscripcionDTO);
+//            InscripcionDTOItson inscripcionDTOIResponse = fachadaITSON.inscribirActividad(inscripcionDTOItson);
+//            if(inscripcionDTOIResponse!=null){
+//                Inscripcion inscripcionGuardar= InscripcionAdaptador.toEntity(inscripcionDTO);
+//                Inscripcion inscripcionGuardada= inscripcionDAO.InscribirGrupo(inscripcionGuardar);
+//            }
+//            return InscripcionAdaptador.toDTONegocio(inscripcionDTOIResponse);
+//
+//        }
+    
+    public InscripcionDTO inscribirActividadExterno(InscripcionDTO inscripcionDTO) {
+        InscripcionDTOItson inscripcionDTOItsonExterno= InscripcionAdaptador.toDTOItson(inscripcionDTO);
+        InscripcionDTOItson inscripcionDTOItsonExternoResponse= fachadaITSON.inscribirActividadExterno(inscripcionDTOItsonExterno);
+        InscripcionDTO inscripcionDTOExternoResponse= InscripcionAdaptador.toDTONegocio(inscripcionDTOItsonExternoResponse);
+        return inscripcionDTOExternoResponse;
+    }
+    
+    public InscripcionDTO inscribirActividadLocal(InscripcionDTO inscripcionDTO) {
+        Inscripcion inscripcion= InscripcionAdaptador.toEntity(inscripcionDTO);
+        Inscripcion inscripcionInscrita= inscripcionDAO.InscribirGrupo(inscripcion);
+        return InscripcionAdaptador.EntityToDTONegocio(inscripcionInscrita);
+        
+    }
     
     public InscripcionesDTO obtenerInscripciones(EstudianteDTO estudianteDTO){
         System.out.println(estudianteDTO.getMatricula());

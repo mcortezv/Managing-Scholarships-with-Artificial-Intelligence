@@ -11,7 +11,7 @@ import dto.actividades.EstudianteDTO;
  * @author janethcristinagalvanquinonez
  */
 public interface IEstudianteBOAct {
-    public EstudianteDTO obtenerEstudiante(EstudianteDTO estudianteDTO);
-    public EstudianteDTO guardarEstudiante(EstudianteDTO estudianteDTO);
+    public EstudianteDTO obtenerEstudiantePorMatricula(String matricula);
+    public EstudianteDTO guardarEstudiante(String matricula);
     
 }

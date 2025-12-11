@@ -1,8 +1,10 @@
 package datos.dominioItson;
 
 import datos.dominioItson.enums.Carrera;
+import org.bson.types.ObjectId;
 
 public class Estudiante {
+    public ObjectId id;
     private Long matricula;
     private String nombre;
     private Carrera carrera;
@@ -88,4 +90,14 @@ public class Estudiante {
     public void setTutor(Tutor tutor) {
         this.tutor = tutor;
     }
+
+    public ObjectId getId() {
+        return id;
+    }
+
+    public void setId(ObjectId id) {
+        this.id = id;
+    }
+    
+    
 }

@@ -24,40 +24,37 @@ import org.bson.types.ObjectId;
  * @author janethcristinagalvanquinonez
  */
 public class InscripcionService {
-    
+
     private final IInscripcionDAO inscripcionDAO;
     private final IBajaDAO bajaDAO;
 
     public InscripcionService() {
         this.inscripcionDAO = new InscripcionDAO();
-        this.bajaDAO= new BajaDAO();
+        this.bajaDAO = new BajaDAO();
     }
-    
-    public InscripcionDTOItson inscribirActividad(InscripcionDTOItson inscripcionDTO){
-        Inscripcion inscripcion= InscripcionAdaptador.toEntity(inscripcionDTO);
-        InscripcionDTOItson inscripcionDTOItson= InscripcionAdaptador.toDTOITSON(inscripcionDAO.InscribirGrupo(inscripcion));
+
+    public InscripcionDTOItson inscribirActividadExterno(InscripcionDTOItson inscripcionDTO) {
+        Inscripcion inscripcion = InscripcionAdaptador.toEntity(inscripcionDTO);
+        InscripcionDTOItson inscripcionDTOItson = InscripcionAdaptador.toDTOITSON(inscripcionDAO.InscribirGrupo(inscripcion));
         return inscripcionDTOItson;
-        
+
     }
-    
-    public InscripcionesDTOItson obtenerInscripciones(EstudianteDTOItson estudianteDTO){
-        List<Inscripcion> inscripciones= inscripcionDAO.obtenerInscripciones(String.valueOf(estudianteDTO.getMatricula()));
+
+    public InscripcionesDTOItson obtenerInscripciones(EstudianteDTOItson estudianteDTO) {
+        List<Inscripcion> inscripciones = inscripcionDAO.obtenerInscripciones(String.valueOf(estudianteDTO.getMatricula()));
         return InscripcionAdaptador.toDTOItson(inscripciones);
     }
-    
-    public BajaDTOItson darBajaActividad(BajaDTOItson baja){
-        Baja bajaEntity= BajaAdaptador.toEntity(baja);
-        Baja bajaGuardada= bajaDAO.guardarBaja(bajaEntity);
-        return BajaAdaptador.toDTOItson(bajaEntity);
-        
-        
+
+    public BajaDTOItson darBajaActividad(BajaDTOItson baja) {
+        Baja bajaEntity = BajaAdaptador.toEntity(baja);
+        Baja bajaGuardada = bajaDAO.guardarBaja(bajaEntity);
+        return BajaAdaptador.toDTOItson(bajaGuardada);
+
     }
-    
-    public boolean actualizarEstadoInscripcion(String idInscripcion){
+
+    public boolean actualizarEstadoInscripcion(String idInscripcion) {
         return inscripcionDAO.actualizarEstado(new ObjectId(idInscripcion));
-        
+
     }
-    
-    
-    
+
 }

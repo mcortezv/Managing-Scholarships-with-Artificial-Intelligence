@@ -96,17 +96,17 @@ public class CoordinadorAplicacionActividades implements ICoordinadorAplicacionA
         this.estudiante.setMatricula(String.valueOf(loginDTO.getUsuario()));
         ListaInscripciones listaInscripciones = (ListaInscripciones) actividades.getPanel("ListaInscripciones");
         listaInscripciones.recuperarEstudiante(loginDTO);
-        
     }
     
     
     public InscripcionesDTO obtenerInscripciones(EstudianteDTO estudiante){
+        System.out.println("ins"+estudiante.getMatricula());
        try{
         return coordinadorNegocioActividades.obtenerInscripciones(estudiante);
        } catch(ActividadesException ex){
            JOptionPane.showMessageDialog(null, ex.getMessage(), "No se han encontrado inscripciones", JOptionPane.ERROR_MESSAGE);
        }
-       return new InscripcionesDTO();
+       return null;
     }
     
 
@@ -130,6 +130,7 @@ public class CoordinadorAplicacionActividades implements ICoordinadorAplicacionA
     
     public void procesarActividadSeleccionada(ActividadDTO actividad){
         try{
+            //quizas dejar de guardarla en actividad selecciomada porque al inscribir ya la tego en grupo el id de la actividad 
             this.actividadSeleccionada= actividad;
             this.gruposResponseDTO= coordinadorNegocioActividades.obtenerGrupos(actividad);
             mostrarGrupos();
@@ -164,9 +165,9 @@ public class CoordinadorAplicacionActividades implements ICoordinadorAplicacionA
             InscripcionDTO inscripcionDTO= new InscripcionDTO();
             inscripcionDTO.setIdGrupo(grupoSeleccionado.getId());
             inscripcionDTO.setIdActividad(actividadSeleccionada.getId());
+            
             //la cambio a idestudiante
             inscripcionDTO.setMatriculaEstudiante(String.valueOf(loginDTO.getUsuario()));
-
             inscripcionDTO.setNombreGrupo(grupoSeleccionado.getNombreGrupo());
             inscripcionDTO.setNombreActividad(grupoSeleccionado.getNombreActividad());
             inscripcionDTO.setCosto(grupoSeleccionado.getCosto());
