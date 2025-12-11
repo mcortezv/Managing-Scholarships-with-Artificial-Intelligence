@@ -20,6 +20,7 @@ public interface IInscripcionBO {
     public InscripcionDTO inscribirActividadLocal(InscripcionDTO inscripcionDTO);
     public InscripcionesDTO obtenerInscripciones(EstudianteDTO estudianteDTO);
     public GrupoDTO obtenerGrupoInscrito(InscripcionDTO inscripcionDTO);
-    public BajaDTO darBajaActividad(BajaDTO baja);
-    public boolean actualizarEstadoInscripcion(String idInscripcion);
+    public BajaDTO darBajaActividadExterno(BajaDTO baja);
+    public BajaDTO darBajaLocal(BajaDTO baja);
+   // public boolean actualizarEstadoInscripcion(String idInscripcion);
 }

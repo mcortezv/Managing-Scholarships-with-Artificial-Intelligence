@@ -58,6 +58,7 @@ public interface IFachadaITSON {
     InscripcionDTOItson inscribirActividadExterno(InscripcionDTOItson inscripcionDTOItson);
     InscripcionesDTOItson obtenerInscripciones(EstudianteDTOItson estudianteDTO);
     BajaDTOItson darBajaActividad(BajaDTOItson baja);
-    boolean actualizarEstadoInscripcion(String idInscripcion);
+    
+  //  boolean actualizarEstadoInscripcion(String idInscripcion);
    GrupoResponseDTOItson obtenerGrupoInscrito(InscripcionDTOItson inscripcion);
 }

@@ -107,10 +107,10 @@ public class FachadaItson implements IFachadaITSON {
 
     }
     
-    public boolean actualizarEstadoInscripcion(String idInscripcion){
-        return controlItson.actualizarEstadoInscripcion(idInscripcion);
-
-    }
+//    public boolean actualizarEstadoInscripcion(String idInscripcion){
+//        return controlItson.actualizarEstadoInscripcion(idInscripcion);
+//
+//    }
 
 
 }

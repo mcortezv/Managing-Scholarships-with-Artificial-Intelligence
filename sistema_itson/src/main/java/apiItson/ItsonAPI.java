@@ -83,7 +83,7 @@ public class ItsonAPI implements IItsonAPI {
         return controlItson.darBajaActividad(baja);
     }
     
-    public boolean actualizarEstadoInscripcion(String idInscripcion){
-        return controlItson.actualizarEstadoInscripcion(idInscripcion);
-    }
+//    public boolean actualizarEstadoInscripcion(String idInscripcion){
+//        return controlItson.actualizarEstadoInscripcion(idInscripcion);
+//    }
 }

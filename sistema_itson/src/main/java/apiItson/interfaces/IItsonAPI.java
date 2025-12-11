@@ -40,6 +40,6 @@ public interface IItsonAPI {
      GrupoResponseDTOItson obtenerGrupoInscrito(InscripcionDTOItson inscripcion);
      BajaDTOItson darBajaActividad(BajaDTOItson baja);
      
-     public boolean actualizarEstadoInscripcion(String idInscripcion);
+ //    public boolean actualizarEstadoInscripcion(String idInscripcion);
 
 }
