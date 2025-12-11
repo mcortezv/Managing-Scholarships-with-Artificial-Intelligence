@@ -1,5 +1,6 @@
 package datos.repositoryItson.daoItson.pagarAdeudo.impl;
 
+import com.mongodb.MongoException;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
@@ -30,6 +31,8 @@ public class ClaseDAO implements IClaseDAO {
             ).into(new ArrayList<>());
         }catch (DaoException ex){
             throw new DaoException("Error al obtener clases por matricula" +  ex.getMessage());
+        }catch (MongoException ex){
+            throw new MongoException("Error al obtener clases por matricula" +  ex.getMessage());
         }
     }
 

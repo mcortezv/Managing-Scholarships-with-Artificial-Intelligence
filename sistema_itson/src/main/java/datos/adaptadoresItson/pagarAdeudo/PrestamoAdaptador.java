@@ -11,7 +11,6 @@ public class PrestamoAdaptador {
 
     public static Prestamo toEntity(PrestamoDocument document) {
         if (document == null) return null;
-        System.out.println("ISBN: " + document.getIsbn() + " | Fecha Prestamo en Document: " + document.getFechaPrestamo());
         Prestamo prestamo = new Prestamo();
         prestamo.setEstatus(document.getEstatus());
         prestamo.setCosto(document.getCosto());

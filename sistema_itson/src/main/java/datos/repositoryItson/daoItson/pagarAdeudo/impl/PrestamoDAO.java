@@ -1,5 +1,6 @@
 package datos.repositoryItson.daoItson.pagarAdeudo.impl;
 
+import com.mongodb.MongoException;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
@@ -22,23 +23,17 @@ public class PrestamoDAO implements IPrestamoDAO {
     @Override
     public List<PrestamoDocument> obtenerListaPrestamosPendientesByMatricula(Long matricula){
         try{
-            return col.find(
-                    Filters.and(
-                            Filters.eq("idEstudiante", matricula),
-                            Filters.eq("estatus", "Pendiente")
-                    )
-            ).into(new ArrayList<>());
-        }catch (DaoException ex){
+            return col.find(Filters.and(Filters.eq("idEstudiante", matricula), Filters.eq("estatus", "Pendiente"))).into(new ArrayList<>());
+        }catch (DaoException  ex){
             throw new DaoException("Error al obtener prestamos por matricula" +  ex.getMessage());
+        }catch (MongoException ex){
+            throw new MongoException("Error de BD al buscar préstamos: " + ex.getMessage());
         }
     }
 
     public void liquidarPrestamosPorEstudiante(Long idEstudiante) {
         try {
-            Bson filtro = Filters.and(
-                    Filters.eq("idEstudiante", idEstudiante),
-                    Filters.eq("estatus", "Pendiente")
-            );
+            Bson filtro = Filters.and(Filters.eq("idEstudiante", idEstudiante), Filters.eq("estatus", "Pendiente"));
             Bson actualizacion = Updates.set("estatus", "Pagado");
             col.updateMany(filtro, actualizacion);
         } catch (Exception e) {
