@@ -129,18 +129,62 @@ public class ControlActividad {
         }
     }
 
-    public BajaDTO darBajaActividad(BajaDTO baja) {
-        try {
-            BajaDTO bajaGuardada = inscripcionBO.darBajaActividad(baja);
-            if (bajaGuardada != null) {
-                inscripcionBO.actualizarEstadoInscripcion(bajaGuardada.getIdInscripcion());
-            } else {
-                throw new ActividadesException(("Error al procesar la baja"));
-            }
-            return bajaGuardada;
-        } catch (Exception ex) {
-            throw new ActividadesException(ex.getMessage());
+//    public BajaDTO darBajaActividad(BajaDTO baja) {
+//        try {
+//            BajaDTO bajaGuardada = inscripcionBO.darBajaActividad(baja);
+//            if (bajaGuardada != null) {
+//                inscripcionBO.actualizarEstadoInscripcion(bajaGuardada.getIdInscripcion());
+//            } else {
+//                throw new ActividadesException(("Error al procesar la baja"));
+//            }
+//            return bajaGuardada;
+//        } catch (Exception ex) {
+//            throw new ActividadesException(ex.getMessage());
+//        }
+//
+//    }
+    public BajaDTO darBajaActividad(BajaDTO baja){
+        BajaDTO bajaExterno= darBajaExterno(baja);
+        if(bajaExterno!=null){
+             BajaDTO bajaLocal= darBajaLocal(baja);
+             if(bajaLocal!=null){
+                 return bajaLocal;
+             } else{
+                 throw new ActividadesException("Se actualizó el sistema externo, pero hubo un error al guardar la baja localmente");
+             }
+        
+        } else{
+            System.out.println("itson");
+            throw new ActividadesException("El sistema externo no pudo procesar la baja");
         }
-
+        
     }
+    
+    
+    public BajaDTO darBajaExterno(BajaDTO baja){
+        try{    
+          BajaDTO bajaExter= inscripcionBO.darBajaActividadExterno(baja);
+         return bajaExter;
+        } catch(Exception e){
+            throw new ActividadesException(("Error al dar de baja en externo"));
+        }
+    }
+    
+    public BajaDTO darBajaLocal(BajaDTO baja){
+        try{
+            BajaDTO bajaLocal= inscripcionBO.darBajaLocal(baja);
+            return bajaLocal;
+        } catch(Exception ex){
+            throw new ActividadesException("Error al dar de baja en local ");
+        }
+    }
+    
+//    public boolean darBajaExterno(BajaDTO baja){
+//        try{
+//            return inscripcionBO.actualizarEstadoInscripcion(baja.getIdInscripcion());
+//        } catch(Exception e){
+//            throw new ActividadesException(("Error al dar de baja en ITSON"));
+//        }
+//        
+//    }
 }

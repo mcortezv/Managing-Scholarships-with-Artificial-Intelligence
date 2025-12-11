@@ -11,7 +11,7 @@ import java.time.LocalDate;
  * @author janethcristinagalvanquinonez
  */
 public class BajaDTO {
-    
+    private String idBaja;
     private String idInscripcion;
     private String motivo;
     private LocalDate fechaBaja;
@@ -19,10 +19,29 @@ public class BajaDTO {
     public BajaDTO() {
     }
 
+    public BajaDTO(String idBaja, String idInscripcion, String motivo, LocalDate fechaBaja) {
+        this.idBaja = idBaja;
+        this.idInscripcion = idInscripcion;
+        this.motivo = motivo;
+        this.fechaBaja = fechaBaja;
+    }
+
+    public BajaDTO(String motivo) {
+        this.motivo = motivo;
+    }
+
+    
+
     public BajaDTO(String idInscripcion, String motivo) {
         this.idInscripcion = idInscripcion;
         this.motivo = motivo;
     }
+    
+    
+    
+    
+
+    
 
     public String getIdInscripcion() {
         return idInscripcion;
@@ -46,6 +65,14 @@ public class BajaDTO {
 
     public void setFechaBaja(LocalDate fechaBaja) {
         this.fechaBaja = fechaBaja;
+    }
+
+    public String getIdBaja() {
+        return idBaja;
+    }
+
+    public void setIdBaja(String idBaja) {
+        this.idBaja = idBaja;
     }
     
     

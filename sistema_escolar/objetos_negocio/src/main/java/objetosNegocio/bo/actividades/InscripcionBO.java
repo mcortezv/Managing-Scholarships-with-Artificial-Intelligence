@@ -3,8 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package objetosNegocio.bo.actividades;
+import actividades.dao.interfaces.IBajaDAO;
 import actividades.dao.interfaces.IInscripcionDAO;
+import actividades.dominio.Baja;
 import actividades.dominio.Inscripcion;
+import adaptadores.actividades.BajaAdaptador;
 import dto.actividades.BajaDTO;
 import dto.actividades.EstudianteDTO;
 import dto.actividades.GrupoDTO;
@@ -30,10 +33,12 @@ public class InscripcionBO implements IInscripcionBO {
 
     private IFachadaITSON fachadaITSON;
     private final IInscripcionDAO inscripcionDAO;
+    private final IBajaDAO bajaDAO;
 
-    public InscripcionBO(IFachadaITSON fachadaITSON, IInscripcionDAO inscripcionDAO) {
+    public InscripcionBO(IFachadaITSON fachadaITSON, IInscripcionDAO inscripcionDAO, IBajaDAO bajaDAO) {
         this.fachadaITSON = fachadaITSON;
         this.inscripcionDAO= inscripcionDAO;
+        this.bajaDAO= bajaDAO;
     }
 
 //    public InscripcionDTO inscribirActividad(InscripcionDTO inscripcionDTO) {
@@ -75,19 +80,25 @@ public class InscripcionBO implements IInscripcionBO {
         InscripcionDTOItson inscripcionDTOItson= InscripcionAdaptador.toDTOItsonID(inscripcionDTO);
         GrupoResponseDTOItson grupoDTOItson= fachadaITSON.obtenerGrupoInscrito(inscripcionDTOItson);
         GrupoDTO grupo= GruposAdaptador.DTOItsonToDTOActividades(grupoDTOItson);
-        return grupo;
-     
+        return grupo;   
     }
     
-    public BajaDTO darBajaActividad(BajaDTO baja){
+    public BajaDTO darBajaActividadExterno(BajaDTO baja){
         BajaDTOItson bajaDTOItson= adaptadores.actividades.BajaAdaptador.toDTOItson(baja);
         BajaDTOItson bajaDTOItsonResponse= fachadaITSON.darBajaActividad(bajaDTOItson);
         return adaptadores.actividades.BajaAdaptador.toDTONegocio(bajaDTOItsonResponse);
 
     }
     
-    public boolean actualizarEstadoInscripcion(String idInscripcion){
-        return fachadaITSON.actualizarEstadoInscripcion(idInscripcion);
-       
+    public BajaDTO darBajaLocal(BajaDTO baja){
+        Baja bajaLocal= BajaAdaptador.toEntity(baja);
+        Baja bajaGuardada= bajaDAO.guardarBajaLocal(bajaLocal);
+        return BajaAdaptador.entityToDTONegocio(bajaGuardada);
     }
+
+    
+//    public boolean actualizarEstadoInscripcion(String idInscripcion){
+//        return fachadaITSON.actualizarEstadoInscripcion(idInscripcion);
+//       
+//    }
 }

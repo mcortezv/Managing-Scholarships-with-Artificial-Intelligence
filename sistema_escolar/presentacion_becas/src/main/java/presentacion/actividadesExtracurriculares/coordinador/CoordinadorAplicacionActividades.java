@@ -81,6 +81,7 @@ public class CoordinadorAplicacionActividades implements ICoordinadorAplicacionA
 //    }
     
     public void inscribirActividad(){
+        
      //   ActividadesDTO actividadeDTOs= coordinadorNegocioActividades.obtenerActividades();
         actividades.showPanel("ListaActividades");
     }
@@ -222,8 +223,11 @@ public class CoordinadorAplicacionActividades implements ICoordinadorAplicacionA
         
     public BajaDTO darBajaActividad(String motivo){
       try{
-        BajaDTO bajaDTO= new BajaDTO(inscripcionElegida.getId(), motivo);
+        BajaDTO bajaDTO= new BajaDTO(motivo);
         BajaDTO bajaResponse= coordinadorNegocioActividades.darBajaActividad(bajaDTO);
+        
+        
+        
         if(bajaResponse!=null){
             JOptionPane.showMessageDialog(null, "Baja de actividad guardada con exito");
             mostrarMenu();
@@ -234,6 +238,15 @@ public class CoordinadorAplicacionActividades implements ICoordinadorAplicacionA
       }
       return new BajaDTO();
     }
+    
+//    public BajaDTO darBajaLocal(String motivo){
+//        try{
+//            BajaDTO bajaDTO= new BajaDTO(inscripcionElegida.getId(), motivo);
+//            BajaDTO bajaResponse= coordinadorNegocioActividades.darBajaActividad(bajaDTO);;
+//        } catch(ActividadesException ex){
+//            
+//        }
+//    }
     
 //
 //    

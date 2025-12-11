@@ -1,6 +1,8 @@
 package presentacion;
+import actividades.dao.interfaces.IBajaDAO;
 import actividades.dao.interfaces.IEstudianteDAOAct;
 import actividades.dao.interfaces.IInscripcionDAO;
+import actividades.daos.BajaDAO;
 import actividades.daos.EstudianteDAOAct;
 import actividades.daos.InscripcionDAO;
 import objetosNegocio.bo.actividades.InscripcionBO;
@@ -70,7 +72,8 @@ public class Main {
         IEstudianteDAOAct estudianteDAOAct= new EstudianteDAOAct();
         IEstudianteBOAct estudianteBOAct= new EstudianteBOAct(fachadaITSON, estudianteDAOAct);
         IInscripcionDAO inscripcionDAO= new InscripcionDAO();
-        IInscripcionBO inscripcionBO= new InscripcionBO(fachadaITSON, inscripcionDAO);
+        IBajaDAO bajaDAO= new BajaDAO();
+        IInscripcionBO inscripcionBO= new InscripcionBO(fachadaITSON, inscripcionDAO,  bajaDAO);
         ControlActividad controlActividad= new ControlActividad(actividadBO, grupoBO, inscripcionBO, estudianteBOAct);
         IFachadaActividad fachadaAct = new FachadaActividad(controlActividad);
 
