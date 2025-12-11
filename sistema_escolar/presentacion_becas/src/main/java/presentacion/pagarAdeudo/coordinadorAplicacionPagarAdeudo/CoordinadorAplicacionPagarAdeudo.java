@@ -4,6 +4,7 @@ import dto.pagarAdeudo.ClaseDTO;
 import dto.pagarAdeudo.PrestamoDTO;
 import dto.pagarAdeudo.SolicitudPagoDTO;
 import excepciones.NegociosSolicitarPagoException;
+import objetosNegocio.adaptadores.pagarAdeudo.excepciones.AdeudoException;
 import presentacion.CoordinadorAplicacion;
 import presentacion.pagarAdeudo.PagarAdeudo;
 import presentacion.pagarAdeudo.coordinadorNegocioPagarAdeudo.ICoordinadorNegocioPagarAdeudo;
@@ -60,7 +61,7 @@ public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionP
             try{
                 this.prestamos = coordinadorNegocioPagarAdeudo.obtenerListaPrestamos(estudianteDTO);
                 this.adeudoBibliotecaCache = coordinadorNegocioPagarAdeudo.calcularTotalPrestamos(this.prestamos);
-            }catch (NegociosSolicitarPagoException ex){
+            }catch (NegociosSolicitarPagoException | AdeudoException ex){
                 JOptionPane.showMessageDialog(null, ex.getMessage());
                 return;
             }
@@ -78,7 +79,7 @@ public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionP
             try{
                 this.clases = coordinadorNegocioPagarAdeudo.obtenerListaClases(estudianteDTO);
                 this.adeudoColegiaturaCache = coordinadorNegocioPagarAdeudo.calcularTotalClases(this.clases);
-            }catch (NegociosSolicitarPagoException ex){
+            }catch (NegociosSolicitarPagoException | AdeudoException ex){
                 JOptionPane.showMessageDialog(null, ex.getMessage());
                 return;
             }
