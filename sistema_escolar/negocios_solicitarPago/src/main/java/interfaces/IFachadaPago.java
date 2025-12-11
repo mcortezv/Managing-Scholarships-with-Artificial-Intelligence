@@ -3,6 +3,7 @@ package interfaces;
 import dto.pagarAdeudo.ClaseDTO;
 import dto.pagarAdeudo.PrestamoDTO;
 import dto.pagarAdeudo.SolicitudPagoDTO;
+import excepciones.NegociosSolicitarPagoException;
 import solicitarBeca.EstudianteDTO;
 import java.awt.event.ActionListener;
 import java.util.List;

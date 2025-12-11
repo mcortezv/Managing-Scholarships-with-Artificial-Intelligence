@@ -119,7 +119,7 @@ public class CoordinadorAplicacionPagarAdeudo implements ICoordinadorAplicacionP
         }
     }
 
-    private void abrirPasarelaBanco() {
+    private void abrirPasarelaBanco(){
         int respuesta = JOptionPane.showConfirmDialog(
                 null,
                 "Al dar click en continuar será redirigido a un sistema de pago externo, ¿desea continuar?",

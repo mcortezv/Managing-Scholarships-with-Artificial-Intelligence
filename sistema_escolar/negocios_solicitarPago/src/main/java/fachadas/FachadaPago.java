@@ -4,6 +4,7 @@ import controles.ControlPago;
 import dto.pagarAdeudo.ClaseDTO;
 import dto.pagarAdeudo.PrestamoDTO;
 import dto.pagarAdeudo.SolicitudPagoDTO;
+import excepciones.NegociosSolicitarPagoException;
 import interfaces.IFachadaPago;
 import objetosNegocio.bo.sesion.SesionUsuario;
 import solicitarBeca.EstudianteDTO;
@@ -29,7 +30,7 @@ public class FachadaPago implements IFachadaPago {
     }
 
     @Override
-    public void solicitarVistaDePago(ActionListener listener) {
+    public void solicitarVistaDePago(ActionListener listener){
         controlPago.solicitarVistaPago(listener);
     }
 

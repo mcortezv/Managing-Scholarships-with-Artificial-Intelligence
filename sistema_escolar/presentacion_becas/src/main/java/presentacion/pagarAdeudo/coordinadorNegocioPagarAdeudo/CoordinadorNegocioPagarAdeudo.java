@@ -55,7 +55,7 @@ public class CoordinadorNegocioPagarAdeudo implements ICoordinadorNegocioPagarAd
     }
 
     @Override
-    public SolicitudPagoDTO realizarPago(SolicitudPagoDTO solicitudPagoDTO) throws Exception {
+    public SolicitudPagoDTO realizarPago(SolicitudPagoDTO solicitudPagoDTO) {
         return fachadaPago.realizarPago(solicitudPagoDTO);
     }
 

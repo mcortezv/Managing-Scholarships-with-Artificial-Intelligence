@@ -2,7 +2,6 @@ package controles;
 
 import apiItson.ItsonAPI;
 import apiItson.interfaces.IItsonAPI;
-import datos.dominioItson.pagarAdeudo.Clase;
 import excepciones.InfraestructuraItsonException;
 import itson.actividades.*;
 import itson.pagarAdeudo.ClaseDTOI;
