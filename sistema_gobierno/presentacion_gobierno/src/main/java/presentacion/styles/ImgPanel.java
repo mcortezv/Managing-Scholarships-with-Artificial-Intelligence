@@ -7,12 +7,18 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
+ * The type Img panel.
  *
  * @author Cortez, Manuel;
  */
 public class ImgPanel extends JPanel {
     private final Image imagen;
 
+    /**
+     * Instantiates a new Img panel.
+     *
+     * @param path the path
+     */
     public ImgPanel(String path) {
         this.imagen = new ImageIcon(
                 getClass().getResource(path)

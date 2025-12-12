@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * The type Main frame.
  *
  * @author Cortez, Manuel;
  */
@@ -22,7 +23,11 @@ public final class MainFrame extends JFrame {
     private final Map<String, JPanel> panels;
     private ICoordinadorAplicacion coordinadorAplicacion;
 
-
+    /**
+     * Instantiates a new Main frame.
+     *
+     * @param coordinadorAplicacion the coordinador aplicacion
+     */
     public MainFrame(ICoordinadorAplicacion coordinadorAplicacion) {
         setTitle("Sistema de Evaluación de Solicitudes");
         setResizable(false);
@@ -53,6 +58,11 @@ public final class MainFrame extends JFrame {
         centralPanel.add(panels.get("iniciarSesion"));
     }
 
+    /**
+     * Show panel.
+     *
+     * @param nuevoPanel the nuevo panel
+     */
     public void showPanel(String nuevoPanel) {
         centralPanel.removeAll();
         centralPanel.add(panels.get(nuevoPanel), BorderLayout.CENTER);
@@ -60,6 +70,12 @@ public final class MainFrame extends JFrame {
         centralPanel.repaint();
     }
 
+    /**
+     * Gets panel.
+     *
+     * @param panel the panel
+     * @return the panel
+     */
     public JPanel getPanel(String panel) {
         return panels.get(panel);
     }

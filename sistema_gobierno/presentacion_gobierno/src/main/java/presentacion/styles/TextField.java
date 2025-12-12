@@ -2,8 +2,16 @@ package presentacion.styles;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * The type Text field.
+ */
 public class TextField extends JTextField {
 
+    /**
+     * Instantiates a new Text field.
+     *
+     * @param columns the columns
+     */
     public TextField(int columns) {
         super(columns);
         setFont(Style.INPUT_FONT);
