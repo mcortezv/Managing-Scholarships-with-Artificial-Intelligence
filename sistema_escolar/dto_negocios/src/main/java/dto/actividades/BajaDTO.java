@@ -29,6 +29,8 @@ public class BajaDTO {
     public BajaDTO(String motivo) {
         this.motivo = motivo;
     }
+    
+    
 
     
 

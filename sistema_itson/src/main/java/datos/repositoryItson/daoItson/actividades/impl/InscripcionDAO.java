@@ -54,11 +54,16 @@ public class InscripcionDAO implements IInscripcionDAO {
     }
 
     public boolean actualizarEstado(ObjectId idInscripcion) {
-        UpdateResult resultado = col.updateOne(
-                Filters.eq("_id", idInscripcion),
-                Updates.set("estado", "baja")
-        );
-        return resultado.getModifiedCount() > 0;
+        try{
+            UpdateResult resultado = col.updateOne(
+                    Filters.eq("_id", idInscripcion),
+                    Updates.set("estado", "BAJA")
+            );
+            return resultado.getModifiedCount() > 0;
+        } catch(Exception e){
+            System.out.println("error en dao");
+            return false;
+        }
     }
 
 }

@@ -223,7 +223,7 @@ public class CoordinadorAplicacionActividades implements ICoordinadorAplicacionA
         
     public BajaDTO darBajaActividad(String motivo){
       try{
-        BajaDTO bajaDTO= new BajaDTO(motivo);
+        BajaDTO bajaDTO= new BajaDTO(inscripcionElegida.getId(), motivo);
         BajaDTO bajaResponse= coordinadorNegocioActividades.darBajaActividad(bajaDTO);
         
         

@@ -67,7 +67,6 @@ public class InscripcionBO implements IInscripcionBO {
     }
     
     public InscripcionesDTO obtenerInscripciones(EstudianteDTO estudianteDTO){
-        System.out.println(estudianteDTO.getMatricula());
         EstudianteDTOItson estudianteDTOItson= EstudianteAdaptador.toDTOItson(estudianteDTO);
         InscripcionesDTOItson inscripcionesDTOItson= fachadaITSON.obtenerInscripciones(estudianteDTOItson);
         
@@ -76,7 +75,6 @@ public class InscripcionBO implements IInscripcionBO {
     }
     
     public GrupoDTO obtenerGrupoInscrito(InscripcionDTO inscripcionDTO){
-        System.out.println("en bo"+inscripcionDTO.getIdGrupo());
         InscripcionDTOItson inscripcionDTOItson= InscripcionAdaptador.toDTOItsonID(inscripcionDTO);
         GrupoResponseDTOItson grupoDTOItson= fachadaITSON.obtenerGrupoInscrito(inscripcionDTOItson);
         GrupoDTO grupo= GruposAdaptador.DTOItsonToDTOActividades(grupoDTOItson);

@@ -109,12 +109,25 @@ public class ControlItson {
     public BajaDTOItson darBajaActividad(BajaDTOItson baja){
         BajaDTOItson bajaDTO= inscripcionService.darBajaActividad(baja);
         if(bajaDTO!=null){
-            actualizarEstadoInscripcion(baja.getIdInscripcion());
+            boolean actualizado= actualizarEstadoInscripcion(baja.getIdInscripcion());
+            if(!actualizado){
+                System.out.println("baja creada pero no actualizada");
+            }
         }
         return bajaDTO;
     }
     
     public boolean actualizarEstadoInscripcion(String idInscripcion){
-        return inscripcionService.actualizarEstadoInscripcion(idInscripcion);
+        try{
+            return inscripcionService.actualizarEstadoInscripcion(idInscripcion);
+        } catch(IllegalArgumentException e){
+            System.out.println("id sin formato valido");
+            return false;
+        } catch(Exception e){
+            System.out.println("error al actualozar"+e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+        
     }
 }
