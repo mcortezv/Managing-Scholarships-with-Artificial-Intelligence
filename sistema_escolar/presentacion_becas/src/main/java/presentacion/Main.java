@@ -125,8 +125,6 @@ public class Main {
 
         coordinadorAplicacion.setCoordinadorAplicacionTutorias(coordinadorAplicacionTutorias);
 
-        coordinadorAplicacion.setCoordinadorAplicacionTutorias(coordinadorAplicacionTutorias);
-
         coordinadorAplicacion.iniciarGUI();
     }
 }
