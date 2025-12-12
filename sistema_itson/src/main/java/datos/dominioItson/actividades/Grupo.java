@@ -14,8 +14,8 @@ import org.bson.types.ObjectId;
 public class Grupo {
     private ObjectId id;
     private String nombreGrupo;
-    private int cupoTotal;
-    private int cupoDisponible;
+    private Integer cupoTotal;
+    private Integer cupoDisponible;
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
     private LocalDate fechaLimiteInscripcion;
@@ -27,7 +27,7 @@ public class Grupo {
     public Grupo() {
     }
 
-    public Grupo(ObjectId id, String nombreGrupo, int cupoTotal, int cupoDisponible, LocalDate fechaInicio, LocalDate fechaFin, LocalDate fechaLimiteInscripcion, Horario horario, Actividad actividad, Ubicacion ubicacion, Responsable responsable) {
+    public Grupo(ObjectId id, String nombreGrupo, Integer cupoTotal, Integer cupoDisponible, LocalDate fechaInicio, LocalDate fechaFin, LocalDate fechaLimiteInscripcion, Horario horario, Actividad actividad, Ubicacion ubicacion, Responsable responsable) {
         this.id = id;
         this.nombreGrupo = nombreGrupo;
         this.cupoTotal = cupoTotal;
@@ -43,19 +43,19 @@ public class Grupo {
 
     
 
-    public int getCupoTotal() {
+    public Integer getCupoTotal() {
         return cupoTotal;
     }
 
-    public void setCupoTotal(int cupoTotal) {
+    public void setCupoTotal(Integer cupoTotal) {
         this.cupoTotal = cupoTotal;
     }
 
-    public int getCupoDisponible() {
+    public Integer getCupoDisponible() {
         return cupoDisponible;
     }
 
-    public void setCupoDisponible(int cupoDisponible) {
+    public void setCupoDisponible(Integer cupoDisponible) {
         this.cupoDisponible = cupoDisponible;
     }
 

@@ -50,6 +50,8 @@ public class InscripcionAdaptador {
         actividad.setCosto(inscripcionDTOItson.getCosto());
         grupo.setActividad(actividad);
         grupo.setId(new ObjectId(inscripcionDTOItson.getIdGrupo()));
+    //    grupo.setCupoTotal(inscripcionDTOItson.getCupoTotal());
+      //  grupo.setCupoDisponible(inscripcionDTOItson.getCupoDisponible());
         grupo.setNombreGrupo(inscripcionDTOItson.getNombreGrupo());
 
         inscripcion.setGrupo(grupo);

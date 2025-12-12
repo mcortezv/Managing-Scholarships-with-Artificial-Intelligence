@@ -26,6 +26,8 @@ public class InscripcionDTO {
     private String horaFin;
     private String idEstudiante;
     private String idGrupo;
+    private int cupoTotal;
+    private int cupoDisponible;
     private String idActividad;
     private String estado;
 
@@ -69,6 +71,19 @@ public class InscripcionDTO {
         this.idActividad = idActividad;
         this.estado = estado;
     }
+
+    public InscripcionDTO(String matriculaEstudiante, String nombreGrupo, String nombreActividad, double costo, String idGrupo, int cupoTotal, int cupoDisponible, String idActividad) {
+        this.matriculaEstudiante = matriculaEstudiante;
+        this.nombreGrupo = nombreGrupo;
+        this.nombreActividad = nombreActividad;
+        this.costo = costo;
+        this.idGrupo = idGrupo;
+        this.cupoTotal = cupoTotal;
+        this.cupoDisponible = cupoDisponible;
+        this.idActividad = idActividad;
+    }
+    
+    
 
     
 
@@ -179,6 +194,22 @@ public class InscripcionDTO {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    public int getCupoTotal() {
+        return cupoTotal;
+    }
+
+    public void setCupoTotal(int cupoTotal) {
+        this.cupoTotal = cupoTotal;
+    }
+
+    public int getCupoDisponible() {
+        return cupoDisponible;
+    }
+
+    public void setCupoDisponible(int cupoDisponible) {
+        this.cupoDisponible = cupoDisponible;
     }
     
     
