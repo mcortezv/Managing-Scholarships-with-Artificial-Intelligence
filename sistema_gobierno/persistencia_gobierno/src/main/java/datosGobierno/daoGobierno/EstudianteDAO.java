@@ -23,8 +23,6 @@ public class EstudianteDAO implements IEstudianteDAO {
         this.col = MongoClienteProvider.INSTANCE.getCollection("estudiantes", EstudianteDocument.class);
     }
 
-
-
     @Override
     public ObjectId guardar(EstudianteDocument entity) throws EstudianteDAOException {
         try {

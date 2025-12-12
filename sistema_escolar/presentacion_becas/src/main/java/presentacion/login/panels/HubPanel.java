@@ -10,14 +10,25 @@ import javax.swing.Box;
 import java.awt.*;
 
 /**
+ * The type Hub panel.
+ *
  * @author Escalante, Sebastian.
  */
 public class HubPanel extends Panel {
     private CoordinadorAplicacion coordinadorAplicacion;
     private Label titulo;
     private ImgPanel img;
+    /**
+     * The Btn log out.
+     */
     protected Button btnLogOut;
 
+    /**
+     * Instantiates a new Hub panel.
+     *
+     * @param mainFrame             the main frame
+     * @param coordinadorAplicacion the coordinador aplicacion
+     */
     public HubPanel(MainFrame mainFrame, CoordinadorAplicacion coordinadorAplicacion) {
         super(mainFrame, coordinadorAplicacion);
         this.coordinadorAplicacion = coordinadorAplicacion;
@@ -34,7 +45,6 @@ public class HubPanel extends Panel {
         centralPanel.add(img);
         southPanel.add(centralPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO)));
         southPanel.add(btnLogOut);
-
 
         btnLogOut.addActionListener(e -> {
             coordinadorAplicacion.cerrarSesion();

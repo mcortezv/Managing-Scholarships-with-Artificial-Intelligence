@@ -1,6 +1,4 @@
 package presentacion;
-
-
 import itson.LoginDTOItson;
 import presentacion.actividadesExtracurriculares.coordinador.CoordinadorAplicacionActividades;
 import presentacion.actividadesExtracurriculares.panels.ActividadesExtracurriculares;
@@ -20,13 +18,13 @@ import presentacion.solicitarBeca.panels.DetallesBecaPanel;
 import presentacion.solicitarBeca.panels.ListadoBecasDisponiblesPanel;
 import presentacion.solicitarBeca.panels.ResumenFinalPanel;
 import solicitarBeca.*;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 import presentacion.tutorias.coordinadorAplicacion.CoordinadorAplicacionTutorias;
 
 /**
+ * The type Coordinador aplicacion.
  *
  * @author janethcristinagalvanquinonez
  */
@@ -53,6 +51,11 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     // act extra
     private CoordinadorAplicacionActividades coordinadorAplicacionActividades;
 
+    /**
+     * Instantiates a new Coordinador aplicacion.
+     *
+     * @param coordinadorNegocio the coordinador negocio
+     */
     public CoordinadorAplicacion(ICoordinadorNegocio coordinadorNegocio) {
         this.coordinadorNegocio = coordinadorNegocio;
         mainFrame = null;
@@ -116,6 +119,9 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
         }
     }
 
+    /**
+     * Apelacion.
+     */
     public void apelacion(){
         try{
             if(mainFrame != null) mainFrame.setVisible(false);
@@ -126,7 +132,6 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
             if(mainFrame != null) mainFrame.setVisible(true);
         }
     }
-
 
     public void actividades(){
         mainFrame.setVisible(false);
@@ -140,6 +145,11 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
         this.coordinadorAplicacionPagarAdeudo = c;
     }
 
+    /**
+     * Set coordinador aplicacion apelar resultado.
+     *
+     * @param c the c
+     */
     public void setCoordinadorAplicacionApelarResultado(CoordinadorAplicacionApelarResultado c){
         this.coordinadorAplicacionApelarResultado = c;
     }
@@ -147,18 +157,25 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     public void setCoordinadorAplicacionActividades(CoordinadorAplicacionActividades c){
         this.coordinadorAplicacionActividades = c;
     }
-    
+
+    /**
+     * Sets coordinador aplicacion tutorias.
+     *
+     * @param c the c
+     */
     public void setCoordinadorAplicacionTutorias(CoordinadorAplicacionTutorias c) {
         this.coordinadorAplicacionTutorias = c;
     }
+
+    /**
+     * Tutorias.
+     */
     public void tutorias() {
         mainFrame.setVisible(false);
         EstudianteDTO estudiante = getEstudianteLogueado();
         coordinadorAplicacionTutorias.iniciarTutorias(estudiante.getMatricula());
     }
 
-
-    
     public void main() {
         solicitarBeca.setVisible(false);
         mainFrame.setVisible(true);
@@ -201,7 +218,6 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
         coordinadorNegocio.procesarTutor(tutorDTO);
         solicitarBeca.showPanel("informacionSocioeconomicaPanel");
     }
-
 
     public void procesarDocumentos(Map<String, File> documentosCargados) throws IOException {
         try {
