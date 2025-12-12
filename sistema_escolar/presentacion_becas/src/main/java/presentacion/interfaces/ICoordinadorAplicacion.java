@@ -23,7 +23,7 @@ public interface ICoordinadorAplicacion {
     void iniciarGUI();
     boolean intentarIniciarSesion(LoginDTO loginDTO) throws IDInvalidoException, ContraseniaInvalidaException;
     void cerrarSesion();
-    void guardarInfoEstudiante(LoginDTO loginDTOItson);
+    void guardarInfoEstudiante(LoginDTO loginDTO);
     EstudianteDTO getEstudianteLogueado();
 
     /**
