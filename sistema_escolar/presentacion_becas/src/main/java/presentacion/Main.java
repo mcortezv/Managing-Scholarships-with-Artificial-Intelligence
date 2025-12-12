@@ -42,11 +42,17 @@ import solicitarBeca.repository.dao.EstudianteDAO;
 import solicitarBeca.repository.dao.SolicitudDAO;
 
 /**
+ * The type Main.
  *
  * @author Cortez, Manuel;
  */
 public class Main {
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
 
         // Controles unicos para mantenerl el singleton
@@ -113,18 +119,11 @@ public class Main {
         CoordinadorNegocioTutorias coordinadorNegocioTutorias = new CoordinadorNegocioTutorias(fachadaTutorias);
 
 
-        CoordinadorAplicacionTutorias coordinadorAplicacionTutorias =
-            new CoordinadorAplicacionTutorias(coordinadorAplicacion, coordinadorNegocioTutorias);
-
-
+        CoordinadorAplicacionTutorias coordinadorAplicacionTutorias = new CoordinadorAplicacionTutorias(coordinadorAplicacion, coordinadorNegocioTutorias);
         coordinadorAplicacion.setCoordinadorAplicacionPagarAdeudo(coordinadorAplicacionPagarAdeudo);
-
         coordinadorAplicacion.setCoordinadorAplicacionApelarResultado(coordinadorAplicacionApelarResultad);
-
         coordinadorAplicacion.setCoordinadorAplicacionActividades(coordinadorAplicacionActividades);
-
         coordinadorAplicacion.setCoordinadorAplicacionTutorias(coordinadorAplicacionTutorias);
-
         coordinadorAplicacion.iniciarGUI();
     }
 }

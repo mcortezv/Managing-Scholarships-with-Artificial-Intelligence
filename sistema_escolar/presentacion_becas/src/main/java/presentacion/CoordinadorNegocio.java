@@ -1,11 +1,9 @@
 package presentacion;
-
 import itson.LoginDTOItson;
 import interfaces.*;
 import objetosNegocio.bo.solicitarBeca.excepciones.SolicitudInvalidaException;
 import presentacion.interfaces.ICoordinadorNegocio;
 import solicitarBeca.*;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -15,14 +13,20 @@ import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
+ * The type Coordinador negocio.
  *
  * @author Cortez, Manuel;
  */
 public class CoordinadorNegocio implements ICoordinadorNegocio {
-
     private final IFachadaInicioSesion fachadaInicioSesion;
     private final IFachadaSolicitarBeca fachadaSolicitarBeca;
 
+    /**
+     * Instantiates a new Coordinador negocio.
+     *
+     * @param fachadaInicioSesion  the fachada inicio sesion
+     * @param fachadaSolicitarBeca the fachada solicitar beca
+     */
     public CoordinadorNegocio(IFachadaInicioSesion fachadaInicioSesion, IFachadaSolicitarBeca fachadaSolicitarBeca) {
         this.fachadaInicioSesion = fachadaInicioSesion;
         this.fachadaSolicitarBeca = fachadaSolicitarBeca;
@@ -86,7 +90,6 @@ public class CoordinadorNegocio implements ICoordinadorNegocio {
                 documentoDTO.setTipo(tipo);
                 documentoDTO.setContenido(Files.readAllBytes(documento.toPath()));
                 documentoDTO.setEstudiante(fachadaInicioSesion.getEstudianteLogueado().getMatricula());
-
                 documentoDTOList.add(documentoDTO);
             }
             fachadaSolicitarBeca.setDocumentos(documentoDTOList);
