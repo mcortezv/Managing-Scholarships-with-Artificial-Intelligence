@@ -9,6 +9,8 @@ import views.stylesPaypal.Button;
 import views.stylesPaypal.Label;
 import views.stylesPaypal.TextField;
 import views.stylesPaypal.PasswordField;
+import views.validadoresPaypal.CredencialInvalida;
+import views.validadoresPaypal.Validador;
 
 public class PanelInicioSesionPaypal extends JPanel {
 
@@ -68,7 +70,7 @@ public class PanelInicioSesionPaypal extends JPanel {
         cardPanel.add(Box.createVerticalStrut(40));
 
         campoCorreo = new TextField(20);
-        estilizarCampoBlanco(campoCorreo); // Método auxiliar para forzar color blanco
+        estilizarCampoBlanco(campoCorreo);
         cardPanel.add(crearBloqueInput("Correo o teléfono asociado:", campoCorreo));
         cardPanel.add(Box.createVerticalStrut(20));
 
@@ -143,15 +145,16 @@ public class PanelInicioSesionPaypal extends JPanel {
     public String[] getDatosLogin() {
         String correo = campoCorreo.getText();
         String pass = new String(campoPassword.getPassword());
-
-        if (correo.trim().isEmpty() || pass.trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this,
-                    "Por favor ingrese correo y contraseña.",
-                    "Datos requeridos",
-                    JOptionPane.WARNING_MESSAGE);
-            return null;
+        try {
+            Validador.validarCorreoPaypal(correo);
+            Validador.validarContraseniaPaypal(pass);
+            return new String[]{correo, pass};
+        } catch (CredencialInvalida ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Error de Validación", JOptionPane.WARNING_MESSAGE);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Error inesperado", "Error", JOptionPane.ERROR_MESSAGE);
         }
-        return new String[]{correo, pass};
+        return null;
     }
 
     static class RoundedPanel extends JPanel {

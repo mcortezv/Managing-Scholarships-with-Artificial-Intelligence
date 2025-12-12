@@ -28,6 +28,7 @@ public final class MainFrame extends JFrame {
 
 
     public MainFrame(CoordinadorAplicacion coordinadorAplicacion) {
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);;
         setTitle("Sistema de Aplicaciones Escolares");
         setResizable(false);
         setSize(1500,900);

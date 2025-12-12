@@ -12,7 +12,6 @@ public class PrestamoAdaptador {
 
     public static PrestamoDTO toDTO(PrestamoDTOI dtoI) {
         if (dtoI == null) return null;
-        System.out.println("Adaptador recibiendo costo: " + dtoI.getCosto());
         PrestamoDTO dto = new PrestamoDTO();
         dto.setCosto(dtoI.getCosto());
         dto.setFechaPrestamo(dtoI.getFechaPrestamo());
