@@ -30,6 +30,7 @@ import presentacion.actividadesExtracurriculares.panels.ListaInscripciones;
 import presentacion.actividadesExtracurriculares.panels.ResumenClases;
 import presentacion.bajaActividades.panels.DetallesActividadBaja;
 import presentacion.bajaActividades.panels.DetallesExtraBaja;
+import solicitarBeca.LoginDTO;
 
 
 /**
@@ -46,7 +47,7 @@ public class CoordinadorAplicacionActividades implements ICoordinadorAplicacionA
     private ActividadDTO actividadSeleccionada;
     private GruposResponseDTO gruposResponseDTO;
     private GrupoDTO grupoSeleccionado;
-    private LoginDTOItson loginDTO;
+    private LoginDTO loginDTO;
     private EstudianteDTO estudiante;
     private InscripcionDTO inscripcionElegida;
     private GrupoDTO grupoActividadDTO;
@@ -91,7 +92,7 @@ public class CoordinadorAplicacionActividades implements ICoordinadorAplicacionA
         return coordinadorNegocioActividades.obtenerActividades();
     }
     
-    public void recuperarLogin(LoginDTOItson loginDTO){
+    public void recuperarLogin(LoginDTO loginDTO){
         this.loginDTO= loginDTO;
         this.estudiante= new EstudianteDTO();
         this.estudiante.setMatricula(String.valueOf(loginDTO.getUsuario()));

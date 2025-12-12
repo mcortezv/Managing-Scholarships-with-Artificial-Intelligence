@@ -18,7 +18,7 @@ public interface ICoordinadorNegocio {
      * @param solicitudLoginDTO the solicitud login dto
      * @return the boolean
      */
-    boolean solicitarInicioSesion(LoginDTOItson solicitudLoginDTO);
+    boolean solicitarInicioSesion(LoginDTO solicitudLoginDTO);
 
     /**
      * Solicitar cerrar sesion.

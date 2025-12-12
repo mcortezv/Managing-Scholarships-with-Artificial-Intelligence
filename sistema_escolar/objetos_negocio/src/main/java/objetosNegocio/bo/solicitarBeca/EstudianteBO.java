@@ -1,9 +1,11 @@
 package objetosNegocio.bo.solicitarBeca;
 import objetosNegocio.adaptadores.solicitarBeca.EstudianteAdaptador;
 import itson.LoginDTOItson;
+import objetosNegocio.adaptadores.solicitarBeca.LoginAdaptador;
 import objetosNegocio.bo.sesion.SesionUsuario;
 import objetosNegocio.bo.solicitarBeca.excepciones.EstudianteInvalidoException;
 import solicitarBeca.EstudianteDTO;
+import solicitarBeca.LoginDTO;
 import solicitarBeca.repository.dao.interfaces.IEstudianteDAO;
 import itson.EstudianteDTOItson;
 import objetosNegocio.bo.solicitarBeca.intefaces.IEstudianteBO;
@@ -30,9 +32,9 @@ public class EstudianteBO implements IEstudianteBO {
     }
 
     @Override
-    public boolean iniciarSesion(LoginDTOItson solicitudLoginDTO) {
+    public boolean iniciarSesion(LoginDTO solicitudLoginDTO) {
         try {
-            boolean credencialesCorrectas = fachadaITSON.verificarLogin(solicitudLoginDTO);
+            boolean credencialesCorrectas = fachadaITSON.verificarLogin(LoginAdaptador.aLoginDTOItson(solicitudLoginDTO));
             if (credencialesCorrectas) {
                 Long matricula = solicitudLoginDTO.getUsuario();
                 EstudianteDTOItson estudianteCompleto = fachadaITSON.verificarEstudiante(matricula);

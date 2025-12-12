@@ -1,5 +1,5 @@
 package presentacion.interfaces;
-import itson.LoginDTOItson;
+
 import presentacion.actividadesExtracurriculares.coordinador.CoordinadorAplicacionActividades;
 import presentacion.login.exceptions.ContraseniaInvalidaException;
 import presentacion.login.exceptions.IDInvalidoException;
@@ -21,34 +21,9 @@ public interface ICoordinadorAplicacion {
      * Iniciar gui.
      */
     void iniciarGUI();
-
-    /**
-     * Intentar iniciar sesion boolean.
-     *
-     * @param loginDTO the login dto
-     * @return the boolean
-     * @throws IDInvalidoException          the id invalido exception
-     * @throws ContraseniaInvalidaException the contrasenia invalida exception
-     */
-    boolean intentarIniciarSesion(LoginDTOItson loginDTO) throws IDInvalidoException, ContraseniaInvalidaException;
-
-    /**
-     * Cerrar sesion.
-     */
+    boolean intentarIniciarSesion(LoginDTO loginDTO) throws IDInvalidoException, ContraseniaInvalidaException;
     void cerrarSesion();
-
-    /**
-     * Guardar info estudiante.
-     *
-     * @param loginDTOItson the login dto itson
-     */
-    void guardarInfoEstudiante(LoginDTOItson loginDTOItson);
-
-    /**
-     * Gets estudiante logueado.
-     *
-     * @return the estudiante logueado
-     */
+    void guardarInfoEstudiante(LoginDTO loginDTO);
     EstudianteDTO getEstudianteLogueado();
 
     /**
