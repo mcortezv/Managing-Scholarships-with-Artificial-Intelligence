@@ -164,7 +164,10 @@ public class CoordinadorAplicacionActividades implements ICoordinadorAplicacionA
         try{
             InscripcionDTO inscripcionResponse= new InscripcionDTO();
             InscripcionDTO inscripcionDTO= new InscripcionDTO();
+            
             inscripcionDTO.setIdGrupo(grupoSeleccionado.getId());
+            inscripcionDTO.setCupoTotal(grupoSeleccionado.getCupoTotal());
+            inscripcionDTO.setCupoDisponible(grupoSeleccionado.getCupoDisponible());
             inscripcionDTO.setIdActividad(actividadSeleccionada.getId());
             
             //la cambio a idestudiante

@@ -6,6 +6,8 @@ package datos.repositoryItson.daoItson.actividades.impl;
 
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Updates;
+import com.mongodb.client.result.UpdateResult;
 import datos.configMongoItson.MongoClienteProvider;
 import datos.dominioItson.actividades.Actividad;
 import datos.dominioItson.actividades.Grupo;
@@ -49,6 +51,23 @@ public class GrupoDAO {
         }
         return null;
 
+    }
+    
+    public boolean actualizarCupo(ObjectId idGrupo){
+        try{
+            Bson filtro = Filters.and(
+                    Filters.eq("_id", idGrupo),
+                    Filters.gt("cupoDisponible", 0)
+            );
+            UpdateResult resultado = col.updateOne(
+                    filtro,
+                    Updates.inc("cupoDisponible", -1)
+            );
+            return resultado.getModifiedCount()>0;
+        } catch(Exception e){
+            System.out.println("error al actualizar"+e.getMessage());
+            return false;
+        }
     }
 
 }

@@ -94,7 +94,17 @@ public class ControlItson {
     public InscripcionDTOItson inscribirActividadExterno(InscripcionDTOItson inscripcionDTOItson){
         Estudiante est= solicitarDatosEstudiante((Long.valueOf(inscripcionDTOItson.getMatriculaEstudiante())));
         inscripcionDTOItson.setIdEstudiante(String.valueOf(est.getId()));
-        return inscripcionService.inscribirActividadExterno(inscripcionDTOItson);
+        if(actualizarCupoDisponible(inscripcionDTOItson)){
+              InscripcionDTOItson inscripcionExterna= inscripcionService.inscribirActividadExterno(inscripcionDTOItson);
+              return inscripcionExterna;
+        } else{
+            System.out.println("no se pudo inscribir por cupos");
+            return null;
+        }
+    }
+    
+    public boolean actualizarCupoDisponible(InscripcionDTOItson inscripcionDTOItson){
+        return grupoService.actualizarCupoDisponible(inscripcionDTOItson.getIdGrupo());
     }
 
 
