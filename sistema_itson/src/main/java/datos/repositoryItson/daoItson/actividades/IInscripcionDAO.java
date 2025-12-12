@@ -14,7 +14,7 @@ import org.bson.types.ObjectId;
  * @author janethcristinagalvanquinonez
  */
 public interface IInscripcionDAO {
-    public Inscripcion InscribirGrupo(Inscripcion inscripcion);
-    public List<Inscripcion> obtenerInscripciones(String matricula);
-    public boolean actualizarEstado(ObjectId idInscripcion);
+    Inscripcion InscribirGrupo(Inscripcion inscripcion);
+    List<Inscripcion> obtenerInscripciones(String matricula);
+    boolean actualizarEstado(ObjectId idInscripcion);
 }

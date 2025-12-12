@@ -37,6 +37,9 @@ public class InscripcionAdaptador {
         //id grupo
         inscripcionDTOItson.setIdActividad(inscripcionDTO.getIdActividad());
         inscripcionDTOItson.setIdGrupo(inscripcionDTO.getIdGrupo());
+        inscripcionDTOItson.setFechaInicio(inscripcionDTO.getFechaInicio());
+        inscripcionDTOItson.setFechaFin(inscripcionDTO.getFechaFin());
+        inscripcionDTOItson.setFechaLimiteInscripcion(inscripcionDTO.getFechaLimiteInscripcion());       
         inscripcionDTOItson.setCupoDisponible(inscripcionDTO.getCupoDisponible());
         inscripcionDTOItson.setCupoTotal(inscripcionDTO.getCupoTotal());
         inscripcionDTOItson.setNombreGrupo(inscripcionDTO.getNombreGrupo());
@@ -67,6 +70,7 @@ public class InscripcionAdaptador {
     public static InscripcionDTOItson toDTOItsonID(InscripcionDTO inscripcion) {
         InscripcionDTOItson inscripcionDTOItson = new InscripcionDTOItson();
         inscripcionDTOItson.setIdGrupo(inscripcion.getIdGrupo());
+
         return inscripcionDTOItson;
     }
 

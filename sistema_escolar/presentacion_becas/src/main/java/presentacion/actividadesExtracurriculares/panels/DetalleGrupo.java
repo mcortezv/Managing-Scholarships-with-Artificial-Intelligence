@@ -77,6 +77,9 @@ public class DetalleGrupo extends PanelActividades {
     }
 
     public void cargarGrupo(GrupoDTO grupoDTO) {
+        System.out.println("fechainicio"+grupoDTO.getFechaInicio());
+        System.out.println("fechaFin"+grupoDTO.getFechaFin());
+        System.out.println("fechalimite"+grupoDTO.getFechaLimiteInscripcion());
         panelContenido.removeAll();
         panelContenido.add(Box.createVerticalGlue());
         System.out.println(grupoDTO.getId());

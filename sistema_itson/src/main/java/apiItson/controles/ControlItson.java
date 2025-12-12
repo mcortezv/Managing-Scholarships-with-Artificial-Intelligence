@@ -23,6 +23,7 @@ import itson.actividades.GrupoResponseDTOItson;
 import itson.actividades.GruposResponseDTOItson;
 import itson.actividades.InscripcionDTOItson;
 import itson.actividades.InscripcionesDTOItson;
+import java.time.LocalDate;
 
 import java.util.List;
 
@@ -94,8 +95,9 @@ public class ControlItson {
     public InscripcionDTOItson inscribirActividadExterno(InscripcionDTOItson inscripcionDTOItson){
         Estudiante est= solicitarDatosEstudiante((Long.valueOf(inscripcionDTOItson.getMatriculaEstudiante())));
         inscripcionDTOItson.setIdEstudiante(String.valueOf(est.getId()));
-        if(actualizarCupoDisponible(inscripcionDTOItson)){
+        if(revisarCupoDisponible(inscripcionDTOItson) && revisarFechaLimite(inscripcionDTOItson)){
               InscripcionDTOItson inscripcionExterna= inscripcionService.inscribirActividadExterno(inscripcionDTOItson);
+              actualizarCupoDisponible(inscripcionDTOItson);
               return inscripcionExterna;
         } else{
             System.out.println("no se pudo inscribir por cupos");
@@ -103,8 +105,31 @@ public class ControlItson {
         }
     }
     
+    
+    //excepciones inscribir 
+    
+    //              cupos disponibles 
     public boolean actualizarCupoDisponible(InscripcionDTOItson inscripcionDTOItson){
         return grupoService.actualizarCupoDisponible(inscripcionDTOItson.getIdGrupo());
+    }
+    
+    public boolean revisarCupoDisponible(InscripcionDTOItson inscripcionDTOItson){
+        int cupoDisponible= grupoService.revisarCupoDisponible(inscripcionDTOItson.getIdGrupo());
+        if(cupoDisponible>0){
+            return true;
+        } else{
+            return false;
+        }
+    }
+    
+    //              fecha limite de inscripcion
+    public boolean revisarFechaLimite(InscripcionDTOItson inscripcionDTOItson){
+        LocalDate fecha= grupoService.revisarFechaLimite(inscripcionDTOItson.getIdGrupo());
+        if(fecha.isBefore(LocalDate.now())){
+            return false;
+        } else{
+            return true;
+        }
     }
 
 
