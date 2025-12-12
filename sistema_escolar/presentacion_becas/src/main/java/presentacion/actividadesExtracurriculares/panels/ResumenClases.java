@@ -62,6 +62,7 @@ public class ResumenClases extends PanelActividades {
         panelContenido.removeAll();
         //  GruposResponseDTO gruposResponseDTO= coordinadorAplicacionActividades.getGruposResponseDTO();
         for (GrupoDTO grupo : gruposResponseDTO.getGrupos()) {
+            System.out.println("cupo"+grupo.getCupoDisponible());
             JPanel panelActual = new JPanel();
             panelActual.setLayout(new BoxLayout(panelActual, BoxLayout.Y_AXIS));
             panelActual.setMaximumSize(new Dimension(Integer.MAX_VALUE, 120));

@@ -44,6 +44,10 @@ public class GrupoService {
         
     }
     
+    public boolean actualizarCupoDisponible(String idGrupo){
+        return grupoDAO.actualizarCupo(new ObjectId(idGrupo));
+    }
+    
     
     
     

@@ -20,6 +20,8 @@ public class InscripcionDTOItson {
     private String matriculaEstudiante;
     //grupo
     private String idGrupo;
+    private int cupoDisponible;
+    private int cupoTotal;
     private String idActividad;
     private String nombreGrupo;
     private String nombreActividad;
@@ -69,9 +71,22 @@ public class InscripcionDTOItson {
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
     }
-    
-    
 
+    public InscripcionDTOItson(LocalDate fechaInscripcion, String idEstudiante, String matriculaEstudiante, String idGrupo, int cupoDisponible, int cupoTotal, String idActividad, String nombreGrupo, String nombreActividad, double costo) {
+        this.fechaInscripcion = fechaInscripcion;
+        this.idEstudiante = idEstudiante;
+        this.matriculaEstudiante = matriculaEstudiante;
+        this.idGrupo = idGrupo;
+        this.cupoDisponible = cupoDisponible;
+        this.cupoTotal = cupoTotal;
+        this.idActividad = idActividad;
+        this.nombreGrupo = nombreGrupo;
+        this.nombreActividad = nombreActividad;
+        this.costo = costo;
+    }
+    
+    
+    
     
 
     
@@ -172,6 +187,22 @@ public class InscripcionDTOItson {
 
     public void setNombreActividad(String nombreActividad) {
         this.nombreActividad = nombreActividad;
+    }
+
+    public int getCupoDisponible() {
+        return cupoDisponible;
+    }
+
+    public void setCupoDisponible(int cupoDisponible) {
+        this.cupoDisponible = cupoDisponible;
+    }
+
+    public int getCupoTotal() {
+        return cupoTotal;
+    }
+
+    public void setCupoTotal(int cupoTotal) {
+        this.cupoTotal = cupoTotal;
     }
     
     
