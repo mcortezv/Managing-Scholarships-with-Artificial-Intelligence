@@ -136,8 +136,6 @@ public class ControlSolicitarBeca {
      */
     public void asignarTutor(TutorDTO tutorDTO) throws SolicitarBecaException {
         try {
-            if (tutorDTO.getNombre() == null || tutorDTO.getNombre().equals("")) {
-            }
             estudiante.setTutor(tutorDTO);
             solicitudActual.setEstudiante(estudiante);
         } catch (Exception ex) {

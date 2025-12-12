@@ -24,7 +24,7 @@ public final class SolicitarBeca extends JFrame {
     public SolicitarBeca(CoordinadorAplicacion coordinadorAplicacion, BecaDTO becaDTO) {
         setTitle("Solicitar Beca");
         setResizable(false);
-        setSize(1500,800);
+        setSize(1500,900);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
         centralPanel = new JPanel(new BorderLayout());
