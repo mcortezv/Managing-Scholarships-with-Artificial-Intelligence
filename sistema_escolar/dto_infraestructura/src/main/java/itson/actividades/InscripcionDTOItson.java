@@ -14,6 +14,10 @@ import java.util.List;
 public class InscripcionDTOItson {
     private String idInscipcion;
     private LocalDate fechaInscripcion;
+    private LocalDate fechaInicio;
+    private LocalDate fechaFin;
+    private LocalDate fechaLimiteInscripcion;
+
     //private Estado estado;
     //estudiante
     private String idEstudiante;
@@ -203,6 +207,30 @@ public class InscripcionDTOItson {
 
     public void setCupoTotal(int cupoTotal) {
         this.cupoTotal = cupoTotal;
+    }
+
+    public LocalDate getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(LocalDate fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public LocalDate getFechaFin() {
+        return fechaFin;
+    }
+
+    public void setFechaFin(LocalDate fechaFin) {
+        this.fechaFin = fechaFin;
+    }
+
+    public LocalDate getFechaLimiteInscripcion() {
+        return fechaLimiteInscripcion;
+    }
+
+    public void setFechaLimiteInscripcion(LocalDate fechaLimiteInscripcion) {
+        this.fechaLimiteInscripcion = fechaLimiteInscripcion;
     }
     
     

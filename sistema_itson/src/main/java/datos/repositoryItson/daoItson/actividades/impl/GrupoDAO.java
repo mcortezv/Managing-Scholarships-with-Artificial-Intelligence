@@ -11,6 +11,9 @@ import com.mongodb.client.result.UpdateResult;
 import datos.configMongoItson.MongoClienteProvider;
 import datos.dominioItson.actividades.Actividad;
 import datos.dominioItson.actividades.Grupo;
+import datos.repositoryItson.daoItson.IGrupoDAO;
+import itson.actividades.InscripcionDTOItson;
+import java.time.LocalDate;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -22,7 +25,7 @@ import org.bson.types.ObjectId;
  *
  * @author janethcristinagalvanquinonez
  */
-public class GrupoDAO {
+public class GrupoDAO implements IGrupoDAO{
 
     private final MongoCollection<Grupo> col;
 
@@ -69,5 +72,15 @@ public class GrupoDAO {
             return false;
         }
     }
-
+    
+     public LocalDate revisarFechaLimite(ObjectId idGrupo){
+         Grupo grupo = col.find(Filters.eq("_id", idGrupo)).first();
+         return grupo.getFechaLimiteInscripcion();
+     }
+     
+     public int revisarCupoDisponible(ObjectId idGrupo){
+         Grupo grupo = col.find(Filters.eq("_id", idGrupo)).first();
+         return grupo.getCupoDisponible();
+     }
+       
 }
