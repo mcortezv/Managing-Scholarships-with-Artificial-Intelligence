@@ -56,7 +56,7 @@ public class FachadaItson implements IFachadaITSON {
      * @return
      */
     @Override
-    public List<PrestamoDTOI> solicitarListaPrestamso(Long matricula) {
+    public List<PrestamoDTOI> solicitarListaPrestamos(Long matricula) {
         return controlItson.obtenerListaPrestamos(matricula);
     }
 

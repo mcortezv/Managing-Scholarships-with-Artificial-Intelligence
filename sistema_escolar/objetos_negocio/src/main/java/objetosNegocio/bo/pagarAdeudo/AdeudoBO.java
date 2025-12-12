@@ -22,7 +22,7 @@ public class AdeudoBO implements IAdeudoBO {
 
     @Override
     public List<PrestamoDTO> obtenerDetallePrestamo(Long matricula) {
-        List<PrestamoDTOI> listaPrestamosI = iFachadaITSON.solicitarListaPrestamso(matricula);
+        List<PrestamoDTOI> listaPrestamosI = iFachadaITSON.solicitarListaPrestamos(matricula);
         List<PrestamoDTO> prestamos = PrestamoAdaptador.toDTO(listaPrestamosI);
         if (prestamos.isEmpty()) {
             throw new AdeudoException("El estudiante no tiene préstamos pendientes de pago.");

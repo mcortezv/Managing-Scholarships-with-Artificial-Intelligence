@@ -47,7 +47,7 @@ public interface IFachadaITSON {
 
 
     //pagar adeudo
-    List<PrestamoDTOI> solicitarListaPrestamso(Long matricula);
+    List<PrestamoDTOI> solicitarListaPrestamos(Long matricula);
     List<ClaseDTOI> solicitarListaClases(Long matricula);
     boolean notificarLiquidacion(SolicitudPagoDTOI solicitudPagoDTOI);
 
