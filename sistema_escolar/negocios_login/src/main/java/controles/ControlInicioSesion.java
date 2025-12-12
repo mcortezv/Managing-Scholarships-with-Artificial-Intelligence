@@ -3,6 +3,7 @@ import objetosNegocio.bo.sesion.SesionUsuario;
 import itson.LoginDTOItson;
 import objetosNegocio.bo.solicitarBeca.intefaces.IEstudianteBO;
 import solicitarBeca.EstudianteDTO;
+import solicitarBeca.LoginDTO;
 
 /**
  * The type Control inicio sesion.
@@ -28,7 +29,7 @@ public class ControlInicioSesion {
      * @param solicitudLoginDTO the solicitud login dto
      * @return the boolean
      */
-    public boolean solicitarLogin(LoginDTOItson solicitudLoginDTO){
+    public boolean solicitarLogin(LoginDTO solicitudLoginDTO){
         return estudianteBO.iniciarSesion(solicitudLoginDTO);
     }
 

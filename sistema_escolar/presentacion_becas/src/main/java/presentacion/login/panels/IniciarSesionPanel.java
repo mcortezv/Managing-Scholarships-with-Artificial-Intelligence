@@ -9,6 +9,8 @@ import presentacion.styles.Button;
 import presentacion.styles.Label;
 import presentacion.styles.Panel;
 import presentacion.styles.TextField;
+import solicitarBeca.LoginDTO;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -98,7 +100,7 @@ public class IniciarSesionPanel extends Panel {
                 String usuario = txtUsuario.getText().trim();
                 Long usuarioLong = Long.parseLong(usuario);
                 String contrasenia = new String(txtPassword.getPassword());
-                LoginDTOItson loginDTO = new LoginDTOItson(usuarioLong,contrasenia);
+                LoginDTO loginDTO = new LoginDTO(usuarioLong,contrasenia);
                 boolean verificarLogin = coordinadorAplicacion.intentarIniciarSesion(loginDTO);
                 if(verificarLogin) {
                     txtUsuario.setText("");
