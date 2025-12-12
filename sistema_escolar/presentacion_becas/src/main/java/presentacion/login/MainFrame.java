@@ -62,7 +62,7 @@ public final class MainFrame extends JFrame {
         add(northPanel, BorderLayout.NORTH);
         add(centralPanel, BorderLayout.CENTER);
         northPanel.setVisible(false);
-        showPanel("iniciarSesionPanel");
+        showPanel("confirmacionPanel");
 
         btnSolicitarBeca.addActionListener(e -> {
             coordinadorAplicacion.solicitarBeca();

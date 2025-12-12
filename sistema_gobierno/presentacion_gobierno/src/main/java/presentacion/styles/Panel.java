@@ -9,16 +9,35 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
+ * The type Panel.
  *
  * @author Cortez, Manuel;
  */
 public abstract class Panel extends JPanel {
+    /**
+     * The Main frame.
+     */
     protected MainFrame mainFrame;
+    /**
+     * The Central panel.
+     */
     protected JPanel centralPanel;
+    /**
+     * The South panel.
+     */
     protected JPanel southPanel;
+    /**
+     * The Btn back.
+     */
     protected Button btnBack;
     private ICoordinadorAplicacion coordinadorAplicacion;
 
+    /**
+     * Instantiates a new Panel.
+     *
+     * @param frame                 the frame
+     * @param coordinadorAplicacion the coordinador aplicacion
+     */
     public Panel(MainFrame frame, ICoordinadorAplicacion coordinadorAplicacion) {
         mainFrame = frame;
         this.coordinadorAplicacion = coordinadorAplicacion;
@@ -40,5 +59,8 @@ public abstract class Panel extends JPanel {
         southPanel.add(btnBack);
     }
 
+    /**
+     * Start components.
+     */
     public abstract void startComponents();
 }

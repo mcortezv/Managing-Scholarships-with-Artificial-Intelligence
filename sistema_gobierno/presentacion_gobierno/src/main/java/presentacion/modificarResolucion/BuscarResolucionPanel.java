@@ -1,5 +1,4 @@
 package presentacion.modificarResolucion;
-
 import presentacion.coordinacion.MainFrame;
 import presentacion.coordinacion.interfaces.ICoordinadorAplicacion;
 import presentacion.styles.*;
@@ -7,12 +6,12 @@ import presentacion.styles.Button;
 import presentacion.styles.Label;
 import presentacion.styles.Panel;
 import presentacion.styles.TextField;
-
 import javax.swing.*;
 import java.awt.*;
 
 /**
- * Panel corregido para búsqueda de resoluciones
+ * The type Buscar resolucion panel.
+ *
  * @author Cortez, Manuel
  */
 public class BuscarResolucionPanel extends Panel {
@@ -24,6 +23,12 @@ public class BuscarResolucionPanel extends Panel {
     private Button btnBuscar;
     private ICoordinadorAplicacion coordinadorAplicacion;
 
+    /**
+     * Instantiates a new Buscar resolucion panel.
+     *
+     * @param frame                 the frame
+     * @param coordinadorAplicacion the coordinador aplicacion
+     */
     public BuscarResolucionPanel(MainFrame frame, ICoordinadorAplicacion coordinadorAplicacion) {
         super(frame, coordinadorAplicacion);
         this.coordinadorAplicacion = coordinadorAplicacion;
@@ -33,105 +38,142 @@ public class BuscarResolucionPanel extends Panel {
     public void startComponents() {
         centralPanel.add(Box.createVerticalStrut(Style.TOP_ESPACIO));
 
+        JPanel tituloPanel = new JPanel();
+        tituloPanel.setLayout(new BoxLayout(tituloPanel, BoxLayout.X_AXIS));
+        tituloPanel.setOpaque(false);
+        tituloPanel.setMaximumSize(new Dimension(800, 60));
+
         titulo = new Label("Buscar Resolución");
         titulo.setFont(Style.TITLE_FONT);
-        titulo.setAlignmentX(CENTER_ALIGNMENT);
-        centralPanel.add(titulo);
+
+        tituloPanel.add(Box.createHorizontalGlue());
+        tituloPanel.add(titulo);
+        tituloPanel.add(Box.createHorizontalGlue());
+        centralPanel.add(tituloPanel);
         centralPanel.add(Box.createVerticalStrut(Style.TITULO_ESPACIO));
 
-        // Panel principal con opciones de búsqueda
-        JPanel searchPanel = new JPanel();
-        searchPanel.setLayout(new BoxLayout(searchPanel, BoxLayout.Y_AXIS));
-        searchPanel.setBackground(Color.DARK_GRAY);
-        searchPanel.setMaximumSize(new Dimension(600, 500));
-        searchPanel.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(Color.GRAY, 2),
-                BorderFactory.createEmptyBorder(30, 30, 30, 30)
-        ));
+        JPanel searchPanel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                Graphics2D g2 = (Graphics2D) g;
+                g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-        // Tipo de búsqueda
-        Label lblTipoBusqueda = new Label("Tipo de Búsqueda:");
+                g2.setColor(new Color(0, 0, 0, 30));
+                g2.fillRoundRect(4, 4, getWidth()-4, getHeight()-4, 25, 25);
+
+                GradientPaint gradient = new GradientPaint(
+                        0, 0, new Color(45, 52, 54),
+                        0, getHeight(), new Color(55, 62, 64)
+                );
+                g2.setPaint(gradient);
+                g2.fillRoundRect(0, 0, getWidth()-4, getHeight()-4, 25, 25);
+                g2.setColor(new Color(100, 149, 237, 100));
+                g2.setStroke(new BasicStroke(2));
+                g2.drawRoundRect(1, 1, getWidth()-6, getHeight()-6, 25, 25);
+            }
+        };
+        searchPanel.setLayout(new BoxLayout(searchPanel, BoxLayout.Y_AXIS));
+        searchPanel.setOpaque(false);
+        searchPanel.setMaximumSize(new Dimension(650, 600));
+        searchPanel.setBorder(BorderFactory.createEmptyBorder(35, 40, 35, 40));
+        searchPanel.add(Box.createVerticalStrut(20));
+
+        Label lblTipoBusqueda = new Label("Tipo de Búsqueda");
+        lblTipoBusqueda.setFont(Style.LABEL_FONT.deriveFont(Font.BOLD, 20f));
         lblTipoBusqueda.setAlignmentX(Component.CENTER_ALIGNMENT);
         searchPanel.add(lblTipoBusqueda);
-        searchPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
+        searchPanel.add(Box.createVerticalStrut(12));
 
         comboTipoBusqueda = new ComboBox<>(new String[]{
                 "Por Matrícula",
                 "Por Nombre",
                 "Por ID Solicitud"
         });
-        comboTipoBusqueda.setMaximumSize(new Dimension(400, 50));
+        comboTipoBusqueda.setMaximumSize(new Dimension(450, 50));
         comboTipoBusqueda.setAlignmentX(Component.CENTER_ALIGNMENT);
         searchPanel.add(comboTipoBusqueda);
-        searchPanel.add(Box.createVerticalStrut(Style.BLOQUE_ESPACIO));
+        searchPanel.add(Box.createVerticalStrut(25));
 
-        // Matrícula
-        Label lblMatricula = new Label("Matrícula del Estudiante:");
-        lblMatricula.setAlignmentX(Component.CENTER_ALIGNMENT);
-        searchPanel.add(lblMatricula);
-        searchPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
+        JSeparator separator1 = crearSeparador();
+        searchPanel.add(separator1);
+        searchPanel.add(Box.createVerticalStrut(25));
+
+        JPanel matriculaPanel = crearCampo("Matrícula del Estudiante");
+        searchPanel.add(matriculaPanel);
+        searchPanel.add(Box.createVerticalStrut(10));
 
         txtMatricula = new TextField(20);
-        txtMatricula.setMaximumSize(new Dimension(400, 50));
+        txtMatricula.setMaximumSize(new Dimension(450, 50));
         txtMatricula.setAlignmentX(Component.CENTER_ALIGNMENT);
         searchPanel.add(txtMatricula);
-        searchPanel.add(Box.createVerticalStrut(Style.BLOQUE_ESPACIO));
+        searchPanel.add(Box.createVerticalStrut(20));
 
-        // Nombre
-        Label lblNombre = new Label("Nombre del Estudiante:");
-        lblNombre.setAlignmentX(Component.CENTER_ALIGNMENT);
-        searchPanel.add(lblNombre);
-        searchPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
+        JPanel nombrePanel = crearCampo("Nombre del Estudiante");
+        searchPanel.add(nombrePanel);
+        searchPanel.add(Box.createVerticalStrut(10));
 
         txtNombre = new TextField(20);
-        txtNombre.setMaximumSize(new Dimension(400, 50));
+        txtNombre.setMaximumSize(new Dimension(450, 50));
         txtNombre.setAlignmentX(Component.CENTER_ALIGNMENT);
         searchPanel.add(txtNombre);
-        searchPanel.add(Box.createVerticalStrut(Style.BLOQUE_ESPACIO));
+        searchPanel.add(Box.createVerticalStrut(20));
 
-        // ID Solicitud
-        Label lblIdSolicitud = new Label("ID de Solicitud:");
-        lblIdSolicitud.setAlignmentX(Component.CENTER_ALIGNMENT);
-        searchPanel.add(lblIdSolicitud);
-        searchPanel.add(Box.createVerticalStrut(Style.LBL_ESPACIO));
+        JPanel idPanel = crearCampo("ID de Solicitud");
+        searchPanel.add(idPanel);
+        searchPanel.add(Box.createVerticalStrut(10));
 
         txtIdSolicitud = new TextField(20);
-        txtIdSolicitud.setMaximumSize(new Dimension(400, 50));
+        txtIdSolicitud.setMaximumSize(new Dimension(450, 50));
         txtIdSolicitud.setAlignmentX(Component.CENTER_ALIGNMENT);
         searchPanel.add(txtIdSolicitud);
-        searchPanel.add(Box.createVerticalStrut(Style.TITULO_ESPACIO));
+        searchPanel.add(Box.createVerticalStrut(30));
 
-        // Botón buscar
+        JSeparator separator2 = crearSeparador();
+        searchPanel.add(separator2);
+        searchPanel.add(Box.createVerticalStrut(25));
+
         btnBuscar = new Button("Buscar Resolución");
         btnBuscar.setAlignmentX(Component.CENTER_ALIGNMENT);
         searchPanel.add(btnBuscar);
-
         centralPanel.add(searchPanel);
 
         configurarEventos();
         configurarValidacionesDinamicas();
     }
 
-    private void configurarEventos() {
-        // Evento del botón buscar
-        btnBuscar.addActionListener(e -> realizarBusqueda());
+    private JPanel crearCampo(String texto) {
+        JPanel panel = new JPanel();
+        panel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 0));
+        panel.setOpaque(false);
+        panel.setMaximumSize(new Dimension(450, 30));
 
-        // Permitir buscar con Enter en cualquier campo
+        Label label = new Label(texto);
+        label.setFont(Style.LABEL_FONT.deriveFont(16f));
+        label.setForeground(Color.WHITE);
+
+        panel.add(label);
+        return panel;
+    }
+
+    private JSeparator crearSeparador() {
+        JSeparator separator = new JSeparator();
+        separator.setMaximumSize(new Dimension(500, 2));
+        separator.setForeground(new Color(70, 70, 70));
+        separator.setBackground(new Color(70, 70, 70));
+        return separator;
+    }
+
+    private void configurarEventos() {
+        btnBuscar.addActionListener(e -> realizarBusqueda());
         txtMatricula.addActionListener(e -> realizarBusqueda());
         txtNombre.addActionListener(e -> realizarBusqueda());
         txtIdSolicitud.addActionListener(e -> realizarBusqueda());
-
-        // Cambiar campos activos según tipo de búsqueda
         comboTipoBusqueda.addActionListener(e -> actualizarCamposActivos());
-
-        // Botón volver
-        btnBack.addActionListener(e -> {
-            coordinadorAplicacion.volverHub();
-        });
+        btnBack.addActionListener(e -> coordinadorAplicacion.volverHub());
     }
 
     private void configurarValidacionesDinamicas() {
-        // Listener para matrícula (solo números)
         txtMatricula.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 char c = evt.getKeyChar();
@@ -140,8 +182,6 @@ public class BuscarResolucionPanel extends Panel {
                 }
             }
         });
-
-        // Listener para ID solicitud (solo números)
         txtIdSolicitud.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 char c = evt.getKeyChar();
@@ -150,40 +190,33 @@ public class BuscarResolucionPanel extends Panel {
                 }
             }
         });
-
-        // Inicializar campos activos
         actualizarCamposActivos();
     }
 
     private void actualizarCamposActivos() {
         String tipoBusqueda = (String) comboTipoBusqueda.getSelectedItem();
 
-        // Deshabilitar todos
         txtMatricula.setEnabled(false);
         txtNombre.setEnabled(false);
         txtIdSolicitud.setEnabled(false);
 
-        txtMatricula.setBackground(Color.LIGHT_GRAY);
-        txtNombre.setBackground(Color.LIGHT_GRAY);
-        txtIdSolicitud.setBackground(Color.LIGHT_GRAY);
+        Color colorInactivo = new Color(100, 100, 100);
+        txtMatricula.setBackground(colorInactivo);
+        txtNombre.setBackground(colorInactivo);
+        txtIdSolicitud.setBackground(colorInactivo);
 
-        // Habilitar el correspondiente
-        switch (tipoBusqueda) {
-            case "Por Matrícula":
-                txtMatricula.setEnabled(true);
-                txtMatricula.setBackground(Style.INPUT_COLOR);
-                txtMatricula.requestFocus();
-                break;
-            case "Por Nombre":
-                txtNombre.setEnabled(true);
-                txtNombre.setBackground(Style.INPUT_COLOR);
-                txtNombre.requestFocus();
-                break;
-            case "Por ID Solicitud":
-                txtIdSolicitud.setEnabled(true);
-                txtIdSolicitud.setBackground(Style.INPUT_COLOR);
-                txtIdSolicitud.requestFocus();
-                break;
+        if (tipoBusqueda.contains("Matrícula")) {
+            txtMatricula.setEnabled(true);
+            txtMatricula.setBackground(Style.INPUT_COLOR);
+            txtMatricula.requestFocus();
+        } else if (tipoBusqueda.contains("Nombre")) {
+            txtNombre.setEnabled(true);
+            txtNombre.setBackground(Style.INPUT_COLOR);
+            txtNombre.requestFocus();
+        } else if (tipoBusqueda.contains("ID Solicitud")) {
+            txtIdSolicitud.setEnabled(true);
+            txtIdSolicitud.setBackground(Style.INPUT_COLOR);
+            txtIdSolicitud.requestFocus();
         }
     }
 
@@ -192,64 +225,49 @@ public class BuscarResolucionPanel extends Panel {
         String tipoFiltro = "";
         String filtro = "";
 
-        // Determinar tipo de filtro y valor según selección
-        switch (tipoBusqueda) {
-            case "Por Matrícula":
-                filtro = txtMatricula.getText().trim();
-                if (filtro.isEmpty()) {
-                    JOptionPane.showMessageDialog(mainFrame,
-                            "Debe ingresar una matrícula para buscar",
-                            "Error", JOptionPane.ERROR_MESSAGE);
-                    return;
-                }
-                tipoFiltro = "MATRICULA";
-                break;
-
-            case "Por Nombre":
-                filtro = txtNombre.getText().trim();
-                if (filtro.isEmpty()) {
-                    JOptionPane.showMessageDialog(mainFrame,
-                            "Debe ingresar un nombre para buscar",
-                            "Error", JOptionPane.ERROR_MESSAGE);
-                    return;
-                }
-                if (filtro.length() < 3) {
-                    JOptionPane.showMessageDialog(mainFrame,
-                            "El nombre debe tener al menos 3 caracteres",
-                            "Error", JOptionPane.ERROR_MESSAGE);
-                    return;
-                }
-                tipoFiltro = "NOMBRE";
-                break;
-
-            case "Por ID Solicitud":
-                filtro = txtIdSolicitud.getText().trim();
-                if (filtro.isEmpty()) {
-                    JOptionPane.showMessageDialog(mainFrame,
-                            "Debe ingresar un ID de solicitud para buscar",
-                            "Error", JOptionPane.ERROR_MESSAGE);
-                    return;
-                }
-                tipoFiltro = "ID_SOLICITUD";
-                break;
-
-            default:
-                JOptionPane.showMessageDialog(mainFrame,
-                        "Debe seleccionar un tipo de búsqueda",
-                        "Error", JOptionPane.ERROR_MESSAGE);
+        if (tipoBusqueda.contains("Matrícula")) {
+            filtro = txtMatricula.getText().trim();
+            if (filtro.isEmpty()) {
+                mostrarError("Debe ingresar una matrícula para buscar");
                 return;
+            }
+            tipoFiltro = "MATRICULA";
+        } else if (tipoBusqueda.contains("Nombre")) {
+            filtro = txtNombre.getText().trim();
+            if (filtro.isEmpty()) {
+                mostrarError("Debe ingresar un nombre para buscar");
+                return;
+            }
+            if (filtro.length() < 3) {
+                mostrarError("El nombre debe tener al menos 3 caracteres");
+                return;
+            }
+            tipoFiltro = "NOMBRE";
+        } else if (tipoBusqueda.contains("ID Solicitud")) {
+            filtro = txtIdSolicitud.getText().trim();
+            if (filtro.isEmpty()) {
+                mostrarError("Debe ingresar un ID de solicitud para buscar");
+                return;
+            }
+            tipoFiltro = "ID_SOLICITUD";
+        } else {
+            mostrarError("Debe seleccionar un tipo de búsqueda");
+            return;
         }
-
-        // Realizar búsqueda a través del coordinador
         try {
             coordinadorAplicacion.buscarResolucion(tipoFiltro, filtro);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(mainFrame,
-                    "Error al buscar: " + ex.getMessage(),
-                    "Error", JOptionPane.ERROR_MESSAGE);
+            mostrarError("Error al buscar: " + ex.getMessage());
         }
     }
 
+    private void mostrarError(String mensaje) {
+        JOptionPane.showMessageDialog(mainFrame, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
+    }
+
+    /**
+     * Limpiar busqueda.
+     */
     public void limpiarBusqueda() {
         txtMatricula.setText("");
         txtNombre.setText("");

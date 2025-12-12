@@ -27,11 +27,17 @@ import presentacion.coordinacion.CoordinadorAplicacion;
 import presentacion.coordinacion.CoordinadorNegocio;
 
 /**
+ * The type Main.
  *
  * @author Cortez, Manuel;
  */
 public class Main {
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
 
         ControlModeloML controlModeloML = new ControlModeloML();

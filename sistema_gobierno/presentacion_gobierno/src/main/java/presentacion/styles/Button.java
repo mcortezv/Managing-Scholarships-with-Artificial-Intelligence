@@ -10,6 +10,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 /**
+ * The type Button.
  *
  * @author Cortez, Manuel;
  */
@@ -17,6 +18,11 @@ public class Button extends JButton {
     private static final int CORNER_RADIUS = 8;
     private boolean hovered = false;
 
+    /**
+     * Instantiates a new Button.
+     *
+     * @param text the text
+     */
     public Button(String text) {
         super(text);
         setFont(Style.BUTTON_FONT);
@@ -52,6 +58,12 @@ public class Button extends JButton {
         setUI(new BasicButtonUI());
     }
 
+    /**
+     * Sets button size.
+     *
+     * @param w the w
+     * @param h the h
+     */
     public void setButtonSize(int w, int h) {
         super.setPreferredSize(new Dimension(w, h));
         super.setMinimumSize(new Dimension(w, h));
