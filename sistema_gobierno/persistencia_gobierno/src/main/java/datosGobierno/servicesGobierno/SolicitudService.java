@@ -10,6 +10,7 @@ import datosGobierno.daoGobierno.interfacesGobierno.IDocumentoDAO;
 import datosGobierno.daoGobierno.interfacesGobierno.IEstudianteDAO;
 import datosGobierno.daoGobierno.interfacesGobierno.ISolicitudDAO;
 import datosGobierno.documents.DocumentoDocument;
+import datosGobierno.documents.EstudianteDocument;
 import datosGobierno.documents.SolicitudDocument;
 import gobierno.DocumentoDTOGobierno;
 import gobierno.SolicitudDTOGobierno;
@@ -44,7 +45,8 @@ public class SolicitudService {
      * @throws SolicitudDAOException the solicitud dao exception
      */
     public boolean guardarSolicitud(SolicitudDTOGobierno solicitud) throws SolicitudDAOException {
-        ObjectId idEstudiante = estudianteDAO.guardar(EstudianteAdaptador.toDocument(solicitud.getEstudiante()));
+        EstudianteDocument estudianteDocument = EstudianteAdaptador.toDocument(solicitud.getEstudiante());
+        ObjectId idEstudiante = estudianteDAO.guardar(estudianteDocument);
         List<ObjectId> documentos = new ArrayList<>();
         for(DocumentoDTOGobierno documentoDTOGobierno: solicitud.getDocumentos()){
             DocumentoDocument documentoDocument = DocumentoAdaptador.toDocument(documentoDTOGobierno);

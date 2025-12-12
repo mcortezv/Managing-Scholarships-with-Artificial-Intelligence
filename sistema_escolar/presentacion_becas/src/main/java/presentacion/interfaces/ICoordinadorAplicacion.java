@@ -1,6 +1,4 @@
 package presentacion.interfaces;
-
-
 import itson.LoginDTOItson;
 import presentacion.actividadesExtracurriculares.coordinador.CoordinadorAplicacionActividades;
 import presentacion.login.exceptions.ContraseniaInvalidaException;
@@ -8,10 +6,10 @@ import presentacion.login.exceptions.IDInvalidoException;
 import presentacion.pagarAdeudo.coordinadorAplicacionPagarAdeudo.CoordinadorAplicacionPagarAdeudo;
 import presentacion.solicitarBeca.exceptions.*;
 import solicitarBeca.*;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
+
 
 public interface ICoordinadorAplicacion {
     void iniciarGUI();

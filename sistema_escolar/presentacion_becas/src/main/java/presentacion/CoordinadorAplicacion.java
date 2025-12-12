@@ -206,7 +206,7 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     public void procesarDocumentos(Map<String, File> documentosCargados) throws IOException {
         try {
             coordinadorNegocio.procesarDocumentos(documentosCargados);
-            solicitarBeca.showPanel("confirmacionPanel");
+            mostrarResumen();
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }

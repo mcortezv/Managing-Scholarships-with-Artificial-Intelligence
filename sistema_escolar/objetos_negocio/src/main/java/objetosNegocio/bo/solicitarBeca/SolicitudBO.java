@@ -89,7 +89,8 @@ public class SolicitudBO implements ISolicitudBO {
                     documentoDocument.setContenido(documento.getContenido());
                     documentoDocument.setTipo(documento.getTipo());
                     documentoDocument.setIdentificador(documento.getIdentificador());
-                    documentosId.add(documentoDAO.guardar(documentoDocument));
+                    ObjectId idDocumento = documentoDAO.guardar(documentoDocument);
+                    documentosId.add(idDocumento);
                 }
             }
 
@@ -99,7 +100,7 @@ public class SolicitudBO implements ISolicitudBO {
             solicitudDocument.setBeca(entity.getBeca());
             solicitudDocument.setFecha(entity.getFecha());
             solicitudDocument.setEstado(entity.getEstado());
-            solicitudDocument.setId(entity.getId());
+            solicitudDocument.setIdSolicitud(entity.getId());
             solicitudDocument.setHistorialAcademico(entity.getHistorialAcademico());
             solicitudDocument.setInformacionSocioeconomica(entity.getInformacionSocioeconomica());
             solicitudDAO.create(solicitudDocument);
