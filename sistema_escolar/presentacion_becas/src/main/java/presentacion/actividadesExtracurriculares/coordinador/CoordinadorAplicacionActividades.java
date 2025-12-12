@@ -166,6 +166,9 @@ public class CoordinadorAplicacionActividades implements ICoordinadorAplicacionA
             InscripcionDTO inscripcionDTO= new InscripcionDTO();
             
             inscripcionDTO.setIdGrupo(grupoSeleccionado.getId());
+            inscripcionDTO.setFechaInicio(grupoSeleccionado.getFechaInicio());
+            inscripcionDTO.setFechaFin(grupoSeleccionado.getFechaFin());
+            inscripcionDTO.setFechaLimiteInscripcion(grupoSeleccionado.getFechaLimiteInscripcion());
             inscripcionDTO.setCupoTotal(grupoSeleccionado.getCupoTotal());
             inscripcionDTO.setCupoDisponible(grupoSeleccionado.getCupoDisponible());
             inscripcionDTO.setIdActividad(actividadSeleccionada.getId());
@@ -176,6 +179,10 @@ public class CoordinadorAplicacionActividades implements ICoordinadorAplicacionA
             inscripcionDTO.setNombreActividad(grupoSeleccionado.getNombreActividad());
             inscripcionDTO.setCosto(grupoSeleccionado.getCosto());
             inscripcionResponse= coordinadorNegocioActividades.inscribirActividad(inscripcionDTO);
+            System.out.println("en cord apl"+inscripcionDTO.getFechaInicio());
+             System.out.println("en cord apl"+inscripcionDTO.getFechaFin());
+              System.out.println("en cord apl"+inscripcionDTO.getFechaLimiteInscripcion());
+              System.out.println("en cord apl ins"+inscripcionDTO.getFechaInscripcion());
             if(inscripcionResponse!=null){
                 JOptionPane.showMessageDialog(null, "Inscripcion guardada con exito");
                 mostrarMenu();

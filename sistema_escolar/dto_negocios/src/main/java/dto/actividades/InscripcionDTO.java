@@ -14,6 +14,9 @@ import java.util.List;
 public class InscripcionDTO {
     private String id;
     private LocalDate fechaInscripcion;
+    private LocalDate fechaInicio;
+    private LocalDate fechaFin;
+    private LocalDate fechaLimiteInscripcion;
   //  private Estado estado;
     //estudiante
     private String matriculaEstudiante;
@@ -82,6 +85,8 @@ public class InscripcionDTO {
         this.cupoDisponible = cupoDisponible;
         this.idActividad = idActividad;
     }
+    
+    
     
     
 
@@ -210,6 +215,30 @@ public class InscripcionDTO {
 
     public void setCupoDisponible(int cupoDisponible) {
         this.cupoDisponible = cupoDisponible;
+    }
+
+    public LocalDate getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(LocalDate fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public LocalDate getFechaFin() {
+        return fechaFin;
+    }
+
+    public void setFechaFin(LocalDate fechaFin) {
+        this.fechaFin = fechaFin;
+    }
+
+    public LocalDate getFechaLimiteInscripcion() {
+        return fechaLimiteInscripcion;
+    }
+
+    public void setFechaLimiteInscripcion(LocalDate fechaLimiteInscripcion) {
+        this.fechaLimiteInscripcion = fechaLimiteInscripcion;
     }
     
     

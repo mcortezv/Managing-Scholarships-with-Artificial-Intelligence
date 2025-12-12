@@ -13,6 +13,7 @@ import itson.actividades.ActividadDTOItson;
 import itson.actividades.GrupoResponseDTOItson;
 import itson.actividades.GruposResponseDTOItson;
 import itson.actividades.InscripcionDTOItson;
+import java.time.LocalDate;
 import java.util.List;
 import org.bson.types.ObjectId;
 
@@ -48,7 +49,13 @@ public class GrupoService {
         return grupoDAO.actualizarCupo(new ObjectId(idGrupo));
     }
     
+    public LocalDate revisarFechaLimite(String idGrupo){
+        return grupoDAO.revisarFechaLimite(new ObjectId(idGrupo));
+        }
     
+    public int revisarCupoDisponible(String idGrupo){
+        return grupoDAO.revisarCupoDisponible(new ObjectId(idGrupo));
+    }
     
     
     

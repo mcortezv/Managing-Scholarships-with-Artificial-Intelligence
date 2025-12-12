@@ -54,6 +54,9 @@ public class InscripcionBO implements IInscripcionBO {
     
     public InscripcionDTO inscribirActividadExterno(InscripcionDTO inscripcionDTO) {
         InscripcionDTOItson inscripcionDTOItsonExterno= InscripcionAdaptador.toDTOItson(inscripcionDTO);
+        System.out.println("en bo fechas"+inscripcionDTOItsonExterno.getFechaInicio());
+         System.out.println("en bo fechas"+inscripcionDTOItsonExterno.getFechaFin());
+          System.out.println("en bo fechas"+inscripcionDTOItsonExterno.getFechaLimiteInscripcion());
         InscripcionDTOItson inscripcionDTOItsonExternoResponse= fachadaITSON.inscribirActividadExterno(inscripcionDTOItsonExterno);
         InscripcionDTO inscripcionDTOExternoResponse= InscripcionAdaptador.toDTONegocio(inscripcionDTOItsonExternoResponse);
         return inscripcionDTOExternoResponse;
