@@ -13,6 +13,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
+ * The type Iniciar sesion panel.
  *
  * @author Cortez, Manuel;
  */
@@ -26,6 +27,12 @@ public class IniciarSesionPanel extends Panel {
     private Button btnIniciarSesion;
     private final CoordinadorAplicacion coordinadorAplicacion;
 
+    /**
+     * Instantiates a new Iniciar sesion panel.
+     *
+     * @param frame                 the frame
+     * @param coordinadorAplicacion the coordinador aplicacion
+     */
     public IniciarSesionPanel(MainFrame frame, CoordinadorAplicacion coordinadorAplicacion) {
         super(frame, coordinadorAplicacion);
         this.coordinadorAplicacion = coordinadorAplicacion;

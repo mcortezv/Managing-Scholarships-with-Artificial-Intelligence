@@ -1,5 +1,4 @@
 package solicitarBeca.repository.dao;
-
 import com.mongodb.MongoException;
 import com.mongodb.client.MongoCollection;
 import org.bson.Document;
@@ -11,16 +10,18 @@ import solicitarBeca.repository.documents.SolicitudDocument;
 import java.time.Instant;
 
 /**
+ * The type Solicitud dao.
  *
  * @author Cortez, Manuel;
  */
 public class SolicitudDAO implements ISolicitudDAO {
     private final MongoCollection<SolicitudDocument> col;
-    private final MongoCollection<Document> colDoc;
 
+    /**
+     * Instantiates a new Solicitud dao.
+     */
     public SolicitudDAO() {
         this.col = MongoClientProvider.INSTANCE.getCollection("solicitudes", SolicitudDocument.class);
-        this.colDoc = MongoClientProvider.INSTANCE.getCollection("solicitudes", Document.class);
     }
 
     @Override
