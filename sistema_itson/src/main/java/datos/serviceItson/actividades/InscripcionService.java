@@ -47,6 +47,8 @@ public class InscripcionService {
 
     public BajaDTOItson darBajaActividad(BajaDTOItson baja) {
         Baja bajaEntity = BajaAdaptador.toEntity(baja);
+        System.out.println("en service"+baja.getIdInscripcion());
+        System.out.println("en service"+bajaEntity.getIdInscripcion());
         Baja bajaGuardada = bajaDAO.guardarBaja(bajaEntity);
         return BajaAdaptador.toDTOItson(bajaGuardada);
 
