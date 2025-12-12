@@ -7,11 +7,18 @@ import javax.swing.plaf.basic.ComboPopup;
 import java.awt.*;
 
 /**
+ * The type Combo box.
  *
+ * @param <T> the type parameter
  * @author Cortez, Manuel;
  */
 public class ComboBox<T> extends JComboBox<T> {
 
+    /**
+     * Instantiates a new Combo box.
+     *
+     * @param items the items
+     */
     public ComboBox(T[] items) {
         super(items);
         setFont(Style.LABEL_FONT);
@@ -39,11 +46,19 @@ public class ComboBox<T> extends JComboBox<T> {
         super.paintComponent(g);
     }
 
+    /**
+     * Add.
+     *
+     * @param beca the beca
+     */
     public void add(T beca) {
 
     }
 
     private static class MyComboBoxRenderer<T> extends JLabel implements ListCellRenderer<T> {
+        /**
+         * Instantiates a new My combo box renderer.
+         */
         public MyComboBoxRenderer() {
             setOpaque(true);
             setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));

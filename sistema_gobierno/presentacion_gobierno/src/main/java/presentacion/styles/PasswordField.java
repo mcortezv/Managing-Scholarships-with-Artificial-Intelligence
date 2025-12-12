@@ -7,10 +7,16 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
+ * The type Password field.
  *
  * @author Cortez, Manuel;
  */
 public class PasswordField extends JPasswordField{
+    /**
+     * Instantiates a new Password field.
+     *
+     * @param columns the columns
+     */
     public PasswordField(int columns) {
         super(columns);
         setFont(Style.INPUT_FONT);

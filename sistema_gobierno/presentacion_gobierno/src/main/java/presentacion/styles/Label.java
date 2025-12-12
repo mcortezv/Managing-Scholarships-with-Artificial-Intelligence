@@ -6,11 +6,17 @@ package presentacion.styles;
 import javax.swing.*;
 
 /**
+ * The type Label.
  *
  * @author Cortez, Manuel;
  */
 public class Label extends JLabel {
 
+    /**
+     * Instantiates a new Label.
+     *
+     * @param texto the texto
+     */
     public Label(String texto) {
         super(texto);
         setFont(Style.LABEL_FONT);
