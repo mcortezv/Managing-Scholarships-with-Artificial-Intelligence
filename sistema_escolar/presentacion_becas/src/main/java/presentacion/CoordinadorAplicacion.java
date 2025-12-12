@@ -33,11 +33,11 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
     private final ICoordinadorNegocio coordinadorNegocio;
     private SolicitarBeca solicitarBeca;
     private BecaDTO becaSeleccionadaDTO;
-    private RequisitosDTO requisitosDTO;
-    private HistorialAcademicoDTO historialAcademicoDTO;
-    private TutorDTO tutorDTO;
-    private InformacionSocioeconomicaDTO infoSocioeconomicaDTO;
-    private LoginDTOItson estudiante;
+    //private RequisitosDTO requisitosDTO;
+   // private HistorialAcademicoDTO historialAcademicoDTO;
+   // private TutorDTO tutorDTO;
+  //  private InformacionSocioeconomicaDTO infoSocioeconomicaDTO;
+    private LoginDTO estudiante;
 
     // pagar adeudo
     private CoordinadorAplicacionPagarAdeudo coordinadorAplicacionPagarAdeudo;
@@ -71,7 +71,7 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
         mainFrame.setVisible(true);
     }
 
-    public boolean intentarIniciarSesion(LoginDTOItson loginDTO) throws IDInvalidoException, ContraseniaInvalidaException {
+    public boolean intentarIniciarSesion(LoginDTO loginDTO) throws IDInvalidoException, ContraseniaInvalidaException {
         presentacion.login.validadores.Validadores.validarID(loginDTO.getUsuario());
         presentacion.login.validadores.Validadores.validarContrasenia(loginDTO.getContrasenia());
         return coordinadorNegocio.solicitarInicioSesion(loginDTO);
@@ -81,8 +81,8 @@ public class CoordinadorAplicacion implements ICoordinadorAplicacion {
         coordinadorNegocio.solicitarCerrarSesion();
     }
 
-    public void guardarInfoEstudiante(LoginDTOItson loginDTOItson){
-        this.estudiante= loginDTOItson;
+    public void guardarInfoEstudiante(LoginDTO loginDTOItson){
+        this.estudiante = loginDTOItson;
     }
 
     public void procesarInformacionGeneral(RequisitosDTO requisitosDTO) throws PromedioInvalidoException, IngresoInvalidoException {

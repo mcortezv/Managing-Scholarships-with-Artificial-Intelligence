@@ -2,6 +2,7 @@ package objetosNegocio.bo.solicitarBeca.intefaces;
 import itson.LoginDTOItson;
 import objetosNegocio.bo.solicitarBeca.excepciones.EstudianteInvalidoException;
 import solicitarBeca.EstudianteDTO;
+import solicitarBeca.LoginDTO;
 
 /**
  * The interface Estudiante bo.
@@ -16,7 +17,7 @@ public interface IEstudianteBO {
      * @param solicitudLoginDTO the solicitud login dto
      * @return the boolean
      */
-    boolean iniciarSesion(LoginDTOItson solicitudLoginDTO);
+    boolean iniciarSesion(LoginDTO solicitudLoginDTO);
 
     /**
      * Crear estudiante estudiante dto.

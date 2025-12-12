@@ -1,6 +1,7 @@
 package interfaces;
 import itson.LoginDTOItson;
 import solicitarBeca.EstudianteDTO;
+import solicitarBeca.LoginDTO;
 
 /**
  * The interface Fachada inicio sesion.
@@ -15,7 +16,7 @@ public interface IFachadaInicioSesion {
      * @param solicitudLoginDTO the solicitud login dto
      * @return the boolean
      */
-    boolean solicitarLogin(LoginDTOItson solicitudLoginDTO);
+    boolean solicitarLogin(LoginDTO solicitudLoginDTO);
 
     /**
      * Solicitar log out.

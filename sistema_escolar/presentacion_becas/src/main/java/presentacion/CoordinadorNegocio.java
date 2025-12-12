@@ -33,7 +33,7 @@ public class CoordinadorNegocio implements ICoordinadorNegocio {
     }
 
     @Override
-    public boolean solicitarInicioSesion(LoginDTOItson solicitudLoginDTO) {
+    public boolean solicitarInicioSesion(LoginDTO solicitudLoginDTO) {
         return fachadaInicioSesion.solicitarLogin(solicitudLoginDTO);
     }
 

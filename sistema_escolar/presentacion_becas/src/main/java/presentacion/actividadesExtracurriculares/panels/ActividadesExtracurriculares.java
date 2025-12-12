@@ -19,6 +19,7 @@ import presentacion.bajaActividades.panels.DetallesExtraBaja;
 
 import presentacion.login.panels.NorthPanel;
 import presentacion.styles.Button;
+import solicitarBeca.LoginDTO;
 
 /**
  *
@@ -30,7 +31,7 @@ public class ActividadesExtracurriculares extends JFrame {
     private JPanel centralPanel;
     private Map<String, JPanel> panels;
     private CoordinadorAplicacionActividades coordinadorAplicacionActividades;
-    private LoginDTOItson loginDTO;
+    private LoginDTO loginDTO;
 
     public ActividadesExtracurriculares(CoordinadorAplicacionActividades coordinadorAplicacionActividades) {
         this.coordinadorAplicacionActividades = coordinadorAplicacionActividades;
@@ -100,7 +101,7 @@ public class ActividadesExtracurriculares extends JFrame {
         return panels.get(key);
     }
 
-    public void recuperarLogin(LoginDTOItson loginDTO) {
+    public void recuperarLogin(LoginDTO loginDTO) {
         this.loginDTO = loginDTO;
         coordinadorAplicacionActividades.recuperarLogin(loginDTO);
     }

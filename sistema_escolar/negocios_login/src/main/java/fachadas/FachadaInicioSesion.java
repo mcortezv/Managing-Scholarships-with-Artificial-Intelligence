@@ -3,6 +3,7 @@ import controles.ControlInicioSesion;
 import itson.LoginDTOItson;
 import interfaces.IFachadaInicioSesion;
 import solicitarBeca.EstudianteDTO;
+import solicitarBeca.LoginDTO;
 
 
 /**
@@ -24,7 +25,7 @@ public class FachadaInicioSesion implements IFachadaInicioSesion {
     }
 
     @Override
-    public boolean solicitarLogin(LoginDTOItson solicitudLoginDTO) {
+    public boolean solicitarLogin(LoginDTO solicitudLoginDTO) {
         return controlInicioSesion.solicitarLogin(solicitudLoginDTO);
     }
 

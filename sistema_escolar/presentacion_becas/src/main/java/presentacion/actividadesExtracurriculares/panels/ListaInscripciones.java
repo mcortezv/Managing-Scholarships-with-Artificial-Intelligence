@@ -26,6 +26,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import presentacion.actividadesExtracurriculares.coordinador.CoordinadorAplicacionActividades;
 import presentacion.styles.Button;
+import solicitarBeca.LoginDTO;
 
 /**
  *
@@ -150,7 +151,7 @@ public class ListaInscripciones extends PanelActividades{
         panelContenido.repaint();
     }
     
-    public EstudianteDTO recuperarEstudiante(LoginDTOItson loginDTO){
+    public EstudianteDTO recuperarEstudiante(LoginDTO loginDTO){
         this.estudianteRecuperado= new EstudianteDTO(String.valueOf(loginDTO.getUsuario()));
         return estudianteRecuperado;
     }
