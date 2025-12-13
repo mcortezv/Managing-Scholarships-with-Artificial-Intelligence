@@ -10,6 +10,7 @@ import solicitarBeca.SolicitudDTO;
 import gobierno.DocumentoDTOGobierno;
 import gobierno.SolicitudDTOGobierno;
 import solicitarBeca.dominio.Documento;
+import solicitarBeca.dominio.Estudiante;
 import solicitarBeca.dominio.Solicitud;
 import solicitarBeca.dominio.enums.EstadoSolicitud;
 import java.util.ArrayList;
@@ -95,7 +96,8 @@ public class SolicitudAdaptador {
             Solicitud solicitud = new Solicitud();
             solicitud.setId(dto.getId());
             solicitud.setBeca(BecaAdaptador.toEntity(dto.getBeca()));
-            solicitud.setEstudiante(EstudianteAdaptador.toEntity(dto.getEstudiante()));
+            Estudiante estudiante = EstudianteAdaptador.toEntity(dto.getEstudiante());
+            solicitud.setEstudiante(estudiante);
             solicitud.setInformacionSocioeconomica(InformacionSocioeconomicaAdaptador.toEntity(dto.getInformacionSocioeconomica()));
             solicitud.setHistorialAcademico(HistorialAcademicoAdaptador.toEntity(dto.getHistorialAcademico()));
             ArrayList<Documento> documentos = new ArrayList<>();

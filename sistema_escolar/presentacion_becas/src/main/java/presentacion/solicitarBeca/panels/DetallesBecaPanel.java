@@ -11,6 +11,9 @@ import presentacion.styles.Label;
 import presentacion.styles.Style;
 
 
+/**
+ * The type Detalles beca panel.
+ */
 public class DetallesBecaPanel extends PanelSolicitarBeca {
     private Label titulo;
     private Label lblPromedio, lblPeriodo, lblTipo;
@@ -20,6 +23,12 @@ public class DetallesBecaPanel extends PanelSolicitarBeca {
     private JPanel lista;
     private JScrollPane scroll;
 
+    /**
+     * Instantiates a new Detalles beca panel.
+     *
+     * @param mainFrame             the main frame
+     * @param coordinadorAplicacion the coordinador aplicacion
+     */
     public DetallesBecaPanel(SolicitarBeca mainFrame, CoordinadorAplicacion coordinadorAplicacion) {
         super(mainFrame, coordinadorAplicacion);
     }
@@ -131,6 +140,11 @@ public class DetallesBecaPanel extends PanelSolicitarBeca {
     }
 
 
+    /**
+     * Cargar beca.
+     *
+     * @param becaDTO the beca dto
+     */
     public void cargarBeca(BecaDTO becaDTO) {
         this.beca = becaDTO;
         titulo.setText(becaDTO.getNombre());

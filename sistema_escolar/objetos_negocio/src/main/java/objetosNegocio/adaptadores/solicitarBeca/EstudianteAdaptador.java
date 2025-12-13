@@ -1,11 +1,14 @@
 package objetosNegocio.adaptadores.solicitarBeca;
+import gobierno.TutorDTOGobierno;
 import objetosNegocio.adaptadores.solicitarBeca.excepciones.BecasFiltradasAdaptadorException;
 import objetosNegocio.adaptadores.solicitarBeca.excepciones.EstudianteAdaptadorException;
 import solicitarBeca.EstudianteDTO;
 import gobierno.EstudianteDTOGobierno;
 import itson.EstudianteDTOItson;
 import solicitarBeca.dominio.Estudiante;
+import solicitarBeca.dominio.Tutor;
 import solicitarBeca.dominio.enums.Carrera;
+import solicitarBeca.dominio.enums.Parentesco;
 
 /**
  * The type Estudiante adaptador.
@@ -47,6 +50,15 @@ public class EstudianteAdaptador {
             estudiante.setMatricula(dto.getMatricula());
             estudiante.setNombre(dto.getNombre());
             estudiante.setCarrera(Carrera.valueOf(dto.getCarrera()));
+            if (dto.getTutor() != null) {
+                Tutor tutor = new Tutor();
+                tutor.setNombre(dto.getTutor().getNombre());
+                tutor.setParentesco(Parentesco.valueOf(dto.getTutor().getParentesco()));
+                tutor.setCorreo(dto.getTutor().getCorreo());
+                tutor.setTelefono(dto.getTutor().getTelefono());
+                tutor.setDireccion(dto.getTutor().getDireccion());
+                estudiante.setTutor(tutor);
+            }
             estudiante.setTelefono(dto.getTelefono());
             estudiante.setDireccion(dto.getDireccion());
             estudiante.setCorreo(dto.getCorreo());
@@ -110,6 +122,16 @@ public class EstudianteAdaptador {
             EstudianteDTOGobierno dto = new EstudianteDTOGobierno();
             dto.setMatricula(estudiante.getMatricula());
             dto.setNombre(estudiante.getNombre());
+            if (estudiante.getTutor() != null) {
+                TutorDTOGobierno tutor = new TutorDTOGobierno();
+                tutor.setId(estudiante.getTutor().getId());
+                tutor.setNombre(estudiante.getTutor().getNombre());
+                tutor.setDireccion(estudiante.getTutor().getDireccion());
+                tutor.setCorreo(estudiante.getTutor().getCorreo());
+                tutor.setTelefono(estudiante.getTutor().getTelefono());
+                tutor.setParentesco(estudiante.getTutor().getParentesco().toString());
+                dto.setTutor(tutor);
+            }
             dto.setCarrera(estudiante.getCarrera().toString());
             dto.setTelefono(estudiante.getTelefono());
             dto.setDireccion(estudiante.getDireccion());
