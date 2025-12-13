@@ -41,22 +41,9 @@ public class InscripcionBO implements IInscripcionBO {
         this.bajaDAO= bajaDAO;
     }
 
-//    public InscripcionDTO inscribirActividad(InscripcionDTO inscripcionDTO) {
-//            InscripcionDTOItson inscripcionDTOItson = InscripcionAdaptador.toDTOItson(inscripcionDTO);
-//            InscripcionDTOItson inscripcionDTOIResponse = fachadaITSON.inscribirActividad(inscripcionDTOItson);
-//            if(inscripcionDTOIResponse!=null){
-//                Inscripcion inscripcionGuardar= InscripcionAdaptador.toEntity(inscripcionDTO);
-//                Inscripcion inscripcionGuardada= inscripcionDAO.InscribirGrupo(inscripcionGuardar);
-//            }
-//            return InscripcionAdaptador.toDTONegocio(inscripcionDTOIResponse);
-//
-//        }
     
     public InscripcionDTO inscribirActividadExterno(InscripcionDTO inscripcionDTO) {
         InscripcionDTOItson inscripcionDTOItsonExterno= InscripcionAdaptador.toDTOItson(inscripcionDTO);
-        System.out.println("en bo fechas"+inscripcionDTOItsonExterno.getFechaInicio());
-         System.out.println("en bo fechas"+inscripcionDTOItsonExterno.getFechaFin());
-          System.out.println("en bo fechas"+inscripcionDTOItsonExterno.getFechaLimiteInscripcion());
         InscripcionDTOItson inscripcionDTOItsonExternoResponse= fachadaITSON.inscribirActividadExterno(inscripcionDTOItsonExterno);
         InscripcionDTO inscripcionDTOExternoResponse= InscripcionAdaptador.toDTONegocio(inscripcionDTOItsonExternoResponse);
         return inscripcionDTOExternoResponse;
@@ -97,9 +84,5 @@ public class InscripcionBO implements IInscripcionBO {
         return BajaAdaptador.entityToDTONegocio(bajaGuardada);
     }
 
-    
-//    public boolean actualizarEstadoInscripcion(String idInscripcion){
-//        return fachadaITSON.actualizarEstadoInscripcion(idInscripcion);
-//       
-//    }
+
 }
