@@ -20,9 +20,9 @@ public class CoordinadorAplicacionApelarResultado implements ICoordinadorAplicac
     private ApelarResultado apelarResultadoFrame;
     private List<SolicitudDTO> solicitudesCache;
 
-    public CoordinadorAplicacionApelarResultado(ICoordinadorNegocioApelarResultado coordinadorNegocio, CoordinadorAplicacion coordinadorPadre) {
-        this.coordinadorNegocio = coordinadorNegocio;
-        this.coordinadorPadre = coordinadorPadre;
+    public CoordinadorAplicacionApelarResultado(ICoordinadorNegocioApelarResultado cn, CoordinadorAplicacion cp) {
+        this.coordinadorNegocio = cn;
+        this.coordinadorPadre = cp;
     }
 
     @Override
@@ -90,6 +90,7 @@ public class CoordinadorAplicacionApelarResultado implements ICoordinadorAplicac
     public void setApelarResultado(ApelarResultado apelarResultado) {
         this.apelarResultadoFrame = apelarResultado;
     }
+
     private void limpiarCache() {
         this.solicitudesCache = null;
     }

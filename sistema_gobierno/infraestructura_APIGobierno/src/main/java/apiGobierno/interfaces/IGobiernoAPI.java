@@ -5,6 +5,7 @@ import gobierno.BecasDisponiblesDTOGobierno;
 import gobierno.EstudianteDTOGobierno;
 import gobierno.RequisitosDTOGobierno;
 import gobierno.SolicitudDTOGobierno;
+import gobierno.apelacion.ApelacionDTOGobierno;
 
 import java.util.List;
 
@@ -34,4 +35,5 @@ public interface IGobiernoAPI {
 
     //apelar resultado
     List<SolicitudDTOGobierno> obtenerListaSolicitudesPorEstudiante(EstudianteDTOGobierno estudianteDTO);
+    boolean registrarApelacion(ApelacionDTOGobierno apelacionDTOGobierno);
 }

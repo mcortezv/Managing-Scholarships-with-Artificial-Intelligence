@@ -122,4 +122,33 @@ public class SolicitudAdaptador {
 
         return listaDTOs;
     }
+
+    /**
+     * Convierte un DTO de Gobierno a una Entidad de Negocio
+     */
+    public static Solicitud toEntity(SolicitudDTOGobierno dto) {
+        try {
+            if (dto == null) return null;
+            Solicitud solicitud = new Solicitud();
+            solicitud.setId(dto.getId());
+            solicitud.setBeca(BecaAdaptador.toEntity(dto.getBeca()));
+            solicitud.setEstudiante(EstudianteAdaptador.toEntity(dto.getEstudiante()));
+            solicitud.setInformacionSocioeconomica(InformacionSocioeconomicaAdaptador.toEntity(dto.getInformacionSocioeconomica()));
+            solicitud.setHistorialAcademico(HistorialAcademicoAdaptador.toEntity(dto.getHistorialAcademico()));
+            ArrayList<Documento> documentos = new ArrayList<>();
+            if (dto.getDocumentos() != null) {
+                for (DocumentoDTOGobierno docGob : dto.getDocumentos()) {
+                    documentos.add(DocumentoAdaptador.toEntity(docGob));
+                }
+            }
+            solicitud.setDocumentos(documentos);
+            solicitud.setFecha(dto.getFecha());
+            if (dto.getEstado() != null) {
+                solicitud.setEstado(EstadoSolicitud.valueOf(dto.getEstado()));
+            }
+            return solicitud;
+        } catch (Exception ex) {
+            throw new BecasFiltradasAdaptadorException("Error al convertir SolicitudDTOGobierno a entidad Solicitud: " + ex.getMessage());
+        }
+    }
 }

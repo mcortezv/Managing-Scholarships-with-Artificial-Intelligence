@@ -69,4 +69,20 @@ public class InformacionSocioeconomicaAdaptador {
             throw new BecasFiltradasAdaptadorException("Error al convertir entidad InformacionSocioeconomica a InformacionSocioeconomicaDTOGobierno");
         }
     }
+
+    public static InformacionSocioeconomica toEntity(InformacionSocioeconomicaDTOGobierno dto) {
+        try {
+            if (dto == null) return null;
+            InformacionSocioeconomica entity = new InformacionSocioeconomica();
+            entity.setIngresoTotalFamilarMensual(dto.getIngresoTotalFamilarMensual());
+            if (dto.getTipoVivienda() != null) {
+                entity.setTipoVivienda(TipoVivienda.valueOf(dto.getTipoVivienda()));
+            }
+            entity.setDeudas(dto.getDeudas());
+            entity.setTrabajo(dto.getTrabajo());
+            return entity;
+        } catch (Exception ex) {
+            throw new InformacionSocioeconomicaAdaptadorException("Error al convertir InformacionSocioeconomicaDTOGobierno a entidad: " + ex.getMessage());
+        }
+    }
 }

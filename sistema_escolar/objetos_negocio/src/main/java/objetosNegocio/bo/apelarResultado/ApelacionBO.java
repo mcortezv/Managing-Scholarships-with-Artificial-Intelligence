@@ -1,6 +1,7 @@
 package objetosNegocio.bo.apelarResultado;
 import dto.apelacionResultado.ApelacionDTO;
 import interfaces.IFachadaGobierno;
+import objetosNegocio.adaptadores.apelacionResultado.ApelacionAdaptador;
 import objetosNegocio.bo.apelarResultado.interfaces.IApelacionBO;
 
 
@@ -12,6 +13,6 @@ public class ApelacionBO implements IApelacionBO {
     }
 
     public boolean registrarApelacion(ApelacionDTO apelacionDTO) {
-        return fachadaGobierno.registrarApelacion(apelacionDTO);
+        return fachadaGobierno.registrarApelacion(ApelacionAdaptador.toDTOGobierno(apelacionDTO));
     }
 }
