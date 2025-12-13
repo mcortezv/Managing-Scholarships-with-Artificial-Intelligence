@@ -35,7 +35,8 @@ import presentacion.styles.Button;
  */
 public class ListaActividades extends PanelActividades {
     JPanel panelContenido;
-    
+    Button botonBuscar;
+    JTextField textField;
     
     public ListaActividades(ActividadesExtracurriculares actividadesExtracurriculares, CoordinadorAplicacionActividades coordinadorAplicacionActividades) {
         super(actividadesExtracurriculares, coordinadorAplicacionActividades);
@@ -59,7 +60,7 @@ public class ListaActividades extends PanelActividades {
         panelBusqueda.setLayout(new BoxLayout(panelBusqueda, BoxLayout.X_AXIS));
         panelBusqueda.setBackground(new Color(240, 240, 240));
         panelBusqueda.setMaximumSize(new Dimension(700, 40));
-        JTextField textField= new JTextField("Buscar por Nombre");
+        textField= new JTextField("Buscar por Nombre");
         textField.setMaximumSize(new Dimension(400, 40));
         textField.setPreferredSize(new Dimension(400, 40));
     //    textField.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -83,19 +84,14 @@ public class ListaActividades extends PanelActividades {
         });
         
         
-        Button botonBuscar = new Button("Buscar");
+        botonBuscar = new Button("Buscar");
         botonBuscar.setBackground(Color.GRAY);
         botonBuscar.setForeground(Color.WHITE);
         botonBuscar.setCursor(new Cursor(Cursor.HAND_CURSOR));
         botonBuscar.setMaximumSize(new Dimension(200, 40));
         botonBuscar.setPreferredSize(new Dimension(200, 40));
         
-        botonBuscar.addActionListener(e->{
-            System.out.println(textField.getText());
-            coordinadorAplicacionActividades.obtenerActividadPorNombre(textField.getText());
-          
-            
-        });
+
         
         panelBusqueda.add(Box.createHorizontalGlue());
         panelBusqueda.add(textField);
@@ -124,6 +120,10 @@ public class ListaActividades extends PanelActividades {
         
         centralPanel.add(scrollPane);
         cargarElementos();
+        
+        botonVolver.addActionListener(e->{
+                coordinadorAplicacionActividades.mostrarMenu();
+        });
        
        
     }
@@ -132,50 +132,64 @@ public class ListaActividades extends PanelActividades {
         ActividadesDTO actividadesDTO= coordinadorAplicacionActividades.obtenerActividades();
         panelContenido.removeAll();
         
+        for(ActividadDTO actividad: actividadesDTO.getActividades()){          
+             agregarBotonAlPanel(actividad);
+        } 
         
-        for(ActividadDTO actividad:actividadesDTO.getActividades()){
-            Button boton= new Button(actividad.getNombre());
-           
-            boton.setAlignmentX(Component.CENTER_ALIGNMENT);
-            boton.setBackground(new Color(60, 100, 220));
-            boton.setOpaque(true);
-            boton.setForeground(Color.WHITE);
-            boton.setCursor(new Cursor(Cursor.HAND_CURSOR));
-            boton.setMaximumSize(new Dimension(600, 50));
-            boton.setPreferredSize(new Dimension(600, 50));
+         botonBuscar.addActionListener(e->{
+            System.out.println(textField.getText());
+            ActividadDTO actividadBuscada= coordinadorAplicacionActividades.obtenerActividadPorNombre(textField.getText());
+            panelContenido.removeAll();
+            agregarBotonAlPanel(actividadBuscada);
+            panelContenido.revalidate();
+            panelContenido.repaint();
             
-            boton.addMouseListener(new MouseAdapter() {
-                    @Override
-                    public void mouseEntered(MouseEvent e) {
-                        boton.setBackground(new Color(100, 140, 240));
-                    }
-
-                    @Override
-                    public void mouseExited(MouseEvent e) {
-                        boton.setBackground(new Color(60, 100, 220));
-                    }
-                });
-            
-            panelContenido.add(boton);
-            panelContenido.add(Box.createVerticalStrut(5));
-            
-            boton.addActionListener(e->{
-             coordinadorAplicacionActividades.procesarActividadSeleccionada(actividad);
-               
-            });
-                
-      
-        }
-        
-        botonVolver.addActionListener(e->{
-                coordinadorAplicacionActividades.mostrarMenu();
         });
+        
+       
                 
         panelContenido.add(Box.createVerticalGlue());
         panelContenido.revalidate();
         panelContenido.repaint();
     }
-}
+    
+    private void agregarBotonAlPanel(ActividadDTO actividad){
+        
+        Button boton= new Button(actividad.getNombre());
+
+        boton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        boton.setBackground(new Color(60, 100, 220));
+        boton.setOpaque(true);
+        boton.setForeground(Color.WHITE);
+        boton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        boton.setMaximumSize(new Dimension(600, 50));
+        boton.setPreferredSize(new Dimension(600, 50));
+
+        boton.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseEntered(MouseEvent e) {
+                    boton.setBackground(new Color(100, 140, 240));
+                }
+
+                @Override
+                public void mouseExited(MouseEvent e) {
+                    boton.setBackground(new Color(60, 100, 220));
+                }
+            });
+
+        panelContenido.add(boton);
+        panelContenido.add(Box.createVerticalStrut(5));
+
+        boton.addActionListener(e->{
+         coordinadorAplicacionActividades.procesarActividadSeleccionada(actividad);
+
+        });
+                
+      
+        }        
+        
+    }
+
     
     
     
