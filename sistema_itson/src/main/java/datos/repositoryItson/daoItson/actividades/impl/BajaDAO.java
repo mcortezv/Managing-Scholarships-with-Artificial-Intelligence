@@ -7,6 +7,7 @@ package datos.repositoryItson.daoItson.actividades.impl;
 import com.mongodb.client.MongoCollection;
 import datos.configMongoItson.MongoClienteProvider;
 import datos.dominioItson.actividades.Baja;
+import datos.excepciones.DaoException;
 import datos.repositoryItson.daoItson.actividades.IBajaDAO;
 
 /**
@@ -21,9 +22,13 @@ public class BajaDAO implements IBajaDAO{
         this.col = MongoClienteProvider.INSTANCE.getCollection("bajaActividades", Baja.class);
     }
     
-    public Baja guardarBaja(Baja baja){
-        col.insertOne(baja);
-        return baja;
+    public Baja guardarBaja(Baja baja) throws DaoException{
+        try{
+            col.insertOne(baja);
+            return baja;
+        } catch(DaoException e){
+            throw new DaoException("Error al guardar baja en la base de datos");
+        }
         
     }
     

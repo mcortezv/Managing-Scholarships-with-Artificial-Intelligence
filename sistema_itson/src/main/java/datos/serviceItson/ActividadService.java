@@ -9,6 +9,8 @@ import datos.repositoryItson.daoItson.impl.ActividadDAO;
 import itson.actividades.ActividadesDTOItson;
 import datos.adaptadoresItson.actividades.ActividadAdaptador;
 import datos.dominioItson.actividades.Actividad;
+import datos.excepciones.DaoException;
+import datos.excepciones.ServiceException;
 import itson.actividades.ActividadDTOItson;
 import java.util.List;
 
@@ -27,15 +29,23 @@ public class ActividadService {
 
     
     public ActividadesDTOItson obtenerActividades(){
-        List<Actividad> actividades= actividadDAO.obtenerActividades();
-        return ActividadAdaptador.toResponseDTOListaAct(actividades);
+        try{
+            List<Actividad> actividades= actividadDAO.obtenerActividades();
+            return ActividadAdaptador.toResponseDTOListaAct(actividades);
+        } catch(DaoException e){
+            throw new ServiceException("Error al obtener las actividades", e);
+        }
          
        // return actividadDAO.obtenerActividades();
     }
     
     public ActividadDTOItson obtenerActividaddPorNombre(ActividadDTOItson actividad){
-        Actividad actividadEntity= actividadDAO.obtenerActividaddPorNombre(actividad.getNombre());
-        return ActividadAdaptador.toResponseDTOAct(actividadEntity);
+        try{
+            Actividad actividadEntity= actividadDAO.obtenerActividaddPorNombre(actividad.getNombre());
+            return ActividadAdaptador.toResponseDTOAct(actividadEntity);
+        } catch(DaoException e){
+            throw new ServiceException("Error al obtener actividad por nombre", e);
+        }
         
     } 
     

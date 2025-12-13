@@ -89,7 +89,13 @@ public class CoordinadorAplicacionActividades implements ICoordinadorAplicacionA
     
     //quizas mover esto 
     public ActividadesDTO obtenerActividades(){
-        return coordinadorNegocioActividades.obtenerActividades();
+        try{
+            return coordinadorNegocioActividades.obtenerActividades();
+        } catch(ActividadesException e ){
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Aviso", JOptionPane.WARNING_MESSAGE);
+        }
+        return new ActividadesDTO();
+        
     }
     public ActividadDTO obtenerActividadPorNombre(String nombre){
         if(nombre==null || nombre.trim().isEmpty()){     

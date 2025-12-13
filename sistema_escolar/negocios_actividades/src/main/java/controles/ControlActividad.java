@@ -39,12 +39,16 @@ public class ControlActividad {
             }
             return actividadesDTO;
         } catch (Exception ex) {
-            throw new ActividadesException(ex.getMessage());
+            throw new ActividadesException("Error al consultar actividades: " + ex.getMessage());
         }
     }
     
      public ActividadDTO obtenerActividadPorNombre(ActividadDTO actividadDTO){
-         return actividadBO.obtenerActividadPorNombre(actividadDTO);
+         try{
+             return actividadBO.obtenerActividadPorNombre(actividadDTO);
+         } catch(Exception e){
+             throw new ActividadesException("Error al buscar actividad: " + e.getMessage());
+         }
      }
 
     public GruposResponseDTO obtenerGrupos(ActividadDTO actividadDTO) {
@@ -56,12 +60,13 @@ public class ControlActividad {
             return gruposDTO;
             } catch(ActividadesException e){
                     throw e;
+            } catch(Exception ex){
+                throw new ActividadesException("Error al obtener grupos: " + ex.getMessage());
+         }     
+        }
                     
 
-        } catch (Exception ex) {
-            throw new ActividadesException("Error al obtener grupos" + ex.getMessage());
-        }
-    }
+    
 
 
 //    public InscripcionDTO inscribirActividad(InscripcionDTO inscripcionDTO) {
@@ -80,11 +85,20 @@ public class ControlActividad {
 //    }
     
     public InscripcionDTO inscribirActividad(InscripcionDTO inscripcionDTO){
-        InscripcionDTO inscripcionExterno= inscribirActividadExterno(inscripcionDTO);
-        if(inscripcionExterno!=null){
-            inscribirActividadLocal(inscripcionDTO);
+        try{
+            InscripcionDTO inscripcionExterno= inscribirActividadExterno(inscripcionDTO);
+            if(inscripcionExterno!=null){
+                return inscribirActividadLocal(inscripcionDTO);
+            } else{
+              throw new ActividadesException("El sistema externo rechazó la inscripción.");
+            }
+        } catch(ActividadesException e){
+            throw e;
+        } catch(Exception e){
+            throw new ActividadesException("Error en el proceso de inscripción: " + e.getMessage());
         }
-        return inscripcionExterno;
+        
+            
     }
     
     public InscripcionDTO inscribirActividadExterno(InscripcionDTO inscripcionDTO){
@@ -94,17 +108,20 @@ public class ControlActividad {
     
     
     public InscripcionDTO inscribirActividadLocal(InscripcionDTO inscripcionDTO){
-        EstudianteDTO estudianteDTOEncontrado= buscarEstudiantePorMatricula(inscripcionDTO.getMatriculaEstudiante());
-        if(estudianteDTOEncontrado!=null){
-            inscripcionDTO.setIdEstudiante(estudianteDTOEncontrado.getId());
-        }   
-        if(estudianteDTOEncontrado==null){
-            EstudianteDTO estudianteGuardado= guardarEstudiante(inscripcionDTO.getMatriculaEstudiante());
-            inscripcionDTO.setIdEstudiante(estudianteGuardado.getId());
-            
+        try{
+            EstudianteDTO estudianteDTOEncontrado= buscarEstudiantePorMatricula(inscripcionDTO.getMatriculaEstudiante());
+            if(estudianteDTOEncontrado!=null){
+                inscripcionDTO.setIdEstudiante(estudianteDTOEncontrado.getId());
+            }   
+            if(estudianteDTOEncontrado==null){
+                EstudianteDTO estudianteGuardado= guardarEstudiante(inscripcionDTO.getMatriculaEstudiante());
+                inscripcionDTO.setIdEstudiante(estudianteGuardado.getId());
+
+            }
+             return inscripcionBO.inscribirActividadLocal(inscripcionDTO);
+        } catch(Exception e){
+            throw new ActividadesException("Inscripción exitosa en itson, pero error al guardar en local " + e.getMessage());   
         }
-         return inscripcionBO.inscribirActividadLocal(inscripcionDTO);
-         
     }
     
     public EstudianteDTO buscarEstudiantePorMatricula(String matricula){
@@ -156,9 +173,7 @@ public class ControlActividad {
              } else{
                  throw new ActividadesException("Se actualizó el sistema externo, pero hubo un error al guardar la baja localmente");
              }
-        
         } else{
-            System.out.println("itson");
             throw new ActividadesException("El sistema externo no pudo procesar la baja");
         }
         

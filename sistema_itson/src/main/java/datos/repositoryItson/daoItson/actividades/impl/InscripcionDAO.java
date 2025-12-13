@@ -10,6 +10,7 @@ import com.mongodb.client.model.Updates;
 import com.mongodb.client.result.UpdateResult;
 import datos.configMongoItson.MongoClienteProvider;
 import datos.dominioItson.actividades.Inscripcion;
+import datos.excepciones.DaoException;
 import datos.repositoryItson.daoItson.actividades.IInscripcionDAO;
 import itson.actividades.GrupoResponseDTOItson;
 import itson.actividades.InscripcionDTOItson;
@@ -29,28 +30,26 @@ public class InscripcionDAO implements IInscripcionDAO {
         this.col = MongoClienteProvider.INSTANCE.getCollection("inscripcion", Inscripcion.class);
     }
 
-    public Inscripcion InscribirGrupo(Inscripcion inscripcion) {
+    public Inscripcion InscribirGrupo(Inscripcion inscripcion) throws DaoException{
         try {
             col.insertOne(inscripcion);
             return inscripcion;
-        } catch (Exception e) {
-            return null;
+        } catch (DaoException e) {
+             throw new DaoException("Error al inscribir grupo en la base de datos");
         }
     }
 
-    public List<Inscripcion> obtenerInscripciones(String matricula) {
-        List<Inscripcion> listaInscripciones = new ArrayList<>();
-        try {
+    public List<Inscripcion> obtenerInscripciones(String matricula)throws DaoException {
+        try{
+            List<Inscripcion> listaInscripciones = new ArrayList<>();
             col.find(Filters.and(
                     Filters.eq("estudiante.matricula", matricula),
                     Filters.eq("estado", "ACTIVA")
             )).into(listaInscripciones);
-
-        } catch (Exception e) {
-            System.out.println("error al obtener inscripciones" + e.getMessage());
+            return listaInscripciones;
+        } catch (DaoException e) {
+            throw new DaoException("Error al obtener inscripciones en la base de datos");
         }
-        return listaInscripciones;
-
     }
 
     public boolean actualizarEstado(ObjectId idInscripcion) {
@@ -60,9 +59,8 @@ public class InscripcionDAO implements IInscripcionDAO {
                     Updates.set("estado", "BAJA")
             );
             return resultado.getModifiedCount() > 0;
-        } catch(Exception e){
-            System.out.println("error en dao");
-            return false;
+        } catch(DaoException e){
+            throw new DaoException("Error al actualizar estado de inscripcion de la base de datos");
         }
     }
 
