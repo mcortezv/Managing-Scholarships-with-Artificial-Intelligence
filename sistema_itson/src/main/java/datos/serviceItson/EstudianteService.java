@@ -2,6 +2,7 @@ package datos.serviceItson;
 import datos.excepciones.DaoException;
 import itson.LoginDTOItson;
 import datos.dominioItson.Estudiante;
+import datos.excepciones.ServiceException;
 import datos.repositoryItson.daoItson.impl.EstudianteDAO;
 
 public class EstudianteService {
@@ -25,7 +26,11 @@ public class EstudianteService {
     }
     
     public Estudiante solicitarDatosEstudiante(Long matricula){
+        try{
         return estudianteDAO.findByMatricula(matricula).orElse(null);
+        } catch(DaoException e){
+            throw new ServiceException("Error al solicitar datos del estudiante", e);
+        }
     }
     
     
