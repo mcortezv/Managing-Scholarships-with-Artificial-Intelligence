@@ -1,9 +1,10 @@
 package interfaces;
-import dto.apelacionResultado.ApelacionDTO;
 import gobierno.BecasDisponiblesDTOGobierno;
 import gobierno.EstudianteDTOGobierno;
 import gobierno.RequisitosDTOGobierno;
 import gobierno.SolicitudDTOGobierno;
+import gobierno.apelacion.ApelacionDTOGobierno;
+
 import java.util.List;
 
 /**
@@ -31,5 +32,5 @@ public interface IFachadaGobierno {
 
     List<SolicitudDTOGobierno> obtenerSolicitudesPorEstudiante(EstudianteDTOGobierno estudianteDTO);
 
-    boolean registrarApelacion(ApelacionDTO apelacionDTO);
+    boolean registrarApelacion(ApelacionDTOGobierno apelacionDTO);
 }

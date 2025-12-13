@@ -118,4 +118,23 @@ public class HistorialAcademicoAdaptador {
             throw new BecasFiltradasAdaptadorException("Error al convertir entidad HistorialAcademico a HistorialAcademicoDTOGobierno");
         }
     }
+
+    public static HistorialAcademico toEntity(HistorialAcademicoDTOGobierno dto) {
+        try {
+            if (dto == null) return null;
+
+            HistorialAcademico entity = new HistorialAcademico();
+            if (dto.getCarrera() != null) {
+                entity.setCarrera(Carrera.valueOf(dto.getCarrera()));
+            }
+            entity.setPromedio(dto.getPromedio());
+            entity.setPorcentajeBajas(dto.getPorcentajeBajas());
+            entity.setCargaAcademica(dto.getCargaAcademica());
+            entity.setSemestre(dto.getSemestre());
+            entity.setIndiceReprobacion(dto.getIndiceReprobacion());
+            return entity;
+        } catch (Exception ex) {
+            throw new HistorialAcademicoAdaptadorException("Error al convertir HistorialAcademicoDTOGobierno a entidad: " + ex.getMessage());
+        }
+    }
 }

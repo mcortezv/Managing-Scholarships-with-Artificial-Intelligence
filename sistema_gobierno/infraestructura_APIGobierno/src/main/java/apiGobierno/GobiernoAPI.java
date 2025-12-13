@@ -6,6 +6,7 @@ import gobierno.BecasDisponiblesDTOGobierno;
 import gobierno.EstudianteDTOGobierno;
 import gobierno.RequisitosDTOGobierno;
 import gobierno.SolicitudDTOGobierno;
+import gobierno.apelacion.ApelacionDTOGobierno;
 
 import java.util.List;
 
@@ -38,5 +39,10 @@ public class GobiernoAPI implements IGobiernoAPI {
     @Override
     public List<SolicitudDTOGobierno> obtenerListaSolicitudesPorEstudiante(EstudianteDTOGobierno estudianteDTO) {
         return gobiernoControl.obtenerListaSolicudesPorEstudiante(estudianteDTO);
+    }
+
+    @Override
+    public boolean registrarApelacion(ApelacionDTOGobierno apelacionDTOGobierno) {
+        return gobiernoControl.registrarApelacion(apelacionDTOGobierno);
     }
 }

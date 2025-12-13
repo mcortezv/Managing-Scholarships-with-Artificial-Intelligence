@@ -141,4 +141,41 @@ public class EstudianteAdaptador {
             throw new BecasFiltradasAdaptadorException("Error al convertir entidad Estudiante a EstudianteDTOGobierno");
         }
     }
+
+    /**
+     * Convierte un DTO de Gobierno a una Entidad de Negocio
+     */
+    public static Estudiante toEntity(EstudianteDTOGobierno dto) {
+        try {
+            if (dto == null) return null;
+
+            Estudiante estudiante = new Estudiante();
+            estudiante.setMatricula(dto.getMatricula());
+            estudiante.setNombre(dto.getNombre());
+            if (dto.getCarrera() != null) {
+                estudiante.setCarrera(Carrera.valueOf(dto.getCarrera()));
+            }
+
+            estudiante.setTelefono(dto.getTelefono());
+            estudiante.setDireccion(dto.getDireccion());
+            estudiante.setCorreo(dto.getCorreo());
+
+            if (dto.getTutor() != null) {
+                Tutor tutor = new Tutor();
+                tutor.setNombre(dto.getTutor().getNombre());
+                tutor.setDireccion(dto.getTutor().getDireccion());
+                tutor.setCorreo(dto.getTutor().getCorreo());
+                tutor.setTelefono(dto.getTutor().getTelefono());
+                if (dto.getTutor().getParentesco() != null) {
+                    tutor.setParentesco(Parentesco.valueOf(dto.getTutor().getParentesco()));
+                }
+
+                estudiante.setTutor(tutor);
+            }
+
+            return estudiante;
+        } catch (Exception ex) {
+            throw new EstudianteAdaptadorException("Error al convertir EstudianteDTOGobierno a entidad Estudiante: " + ex.getMessage());
+        }
+    }
 }

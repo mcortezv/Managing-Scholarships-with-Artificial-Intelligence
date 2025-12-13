@@ -1,14 +1,13 @@
-package dto.apelacionResultado;
+package gobierno.apelacion;
 
-import solicitarBeca.SolicitudDTO;
-
-public class ApelacionDTO {
+public class ApelacionDTOGobierno {
     private Long idSolicitudApelacion;
     private String redaccion;
     private Long idEstudiante;
     private String fechaApelacion;
 
-    public ApelacionDTO(){}
+    public ApelacionDTOGobierno() {
+    }
 
     public Long getIdSolicitudApelacion() {
         return idSolicitudApelacion;
@@ -40,11 +39,5 @@ public class ApelacionDTO {
 
     public void setFechaApelacion(String fechaApelacion) {
         this.fechaApelacion = fechaApelacion;
-    }
-
-    public void setSolicitud(SolicitudDTO solicitudDTO) {
-    }
-
-    public void setMotivo(String motivo) {
     }
 }

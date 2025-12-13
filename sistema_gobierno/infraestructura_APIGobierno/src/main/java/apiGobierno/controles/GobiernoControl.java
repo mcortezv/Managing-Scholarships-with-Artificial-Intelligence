@@ -5,6 +5,8 @@ import gobierno.BecasDisponiblesDTOGobierno;
 import gobierno.EstudianteDTOGobierno;
 import gobierno.RequisitosDTOGobierno;
 import gobierno.SolicitudDTOGobierno;
+import gobierno.apelacion.ApelacionDTOGobierno;
+
 import java.util.List;
 
 /**
@@ -46,5 +48,9 @@ public class GobiernoControl {
 
     public List<SolicitudDTOGobierno> obtenerListaSolicudesPorEstudiante(EstudianteDTOGobierno estudianteDTO){
         return solicitudService.obtenerListaSolicudesPorEstudiante(estudianteDTO);
+    }
+
+    public boolean registrarApelacion(ApelacionDTOGobierno apelacionDTOGobierno){
+        return true;
     }
 }
