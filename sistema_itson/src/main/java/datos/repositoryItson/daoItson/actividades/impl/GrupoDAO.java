@@ -11,6 +11,7 @@ import com.mongodb.client.result.UpdateResult;
 import datos.configMongoItson.MongoClienteProvider;
 import datos.dominioItson.actividades.Actividad;
 import datos.dominioItson.actividades.Grupo;
+import datos.excepciones.DaoException;
 import datos.repositoryItson.daoItson.IGrupoDAO;
 import itson.actividades.InscripcionDTOItson;
 import java.time.LocalDate;
@@ -35,28 +36,31 @@ public class GrupoDAO implements IGrupoDAO{
 
     
     // la esta buscando por nombre, no por ID 
-    public List<Grupo> obtenerGrupos(Actividad actividad) {
-        Bson filtro = Filters.and(
-                Filters.eq("actividad.id", actividad.getId()),
-                Filters.gt("cupoDisponible", 0),
-                Filters.gte("fechaLimiteInscripcion", new Date())
-        );
+    public List<Grupo> obtenerGrupos(Actividad actividad) throws DaoException{
+        try{
+            Bson filtro = Filters.and(
+                    Filters.eq("actividad.id", actividad.getId()),
+                    Filters.gt("cupoDisponible", 0),
+                    Filters.gte("fechaLimiteInscripcion", new Date())
+            );
 
-        return col.find(filtro).into(new ArrayList<>());
+            return col.find(filtro).into(new ArrayList<>());
+        } catch(DaoException e){
+            throw new DaoException("Error al obtener grupos en la base de datos");
+        }
 
     }
 
-    public Grupo obtenerGrupoInscrito(ObjectId idGrupo) {
+    public Grupo obtenerGrupoInscrito(ObjectId idGrupo) throws DaoException{
         try {
             return col.find(Filters.eq("_id", idGrupo)).first();
-        } catch (Exception e) {
-            System.out.println("no se ha podido recuperar el grupo");
+        } catch (DaoException e) {
+            throw new DaoException("Error al obtener grupos inscritos en la base de datos");
         }
-        return null;
 
     }
     
-    public boolean actualizarCupo(ObjectId idGrupo){
+    public boolean actualizarCupo(ObjectId idGrupo) throws DaoException{
         try{
             Bson filtro = Filters.and(
                     Filters.eq("_id", idGrupo),
@@ -67,20 +71,27 @@ public class GrupoDAO implements IGrupoDAO{
                     Updates.inc("cupoDisponible", -1)
             );
             return resultado.getModifiedCount()>0;
-        } catch(Exception e){
-            System.out.println("error al actualizar"+e.getMessage());
-            return false;
+        } catch(DaoException e){
+            throw new DaoException("Error al actualizar cupo del grupo en la base de datos");
         }
     }
     
-     public LocalDate revisarFechaLimite(ObjectId idGrupo){
-         Grupo grupo = col.find(Filters.eq("_id", idGrupo)).first();
-         return grupo.getFechaLimiteInscripcion();
+     public LocalDate revisarFechaLimite(ObjectId idGrupo) throws DaoException{
+         try{
+            Grupo grupo = col.find(Filters.eq("_id", idGrupo)).first();
+            return grupo.getFechaLimiteInscripcion();
+         } catch(DaoException e){
+             throw new DaoException("Error al obtener fecha limite de inscripcion en la base de datps");
+         }
      }
      
-     public int revisarCupoDisponible(ObjectId idGrupo){
-         Grupo grupo = col.find(Filters.eq("_id", idGrupo)).first();
-         return grupo.getCupoDisponible();
+     public int revisarCupoDisponible(ObjectId idGrupo) throws DaoException{
+         try{
+            Grupo grupo = col.find(Filters.eq("_id", idGrupo)).first();
+            return grupo.getCupoDisponible();
+         } catch(DaoException e){
+             throw new DaoException("Error al intentar obtener cupo disponible de la base de datos");
+         }
      }
        
 }

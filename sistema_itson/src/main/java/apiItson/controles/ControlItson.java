@@ -11,6 +11,7 @@ import datos.serviceItson.pagarAdeudo.PrestamoService;
 import datos.serviceItson.pagarAdeudo.SolicitudPagoService;
 import itson.LoginDTOItson;
 import datos.dominioItson.Estudiante;
+import datos.excepciones.ServiceException;
 
 import datos.serviceItson.EstudianteService;
 import datos.serviceItson.GrupoService;
@@ -99,18 +100,28 @@ public class ControlItson {
     public InscripcionDTOItson inscribirActividadExterno(InscripcionDTOItson inscripcionDTOItson){
         Estudiante est= solicitarDatosEstudiante((Long.valueOf(inscripcionDTOItson.getMatriculaEstudiante())));
         inscripcionDTOItson.setIdEstudiante(String.valueOf(est.getId()));
-        if(revisarCupoDisponible(inscripcionDTOItson) && revisarFechaLimite(inscripcionDTOItson)){
-              InscripcionDTOItson inscripcionExterna= inscripcionService.inscribirActividadExterno(inscripcionDTOItson);
-              actualizarCupoDisponible(inscripcionDTOItson);
-              return inscripcionExterna;
-        } else{
-            System.out.println("no se pudo inscribir por cupos");
-            return null;
+        if(!revisarCupoDisponible(inscripcionDTOItson)){
+            throw new ServiceException("No se pudo inscribir, el grupo seleccionado ya no tiene cupos disponible.");
+        } 
+        if(!revisarFechaLimite(inscripcionDTOItson)) {
+            throw new ServiceException("No se pudo inscribir: La fecha límite de inscripción para este grupo ha vencido.");
         }
+ 
+       // if(revisarCupoDisponible(inscripcionDTOItson) && revisarFechaLimite(inscripcionDTOItson)){
+         InscripcionDTOItson inscripcionExterna= inscripcionService.inscribirActividadExterno(inscripcionDTOItson);
+         actualizarCupoDisponible(inscripcionDTOItson);
+          return inscripcionExterna;
     }
+//        } else{
+//            System.out.println("no se pudo inscribir por cupos");
+//            return null;
+//        }
+//    }
     
     
     //excepciones inscribir 
+    
+    
     
     //              cupos disponibles 
     public boolean actualizarCupoDisponible(InscripcionDTOItson inscripcionDTOItson){
@@ -119,21 +130,13 @@ public class ControlItson {
     
     public boolean revisarCupoDisponible(InscripcionDTOItson inscripcionDTOItson){
         int cupoDisponible= grupoService.revisarCupoDisponible(inscripcionDTOItson.getIdGrupo());
-        if(cupoDisponible>0){
-            return true;
-        } else{
-            return false;
-        }
+        return cupoDisponible>0;
     }
     
     //              fecha limite de inscripcion
     public boolean revisarFechaLimite(InscripcionDTOItson inscripcionDTOItson){
         LocalDate fecha= grupoService.revisarFechaLimite(inscripcionDTOItson.getIdGrupo());
-        if(fecha.isBefore(LocalDate.now())){
-            return false;
-        } else{
-            return true;
-        }
+        return !fecha.isBefore(LocalDate.now());
     }
 
 
@@ -148,25 +151,12 @@ public class ControlItson {
     public BajaDTOItson darBajaActividad(BajaDTOItson baja){
         BajaDTOItson bajaDTO= inscripcionService.darBajaActividad(baja);
         if(bajaDTO!=null){
-            boolean actualizado= actualizarEstadoInscripcion(baja.getIdInscripcion());
-            if(!actualizado){
-                System.out.println("baja creada pero no actualizada");
-            }
+             actualizarEstadoInscripcion(baja.getIdInscripcion());
         }
         return bajaDTO;
     }
     
-    public boolean actualizarEstadoInscripcion(String idInscripcion){
-        try{
-            return inscripcionService.actualizarEstadoInscripcion(idInscripcion);
-        } catch(IllegalArgumentException e){
-            System.out.println("id sin formato valido");
-            return false;
-        } catch(Exception e){
-            System.out.println("error al actualozar"+e.getMessage());
-            e.printStackTrace();
-            return false;
-        }
-        
+    public boolean actualizarEstadoInscripcion(String idInscripcion){ 
+            return inscripcionService.actualizarEstadoInscripcion(idInscripcion);    
     }
 }
