@@ -65,32 +65,60 @@ public class ControlItson {
 
     // caso de uso actividades
     public ActividadesDTOItson obtenerActividades() {
-        return api.soloicitarActividades();
+        try{
+         return api.soloicitarActividades();
+        } catch(Exception e){
+            throw new InfraestructuraItsonException("Error desconocido por parte de la API al obtener actividades"+e.getMessage());
+        }
     }
     
     public ActividadDTOItson obtenerActividaddPorNombre(ActividadDTOItson actividad){
-        return api.obtenerActividaddPorNombre(actividad);
+        try{
+          return api.obtenerActividaddPorNombre(actividad);
+        } catch(Exception e){
+            throw new InfraestructuraItsonException("Error desconocido por parte de la API al obtener actividades por nombre "+e.getMessage());
+        }
     }
 
     public GruposResponseDTOItson obtenerGrupos(ActividadDTOItson actividadDTOItson) {
-        return api.solicitarGrupos(actividadDTOItson);
+        try{
+          return api.solicitarGrupos(actividadDTOItson);
+        } catch(Exception e){
+            throw new InfraestructuraItsonException("Error desconocido por parte de la API al obtener los grupos "+e.getMessage());
+        }
     }
 
     public InscripcionDTOItson inscribirActividadExterno(InscripcionDTOItson inscripcionDTOItson) {
-        return api.inscribirActividadExterno(inscripcionDTOItson);
+        try{
+            return api.inscribirActividadExterno(inscripcionDTOItson);
+        } catch(Exception e){
+            throw new InfraestructuraItsonException("Error desconocido por parte de la API al inscribir actvidad en externo "+e.getMessage());
+        }
     }
     
     public InscripcionesDTOItson obtenerInscripciones(EstudianteDTOItson estudianteDTO){
-        return api.obtenerInscripciones(estudianteDTO);
+        try{
+           return api.obtenerInscripciones(estudianteDTO);
+         } catch(Exception e){
+             throw new InfraestructuraItsonException("Error desconocido por parte de la API al obtener las inscripciones "+e.getMessage());
+         }
     }
     
     public GrupoResponseDTOItson obtenerGrupoInscrito(InscripcionDTOItson inscripcion){
-        GrupoResponseDTOItson grupo= api.obtenerGrupoInscrito(inscripcion);
-        return grupo;
+        try{
+            GrupoResponseDTOItson grupo= api.obtenerGrupoInscrito(inscripcion);
+            return grupo;
+        } catch(Exception e){
+            throw new InfraestructuraItsonException("Error desconocido por parte de la API al obtener grupo inscrito "+e.getMessage());
+        }
     }
     
     public BajaDTOItson darBajaActividad(BajaDTOItson baja){
-        return api.darBajaActividad(baja);
+        try{
+           return api.darBajaActividad(baja);
+        } catch(Exception e){
+            throw new InfraestructuraItsonException("Error desconocido por parte de la API al dar de baja actividad  "+e.getMessage());
+        }
     }
 
 //    public boolean actualizarEstadoInscripcion(String idInscripcion){
