@@ -1,7 +1,5 @@
 package presentacion;
 
-
-import itson.LoginDTOItson;
 import presentacion.actividadesExtracurriculares.coordinador.CoordinadorAplicacionActividades;
 import presentacion.actividadesExtracurriculares.panels.ActividadesExtracurriculares;
 import presentacion.apelarResultado.ApelarResultado;
