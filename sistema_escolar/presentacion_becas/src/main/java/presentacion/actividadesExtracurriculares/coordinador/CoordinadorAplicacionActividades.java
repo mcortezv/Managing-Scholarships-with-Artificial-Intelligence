@@ -24,6 +24,7 @@ import javax.swing.JOptionPane;
 
 import presentacion.CoordinadorAplicacion;
 import presentacion.actividadesExtracurriculares.coordNegocio.CoordinadorNegocioActividades;
+import presentacion.actividadesExtracurriculares.coordNegocio.ICoordNegocioActividades;
 import presentacion.actividadesExtracurriculares.panels.ActividadesExtracurriculares;
 import presentacion.actividadesExtracurriculares.panels.DetalleGrupo;
 import presentacion.actividadesExtracurriculares.panels.ListaInscripciones;
@@ -42,7 +43,7 @@ public class CoordinadorAplicacionActividades implements ICoordinadorAplicacionA
     
   //  private MainFrameActividades mainFrameActividades;
     private ActividadesExtracurriculares actividades;
-    private final CoordinadorNegocioActividades coordinadorNegocioActividades;
+    private final ICoordNegocioActividades coordinadorNegocioActividades;
     private final CoordinadorAplicacion coordinadorPadre;
     private ActividadDTO actividadSeleccionada;
     private GruposResponseDTO gruposResponseDTO;
@@ -53,9 +54,9 @@ public class CoordinadorAplicacionActividades implements ICoordinadorAplicacionA
     private GrupoDTO grupoActividadDTO;
 //    private InscripcionDTO inscripcionDTO;
     
-    public CoordinadorAplicacionActividades(IFachadaActividad fachadaActividad, CoordinadorAplicacion coordinadorAplicacion){
+    public CoordinadorAplicacionActividades(ICoordNegocioActividades coordinadorNegocio, CoordinadorAplicacion coordinadorAplicacion){
         this.coordinadorPadre = coordinadorAplicacion;
-        coordinadorNegocioActividades= new CoordinadorNegocioActividades(fachadaActividad);
+        this.coordinadorNegocioActividades= coordinadorNegocio;
 
     }
     

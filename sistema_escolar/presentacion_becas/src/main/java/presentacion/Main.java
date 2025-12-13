@@ -33,6 +33,8 @@ import objetosNegocio.bo.actividades.interfaces.IGrupoBO;
 import objetosNegocio.bo.actividades.interfaces.IInscripcionBO;
 import objetosNegocio.bo.actividades.EstudianteBOAct;
 import objetosNegocio.bo.actividades.GrupoBO;
+import presentacion.actividadesExtracurriculares.coordNegocio.CoordinadorNegocioActividades;
+import presentacion.actividadesExtracurriculares.coordNegocio.ICoordNegocioActividades;
 import presentacion.tutorias.coordinadorAplicacion.CoordinadorAplicacionTutorias;
 import presentacion.tutorias.coordinadorNegocio.CoordinadorNegocioTutorias;
 import solicitarBeca.repository.dao.interfaces.IDocumentoDAO;
@@ -83,6 +85,7 @@ public class Main {
         IInscripcionBO inscripcionBO= new InscripcionBO(fachadaITSON, inscripcionDAO,  bajaDAO);
         ControlActividad controlActividad= new ControlActividad(actividadBO, grupoBO, inscripcionBO, estudianteBOAct);
         IFachadaActividad fachadaAct = new FachadaActividad(controlActividad);
+        ICoordNegocioActividades coordinadorNegocio= new CoordinadorNegocioActividades(fachadaAct);
 
         ISolicitudDAO solicitudDAO = new SolicitudDAO();
         IEstudianteDAO estudianteDAO = new EstudianteDAO();
@@ -112,7 +115,7 @@ public class Main {
         CoordinadorAplicacionApelarResultado coordinadorAplicacionApelarResultad = new CoordinadorAplicacionApelarResultado(iCoordinadorNegocioApelarResultado,coordinadorAplicacion);
 
         //actividades
-        CoordinadorAplicacionActividades coordinadorAplicacionActividades = new CoordinadorAplicacionActividades(fachadaAct, coordinadorAplicacion);
+        CoordinadorAplicacionActividades coordinadorAplicacionActividades = new CoordinadorAplicacionActividades(coordinadorNegocio, coordinadorAplicacion);
 
         //---------------TUTORÍAS------------
         ControlTutorias controlTutorias = new ControlTutorias();
