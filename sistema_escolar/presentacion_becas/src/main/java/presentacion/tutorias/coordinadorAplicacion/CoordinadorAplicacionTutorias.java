@@ -292,7 +292,14 @@ public class CoordinadorAplicacionTutorias implements ICoordinadorAplicacionTuto
         panel.setHistorial(historial);
     }
     
+    @Override
+    public void filtrarHistorialPorFechaYMateria(LocalDate fecha, Long idMateria) {
+        List<CitaDTO> historial = coordinadorNegocio.obtenerHistorialPorFechaYMateria(fecha, idMateria);
 
+        PanelHistorial panel = (PanelHistorial) tutorias.getPanel("historial");
+        panel.setHistorial(historial);
+    }
+    
     private CitaDTO construirCitaTemporal() {
         CitaDTO cita = new CitaDTO();
         

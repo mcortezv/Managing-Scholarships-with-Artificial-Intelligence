@@ -39,6 +39,7 @@ public class PanelHistorial extends PanelTutorias {
     private Button btnFiltrarFecha;
     private Button btnFiltrarMateria;
     private Button btnMostrarTodo;
+    private Button btnFiltrarAmbos;
     private JTable tablaHistorial;
     private DefaultTableModel modeloTabla;
     
@@ -88,6 +89,9 @@ public class PanelHistorial extends PanelTutorias {
         btnMostrarTodo = new Button("Mostrar Todo");
         filtrosPanel.add(btnMostrarTodo);
         
+        btnFiltrarAmbos = new Button("Filtrar Ambos");
+        filtrosPanel.add(btnFiltrarAmbos);
+        
         centralPanel.add(filtrosPanel);
         centralPanel.add(Box.createVerticalStrut(Style.BLOQUE_ESPACIO));
         
@@ -119,6 +123,7 @@ public class PanelHistorial extends PanelTutorias {
             cmbMaterias.setSelectedIndex(-1);
             coordinadorAplicacion.mostrarHistorial();
         });
+        btnFiltrarAmbos.addActionListener(e -> filtrarPorFechaYMateria());
         
         btnBack.addActionListener(e -> mainFrame.showPanel("menuTutorias"));
     }
@@ -159,6 +164,26 @@ public class PanelHistorial extends PanelTutorias {
         coordinadorAplicacion.filtrarHistorialPorMateria(materiaSeleccionada.getId());
     }
     
+    private void filtrarPorFechaYMateria(){
+        Date fechaSeleccionada = dateChooser.getDate();
+        MateriaDTO materiaSeleccionada = (MateriaDTO) cmbMaterias.getSelectedItem();
+
+        if (fechaSeleccionada == null || materiaSeleccionada == null) {
+            JOptionPane.showMessageDialog(
+                mainFrame,
+                "Debe seleccionar fecha y materia",
+                "Advertencia",
+                JOptionPane.WARNING_MESSAGE
+            );
+            return;
+        }
+
+        LocalDate fecha = fechaSeleccionada.toInstant()
+            .atZone(ZoneId.systemDefault())
+            .toLocalDate();
+
+        coordinadorAplicacion.filtrarHistorialPorFechaYMateria(fecha, materiaSeleccionada.getId());
+    }
     
     public void setHistorial(List<CitaDTO> citas) {
         modeloTabla.setRowCount(0);

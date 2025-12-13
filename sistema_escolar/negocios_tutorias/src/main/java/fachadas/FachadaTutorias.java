@@ -9,7 +9,6 @@ import dto.tutorias.CitaDTO;
 import dto.tutorias.HorarioDTO;
 import dto.tutorias.MateriaDTO;
 import dto.tutorias.TutorDTO;
-import excepciones.TutoriasException;
 import interfaces.IFachadaTutorias;
 import java.time.LocalDate;
 import java.util.List;
@@ -60,30 +59,20 @@ public class FachadaTutorias implements IFachadaTutorias{
         return control.obtenerHistorialPorMateria(matriculaAlumno, idMateria);
     }
     
-//    @Override
-//    public List<CitaDTO> obtenerHistorialPorFechaYMateria(Long matriculaAlumno, LocalDate fecha, Long idMateria) {
-//        return control.obtenerHistorialPorFechaYMateria(matriculaAlumno, fecha, idMateria);
-//    }
+    @Override
+    public List<CitaDTO> obtenerHistorialPorFechaYMateria(Long matriculaAlumno, LocalDate fecha, Long idMateria) {
+        return control.obtenerHistorialPorFechaYMateria(matriculaAlumno, fecha, idMateria);
+    }
     
     @Override
     public List<TutorDTO> obtenerTodosLosTutores() {
         return control.obtenerTodosLosTutores();
     }
     
-//    @Override
-//    public TutorDTO obtenerTutorPorId(Long idTutor) {
-//        return control.obtenerTutorPorId(idTutor);
-//    }
-    
     @Override
     public List<MateriaDTO> obtenerTodasLasMaterias() {
         return control.obtenerTodasLasMaterias();
     }
-    
-//    @Override
-//    public MateriaDTO obtenerMateriaPorId(Long idMateria) {
-//        return control.obtenerMateriaPorId(idMateria);
-//    }
     
     @Override
     public List<HorarioDTO> obtenerHorariosDisponibles(Long idTutor, LocalDate fecha) {

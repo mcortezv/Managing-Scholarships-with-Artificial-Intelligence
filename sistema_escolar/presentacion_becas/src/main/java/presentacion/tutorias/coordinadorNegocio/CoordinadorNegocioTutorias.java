@@ -80,6 +80,11 @@ public class CoordinadorNegocioTutorias implements ICoordinadorNegocioTutorias{
     }
     
     @Override
+    public List<CitaDTO> obtenerHistorialPorFechaYMateria(LocalDate fecha, Long idMateria){
+        return fachada.obtenerHistorialPorFechaYMateria(matriculaAlumno, fecha, idMateria);
+    }
+    
+    @Override
     public boolean puedeAgendarCita() {
         return fachada.puedeAgendarCita(matriculaAlumno);
     }

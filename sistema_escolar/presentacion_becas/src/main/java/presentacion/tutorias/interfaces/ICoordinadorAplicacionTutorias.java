@@ -28,5 +28,6 @@ public interface ICoordinadorAplicacionTutorias {
     void cancelarCita(Long idCita);
     void filtrarHistorialPorFecha(LocalDate fecha);
     void filtrarHistorialPorMateria(Long idMateria);
+    void filtrarHistorialPorFechaYMateria(LocalDate fecha, Long idMateria);
     boolean intentarMostrarHorariosDisponibles();
 }
