@@ -60,6 +60,7 @@ public class MenuOpciones extends PanelActividades{
          });
          
          botonBaja.addActionListener(e->{
+             
              coordinadorAplicacionActividades.mostarListaInscripciones();
          });
          

@@ -124,7 +124,7 @@ public class CoordinadorAplicacionActividades implements ICoordinadorAplicacionA
        try{
         return coordinadorNegocioActividades.obtenerInscripciones(estudiante);
        } catch(ActividadesException ex){
-           JOptionPane.showMessageDialog(null, ex.getMessage(), "No se han encontrado inscripciones", JOptionPane.ERROR_MESSAGE);
+           JOptionPane.showMessageDialog(null, "no tienes inscripciones activas "+ ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
        }
        return null;
     }
@@ -134,7 +134,7 @@ public class CoordinadorAplicacionActividades implements ICoordinadorAplicacionA
        try{
             return coordinadorNegocioActividades.obtenerGrupos(actividadDTO);      
        } catch(ActividadesException ex){
-           JOptionPane.showMessageDialog(null, ex.getMessage());
+           JOptionPane.showMessageDialog(null, "Ha ocurrido un error al obtener "+ ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
        }
       return null;
     }
@@ -198,10 +198,7 @@ public class CoordinadorAplicacionActividades implements ICoordinadorAplicacionA
             inscripcionDTO.setNombreActividad(grupoSeleccionado.getNombreActividad());
             inscripcionDTO.setCosto(grupoSeleccionado.getCosto());
             inscripcionResponse= coordinadorNegocioActividades.inscribirActividad(inscripcionDTO);
-            System.out.println("en cord apl"+inscripcionDTO.getFechaInicio());
-             System.out.println("en cord apl"+inscripcionDTO.getFechaFin());
-              System.out.println("en cord apl"+inscripcionDTO.getFechaLimiteInscripcion());
-              System.out.println("en cord apl ins"+inscripcionDTO.getFechaInscripcion());
+
             if(inscripcionResponse!=null){
                 JOptionPane.showMessageDialog(null, "Inscripcion guardada con exito");
                 mostrarMenu();
@@ -232,6 +229,7 @@ public class CoordinadorAplicacionActividades implements ICoordinadorAplicacionA
     }
     
     public void mostarListaInscripciones(){
+       
         ListaInscripciones panel = (ListaInscripciones) actividades.getPanel("ListaInscripciones");
         panel.cargarElementos();
         actividades.showPanel("ListaInscripciones");
