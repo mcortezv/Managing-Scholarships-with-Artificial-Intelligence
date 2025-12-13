@@ -62,6 +62,10 @@ public class ItsonAPI implements IItsonAPI {
     public ActividadesDTOItson soloicitarActividades() {
         return controlItson.solicitarActividades();
     }
+    
+    public ActividadDTOItson obtenerActividaddPorNombre(ActividadDTOItson actividad){
+        return controlItson.obtenerActividaddPorNombre(actividad);
+    }
 
     public GruposResponseDTOItson solicitarGrupos(ActividadDTOItson actividad) {
         return controlItson.obtenerGrupos(actividad);

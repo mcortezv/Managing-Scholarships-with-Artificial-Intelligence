@@ -22,7 +22,9 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EmptyBorder;
 import presentacion.actividadesExtracurriculares.coordinador.CoordinadorAplicacionActividades;
 import presentacion.styles.Button;
@@ -52,10 +54,15 @@ public class ListaActividades extends PanelActividades {
         centralPanel.add(titulo);
         centralPanel.add(Box.createVerticalStrut(20));
         
+        
+        JPanel panelBusqueda= new JPanel();
+        panelBusqueda.setLayout(new BoxLayout(panelBusqueda, BoxLayout.X_AXIS));
+        panelBusqueda.setBackground(new Color(240, 240, 240));
+        panelBusqueda.setMaximumSize(new Dimension(700, 40));
         JTextField textField= new JTextField("Buscar por Nombre");
         textField.setMaximumSize(new Dimension(400, 40));
         textField.setPreferredSize(new Dimension(400, 40));
-        textField.setAlignmentX(Component.CENTER_ALIGNMENT);
+    //    textField.setAlignmentX(Component.CENTER_ALIGNMENT);
         textField.setForeground(Color.GRAY);
         
         textField.addFocusListener(new FocusAdapter() {
@@ -75,17 +82,47 @@ public class ListaActividades extends PanelActividades {
             }
         });
         
-        centralPanel.add(textField);
+        
+        Button botonBuscar = new Button("Buscar");
+        botonBuscar.setBackground(Color.GRAY);
+        botonBuscar.setForeground(Color.WHITE);
+        botonBuscar.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        botonBuscar.setMaximumSize(new Dimension(200, 40));
+        botonBuscar.setPreferredSize(new Dimension(200, 40));
+        
+        botonBuscar.addActionListener(e->{
+            System.out.println(textField.getText());
+            coordinadorAplicacionActividades.obtenerActividadPorNombre(textField.getText());
+          
+            
+        });
+        
+        panelBusqueda.add(Box.createHorizontalGlue());
+        panelBusqueda.add(textField);
+        panelBusqueda.add(Box.createHorizontalStrut(10));
+        panelBusqueda.add(botonBuscar);
+        panelBusqueda.add(Box.createHorizontalGlue());
+        
+        centralPanel.add(panelBusqueda);
         centralPanel.add(Box.createVerticalStrut(30));
         
         panelContenido= new JPanel();
         panelContenido.setBackground(Color.white);
-        panelContenido.setMaximumSize(new Dimension(600,500));
-        panelContenido.setPreferredSize(new Dimension(700,500));
-        panelContenido.setLayout(new BoxLayout(panelContenido, BoxLayout.Y_AXIS));
-        
+
+        panelContenido.setLayout(new BoxLayout(panelContenido, BoxLayout.Y_AXIS));      
         panelContenido.setBorder(new EmptyBorder(20, 20, 20, 20));
-        centralPanel.add(panelContenido);
+        
+        JScrollPane scrollPane= new JScrollPane(panelContenido);
+        scrollPane.setMaximumSize(new Dimension(600,500));
+        scrollPane.setPreferredSize(new Dimension(700,500));
+        scrollPane.setAlignmentX(Component.CENTER_ALIGNMENT);
+        
+        scrollPane.setBorder(null);
+        scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+        
+        
+        centralPanel.add(scrollPane);
         cargarElementos();
        
        
@@ -104,8 +141,8 @@ public class ListaActividades extends PanelActividades {
             boton.setOpaque(true);
             boton.setForeground(Color.WHITE);
             boton.setCursor(new Cursor(Cursor.HAND_CURSOR));
-            boton.setMaximumSize(new Dimension(Integer.MAX_VALUE, 50));
-            boton.setPreferredSize(new Dimension(Integer.MAX_VALUE, 50));
+            boton.setMaximumSize(new Dimension(600, 50));
+            boton.setPreferredSize(new Dimension(600, 50));
             
             boton.addMouseListener(new MouseAdapter() {
                     @Override

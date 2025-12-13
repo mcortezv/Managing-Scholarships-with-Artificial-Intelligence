@@ -34,6 +34,10 @@ public class CoordinadorNegocioActividades implements ICoordNegocioActividades {
         return fachadaActividad.obtenerActividades();
     }
     
+     public ActividadDTO obtenerActividadPorNombre(ActividadDTO actividadDTO){
+         return fachadaActividad.obtenerActividadPorNombre(actividadDTO);
+     }
+    
     
 
    public GruposResponseDTO obtenerGrupos(ActividadDTO actividadDTO){

@@ -42,6 +42,10 @@ public class ControlActividad {
             throw new ActividadesException(ex.getMessage());
         }
     }
+    
+     public ActividadDTO obtenerActividadPorNombre(ActividadDTO actividadDTO){
+         return actividadBO.obtenerActividadPorNombre(actividadDTO);
+     }
 
     public GruposResponseDTO obtenerGrupos(ActividadDTO actividadDTO) {
         try {

@@ -54,6 +54,7 @@ public interface IFachadaITSON {
 
     //actividades
     ActividadesDTOItson obtenerActividades();
+    ActividadDTOItson obtenerActividaddPorNombre(ActividadDTOItson actividad);
     GruposResponseDTOItson otenerGrupos(ActividadDTOItson actividadDTO);
     InscripcionDTOItson inscribirActividadExterno(InscripcionDTOItson inscripcionDTOItson);
     InscripcionesDTOItson obtenerInscripciones(EstudianteDTOItson estudianteDTO);
