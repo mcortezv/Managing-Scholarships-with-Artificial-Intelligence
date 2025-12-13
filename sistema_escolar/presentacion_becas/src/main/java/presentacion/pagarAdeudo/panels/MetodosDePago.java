@@ -11,12 +11,30 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.Objects;
 
+/**
+ * Panel de Selección de Método de Pago.
+ * <p>
+ * Esta vista permite al usuario elegir cómo desea procesar la transacción.
+ * Actualmente soporta dos flujos: Pago con Tarjeta (Débito/Crédito) y PayPal.
+ * También gestiona una navegación "inteligente" para el botón de regreso,
+ * determinando si el usuario venía de la sección de Biblioteca o Colegiatura.
+ */
 public class MetodosDePago extends PanelPagarAdeudo {
 
+    /**
+     * Constructor de la pantalla de métodos de pago.
+     * @param frame Ventana principal contenedora.
+     * @param coordinadorAplicacion Coordinador de lógica de negocio.
+     */
     public MetodosDePago(PagarAdeudo frame, CoordinadorAplicacionPagarAdeudo coordinadorAplicacion) {
         super(frame, coordinadorAplicacion);
     }
 
+    /**
+     * Inicializa la interfaz gráfica.
+     * Configura el título, los botones de selección y redefine el comportamiento
+     * del botón "Volver" basándose en el contexto del adeudo actual.
+     */
     @Override
     public void startComponents() {
         centralPanel.removeAll();

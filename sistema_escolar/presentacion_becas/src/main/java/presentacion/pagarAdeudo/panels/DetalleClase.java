@@ -9,8 +9,16 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 
+/**
+ * Panel de Vista Detallada para una Clase (Materia).
+ * <p>
+ * Esta pantalla muestra toda la información específica de una materia que tiene adeudo.
+ * Utiliza un diseño tipo "Tarjeta" (Card) centrado para presentar datos como el profesor,
+ * horario, aula y costo de manera limpia y organizada.
+ */
 public class DetalleClase extends PanelPagarAdeudo {
 
+    // Componentes visuales para mostrar los datos
     private JLabel lblTituloMateria;
     private JLabel lblEstado;
     private JLabel txtProfesor;
@@ -20,10 +28,22 @@ public class DetalleClase extends PanelPagarAdeudo {
     private JLabel txtDetalles;
     private JLabel txtCosto;
 
+    /**
+     * Constructor del panel de detalle.
+     *
+     * @param frame Referencia a la ventana principal.
+     * @param coordinadorAplicacion Coordinador para la navegación.
+     */
     public DetalleClase(PagarAdeudo frame, CoordinadorAplicacionPagarAdeudo coordinadorAplicacion) {
         super(frame, coordinadorAplicacion);
     }
 
+    /**
+     * Construye e inicializa la interfaz gráfica.
+     * <p>
+     * Utiliza un `GridBagLayout` dentro de un panel blanco redondeado para alinear
+     * las etiquetas (labels) y los valores (datos) de forma estructurada.
+     */
     @Override
     public void startComponents() {
         this.setLayout(new BorderLayout());
@@ -122,6 +142,10 @@ public class DetalleClase extends PanelPagarAdeudo {
         this.add(pnlCentro, BorderLayout.CENTER);
     }
 
+
+    /**
+     * Configura la posición para las etiquetas (Labels) de la izquierda (ej. "Profesor:").
+     */
     private GridBagConstraints configLabelGBC(int x, int y) {
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = x; gbc.gridy = y;
@@ -130,6 +154,9 @@ public class DetalleClase extends PanelPagarAdeudo {
         return gbc;
     }
 
+    /**
+     * Configura la posición para los valores de la derecha.
+     */
     private GridBagConstraints configValorGBC(int x, int y) {
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = x; gbc.gridy = y;
@@ -140,6 +167,9 @@ public class DetalleClase extends PanelPagarAdeudo {
         return gbc;
     }
 
+    /**
+     * Fábrica de JLabels para los títulos de los campos (Negrita, oscuro).
+     */
     private JLabel crearLabel(String texto) {
         JLabel lbl = new JLabel(texto);
         lbl.setFont(new Font("SansSerif", Font.BOLD, 14));
@@ -147,6 +177,9 @@ public class DetalleClase extends PanelPagarAdeudo {
         return lbl;
     }
 
+    /**
+     * Fábrica de JLabels para los valores (Normal, grisáceo).
+     */
     private JLabel crearValor(String texto) {
         JLabel lbl = new JLabel(texto);
         lbl.setFont(new Font("SansSerif", Font.PLAIN, 14));
@@ -154,6 +187,12 @@ public class DetalleClase extends PanelPagarAdeudo {
         return lbl;
     }
 
+    /**
+     * Método público llamado por el Coordinador para inyectar los datos en la vista.
+     * Actualiza todos los textos con la información del DTO recibido.
+     *
+     * @param claseDTO Objeto de transferencia con los datos de la materia.
+     */
     public void setClase(ClaseDTO claseDTO){
         if(claseDTO != null){
             lblTituloMateria.setText(claseDTO.getNombre().toUpperCase());

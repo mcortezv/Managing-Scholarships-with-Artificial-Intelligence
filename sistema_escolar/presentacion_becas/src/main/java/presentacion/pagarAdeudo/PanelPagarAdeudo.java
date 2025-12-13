@@ -7,13 +7,29 @@ import presentacion.styles.Style;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Clase base abstracta para todos los paneles del módulo de Pagar Adeudo.
+ * <p>
+ * Define la estructura visual común (Layout) y los componentes compartidos
+ * por todas las vistas, como el panel central de contenido y el panel inferior
+ * de navegación. Obliga a las subclases a implementar la inicialización de sus componentes.
+ */
 public abstract class PanelPagarAdeudo extends JPanel {
-    protected PagarAdeudo mainFrame;
-    protected JPanel centralPanel;
-    protected JPanel southPanel;
-    protected Button btnBack;
-    protected CoordinadorAplicacionPagarAdeudo coordinadorAplicacion;
 
+    protected PagarAdeudo mainFrame; // Referencia a la ventana principal contenedora
+    protected JPanel centralPanel; // Contenedor para el contenido dinámico específico de cada vista
+    protected JPanel southPanel; // Contenedor inferior para controles de navegación
+    protected Button btnBack; // Botón de "Volver" compartido por todas las pantallas
+    protected CoordinadorAplicacionPagarAdeudo coordinadorAplicacion; // Referencia al coordinador para la lógica de negocio
+
+    /**
+     * Constructor de la clase base.
+     * Configura el diseño general (BorderLayout), inicializa los paneles estructurales
+     * y establece los estilos visuales básicos.
+     *
+     * @param frame Ventana principal de la aplicación.
+     * @param coordinadorAplicacion Coordinador del módulo de pagos.
+     */
     public PanelPagarAdeudo(PagarAdeudo frame, CoordinadorAplicacionPagarAdeudo coordinadorAplicacion){
         mainFrame = frame;
         btnBack = new Button("Volver");
@@ -33,5 +49,10 @@ public abstract class PanelPagarAdeudo extends JPanel {
         southPanel.add(btnBack);
     }
 
+    /**
+     * Método abstracto que define el contrato para las subclases.
+     * Cada panel hijo debe implementar este método para cargar sus etiquetas,
+     * tablas y lógica visual específica.
+     */
     public abstract void startComponents();
 }
