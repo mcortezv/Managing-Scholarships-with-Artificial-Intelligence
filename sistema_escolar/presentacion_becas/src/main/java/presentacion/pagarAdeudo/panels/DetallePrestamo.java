@@ -9,8 +9,16 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 
+/**
+ * Panel de Vista Detallada para un Préstamo de Biblioteca.
+ * <p>
+ * Esta pantalla muestra la ficha técnica de un préstamo o adeudo de libro.
+ * Presenta información crítica como el ISBN, título, fechas de devolución y el costo
+ * asociado (multa o reposición). Mantiene el diseño de "Tarjeta" centralizada.
+ */
 public class DetallePrestamo extends PanelPagarAdeudo {
 
+    // Etiquetas para mostrar la información en pantalla
     private JLabel lblTituloPrincipal;
     private JLabel lblEstado;
     private JLabel txtFechaPrestamo;
@@ -21,10 +29,21 @@ public class DetallePrestamo extends PanelPagarAdeudo {
     private JLabel txtDetalles;
     private JLabel txtCosto;
 
+    /**
+     * Constructor del panel.
+     *
+     * @param frame Ventana principal contenedora.
+     * @param coordinadorAplicacion Controlador para navegación.
+     */
     public DetallePrestamo(PagarAdeudo frame, CoordinadorAplicacionPagarAdeudo coordinadorAplicacion) {
         super(frame, coordinadorAplicacion);
     }
 
+    /**
+     * Inicializa la interfaz gráfica.
+     * Configura el botón de regreso y construye la tarjeta central con los datos
+     * del libro utilizando un {@link GridBagLayout} para una alineación precisa.
+     */
     @Override
     public void startComponents() {
         this.setLayout(new BorderLayout());
@@ -39,6 +58,7 @@ public class DetallePrestamo extends PanelPagarAdeudo {
         btnVolver.setForeground(Color.WHITE);
         btnVolver.setBackground(new Color(50, 50, 50));
         btnVolver.setPreferredSize(new Dimension(150, 50));
+
         btnVolver.addActionListener(e -> {
             mainFrame.showPanel("listaPrestamosBiblioteca");
         });
@@ -126,6 +146,7 @@ public class DetallePrestamo extends PanelPagarAdeudo {
         this.add(pnlCentro, BorderLayout.CENTER);
     }
 
+
     private GridBagConstraints configLabelGBC(int x, int y) {
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = x; gbc.gridy = y;
@@ -158,6 +179,12 @@ public class DetallePrestamo extends PanelPagarAdeudo {
         return lbl;
     }
 
+    /**
+     * Inyecta los datos del préstamo en la vista.
+     * Actualiza las etiquetas con la información proveniente del DTO.
+     *
+     * @param prestamo Objeto con los datos del libro prestado.
+     */
     public void setPrestamo(PrestamoDTO prestamo){
         if(prestamo != null) {
             lblTituloPrincipal.setText("PRÉSTAMO");

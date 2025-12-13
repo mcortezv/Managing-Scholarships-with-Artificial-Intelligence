@@ -13,17 +13,40 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.List;
 
+/**
+ * Panel de Listado de Colegiaturas (Clases con Adeudo).
+ * <p>
+ * Esta vista presenta un resumen financiero y académico del estudiante.
+ * Divide la pantalla en dos secciones principales:
+ * 1. Panel Izquierdo: Resumen del adeudo total y botón de pago.
+ * 2. Panel Derecho: Tabla detallada con las clases/materias adeudadas.
+ */
 public class ListaClasesColegiatura extends PanelPagarAdeudo {
 
+    // Componentes para mostrar el resumen financiero
     private JLabel lblMontoTotal;
+
+    // Componentes para la tabla de datos
     private DefaultTableModel tableModel;
     private CustomTable table;
+
+    // Cache local de los datos para manejar los clics en la tabla sin volver a consultar BD
     private List<ClaseDTO> clasesCache;
 
+    /**
+     * Constructor del panel.
+     * @param frame Ventana principal contenedora.
+     * @param coordinadorAplicacion Coordinador para la navegación y acciones.
+     */
     public ListaClasesColegiatura(PagarAdeudo frame, CoordinadorAplicacionPagarAdeudo coordinadorAplicacion) {
         super(frame, coordinadorAplicacion);
     }
 
+    /**
+     * Configura la distribución visual (Layout) y los componentes.
+     * Utiliza un diseño asimétrico con GridBagLayout para separar el panel de pago (izq)
+     * del panel de lista (der).
+     */
     @Override
     public void startComponents() {
         centralPanel.removeAll();
@@ -39,7 +62,7 @@ public class ListaClasesColegiatura extends PanelPagarAdeudo {
         JPanel headerColegiatura = new RoundedPanel(20, new Color(235, 235, 235));
         headerColegiatura.setPreferredSize(new Dimension(250, 50));
         headerColegiatura.setMaximumSize(new Dimension(250, 50));
-        headerColegiatura.setLayout(new GridBagLayout());
+        headerColegiatura.setLayout(new GridBagLayout()); // Centrado
         JLabel lblTituloIzq = new JLabel("Colegiatura");
         lblTituloIzq.setFont(new Font("SansSerif", Font.PLAIN, 20));
         headerColegiatura.add(lblTituloIzq);
@@ -67,18 +90,17 @@ public class ListaClasesColegiatura extends PanelPagarAdeudo {
         btnRealizarPago.setForeground(Color.BLACK);
         btnRealizarPago.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnRealizarPago.setMaximumSize(new Dimension(200, 40));
+
         btnRealizarPago.addActionListener(e -> coordinadorAplicacion.seleccionarRealizarPago());
 
         leftPanel.add(headerColegiatura);
         leftPanel.add(Box.createVerticalStrut(30));
-
         cardPago.add(Box.createVerticalStrut(10));
         cardPago.add(lblMontoTitulo);
         cardPago.add(Box.createVerticalStrut(10));
         cardPago.add(precioBox);
         cardPago.add(Box.createVerticalStrut(20));
         cardPago.add(btnRealizarPago);
-
         leftPanel.add(cardPago);
 
         JPanel rightPanel = new JPanel();
@@ -140,25 +162,22 @@ public class ListaClasesColegiatura extends PanelPagarAdeudo {
             return btn;
         });
 
-
         JScrollPane scrollPane = new JScrollPane(table);
         scrollPane.setBorder(BorderFactory.createEmptyBorder());
         scrollPane.getViewport().setBackground(Color.WHITE);
-
         tableContainer.add(scrollPane, BorderLayout.CENTER);
 
         rightPanel.add(headerClases);
         rightPanel.add(Box.createVerticalStrut(20));
         rightPanel.add(tableContainer);
 
-        gbc.gridx = 0;
-        gbc.gridy = 0;
+        gbc.gridx = 0; gbc.gridy = 0;
         gbc.anchor = GridBagConstraints.NORTH;
         gbc.insets = new Insets(20, 20, 20, 20);
         centralPanel.add(leftPanel, gbc);
 
         gbc.gridx = 1;
-        JLabel arrow = new JLabel("");
+        JLabel arrow = new JLabel(""); // Placeholder
 
         gbc.gridx = 2;
         gbc.weightx = 1.0;
@@ -171,6 +190,12 @@ public class ListaClasesColegiatura extends PanelPagarAdeudo {
         centralPanel.repaint();
     }
 
+    /**
+     * Actualiza la tabla con una nueva lista de clases.
+     * Guarda la lista en caché para poder recuperar los objetos completos al hacer clic en "Ver".
+     *
+     * @param clases Lista de objetos ClaseDTO.
+     */
     public void setClases(List<ClaseDTO> clases) {
         this.clasesCache = clases;
 
@@ -189,12 +214,21 @@ public class ListaClasesColegiatura extends PanelPagarAdeudo {
         }
     }
 
+    /**
+     * Actualiza la etiqueta del monto total a pagar.
+     *
+     * @param adeudo Cantidad monetaria total.
+     */
     public void setAdeudo(double adeudo) {
         if (lblMontoTotal != null) {
             lblMontoTotal.setText(String.format("$ %.2f MXN", adeudo));
         }
     }
 
+    /**
+     * Clase interna para crear paneles con bordes redondeados y sombra suave.
+     * Mejora la estética de la interfaz (estilo tarjeta/card).
+     */
     public static class RoundedPanel extends JPanel {
         private int cornerRadius = 15;
         private final Color backgroundColor;
@@ -213,6 +247,7 @@ public class ListaClasesColegiatura extends PanelPagarAdeudo {
             int width = getWidth();
             int height = getHeight();
             Graphics2D graphics = (Graphics2D) g;
+
             graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
             graphics.setColor(new Color(0,0,0,30));

@@ -10,13 +10,32 @@ import solicitarBeca.EstudianteDTO;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Panel de Menú Principal para la Consulta de Adeudos.
+ * <p>
+ * Esta vista es el punto de entrada del módulo. Permite al estudiante seleccionar
+ * el tipo de adeudo que desea consultar y pagar: "Biblioteca" o "Colegiatura".
+ * Hereda de {@link PanelPagarAdeudo} para reutilizar estilos y botones comunes (como "Volver").
+ */
 public class ConsultaAdeudoMenu extends PanelPagarAdeudo {
 
+    /**
+     * Constructor del menú de consulta.
+     *
+     * @param frame Referencia al frame principal que contiene este panel.
+     * @param coordinadorAplicacion Controlador para manejar la navegación y lógica.
+     */
     public ConsultaAdeudoMenu(PagarAdeudo frame, CoordinadorAplicacionPagarAdeudo coordinadorAplicacion) {
         super(frame, coordinadorAplicacion);
         startComponents();
     }
 
+    /**
+     * Inicializa, configura y posiciona los componentes visuales del menú.
+     * <p>
+     * Aquí se definen los botones de acción y se configuran sus eventos (listeners).
+     * Se conecta con la sesión del usuario para saber qué estudiante está realizando la consulta.
+     */
     @Override
     public void startComponents() {
         centralPanel.removeAll();
@@ -56,6 +75,8 @@ public class ConsultaAdeudoMenu extends PanelPagarAdeudo {
         contentBox.add(btnColegiatura);
 
         centralPanel.add(contentBox);
+
+
         btnBack.addActionListener(e -> {
             coordinadorAplicacion.regresarAlMenuPrincipal();
         });
@@ -63,12 +84,14 @@ public class ConsultaAdeudoMenu extends PanelPagarAdeudo {
         btnBiblioteca.addActionListener(e -> {
             EstudianteDTO estudianteDTO = new EstudianteDTO();
             estudianteDTO.setMatricula(SesionUsuario.getInstance().getEstudianteLogeado().getMatricula());
+
             coordinadorAplicacion.seleccionarAdeudoBiblioteca(estudianteDTO);
         });
 
         btnColegiatura.addActionListener(e -> {
             EstudianteDTO estudianteDTO = new EstudianteDTO();
             estudianteDTO.setMatricula(SesionUsuario.getInstance().getEstudianteLogeado().getMatricula());
+
             coordinadorAplicacion.seleccionarAdeudoColegiatura(estudianteDTO);
         });
 

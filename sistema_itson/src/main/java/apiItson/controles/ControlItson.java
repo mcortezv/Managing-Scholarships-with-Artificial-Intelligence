@@ -94,7 +94,11 @@ public class ControlItson {
     }
     
     public GruposResponseDTOItson obtenerGrupos(ActividadDTOItson actividad){
-      return grupoService.obtenerGrupos(actividad);
+      GruposResponseDTOItson grupos= grupoService.obtenerGrupos(actividad);
+      if(grupos.getGruposItson()==null|| grupos.getGruposItson().isEmpty()){
+          throw new ServiceException("No hay grupos disponibles para esa actividad");
+      }
+      return grupos;
     }
 
     public InscripcionDTOItson inscribirActividadExterno(InscripcionDTOItson inscripcionDTOItson){
@@ -141,7 +145,12 @@ public class ControlItson {
 
 
     public InscripcionesDTOItson obtenerInscripciones(EstudianteDTOItson estudianteDTO){
-        return inscripcionService.obtenerInscripciones(estudianteDTO);
+        
+         InscripcionesDTOItson inscripciones= inscripcionService.obtenerInscripciones(estudianteDTO);
+         if(inscripciones.getInscripciones().isEmpty() || inscripciones==null){
+             throw new ServiceException("El estudiante no tiene inscripciones activas");
+         }
+         return inscripciones;
     }
     
     public GrupoResponseDTOItson obtenerGrupoInscrito(InscripcionDTOItson inscripcion){
