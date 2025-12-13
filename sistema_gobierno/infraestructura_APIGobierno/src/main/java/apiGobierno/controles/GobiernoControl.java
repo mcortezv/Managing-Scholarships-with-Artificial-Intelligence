@@ -1,4 +1,6 @@
 package apiGobierno.controles;
+import datosGobierno.adaptadoresGobierno.SolicitudAdaptador;
+import datosGobierno.servicesGobierno.ApelacionService;
 import datosGobierno.servicesGobierno.BecasService;
 import datosGobierno.servicesGobierno.SolicitudService;
 import gobierno.BecasDisponiblesDTOGobierno;
@@ -17,6 +19,7 @@ import java.util.List;
 public class GobiernoControl {
     private final SolicitudService solicitudService;
     private final BecasService becasService;
+    private final ApelacionService apelacionService;
 
     /**
      * Instantiates a new Gobierno control.
@@ -24,6 +27,7 @@ public class GobiernoControl {
     public GobiernoControl() {
         this.solicitudService = new SolicitudService();
         this.becasService= new BecasService();
+        this.apelacionService = new ApelacionService();
     }
 
     /**
@@ -51,6 +55,7 @@ public class GobiernoControl {
     }
 
     public boolean registrarApelacion(ApelacionDTOGobierno apelacionDTOGobierno){
+        //return apelacionService.registrarApelacion(apelacionDTOGobierno);
         return true;
     }
 }
