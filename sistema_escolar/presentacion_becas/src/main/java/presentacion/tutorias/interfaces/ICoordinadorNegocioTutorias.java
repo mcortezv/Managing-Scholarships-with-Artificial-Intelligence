@@ -25,5 +25,6 @@ public interface ICoordinadorNegocioTutorias {
     List<CitaDTO> obtenerHistorialCompleto();
     List<CitaDTO> obtenerHistorialPorFecha(LocalDate fecha);
     List<CitaDTO> obtenerHistorialPorMateria(Long idMateria);
+    List<CitaDTO> obtenerHistorialPorFechaYMateria(LocalDate fecha, Long idMateria);
     boolean puedeAgendarCita();
 }
