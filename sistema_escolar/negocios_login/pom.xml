@@ -17,12 +17,6 @@
     </properties>
     <dependencies>
         <dependency>
-            <groupId>mcortezv</groupId>
-            <artifactId>negocios_solicitarBeca</artifactId>
-            <version>1.0</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>dto_negocios</artifactId>
             <version>${project.version}</version>

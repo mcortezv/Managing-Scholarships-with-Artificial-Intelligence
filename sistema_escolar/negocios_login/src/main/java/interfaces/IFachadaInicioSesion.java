@@ -1,5 +1,4 @@
 package interfaces;
-import itson.LoginDTOItson;
 import solicitarBeca.EstudianteDTO;
 import solicitarBeca.LoginDTO;
 

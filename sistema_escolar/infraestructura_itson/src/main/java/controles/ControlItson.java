@@ -1,5 +1,4 @@
 package controles;
-
 import apiItson.ItsonAPI;
 import apiItson.interfaces.IItsonAPI;
 import excepciones.InfraestructuraItsonException;
@@ -12,13 +11,12 @@ import datos.adaptadoresItson.HistorialAcademicoAdaptador;
 import datos.adaptadoresItson.pagarAdeudo.ClaseAdaptador;
 import datos.adaptadoresItson.pagarAdeudo.PrestamoAdaptador;
 import datos.dominioItson.Estudiante;
-
 import itson.EstudianteDTOItson;
 import itson.HistorialAcademicoDTOItson;
 import itson.LoginDTOItson;
-
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class ControlItson {
 

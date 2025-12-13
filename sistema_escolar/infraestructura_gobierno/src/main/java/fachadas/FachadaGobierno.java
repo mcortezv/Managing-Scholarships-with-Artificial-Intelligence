@@ -10,8 +10,6 @@ import gobierno.EstudianteDTOGobierno;
 import gobierno.RequisitosDTOGobierno;
 import gobierno.SolicitudDTOGobierno;
 import interfaces.IFachadaGobierno;
-import solicitarBeca.EstudianteDTO;
-
 import java.util.List;
 
 /**

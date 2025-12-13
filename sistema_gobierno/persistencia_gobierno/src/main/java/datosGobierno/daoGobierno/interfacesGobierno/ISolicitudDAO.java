@@ -2,10 +2,6 @@ package datosGobierno.daoGobierno.interfacesGobierno;
 import datosGobierno.documents.SolicitudDocument;
 import datosGobierno.dominioGobierno.Solicitud;
 import datosGobierno.dominioGobierno.enums.EstadoSolicitud;
-import dtoGobierno.EstudianteDTO;
-import dtoGobierno.SolicitudDTO;
-import gobierno.EstudianteDTOGobierno;
-import gobierno.SolicitudDTOGobierno;
 import org.bson.types.ObjectId;
 
 import java.util.List;

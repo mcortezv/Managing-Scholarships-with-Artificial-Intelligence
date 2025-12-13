@@ -1,5 +1,4 @@
 package apiGobierno.controles;
-import datosGobierno.adaptadoresGobierno.SolicitudAdaptador;
 import datosGobierno.servicesGobierno.BecasService;
 import datosGobierno.servicesGobierno.SolicitudService;
 import gobierno.BecasDisponiblesDTOGobierno;

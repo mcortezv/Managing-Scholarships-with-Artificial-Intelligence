@@ -1,6 +1,5 @@
 package controles;
 import objetosNegocio.bo.sesion.SesionUsuario;
-import itson.LoginDTOItson;
 import objetosNegocio.bo.solicitarBeca.intefaces.IEstudianteBO;
 import solicitarBeca.EstudianteDTO;
 import solicitarBeca.LoginDTO;

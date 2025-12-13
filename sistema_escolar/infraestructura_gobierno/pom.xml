@@ -27,12 +27,7 @@
             <artifactId>persistencia_gobierno</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <dependency>
-            <groupId>mcortezv</groupId>
-            <artifactId>dto_negocios</artifactId>
-            <version>1.0</version>
-            <scope>compile</scope>
-        </dependency>
+
         <dependency>
             <groupId>mcortezv</groupId>
             <artifactId>dto_infraestructura</artifactId>

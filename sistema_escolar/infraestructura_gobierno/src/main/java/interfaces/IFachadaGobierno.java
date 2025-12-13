@@ -4,8 +4,6 @@ import gobierno.BecasDisponiblesDTOGobierno;
 import gobierno.EstudianteDTOGobierno;
 import gobierno.RequisitosDTOGobierno;
 import gobierno.SolicitudDTOGobierno;
-import solicitarBeca.EstudianteDTO;
-
 import java.util.List;
 
 /**
