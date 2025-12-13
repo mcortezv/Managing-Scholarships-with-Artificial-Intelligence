@@ -91,6 +91,17 @@ public class CoordinadorAplicacionActividades implements ICoordinadorAplicacionA
     public ActividadesDTO obtenerActividades(){
         return coordinadorNegocioActividades.obtenerActividades();
     }
+    public ActividadDTO obtenerActividadPorNombre(String nombre){
+        if(nombre==null || nombre.trim().isEmpty()){     
+            throw new IllegalArgumentException("el nombre de la actividad no puede estar vacio");
+        }
+        String nombreLimpio = nombre.trim();
+        String nombreFormateado = nombreLimpio.substring(0, 1).toUpperCase()
+                + nombreLimpio.substring(1).toLowerCase(); 
+        ActividadDTO actividadDTO= new ActividadDTO(nombreFormateado);
+        return coordinadorNegocioActividades.obtenerActividadPorNombre(actividadDTO);
+    }
+      
     
     public void recuperarLogin(LoginDTO loginDTO){
         this.loginDTO= loginDTO;

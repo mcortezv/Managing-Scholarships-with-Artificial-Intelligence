@@ -34,6 +34,7 @@ public interface IItsonAPI {
 
     //actividades
      ActividadesDTOItson soloicitarActividades();
+     ActividadDTOItson obtenerActividaddPorNombre(ActividadDTOItson actividad);
      GruposResponseDTOItson solicitarGrupos(ActividadDTOItson actividad);
      InscripcionDTOItson inscribirActividadExterno(InscripcionDTOItson inscripcionDTOItson);
      InscripcionesDTOItson obtenerInscripciones(EstudianteDTOItson estudianteDTO);

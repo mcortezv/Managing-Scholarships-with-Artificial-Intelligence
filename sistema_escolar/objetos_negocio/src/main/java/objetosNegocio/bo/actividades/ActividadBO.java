@@ -5,9 +5,11 @@
 package objetosNegocio.bo.actividades;
 
 
+import dto.actividades.ActividadDTO;
 import objetosNegocio.adaptadores.actividades.ActividadesAdaptador;
 import dto.actividades.ActividadesDTO;
 import interfaces.IFachadaITSON;
+import itson.actividades.ActividadDTOItson;
 import objetosNegocio.bo.actividades.interfaces.IActividadBO;
 import itson.actividades.ActividadesDTOItson;
 
@@ -29,6 +31,13 @@ public class ActividadBO implements IActividadBO {
         
         return ActividadesAdaptador.toDTO(actividadesDTOItson);
     }
+    
+     public ActividadDTO obtenerActividadPorNombre(ActividadDTO actividadDTO){
+         ActividadDTOItson actividadDTOItson= ActividadesAdaptador.toDTOItson(actividadDTO);
+         ActividadDTOItson actividadItsonResponse= fachadaITSON.obtenerActividaddPorNombre(actividadDTOItson);
+         return ActividadesAdaptador.toDTO(actividadItsonResponse);
+         
+     }
     
     
     

@@ -82,6 +82,11 @@ public class FachadaItson implements IFachadaITSON {
     public ActividadesDTOItson obtenerActividades() {
         return controlItson.obtenerActividades();
     }
+    
+    public ActividadDTOItson obtenerActividaddPorNombre(ActividadDTOItson actividad){
+        return controlItson.obtenerActividaddPorNombre(actividad);
+    }
+    
 
     @Override
     public GruposResponseDTOItson otenerGrupos(ActividadDTOItson actividadDTO) {

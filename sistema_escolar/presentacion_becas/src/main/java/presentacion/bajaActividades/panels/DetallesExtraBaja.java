@@ -96,7 +96,11 @@ public class DetallesExtraBaja extends PanelActividades{
         panelContenido.add(Box.createVerticalStrut(20));
         LocalDate fechaInicio = grupoInscripcionDTO.getFechaInicio();
         long diasPasados = ChronoUnit.DAYS.between(fechaInicio, LocalDate.now());
-        panelContenido.add(crearCampo("Dias pasados", String.valueOf(diasPasados)));;
+        if(diasPasados<0){
+            panelContenido.add(crearCampo("Dias pasados", "Aun no inicia"));
+        } else{
+             panelContenido.add(crearCampo("Dias pasados", String.valueOf(diasPasados)));;
+        }
         LocalDate fechaFin = grupoInscripcionDTO.getFechaFin();
         long diasFaltantes = fechaFin.toEpochDay() - LocalDate.now().toEpochDay();
         panelContenido.add(crearCampo("Dias faltantes ", String.valueOf(diasFaltantes)));

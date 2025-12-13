@@ -5,6 +5,7 @@
 package objetosNegocio.bo.actividades.interfaces;
 
 
+import dto.actividades.ActividadDTO;
 import dto.actividades.ActividadesDTO;
 
 /**
@@ -13,6 +14,7 @@ import dto.actividades.ActividadesDTO;
  */
 public interface IActividadBO {
     
-    public ActividadesDTO obtenerActividades();
+     ActividadesDTO obtenerActividades();
+     ActividadDTO obtenerActividadPorNombre(ActividadDTO actividadDTO);
     
 }
