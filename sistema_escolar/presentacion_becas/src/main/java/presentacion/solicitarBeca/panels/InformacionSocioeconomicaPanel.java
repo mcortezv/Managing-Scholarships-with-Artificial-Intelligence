@@ -12,6 +12,8 @@ import java.awt.*;
 import java.math.BigDecimal;
 
 /**
+ * The type Informacion socioeconomica panel.
+ *
  * @author Escalante, Sebastian.
  */
 public class InformacionSocioeconomicaPanel extends PanelSolicitarBeca {
@@ -26,6 +28,12 @@ public class InformacionSocioeconomicaPanel extends PanelSolicitarBeca {
     private ComboBox<String> cbx_tabajo;
     private Button btn_next;
 
+    /**
+     * Instantiates a new Informacion socioeconomica panel.
+     *
+     * @param mainFrame             the main frame
+     * @param coordinadorAplicacion the coordinador aplicacion
+     */
     public InformacionSocioeconomicaPanel(SolicitarBeca mainFrame, CoordinadorAplicacion coordinadorAplicacion){
         super(mainFrame, coordinadorAplicacion);
         this.coordinadorAplicacion = coordinadorAplicacion;

@@ -15,6 +15,9 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
+/**
+ * The type Datos tutor panel.
+ */
 public class DatosTutorPanel extends PanelSolicitarBeca {
     private Label lbl_responsable;
     private TextField field_nombre;
@@ -27,6 +30,12 @@ public class DatosTutorPanel extends PanelSolicitarBeca {
     private ComboBox<String> comboParentesco;
     private CoordinadorAplicacion coordinadorAplicacion;
 
+    /**
+     * Instantiates a new Datos tutor panel.
+     *
+     * @param frame                 the frame
+     * @param coordinadorAplicacion the coordinador aplicacion
+     */
     public DatosTutorPanel(SolicitarBeca frame, CoordinadorAplicacion coordinadorAplicacion) {
         super(frame, coordinadorAplicacion);
         this.coordinadorAplicacion = coordinadorAplicacion;

@@ -10,6 +10,7 @@ import presentacion.styles.Label;
 import javax.swing.*;
 
 /**
+ * The type Historial academico panel.
  *
  * @author Cortez, Manuel;
  */
@@ -24,6 +25,12 @@ public class HistorialAcademicoPanel extends PanelSolicitarBeca {
     private Button botonSiguiente;
     private CoordinadorAplicacion coordinadorAplicacion;
 
+    /**
+     * Instantiates a new Historial academico panel.
+     *
+     * @param mainFrame             the main frame
+     * @param coordinadorAplicacion the coordinador aplicacion
+     */
     public HistorialAcademicoPanel(SolicitarBeca mainFrame, CoordinadorAplicacion coordinadorAplicacion) {
         super(mainFrame, coordinadorAplicacion);
         this.coordinadorAplicacion = coordinadorAplicacion;
