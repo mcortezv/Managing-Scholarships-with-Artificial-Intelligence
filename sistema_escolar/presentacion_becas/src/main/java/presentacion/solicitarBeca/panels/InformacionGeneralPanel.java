@@ -3,7 +3,6 @@ import presentacion.solicitarBeca.PanelSolicitarBeca;
 import solicitarBeca.RequisitosDTO;
 import presentacion.CoordinadorAplicacion;
 import java.awt.Component;
-import java.awt.FlowLayout;
 import javax.swing.*;
 import presentacion.solicitarBeca.SolicitarBeca;
 import presentacion.solicitarBeca.exceptions.IngresoInvalidoException;
@@ -12,6 +11,7 @@ import presentacion.styles.*;
 import presentacion.styles.ComboBox;
 
 /**
+ * The type Informacion general panel.
  *
  * @author janethcristinagalvanquinonez
  */
@@ -24,6 +24,12 @@ public class InformacionGeneralPanel extends PanelSolicitarBeca {
     private ComboBox<String> campoDeudas;
 
 
+    /**
+     * Instantiates a new Informacion general panel.
+     *
+     * @param frame                 the frame
+     * @param coordinadorAplicacion the coordinador aplicacion
+     */
     public InformacionGeneralPanel(SolicitarBeca frame, CoordinadorAplicacion coordinadorAplicacion) {
         super(frame, coordinadorAplicacion);
     }

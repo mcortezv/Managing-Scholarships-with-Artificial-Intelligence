@@ -4,6 +4,7 @@ import datosGobierno.documents.EstudianteDocument;
 import datosGobierno.dominioGobierno.Estudiante;
 import datosGobierno.dominioGobierno.Tutor;
 import datosGobierno.dominioGobierno.enums.Carrera;
+import datosGobierno.dominioGobierno.enums.Parentesco;
 import dtoGobierno.EstudianteDTO;
 import gobierno.EstudianteDTOGobierno;
 
@@ -77,13 +78,14 @@ public class EstudianteAdaptador {
                 estudiante.setContrasenia(dto.getContrasenia());
             }
             Tutor tutor = new Tutor();
-            tutor.setNombre(dto.getTutor().getNombre());
-            tutor.setCorreo(dto.getTutor().getCorreo());
-            tutor.setTelefono(dto.getTutor().getTelefono());
-            tutor.setDireccion(estudiante.getTutor().getDireccion());
-            tutor.setParentesco(estudiante.getTutor().getParentesco());
-            tutor.setId(estudiante.getTutor().getId());
-            estudiante.setTutor(tutor);
+            if (dto.getTutor() != null) {
+                tutor.setNombre(dto.getTutor().getNombre());
+                tutor.setCorreo(dto.getTutor().getCorreo());
+                tutor.setTelefono(dto.getTutor().getTelefono());
+                tutor.setDireccion(dto.getTutor().getDireccion());
+                tutor.setParentesco(Parentesco.valueOf(dto.getTutor().getParentesco()));
+                estudiante.setTutor(tutor);
+            }
             estudiante.setDireccion(dto.getDireccion());
             estudiante.setMatricula(dto.getMatricula());
             return estudiante;
