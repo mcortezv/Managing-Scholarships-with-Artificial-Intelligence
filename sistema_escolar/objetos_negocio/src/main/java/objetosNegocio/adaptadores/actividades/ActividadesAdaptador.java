@@ -35,6 +35,14 @@ public class ActividadesAdaptador {
         
     }
     
+    public static ActividadDTO toDTO(ActividadDTOItson actividadDTOItson){
+        ActividadDTO actividadDTO= new ActividadDTO();
+        actividadDTO.setId(actividadDTOItson.getId());
+        actividadDTO.setNombre(actividadDTOItson.getNombre());
+        actividadDTO.setCosto(actividadDTOItson.getCosto());
+        return actividadDTO;
+    }
+    
     public static ActividadDTOItson toDTOItson(ActividadDTO actividadDTO){
         ActividadDTOItson actividadDTOItson= new ActividadDTOItson();
         actividadDTOItson.setId(actividadDTO.getId());

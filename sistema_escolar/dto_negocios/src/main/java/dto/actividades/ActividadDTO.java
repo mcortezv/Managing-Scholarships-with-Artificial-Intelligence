@@ -23,6 +23,10 @@ public class ActividadDTO {
         this.nombre = nombre;
         this.costo = costo;
     }
+
+    public ActividadDTO(String nombre) {
+        this.nombre = nombre;
+    }
     
 
     public ActividadDTO() {

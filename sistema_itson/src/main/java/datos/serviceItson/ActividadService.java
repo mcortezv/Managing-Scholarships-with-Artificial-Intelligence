@@ -9,6 +9,7 @@ import datos.repositoryItson.daoItson.impl.ActividadDAO;
 import itson.actividades.ActividadesDTOItson;
 import datos.adaptadoresItson.actividades.ActividadAdaptador;
 import datos.dominioItson.actividades.Actividad;
+import itson.actividades.ActividadDTOItson;
 import java.util.List;
 
 /**
@@ -31,6 +32,12 @@ public class ActividadService {
          
        // return actividadDAO.obtenerActividades();
     }
+    
+    public ActividadDTOItson obtenerActividaddPorNombre(ActividadDTOItson actividad){
+        Actividad actividadEntity= actividadDAO.obtenerActividaddPorNombre(actividad.getNombre());
+        return ActividadAdaptador.toResponseDTOAct(actividadEntity);
+        
+    } 
     
     
     

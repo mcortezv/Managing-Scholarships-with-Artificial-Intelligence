@@ -88,6 +88,10 @@ public class ControlItson {
         return actividadService.obtenerActividades();
     }
     
+    public ActividadDTOItson obtenerActividaddPorNombre(ActividadDTOItson actividad){
+        return actividadService.obtenerActividaddPorNombre(actividad);
+    }
+    
     public GruposResponseDTOItson obtenerGrupos(ActividadDTOItson actividad){
       return grupoService.obtenerGrupos(actividad);
     }

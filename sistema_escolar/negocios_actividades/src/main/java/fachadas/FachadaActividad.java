@@ -33,6 +33,10 @@ public class FachadaActividad implements IFachadaActividad {
     public ActividadesDTO obtenerActividades() {
         return controlActividad.obtenerActividades();
     }
+    
+     public ActividadDTO obtenerActividadPorNombre(ActividadDTO actividadDTO){
+         return controlActividad.obtenerActividadPorNombre(actividadDTO);
+     }
 
     public GruposResponseDTO obtenerGrupos(ActividadDTO actividadDTO) {
         return controlActividad.obtenerGrupos(actividadDTO);

@@ -20,6 +20,7 @@ public interface IFachadaActividad {
     //caso de uso inscripciones
     
      ActividadesDTO obtenerActividades();
+     ActividadDTO obtenerActividadPorNombre(ActividadDTO actividadDTO);
      GruposResponseDTO obtenerGrupos(ActividadDTO actividadDTO);
      InscripcionDTO inscribirActividad(InscripcionDTO inscripcionDTO);
      
