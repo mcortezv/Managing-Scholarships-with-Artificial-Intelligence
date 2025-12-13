@@ -9,6 +9,7 @@ import gobierno.BecasDisponiblesDTOGobierno;
 import gobierno.EstudianteDTOGobierno;
 import gobierno.RequisitosDTOGobierno;
 import gobierno.SolicitudDTOGobierno;
+import gobierno.apelacion.ApelacionDTOGobierno;
 import interfaces.IFachadaGobierno;
 import java.util.List;
 
@@ -47,7 +48,7 @@ public class FachadaGobierno implements IFachadaGobierno{
     }
 
     @Override
-    public boolean registrarApelacion(ApelacionDTO apelacionDTO) {
+    public boolean registrarApelacion(ApelacionDTOGobierno apelacionDTO) {
         return controlGobierno.registrarApelacion(apelacionDTO);
     }
 

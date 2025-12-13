@@ -1,9 +1,13 @@
 package objetosNegocio.bo.solicitarBeca;
+import gobierno.EstudianteDTOGobierno;
+import gobierno.SolicitudDTOGobierno;
 import objetosNegocio.adaptadores.solicitarBeca.BecaAdaptador;
+import objetosNegocio.adaptadores.solicitarBeca.EstudianteAdaptador;
 import objetosNegocio.adaptadores.solicitarBeca.SolicitudAdaptador;
 import objetosNegocio.bo.solicitarBeca.excepciones.SolicitudInvalidaException;
 import org.bson.types.ObjectId;
 import solicitarBeca.BecaDTO;
+import solicitarBeca.EstudianteDTO;
 import solicitarBeca.SolicitudDTO;
 import solicitarBeca.repository.dao.interfaces.IDocumentoDAO;
 import solicitarBeca.repository.dao.interfaces.IEstudianteDAO;
@@ -118,5 +122,19 @@ public class SolicitudBO implements ISolicitudBO {
         } catch (Exception ex) {
             throw new SolicitudInvalidaException(ex.getMessage());
         }
+    }
+
+    @Override
+    public List<SolicitudDTO> obtenerSolicitudesPorEstudiante(EstudianteDTO estudianteDTO) {
+        Estudiante estudianteEntity = EstudianteAdaptador.toEntity(estudianteDTO);
+        EstudianteDTOGobierno estudianteGobierno = EstudianteAdaptador.toDTOGobierno(estudianteEntity);
+        List<SolicitudDTOGobierno> listaGobierno = fachadaGobierno.obtenerSolicitudesPorEstudiante(estudianteGobierno);
+        List<Solicitud> listaEntidades = new ArrayList<>();
+        if (listaGobierno != null) {
+            for (SolicitudDTOGobierno solGob : listaGobierno) {
+                listaEntidades.add(SolicitudAdaptador.toEntity(solGob));
+            }
+        }
+        return SolicitudAdaptador.toDTO(listaEntidades);
     }
 }

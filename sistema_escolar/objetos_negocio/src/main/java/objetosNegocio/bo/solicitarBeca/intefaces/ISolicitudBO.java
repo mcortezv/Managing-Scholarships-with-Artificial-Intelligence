@@ -1,7 +1,10 @@
 package objetosNegocio.bo.solicitarBeca.intefaces;
 import objetosNegocio.bo.solicitarBeca.excepciones.SolicitudInvalidaException;
 import solicitarBeca.BecaDTO;
+import solicitarBeca.EstudianteDTO;
 import solicitarBeca.SolicitudDTO;
+
+import java.util.List;
 
 /**
  * The interface Solicitud bo.
@@ -42,4 +45,6 @@ public interface ISolicitudBO {
      * @throws SolicitudInvalidaException the solicitud invalida exception
      */
     void enviarSolicitud(SolicitudDTO solicitud) throws SolicitudInvalidaException;
+
+    List<SolicitudDTO> obtenerSolicitudesPorEstudiante(EstudianteDTO estudianteDTO);
 }

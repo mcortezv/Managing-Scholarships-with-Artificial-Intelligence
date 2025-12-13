@@ -72,4 +72,21 @@ public class DocumentoAdaptador {
             throw new BecasFiltradasAdaptadorException("Error al convertir entidad Documento a DocumentoDTOGobierno");
         }
     }
+
+    public static Documento toEntity(DocumentoDTOGobierno dto) {
+        try {
+            if (dto == null) return null;
+            Documento documento = new Documento();
+            documento.setIdentificador(dto.getIdentificador());
+            if (dto.getTipo() != null) {
+                documento.setTipo(TipoDocumento.valueOf(dto.getTipo()));
+            }
+            documento.setContenido(dto.getContenido());
+            documento.setEstudiante(dto.getEstudiante());
+
+            return documento;
+        } catch (Exception ex) {
+            throw new DocumentoAdaptadorException("Error al convertir DocumentoDTOGobierno a entidad Documento: " + ex.getMessage());
+        }
+    }
 }
