@@ -44,6 +44,12 @@
             <artifactId>persistencia_actividades</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>mcortezv</groupId>
+            <artifactId>dto_negocios</artifactId>
+            <version>1.0</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
     <properties>
         <maven.compiler.release>17</maven.compiler.release>
