@@ -12,16 +12,39 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.List;
 
+/**
+ * Panel de Listado de Préstamos de Biblioteca.
+ * <p>
+ * Muestra el dashboard financiero relacionado con la biblioteca.
+ * Estructura de la pantalla:
+ * 1. Panel Izquierdo: Resumen del adeudo total por multas o reposiciones y botón de pago.
+ * 2. Panel Derecho: Tabla con los libros prestados, fechas y opción para ver detalles.
+ */
 public class ListaPrestamosBiblioteca extends PanelPagarAdeudo {
 
     private JLabel lblMontoTotal;
     private DefaultTableModel tableModel;
+
+    /**
+     * Cache de la lista de préstamos para facilitar la navegación a los detalles
+     * sin necesidad de volver a consultar la base de datos al hacer clic en la tabla.
+     */
     private List<PrestamoDTO> prestamosCache;
 
+    /**
+     * Constructor del panel.
+     * @param frame Ventana principal.
+     * @param coordinadorAplicacion Coordinador de negocio y navegación.
+     */
     public ListaPrestamosBiblioteca(PagarAdeudo frame, CoordinadorAplicacionPagarAdeudo coordinadorAplicacion) {
         super(frame, coordinadorAplicacion);
     }
 
+    /**
+     * Inicializa y organiza los componentes visuales.
+     * Configura el GridBagLayout para dividir la pantalla y establece los renderizadores
+     * de la tabla para incluir el botón de acción "...".
+     */
     @Override
     public void startComponents() {
         centralPanel.removeAll();
@@ -165,6 +188,11 @@ public class ListaPrestamosBiblioteca extends PanelPagarAdeudo {
         centralPanel.repaint();
     }
 
+    /**
+     * Llena la tabla con los datos de los préstamos recibidos.
+     * Actualiza la caché local para permitir la interacción con los detalles.
+     * @param prestamos Lista de DTOs de préstamos.
+     */
     public void setPrestamos(List<PrestamoDTO> prestamos) {
         this.prestamosCache = prestamos;
 
@@ -183,12 +211,19 @@ public class ListaPrestamosBiblioteca extends PanelPagarAdeudo {
         }
     }
 
+    /**
+     * Actualiza el texto del monto total a pagar.
+     * @param adeudo Monto total acumulado.
+     */
     public void setAdeudo(double adeudo) {
         if (lblMontoTotal != null) {
             lblMontoTotal.setText(String.format("$ %.2f MXN", adeudo));
         }
     }
 
+    /**
+     * Componente gráfico interno para dibujar paneles con bordes redondeados y sombra.
+     */
     static class RoundedPanel extends JPanel {
         private int cornerRadius = 15;
         private final Color backgroundColor;
