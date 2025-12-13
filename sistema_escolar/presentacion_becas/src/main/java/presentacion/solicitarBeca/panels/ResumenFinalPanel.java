@@ -139,7 +139,7 @@ public class ResumenFinalPanel extends PanelSolicitarBeca {
         lbl_tutor_2 = new Label("...");
         lbl_tutor_2.setFont(dataFont);
 
-        Label lbl_tutor_3 = new Label("53 años");
+        Label lbl_tutor_3 = new Label("");
         lbl_tutor_3.setFont(dataFont);
 
         cardTutor.add(lbl_datos_tutor);
