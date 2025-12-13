@@ -60,10 +60,10 @@ public class FachadaTutorias implements IFachadaTutorias{
         return control.obtenerHistorialPorMateria(matriculaAlumno, idMateria);
     }
     
-//    @Override
-//    public List<CitaDTO> obtenerHistorialPorFechaYMateria(Long matriculaAlumno, LocalDate fecha, Long idMateria) {
-//        return control.obtenerHistorialPorFechaYMateria(matriculaAlumno, fecha, idMateria);
-//    }
+    @Override
+    public List<CitaDTO> obtenerHistorialPorFechaYMateria(Long matriculaAlumno, LocalDate fecha, Long idMateria) {
+        return control.obtenerHistorialPorFechaYMateria(matriculaAlumno, fecha, idMateria);
+    }
     
     @Override
     public List<TutorDTO> obtenerTodosLosTutores() {
