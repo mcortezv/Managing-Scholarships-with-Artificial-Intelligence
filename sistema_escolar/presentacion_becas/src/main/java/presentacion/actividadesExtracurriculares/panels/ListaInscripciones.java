@@ -92,10 +92,10 @@ public class ListaInscripciones extends PanelActividades{
        
     }
     
-    public void cargarElementos(){
+    public void cargarElementos(InscripcionesDTO inscripcionesDTO){
         
         
-        InscripcionesDTO inscripcionesDTO= coordinadorAplicacionActividades.obtenerInscripciones(estudianteRecuperado);
+     //   InscripcionesDTO inscripcionesDTO= coordinadorAplicacionActividades.obtenerInscripciones(estudianteRecuperado);
         panelContenido.removeAll();
         
         
