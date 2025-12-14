@@ -145,13 +145,15 @@ public class ControlItson {
 
 
     public InscripcionesDTOItson obtenerInscripciones(EstudianteDTOItson estudianteDTO){
-        
+ 
          InscripcionesDTOItson inscripciones= inscripcionService.obtenerInscripciones(estudianteDTO);
-         if(inscripciones.getInscripciones().isEmpty() || inscripciones==null){
-             throw new ServiceException("El estudiante no tiene inscripciones activas");
-         }
+         
+////         if(inscripciones.getInscripciones().isEmpty() || inscripciones==null){
+////             throw new ServiceException("El estudiante no tiene inscripciones activas");
+////         }
          return inscripciones;
     }
+  
     
     public GrupoResponseDTOItson obtenerGrupoInscrito(InscripcionDTOItson inscripcion){
         return grupoService.obtenerGrupoInscrito(inscripcion);
