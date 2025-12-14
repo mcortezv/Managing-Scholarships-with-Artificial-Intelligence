@@ -120,9 +120,13 @@ public class CoordinadorAplicacionActividades implements ICoordinadorAplicacionA
     
     
     public InscripcionesDTO obtenerInscripciones(EstudianteDTO estudiante){
-        System.out.println("ins"+estudiante.getMatricula());
        try{
-        return coordinadorNegocioActividades.obtenerInscripciones(estudiante);
+        InscripcionesDTO inscripciones= coordinadorNegocioActividades.obtenerInscripciones(estudiante);
+        if(inscripciones==null|| inscripciones.getInscripciones().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El estudiante no tiene inscripciones activas.", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+            return new InscripcionesDTO();
+        }
+        return inscripciones;
        } catch(ActividadesException ex){
            JOptionPane.showMessageDialog(null, "no tienes inscripciones activas "+ ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
        }
@@ -231,7 +235,8 @@ public class CoordinadorAplicacionActividades implements ICoordinadorAplicacionA
     public void mostarListaInscripciones(){
        
         ListaInscripciones panel = (ListaInscripciones) actividades.getPanel("ListaInscripciones");
-        panel.cargarElementos();
+        InscripcionesDTO inscripcionesDTO= obtenerInscripciones(estudiante);
+        panel.cargarElementos(inscripcionesDTO);
         actividades.showPanel("ListaInscripciones");
     }
     
